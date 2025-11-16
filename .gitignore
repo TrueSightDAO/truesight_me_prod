@@ -1,5 +1,6 @@
 # Local environment secrets
 .env
+google-service-account.json
 
 # Node artifacts (future-proofing)
 node_modules/
@@ -7,4 +8,7 @@ node_modules/
 
 # macOS metadata
 .DS_Store
+
+# Raw materials loading bay (temporary files)
+assets/raw/
 

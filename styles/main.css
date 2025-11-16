@@ -655,6 +655,12 @@ a {
   overflow: hidden;
 }
 
+/* Override text-align for hero sections with inline left alignment */
+.hero[style*="text-align: left"] h1,
+.hero[style*="text-align: left"] .section-lead {
+  text-align: left;
+}
+
 .hero-logo {
   width: min(320px, 70%);
   margin: 0 auto var(--space-md);
@@ -974,11 +980,39 @@ section h2 {
   align-items: center;
 }
 
+/* Exclude card-body from the auto margin rule */
+.card > div:last-child:not(.card-body) {
+  margin-top: auto;
+}
+
+/* Explicitly set card-body margin to 0 to prevent auto margin inheritance */
+.card .card-body {
+  margin-top: 0;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-lg);
   margin-top: var(--space-lg);
+}
+
+/* Card with media on top - full-bleed image */
+.card--media-top {
+  padding: 0;
+  overflow: hidden;
+}
+
+.card--media-top img {
+  width: 100%;
+  display: block;
+  border-radius: 16px 16px 0 0;
+  margin: 0;
+}
+
+.card--media-top .card-body {
+  padding: var(--space-lg);
+  margin-top: 0 !important;
 }
 
 /* Steps/Process Cards - Refined */

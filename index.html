@@ -234,8 +234,9 @@
       TrueSight DAO · Transparent impact data available at <a href="https://truesight.me">truesight.me</a>
     </footer>
   <script>
-      // Load exchange rates dynamically from JSON file
-      // Data is updated by Google App Script via GitHub API
+      // Load exchange rates dynamically from Google Apps Script web service
+      // Data is synced from Wix ExchangeRate collection to Google Sheet "Performance Statistics" tab
+      // Web service endpoint: https://script.google.com/macros/s/AKfycbzlfOBo9UqKOh7jIqGcmbPAMM1RxCbsJHb-UV_vM6VbvK_HSdT44KyGbbXIeo-_Ovfy/exec
       (function() {
         function formatNumber(num, decimals) {
           if (num === null || num === undefined) return '—';
@@ -288,69 +289,79 @@
           });
         }
 
-        // Load exchange rates from individual JSON files in data/exchange-rates/
+        // Load exchange rates from Google Apps Script web service
+        // Web service URL: https://script.google.com/macros/s/AKfycbzlfOBo9UqKOh7jIqGcmbPAMM1RxCbsJHb-UV_vM6VbvK_HSdT44KyGbbXIeo-_Ovfy/exec
+        const PERFORMANCE_STATISTICS_WEB_SERVICE_URL = 'https://script.google.com/macros/s/AKfycbzlfOBo9UqKOh7jIqGcmbPAMM1RxCbsJHb-UV_vM6VbvK_HSdT44KyGbbXIeo-_Ovfy/exec';
+
         async function loadExchangeRates() {
-          // List of all exchange rate keys to load
-          const exchangeRateKeys = [
-            'USDC_EXCHANGE_RATE_RAYDIUM',
-            'USD_TREASURY_YIELD_1_MONTH',
-            'TDG_DAILY_BUY_BACK_BUDGET',
-            'PAST_30_DAYS_SALES',
-            'ASSET_PER_TDG_ISSUED',
-            'GAS_FEE',
-            'TDG_PER_USD_CONTRIBUTION',
-            'TDG_PER_HOUR_CONTRIBUTION',
-            'TDG_ISSUED',
-            'USD_TREASURY_BALANCE',
-            'USDT_EXCHANGE_RATE_LATOKENS'
-          ];
-
           try {
-            // Load all exchange rate files in parallel
-            const promises = exchangeRateKeys.map(key => 
-              fetch(`data/exchange-rates/${key}.json`)
-                .then(response => {
-                  if (!response.ok) {
-                    console.warn(`⚠️  Failed to load ${key}: HTTP ${response.status}`);
-                    return null;
-                  }
-                  return response.json();
-                })
-                .catch(error => {
-                  console.warn(`⚠️  Error loading ${key}:`, error);
-                  return null;
-                })
-            );
-
-            const results = await Promise.all(promises);
+            // Fetch from Google Apps Script web service
+            const response = await fetch(PERFORMANCE_STATISTICS_WEB_SERVICE_URL);
             
-            // Combine into single object, using key from each file
-            const exchangeRatesData = {};
-            results.forEach((data, index) => {
-              if (data && data.key) {
-                exchangeRatesData[data.key] = data;
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const result = await response.json();
+            
+            // Check for error in response
+            if (result.error) {
+              throw new Error(result.message || 'Unknown error from web service');
+            }
+            
+            // Transform the response to match the expected format
+            // The web service returns: { timestamp, data: { key: { key, description, exchangeRate, currency, updatedDate } } }
+            // We need: { key: { key, description, exchangeRate, currency, updatedDate } }
+            const exchangeRatesData = result.data || {};
+            
+            // Ensure each item has the expected structure
+            Object.keys(exchangeRatesData).forEach(key => {
+              const item = exchangeRatesData[key];
+              // Map exchangeRate to the format expected by formatStatValue
+              if (item && item.exchangeRate !== undefined) {
+                exchangeRatesData[key] = {
+                  key: item.key || key,
+                  description: item.description || key,
+                  exchangeRate: item.exchangeRate,
+                  currency: item.currency || null,
+                  updatedDate: item.updatedDate || null,
+                  createdDate: item.createdDate || null
+                };
               }
             });
-
+            
             // Check if we got any data
             if (Object.keys(exchangeRatesData).length === 0) {
-              throw new Error('No exchange rate data loaded');
+              throw new Error('No exchange rate data returned from web service');
             }
 
+            // Cache for offline fallback
+            try {
+              localStorage.setItem('exchangeRatesCache', JSON.stringify({
+                timestamp: result.timestamp || new Date().toISOString(),
+                data: exchangeRatesData
+              }));
+            } catch (e) {
+              // Ignore localStorage errors
+            }
+            
             return exchangeRatesData;
+            
           } catch (error) {
-            console.error('Error loading exchange rates:', error);
-            // Optionally: try to load from localStorage as fallback
+            console.error('❌ Error loading exchange rates from web service:', error);
+            
+            // Fallback: try to load from localStorage cache
             try {
               const cached = localStorage.getItem('exchangeRatesCache');
               if (cached) {
                 const parsed = JSON.parse(cached);
-                console.log('Using cached exchange rates');
+                console.log('⚠️  Using cached exchange rates (web service unavailable)');
                 return parsed.data || parsed;
               }
             } catch (e) {
               // Ignore localStorage errors
             }
+            
             return null;
           }
         }

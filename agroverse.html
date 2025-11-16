@@ -424,15 +424,16 @@
         tbody.innerHTML = aglShipments.map(shipment => {
           const meta = shipmentMetadata[shipment.title] || { volume: '—', financing: '—', notes: '—' };
           const batchLink = shipment.contractUrl 
-            ? `<a class="text-link" href="${shipment.contractUrl}" target="_blank" rel="noreferrer">${shipment.title}</a>`
+            ? `<a class="text-link" href="agroverse-shipments/${shipment.title.toLowerCase()}">${shipment.title}</a>`
             : shipment.title;
           
           // Get image path for AGL modules (convert title to lowercase)
           const imageName = shipment.title.toLowerCase();
           const imageExt = imageName === 'agl7' ? 'gif' : 'avif'; // AGL7 is a gif, others are avif
-          const imagePath = `assets/raw/${imageName}.${imageExt}`;
+          const imagePath = `assets/shipments/${imageName}.${imageExt}`;
+          const detailUrl = `agroverse-shipments/${imageName}`;
           const imageHtml = shipment.title.startsWith('AGL') 
-            ? `<img src="${imagePath}" alt="${shipment.title}" class="shipment-table-image" loading="lazy" />`
+            ? `<a href="${detailUrl}"><img src="${imagePath}" alt="${shipment.title}" class="shipment-table-image" loading="lazy" /></a>`
             : '<span class="shipment-table-no-image">—</span>';
           
           return `
@@ -458,9 +459,10 @@
             // Get image path for AGL modules (convert title to lowercase)
             const imageName = shipment.title.toLowerCase();
             const imageExt = imageName === 'agl7' ? 'gif' : 'avif'; // AGL7 is a gif, others are avif
-            const imagePath = `assets/raw/${imageName}.${imageExt}`;
+            const imagePath = `assets/shipments/${imageName}.${imageExt}`;
+            const detailUrl = `agroverse-shipments/${imageName}`;
             const imageHtml = shipment.title.startsWith('AGL') 
-              ? `<img src="${imagePath}" alt="${shipment.title}" class="shipment-card-image" loading="lazy" />`
+              ? `<a href="${detailUrl}"><img src="${imagePath}" alt="${shipment.title}" class="shipment-card-image" loading="lazy" /></a>`
               : '';
             
             return `
