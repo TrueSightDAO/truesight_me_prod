@@ -348,16 +348,8 @@ a {
   }
 
   /* Reorder: images above content on mobile - full width */
-  /* hero-content comes first in HTML, so we give it order: 2 to appear second */
-  .agroverse-hero .hero-content {
-    order: 2;
-    padding: 0 1rem;
-    margin-top: 2rem;
-  }
-
-  /* hero-media-mobile appears first on mobile */
+  /* hero-media-mobile is first in HTML, so it appears first naturally */
   .agroverse-hero .hero-media-mobile {
-    order: 1;
     display: block;
     width: 100vw;
     position: relative;
@@ -366,6 +358,11 @@ a {
     margin-left: -50vw;
     margin-right: -50vw;
     margin-bottom: 2rem;
+    margin-top: 0;
+  }
+
+  .agroverse-hero .hero-content {
+    padding: 0 1rem;
     margin-top: 0;
   }
 
@@ -436,18 +433,9 @@ a {
   }
 
   /* Reorder: images above content on mobile - full width */
-  /* hero-content comes first in HTML, so we give it order: 2 to appear second */
-  .sunmint-hero .hero-content,
-  .edgar-hero .hero-content {
-    order: 2;
-    padding: 0 1rem;
-    margin-top: 2rem;
-  }
-
-  /* hero-media-mobile appears first on mobile */
+  /* hero-media-mobile is first in HTML, so it appears first naturally */
   .sunmint-hero .hero-media-mobile,
   .edgar-hero .hero-media-mobile {
-    order: 1;
     display: block;
     width: 100vw;
     position: relative;
@@ -456,6 +444,12 @@ a {
     margin-left: -50vw;
     margin-right: -50vw;
     margin-bottom: 2rem;
+    margin-top: 0;
+  }
+
+  .sunmint-hero .hero-content,
+  .edgar-hero .hero-content {
+    padding: 0 1rem;
     margin-top: 0;
   }
 
