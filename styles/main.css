@@ -2018,7 +2018,7 @@ footer {
 .blog-post {
   background: var(--card-bg);
   border-radius: var(--radius-lg);
-  padding: var(--space-2xl);
+  padding: var(--space-xl);
   margin-bottom: var(--space-xl);
 }
 
