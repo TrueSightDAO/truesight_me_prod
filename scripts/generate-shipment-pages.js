@@ -115,6 +115,7 @@ function mapSheetRowToShipment(row) {
     trees_to_be_planted: getValue('Trees to be Planted'),
     google_map_url: googleMapUrl,
     coordinates: coordinates, // Add coordinates directly to shipment object
+    shipment_image: getValue('Shipment Image'), // GitHub raw URL for meta tags
     is_cacao_shipment: getValue('Is Cacao Shipment'),
     serialized: getValue('Serialized'),
     'Created Date': getValue('Created Date'),
@@ -227,6 +228,43 @@ function getImagePath(shipmentNumber) {
   return `assets/shipments/${lower}.${ext}`;
 }
 
+// Helper to generate Open Graph and Twitter Card meta tags
+function generateMetaTags(options) {
+  const {
+    title,
+    description,
+    imageUrl,
+    url,
+    type = 'website',
+    siteName = 'TrueSight DAO'
+  } = options;
+  
+  const baseUrl = 'https://www.truesight.me';
+  const fullUrl = url ? `${baseUrl}${url}` : baseUrl;
+  const fullImageUrl = imageUrl ? (imageUrl.startsWith('http') ? imageUrl : `${baseUrl}/${imageUrl}`) : `${baseUrl}/assets/truesight-logo.png`;
+  const cleanDescription = stripHtmlAndClean(description || '').substring(0, 200);
+  
+  return `
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="${type}" />
+    <meta property="og:url" content="${fullUrl}" />
+    <meta property="og:title" content="${title}" />
+    <meta property="og:description" content="${cleanDescription}" />
+    <meta property="og:image" content="${fullImageUrl}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="${siteName}" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="${fullUrl}" />
+    <meta name="twitter:title" content="${title}" />
+    <meta name="twitter:description" content="${cleanDescription}" />
+    <meta name="twitter:image" content="${fullImageUrl}" />
+    <meta name="twitter:site" content="@TrueSightDAO" />
+  `;
+}
+
 
 // Template for Agroverse shipment page
 function generateAgroverseShipmentPage(shipment) {
@@ -255,16 +293,29 @@ function generateAgroverseShipmentPage(shipment) {
   // Use coordinates from Google Sheet if available, otherwise extract from URL
   const coordinates = shipment.coordinates || extractCoordinates(googleMapUrl);
   
+  // Get image URL for meta tags (use GitHub raw URL if available from sheet, otherwise construct it)
+  const shipmentImageUrl = shipment.shipment_image || `https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/${imagePath}`;
+  const pageUrl = `/agroverse-shipments/${title.toLowerCase()}`;
+  const pageTitle = `${title} · Agroverse Shipment | TrueSight DAO`;
+  const pageDescription = stripHtmlAndClean(description).substring(0, 160);
+  
   return `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>${title} · Agroverse Shipment | TrueSight DAO</title>
+    <title>${pageTitle}</title>
     <meta
       name="description"
-      content="${stripHtmlAndClean(description).substring(0, 160)}"
+      content="${pageDescription}"
     />
+    ${generateMetaTags({
+      title: pageTitle,
+      description: description,
+      imageUrl: shipmentImageUrl,
+      url: pageUrl,
+      type: 'article'
+    })}
     <link
       rel="icon"
       href="https://static.wixstatic.com/ficons/0e2cde_dd65db118f8f499eb06c159d7262167d%7Emv2.ico"
@@ -499,16 +550,29 @@ function generateSunmintImpactPage(shipment) {
   // Use coordinates from Google Sheet if available, otherwise extract from URL
   const coordinates = shipment.coordinates || extractCoordinates(googleMapUrl);
   
+  // Get image URL for meta tags (use GitHub raw URL if available from sheet, otherwise construct it)
+  const shipmentImageUrl = shipment.shipment_image || `https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/${imagePath}`;
+  const pageUrl = `/sunmint-tree-planting-pledges/${title.toLowerCase()}`;
+  const pageTitle = `${title} · Sunmint Tree-Planting Pledge | TrueSight DAO`;
+  const pageDescription = stripHtmlAndClean(description).substring(0, 160);
+  
   return `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>${title} · Sunmint Tree-Planting Pledge | TrueSight DAO</title>
+    <title>${pageTitle}</title>
     <meta
       name="description"
-      content="${stripHtmlAndClean(description).substring(0, 160)}"
+      content="${pageDescription}"
     />
+    ${generateMetaTags({
+      title: pageTitle,
+      description: description,
+      imageUrl: shipmentImageUrl,
+      url: pageUrl,
+      type: 'article'
+    })}
     <link
       rel="icon"
       href="https://static.wixstatic.com/ficons/0e2cde_dd65db118f8f499eb06c159d7262167d%7Emv2.ico"
