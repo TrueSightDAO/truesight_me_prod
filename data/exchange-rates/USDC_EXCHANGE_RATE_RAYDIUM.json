@@ -1,0 +1,14 @@
+{
+  "key": "USDC_EXCHANGE_RATE_RAYDIUM",
+  "id": "8edde502-ac79-4e66-ab2d-8ebb99108665",
+  "description": "USDC_EXCHANGE_RATE_RAYDIUM",
+  "exchangeRate": 0.03297,
+  "currency": "USDC",
+  "updatedDate": {
+    "$date": "2025-11-16T01:43:23.771Z"
+  },
+  "createdDate": {
+    "$date": "2025-05-27T04:26:56.951Z"
+  }
+}
+

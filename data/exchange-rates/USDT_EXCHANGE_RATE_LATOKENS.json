@@ -1,0 +1,14 @@
+{
+  "key": "USDT_EXCHANGE_RATE_LATOKENS",
+  "id": "86becd2f-1563-4218-a579-e2529ef4480c",
+  "description": "USDT_EXCHANGE_RATE_LATOKENS",
+  "exchangeRate": "0.0265",
+  "currency": "USDT",
+  "updatedDate": {
+    "$date": "2025-11-16T02:45:50.799Z"
+  },
+  "createdDate": {
+    "$date": "2024-06-13T17:45:19.255Z"
+  }
+}
+

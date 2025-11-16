@@ -1,0 +1,14 @@
+{
+  "key": "USD_TREASURY_BALANCE",
+  "id": "a0e7364c-716d-49f3-a795-647d2686a22b",
+  "description": "USD_TREASURY_BALANCE",
+  "exchangeRate": 15929.342910917547,
+  "currency": "USD",
+  "updatedDate": {
+    "$date": "2025-11-01T02:58:51.932Z"
+  },
+  "createdDate": {
+    "$date": "2024-06-16T19:55:49.828Z"
+  }
+}
+

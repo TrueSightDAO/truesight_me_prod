@@ -288,15 +288,56 @@
           });
         }
 
-        // Load exchange rates from JSON file
+        // Load exchange rates from individual JSON files in data/exchange-rates/
         async function loadExchangeRates() {
+          // List of all exchange rate keys to load
+          const exchangeRateKeys = [
+            'USDC_EXCHANGE_RATE_RAYDIUM',
+            'USD_TREASURY_YIELD_1_MONTH',
+            'TDG_DAILY_BUY_BACK_BUDGET',
+            'PAST_30_DAYS_SALES',
+            'ASSET_PER_TDG_ISSUED',
+            'GAS_FEE',
+            'TDG_PER_USD_CONTRIBUTION',
+            'TDG_PER_HOUR_CONTRIBUTION',
+            'TDG_ISSUED',
+            'USD_TREASURY_BALANCE',
+            'USDT_EXCHANGE_RATE_LATOKENS'
+          ];
+
           try {
-            const response = await fetch('data/exchange-rates.json');
-            if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
+            // Load all exchange rate files in parallel
+            const promises = exchangeRateKeys.map(key => 
+              fetch(`data/exchange-rates/${key}.json`)
+                .then(response => {
+                  if (!response.ok) {
+                    console.warn(`⚠️  Failed to load ${key}: HTTP ${response.status}`);
+                    return null;
+                  }
+                  return response.json();
+                })
+                .catch(error => {
+                  console.warn(`⚠️  Error loading ${key}:`, error);
+                  return null;
+                })
+            );
+
+            const results = await Promise.all(promises);
+            
+            // Combine into single object, using key from each file
+            const exchangeRatesData = {};
+            results.forEach((data, index) => {
+              if (data && data.key) {
+                exchangeRatesData[data.key] = data;
+              }
+            });
+
+            // Check if we got any data
+            if (Object.keys(exchangeRatesData).length === 0) {
+              throw new Error('No exchange rate data loaded');
             }
-            const json = await response.json();
-            return json.data || json; // Handle both formats (with or without wrapper)
+
+            return exchangeRatesData;
           } catch (error) {
             console.error('Error loading exchange rates:', error);
             // Optionally: try to load from localStorage as fallback

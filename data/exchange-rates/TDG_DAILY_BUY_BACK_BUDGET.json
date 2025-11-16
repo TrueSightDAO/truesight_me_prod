@@ -1,0 +1,14 @@
+{
+  "key": "TDG_DAILY_BUY_BACK_BUDGET",
+  "id": "8f1c08f2-5ff8-4c40-8aee-4f5519e6b8a1",
+  "description": "TDG_DAILY_BUY_BACK_BUDGET",
+  "exchangeRate": 0.05694454835226905,
+  "currency": "USD",
+  "updatedDate": {
+    "$date": "2025-11-16T02:23:18.954Z"
+  },
+  "createdDate": {
+    "$date": "2025-04-13T23:58:57.524Z"
+  }
+}
+

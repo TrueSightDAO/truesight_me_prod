@@ -1,0 +1,14 @@
+{
+  "key": "USD_TREASURY_YIELD_1_MONTH",
+  "id": "7e8efc84-f212-47ac-a37e-2f32f29c76e0",
+  "description": "USD_TREASURY_YIELD_1_MONTH",
+  "exchangeRate": 4.04,
+  "currency": "%",
+  "updatedDate": {
+    "$date": "2025-11-16T02:36:52.404Z"
+  },
+  "createdDate": {
+    "$date": "2025-04-14T00:40:33.034Z"
+  }
+}
+

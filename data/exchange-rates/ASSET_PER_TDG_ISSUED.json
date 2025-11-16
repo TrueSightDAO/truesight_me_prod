@@ -1,0 +1,14 @@
+{
+  "key": "ASSET_PER_TDG_ISSUED",
+  "id": "9b04879b-f06a-419a-9ad3-520ad60ea972",
+  "description": "ASSET_PER_TDG_ISSUED",
+  "exchangeRate": 0.007060116752358026,
+  "currency": "USD",
+  "updatedDate": {
+    "$date": "2025-11-01T03:22:03.979Z"
+  },
+  "createdDate": {
+    "$date": "2024-07-16T16:31:32.382Z"
+  }
+}
+

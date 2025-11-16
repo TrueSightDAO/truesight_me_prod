@@ -1,0 +1,14 @@
+{
+  "key": "GAS_FEE",
+  "id": "33252bd3-13b1-469b-bb1a-18b3116e939e",
+  "description": "GAS_FEE",
+  "exchangeRate": 2.65,
+  "currency": "%",
+  "updatedDate": {
+    "$date": "2025-11-16T02:49:25.168Z"
+  },
+  "createdDate": {
+    "$date": "2024-06-17T01:46:02.758Z"
+  }
+}
+

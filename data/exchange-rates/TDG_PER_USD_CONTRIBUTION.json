@@ -1,0 +1,14 @@
+{
+  "key": "TDG_PER_USD_CONTRIBUTION",
+  "id": "3ec84d9e-2cec-42fb-81e2-5170784197de",
+  "description": "TDG_PER_USD_CONTRIBUTION",
+  "exchangeRate": 1,
+  "currency": "USD",
+  "updatedDate": {
+    "$date": "2024-06-16T20:29:36.569Z"
+  },
+  "createdDate": {
+    "$date": "2024-06-16T19:59:33.577Z"
+  }
+}
+

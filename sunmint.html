@@ -195,66 +195,23 @@
         <p class="section-lead">
           A directory showcasing the merchandise supporting Amazon rainforest restoration, where every purchase contributes to a story of sustainability and renewal.
         </p>
-        <div class="impact-grid">
-          <article class="impact-card">
-            <h3>AGL14</h3>
-            <p>
-              In the heart of Bahia's ancient groves, where 70-year-old native cacao trees whisper secrets of the earth, Oscar Fazenda delivers 40kg of Harvest 2025's finest—a creamy elixir of luxurious dark chocolate allure, bridging Brazil's wild heritage with Europe's refined elegance.
-            </p>
-            <a href="https://agroverse.shop/agl14" target="_blank" rel="noreferrer" class="cta secondary">Explore</a>
-          </article>
-          <article class="impact-card">
-            <h3>PP1</h3>
-            <p>
-              10 unique Prism Percussions drums in 8", 12", 16", or 20" sizes with laser-etched designs, each with a QR code.
-            </p>
-            <a href="https://truesight.me/sunmint/pp1" target="_blank" rel="noreferrer" class="cta secondary">Explore</a>
-          </article>
-          <article class="impact-card">
-            <h3>AGL6</h3>
-            <p>
-              10 bars of 500gram cacao mass<br>
-              125 bars of⁠ 40 gram cacao mass bars<br>
-              44 bags of ⁠⁠8 ounce cacao nibs kraft pouches
-            </p>
-            <a href="https://agroverse.shop/agl6" target="_blank" rel="noreferrer" class="cta secondary">Explore</a>
-          </article>
-          <article class="impact-card">
-            <h3>AGL13</h3>
-            <p>
-              Discover 150kg of top-grade, organically grown cacao beans from Vivi's Farm in Jeribucuacu, near the pristine beaches of Bahia, Brazil. Sustainably produced using fish-based fertilizer, these premium beans support regenerative farming and empower local communities through TrueSight DAO's equitable supply chain.
-            </p>
-            <a href="https://agroverse.shop/agl13" target="_blank" rel="noreferrer" class="cta secondary">Explore</a>
-          </article>
-          <article class="impact-card">
-            <h3>AGL10</h3>
-            <p>
-              5kg caramelized cacao beans from Capela Velha Fazenda, a women owned regenerative organic cacao farm
-            </p>
-            <a href="https://agroverse.shop/agl10" target="_blank" rel="noreferrer" class="cta secondary">Explore</a>
-          </article>
-          <article class="impact-card">
-            <h3>AGL4</h3>
-            <p>
-              300KG organic cacao nibs from Bahia Small Scale Farmers<br>
-              Commercial import via air freight
-            </p>
-            <a href="https://agroverse.shop/agl4" target="_blank" rel="noreferrer" class="cta secondary">Explore</a>
-          </article>
-          <article class="impact-card">
-            <h3>SEF1</h3>
-            <p>
-              Community for regenerative living and sacred commerce. Supports Amazon cacao tree planting, DAO governance, and Soul Tribe events. Join to co-create sustainability.
-            </p>
-            <a href="https://truesight.me/sunmint/sef1" target="_blank" rel="noreferrer" class="cta secondary">Explore</a>
-          </article>
-          <article class="impact-card">
-            <h3>AGL8</h3>
-            <p>
-              330 kg of cacao almonds from Para Small Scale Farmers
-            </p>
-            <a href="https://agroverse.shop/agl8" target="_blank" rel="noreferrer" class="cta secondary">Explore</a>
-          </article>
+        <div class="table-wrapper">
+          <table class="shipment-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Merchandise</th>
+                <th>Description</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody id="impact-table-body">
+              <!-- Impact table rows populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+        <div class="shipments-cards" id="impact-cards">
+          <!-- Mobile-friendly impact cards populated dynamically -->
         </div>
       </section>
 
@@ -282,6 +239,104 @@
         </div>
       </footer>
     </div>
+    <script>
+      // Load impact registry with table (desktop) and cards (mobile)
+      (function() {
+        // Impact registry data
+        const impactRegistry = [
+          {
+            title: 'AGL14',
+            description: 'In the heart of Bahia\'s ancient groves, where 70-year-old native cacao trees whisper secrets of the earth, Oscar Fazenda delivers 40kg of Harvest 2025\'s finest—a creamy elixir of luxurious dark chocolate allure, bridging Brazil\'s wild heritage with Europe\'s refined elegance.',
+            url: 'https://agroverse.shop/agl14',
+            image: 'assets/raw/agl14.avif'
+          },
+          {
+            title: 'PP1',
+            description: '10 unique Prism Percussions drums in 8", 12", 16", or 20" sizes with laser-etched designs, each with a QR code.',
+            url: 'https://truesight.me/sunmint/pp1',
+            image: 'assets/raw/pp1.avif'
+          },
+          {
+            title: 'AGL6',
+            description: '10 bars of 500gram cacao mass<br>125 bars of⁠ 40 gram cacao mass bars<br>44 bags of ⁠⁠8 ounce cacao nibs kraft pouches',
+            url: 'https://agroverse.shop/agl6',
+            image: 'assets/raw/agl6.avif'
+          },
+          {
+            title: 'AGL13',
+            description: 'Discover 150kg of top-grade, organically grown cacao beans from Vivi\'s Farm in Jeribucuacu, near the pristine beaches of Bahia, Brazil. Sustainably produced using fish-based fertilizer, these premium beans support regenerative farming and empower local communities through TrueSight DAO\'s equitable supply chain.',
+            url: 'https://agroverse.shop/agl13',
+            image: 'assets/raw/agl13.avif'
+          },
+          {
+            title: 'AGL10',
+            description: '5kg caramelized cacao beans from Capela Velha Fazenda, a women owned regenerative organic cacao farm',
+            url: 'https://agroverse.shop/agl10',
+            image: 'assets/raw/agl10.avif'
+          },
+          {
+            title: 'AGL4',
+            description: '300KG organic cacao nibs from Bahia Small Scale Farmers<br>Commercial import via air freight',
+            url: 'https://agroverse.shop/agl4',
+            image: 'assets/raw/agl4.avif'
+          },
+          {
+            title: 'SEF1',
+            description: 'Community for regenerative living and sacred commerce. Supports Amazon cacao tree planting, DAO governance, and Soul Tribe events. Join to co-create sustainability.',
+            url: 'https://truesight.me/sunmint/sef1',
+            image: 'assets/raw/sef1.avif'
+          },
+          {
+            title: 'AGL8',
+            description: '330 kg of cacao almonds from Para Small Scale Farmers',
+            url: 'https://agroverse.shop/agl8',
+            image: 'assets/raw/agl8.avif'
+          }
+        ];
+
+        // Render table for desktop view
+        const tableBody = document.getElementById('impact-table-body');
+        if (tableBody) {
+          tableBody.innerHTML = impactRegistry.map(item => {
+            const imageHtml = item.image 
+              ? `<img src="${item.image}" alt="${item.title}" class="shipment-table-image" loading="lazy" />`
+              : '<span class="shipment-table-no-image">—</span>';
+            
+            const linkHtml = item.url 
+              ? `<a href="${item.url}" target="_blank" rel="noreferrer" class="cta secondary">Explore</a>`
+              : '—';
+            
+            return `
+              <tr>
+                <td class="shipment-table-image-cell">${imageHtml}</td>
+                <td><strong>${item.title}</strong></td>
+                <td>${item.description}</td>
+                <td>${linkHtml}</td>
+              </tr>
+            `;
+          }).join('');
+        }
+
+        // Render cards for mobile view
+        const impactCards = document.getElementById('impact-cards');
+        if (impactCards) {
+          impactCards.innerHTML = impactRegistry.map(item => {
+            const imageHtml = item.image 
+              ? `<img src="${item.image}" alt="${item.title}" class="shipment-card-image" loading="lazy" />`
+              : '';
+            
+            return `
+              <article class="shipment-card">
+                ${imageHtml}
+                <h3 class="shipment-card-title">${item.title}</h3>
+                <p class="shipment-card-description">${item.description}</p>
+                <a href="${item.url}" target="_blank" rel="noreferrer" class="cta secondary" style="margin: var(--space-md);">Explore</a>
+              </article>
+            `;
+          }).join('');
+        }
+      })();
+    </script>
     <script>
       // Hamburger menu toggle
       (function() {

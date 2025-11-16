@@ -1,0 +1,14 @@
+{
+  "key": "TDG_PER_HOUR_CONTRIBUTION",
+  "id": "8608ebcc-f33c-4f73-8379-ef447a7a4fa1",
+  "description": "TDG_PER_HOUR_CONTRIBUTION",
+  "exchangeRate": 100,
+  "currency": "HUMAN HOUR",
+  "updatedDate": {
+    "$date": "2024-06-16T20:29:51.153Z"
+  },
+  "createdDate": {
+    "$date": "2024-06-16T19:59:08.539Z"
+  }
+}
+

@@ -288,6 +288,7 @@
           <table class="shipment-table">
             <thead>
               <tr>
+                <th>Image</th>
                 <th>Batch</th>
                 <th>Volume</th>
                 <th>Financing</th>
@@ -426,8 +427,17 @@
             ? `<a class="text-link" href="${shipment.contractUrl}" target="_blank" rel="noreferrer">${shipment.title}</a>`
             : shipment.title;
           
+          // Get image path for AGL modules (convert title to lowercase)
+          const imageName = shipment.title.toLowerCase();
+          const imageExt = imageName === 'agl7' ? 'gif' : 'avif'; // AGL7 is a gif, others are avif
+          const imagePath = `assets/raw/${imageName}.${imageExt}`;
+          const imageHtml = shipment.title.startsWith('AGL') 
+            ? `<img src="${imagePath}" alt="${shipment.title}" class="shipment-table-image" loading="lazy" />`
+            : '<span class="shipment-table-no-image">—</span>';
+          
           return `
             <tr>
+              <td class="shipment-table-image-cell">${imageHtml}</td>
               <td>${batchLink}</td>
               <td>${meta.volume}</td>
               <td>${meta.financing}</td>
@@ -445,8 +455,17 @@
               ? `<a class="text-link" href="${shipment.contractUrl}" target="_blank" rel="noreferrer">${shipment.title}</a>`
               : shipment.title;
 
+            // Get image path for AGL modules (convert title to lowercase)
+            const imageName = shipment.title.toLowerCase();
+            const imageExt = imageName === 'agl7' ? 'gif' : 'avif'; // AGL7 is a gif, others are avif
+            const imagePath = `assets/raw/${imageName}.${imageExt}`;
+            const imageHtml = shipment.title.startsWith('AGL') 
+              ? `<img src="${imagePath}" alt="${shipment.title}" class="shipment-card-image" loading="lazy" />`
+              : '';
+            
             return `
               <article class="shipment-card">
+                ${imageHtml}
                 <h3 class="shipment-card-title">${batchLink}</h3>
                 <dl class="shipment-card-meta">
                   <div>

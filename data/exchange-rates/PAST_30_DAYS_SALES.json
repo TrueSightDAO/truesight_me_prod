@@ -1,0 +1,14 @@
+{
+  "key": "PAST_30_DAYS_SALES",
+  "id": "956fdb46-bc8d-4c71-8e67-79813effbab3",
+  "description": "PAST_30_DAYS_SALES",
+  "exchangeRate": 241.97,
+  "currency": "USD",
+  "updatedDate": {
+    "$date": "2025-11-16T02:18:56.595Z"
+  },
+  "createdDate": {
+    "$date": "2025-02-27T23:51:14.808Z"
+  }
+}
+
