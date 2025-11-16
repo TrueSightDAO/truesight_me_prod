@@ -365,7 +365,7 @@ a {
     transform: translateX(-50%);
     margin-left: 0;
     margin-right: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     margin-top: 0;
     flex-shrink: 0;
     order: 1;
@@ -462,7 +462,7 @@ a {
     transform: translateX(-50%);
     margin-left: 0;
     margin-right: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     margin-top: 0;
     flex-shrink: 0;
     order: 1;
@@ -1044,7 +1044,6 @@ ul li + li {
 }
 
 .agroverse-hero {
-  text-align: left;
   padding: 4rem 0 3rem;
 }
 
@@ -1062,13 +1061,15 @@ ul li + li {
 
 .agroverse-hero-grid {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: start;
 }
 
-.agroverse-hero .hero-content {
-  max-width: none;
+.agroverse-hero .hero-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 1.1rem;
 }
 
 .hero-content {
