@@ -108,3 +108,4 @@ var qrCodesSpreadsheetId = ledgerDocId; // Change to your spreadsheet ID
 4. **Progress Bar**: Show visual progress (trees sold / total trees to be planted)
 
 
+
