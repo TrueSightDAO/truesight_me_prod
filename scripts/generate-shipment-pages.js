@@ -201,11 +201,49 @@ function formatDate(dateStr) {
   }
 }
 
+// Helper to escape HTML entities
+function escapeHtml(text) {
+  if (!text) return '';
+  // First remove broken link tags and malformed HTML fragments
+  let cleaned = String(text)
+    // Remove corrupted link tags with malformed attributes
+    .replace(/<link[^>]*css2\?[^>]*>/gi, '') // Remove link tags with css2? in them
+    .replace(/<link[^>]*family=[^>]*>/gi, '') // Remove link tags with family= in them
+    .replace(/family=[^"'>]*display=swap[^"'>]*rel=["']stylesheet["'][^>]*>/gi, '') // Remove broken link tags
+    .replace(/family=[^"'>]*wght@[^"'>]*display[^"'>]*>/gi, '') // Remove broken font link fragments
+    .replace(/<link[^>]*>/gi, '') // Remove any remaining link tags
+    .replace(/fonts\.googleapis\.com[^"'>]*/gi, '') // Remove googleapis.com fragments
+    .replace(/css2\?[^"'>]*/gi, '') // Remove css2? fragments
+    .replace(/Playfair\+Display[^"'>]*/gi, '') // Remove Playfair Display fragments
+    .replace(/Open\+Sans[^"'>]*/gi, '') // Remove Open Sans fragments
+    .replace(/<[^>]*>/g, ''); // Remove all remaining HTML tags
+  
+  // Then escape HTML entities
+  return cleaned
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 // Helper to strip HTML tags and clean text for meta descriptions
 function stripHtmlAndClean(text) {
   if (!text) return '';
-  // Remove HTML tags
-  let cleaned = text.replace(/<[^>]*>/g, '');
+  // Remove broken link tags and malformed HTML fragments first
+  let cleaned = text
+    // Remove corrupted link tags with malformed attributes
+    .replace(/<link[^>]*css2\?[^>]*>/gi, '') // Remove link tags with css2? in them
+    .replace(/<link[^>]*family=[^>]*>/gi, '') // Remove link tags with family= in them
+    .replace(/family=[^"'>]*display=swap[^"'>]*rel=["']stylesheet["'][^>]*>/gi, '') // Remove broken link tags
+    .replace(/family=[^"'>]*wght@[^"'>]*display[^"'>]*>/gi, '') // Remove broken font link fragments
+    .replace(/<link[^>]*>/gi, '') // Remove any remaining link tags
+    .replace(/fonts\.googleapis\.com[^"'>]*/gi, '') // Remove googleapis.com fragments
+    .replace(/css2\?[^"'>]*/gi, '') // Remove css2? fragments
+    .replace(/Playfair\+Display[^"'>]*/gi, '') // Remove Playfair Display fragments
+    .replace(/Open\+Sans[^"'>]*/gi, '') // Remove Open Sans fragments
+    .replace(/<[^>]*>/g, ''); // Remove all remaining HTML tags
+  
   // Decode HTML entities
   cleaned = cleaned.replace(/&nbsp;/g, ' ');
   cleaned = cleaned.replace(/&amp;/g, '&');
@@ -484,7 +522,7 @@ function generateAgroverseShipmentPage(shipment) {
             ${fs.existsSync(path.join(__dirname, `../${imagePath}`)) ? `<img src="../../${imagePath}" alt="${title}" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: var(--space-md);" loading="lazy" />` : ''}
             <h2 style="margin-top: 0;">${title}</h2>
             <h3>Shipment Description</h3>
-            <p>${description.replace(/\n/g, '<br>')}</p>
+            <p>${escapeHtml(description).replace(/\n/g, '<br>')}</p>
           </div>
           
           <div>
@@ -1117,5 +1155,8 @@ if (require.main === module) {
     process.exit(1);
   });
 }
+
+
+
 
 
