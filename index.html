@@ -38,6 +38,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
   <body>
     <nav class="site-header">
@@ -155,6 +156,25 @@
               <p class="stat-value" data-key="TDG_DAILY_BUY_BACK_BUDGET">—</p>
             </div>
           </article>
+        </div>
+
+        <!-- Monthly Sales Chart Section -->
+        <div id="monthly-sales-chart-section" style="margin-top: var(--space-xl); display: none;">
+          <div style="text-align: center; margin-bottom: var(--space-md);">
+            <p class="pill">Sales Analytics</p>
+            <h2 style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">Monthly Sales Volume</h2>
+            <p class="section-lead" style="max-width: 600px; margin: 0 auto;">
+              Track our sales performance over time, showing both monthly sales and cumulative growth.
+            </p>
+          </div>
+          <div style="position: relative; height: 400px; max-width: 1000px; margin: 0 auto; background: var(--surface); padding: var(--space-md); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <canvas id="monthlySalesChart"></canvas>
+          </div>
+          <div id="chart-loading" style="text-align: center; padding: var(--space-xl); color: var(--muted);">
+            Loading sales data...
+          </div>
+          <div id="chart-error" style="display: none; text-align: center; padding: var(--space-md); background: rgba(244, 163, 0, 0.1); border-radius: 8px; margin-top: var(--space-md); color: var(--accent-2);">
+          </div>
         </div>
       </header>
 
@@ -587,6 +607,212 @@
             siteHeader.classList.remove('menu-open');
           }
         });
+      })();
+
+      // Monthly Sales Chart
+      (function() {
+        const MONTHLY_STATISTICS_URL = 'https://script.google.com/macros/s/AKfycbzlfOBo9UqKOh7jIqGcmbPAMM1RxCbsJHb-UV_vM6VbvK_HSdT44KyGbbXIeo-_Ovfy/exec?type=monthly';
+        let monthlySalesChart = null;
+
+        function formatCurrency(amount) {
+          return new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }).format(amount);
+        }
+
+        function formatMonth(monthStr) {
+          const [year, month] = monthStr.split('-');
+          const date = new Date(year, parseInt(month) - 1);
+          return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+        }
+
+        async function loadMonthlyStatistics() {
+          try {
+            const chartSection = document.getElementById('monthly-sales-chart-section');
+            const loadingEl = document.getElementById('chart-loading');
+            const errorEl = document.getElementById('chart-error');
+            
+            const response = await fetch(MONTHLY_STATISTICS_URL);
+            
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const result = await response.json();
+            
+            if (result.error) {
+              throw new Error(result.message || 'Unknown error from web service');
+            }
+            
+            const monthlyData = result.data || [];
+            
+            if (monthlyData.length === 0) {
+              throw new Error('No monthly statistics data available');
+            }
+            
+            // Hide loading, show chart section
+            loadingEl.style.display = 'none';
+            chartSection.style.display = 'block';
+            
+            // Render chart
+            renderChart(monthlyData);
+            
+          } catch (error) {
+            console.error('Error loading monthly statistics:', error);
+            document.getElementById('chart-loading').style.display = 'none';
+            const errorEl = document.getElementById('chart-error');
+            errorEl.style.display = 'block';
+            errorEl.textContent = 'Unable to load monthly sales data. Please try again later.';
+          }
+        }
+
+        function renderChart(data) {
+          const ctx = document.getElementById('monthlySalesChart').getContext('2d');
+          
+          // Prepare data for chart
+          const labels = data.map(item => formatMonth(item.month));
+          const monthlySales = data.map(item => item.monthlySales);
+          const cumulativeSales = data.map(item => item.cumulativeSales);
+          
+          // Destroy existing chart if it exists
+          if (monthlySalesChart) {
+            monthlySalesChart.destroy();
+          }
+          
+          // Create new chart - using single Y-axis to avoid confusion
+          monthlySalesChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  label: 'Monthly Sales',
+                  data: monthlySales,
+                  borderColor: 'rgb(95, 111, 82)', // --forest color
+                  backgroundColor: 'rgba(95, 111, 82, 0.1)',
+                  tension: 0.1,
+                  yAxisID: 'y',
+                  fill: true,
+                  pointRadius: 3,
+                  pointHoverRadius: 5,
+                  order: 2 // Draw monthly sales on top
+                },
+                {
+                  label: 'Cumulative Sales',
+                  data: cumulativeSales,
+                  borderColor: 'rgb(244, 163, 0)', // --accent color
+                  backgroundColor: 'rgba(244, 163, 0, 0.05)',
+                  tension: 0.1,
+                  yAxisID: 'y',
+                  fill: false,
+                  pointRadius: 2,
+                  pointHoverRadius: 4,
+                  borderWidth: 2,
+                  borderDash: [5, 5], // Dashed line to differentiate
+                  order: 1 // Draw cumulative sales behind
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              interaction: {
+                mode: 'index',
+                intersect: false,
+              },
+              plugins: {
+                legend: {
+                  display: true,
+                  position: 'top',
+                  labels: {
+                    usePointStyle: true,
+                    padding: 15,
+                    font: {
+                      family: 'Space Grotesk, Inter, system-ui, sans-serif',
+                      size: 13
+                    }
+                  }
+                },
+                tooltip: {
+                  backgroundColor: 'rgba(43, 29, 20, 0.95)',
+                  padding: 12,
+                  titleFont: {
+                    family: 'Space Grotesk, Inter, system-ui, sans-serif',
+                    size: 14,
+                    weight: '600'
+                  },
+                  bodyFont: {
+                    family: 'Inter, system-ui, sans-serif',
+                    size: 13
+                  },
+                  callbacks: {
+                    label: function(context) {
+                      let label = context.dataset.label || '';
+                      if (label) {
+                        label += ': ';
+                      }
+                      label += formatCurrency(context.parsed.y);
+                      return label;
+                    }
+                  }
+                }
+              },
+              scales: {
+                x: {
+                  display: true,
+                  grid: {
+                    display: false
+                  },
+                  ticks: {
+                    font: {
+                      family: 'Inter, system-ui, sans-serif',
+                      size: 12
+                    },
+                    color: 'var(--muted)'
+                  }
+                },
+                y: {
+                  type: 'linear',
+                  display: true,
+                  position: 'left',
+                  title: {
+                    display: true,
+                    text: 'Sales Volume (USD)',
+                    font: {
+                      family: 'Space Grotesk, Inter, system-ui, sans-serif',
+                      size: 13,
+                      weight: '600'
+                    },
+                    color: 'var(--text)'
+                  },
+                  grid: {
+                    color: 'rgba(95, 111, 82, 0.1)'
+                  },
+                  ticks: {
+                    font: {
+                      family: 'Inter, system-ui, sans-serif',
+                      size: 11
+                    },
+                    color: 'var(--muted)',
+                    callback: function(value) {
+                      return formatCurrency(value);
+                    }
+                  }
+                }
+              }
+            }
+          });
+        }
+
+        // Load monthly statistics on page load
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', loadMonthlyStatistics);
+        } else {
+          loadMonthlyStatistics();
+        }
       })();
     </script>
 </body>
