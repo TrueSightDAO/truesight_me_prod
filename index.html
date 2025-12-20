@@ -156,13 +156,33 @@
             <div class="stat-value-container">
               <p class="stat-value" data-key="PAST_30_DAYS_SALES">—</p>
             </div>
+            <div class="stat-explanation">
+              <small>Total ecosystem sales (all ledgers)</small>
+            </div>
           </article>
           <article class="stat-card">
             <div class="stat-label">
-              <h3>Daily Buy-Back Budget</h3>
+              <h3>Past 30 Days DAO Revenue</h3>
+            </div>
+            <div class="stat-value-container">
+              <p class="stat-value" data-key="PAST_30_DAYS_DAO_REVENUE">—</p>
+            </div>
+            <div class="stat-explanation">
+              <small>Main ledger revenue (for buy-back budget)</small>
+            </div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-label">
+              <h3>
+                Daily Buy-Back Budget
+                <span class="info-icon" title="Calculated from DAO treasury revenue (main ledger only). Based on (Last 30 days DAO revenue / 30) × min(Asset per TDG, 1 - Treasury yield). This is conservatively calculated from treasury revenue, not total ecosystem sales.">ℹ️</span>
+              </h3>
             </div>
             <div class="stat-value-container">
               <p class="stat-value" data-key="TDG_DAILY_BUY_BACK_BUDGET">—</p>
+            </div>
+            <div class="stat-explanation">
+              <small><a href="blog/posts/understanding-truesight-dao-s-daily-buy-back-budget-a-dynamic-force-for-stability.html" class="text-link">Based on DAO treasury revenue, not total ecosystem sales</a></small>
             </div>
           </article>
         </div>
@@ -423,6 +443,8 @@
               return `${formatNumber(value, 2)} TDG`;
             case 'PAST_30_DAYS_SALES':
             case '30_DAYS_SALES':
+              return `${formatNumber(value, 2)} USD`;
+            case 'PAST_30_DAYS_DAO_REVENUE':
               return `${formatNumber(value, 2)} USD`;
             case 'TDG_DAILY_BUY_BACK_BUDGET':
             case 'DAILY_BUY_BACK_BUDGET':
