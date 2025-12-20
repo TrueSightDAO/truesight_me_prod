@@ -544,14 +544,19 @@ a {
   }
 
   .card h3,
-  .card p,
-  .card ul {
-    text-align: center; /* Center align all text content in cards on mobile */
+  .card p {
+    text-align: center; /* Center align headings and paragraphs in cards on mobile */
   }
 
   .card ul {
-    padding-left: 0; /* Remove left padding for centered lists */
-    list-style-position: inside; /* Put bullets inside for centered alignment */
+    padding-left: 0; /* Remove padding for mobile */
+    list-style-position: outside; /* Bullets outside for better alignment */
+    margin-left: 0.5rem; /* Small left margin to prevent squishing */
+    text-align: left; /* Left align list items on mobile */
+  }
+  
+  .card li {
+    text-align: left; /* Left align list item text on mobile */
   }
 
   .card .pill {
@@ -606,7 +611,7 @@ a {
   }
 
   .stats-grid {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-sm);
   }
 
@@ -739,6 +744,19 @@ a {
     min-height: 110px; /* Slightly smaller on mobile */
     align-items: center; /* Ensure center alignment on mobile */
     text-align: center; /* Center text on mobile */
+  }
+  
+  .stat-explanation {
+    margin-top: var(--space-xs);
+    padding: 0 var(--space-xs);
+  }
+  
+  .stat-explanation small {
+    font-size: 0.6875rem; /* Slightly smaller on mobile */
+  }
+  
+  .info-icon {
+    font-size: 0.6875rem; /* Smaller on mobile */
   }
 
   .stat-label {
@@ -1044,7 +1062,7 @@ a {
 .stats-grid {
   margin: var(--space-lg) auto 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
 }
 
@@ -1220,6 +1238,36 @@ section h2 {
   margin: 0 0 var(--space-md) 0;
   padding-left: var(--space-lg);
   flex: 1;
+}
+
+/* Info icon for stat cards */
+.info-icon {
+  display: inline-block;
+  font-size: 0.75rem;
+  margin-left: 0.25rem;
+  cursor: help;
+  opacity: 0.6;
+  transition: opacity var(--transition-fast);
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.info-icon:hover {
+  opacity: 1;
+}
+
+/* Stat explanation text */
+.stat-explanation {
+  margin-top: var(--space-xs);
+  text-align: center;
+  width: 100%;
+}
+
+.stat-explanation small {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.4;
+  display: block;
 }
 
 .card li {
