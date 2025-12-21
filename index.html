@@ -193,7 +193,7 @@
             <p class="pill">Sales Analytics</p>
             <h2 style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">Monthly Sales Volume</h2>
             <p class="section-lead" style="max-width: 600px; margin: 0 auto;">
-              Track our sales performance over time, showing both monthly sales and cumulative growth.
+              Track our sales performance over time. Hover over any month to see both monthly sales and cumulative total.
             </p>
           </div>
           <div style="position: relative; height: 400px; max-width: 1000px; margin: 0 auto; background: var(--surface); padding: var(--space-md); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
@@ -713,7 +713,7 @@
             monthlySalesChart.destroy();
           }
           
-          // Create new chart - using single Y-axis to avoid confusion
+          // Create new chart - only show monthly sales line, cumulative in tooltip
           monthlySalesChart = new Chart(ctx, {
             type: 'line',
             data: {
@@ -728,22 +728,7 @@
                   yAxisID: 'y',
                   fill: true,
                   pointRadius: 3,
-                  pointHoverRadius: 5,
-                  order: 2 // Draw monthly sales on top
-                },
-                {
-                  label: 'Cumulative Sales',
-                  data: cumulativeSales,
-                  borderColor: 'rgb(244, 163, 0)', // --accent color
-                  backgroundColor: 'rgba(244, 163, 0, 0.05)',
-                  tension: 0.1,
-                  yAxisID: 'y',
-                  fill: false,
-                  pointRadius: 2,
-                  pointHoverRadius: 4,
-                  borderWidth: 2,
-                  borderDash: [5, 5], // Dashed line to differentiate
-                  order: 1 // Draw cumulative sales behind
+                  pointHoverRadius: 5
                 }
               ]
             },
@@ -781,12 +766,14 @@
                   },
                   callbacks: {
                     label: function(context) {
-                      let label = context.dataset.label || '';
-                      if (label) {
-                        label += ': ';
-                      }
-                      label += formatCurrency(context.parsed.y);
-                      return label;
+                      const dataIndex = context.dataIndex;
+                      const monthlyValue = monthlySales[dataIndex];
+                      const cumulativeValue = cumulativeSales[dataIndex];
+                      
+                      return [
+                        `Monthly Sales: ${formatCurrency(monthlyValue)}`,
+                        `Cumulative Total: ${formatCurrency(cumulativeValue)}`
+                      ];
                     }
                   }
                 }
