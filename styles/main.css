@@ -277,6 +277,11 @@ a {
   .menu-toggle {
     display: flex;
   }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
 
   .nav-menu {
     position: fixed;
@@ -611,7 +616,7 @@ a {
   }
 
   .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: var(--space-sm);
   }
 
@@ -1064,6 +1069,14 @@ a {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
+}
+
+/* Mobile: 1 column per row */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-sm);
+  }
 }
 
 .stat-card {
