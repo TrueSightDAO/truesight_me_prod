@@ -135,6 +135,17 @@
           </article>
           <article class="stat-card">
             <div class="stat-label">
+              <h3>Assets Under Management (AUM)</h3>
+            </div>
+            <div class="stat-value-container">
+              <p class="stat-value" data-key="AUM">—</p>
+            </div>
+            <div class="stat-explanation">
+              <small><a href="blog/posts/understanding-assets-under-management-aum-truesight-dao-comprehensive-asset-tracking.html" class="text-link">Total assets across main ledger and all managed ledgers</a></small>
+            </div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-label">
               <h3>Asset per TDG Issued</h3>
             </div>
             <div class="stat-value-container">
@@ -171,7 +182,7 @@
               <small>Main ledger revenue (for buy-back budget)</small>
             </div>
           </article>
-          <article class="stat-card">
+          <article class="stat-card stat-card-hidden" id="stat-card-7">
             <div class="stat-label">
               <h3>
                 Daily Buy-Back Budget
@@ -185,6 +196,11 @@
               <small><a href="blog/posts/understanding-truesight-dao-s-daily-buy-back-budget-a-dynamic-force-for-stability.html" class="text-link">Based on DAO treasury revenue, not total ecosystem sales</a></small>
             </div>
           </article>
+        </div>
+        <div style="text-align: center; margin-top: var(--space-md);">
+          <button id="show-more-stats" class="cta secondary" style="font-size: 0.875rem; padding: var(--space-sm) var(--space-md);">
+            Show More Stats
+          </button>
         </div>
 
         <!-- Monthly Sales Chart Section -->
@@ -437,6 +453,8 @@
           switch (key) {
             case 'USD_TREASURY_BALANCE':
               return `${formatNumber(value, 2)} USD`;
+            case 'AUM':
+              return `${formatNumber(value, 2)} USD`;
             case 'ASSET_PER_TDG_ISSUED':
               return `${formatNumber(value, 5)} USD / TDG`;
             case 'TDG_ISSUED':
@@ -574,6 +592,24 @@
         }).catch(function(error) {
           console.error('❌ Failed to load exchange rates:', error);
         });
+
+        // Handle "Show More Stats" button
+        const showMoreButton = document.getElementById('show-more-stats');
+        const hiddenStatCard = document.getElementById('stat-card-7');
+        
+        if (showMoreButton && hiddenStatCard) {
+          showMoreButton.addEventListener('click', function() {
+            if (hiddenStatCard.classList.contains('stat-card-hidden')) {
+              hiddenStatCard.classList.remove('stat-card-hidden');
+              hiddenStatCard.classList.add('stat-card-visible');
+              showMoreButton.textContent = 'Show Less Stats';
+            } else {
+              hiddenStatCard.classList.remove('stat-card-visible');
+              hiddenStatCard.classList.add('stat-card-hidden');
+              showMoreButton.textContent = 'Show More Stats';
+            }
+          });
+        }
       })();
 </script>
     <script>

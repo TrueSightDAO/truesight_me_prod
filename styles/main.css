@@ -1097,6 +1097,26 @@ a {
   text-align: center; /* Center text alignment */
 }
 
+.stat-card-hidden {
+  display: none;
+}
+
+.stat-card-visible {
+  display: flex;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .stat-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(244, 163, 0, 0.1);
