@@ -67,12 +67,10 @@ truesight_me/
 │   ├── identify-redirects.js          # Auto-identify redirects from CSV
 │   └── ...                    # Other utility scripts
 ├── docs/                      # Documentation
+│   ├── GITHUB_PAGES_DEPLOYMENT.md  # GitHub Pages deployment guide ⭐
 │   ├── REDIRECTS.md           # Redirect system documentation
 │   └── EXCHANGE_RATES_UPDATE_APPROACH.md
 ├── wix_redirects.csv          # Master redirect mapping file
-├── _redirects                 # Netlify redirect configuration
-├── vercel.json                # Vercel redirect configuration
-├── .htaccess                  # Apache redirect configuration
 └── google-service-account.json # Google Sheets API credentials (gitignored)
 
 ```
@@ -180,7 +178,7 @@ node scripts/merge-and-upload-shipments.js
    node scripts/generate-redirects.js
    ```
    - Creates HTML redirect pages in `redirects/` directory
-   - Generates platform-specific configs: `_redirects`, `vercel.json`, `.htaccess`, `nginx-redirects.conf`
+   - Generates platform-specific configs: `nginx-redirects.conf` (for reference only)
 
 3. **Manual redirects**: Edit `wix_redirects.csv` and re-run step 2
 
@@ -321,12 +319,14 @@ Located at the top of `styles/main.css`:
 2. GitHub Pages automatically deploys from `main` branch
 3. Custom domain configured via `CNAME` file
 
-### Other Platforms
+### Other Platforms (Not Currently Used)
 
-- **Netlify**: Deploy with `_redirects` file for redirects
-- **Vercel**: Deploy with `vercel.json` for redirects
-- **Apache**: Upload `.htaccess` for redirects
+If migrating to other platforms in the future:
+- **Netlify**: Create `_redirects` file for redirects
+- **Apache**: Create `.htaccess` file for redirects
 - **Nginx**: Include `nginx-redirects.conf` in server config
+
+**Note:** Currently, truesight.me uses GitHub Pages exclusively. Redirects are implemented as HTML files (e.g., `ttl/irs/index.html`), not server-side configuration files.
 
 ### Pre-Deployment Checklist
 
@@ -434,7 +434,7 @@ CSV Files → Google Sheets (merge-and-upload-shipments.js)
 
 ### Redirects not working
 
-- Verify redirect files are deployed (`_redirects`, `vercel.json`, etc.)
+- Verify redirect HTML files are deployed (e.g., `ttl/irs/index.html`)
 - Check `redirects/` directory is included in deployment
 - Test redirect URLs manually
 
@@ -452,6 +452,7 @@ CSV Files → Google Sheets (merge-and-upload-shipments.js)
 
 ## Additional Documentation
 
+- **GitHub Pages Deployment**: See `docs/GITHUB_PAGES_DEPLOYMENT.md` ⭐ **Important: Read this to understand redirects**
 - **Redirects**: See `docs/REDIRECTS.md`
 - **Exchange Rates**: See `docs/EXCHANGE_RATES_UPDATE_APPROACH.md`
 - **Google Sheets Upload**: See `scripts/README_UPLOAD_SHEETS.md`
@@ -459,7 +460,8 @@ CSV Files → Google Sheets (merge-and-upload-shipments.js)
 ---
 
 **Repository**: [github.com/TrueSightDAO/truesight_me](https://github.com/TrueSightDAO/truesight_me)  
-**Live Site**: [truesight.me](https://truesight.me)
+**Live Site**: [truesight.me](https://truesight.me)  
+**Deployment Platform**: GitHub Pages (not Vercel/Netlify/Apache)
 
 truesight_me/
 ├── index.html                 # Main landing page
@@ -493,12 +495,10 @@ truesight_me/
 │   ├── identify-redirects.js          # Auto-identify redirects from CSV
 │   └── ...                    # Other utility scripts
 ├── docs/                      # Documentation
+│   ├── GITHUB_PAGES_DEPLOYMENT.md  # GitHub Pages deployment guide ⭐
 │   ├── REDIRECTS.md           # Redirect system documentation
 │   └── EXCHANGE_RATES_UPDATE_APPROACH.md
 ├── wix_redirects.csv          # Master redirect mapping file
-├── _redirects                 # Netlify redirect configuration
-├── vercel.json                # Vercel redirect configuration
-├── .htaccess                  # Apache redirect configuration
 └── google-service-account.json # Google Sheets API credentials (gitignored)
 
 ```
@@ -606,7 +606,7 @@ node scripts/merge-and-upload-shipments.js
    node scripts/generate-redirects.js
    ```
    - Creates HTML redirect pages in `redirects/` directory
-   - Generates platform-specific configs: `_redirects`, `vercel.json`, `.htaccess`, `nginx-redirects.conf`
+   - Generates platform-specific configs: `nginx-redirects.conf` (for reference only)
 
 3. **Manual redirects**: Edit `wix_redirects.csv` and re-run step 2
 
@@ -747,12 +747,14 @@ Located at the top of `styles/main.css`:
 2. GitHub Pages automatically deploys from `main` branch
 3. Custom domain configured via `CNAME` file
 
-### Other Platforms
+### Other Platforms (Not Currently Used)
 
-- **Netlify**: Deploy with `_redirects` file for redirects
-- **Vercel**: Deploy with `vercel.json` for redirects
-- **Apache**: Upload `.htaccess` for redirects
+If migrating to other platforms in the future:
+- **Netlify**: Create `_redirects` file for redirects
+- **Apache**: Create `.htaccess` file for redirects
 - **Nginx**: Include `nginx-redirects.conf` in server config
+
+**Note:** Currently, truesight.me uses GitHub Pages exclusively. Redirects are implemented as HTML files (e.g., `ttl/irs/index.html`), not server-side configuration files.
 
 ### Pre-Deployment Checklist
 
@@ -860,7 +862,7 @@ CSV Files → Google Sheets (merge-and-upload-shipments.js)
 
 ### Redirects not working
 
-- Verify redirect files are deployed (`_redirects`, `vercel.json`, etc.)
+- Verify redirect HTML files are deployed (e.g., `ttl/irs/index.html`)
 - Check `redirects/` directory is included in deployment
 - Test redirect URLs manually
 
@@ -878,6 +880,7 @@ CSV Files → Google Sheets (merge-and-upload-shipments.js)
 
 ## Additional Documentation
 
+- **GitHub Pages Deployment**: See `docs/GITHUB_PAGES_DEPLOYMENT.md` ⭐ **Important: Read this to understand redirects**
 - **Redirects**: See `docs/REDIRECTS.md`
 - **Exchange Rates**: See `docs/EXCHANGE_RATES_UPDATE_APPROACH.md`
 - **Google Sheets Upload**: See `scripts/README_UPLOAD_SHEETS.md`
