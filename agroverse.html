@@ -443,6 +443,7 @@
       // Inline data to avoid CORS issues with file:// protocol
       // Auto-generated from data/agroverse-shipments.js
       const agroverseShipments = [
+        {"id":"agl15-ledger-2026","title":"AGL15","contractUrl":"https://agroverse.shop/agl15","status":null,"tags":[],"updatedDate":null,"createdDate":null},
         {"id":"9f2ddf0c-ad86-4825-8d6a-f3398dfa5aba","title":"AGL14","contractUrl":"https://agroverse.shop/agl14","status":null,"tags":[],"updatedDate":null,"createdDate":null},
         {"id":"1fb58821-65dd-4001-937f-c60b1e977192","title":"AGL13","contractUrl":"https://agroverse.shop/agl13","status":null,"tags":[],"updatedDate":null,"createdDate":null},
         {"id":"1f9e4dd2-f5ea-4f53-a920-7f0ac7ac8cd4","title":"SEF1","contractUrl":"/sunmint-tree-planting-pledges/sef1","status":null,"tags":[],"updatedDate":null,"createdDate":null},
@@ -463,6 +464,11 @@
       // Synced with assets/raw/shipments_collection.csv (cargo_size, transaction_type, shipment_description).
       // This can be moved to CMS later if needed.
       const shipmentMetadata = {
+        'AGL15': {
+          volume: 'NA',
+          financing: 'Defi Pre-Purchase',
+          notes: 'Operational fund for cacao procurement, production, freighting, domestic USA shipping, and vehicle gasoline for USA retailers consignment network expansion.'
+        },
         'AGL14': {
           volume: '40 KG',
           financing: 'DAO financed',
