@@ -4,6 +4,15 @@
 
 const agroverseShipments = [
   {
+    "id": "agl15-ledger-2026",
+    "title": "AGL15",
+    "contractUrl": "https://agroverse.shop/agl15",
+    "status": null,
+    "tags": [],
+    "updatedDate": null,
+    "createdDate": null
+  },
+  {
     "id": "9f2ddf0c-ad86-4825-8d6a-f3398dfa5aba",
     "title": "AGL14",
     "contractUrl": "https://agroverse.shop/agl14",
