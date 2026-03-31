@@ -13,14 +13,20 @@
 const fs = require('fs');
 const path = require('path');
 
-const GOOGLE_ANALYTICS_CODE = `<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9QN16RFM0T"></script>
+const GOOGLE_ANALYTICS_CODE = `<!-- Google tag (gtag.js) - only on truesight.me production -->
 <script>
+(function() {
+  var h = window.location.hostname;
+  if (h !== 'truesight.me' && h !== 'www.truesight.me') return;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9QN16RFM0T';
+  document.head.appendChild(s);
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-9QN16RFM0T');
+})();
 </script>`;
 
 const GA_ID = 'G-9QN16RFM0T';

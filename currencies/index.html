@@ -1,14 +1,20 @@
 <!doctype html>
 <html lang="en">
-  <head>    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QN16RFM0T"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-9QN16RFM0T');
-    </script>
+  <head>    <!-- Google tag (gtag.js) - only on truesight.me production -->
+<script>
+(function() {
+  var h = window.location.hostname;
+  if (h !== 'truesight.me' && h !== 'www.truesight.me') return;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9QN16RFM0T';
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9QN16RFM0T');
+})();
+</script>
 
     <meta charset="UTF-8" />
     <meta http-equiv="refresh" content="0; url=https://docs.google.com/spreadsheets/d/1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU/edit?gid=1552160318#gid=1552160318" />

@@ -1,14 +1,37 @@
-# Local environment secrets
-.env
-google-service-account.json
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
 
-# Node artifacts (future-proofing)
+# Dependencies - NEVER commit node_modules
 node_modules/
-.npm/
+**/node_modules/
 
-# macOS metadata
+# Lock files - package-lock.json SHOULD be committed (for consistent installs)
+# yarn.lock and pnpm-lock.yaml can be committed if using those package managers
+# Uncomment if you want to exclude lock files:
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# OS files
 .DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
 
-# Raw materials loading bay (temporary files)
-assets/raw/
+# IDE
+.vscode/
+.idea/
+*.sublime-*
 
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Cloud credentials (never commit)
+google-service-account.json
+**/google-service-account.json
+*service-account*.json
