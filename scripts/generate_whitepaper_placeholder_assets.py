@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """
-Generate placeholder diagram PNGs for whitepaper pages so production does not 404.
-Replace files with real exports from the handbook when available (same filenames).
+Optional: generate placeholder diagram PNGs only when assets are missing (404 risk).
+
+Real diagrams live in assets/whitepaper/{main,agroverse}/ and should come from
+Google Doc / handbook exports (same filenames). Do not run this if real PNGs
+are already present — use --force to overwrite placeholders during development.
 """
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
@@ -74,10 +78,21 @@ def _draw() -> Image.Image:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Write placeholder whitepaper diagram PNGs.")
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Overwrite existing files (default: skip if file already exists).",
+    )
+    args = parser.parse_args()
+
     base = _draw()
     for sub, name in FILES:
         out = ASSETS / sub / name
         out.parent.mkdir(parents=True, exist_ok=True)
+        if out.exists() and not args.force:
+            print("skip (exists):", out.relative_to(ROOT))
+            continue
         base.save(out, format="PNG", optimize=True)
         print("wrote", out.relative_to(ROOT))
 
