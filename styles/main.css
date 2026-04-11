@@ -2999,3 +2999,296 @@ footer {
     margin-bottom: var(--space-md);
   }
 }
+
+
+/* -------------------------------------------------------------------------- */
+/* Whitepaper handbooks (TrueSight DAO, Agroverse, …)                        */
+/* -------------------------------------------------------------------------- */
+
+.whitepaper-page {
+  padding-bottom: var(--space-2xl);
+}
+
+.whitepaper-hero {
+  max-width: min(var(--max-width), calc(100% - 2 * var(--space-lg)));
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg) var(--space-md);
+}
+
+.whitepaper-hero h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.15;
+  margin: var(--space-sm) 0 var(--space-md);
+  color: var(--text);
+}
+
+.whitepaper-hero .section-lead {
+  max-width: 65ch;
+  color: var(--muted);
+  font-size: 1.0625rem;
+}
+
+.whitepaper-deprec {
+  color: var(--accent-2);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.whitepaper-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.whitepaper-handbook-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--forest);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  background: var(--surface-light);
+}
+
+.whitepaper-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  max-width: min(var(--max-width), calc(100% - 2 * var(--space-lg)));
+  margin: 0 auto var(--space-lg);
+  padding: 0 var(--space-lg);
+}
+
+.whitepaper-switch-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--forest);
+  border: 1px solid rgba(95, 111, 82, 0.35);
+  background: var(--surface);
+  transition: background var(--transition-fast), border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.whitepaper-switch-link:hover {
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+}
+
+.whitepaper-switch-link[aria-current="page"] {
+  background: rgba(244, 163, 0, 0.18);
+  border-color: rgba(212, 137, 0, 0.55);
+  color: var(--text);
+}
+
+.whitepaper-handbook {
+  width: 100%;
+}
+
+.whitepaper-layout {
+  width: 100%;
+}
+
+.whitepaper-layout--with-toc {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+  gap: var(--space-xl);
+  align-items: start;
+  max-width: calc(var(--max-width) + 6rem);
+  margin: 0 auto;
+  padding: 0 var(--space-lg) var(--space-xl);
+}
+
+.whitepaper-toc {
+  position: sticky;
+  top: calc(64px + var(--space-md));
+  align-self: start;
+  max-height: calc(100vh - 5rem);
+  overflow: auto;
+  padding: var(--space-md);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgba(43, 29, 20, 0.06);
+}
+
+.whitepaper-toc-title {
+  margin: 0 0 var(--space-sm);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.whitepaper-toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.whitepaper-toc-item {
+  margin: 0;
+  padding: 0;
+}
+
+.whitepaper-toc-item a {
+  display: block;
+  padding: 0.35rem 0;
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: var(--forest);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.whitepaper-toc-item a:hover {
+  color: var(--accent-2);
+  background: rgba(244, 163, 0, 0.08);
+}
+
+.whitepaper-toc-item--depth-0 a {
+  font-weight: 600;
+  padding-top: 0.5rem;
+}
+
+.whitepaper-toc-item--depth-1 a {
+  padding-left: 0.75rem;
+}
+
+.whitepaper-toc-item--depth-2 a {
+  padding-left: 1.5rem;
+  font-weight: 400;
+}
+
+.whitepaper-toc-item--depth-3 a {
+  padding-left: 2.25rem;
+  font-size: 0.8125rem;
+}
+
+.whitepaper-main {
+  min-width: 0;
+}
+
+.whitepaper-prose {
+  max-width: 72ch;
+  color: var(--text);
+}
+
+.whitepaper-prose .whitepaper-heading {
+  scroll-margin-top: 6.5rem;
+}
+
+.whitepaper-heading {
+  font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 600;
+  color: var(--text);
+  margin: var(--space-xl) 0 var(--space-md);
+  line-height: 1.25;
+}
+
+.whitepaper-prose h2.whitepaper-heading {
+  font-size: 1.75rem;
+}
+
+.whitepaper-prose h3.whitepaper-heading {
+  font-size: 1.375rem;
+}
+
+.whitepaper-prose h4.whitepaper-heading {
+  font-size: 1.125rem;
+}
+
+.whitepaper-p {
+  margin: 0 0 var(--space-md);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.whitepaper-p + .whitepaper-p {
+  margin-top: 0;
+}
+
+.whitepaper-figure {
+  margin: var(--space-lg) 0;
+}
+
+.whitepaper-inline-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(95, 111, 82, 0.2);
+  background: var(--surface);
+}
+
+.whitepaper-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-lg) 0;
+  font-size: 0.9375rem;
+}
+
+.whitepaper-prose th,
+.whitepaper-prose td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.65rem;
+  vertical-align: top;
+}
+
+.whitepaper-prose th {
+  background: var(--surface-deep);
+  text-align: left;
+}
+
+.whitepaper-prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9em;
+  background: rgba(95, 111, 82, 0.08);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+@media (max-width: 1100px) {
+  .whitepaper-layout--with-toc {
+    grid-template-columns: minmax(200px, 240px) minmax(0, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 960px) {
+  .whitepaper-layout--with-toc {
+    grid-template-columns: 1fr;
+  }
+
+  .whitepaper-toc {
+    position: static;
+    max-height: none;
+    order: -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .whitepaper-hero {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  .whitepaper-layout--with-toc {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  .whitepaper-switcher {
+    padding: 0 var(--space-md);
+  }
+}
