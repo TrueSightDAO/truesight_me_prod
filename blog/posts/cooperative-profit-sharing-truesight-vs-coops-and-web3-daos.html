@@ -18,8 +18,8 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Digital infrastructure: AWS flagged our account — what we did, and why Cypher-Defense exists | TrueSight DAO Blog</title>
-    <meta name="description" content="Amazon Web Services contacted TrueSight about possible misuse of a cloud account. Here is a plain-language summary, what we changed, and how this ties to Agroverse logistics and the Cypher-Defense repository." />
+    <title>Cooperative profit sharing: TrueSight next to co-ops and Web3 DAOs | TrueSight DAO Blog</title>
+    <meta name="description" content="A field guide to how TrueSight’s sweat-equity ledger and governance rails resemble traditional cooperatives and typical DAOs — and where we deliberately diverge. Not legal advice." />
     <link
       rel="icon"
       href="https://static.wixstatic.com/ficons/0e2cde_dd65db118f8f499eb06c159d7262167d%7Emv2.ico"
@@ -46,7 +46,9 @@
           />
         </a>
         <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
         </button>
         <ul class="nav-menu" aria-hidden="true">
           <li><a href="../../index.html">Home</a></li>
@@ -90,45 +92,64 @@
       <article class="blog-post">
         <header class="blog-post-header">
           <a href="../index.html" class="text-link">← Back to Blog</a>
-          <h1>Digital infrastructure: AWS flagged our account — what we did, and why Cypher-Defense exists</h1>
+          <h1>Cooperative profit sharing: how TrueSight resembles (and diverges from) two templates</h1>
           <div class="blog-post-meta">
-            <time datetime="2026-04-14">April 14, 2026</time>
+            <time datetime="2026-04-15">April 15, 2026</time>
             <span>by Community TrueSight</span>
           </div>
         </header>
         <div class="blog-post-content">
           <div dir="ltr">
             <figure style="margin: 0 0 2rem 0; text-align: center;">
-              <img src="../../assets/blog/cypher-defense-extension-icon-128.png" alt="Cypher Defense browser extension icon" style="max-width: 160px; height: auto; border-radius: 8px;" />
+              <img src="../../assets/blog/dao-evolution-post-llm-research-findings_cover.jpg" alt="Abstract visualization suggesting governance and systems evolution" style="max-width: 100%; height: auto; border-radius: 8px;" loading="eager" decoding="async" />
             </figure>
 
-            <h2 dir="auto">A note for members who do not live in the AWS console</h2>
-            <p dir="auto">In April 2026, <strong>Amazon Web Services (AWS)</strong> contacted us about account <strong>767697632458</strong> because automated systems suspected <strong>third‑party misuse</strong> of cloud credentials. AWS can temporarily <strong>limit certain services</strong> while an account is brought back to a safe posture. That is frightening language in an inbox — and it should be taken seriously — but it is not the same thing as “every wallet, sheet, and shipment record was compromised.” This post explains the <em>shape</em> of the issue in human terms, what operators did, and where we are documenting work so the community can verify we are not improvising in secret.</p>
+            <p dir="auto"><strong>Disclaimer:</strong> this is a member-facing explainer about how we <em>describe</em> ourselves. It is <strong>not</strong> legal, tax, or securities advice, and it is <strong>not</strong> a claim that TrueSight is a cooperative corporation under any specific statute. When you need a formal label, talk to qualified counsel in the relevant jurisdiction.</p>
 
-            <h2 dir="auto">Why cloud hygiene matters for Agroverse’s physical story</h2>
-            <p dir="auto">TrueSight’s public work is often <strong>physical first</strong>: cooperatives, fermentation discipline, freight, warehousing, and the long path of <strong>single‑estate cacao</strong> from the <strong>Brazilian Amazon</strong> toward the <strong>United States</strong> market. That story is carried publicly through <a href="https://agroverse.shop" target="_blank" rel="noopener noreferrer">Agroverse</a> and TrueSight’s <a href="https://truesight.me/physical-asset-movements" target="_blank" rel="noopener noreferrer">movement records</a>. Physical integrity still depends on <strong>boring digital plumbing</strong>: logins, backups, automation scripts, and vendor accounts that must be treated like <em>keys to shared infrastructure</em>, not personal souvenirs checked into random codebases.</p>
+            <h2 dir="auto">Why bother with two comparisons?</h2>
+            <p dir="auto">People arrive at TrueSight with two noisy priors. Some hear <strong>DAO</strong> and imagine token volatility, influencer governance, and vibes-first roadmaps. Others hear <strong>cooperative economics</strong> and picture bylaws, member meetings, and patronage refunds on a single storefront. TrueSight borrows pieces from both worlds while refusing to be a caricature of either. The <a href="/whitepaper/#economic-model-and-dao-label">whitepaper section “Sweat equity, cooperatives, and the DAO label”</a> now states this in handbook tone; this post is the longer blog companion.</p>
 
-            <h2 dir="auto">What we did (high level)</h2>
-            <p dir="auto">Operators rotated and strengthened <strong>root‑level protections</strong> AWS requires (password hygiene, MFA, log review), <strong>removed unauthorized key material</strong>, <strong>terminated</strong> suspicious compute where applicable, and <strong>archived documentation</strong> suitable for AWS support review. A <strong>plain‑language briefing</strong> for members lives in the <strong>Cypher‑Defense</strong> repository, alongside the more formal write‑up intended for AWS correspondence.</p>
+            <h2 dir="auto">What we mean by “cooperative profit sharing” here</h2>
+            <p dir="auto">In plain language: <strong>people contribute real work and real capital</strong>, ventures try to earn revenue over time, and the community maintains <strong>open accounting</strong> so rewards can be argued about with receipts instead of folklore. Governance tokens (TDG) are a <strong>ledger-first accounting layer</strong> for that story — not a day-traded product narrative. Mechanisms, limits, and seasonal governor review are documented in the <a href="/whitepaper/">TrueSight DAO whitepaper</a> under <a href="/whitepaper/#tokenomics">Tokenomics</a>, <a href="/whitepaper/#ledger">Ledger</a>, and <a href="/whitepaper/#treasury">Treasury</a>.</p>
+
+            <h2 dir="auto">Similarities to a traditional cooperative</h2>
             <ul dir="auto">
-              <li><strong>Member briefing (non‑technical):</strong> <a href="https://github.com/TrueSightDAO/Cypher-Defense/blob/master/docs/members/2026-04-14-aws-account-incident-member-briefing.md" target="_blank" rel="noopener noreferrer">GitHub — member briefing</a></li>
-              <li><strong>Formal AWS response packet (operators):</strong> <a href="https://github.com/TrueSightDAO/Cypher-Defense/blob/master/docs/aws-reports/2026-04-14-case-177613748700177-account-security-response.md" target="_blank" rel="noopener noreferrer">GitHub — AWS case response</a></li>
-              <li><strong>Repository home for security + cleanup scripts:</strong> <a href="https://github.com/TrueSightDAO/Cypher-Defense" target="_blank" rel="noopener noreferrer">github.com/TrueSightDAO/Cypher‑Defense</a></li>
+              <li><strong>Member economics, not anonymous exit liquidity.</strong> A large share of long-term participants joined through labor, trust, and repeated coordination — closer to “owner-workers showing up” than to faceless flippers.</li>
+              <li><strong>Surplus tied to operations.</strong> The through-line in our handbook is still boring commerce: inventory, shipments, compliance, and the kinds of mistakes that show up in spreadsheets.</li>
+              <li><strong>Democratic input on rules and allocation.</strong> Proposals, assemblies, and token-weighted votes exist to resolve real forks in policy and treasury — when members use them.</li>
             </ul>
 
-            <h2 dir="auto">What “Cypher‑Defense” is (and is not)</h2>
-            <p dir="auto"><strong>Cypher‑Defense</strong> began as a browser‑side project to warn members about <strong>scams, impersonation, and phishing</strong> in Web3. We are intentionally <strong>expanding that “home”</strong> to include <strong>cloud incident notes and small automation scripts</strong> so TrueSight has a single, boring, auditable place for <strong>defense‑shaped work</strong> — not a magical “AI security agent,” but a <strong>named program of practices and repositories</strong> that can grow as Agroverse scales.</p>
+            <h2 dir="auto">Differences from a traditional cooperative</h2>
+            <ul dir="auto">
+              <li><strong>Global, distributed membership by default.</strong> Many co-ops are anchored in one geography and one legal entity; TrueSight’s coordination stack mixes chat, DApp flows, sheets, and public records across time zones.</li>
+              <li><strong>Hybrid “OS,” not only meetings.</strong> Formal co-ops often centralize legitimacy in member meetings and bylaws amendments. We still need human judgment — especially governors and executors — but much daily truth lives in <strong>operational channels</strong> and <strong>verifiable logs</strong> as much as in a gavel.</li>
+              <li><strong>Token rubric as explicit scoring surface.</strong> Traditional co-ops have wage and patronage rules; we expose a <a href="https://truesight.me/rubric" target="_blank" rel="noopener noreferrer">rubric</a> and <a href="https://truesight.me/ledger" target="_blank" rel="noopener noreferrer">ledger</a> that attempt to make trade-offs legible. That is a design choice with known failure modes (gaming, dispute, fatigue) — not magic.</li>
+            </ul>
 
-            <h2 dir="auto">Closing: receipts over vibes</h2>
-            <p dir="auto">If you want the philosophical companion to this post — why we care about <strong>execution over governance theatre</strong>, and how TrueSight’s “DAO” vocabulary maps to <strong>sweat equity and cooperative economics</strong> more than token speculation — see <a href="sweat-equity-execution-and-what-truesight-dao-means.html">Sweat equity, execution, and what TrueSight’s “DAO” is actually building</a>. For a comparison to <strong>traditional cooperatives</strong> and <strong>typical Web3 DAOs</strong>, see <a href="cooperative-profit-sharing-truesight-vs-coops-and-web3-daos.html">cooperative profit sharing: two templates</a>; canonical handbook language lives under <a href="/whitepaper/#economic-model-and-dao-label">Sweat equity, cooperatives, and the DAO label</a> in the <a href="/whitepaper/">whitepaper</a>.</p>
+            <h2 dir="auto">Similarities to a “traditional Web3 DAO”</h2>
+            <ul dir="auto">
+              <li><strong>Public governance surface.</strong> Proposals, votes, and open repositories are part of how we narrate and decide.</li>
+              <li><strong>Token-weighted voice on some questions.</strong> TDG still matters for policy and treasury decisions as described in the handbook.</li>
+              <li><strong>Transparency as a norm.</strong> We publish operational and impact data where we can; the point is to reduce insider advantage, not to perform virtue.</li>
+            </ul>
+
+            <h2 dir="auto">Differences from a “traditional Web3 DAO”</h2>
+            <ul dir="auto">
+              <li><strong>Ledger-first TDG, not a speculative headline.</strong> The whitepaper is explicit: TDG is recorded on the community ledger; members are not asked to treat public DEX mechanics as the center of gravity for accounting today.</li>
+              <li><strong>Anti-governance-theatre as an aspiration, not a guarantee.</strong> Loud forums are cheap; pallets, invoices, and incident response are expensive. We fail like any human group — the institutional bet is that <strong>receipts and executors</strong> keep honest score over time (see the companion essay on <a href="sweat-equity-execution-and-what-truesight-dao-means.html">sweat equity and execution</a>).</li>
+              <li><strong>Profit language tied to ventures, not only to narrative.</strong> When we talk about buy-back and withdrawal, we point at documented flows in the handbook rather than implying that attention itself mints value.</li>
+            </ul>
+
+            <h2 dir="auto">Closing: two mirrors, one boring job</h2>
+            <p dir="auto">Co-ops and Web3 DAOs are both <strong>partial mirrors</strong> — useful because they name real traditions (solidarity finance, open coordination) and dangerous when treated as costumes. TrueSight’s job remains the same: <strong>ship</strong> regenerative commerce, <strong>record</strong> contributions honestly, and <strong>vote</strong> when forks are real. If this framing is wrong somewhere, the productive response is a proposal with evidence — not a flame war.</p>
 
             <h2 dir="auto">Join the discussion</h2>
-            <p dir="auto">Operators and curious members: ask hard questions in <a href="https://t.me/TrueSightDAO" target="_blank" rel="noopener noreferrer">Telegram</a> and in the <a href="https://truesight.me/dapp" target="_blank" rel="noopener noreferrer">DAO web app</a>. If you ever see a <strong>long‑lived cloud secret in a random repo</strong>, treat it as an emergency and tell a steward <strong>privately</strong> (do not paste secrets into public chats).</p>
+            <p dir="auto">Push back with examples: <a href="https://t.me/TrueSightDAO" target="_blank" rel="noopener noreferrer">Telegram</a>, the <a href="https://truesight.me/dapp" target="_blank" rel="noopener noreferrer">DAO web app</a>, and the <a href="https://truesight.me/ledger" target="_blank" rel="noopener noreferrer">contributions record</a> where receipts belong.</p>
           </div>
         </div>
         <footer class="blog-post-footer">
-          <a href="from-singapore-catalogs-to-brazil-containers-agroverse-logistics-rhythm.html" class="text-link">← From Singapore catalogs to Brazil containers</a>
-          <a href="sweat-equity-execution-and-what-truesight-dao-means.html" class="text-link" style="margin-left: auto;">Sweat equity &amp; execution →</a>
+          <a href="sweat-equity-execution-and-what-truesight-dao-means.html" class="text-link">← Sweat equity &amp; execution</a>
+          <a href="../index.html" class="text-link" style="margin-left: auto;">Back to Blog →</a>
         </footer>
       </article>
     </div>
