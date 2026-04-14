@@ -9,3 +9,5 @@ Whenever the copy mentions a **real shipped surface** (DApp / web app, ledger, r
 ## Hero / header images
 
 Prefer **original** meme-adjacent or editorial illustrations (generated or licensed) that match the post’s argument tone—**not** unlicensed copies of famous meme templates (Drake, Distracted Boyfriend, etc.). When a post compares two archetypes (co-op vs DAO, hype vs receipts), a **split-panel or “two mirrors”** visual language works well. Save raster assets under `assets/blog/` with descriptive filenames.
+
+For posts about **specific commercial apps** (for example WhatsApp), use **generic** phones, chat bubbles, and logistics imagery—avoid embedding **third‑party logos or trademarked UI** unless you have explicit brand permission.
