@@ -19,7 +19,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>DApp digital signature email onboarding: VERIFYING rows, Edgar, and the verification email bridge | TrueSight DAO Blog</title>
-    <meta name="description" content="TrueSight DApp email onboarding: flow diagram, VERIFYING rows on Main Ledger &amp; Contributors (Contributors Digital Signatures), Google Sheets deep links, truesight.me/ledger, Apps Script mailer, and demo_edgar_digital_signature_sheet_flow.py." />
+    <meta name="description" content="TrueSight DApp email onboarding: flow diagram, VERIFYING and ACTIVE on Contributors Digital Signatures, Google Sheets links, truesight.me/ledger, Apps Script mailer, DApp success mockup, and demo_edgar_digital_signature_sheet_flow.py." />
     <link
       rel="icon"
       href="https://static.wixstatic.com/ficons/0e2cde_dd65db118f8f499eb06c159d7262167d%7Emv2.ico"
@@ -132,6 +132,18 @@
               <li><strong>Verification event:</strong> The contributor opens the link, then submits a signed <strong><code>[EMAIL VERIFICATION EVENT]</code></strong> that references the same verification key.</li>
               <li><strong><code>ACTIVE</code>:</strong> The server finds the pending <code>VERIFYING</code> row that matches the public key and verification key (with a careful fallback when multiple rows exist), then updates the row to <code>ACTIVE</code> and refreshes the last-active timestamp — mirrored as <code>activate-pending</code> in <a href="https://github.com/TrueSightDAO/tokenomics/blob/main/python_scripts/examples/dapp_digital_signature_onboarding/demo_edgar_digital_signature_sheet_flow.py" target="_blank" rel="noopener noreferrer"><code>demo_edgar_digital_signature_sheet_flow.py</code></a>.</li>
             </ol>
+
+            <h3 dir="auto">Ledger: column D becomes <code>ACTIVE</code></h3>
+            <figure style="margin: 0 0 2rem 0;">
+              <img src="../../assets/blog/contributors-digital-signatures-status-active-schematic.png" alt="Schematic spreadsheet row: Status column D shows ACTIVE (illustration, not live data)" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08);" loading="lazy" />
+              <figcaption style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted); text-align: center;">After a matching <code>[EMAIL VERIFICATION EVENT]</code>, column <strong>D</strong> on <em>Contributors Digital Signatures</em> should read <code>ACTIVE</code> for that browser key. Illustration only — confirm in the <a href="https://docs.google.com/spreadsheets/d/1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU/edit#gid=577022511" target="_blank" rel="noopener noreferrer">live tab</a>.</figcaption>
+            </figure>
+
+            <h3 dir="auto">DApp: success after email verification</h3>
+            <figure style="margin: 0 0 2rem 0;">
+              <img src="../../assets/blog/dapp-email-verified-success-mockup.png" alt="Mockup web UI: green success banner Email verified, this browser is linked, signature ACTIVE on ledger (illustration)" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08);" loading="lazy" />
+              <figcaption style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted); text-align: center;">Conceptual success state in the browser after the contributor returns from email and completes verification — wording/layout may differ from the live <a href="https://truesightdao.github.io/dapp/create_signature.html" target="_blank" rel="noopener noreferrer"><code>create_signature.html</code></a> build; use the hosted DApp as the source of truth for exact UI.</figcaption>
+            </figure>
 
             <h2 dir="auto">Running the standalone backend demo</h2>
             <p dir="auto">Clone <a href="https://github.com/TrueSightDAO/tokenomics" target="_blank" rel="noopener noreferrer">TrueSightDAO/tokenomics</a>, install dependencies from <a href="https://github.com/TrueSightDAO/tokenomics/tree/main/python_scripts/examples/dapp_digital_signature_onboarding#readme" target="_blank" rel="noopener noreferrer">the example README</a>, and run <a href="https://github.com/TrueSightDAO/tokenomics/blob/main/python_scripts/examples/dapp_digital_signature_onboarding/demo_edgar_digital_signature_sheet_flow.py" target="_blank" rel="noopener noreferrer"><code>demo_edgar_digital_signature_sheet_flow.py</code></a>. Sheet writes require <code>DEMO_ALLOW_SHEET_WRITES=1</code> and an explicit <code>--apply</code> flag so accidental mutations are hard. Do not paste service-account JSON, webhook secrets, or private keys into public tickets or chat.</p>
