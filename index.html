@@ -93,6 +93,7 @@
               <li><a href="https://truesight.me/recurring-tdg-awards" target="_blank" rel="noreferrer noopener">Ongoing Awards</a></li>
               <li><a href="https://truesight.me/submissions/scored-and-to-be-tokenized" target="_blank" rel="noreferrer noopener">Upcoming Awards</a></li>
               <li><a href="https://truesight.me/beerhall" target="_blank" rel="noreferrer noopener">Join Chat</a></li>
+              <li><a href="beerhall/updates.html">Beer Hall digests</a></li>
             </ul>
           </li>
           <li>
@@ -228,6 +229,25 @@
           </div>
         </div>
       </header>
+
+      <section id="ecosystem-updates" class="ecosystem-updates-section" aria-labelledby="ecosystem-updates-heading">
+        <p class="pill">Community signal</p>
+        <h2 id="ecosystem-updates-heading">Recent ecosystem updates</h2>
+        <p class="section-lead">
+          Short summaries from published <strong>Beer Hall</strong> digests (git-backed). Full list and pagination on
+          <a class="text-link" href="beerhall/updates.html">Beer Hall digests</a>; source in
+          <a
+            class="text-link"
+            href="https://github.com/TrueSightDAO/ecosystem_change_logs"
+            target="_blank"
+            rel="noopener noreferrer"
+            >ecosystem_change_logs</a
+          >.
+        </p>
+        <div id="ecosystem-updates-root" class="ecosystem-updates-root">
+          <p class="ecosystem-updates-status">Loading recent updates…</p>
+        </div>
+      </section>
 
       <section id="movement">
         <div class="split">
@@ -873,6 +893,70 @@
         } else {
           loadMonthlyStatistics();
         }
+      })();
+    </script>
+    <script src="js/ecosystem-change-log-feed.js"></script>
+    <script>
+      (function () {
+        var F = window.TrueSightEcosystemFeed;
+        var root = document.getElementById('ecosystem-updates-root');
+        if (!root || !F) return;
+
+        F.loadPage(1)
+          .then(function (page) {
+            var entries = page.entries || [];
+            if (!entries.length) {
+              root.innerHTML =
+                '<p class="ecosystem-updates-empty">No published digests yet. When operators archive a Beer Hall send, previews appear here. ' +
+                '<a class="text-link" href="https://github.com/TrueSightDAO/ecosystem_change_logs/tree/main/beer_hall/entries" target="_blank" rel="noopener noreferrer">View the repo</a> or ' +
+                '<a class="text-link" href="beerhall/updates.html">open the digest page</a>.</p>';
+              return;
+            }
+
+            var ul = document.createElement('ul');
+            ul.className = 'ecosystem-updates-list';
+            var max = Math.min(5, entries.length);
+            for (var i = 0; i < max; i++) {
+              var e = entries[i];
+              var stem = F.entryStemFromJsonPath(e.json_path || '');
+              var li = document.createElement('li');
+              li.className = 'ecosystem-updates-item';
+              var a = document.createElement('a');
+              a.className = 'ecosystem-updates-link';
+              a.href = stem ? 'beerhall/updates.html?entry=' + encodeURIComponent(stem) : 'beerhall/updates.html';
+              var time = document.createElement('time');
+              if (e.posted_at_utc) time.dateTime = e.posted_at_utc;
+              time.textContent = F.formatPostedAt(e.posted_at_utc);
+              var title = document.createElement('span');
+              title.className = 'ecosystem-updates-title';
+              title.textContent = String(e.slug || 'update').replace(/-/g, ' ');
+              var prev = document.createElement('span');
+              prev.className = 'ecosystem-updates-preview';
+              prev.textContent = e.preview || '';
+              a.appendChild(time);
+              a.appendChild(title);
+              a.appendChild(prev);
+              li.appendChild(a);
+              ul.appendChild(li);
+            }
+            root.innerHTML = '';
+            root.appendChild(ul);
+            var more = document.createElement('p');
+            more.className = 'ecosystem-updates-more';
+            var ma = document.createElement('a');
+            ma.className = 'text-link';
+            ma.href = 'beerhall/updates.html';
+            ma.textContent = 'All digests and pagination →';
+            more.appendChild(ma);
+            root.appendChild(more);
+          })
+          .catch(function (err) {
+            console.warn(err);
+            root.innerHTML =
+              '<p class="ecosystem-updates-status">Could not load the live digest feed (often blocked from <code>file://</code>). Open the site over HTTPS or see ' +
+              '<a class="text-link" href="https://github.com/TrueSightDAO/ecosystem_change_logs/tree/main/beer_hall/feed" target="_blank" rel="noopener noreferrer">the feed on GitHub</a> and ' +
+              '<a class="text-link" href="beerhall/updates.html">Beer Hall digests</a>.</p>';
+          });
       })();
     </script>
 </body>

@@ -3292,3 +3292,136 @@ footer {
     padding: 0 var(--space-md);
   }
 }
+
+/* Ecosystem change log (Beer Hall) feed — homepage + beerhall/updates.html */
+.ecosystem-updates-section {
+  padding: var(--space-xl) var(--space-lg);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.ecosystem-updates-section h2 {
+  margin-top: var(--space-sm);
+}
+
+.ecosystem-updates-root {
+  margin-top: var(--space-md);
+}
+
+.ecosystem-updates-status,
+.ecosystem-updates-empty {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  max-width: 42rem;
+}
+
+.ecosystem-updates-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.ecosystem-updates-item {
+  margin: 0;
+}
+
+.ecosystem-updates-link {
+  display: block;
+  padding: var(--space-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(43, 29, 20, 0.06);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.ecosystem-updates-link:hover {
+  border-color: rgba(95, 111, 82, 0.45);
+  box-shadow: 0 4px 14px rgba(43, 29, 20, 0.08);
+}
+
+.ecosystem-updates-link time {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.ecosystem-updates-title {
+  display: block;
+  font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text);
+  text-transform: capitalize;
+}
+
+.ecosystem-updates-preview {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.ecosystem-updates-more {
+  margin-top: var(--space-md);
+  font-size: 0.9375rem;
+}
+
+.ecosystem-updates-page .ecosystem-updates-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  font-size: 0.9375rem;
+}
+
+.ecosystem-updates-page .ecosystem-updates-pagination a {
+  color: var(--accent-2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.ecosystem-detail-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-md);
+}
+
+.ecosystem-detail-block {
+  margin-bottom: var(--space-lg);
+}
+
+.ecosystem-detail-block h2 {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-sm);
+}
+
+.ecosystem-detail-body {
+  white-space: pre-wrap;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  padding: var(--space-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+}
+
+.ecosystem-detail-links {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.ecosystem-detail-links a {
+  color: var(--accent-2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
