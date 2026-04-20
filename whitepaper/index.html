@@ -118,6 +118,8 @@
         <p class="whitepaper-toc-title">On this page</p>
         <ul class="whitepaper-toc-list">
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-0"><a href="#who-are-we">Who are we</a></li>
+          <li class="whitepaper-toc-item whitepaper-toc-item--depth-1"><a href="#north-star">North star</a></li>
+          <li class="whitepaper-toc-item whitepaper-toc-item--depth-1"><a href="#system-at-a-glance">System at a glance</a></li>
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-0"><a href="#economic-model-and-dao-label">Sweat equity, cooperatives, and the DAO label</a></li>
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-0"><a href="#the-problem">The problem</a></li>
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-0"><a href="#the-proposed-solution-a-metagame">The proposed solution - a metagame</a></li>
@@ -160,7 +162,8 @@
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-1"><a href="#communications">Communications</a></li>
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#framework-on-the-blog">Framework and reflective writing &mdash; blog</a></li>
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#operational-updates-on-landing">Operational updates &mdash; landing page</a></li>
-          <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#beer-hall">Beer Hall &mdash; off critical path, by signal</a></li>
+          <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#oracle">Oracle &mdash; natural-language DAO advisor</a></li>
+          <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#beer-hall">Beer Hall &mdash; community digest, archive-only</a></li>
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#agroverse-executor-channels">Agroverse executor channels</a></li>
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#direct-messages">Direct messages</a></li>
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#the-do-nothing-society">The Do Nothing Society</a></li>
@@ -217,6 +220,26 @@
 </p>
 <p class="whitepaper-spacer">&nbsp;</p>
 <p class="whitepaper-p">We use the term <strong>DAO</strong> (Decentralized Autonomous Organization) to mean an internet-based community combining transparent governance, individual autonomy, and recorded commitments to shared work and capital. Members hold governance tokens (TDG) tied to contributions and risk; those tokens carry voting rights on DAO fiat allocation and policy matters as spelled out in this handbook. The next section states plainly how that pattern relates to <strong>cooperatives</strong> and to <strong>Web3 DAO stereotypes</strong> — including where we deliberately diverge.
+</p>
+<p class="whitepaper-spacer">&nbsp;</p>
+<h3 class="whitepaper-heading" id="north-star">North star
+</h3>
+<p class="whitepaper-p">Our purpose is <em>to heal the world with love</em>. Our concrete mission is to <em>restore 10,000 hectares of Amazon rainforest</em>. Every DAO decision — what to ship, whom to partner with, how to price TDG cash-out, what to build next — should trace back to whether it moves us toward that hectare target in service of healing. Current growth goals for 2026: <strong>$40,000 in QR-code-tracked sales</strong> and <strong>100 USA Agroverse partner venues</strong> by year-end (live progress: <a href="https://github.com/TrueSightDAO/ecosystem_change_logs/blob/main/advisory/BASE.md" rel="noopener noreferrer">advisory snapshot</a>).
+</p>
+<p class="whitepaper-spacer">&nbsp;</p>
+<h3 class="whitepaper-heading" id="system-at-a-glance">System at a glance
+</h3>
+<p class="whitepaper-p">The DAO runs on four connected surfaces.
+</p>
+<div class="whitepaper-bullet" style="--bullet-level:0"><strong>Main Ledger</strong> &mdash; a shared <a href="https://docs.google.com/spreadsheets/d/1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU/edit" rel="noopener noreferrer">Google Sheet</a> that holds contributions, TDG balances, currencies, inventory, governors, and shipments. It is the system of record.
+</div>
+<div class="whitepaper-bullet" style="--bullet-level:0"><strong>Edgar</strong> &mdash; our Rails app at <a href="https://edgar.truesight.me" rel="noopener noreferrer">edgar.truesight.me</a> (source: <a href="https://github.com/TrueSightDAO/sentiment_importer" rel="noopener noreferrer">sentiment_importer</a>). Scores DApp submissions, routes proposals to GitHub as pull requests, publishes inventory snapshots, quotes shipping rates for Agroverse checkout, and receives live Reminders from the operator's iOS Shortcut.
+</div>
+<div class="whitepaper-bullet" style="--bullet-level:0"><strong>DApp</strong> &mdash; the <a href="https://truesight.me/dapp" rel="noopener noreferrer">member-facing front door</a> for signatures, contributions, proposals, voting-rights withdrawal, and QR scans.
+</div>
+<div class="whitepaper-bullet" style="--bullet-level:0"><strong>Oracle</strong> &mdash; a Grok-backed advisor at <a href="https://oracle.truesight.me" rel="noopener noreferrer">oracle.truesight.me</a> that reads the live advisory snapshot, open Reminders, and strategic blocks to answer member questions grounded in current DAO state.
+</div>
+<p class="whitepaper-p">An audit-trail mirror copies Main Ledger rows into our private <a href="https://github.com/TrueSightDAO/TrueChain" rel="noopener noreferrer">TrueChain</a> blockchain for tamper-evidence, with a Google Apps Script block explorer. The public <strong>Beer Hall feed</strong> publishes a daily digest of what shipped, and the oracle can surface any of this via natural-language questions.
 </p>
 <h2 class="whitepaper-heading" id="economic-model-and-dao-label">Sweat equity, cooperatives, and the DAO label
 </h2>
@@ -545,7 +568,7 @@
 <p class="whitepaper-p">Scoring follows the <a href="#rubric">rubric</a>: <strong>provided labor</strong> earns 100 TDG per hour of human effort; <strong>provided funds</strong> earn 1 TDG per 1 USD of liquidity injected; <strong>USDT movements</strong> score at −1 TDG per 1 USDT sent and +1 TDG per 1 USDT received. The rubric has been stable for a long time; future changes are more likely to adjust these <strong>rates</strong> via vote than to add many new line items.
 </p>
 <p class="whitepaper-spacer">&nbsp;</p>
-<p class="whitepaper-p">Contribution claims are based on self-evaluation and peer reviews. Members submit contribution claims only through the TrueSight DApp (for example <a href="https://dapp.truesight.me/report_contribution.html" rel="noopener noreferrer">report contribution</a>); we no longer scan WhatsApp or Telegram for submissions. The general DApp entry point is <a href="https://truesight.me/dapp" rel="noopener noreferrer">truesight.me/dapp</a>.
+<p class="whitepaper-p">Contribution claims are based on self-evaluation and peer reviews. Members submit <strong>TDG contribution claims</strong> through the TrueSight DApp (for example <a href="https://dapp.truesight.me/report_contribution.html" rel="noopener noreferrer">report contribution</a>); we no longer scan WhatsApp for TDG scoring. Telegram is still used operationally — sales QR scans, batch QR generation signoff, notarizations, tree-planting records, and shipment movement are parsed from our Telegram chat logs by Apps Script processors under <code>tokenomics/google_app_scripts/</code> — but those flows feed inventory and sales, not TDG awards. The general DApp entry point is <a href="https://truesight.me/dapp" rel="noopener noreferrer">truesight.me/dapp</a>.
 </p>
 <p class="whitepaper-spacer">&nbsp;</p>
 <p class="whitepaper-p">Claims are scored by Edgar and reviewed by governors. Approved amounts are written to our <a href="https://truesight.me/ledger" rel="noopener noreferrer">ledger</a>, which provides the canonical track record of contributions and TDG balances. Around solstices and equinoxes, governors batch-approve scored items and move consolidated rows into the main ledger as needed.
@@ -624,12 +647,17 @@
 <p class="whitepaper-spacer">&nbsp;</p>
 <h4 class="whitepaper-heading" id="operational-updates-on-landing">Operational updates &mdash; landing page
 </h4>
-<p class="whitepaper-p">Inventory, shipments, milestones, logistics, and sales movement are auto-compiled daily at 00:00 UTC on the <a href="/">landing page</a>. A natural-language chatbot layer over the same ledger, sheets, and change-log data is planned, so members can ask questions rather than skim feeds.
+<p class="whitepaper-p">Inventory, shipments, milestones, logistics, and sales movement are auto-compiled daily at 00:00 UTC on the <a href="/">landing page</a>. Two GitHub Actions close this loop: <code>advisory-snapshot-refresh.yml</code> runs every six hours to regenerate <a href="https://github.com/TrueSightDAO/agentic_ai_context/blob/main/ADVISORY_SNAPSHOT.md" rel="noopener noreferrer">ADVISORY_SNAPSHOT.md</a> across the 12 curated DAO repos and publish it to the <code>agentic_ai_context</code> and <code>ecosystem_change_logs</code> repositories; <code>beer-hall-digest-daily.yml</code> runs at 00:00 UTC to draft and auto-merge the daily Beer Hall archive (drafted by Claude Sonnet 4.6 using the two most recent archives as few-shot style examples). Operators on iOS can push live tactical intent into the same advisory context via the Shortcut &rarr; <code>edgar.truesight.me/oracle/reminders_sync</code> pipeline; each POST is archived to <code>ecosystem_change_logs/reminders_raws/</code> so the Oracle always has fresh context.
 </p>
 <p class="whitepaper-spacer">&nbsp;</p>
-<h4 class="whitepaper-heading" id="beer-hall">Beer Hall &mdash; off critical path, by signal
+<h4 class="whitepaper-heading" id="oracle">Oracle &mdash; natural-language DAO advisor
 </h4>
-<p class="whitepaper-p">The <strong>Beer Hall</strong> WhatsApp channel is a space to surface things other DAO members might want to consider, but that aren&#x27;t on any critical path. No routine updates here &mdash; daily operational state lives on the landing page, long-form writing on the blog. Most days the channel is quiet. That&#x27;s the intended state; when it lights up, the signal is worth reading.
+<p class="whitepaper-p">The <a href="https://oracle.truesight.me" rel="noopener noreferrer">Oracle</a> is a Grok-backed chatbot that reads the live <a href="https://github.com/TrueSightDAO/ecosystem_change_logs/blob/main/advisory/BASE.md" rel="noopener noreferrer">advisory base</a>, the daily snapshot, open Reminders, and the strategic blocks &mdash; then draws a hexagram and answers member questions grounded in current DAO state. It is the ask-a-question layer over the ledger, change-log, and Beer Hall feed, so members can orient without skimming raw feeds.
+</p>
+<p class="whitepaper-spacer">&nbsp;</p>
+<h4 class="whitepaper-heading" id="beer-hall">Beer Hall &mdash; community digest, archive-only
+</h4>
+<p class="whitepaper-p">The <strong>Beer Hall</strong> is our community digest, not a realtime channel. A daily GitHub Action at 00:00 UTC drafts a two-message update via Claude (Message 1 = TLDR; Message 2 = <em>Shipped</em> links + community signals from the Telegram log), commits it to the static feed at <a href="https://github.com/TrueSightDAO/ecosystem_change_logs/tree/main/beer_hall/feed" rel="noopener noreferrer">ecosystem_change_logs/beer_hall/feed/</a>, and refreshes the advisory snapshot that feeds the Oracle. As of 2026-04-19 the digest is <em>archive-only</em> &mdash; OpenClaw no longer posts to WhatsApp. The previous WhatsApp firehose was flagged as too noisy by the community (Kirsten, Fatima, Garis); Fatima proposed a newsletter shape and that is what the static feed + Oracle Q&amp;A pattern now provides. Day-to-day ops chatter still happens in the small executor WhatsApp rooms below.
 </p>
 <p class="whitepaper-spacer">&nbsp;</p>
 <h4 class="whitepaper-heading" id="agroverse-executor-channels">Agroverse executor channels
@@ -673,7 +701,7 @@
 </div>
 <h3 class="whitepaper-heading" id="governors">Governors
 </h3>
-<p class="whitepaper-p">Governors of our DAO are caretakers of our community. Every season the top 10 contributors for the past 90 days in our DAO are automatically elected into position. 
+<p class="whitepaper-p">Governors of our DAO are caretakers of our community. Every season the top 10 contributors over the trailing 90 days are automatically elected into position via a formula on the <a href="https://docs.google.com/spreadsheets/d/1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU/edit#gid=842148543" rel="noopener noreferrer">Governors tab of the Main Ledger</a>. That tab is the source of truth for editing rights on ledger, rubric, and WhatsApp administration. 
 </p>
 <h4 class="whitepaper-heading" id="privileges">Privileges
 </h4>
@@ -802,7 +830,10 @@
 <p class="whitepaper-p"><a href="https://github.com/TrueSightDAO/.github/blob/main/assets/20230430%20-%20voting%20on%20non%20aligned%20transaction.jpg" rel="noopener noreferrer">Voted in Town Hall - past into effect 30th April 2023</a>
 </p>
 <p class="whitepaper-spacer">&nbsp;</p>
-<p class="whitepaper-p">Future transactions passing through our network that are not aligned with our DAO purpose and mission will henceforth be charged with a gas fee. A follow up poll in our town hall on gas fee to be charged will be conducted
+<p class="whitepaper-p">Future transactions passing through our network that are not aligned with our DAO purpose and mission will henceforth be charged with a gas fee. A follow up poll in our town hall on gas fee to be charged will be conducted.
+</p>
+<p class="whitepaper-spacer">&nbsp;</p>
+<p class="whitepaper-p"><em>Superseded note (2026):</em> this "gas fee" framing is retired. With the Solana mint closed and TDG accounted for on the ledger, the DAO's two actual revenue mechanics are (1) an operating slice of \$2 baked into each retail SKU (see <a href="https://truesight.me/agroverse.html#economics" rel="noopener noreferrer">Agroverse unit economics</a>) and (2) a 20% management fee on post-recoup profit from shipment-financing (syndicate) AGLs. Neither is per-transaction, and neither behaves like a blockchain gas fee.
 </p>
 <p class="whitepaper-spacer">&nbsp;</p>
 <h3 class="whitepaper-heading" id="20230502-new-member-onboarding-policy">20230502 - New Member Onboarding Policy
