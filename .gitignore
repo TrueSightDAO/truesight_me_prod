@@ -34,4 +34,4 @@ Thumbs.db
 # Cloud credentials (never commit)
 google-service-account.json
 **/google-service-account.json
-*service-account*.json
+*service-account*.jsoncredentials/
