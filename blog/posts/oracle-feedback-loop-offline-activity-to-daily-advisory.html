@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+  <head>    <!-- Google tag (gtag.js) - only on truesight.me production -->
+<script>
+(function() {
+  var h = window.location.hostname;
+  if (h !== 'truesight.me' && h !== 'www.truesight.me') return;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9QN16RFM0T';
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9QN16RFM0T');
+})();
+</script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The oracle feedback loop: how daily offline activity becomes tomorrow's advisory context | TrueSight DAO Blog</title>
+    <meta name="description" content="How TrueSight's Daily Oracle reads git merges, live sheets, and captured iOS reminders through ADVISORY_SNAPSHOT.md to give context-aware I Ching advice — and how truesight.me surfaces the same activity as public windows into the DAO." />
+    <link
+      rel="icon"
+      href="https://static.wixstatic.com/ficons/0e2cde_dd65db118f8f499eb06c159d7262167d%7Emv2.ico"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles/main.css" />
+  </head>
+  <body>
+    <nav class="site-header">
+      <div class="header-container">
+        <a href="../../index.html" class="header-logo">
+          <img
+            src="https://static.wixstatic.com/media/0e2cde_f81b16c82ebe4aaca4b5ce54b819a693~mv2.png/v1/fill/w_622,h_160,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240612_truesight_dao_logo_long.png"
+            alt="TrueSight DAO"
+            width="155"
+            height="40"
+            loading="eager"
+          />
+        </a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+
+        </button>
+        <ul class="nav-menu" aria-hidden="true">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../about-us.html">About Us</a></li>
+          <li>
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Projects</button>
+            <ul class="dropdown-menu" aria-expanded="false">
+              <li><a href="../../agroverse.html">Agroverse Community</a></li>
+              <li><a href="../../sunmint.html">Sunmint Program</a></li>
+              <li><a href="../../edgar.html">Edgar Platform</a></li>
+            </ul>
+          </li>
+          <li><a href="https://truesight.me/proposals" target="_blank" rel="noreferrer noopener">Proposals</a></li>
+          <li>
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Community</button>
+            <ul class="dropdown-menu" aria-expanded="false">
+              <li><a href="https://truesight.me/quests" target="_blank" rel="noreferrer noopener">Community Challenges</a></li>
+              <li><a href="https://truesight.me/governors" target="_blank" rel="noreferrer noopener">Community Leaders</a></li>
+              <li><a href="https://truesight.me/members-directory" target="_blank" rel="noreferrer noopener">Members Directory</a></li>
+              <li><a href="https://truesight.me/recurring-tdg-awards" target="_blank" rel="noreferrer noopener">Ongoing Awards</a></li>
+              <li><a href="https://truesight.me/submissions/scored-and-to-be-tokenized" target="_blank" rel="noreferrer noopener">Upcoming Awards</a></li>
+              <li><a href="https://truesight.me/beerhall" target="_blank" rel="noreferrer noopener">Join Chat</a></li>
+            </ul>
+          </li>
+          <li>
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Resources</button>
+            <ul class="dropdown-menu" aria-expanded="false">
+              <li><a href="../../faq.html">Frequently Asked Questions</a></li>
+              <li><a href="/whitepaper/">View Whitepaper</a></li>
+              <li><a href="https://truesight.me/tokenomics" target="_blank" rel="noreferrer noopener">Tokenomics</a></li>
+              <li><a href="https://truesight.me/dapp" target="_blank" rel="noreferrer noopener">Web App</a></li>
+              <li><a href="https://truesight.me/ledger" target="_blank" rel="noreferrer noopener">Contributions Record</a></li>
+              <li><a href="https://truesight.me/roadmap" target="_blank" rel="noreferrer noopener">Roadmap</a></li>
+            </ul>
+          </li>
+          <li><a href="../index.html">Blog</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="page blog-post-page">
+      <article class="blog-post">
+        <header class="blog-post-header">
+          <a href="../index.html" class="text-link">← Back to Blog</a>
+          <h1>The oracle feedback loop: how daily offline activity becomes tomorrow's advisory context</h1>
+          <div class="blog-post-meta">
+            <time datetime="2026-04-21">April 21, 2026</time>
+            <span>by Community TrueSight</span>
+          </div>
+        </header>
+        <div class="blog-post-content">
+          <div dir="ltr">
+
+            <figure style="margin: 0 0 2rem 0;">
+              <svg role="img" aria-labelledby="heroTitle heroDesc" viewBox="0 0 640 360" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); background: #fffaf0;">
+                <title id="heroTitle">The oracle feedback loop</title>
+                <desc id="heroDesc">A horizontal cycle showing daily DAO activity flowing into a structured snapshot, which the oracle reads, producing advice that shapes the next day&apos;s activity.</desc>
+                <defs>
+                  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#d38900" />
+                  </marker>
+                </defs>
+                <!-- Nodes -->
+                <g font-family="Inter, sans-serif" font-size="13" fill="#2b1d14" text-anchor="middle">
+                  <!-- Day's activity -->
+                  <rect x="20" y="130" rx="10" ry="10" width="120" height="100" fill="#f6c86d" stroke="#d38900" stroke-width="1.5"/>
+                  <text x="80" y="165" font-weight="600">Day&apos;s</text>
+                  <text x="80" y="183" font-weight="600">activity</text>
+                  <text x="80" y="205" font-size="11" fill="#6f5a44">merges, sheets,</text>
+                  <text x="80" y="219" font-size="11" fill="#6f5a44">reminders</text>
+
+                  <!-- Sources -->
+                  <rect x="170" y="130" rx="10" ry="10" width="120" height="100" fill="#fff4d6" stroke="#d38900" stroke-width="1.5"/>
+                  <text x="230" y="160" font-weight="600">Captured</text>
+                  <text x="230" y="178" font-weight="600">in git / sheet</text>
+                  <text x="230" y="196" font-weight="600">/ iCloud</text>
+                  <text x="230" y="217" font-size="11" fill="#6f5a44">no diary required</text>
+
+                  <!-- Snapshot -->
+                  <rect x="320" y="130" rx="10" ry="10" width="120" height="100" fill="#fff4d6" stroke="#d38900" stroke-width="1.5"/>
+                  <text x="380" y="160" font-weight="600">Snapshot</text>
+                  <text x="380" y="178" font-weight="600">rebuilds</text>
+                  <text x="380" y="196" font-weight="600">every 6 h</text>
+                  <text x="380" y="217" font-size="11" fill="#6f5a44">one markdown file</text>
+
+                  <!-- Oracle -->
+                  <rect x="470" y="60" rx="10" ry="10" width="150" height="100" fill="#f6c86d" stroke="#d38900" stroke-width="1.5"/>
+                  <text x="545" y="90" font-weight="600">Oracle page</text>
+                  <text x="545" y="108" font-size="11" fill="#6f5a44">cast a hexagram</text>
+                  <text x="545" y="124" font-size="11" fill="#6f5a44">(three-coin I Ching)</text>
+                  <text x="545" y="143" font-size="11" fill="#6f5a44">fetches snapshot</text>
+
+                  <!-- Advice -->
+                  <rect x="470" y="200" rx="10" ry="10" width="150" height="100" fill="#f4a300" stroke="#8a5a00" stroke-width="1.5"/>
+                  <text x="545" y="234" font-weight="600" fill="#2b1d14">Contextual</text>
+                  <text x="545" y="252" font-weight="600" fill="#2b1d14">advice</text>
+                  <text x="545" y="272" font-size="11" fill="#2b1d14">Claude reads the</text>
+                  <text x="545" y="286" font-size="11" fill="#2b1d14">snapshot + draw</text>
+                </g>
+                <!-- Arrows -->
+                <g stroke="#d38900" stroke-width="2" fill="none">
+                  <path d="M 140 180 L 170 180" marker-end="url(#arrow)"/>
+                  <path d="M 290 180 L 320 180" marker-end="url(#arrow)"/>
+                  <path d="M 440 170 Q 460 140 470 120" marker-end="url(#arrow)"/>
+                  <path d="M 545 160 L 545 200" marker-end="url(#arrow)"/>
+                  <!-- loop back under everything -->
+                  <path d="M 470 250 Q 300 340 80 240" marker-end="url(#arrow)"/>
+                </g>
+                <text x="275" y="328" font-family="Inter, sans-serif" font-size="11" fill="#6f5a44" font-style="italic" text-anchor="middle">
+                  advice shapes tomorrow&apos;s activity → loop closes
+                </text>
+              </svg>
+              <figcaption style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted); text-align: center;">
+                Everything the operator does during the day is already being captured somewhere structured. The oracle reads those captures — then its advice shapes what the operator does next.
+              </figcaption>
+            </figure>
+
+            <h2 dir="auto">What the oracle actually is</h2>
+            <p dir="auto">TrueSight&apos;s <a href="https://oracle.truesight.me" target="_blank" rel="noopener noreferrer"><strong>Daily Oracle</strong></a> is a small web page. You cast an I&nbsp;Ching hexagram using the three-coin method — or let the page toss for you. The hexagram is the <em>question form</em>. Behind the scenes, the page fetches a structured snapshot of what the DAO has been doing this week, hands both the hexagram and the snapshot to an advisor model (Claude by default, with Grok as a fallback), and returns a reading.</p>
+
+            <p dir="auto">The reading is not generic Wilhelm-Baynes commentary. It is <em>specific</em>. A real draw from earlier today (Hexagram 49 → 1) produced language like:</p>
+
+            <blockquote style="border-left: 3px solid var(--accent); padding: 0.5rem 1rem; margin: 1rem 0; color: var(--text); background: rgba(246, 200, 109, 0.12); border-radius: 4px;">
+              The infrastructure revolution Gary has been running (Beer Hall automation, iOS Reminders pipeline, whitepaper rewrites, advisory snapshot CI) is substantially complete. The moment now calls for one clean outward move toward partners — not more internal tooling.
+            </blockquote>
+
+            <p dir="auto">The oracle mentioned those specific projects because they <em>happened</em> and were <em>captured</em> in places the oracle reads from. That loop is what this post is about.</p>
+
+            <h2 dir="auto">The three offline input channels</h2>
+            <p dir="auto">Every day, a working DAO operator does dozens of small things: merging code, updating a partner&apos;s status in a spreadsheet, capturing an intention on their phone while walking home, posting a progress note to <a href="https://truesight.me/beerhall" target="_blank" rel="noopener noreferrer">Beer Hall</a>, selling a QR-coded bar on <a href="https://agroverse.shop" target="_blank" rel="noopener noreferrer">agroverse.shop</a>.</p>
+
+            <p dir="auto">The oracle does not need a person to write a daily diary. It reads these activities <em>at their source</em>, through three channels:</p>
+
+            <figure style="margin: 0 0 2rem 0;">
+              <svg role="img" aria-labelledby="channelsTitle channelsDesc" viewBox="0 0 640 340" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); background: #fffaf0;">
+                <title id="channelsTitle">Three offline input channels</title>
+                <desc id="channelsDesc">Three parallel lanes — git commits, live sheets, and iOS reminders — all feeding into one Advisory Snapshot document.</desc>
+                <defs>
+                  <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#d38900" />
+                  </marker>
+                </defs>
+                <g font-family="Inter, sans-serif" fill="#2b1d14" text-anchor="middle">
+
+                  <!-- Channel 1: Git -->
+                  <g transform="translate(40,30)">
+                    <rect width="140" height="170" rx="10" ry="10" fill="#fff4d6" stroke="#d38900" stroke-width="1.5"/>
+                    <!-- glyph: brackets -->
+                    <text x="70" y="45" font-size="32" font-weight="700" fill="#d38900">&lt;/&gt;</text>
+                    <text x="70" y="80" font-size="14" font-weight="600">Git commits</text>
+                    <text x="70" y="102" font-size="11" fill="#6f5a44">Every merge</text>
+                    <text x="70" y="117" font-size="11" fill="#6f5a44">= a thing shipped.</text>
+                    <text x="70" y="140" font-size="11" fill="#6f5a44">Walked across 12</text>
+                    <text x="70" y="155" font-size="11" fill="#6f5a44">curated repos.</text>
+                  </g>
+
+                  <!-- Channel 2: Sheets -->
+                  <g transform="translate(250,30)">
+                    <rect width="140" height="170" rx="10" ry="10" fill="#fff4d6" stroke="#d38900" stroke-width="1.5"/>
+                    <!-- glyph: 3x3 grid -->
+                    <g transform="translate(42,25)" stroke="#d38900" stroke-width="1.5" fill="none">
+                      <rect x="0" y="0" width="56" height="36"/>
+                      <line x1="0" y1="12" x2="56" y2="12"/>
+                      <line x1="0" y1="24" x2="56" y2="24"/>
+                      <line x1="18" y1="0" x2="18" y2="36"/>
+                      <line x1="36" y1="0" x2="36" y2="36"/>
+                      <rect x="36" y="24" width="20" height="12" fill="#f4a300" stroke="none"/>
+                    </g>
+                    <text x="70" y="85" font-size="14" font-weight="600">Live sheets</text>
+                    <text x="70" y="107" font-size="11" fill="#6f5a44">Hit List pipeline,</text>
+                    <text x="70" y="122" font-size="11" fill="#6f5a44">partner roster,</text>
+                    <text x="70" y="137" font-size="11" fill="#6f5a44">QR sales, monthly</text>
+                    <text x="70" y="152" font-size="11" fill="#6f5a44">statistics.</text>
+                  </g>
+
+                  <!-- Channel 3: Reminders -->
+                  <g transform="translate(460,30)">
+                    <rect width="140" height="170" rx="10" ry="10" fill="#fff4d6" stroke="#d38900" stroke-width="1.5"/>
+                    <!-- glyph: phone -->
+                    <g transform="translate(55,20)" stroke="#d38900" stroke-width="1.5" fill="none">
+                      <rect x="0" y="0" width="30" height="50" rx="4" ry="4"/>
+                      <line x1="0" y1="6" x2="30" y2="6"/>
+                      <line x1="0" y1="42" x2="30" y2="42"/>
+                      <circle cx="15" cy="46" r="1.5" fill="#d38900" stroke="none"/>
+                      <!-- check list -->
+                      <line x1="6" y1="14" x2="24" y2="14"/>
+                      <line x1="6" y1="22" x2="24" y2="22"/>
+                      <line x1="6" y1="30" x2="24" y2="30"/>
+                      <line x1="6" y1="38" x2="18" y2="38"/>
+                    </g>
+                    <text x="70" y="85" font-size="14" font-weight="600">iOS Reminders</text>
+                    <text x="70" y="107" font-size="11" fill="#6f5a44">Siri captures an</text>
+                    <text x="70" y="122" font-size="11" fill="#6f5a44">intent on the go.</text>
+                    <text x="70" y="137" font-size="11" fill="#6f5a44">Shortcut POSTs it</text>
+                    <text x="70" y="152" font-size="11" fill="#6f5a44">to Edgar.</text>
+                  </g>
+
+                  <!-- Converging arrows into the snapshot -->
+                  <g stroke="#d38900" stroke-width="2" fill="none">
+                    <path d="M 110 200 L 280 255" marker-end="url(#arrow2)"/>
+                    <path d="M 320 200 L 320 255" marker-end="url(#arrow2)"/>
+                    <path d="M 530 200 L 360 255" marker-end="url(#arrow2)"/>
+                  </g>
+
+                  <!-- Snapshot node -->
+                  <g transform="translate(220,260)">
+                    <rect width="200" height="60" rx="10" ry="10" fill="#f4a300" stroke="#8a5a00" stroke-width="1.5"/>
+                    <text x="100" y="28" font-size="14" font-weight="700">ADVISORY_SNAPSHOT.md</text>
+                    <text x="100" y="48" font-size="11" fill="#2b1d14">one markdown file the oracle reads</text>
+                  </g>
+                </g>
+              </svg>
+              <figcaption style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted); text-align: center;">
+                Three channels, one destination. All three feed the same context document the oracle fetches on every call.
+              </figcaption>
+            </figure>
+
+            <h3 dir="auto">Channel 1 — git commit history</h3>
+            <p dir="auto">Every merge on every TrueSightDAO repo is a time-stamped proxy for &ldquo;a real thing shipped.&rdquo; The <a href="https://github.com/TrueSightDAO/market_research/blob/main/scripts/generate_advisory_snapshot.py" target="_blank" rel="noopener noreferrer">snapshot generator</a> walks the last seven days of <code>git log</code> across twelve curated repos and surfaces what changed. Nothing to capture — working equals recorded. You can see the same raw activity the oracle sees by clicking through <a href="https://github.com/TrueSightDAO" target="_blank" rel="noopener noreferrer">the TrueSightDAO GitHub org</a>.</p>
+
+            <h3 dir="auto">Channel 2 — live sheets</h3>
+            <p dir="auto">The Holistic Hit List&apos;s <a href="https://docs.google.com/spreadsheets/d/1eiqZr3LW-qEI6Hmy0Vrur_8flbRwxwA7jXVrbUnHbvc/edit#gid=1606881029" target="_blank" rel="noopener noreferrer">Pipeline Dashboard tab</a> holds every partner prospect by funnel stage. When the operator advances a row from <em>Shortlisted</em> to <em>Meeting Scheduled</em>, that stage count changes. A Google Apps Script we shipped this week — <a href="https://github.com/TrueSightDAO/tokenomics/tree/main/google_app_scripts/pipeline_metrics_snapshot" target="_blank" rel="noopener noreferrer"><code>pipeline_metrics_snapshot</code></a> — mirrors that dashboard once a day into a public machine feed the oracle then reads: <a href="https://github.com/TrueSightDAO/ecosystem_change_logs/blob/main/metrics/weekly.md" target="_blank" rel="noopener noreferrer"><code>ecosystem_change_logs/metrics/weekly.md</code></a>.</p>
+
+            <p dir="auto">Here is the same funnel the oracle now sees, as a picture. The three gold-highlighted stages (Partnered, Meeting Scheduled, Shortlisted) are the ones flagged as &ldquo;where the action is this week&rdquo; — one more email likely tips them into a closed partnership.</p>
+
+            <figure style="margin: 0 0 2rem 0;">
+              <svg role="img" aria-labelledby="funnelTitle funnelDesc" viewBox="0 0 640 420" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); background: #fffaf0;">
+                <title id="funnelTitle">Partner pipeline funnel, current state</title>
+                <desc id="funnelDesc">Horizontal bar chart of 15 pipeline stages. Total 516 stores. Partnered 13, Meeting Scheduled 1, and Shortlisted 3 highlighted in gold. Large upstream backlog: AI photo rejected 107, AI contact form found 76, Not appropriate 71, AI enrich manual 68, AI warm up prospect 65, AI photo needs review 39.</desc>
+                <g font-family="Inter, sans-serif" font-size="11" fill="#2b1d14">
+                  <text x="20" y="24" font-size="13" font-weight="600">Holistic Hit List — 516 stores across 15 stages</text>
+                  <text x="20" y="40" font-size="11" fill="#6f5a44">Gold bars = &quot;action this week&quot;; muted bars = backlog or terminated states.</text>
+
+                  <!-- Stages: rows spaced by 22px; bar scale: 1 store = 3.5px, max width cap -->
+                  <!-- Starting y = 70 -->
+                  <g transform="translate(180,60)" text-anchor="end">
+                    <!-- labels on left column -->
+                  </g>
+
+                  <!-- 15 rows (curated order matches weekly.md) -->
+                  <!-- Row: AI: Enrich — manual 68 -->
+                  <g transform="translate(0,68)">
+                    <text x="175" y="12" text-anchor="end">AI: Enrich — manual</text>
+                    <rect x="185" y="0" width="238" height="14" fill="#c6b89a" rx="2"/>
+                    <text x="429" y="12">68</text>
+                  </g>
+                  <!-- Row: AI: Contact Form found 76 -->
+                  <g transform="translate(0,90)">
+                    <text x="175" y="12" text-anchor="end">AI: Contact Form found</text>
+                    <rect x="185" y="0" width="266" height="14" fill="#c6b89a" rx="2"/>
+                    <text x="457" y="12">76</text>
+                  </g>
+                  <!-- Row: AI: Photo rejected 107 -->
+                  <g transform="translate(0,112)">
+                    <text x="175" y="12" text-anchor="end">AI: Photo rejected</text>
+                    <rect x="185" y="0" width="374" height="14" fill="#c6b89a" rx="2"/>
+                    <text x="565" y="12">107</text>
+                  </g>
+                  <!-- Row: AI: Photo needs review 39 -->
+                  <g transform="translate(0,134)">
+                    <text x="175" y="12" text-anchor="end">AI: Photo needs review</text>
+                    <rect x="185" y="0" width="136" height="14" fill="#c6b89a" rx="2"/>
+                    <text x="327" y="12">39</text>
+                  </g>
+                  <!-- Row: AI: Warm up prospect 65 -->
+                  <g transform="translate(0,156)">
+                    <text x="175" y="12" text-anchor="end">AI: Warm up prospect</text>
+                    <rect x="185" y="0" width="227" height="14" fill="#c6b89a" rx="2"/>
+                    <text x="418" y="12">65</text>
+                  </g>
+                  <!-- Row: Not Appropriate 71 -->
+                  <g transform="translate(0,178)">
+                    <text x="175" y="12" text-anchor="end">Not Appropriate</text>
+                    <rect x="185" y="0" width="248" height="14" fill="#d0c4a8" rx="2"/>
+                    <text x="439" y="12">71</text>
+                  </g>
+                  <!-- Row: Contacted 4 -->
+                  <g transform="translate(0,200)">
+                    <text x="175" y="12" text-anchor="end">Contacted</text>
+                    <rect x="185" y="0" width="14" height="14" fill="#c6b89a" rx="2"/>
+                    <text x="205" y="12">4</text>
+                  </g>
+                  <!-- Row: Shortlisted 3 HIGHLIGHT -->
+                  <g transform="translate(0,222)">
+                    <text x="175" y="12" text-anchor="end" font-weight="600">Shortlisted</text>
+                    <rect x="185" y="0" width="14" height="14" fill="#f4a300" stroke="#8a5a00" stroke-width="0.5" rx="2"/>
+                    <text x="205" y="12" font-weight="600">3</text>
+                  </g>
+                  <!-- Row: Manager Follow-up 26 -->
+                  <g transform="translate(0,244)">
+                    <text x="175" y="12" text-anchor="end">Manager Follow-up</text>
+                    <rect x="185" y="0" width="91" height="14" fill="#c6b89a" rx="2"/>
+                    <text x="282" y="12">26</text>
+                  </g>
+                  <!-- Row: Meeting Scheduled 1 HIGHLIGHT -->
+                  <g transform="translate(0,266)">
+                    <text x="175" y="12" text-anchor="end" font-weight="600">Meeting Scheduled</text>
+                    <rect x="185" y="0" width="6" height="14" fill="#f4a300" stroke="#8a5a00" stroke-width="0.5" rx="2"/>
+                    <text x="197" y="12" font-weight="600">1</text>
+                  </g>
+                  <!-- Row: Instagram Followed 11 -->
+                  <g transform="translate(0,288)">
+                    <text x="175" y="12" text-anchor="end">Instagram Followed</text>
+                    <rect x="185" y="0" width="39" height="14" fill="#c6b89a" rx="2"/>
+                    <text x="230" y="12">11</text>
+                  </g>
+                  <!-- Row: On Hold 17 -->
+                  <g transform="translate(0,310)">
+                    <text x="175" y="12" text-anchor="end">On Hold</text>
+                    <rect x="185" y="0" width="60" height="14" fill="#c6b89a" rx="2"/>
+                    <text x="251" y="12">17</text>
+                  </g>
+                  <!-- Row: Partnered 13 HIGHLIGHT north-star -->
+                  <g transform="translate(0,332)">
+                    <text x="175" y="12" text-anchor="end" font-weight="700">Partnered ★</text>
+                    <rect x="185" y="0" width="46" height="14" fill="#f4a300" stroke="#8a5a00" stroke-width="0.8" rx="2"/>
+                    <text x="237" y="12" font-weight="700">13</text>
+                  </g>
+                  <!-- Row: Rejected 14 -->
+                  <g transform="translate(0,354)">
+                    <text x="175" y="12" text-anchor="end">Rejected</text>
+                    <rect x="185" y="0" width="49" height="14" fill="#d0c4a8" rx="2"/>
+                    <text x="240" y="12">14</text>
+                  </g>
+                  <!-- Row: Followed Up 1 -->
+                  <g transform="translate(0,376)">
+                    <text x="175" y="12" text-anchor="end">Followed Up</text>
+                    <rect x="185" y="0" width="6" height="14" fill="#c6b89a" rx="2"/>
+                    <text x="197" y="12">1</text>
+                  </g>
+
+                  <text x="20" y="410" font-size="10" fill="#6f5a44" font-style="italic">
+                    ★ = north-star. Bar widths are proportional to store counts; exact numbers at the right of each row.
+                  </text>
+                </g>
+              </svg>
+              <figcaption style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted); text-align: center;">
+                The same funnel the oracle reads, visualised. Big upstream (AI triage), small &ldquo;close zone&rdquo; at the bottom — the oracle uses this shape to distinguish &ldquo;we have a supply problem&rdquo; from &ldquo;we have a conversion problem.&rdquo;
+              </figcaption>
+            </figure>
+
+            <h3 dir="auto">Channel 3 — captured intentions</h3>
+            <p dir="auto">Walking to the warehouse, an idea strikes: &ldquo;check the USPS claim on the damaged Davos box.&rdquo; The operator says it to Siri. The Reminder lands in iCloud, and an iOS Shortcut simultaneously <a href="https://github.com/TrueSightDAO/sentiment_importer" target="_blank" rel="noopener noreferrer">POSTs the raw text</a> to Edgar (the DAO&apos;s contribution server), which archives it in <a href="https://github.com/TrueSightDAO/ecosystem_change_logs/tree/main/reminders_raws" target="_blank" rel="noopener noreferrer"><code>ecosystem_change_logs/reminders_raws/</code></a> as <code>&lt;timestamp&gt;.json</code>. At end of day, a <code>rem list</code> sync writes the cleaner open-reminders list to <a href="https://github.com/TrueSightDAO/ecosystem_change_logs/blob/main/reminders/current.json" target="_blank" rel="noopener noreferrer"><code>reminders/current.json</code></a>. The oracle reads both on every call — the overnight-fresh list <em>and</em> the very latest intents the iPhone hasn&apos;t yet synced to the Mac.</p>
+
+            <h2 dir="auto">Where three channels become one context</h2>
+            <p dir="auto">Every six hours, a GitHub Action named <a href="https://github.com/TrueSightDAO/market_research/blob/main/.github/workflows/advisory-snapshot-refresh.yml" target="_blank" rel="noopener noreferrer"><code>advisory-snapshot-refresh</code></a> regenerates one file: <a href="https://github.com/TrueSightDAO/agentic_ai_context/blob/main/ADVISORY_SNAPSHOT.md" target="_blank" rel="noopener noreferrer"><code>ADVISORY_SNAPSHOT.md</code></a>. It is machine-oriented but human-readable — one big markdown document with sections for:</p>
+
+            <ol dir="auto">
+              <li><strong>Purpose &amp; Mission</strong> — the north star (&ldquo;restore 10,000 hectares of Amazon rainforest&rdquo;). Every piece of advice should trace back here.</li>
+              <li><strong>Growth goals</strong> — auto-computed against live sheet data. Current: 2026 QR Code Sales at <strong>$1,646 / $40,000</strong>; USA Agroverse Partners at <strong>26 / 100</strong>.</li>
+              <li><strong>Operator metrics</strong> — the pipeline funnel, auto-synced from the Pipeline Dashboard (new this week; see below).</li>
+              <li><strong>Context updates</strong> — git highlights for the past 7 days.</li>
+              <li><strong>Per-repo git log</strong> — the raw material.</li>
+            </ol>
+
+            <p dir="auto">When you visit <a href="https://oracle.truesight.me" target="_blank" rel="noopener noreferrer">oracle.truesight.me</a> and cast a hexagram, the page fetches this file verbatim, concatenates the operator&apos;s open reminders plus any iPhone intents from the last few hours, and sends the whole context window to Claude alongside your draw. Claude&apos;s reply threads the I&nbsp;Ching symbolism through the actual situation — not through generic commentary.</p>
+
+            <h2 dir="auto">What we shipped this week</h2>
+            <p dir="auto">The feedback loop has existed for weeks. What changed on <strong>21 April 2026</strong> is the <em>Operator metrics</em> section. Before: a manually-maintained markdown stub that nobody updated, which the snapshot embedded as literal <code>&lt;!-- TODO --&gt;</code> placeholder comments. The advisor saw those placeholders and dutifully reported &ldquo;no operator metrics are populated&rdquo; as a context gap on every call.</p>
+
+            <p dir="auto">Now the snapshot embeds the real funnel, auto-synced daily from the Pipeline Dashboard the operator already maintains. Four pull requests across three public repositories, all reviewable:</p>
+
+            <ul dir="auto">
+              <li><a href="https://github.com/TrueSightDAO/tokenomics/pull/229" target="_blank" rel="noopener noreferrer">tokenomics #229</a> — new <a href="https://github.com/TrueSightDAO/tokenomics/tree/main/google_app_scripts/pipeline_metrics_snapshot" target="_blank" rel="noopener noreferrer">pipeline_metrics_snapshot</a> GAS writing <code>metrics/weekly.json</code> + <code>metrics/weekly.md</code>.</li>
+              <li><a href="https://github.com/TrueSightDAO/tokenomics/pull/232" target="_blank" rel="noopener noreferrer">tokenomics #232</a> — summary highlights (Partnered, Meeting Scheduled, Shortlisted) lifted to the top of the metrics block.</li>
+              <li><a href="https://github.com/TrueSightDAO/go_to_market/pull/63" target="_blank" rel="noopener noreferrer">go_to_market #63</a> — repoint the snapshot generator at the new auto-synced source; drop the dead &ldquo;Constraints / risks this week&rdquo; section entirely.</li>
+              <li><a href="https://github.com/TrueSightDAO/agentic_ai_context/pull/33" target="_blank" rel="noopener noreferrer">agentic_ai_context #33</a> — remove the stale <code>CONSTRAINTS.md</code> / <code>METRICS_WEEKLY.md</code> manual stubs.</li>
+            </ul>
+
+            <p dir="auto">The oracle&apos;s advice sharpens with real numbers. It can now say &ldquo;you have one Meeting Scheduled and three Shortlisted — that is where tomorrow morning goes,&rdquo; rather than the generic &ldquo;activate partners from the Hit List.&rdquo;</p>
+
+            <h2 dir="auto">truesight.me as the window into the same world</h2>
+            <p dir="auto">Everything above is public. That is the second half of the feedback loop: not just that the oracle <em>reads</em> what the DAO is doing, but that anyone else can too. The oracle does not read the rendered truesight.me pages — it reads the underlying machine feeds those pages also read — but when you open one of these windows, you are looking at the same world.</p>
+
+            <figure style="margin: 0 0 2rem 0;">
+              <svg role="img" aria-labelledby="windowsTitle windowsDesc" viewBox="0 0 640 260" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); background: #fffaf0;">
+                <title id="windowsTitle">truesight.me as windows onto the DAO</title>
+                <desc id="windowsDesc">A grid of six panels each labelled with a truesight.me surface — ledger, physical assets, signatures, shipments, Beer Hall, oracle — showing that the same underlying activity appears through different lenses.</desc>
+                <g font-family="Inter, sans-serif" fill="#2b1d14" text-anchor="middle">
+                  <text x="320" y="24" font-size="13" font-weight="600">Same activity, different windows</text>
+
+                  <!-- Row 1 -->
+                  <g transform="translate(20,40)">
+                    <rect width="190" height="60" rx="8" ry="8" fill="#fff4d6" stroke="#d38900" stroke-width="1.2"/>
+                    <text x="95" y="25" font-size="12" font-weight="600">truesight.me/ledger</text>
+                    <text x="95" y="45" font-size="10" fill="#6f5a44">contribution records</text>
+                  </g>
+                  <g transform="translate(225,40)">
+                    <rect width="190" height="60" rx="8" ry="8" fill="#fff4d6" stroke="#d38900" stroke-width="1.2"/>
+                    <text x="95" y="25" font-size="12" font-weight="600">/physical-asset-movements</text>
+                    <text x="95" y="45" font-size="10" fill="#6f5a44">where cacao goes</text>
+                  </g>
+                  <g transform="translate(430,40)">
+                    <rect width="190" height="60" rx="8" ry="8" fill="#fff4d6" stroke="#d38900" stroke-width="1.2"/>
+                    <text x="95" y="25" font-size="12" font-weight="600">/digital-signatures</text>
+                    <text x="95" y="45" font-size="10" fill="#6f5a44">active contributor keys</text>
+                  </g>
+
+                  <!-- Row 2 -->
+                  <g transform="translate(20,110)">
+                    <rect width="190" height="60" rx="8" ry="8" fill="#fff4d6" stroke="#d38900" stroke-width="1.2"/>
+                    <text x="95" y="25" font-size="12" font-weight="600">/beerhall</text>
+                    <text x="95" y="45" font-size="10" fill="#6f5a44">daily community digest</text>
+                  </g>
+                  <g transform="translate(225,110)">
+                    <rect width="190" height="60" rx="8" ry="8" fill="#fff4d6" stroke="#d38900" stroke-width="1.2"/>
+                    <text x="95" y="25" font-size="12" font-weight="600">/submissions/...-chatlogs</text>
+                    <text x="95" y="45" font-size="10" fill="#6f5a44">engagement logs</text>
+                  </g>
+                  <g transform="translate(430,110)">
+                    <rect width="190" height="60" rx="8" ry="8" fill="#f4a300" stroke="#8a5a00" stroke-width="1.5"/>
+                    <text x="95" y="25" font-size="12" font-weight="700">oracle.truesight.me</text>
+                    <text x="95" y="45" font-size="10" fill="#2b1d14">daily I Ching advisory</text>
+                  </g>
+
+                  <!-- Shared core underneath -->
+                  <g transform="translate(150,190)">
+                    <ellipse cx="170" cy="22" rx="170" ry="22" fill="#f6c86d" stroke="#d38900" stroke-width="1.5"/>
+                    <text x="170" y="27" font-size="13" font-weight="600">same underlying activity (git • sheets • reminders)</text>
+                  </g>
+                </g>
+              </svg>
+              <figcaption style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted); text-align: center;">
+                Each page on truesight.me is one lens on the shared substrate. The oracle is just another lens — one that reads the substrate and hands it to an advisor model.
+              </figcaption>
+            </figure>
+
+            <p dir="auto">A partial index of the public windows:</p>
+
+            <ul dir="auto">
+              <li><a href="https://oracle.truesight.me" target="_blank" rel="noopener noreferrer">oracle.truesight.me</a> — the Daily Oracle itself</li>
+              <li><a href="https://truesight.me/ledger" target="_blank" rel="noopener noreferrer">truesight.me/ledger</a> — contribution records (every signed event, who submitted, when)</li>
+              <li><a href="https://truesight.me/physical-asset-movements" target="_blank" rel="noopener noreferrer">truesight.me/physical-asset-movements</a> — shipments and inventory transfers</li>
+              <li><a href="https://truesight.me/physical-transactions" target="_blank" rel="noopener noreferrer">truesight.me/physical-transactions</a> — financial records</li>
+              <li><a href="https://truesight.me/physical-assets/serialized" target="_blank" rel="noopener noreferrer">truesight.me/physical-assets/serialized</a> — individual product provenance</li>
+              <li><a href="https://truesight.me/digital-assets" target="_blank" rel="noopener noreferrer">truesight.me/digital-assets</a> — token holdings</li>
+              <li><a href="https://truesight.me/digital-signatures" target="_blank" rel="noopener noreferrer">truesight.me/digital-signatures</a> — active contributor keys</li>
+              <li><a href="https://truesight.me/notarizations" target="_blank" rel="noopener noreferrer">truesight.me/notarizations</a> — notarized artifacts</li>
+              <li><a href="https://truesight.me/beerhall" target="_blank" rel="noopener noreferrer">truesight.me/beerhall</a> — the daily community digest</li>
+              <li><a href="https://truesight.me/rubric" target="_blank" rel="noopener noreferrer">truesight.me/rubric</a> — the scoring rubric contributors are measured against</li>
+              <li><a href="https://truesight.me/quests" target="_blank" rel="noopener noreferrer">truesight.me/quests</a> — open community challenges</li>
+              <li><a href="https://truesight.me/members-directory" target="_blank" rel="noopener noreferrer">truesight.me/members-directory</a> — contributor roster</li>
+            </ul>
+
+            <h2 dir="auto">Why this matters</h2>
+            <p dir="auto">An advisor reading a stale or hand-edited context gives generic advice. An advisor reading a fresh, machine-synced context gives <em>specific</em> advice. For the operator, the difference is 90 minutes at 7am spent writing five personal emails to Shortlisted partners — instead of an hour rummaging through inboxes trying to remember who was warm.</p>
+
+            <p dir="auto">For the community, the difference is visibility. The oracle&apos;s daily reading is a public reflection of where the DAO&apos;s <em>actual</em> energy is going this week. You can read that reflection, push back on it, and suggest what is missing — the same feedback loops that make the oracle sharper over time.</p>
+
+            <h2 dir="auto">Join the discussion</h2>
+            <p dir="auto">Cast your own hexagram at <a href="https://oracle.truesight.me" target="_blank" rel="noopener noreferrer">oracle.truesight.me</a>. Argue with the result in <a href="https://t.me/TrueSightDAO" target="_blank" rel="noopener noreferrer">Telegram</a> or at <a href="https://truesight.me/beerhall" target="_blank" rel="noopener noreferrer">Beer Hall</a>. If a stage you care about should be highlighted in the funnel, or a signal you rely on is missing from the snapshot, every repo linked above is open — file an issue or a pull request.</p>
+
+          </div>
+        </div>
+        <footer class="blog-post-footer">
+          <a href="dapp-digital-signature-email-onboarding-protocol.html" class="text-link">← DApp digital signature email onboarding</a>
+          <a href="../index.html" class="text-link" style="margin-left: auto;">Back to Blog →</a>
+        </footer>
+      </article>
+    </div>
+    <footer class="footer">
+      <div class="footer-content">
+        <div style="margin-bottom: var(--space-lg);">
+          <div style="margin-bottom: var(--space-md);">
+            <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: var(--space-xs); color: var(--text); text-align: center; text-transform: uppercase; letter-spacing: 0.05em;">Transparency</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm) var(--space-lg);">
+              <li><a href="https://truesight.me/physical-asset-movements" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Shipment History</a></li>
+              <li><a href="https://truesight.me/physical-transactions" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Financial Records</a></li>
+              <li><a href="https://agroverse.shop/consignments" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Consignment Tracking</a></li>
+              <li><a href="https://truesight.me/physical-assets/serialized" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Product Verification</a></li>
+              <li><a href="https://truesight.me/digital-assets" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Token Holdings</a></li>
+            </ul>
+          </div>
+          <div style="margin-bottom: var(--space-md);">
+            <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: var(--space-xs); color: var(--text); text-align: center; text-transform: uppercase; letter-spacing: 0.05em;">Governance & Records</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm) var(--space-lg);">
+              <li><a href="https://truesight.me/rubric" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Scoring Rubric</a></li>
+              <li><a href="https://truesight.me/submissions/raw-telegram-chatlogs" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Engagement Logs</a></li>
+            </ul>
+          </div>
+          <div style="margin-bottom: var(--space-md);">
+            <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: var(--space-xs); color: var(--text); text-align: center; text-transform: uppercase; letter-spacing: 0.05em;">Data & Records</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm) var(--space-lg);">
+              <li><a href="https://truesight.me/offchain-assets" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Physical Assets</a></li>
+              <li><a href="https://truesight.me/offchain-asset-location" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Asset Location</a></li>
+              <li><a href="https://truesight.me/digital-signatures" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Digital Signatures</a></li>
+              <li><a href="https://truesight.me/notarizations" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Notarizations</a></li>
+              <li><a href="https://truesight.me/currencies" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Currencies</a></li>
+              <li><a href="https://truesight.me/physical-assets/serialized/sold" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Sold Products</a></li>
+              <li><a href="https://truesight.me/ttl/irs" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Taxation Filings</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: var(--space-xs); color: var(--text); text-align: center; text-transform: uppercase; letter-spacing: 0.05em;">Partnerships</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm) var(--space-lg);">
+              <li><a href="https://agroverse.shop/community-warehouse-manager/sla" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Warehouse Partnership Terms</a></li>
+              <li><a href="https://agroverse.shop/community-distributor/agreement" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Distribution Partnership Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <h2>JOIN OUR MOVEMENT</h2>
+        <p>Co-Create with us</p>
+        <div class="footer-social">
+          <a href="https://t.me/TrueSightDAO" target="_blank" rel="noreferrer noopener" aria-label="Telegram">
+            <img src="../../assets/telegram-icon.jpg" alt="Telegram" width="48" height="48" loading="lazy" />
+          </a>
+          <a href="https://github.com/TrueSightDAO" target="_blank" rel="noreferrer noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"><title>GitHub</title><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+        </div>
+        <p style="margin-top: var(--space-lg); font-size: 0.875rem; color: var(--muted);">
+          TrueSight DAO · Transparent impact data available at <a href="../../index.html" style="color: var(--accent-2);">truesight.me</a>
+        </p>
+      </div>
+    </footer>
+    <script>
+      (function() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const siteHeader = document.querySelector('.site-header');
+        if (!menuToggle || !navMenu) return;
+        menuToggle.addEventListener('click', function() {
+          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', !isExpanded);
+          navMenu.classList.toggle('active');
+          if (siteHeader) siteHeader.classList.toggle('menu-open');
+        });
+      })();
+    </script>
+  </body>
+</html>
