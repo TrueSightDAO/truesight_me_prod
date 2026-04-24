@@ -3405,6 +3405,8 @@ footer {
 
 .ecosystem-detail-body {
   white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
   font-family: "Inter", system-ui, sans-serif;
   font-size: 0.95rem;
   line-height: 1.65;
@@ -3418,10 +3420,18 @@ footer {
 .ecosystem-detail-links {
   margin: 0;
   padding-left: 1.25rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.ecosystem-detail-links li {
+  margin-bottom: 0.35rem;
 }
 
 .ecosystem-detail-links a {
   color: var(--accent-2);
   text-decoration: underline;
   text-underline-offset: 2px;
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
