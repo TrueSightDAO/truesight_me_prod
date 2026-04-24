@@ -104,10 +104,10 @@
 
             <p dir="auto"><em>If you are not a developer, think of this as a shared notebook. Everyone writes into the same notebook in the same format. Anyone who wants to know what happened just reads the notebook. No special permission needed. No custom connections. That is the entire architecture.</em></p>
 
-            <h2 dir="auto">The analogy: a shared notebook that never forgets</h2>
-            <p dir="auto">Imagine a kitchen co-op where every member writes what they contributed — beans, rice, hours worked — into a single large notebook. The notebook lives on a central table. When someone wants to cook dinner, they look at the notebook to see what is available. When someone wants to know who contributed what, they flip through the notebook. When the treasurer needs to split costs, the notebook has every entry.</p>
-            <p dir="auto">Now imagine that every entry in that notebook is signed by the person who wrote it — so nobody can fake someone else's contribution. And imagine that copies of the notebook are posted publicly on a bulletin board every few minutes, so anyone walking by can read the latest version without entering the kitchen.</p>
-            <p dir="auto">That is what the TrueSight DAO ecosystem looks like. The <strong>notebook</strong> is the Google Sheet. The <strong>signatures</strong> are RSA digital signatures. The <strong>bulletin board</strong> is GitHub. And <strong>Edgar</strong> is the person who checks the signatures and copies each entry into the notebook.</p>
+            <h2 dir="auto">The analogy: Stone Soup</h2>
+            <p dir="auto">There is an old folk tale called <em>Stone Soup</em>. A traveler arrives in a village with nothing but an empty pot and a stone. He fills the pot with water, places the stone inside, and begins to stir. Curious villagers gather. The traveler tells them he is making stone soup — and though it is already delicious, it would be even better with a few carrots. A villager brings carrots. Then someone adds onions. Then potatoes, then herbs, then a pinch of salt. By sunset the pot holds a rich, nourishing soup that no single villager could have made alone. The stone was just the excuse to gather contributions in one place.</p>
+            <p dir="auto">TrueSight DAO's architecture works the same way. The <strong>stone</strong> is a single Google Sheet tab — almost empty at first, just a place to gather. The <strong>villagers</strong> are the contributors, services, and tools that each add something: a signed cacao sale, an inventory update, a shipment record, a treasury snapshot. The <strong>traveler stirring the pot</strong> is Edgar, making sure every ingredient is legitimate before it goes in. And the <strong>soup</strong> that emerges is an ecosystem where any new service can dip a spoon in and taste the whole history — no special permission, no custom connection, just read the tab.</p>
+            <p dir="auto">In technical terms: the <strong>pot</strong> is the Google Sheet. The <strong>signatures on each ingredient</strong> are RSA digital signatures. The <strong>copies posted outside the village</strong> are the GitHub JSON caches. And <strong>Edgar</strong> is the gatekeeper who verifies each contribution before it enters the pot.</p>
 
             <h2 dir="auto">The funnel pattern: how one event becomes a row</h2>
             <p dir="auto">Every significant event — a cacao sale, a contribution, an inventory movement, a tree planting, a proposal vote — follows the same four-step funnel. Here is what happens, concretely.</p>
@@ -202,7 +202,7 @@ print(treasury.total_usd())</code></pre>
 
             <h2 dir="auto">Closing: the sheet is the API</h2>
             <p dir="auto">In most software ecosystems, APIs are the integration surface. In ours, the Google Sheet is the integration surface. Edgar writes to it. The DApp reads from it. The static sites read from it. The email agent reads from it. The oracle reads from it. And when the time comes, a blockchain mirror will read from it too.</p>
-            <p dir="auto">The sheet is not a temporary hack. It is the protocol.</p>
+            <p dir="auto">The sheet is not a temporary hack. It is the protocol. And like the stone in the folk tale, it is not the stone that matters — it is what gathers around it. A single empty tab, faithfully stirred, becomes a soup that feeds the whole village.</p>
 
             <h2 dir="auto">References and repositories</h2>
             <ul dir="auto">
