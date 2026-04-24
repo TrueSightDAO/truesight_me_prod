@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1512"/>
+      <stop offset="100%" stop-color="#2d241e"/>
+    </linearGradient>
+    <linearGradient id="funnel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c17817"/>
+      <stop offset="100%" stop-color="#8b5a2b"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bg)" rx="8"/>
+
+  <!-- Title -->
+  <text x="400" y="36" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="600" fill="#e8ddd4">One Funnel. One Sheet. Many Services.</text>
+
+  <!-- Source boxes -->
+  <g font-family="'Inter', sans-serif" font-size="11" fill="#e8ddd4">
+    <!-- DApp -->
+    <rect x="40" y="64" width="120" height="44" rx="6" fill="#3d2e22" stroke="#c17817" stroke-width="1.5"/>
+    <text x="100" y="85" text-anchor="middle" font-weight="600" fill="#c17817">DApp</text>
+    <text x="100" y="100" text-anchor="middle" font-size="9" fill="#b8a89a">RSA-signed events</text>
+
+    <!-- Telegram -->
+    <rect x="180" y="64" width="120" height="44" rx="6" fill="#3d2e22" stroke="#c17817" stroke-width="1.5"/>
+    <text x="240" y="85" text-anchor="middle" font-weight="600" fill="#c17817">Telegram Bot</text>
+    <text x="240" y="100" text-anchor="middle" font-size="9" fill="#b8a89a">/submit commands</text>
+
+    <!-- Python CLI -->
+    <rect x="320" y="64" width="120" height="44" rx="6" fill="#3d2e22" stroke="#c17817" stroke-width="1.5"/>
+    <text x="380" y="85" text-anchor="middle" font-weight="600" fill="#c17817">Python CLI</text>
+    <text x="380" y="100" text-anchor="middle" font-size="9" fill="#b8a89a">dao_client</text>
+
+    <!-- GAS -->
+    <rect x="460" y="64" width="120" height="44" rx="6" fill="#3d2e22" stroke="#c17817" stroke-width="1.5"/>
+    <text x="520" y="85" text-anchor="middle" font-weight="600" fill="#c17817">Google Apps Script</text>
+    <text x="520" y="100" text-anchor="middle" font-size="9" fill="#b8a89a">Sheet triggers</text>
+
+    <!-- Sidekiq -->
+    <rect x="600" y="64" width="120" height="44" rx="6" fill="#3d2e22" stroke="#c17817" stroke-width="1.5"/>
+    <text x="660" y="85" text-anchor="middle" font-weight="600" fill="#c17817">Edgar Sidekiq</text>
+    <text x="660" y="100" text-anchor="middle" font-size="9" fill="#b8a89a">Async workers</text>
+  </g>
+
+  <!-- Arrows down to Edgar -->
+  <g stroke="#8b5a2b" stroke-width="1.5" fill="none" opacity="0.7">
+    <line x1="100" y1="108" x2="100" y2="130"/>
+    <line x1="240" y1="108" x2="240" y2="130"/>
+    <line x1="380" y1="108" x2="380" y2="130"/>
+    <line x1="520" y1="108" x2="520" y2="130"/>
+    <line x1="660" y1="108" x2="660" y2="130"/>
+    <!-- Arrowheads -->
+    <polygon points="100,135 96,128 104,128" fill="#8b5a2b" stroke="none"/>
+    <polygon points="240,135 236,128 244,128" fill="#8b5a2b" stroke="none"/>
+    <polygon points="380,135 376,128 384,128" fill="#8b5a2b" stroke="none"/>
+    <polygon points="520,135 516,128 524,128" fill="#8b5a2b" stroke="none"/>
+    <polygon points="660,135 656,128 664,128" fill="#8b5a2b" stroke="none"/>
+  </g>
+
+  <!-- Edgar -->
+  <rect x="300" y="136" width="200" height="44" rx="6" fill="#c17817" filter="url(#glow)"/>
+  <text x="400" y="157" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700" fill="#1a1512">EDGAR</text>
+  <text x="400" y="172" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" fill="#1a1512">Verify signature → Write row</text>
+
+  <!-- Arrow down to Sheet -->
+  <line x1="400" y1="180" x2="400" y2="210" stroke="#c17817" stroke-width="2" fill="none"/>
+  <polygon points="400,216 395,208 405,208" fill="#c17817"/>
+
+  <!-- Google Sheet -->
+  <rect x="200" y="218" width="400" height="50" rx="6" fill="#0f3d2e" stroke="#27ae60" stroke-width="2"/>
+  <text x="400" y="242" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700" fill="#2ecc71">Google Sheet — Telegram Chat Logs</text>
+  <text x="400" y="258" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" fill="#7de8a8">The universal event bus. One tab. Every consumer reads from here.</text>
+
+  <!-- Brackets / fan out -->
+  <path d="M 400 268 L 400 285" stroke="#27ae60" stroke-width="2" fill="none"/>
+  <path d="M 80 285 L 720 285" stroke="#27ae60" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <line x1="80" y1="285" x2="80" y2="305" stroke="#27ae60" stroke-width="1.5" opacity="0.5"/>
+  <line x1="240" y1="285" x2="240" y2="305" stroke="#27ae60" stroke-width="1.5" opacity="0.5"/>
+  <line x1="400" y1="285" x2="400" y2="305" stroke="#27ae60" stroke-width="1.5" opacity="0.5"/>
+  <line x1="560" y1="285" x2="560" y2="305" stroke="#27ae60" stroke-width="1.5" opacity="0.5"/>
+  <line x1="720" y1="285" x2="720" y2="305" stroke="#27ae60" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Consumer boxes -->
+  <g font-family="'Inter', sans-serif" font-size="10" fill="#e8ddd4">
+    <rect x="20" y="308" width="120" height="36" rx="5" fill="#3d2e22" stroke="#27ae60" stroke-width="1" opacity="0.9"/>
+    <text x="80" y="325" text-anchor="middle" font-weight="600" fill="#2ecc71">truesight.me</text>
+    <text x="80" y="338" text-anchor="middle" font-size="8" fill="#b8a89a">Static pages</text>
+
+    <rect x="180" y="308" width="120" height="36" rx="5" fill="#3d2e22" stroke="#27ae60" stroke-width="1" opacity="0.9"/>
+    <text x="240" y="325" text-anchor="middle" font-weight="600" fill="#2ecc71">agroverse.shop</text>
+    <text x="240" y="338" text-anchor="middle" font-size="8" fill="#b8a89a">Inventory JSON</text>
+
+    <rect x="340" y="308" width="120" height="36" rx="5" fill="#3d2e22" stroke="#27ae60" stroke-width="1" opacity="0.9"/>
+    <text x="400" y="325" text-anchor="middle" font-weight="600" fill="#2ecc71">Email Agent</text>
+    <text x="400" y="338" text-anchor="middle" font-size="8" fill="#b8a89a">Draft suggestions</text>
+
+    <rect x="500" y="308" width="120" height="36" rx="5" fill="#3d2e22" stroke="#27ae60" stroke-width="1" opacity="0.9"/>
+    <text x="560" y="325" text-anchor="middle" font-weight="600" fill="#2ecc71">Daily Oracle</text>
+    <text x="560" y="338" text-anchor="middle" font-size="8" fill="#b8a89a">Advisory digest</text>
+
+    <rect x="660" y="308" width="120" height="36" rx="5" fill="#3d2e22" stroke="#27ae60" stroke-width="1" opacity="0.9"/>
+    <text x="720" y="325" text-anchor="middle" font-weight="600" fill="#2ecc71">+ Your Service</text>
+    <text x="720" y="338" text-anchor="middle" font-size="8" fill="#b8a89a">Just read the tab</text>
+  </g>
+
+  <!-- Bottom note -->
+  <text x="400" y="380" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" fill="#8b7d6b" font-style="italic">No webhooks. No message queues. No custom APIs. Just one tab that every service reads.</text>
+
+  <!-- Layer labels -->
+  <text x="760" y="155" text-anchor="end" font-family="'Inter', sans-serif" font-size="9" fill="#c17817" opacity="0.8">L1 — Signed events</text>
+  <text x="760" y="245" text-anchor="end" font-family="'Inter', sans-serif" font-size="9" fill="#27ae60" opacity="0.8">L2 — Sheet + GitHub caches</text>
+</svg>
