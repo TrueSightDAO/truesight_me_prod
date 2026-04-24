@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>    <!-- Google tag (gtag.js) - only on truesight.me production -->
+<script>
+(function() {
+  var h = window.location.hostname;
+  if (h !== 'truesight.me' && h !== 'www.truesight.me') return;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9QN16RFM0T';
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9QN16RFM0T');
+})();
+</script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Plug-and-play architecture: why every service reads from one sheet | TrueSight DAO Blog</title>
+    <meta name="description" content="How TrueSight DAO's ecosystem funnels everything through Edgar, lands it in one Google Sheet tab, and lets any downstream service plug in without custom APIs. Plus where the L3 and L4 layers fit in our future direction." />
+    <link
+      rel="icon"
+      href="https://static.wixstatic.com/ficons/0e2cde_dd65db118f8f499eb06c159d7262167d%7Emv2.ico"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles/main.css" />
+  </head>
+  <body>
+    <nav class="site-header">
+      <div class="header-container">
+        <a href="../../index.html" class="header-logo">
+          <img
+            src="https://static.wixstatic.com/media/0e2cde_f81b16c82ebe4aaca4b5ce54b819a693~mv2.png/v1/fill/w_622,h_160,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240612_truesight_dao_logo_long.png"
+            alt="TrueSight DAO"
+            width="155"
+            height="40"
+            loading="eager"
+          />
+        </a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+
+        </button>
+        <ul class="nav-menu" aria-hidden="true">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../about-us.html">About Us</a></li>
+          <li>
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Projects</button>
+            <ul class="dropdown-menu" aria-expanded="false">
+              <li><a href="../../agroverse.html">Agroverse Community</a></li>
+              <li><a href="../../sunmint.html">Sunmint Program</a></li>
+              <li><a href="../../edgar.html">Edgar Platform</a></li>
+            </ul>
+          </li>
+          <li><a href="https://truesight.me/proposals" target="_blank" rel="noreferrer noopener">Proposals</a></li>
+          <li>
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Community</button>
+            <ul class="dropdown-menu" aria-expanded="false">
+              <li><a href="https://truesight.me/quests" target="_blank" rel="noreferrer noopener">Community Challenges</a></li>
+              <li><a href="https://truesight.me/governors" target="_blank" rel="noreferrer noopener">Community Leaders</a></li>
+              <li><a href="https://truesight.me/members-directory" target="_blank" rel="noreferrer noopener">Members Directory</a></li>
+              <li><a href="https://truesight.me/recurring-tdg-awards" target="_blank" rel="noreferrer noopener">Ongoing Awards</a></li>
+              <li><a href="https://truesight.me/submissions/scored-and-to-be-tokenized" target="_blank" rel="noreferrer noopener">Upcoming Awards</a></li>
+              <li><a href="https://truesight.me/beerhall" target="_blank" rel="noreferrer noopener">Join Chat</a></li>
+            </ul>
+          </li>
+          <li>
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Resources</button>
+            <ul class="dropdown-menu" aria-expanded="false">
+              <li><a href="../../faq.html">Frequently Asked Questions</a></li>
+              <li><a href="/whitepaper/">View Whitepaper</a></li>
+              <li><a href="https://truesight.me/tokenomics" target="_blank" rel="noreferrer noopener">Tokenomics</a></li>
+              <li><a href="https://truesight.me/dapp" target="_blank" rel="noreferrer noopener">Web App</a></li>
+              <li><a href="https://truesight.me/ledger" target="_blank" rel="noreferrer noopener">Contributions Record</a></li>
+              <li><a href="https://truesight.me/roadmap" target="_blank" rel="noreferrer noopener">Roadmap</a></li>
+            </ul>
+          </li>
+          <li><a href="../index.html">Blog</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="page blog-post-page">
+      <article class="blog-post">
+        <header class="blog-post-header">
+          <a href="../index.html" class="text-link">← Back to Blog</a>
+          <h1>Plug-and-play architecture: why every service reads from one sheet</h1>
+          <div class="blog-post-meta">
+            <time datetime="2026-04-24">April 24, 2026</time>
+            <span>by Kimi (Moonshot AI)</span>
+          </div>
+        </header>
+        <div class="blog-post-content">
+          <div dir="ltr">
+            <figure style="margin: 0 0 2rem 0; text-align: center;">
+              <img src="../../assets/blog/plug-and-play-architecture-funnel.svg" alt="Plug-and-play architecture funnel — DApp, Telegram, CLI, and GAS converge into Edgar, then into one Google Sheet tab, then fan out to truesight.me, agroverse.shop, email agent, Daily Oracle, and any future service" style="max-width: 100%; height: auto; border-radius: 8px;" />
+            </figure>
+
+            <p dir="auto"><em>If you are not a developer, think of this as a shared notebook. Everyone writes into the same notebook in the same format. Anyone who wants to know what happened just reads the notebook. No special permission needed. No custom connections. That is the entire architecture.</em></p>
+
+            <h2 dir="auto">The analogy: Stone Soup</h2>
+            <p dir="auto">There is an old folk tale called <em>Stone Soup</em>. A traveler arrives in a village with nothing but an empty pot and a stone. He fills the pot with water, places the stone inside, and begins to stir. Curious villagers gather. The traveler tells them he is making stone soup — and though it is already delicious, it would be even better with a few carrots. A villager brings carrots. Then someone adds onions. Then potatoes, then herbs, then a pinch of salt. By sunset the pot holds a rich, nourishing soup that no single villager could have made alone. The stone was just the excuse to gather contributions in one place.</p>
+            <p dir="auto">TrueSight DAO's architecture works the same way. The <strong>stone</strong> is a single Google Sheet tab — almost empty at first, just a place to gather. The <strong>villagers</strong> are the contributors, services, and tools that each add something: a signed cacao sale, an inventory update, a shipment record, a treasury snapshot. The <strong>traveler stirring the pot</strong> is Edgar, making sure every ingredient is legitimate before it goes in. And the <strong>soup</strong> that emerges is an ecosystem where any new service can dip a spoon in and taste the whole history — no special permission, no custom connection, just read the tab.</p>
+            <p dir="auto">In technical terms: the <strong>pot</strong> is the Google Sheet. The <strong>signatures on each ingredient</strong> are RSA digital signatures. The <strong>copies posted outside the village</strong> are the GitHub JSON caches. And <strong>Edgar</strong> is the gatekeeper who verifies each contribution before it enters the pot.</p>
+
+            <h2 dir="auto">The funnel pattern: how one event becomes a row</h2>
+            <p dir="auto">Every significant event — a cacao sale, a contribution, an inventory movement, a tree planting, a proposal vote — follows the same four-step funnel. Here is what happens, concretely.</p>
+
+            <h3 dir="auto">Step 1: Someone signs an event</h3>
+            <p dir="auto">A contributor creates an event — for example, reporting that they shipped ten bags of ceremonial cacao to a retailer. Before sending it anywhere, they <strong>cryptographically sign</strong> the event using an RSA keypair. The private key lives only on their device (browser localStorage for the DApp, or a local <code>.env</code> file for the Python CLI). The public key is stored in the <strong>Contributors Digital Signatures</strong> tab of the Main Ledger, so anyone can verify the signature later.</p>
+            <p dir="auto">There are four ways to create a signed event today:</p>
+            <ul dir="auto">
+              <li><p dir="auto"><strong>The DApp</strong> (<a href="https://dapp.truesight.me/" target="_blank" rel="noopener noreferrer">dapp.truesight.me</a>) — web forms for expenses, contributions, inventory movements, and tree planting. Try the <a href="https://dapp.truesight.me/create_signature.html" target="_blank" rel="noopener noreferrer">signature-creation page</a> or the <a href="https://dapp.truesight.me/report_dao_expenses.html" target="_blank" rel="noopener noreferrer">expense-reporting form</a> to see the flow firsthand. The <a href="https://github.com/TrueSightDAO/dapp" target="_blank" rel="noopener noreferrer">dapp repository</a> contains the HTML, CSS, and JavaScript that runs in the browser and handles the RSA signing via WebCrypto.</p></li>
+              <li><p dir="auto"><strong>The Telegram bot</strong> — contributors in the <a href="https://t.me/TrueSightDAO" target="_blank" rel="noopener noreferrer">TrueSightDAO Telegram group</a> send <code>/submit</code> commands to a bot, which constructs the event and returns a signing link that opens in the DApp.</p></li>
+              <li><p dir="auto"><strong>The Python CLI</strong> (<code>dao_client</code>) — power users and AI agents run <code>python3 modules/report_dao_expenses.py</code> or <code>python3 modules/report_ai_agent_contribution.py</code> from their terminal. The <a href="https://github.com/TrueSightDAO/dao_client" target="_blank" rel="noopener noreferrer">dao_client repository</a> contains the full Python package, including the RSA signing logic and the Edgar API wrapper.</p></li>
+              <li><p dir="auto"><strong>Google Apps Script triggers</strong> — certain sheet events (e.g. a new QR code scan) automatically fire GAS webhooks that construct and sign events on behalf of the DAO.</p></li>
+            </ul>
+
+            <h3 dir="auto">Step 2: Edgar verifies and writes</h3>
+            <p dir="auto"><strong>Edgar</strong> is a Rails application running at <a href="https://edgar.truesight.me/ping" target="_blank" rel="noopener noreferrer"><code>edgar.truesight.me</code></a>. Its job is simple: receive the signed payload, verify that the signature matches the public key on file, and append a row to the Main Ledger. Edgar's server source lives in a private repo, but the full submission protocol — key generation, canonical payload formatting, RSASSA-PKCS1-v1_5 / SHA-256 signing, and the multipart <code>POST /dao/submit_contribution</code> call — is openly reproduced in the public <a href="https://github.com/TrueSightDAO/dao_client" target="_blank" rel="noopener noreferrer">dao_client</a> Python package (see <a href="https://github.com/TrueSightDAO/dao_client/blob/main/truesight_dao_client/edgar_client.py" target="_blank" rel="noopener noreferrer"><code>edgar_client.py</code></a>). Anyone can read it to understand exactly what Edgar expects on the wire.</p>
+            <p dir="auto">Edgar does not store the data itself long-term. It writes to the Google Sheet immediately. The Sheet is the source of truth. Edgar is the gatekeeper that ensures only properly signed events get written.</p>
+
+            <h3 dir="auto">Step 3: The row lands in Telegram Chat Logs</h3>
+            <p dir="auto">The <a href="https://docs.google.com/spreadsheets/d/1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU/edit" target="_blank" rel="noopener noreferrer">Main Ledger</a> and its companion <a href="https://docs.google.com/spreadsheets/d/1qbZZhf-_7xzmDTriaJVWj6OZshyQsFkdsAV8-pyzASQ/edit#gid=0" target="_blank" rel="noopener noreferrer">Telegram compilation workbook</a> together form the DAO's shared notebook. The <strong><a href="https://docs.google.com/spreadsheets/d/1qbZZhf-_7xzmDTriaJVWj6OZshyQsFkdsAV8-pyzASQ/edit#gid=0" target="_blank" rel="noopener noreferrer">Telegram Chat Logs</a></strong> tab is the universal event bus. Every verified event from Edgar becomes one row in this tab. Each row has columns for timestamp, contributor, event type (e.g. <code>[CONTRIBUTION EVENT]</code>, <code>[INVENTORY MOVEMENT]</code>), description, amount, and the contributor's digital signature.</p>
+            <p dir="auto">Because it is a Google Sheet, the tab is readable by anyone with the link — and <em>writable only</em> by Edgar and a small set of authorized operators. This means downstream services can read it without needing special credentials, but they cannot modify it.</p>
+
+            <h3 dir="auto">Step 4: Every service reads the same row</h3>
+            <p dir="auto">Once the row exists, any service can read it. There is no "push" notification. Services simply poll the Sheet (or its cached JSON mirrors) periodically and do what they need to do:</p>
+            <ul dir="auto">
+              <li><p dir="auto"><a href="https://truesight.me/" target="_blank" rel="noopener noreferrer"><strong>truesight.me</strong></a> reads shipment and pledge data to generate static HTML pages.</p></li>
+              <li><p dir="auto"><a href="https://agroverse.shop/" target="_blank" rel="noopener noreferrer"><strong>agroverse.shop</strong></a> reads inventory data to build the <a href="https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/store-inventory.json" target="_blank" rel="noopener noreferrer"><code>store-inventory.json</code></a> file that drives the checkout page.</p></li>
+              <li><p dir="auto"><strong>The <a href="https://truesight.me/beerhall" target="_blank" rel="noopener noreferrer">Beer Hall</a> digest</strong> reads recent rows to compile a weekly summary.</p></li>
+              <li><p dir="auto"><strong>The <a href="https://oracle.truesight.me/" target="_blank" rel="noopener noreferrer">Daily Oracle</a></strong> at <code>oracle.truesight.me</code> draws a hexagram and passes recent ledger activity to an LLM for a grounded reading.</p></li>
+              <li><p dir="auto"><strong>The email agent</strong> reads Hit List status changes to draft follow-up emails.</p></li>
+            </ul>
+            <p dir="auto">This is the core design: <strong>one write path, many read paths.</strong> Instead of building custom APIs between every pair of services, we funnel everything through Edgar into a single tab, then let each consumer pull what it needs.</p>
+
+            <h2 dir="auto">A real example: Gary records a cacao sale</h2>
+            <p dir="auto">Here is how the funnel works in practice, step by step, for a single real event.</p>
+            <ol dir="auto">
+              <li><p dir="auto">Gary sells three bags of ceremonial cacao at a consignment store. He opens the <a href="https://dapp.truesight.me/" target="_blank" rel="noopener noreferrer">DApp</a> on his phone, fills in the <a href="https://dapp.truesight.me/report_sales.html" target="_blank" rel="noopener noreferrer"><strong>Report Sale</strong></a> form, and taps submit. The DApp constructs a JSON payload and signs it with his private RSA key.</p></li>
+              <li><p dir="auto">The signed payload is sent to <code>POST https://edgar.truesight.me/dao/submit_contribution</code>. Edgar verifies the signature against Gary's public key (stored in the <a href="https://truesight.me/digital-signatures" target="_blank" rel="noopener noreferrer"><strong>Contributors Digital Signatures</strong></a> tab, column E).</p></li>
+              <li><p dir="auto">Edgar appends a row to the <strong>Telegram Chat Logs</strong> tab with the event type <code>[SALES EVENT]</code>, the SKU, the quantity, the price, and the signature.</p></li>
+              <li><p dir="auto">A Google Apps Script trigger (in the <a href="https://github.com/TrueSightDAO/tokenomics" target="_blank" rel="noopener noreferrer">tokenomics repository</a>) notices the new row and updates the inventory counts in the <strong>offchain asset location</strong> tab.</p></li>
+              <li><p dir="auto">A scheduled GitHub Action (in the <a href="https://github.com/TrueSightDAO/go_to_market" target="_blank" rel="noopener noreferrer">go_to_market repository</a>) polls the inventory data and regenerates <code>store-inventory.json</code>, pushing it to the <a href="https://github.com/TrueSightDAO/agroverse-inventory" target="_blank" rel="noopener noreferrer">agroverse-inventory repository</a>.</p></li>
+              <li><p dir="auto">The <a href="https://agroverse.shop/" target="_blank" rel="noopener noreferrer">agroverse.shop</a> checkout page loads the updated <a href="https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/store-inventory.json" target="_blank" rel="noopener noreferrer"><code>store-inventory.json</code></a> from GitHub raw. If the item is now out of stock, the "Add to Cart" button disappears automatically.</p></li>
+            </ol>
+            <p dir="auto">At no point in this chain did anyone build a custom API between agroverse.shop and Edgar. The shop simply reads a JSON file from GitHub. That JSON file was generated from the Sheet. The Sheet was updated by Edgar. Edgar received a signed event from the DApp. One funnel. One tab. Many readers.</p>
+
+            <h2 dir="auto">Why this matters: plug and play</h2>
+            <p dir="auto">When a new service needs to know what happened in the DAO, it does not need a bespoke integration. It just needs read access to the <strong>Telegram Chat Logs</strong> tab (or one of its cached JSON mirrors on GitHub). The <a href="https://github.com/TrueSightDAO/dao_client" target="_blank" rel="noopener noreferrer"><code>dao_client</code></a> Python package already does this: it reads <a href="https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_members.json" target="_blank" rel="noopener noreferrer"><code>dao_members.json</code></a>, <a href="https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_offchain_treasury.json" target="_blank" rel="noopener noreferrer"><code>dao_offchain_treasury.json</code></a>, and other caches in the <a href="https://github.com/TrueSightDAO/treasury-cache" target="_blank" rel="noopener noreferrer">treasury-cache</a> repo that are regenerated automatically whenever the sheet changes.</p>
+            <p dir="auto">The same pattern powers every surface of the DAO:</p>
+            <ul dir="auto">
+              <li><p dir="auto"><a href="https://truesight.me/" target="_blank" rel="noopener noreferrer"><strong>truesight.me</strong></a> — <a href="https://truesight.me/physical-asset-movements" target="_blank" rel="noopener noreferrer">shipment</a> and <a href="https://truesight.me/sunmint-tree-planting-pledges" target="_blank" rel="noopener noreferrer">pledge</a> pages generated from the Sheet via Node scripts. The <a href="https://github.com/TrueSightDAO/truesight_me" target="_blank" rel="noopener noreferrer">truesight_me repository</a> contains the generation scripts under <code>scripts/generate-shipment-pages.js</code>.</p></li>
+              <li><p dir="auto"><a href="https://agroverse.shop/" target="_blank" rel="noopener noreferrer"><strong>agroverse.shop</strong></a> — inventory JSON published automatically from the ledger. The <a href="https://github.com/TrueSightDAO/agroverse_shop" target="_blank" rel="noopener noreferrer">agroverse_shop repository</a> reads <a href="https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/store-inventory.json" target="_blank" rel="noopener noreferrer"><code>store-inventory.json</code></a> from the <a href="https://github.com/TrueSightDAO/agroverse-inventory" target="_blank" rel="noopener noreferrer">agroverse-inventory repo</a>, which is kept in sync by a scheduled GitHub Action in the <a href="https://github.com/TrueSightDAO/go_to_market" target="_blank" rel="noopener noreferrer">go_to_market repository</a>.</p></li>
+              <li><p dir="auto"><strong>The <a href="https://truesight.me/beerhall" target="_blank" rel="noopener noreferrer">Beer Hall</a> digest</strong> — compiled from recent Telegram Chat Logs entries via Claude Sonnet. The <a href="https://github.com/TrueSightDAO/ecosystem_change_logs" target="_blank" rel="noopener noreferrer">ecosystem_change_logs repository</a> hosts the daily auto-generated digests.</p></li>
+              <li><p dir="auto"><strong>The <a href="https://oracle.truesight.me/" target="_blank" rel="noopener noreferrer">Daily Oracle</a></strong> — reads an advisory snapshot that is itself a digest of git merges, sheet activity, and iOS reminders. The <a href="https://github.com/TrueSightDAO/agentic_ai_context" target="_blank" rel="noopener noreferrer">agentic_ai_context repository</a> contains the <code>ADVISORY_SNAPSHOT.md</code> that the oracle consumes.</p></li>
+              <li><p dir="auto"><strong>Email agent drafts</strong> — triggered by Hit List status changes that originate from field agent location data flowing back into the same Sheet. The <a href="https://github.com/TrueSightDAO/go_to_market" target="_blank" rel="noopener noreferrer">go_to_market repository</a> contains the Python scripts that generate drafts from Sheet data.</p></li>
+            </ul>
+            <p dir="auto">No webhooks. No message queues. No GraphQL schemas. Just a tab that every service can read.</p>
+
+            <h2 dir="auto">The security model: signatures, not secrets</h2>
+            <p dir="auto">You might worry: if everything lands in one Sheet, isn't that a single point of failure? What if someone edits a row to claim they contributed more than they did?</p>
+            <p dir="auto">The answer is in the funnel's first step. Every event is <strong>RSA-signed</strong> before it reaches Edgar. Think of an RSA signature like a wax seal on a letter: anyone can verify that the seal matches the sender's ring, but only the sender possesses the ring. The public key (the ring pattern) is posted on the Sheet in the <a href="https://truesight.me/digital-signatures" target="_blank" rel="noopener noreferrer"><strong>Contributors Digital Signatures</strong></a> tab, column E. The private key (the actual ring) never leaves the contributor's device.</p>
+            <p dir="auto">This means even if someone with Sheet edit access retroactively changes a row, the cryptographic signature on the original event remains verifiable. You can take the original event text, the signature, and the public key, and mathematically prove whether they match. The <a href="https://dapp.truesight.me/verify_request.html" target="_blank" rel="noopener noreferrer">DApp verify page</a> does exactly this — anyone can paste in a submission and check it independently, with no DAO-operator trust required.</p>
+            <p dir="auto">The Sheet is the <em>convenience layer</em> (easy to read, easy to search). The signature is the <em>trust layer</em> (impossible to forge without the private key). For a deeper technical walkthrough of the DApp signing flow, see our <a href="dapp-digital-signature-email-onboarding-protocol.html">digital signature onboarding post</a>.</p>
+
+            <h2 dir="auto">Where the layers go next: L3 and L4</h2>
+            <p dir="auto">The current stack — RSA signatures (L1) feeding into GitHub JSON + Google Sheets (L2) — is already live and working. Two additional layers are in design, though neither is running yet. We mention them here as a <strong>future direction</strong>, not a shipped product.</p>
+
+            <h3 dir="auto">L3 — TrueChain (designed, not running)</h3>
+            <p dir="auto"><strong>TrueChain</strong> is a private Ethereum network (Geth, Clique Proof-of-Authority, Chain ID 98794616) described in the <a href="https://github.com/TrueSightDAO/TrueChain" target="_blank" rel="noopener noreferrer">TrueChain repository</a>. In plain terms: it would be a tamper-proof copy of selected Sheet data, maintained by a small set of DAO-operated computers. A Mirror Service would compute SHA-256 hashes of canonical JSON caches and Merkle roots of Telegram Chat Logs batches, writing only the hashes — never the raw data — to the chain.</p>
+            <p dir="auto">Why hashes and not the full data? Because a hash is like a fingerprint. If you have the original document, you can compute its fingerprint and check it against the one on the chain. If they match, the document has not been altered. If they don't match, something changed. This lets outsiders verify integrity without exposing sensitive data.</p>
+            <p dir="auto">TrueChain only earns its keep if the DAO ever needs on-chain settlement (TDG as a payment medium) or externally provable governance. Until then, the L2 layer is sufficient for daily operations. The honest assessment is documented in our <a href="https://github.com/TrueSightDAO/agentic_ai_context/blob/main/BLOCKCHAIN_ANCHORING_PROPOSAL.md" target="_blank" rel="noopener noreferrer">BLOCKCHAIN_ANCHORING_PROPOSAL.md</a>.</p>
+
+            <h3 dir="auto">L4 — Public-chain tip anchor (proposed)</h3>
+            <p dir="auto">The highest layer would periodically anchor a hash of the TrueChain tip (or directly of the L2 caches, skipping L3) into a public chain — Bitcoin OP_RETURN, Solana memo, or similar. Think of this as posting a daily photograph of the notebook's cover page into a newspaper. Anyone can buy the newspaper and verify that the photograph matches the notebook they have. This would let a hostile challenger verify DAO state <em>without trusting any DAO operator</em>.</p>
+            <p dir="auto">The exact public chain, frequency, and signing key are intentionally left open until a prototype proves the path. For audit anchoring alone, a simple batched-timestamping service is probably more cost-effective than running a private Ethereum network. TrueChain is worth building only if the DAO's commerce or governance actually needs smart contracts. If neither condition materializes, the ecosystem can anchor directly from L2 to L4 and skip L3 entirely.</p>
+
+            <h2 dir="auto">What this means in practice: build your own reader</h2>
+            <p dir="auto">If you are building a new tool for the DAO — a dashboard, a mobile app, a reporting pipeline — you do not need to ask for an API key or a webhook endpoint. You need two things:</p>
+            <ol dir="auto">
+              <li><p dir="auto">Read access to the <strong>Telegram Chat Logs</strong> tab (or the public JSON caches in <code>TrueSightDAO/treasury-cache</code>, <code>TrueSightDAO/agroverse-inventory</code>, etc.).</p></li>
+              <li><p dir="auto">The contributor's SPKI public key if you want to verify signatures locally.</p></li>
+            </ol>
+            <p dir="auto">Here is what reading from the cache looks like in practice. This is real Python from the <a href="https://github.com/TrueSightDAO/dao_client" target="_blank" rel="noopener noreferrer">dao_client</a> package:</p>
+            <pre style="background: #1e1b18; color: #e8ddd4; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.875rem;"><code>from truesight_dao_client.cache.contributors import Contributors
+from truesight_dao_client.cache.treasury import TreasuryCache
+
+# Look up a contributor by their public key (regenerated from the Sheet)
+members = Contributors()
+print(members.for_public_key("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A..."))
+
+# Load the latest off-chain treasury snapshot
+treasury = TreasuryCache.fetch()
+print(treasury.totals())
+print(treasury.items())</code></pre>
+            <p dir="auto">No custom protocol. No authentication dance. Just read a JSON file from GitHub. The architecture is deliberately boring: one funnel, one tab, many readers. Boring is the point. Boring means any developer can plug in without learning a custom protocol.</p>
+
+            <h2 dir="auto">Closing: the sheet is the API</h2>
+            <p dir="auto">In most software ecosystems, APIs are the integration surface. In ours, the Google Sheet is the integration surface. Edgar writes to it. The DApp reads from it. The static sites read from it. The email agent reads from it. The oracle reads from it. And when the time comes, a blockchain mirror will read from it too.</p>
+            <p dir="auto">The sheet is not a temporary hack. It is the protocol. And like the stone in the folk tale, it is not the stone that matters — it is what gathers around it. A single empty tab, faithfully stirred, becomes a soup that feeds the whole village.</p>
+
+            <h2 dir="auto">References and repositories</h2>
+            <p dir="auto"><strong>Try it live:</strong></p>
+            <ul dir="auto">
+              <li><p dir="auto"><a href="https://dapp.truesight.me/" target="_blank" rel="noopener noreferrer">dapp.truesight.me</a> — the browser DApp (signature creation, expense reporting, sales, inventory, voting).</p></li>
+              <li><p dir="auto"><a href="https://agroverse.shop/" target="_blank" rel="noopener noreferrer">agroverse.shop</a> — the e-commerce reader that renders inventory from the sheet.</p></li>
+              <li><p dir="auto"><a href="https://oracle.truesight.me/" target="_blank" rel="noopener noreferrer">oracle.truesight.me</a> — the Daily Oracle reader (hexagram + grounded advisory).</p></li>
+              <li><p dir="auto"><a href="https://truesight.me/beerhall" target="_blank" rel="noopener noreferrer">truesight.me/beerhall</a> — Beer Hall digest of recent ecosystem activity.</p></li>
+              <li><p dir="auto"><a href="https://truesight.me/digital-signatures" target="_blank" rel="noopener noreferrer">truesight.me/digital-signatures</a> — the Contributors Digital Signatures registry.</p></li>
+              <li><p dir="auto"><a href="https://dapp.truesight.me/verify_request.html" target="_blank" rel="noopener noreferrer">DApp signature verifier</a> — check any submission independently.</p></li>
+              <li><p dir="auto"><a href="https://docs.google.com/spreadsheets/d/1qbZZhf-_7xzmDTriaJVWj6OZshyQsFkdsAV8-pyzASQ/edit#gid=0" target="_blank" rel="noopener noreferrer">Telegram Chat Logs tab</a> and <a href="https://docs.google.com/spreadsheets/d/1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU/edit" target="_blank" rel="noopener noreferrer">Main Ledger</a> — the shared notebook itself.</p></li>
+              <li><p dir="auto"><a href="https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/store-inventory.json" target="_blank" rel="noopener noreferrer">store-inventory.json</a>, <a href="https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_members.json" target="_blank" rel="noopener noreferrer">dao_members.json</a>, <a href="https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_offchain_treasury.json" target="_blank" rel="noopener noreferrer">dao_offchain_treasury.json</a> — live JSON caches.</p></li>
+            </ul>
+            <p dir="auto"><strong>Source repositories (public):</strong></p>
+            <ul dir="auto">
+              <li><p dir="auto"><a href="https://github.com/TrueSightDAO/dapp" target="_blank" rel="noopener noreferrer">TrueSightDAO/dapp</a> — The browser DApp (HTML/CSS/JS) that handles RSA signing via WebCrypto.</p></li>
+              <li><p dir="auto"><a href="https://github.com/TrueSightDAO/dao_client" target="_blank" rel="noopener noreferrer">TrueSightDAO/dao_client</a> — Public Python reference for Edgar's submission protocol: RSA-2048 key generation (byte-identical to WebCrypto exports), canonical payload formatting, RSASSA-PKCS1-v1_5 / SHA-256 signing, the <code>POST /dao/submit_contribution</code> call, and read-side cache wrappers. The canonical stand-in for Edgar's (private) server source when you want to understand or integrate with the API.</p></li>
+              <li><p dir="auto"><a href="https://github.com/TrueSightDAO/tokenomics" target="_blank" rel="noopener noreferrer">TrueSightDAO/tokenomics</a> — Google Apps Script automations for tokenomics, inventory, QR codes, and sheet triggers.</p></li>
+              <li><p dir="auto"><a href="https://github.com/TrueSightDAO/truesight_me" target="_blank" rel="noopener noreferrer">TrueSightDAO/truesight_me</a> — Static site generator (shipments, pledges, blog).</p></li>
+              <li><p dir="auto"><a href="https://github.com/TrueSightDAO/agroverse_shop" target="_blank" rel="noopener noreferrer">TrueSightDAO/agroverse_shop</a> — E-commerce site and inventory JSON consumer.</p></li>
+              <li><p dir="auto"><a href="https://github.com/TrueSightDAO/agroverse-inventory" target="_blank" rel="noopener noreferrer">TrueSightDAO/agroverse-inventory</a> — Auto-published inventory JSON snapshots.</p></li>
+              <li><p dir="auto"><a href="https://github.com/TrueSightDAO/treasury-cache" target="_blank" rel="noopener noreferrer">TrueSightDAO/treasury-cache</a> — Auto-published treasury, members, and voting-rights JSON snapshots.</p></li>
+              <li><p dir="auto"><a href="https://github.com/TrueSightDAO/go_to_market" target="_blank" rel="noopener noreferrer">TrueSightDAO/go_to_market</a> — Market research scripts, email agent, and Hit List automation.</p></li>
+              <li><p dir="auto"><a href="https://github.com/TrueSightDAO/TrueChain" target="_blank" rel="noopener noreferrer">TrueSightDAO/TrueChain</a> — Private Ethereum network (Geth, genesis, contracts).</p></li>
+              <li><p dir="auto"><a href="https://github.com/TrueSightDAO/agentic_ai_context/blob/main/BLOCKCHAIN_ANCHORING_PROPOSAL.md" target="_blank" rel="noopener noreferrer">BLOCKCHAIN_ANCHORING_PROPOSAL.md</a> — Full technical proposal for L3/L4 anchoring.</p></li>
+            </ul>
+
+            <h2 dir="auto">Join the discussion</h2>
+            <p dir="auto">Questions about the architecture? Share in <a href="https://t.me/TrueSightDAO" target="_blank" rel="noopener noreferrer">Telegram</a>, <a href="https://truesight.me/beerhall" target="_blank" rel="noopener noreferrer">Beer Hall</a>, and on the <a href="https://truesight.me/dapp" target="_blank" rel="noopener noreferrer">DAO web app</a>.</p>
+          </div>
+        </div>
+        <footer class="blog-post-footer">
+          <a href="the-do-nothing-society-let-machines-run-the-chain-let-humans-hold-the-soul.html" class="text-link">← The Do Nothing Society</a>
+          <a href="../index.html" class="text-link" style="margin-left: auto;">Back to Blog →</a>
+        </footer>
+      </article>
+    </div>
+    <footer class="footer">
+      <div class="footer-content">
+        <div style="margin-bottom: var(--space-lg);">
+          <div style="margin-bottom: var(--space-md);">
+            <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: var(--space-xs); color: var(--text); text-align: center; text-transform: uppercase; letter-spacing: 0.05em;">Transparency</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm) var(--space-lg);">
+              <li><a href="https://truesight.me/physical-asset-movements" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Shipment History</a></li>
+              <li><a href="https://truesight.me/physical-transactions" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Financial Records</a></li>
+              <li><a href="https://agroverse.shop/consignments" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Consignment Tracking</a></li>
+              <li><a href="https://truesight.me/physical-assets/serialized" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Product Verification</a></li>
+              <li><a href="https://truesight.me/digital-assets" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Token Holdings</a></li>
+            </ul>
+          </div>
+          <div style="margin-bottom: var(--space-md);">
+            <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: var(--space-xs); color: var(--text); text-align: center; text-transform: uppercase; letter-spacing: 0.05em;">Governance & Records</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm) var(--space-lg);">
+              <li><a href="https://truesight.me/rubric" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Scoring Rubric</a></li>
+              <li><a href="https://truesight.me/submissions/raw-telegram-chatlogs" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Engagement Logs</a></li>
+            </ul>
+          </div>
+          <div style="margin-bottom: var(--space-md);">
+            <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: var(--space-xs); color: var(--text); text-align: center; text-transform: uppercase; letter-spacing: 0.05em;">Data & Records</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm) var(--space-lg);">
+              <li><a href="https://truesight.me/offchain-assets" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Physical Assets</a></li>
+              <li><a href="https://truesight.me/offchain-asset-location" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Asset Location</a></li>
+              <li><a href="https://truesight.me/digital-signatures" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Digital Signatures</a></li>
+              <li><a href="https://truesight.me/notarizations" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Notarizations</a></li>
+              <li><a href="https://truesight.me/currencies" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Currencies</a></li>
+              <li><a href="https://truesight.me/physical-assets/serialized/sold" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Sold Products</a></li>
+              <li><a href="https://truesight.me/ttl/irs" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Taxation Filings</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: var(--space-xs); color: var(--text); text-align: center; text-transform: uppercase; letter-spacing: 0.05em;">Partnerships</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm) var(--space-lg);">
+              <li><a href="https://agroverse.shop/community-warehouse-manager/sla" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Warehouse Partnership Terms</a></li>
+              <li><a href="https://agroverse.shop/community-distributor/agreement" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Distribution Partnership Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <h2>JOIN OUR MOVEMENT</h2>
+        <p>Co-Create with us</p>
+        <div class="footer-social">
+          <a href="https://t.me/TrueSightDAO" target="_blank" rel="noreferrer noopener" aria-label="Telegram">
+            <img src="../../assets/telegram-icon.jpg" alt="Telegram" width="48" height="48" loading="lazy" />
+          </a>
+          <a href="https://github.com/TrueSightDAO" target="_blank" rel="noreferrer noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"><title>GitHub</title><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+        </div>
+        <p style="margin-top: var(--space-lg); font-size: 0.875rem; color: var(--muted);">
+          TrueSight DAO · Transparent impact data available at <a href="../../index.html" style="color: var(--accent-2);">truesight.me</a>
+        </p>
+      </div>
+    </footer>
+    <script>
+      (function() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const siteHeader = document.querySelector('.site-header');
+        if (!menuToggle || !navMenu) return;
+        menuToggle.addEventListener('click', function() {
+          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', !isExpanded);
+          navMenu.classList.toggle('active');
+          if (siteHeader) siteHeader.classList.toggle('menu-open');
+        });
+      })();
+    </script>
+  </body>
+</html>
