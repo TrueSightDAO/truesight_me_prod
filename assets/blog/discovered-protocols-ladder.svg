@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1512"/>
+      <stop offset="100%" stop-color="#2d241e"/>
+    </linearGradient>
+    <linearGradient id="rungActive" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3d2e22"/>
+      <stop offset="100%" stop-color="#4a3729"/>
+    </linearGradient>
+    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" fill="#c17817"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="560" fill="url(#bg)" rx="8"/>
+
+  <!-- Title -->
+  <text x="400" y="36" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="20" font-weight="600" fill="#e8ddd4">The Discovered-Protocol Ladder</text>
+  <text x="400" y="58" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12" fill="#b8a89a">How a DAO grows its rules through use, not specs</text>
+
+  <!-- Column headers -->
+  <text x="60" y="92" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="600" fill="#c17817" letter-spacing="1">STAGE</text>
+  <text x="280" y="92" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="600" fill="#c17817" letter-spacing="1">WHAT EXISTS</text>
+  <text x="600" y="92" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="600" fill="#c17817" letter-spacing="1">EVENTS HERE TODAY</text>
+
+  <!-- Stage 5 (top) -->
+  <g font-family="'Inter', sans-serif" fill="#e8ddd4">
+    <rect x="40" y="106" width="720" height="64" rx="6" fill="url(#rungActive)" stroke="#c17817" stroke-width="1.5"/>
+    <text x="60" y="132" font-size="14" font-weight="600" fill="#c17817">5. Authoritative</text>
+    <text x="60" y="152" font-size="10" fill="#b8a89a">spec doc owns the why</text>
+    <text x="280" y="132" font-size="11">Spec in <tspan font-style="italic">agentic_ai_context/</tspan></text>
+    <text x="280" y="148" font-size="10" fill="#b8a89a">explains nuance, not just shape</text>
+    <text x="600" y="132" font-size="11">[DAPP PERMISSION CHANGE]</text>
+    <text x="600" y="148" font-size="10" fill="#b8a89a">— so far, just one</text>
+  </g>
+
+  <!-- Stage 4 -->
+  <g font-family="'Inter', sans-serif" fill="#e8ddd4">
+    <rect x="40" y="184" width="720" height="64" rx="6" fill="url(#rungActive)" stroke="#c17817" stroke-width="1.5" opacity="0.95"/>
+    <text x="60" y="210" font-size="14" font-weight="600" fill="#c17817">4. Materialized</text>
+    <text x="60" y="230" font-size="10" fill="#b8a89a">view in GitHub-raw cache</text>
+    <text x="280" y="210" font-size="11">JSON snapshot in <tspan font-style="italic">treasury-cache</tspan></text>
+    <text x="280" y="226" font-size="10" fill="#b8a89a">readers stop hitting GAS</text>
+    <text x="600" y="210" font-size="11">permissions.json,</text>
+    <text x="600" y="226" font-size="11">dao_members.json</text>
+  </g>
+
+  <!-- Stage 3 -->
+  <g font-family="'Inter', sans-serif" fill="#e8ddd4">
+    <rect x="40" y="262" width="720" height="80" rx="6" fill="url(#rungActive)" stroke="#c17817" stroke-width="1.5" opacity="0.9"/>
+    <text x="60" y="288" font-size="14" font-weight="600" fill="#c17817">3. Indexed</text>
+    <text x="60" y="308" font-size="10" fill="#b8a89a">handler + dedup</text>
+    <text x="280" y="288" font-size="11">GAS scanner reads Telegram Chat Logs,</text>
+    <text x="280" y="304" font-size="11">dedups, applies side effects</text>
+    <text x="280" y="320" font-size="10" fill="#b8a89a">the ledger reacts</text>
+    <text x="600" y="284" font-size="11">[QR CODE UPDATE]</text>
+    <text x="600" y="300" font-size="11">[STORE ADD] [SALES]</text>
+    <text x="600" y="316" font-size="11">[INVENTORY MOVEMENT]</text>
+    <text x="600" y="332" font-size="11" fill="#b8a89a">+ 6 more</text>
+  </g>
+
+  <!-- Stage 2 -->
+  <g font-family="'Inter', sans-serif" fill="#e8ddd4">
+    <rect x="40" y="356" width="720" height="64" rx="6" fill="url(#rungActive)" stroke="#c17817" stroke-width="1.5" opacity="0.85"/>
+    <text x="60" y="382" font-size="14" font-weight="600" fill="#c17817">2. Formalized</text>
+    <text x="60" y="402" font-size="10" fill="#b8a89a">CLI + DApp parallel</text>
+    <text x="280" y="382" font-size="11">dao_client module</text>
+    <text x="280" y="398" font-size="11">+ DApp page (same payload)</text>
+    <text x="600" y="382" font-size="11" fill="#b8a89a">transient — most events</text>
+    <text x="600" y="398" font-size="11" fill="#b8a89a">graduate quickly to 3.</text>
+  </g>
+
+  <!-- Stage 1 (bottom) -->
+  <g font-family="'Inter', sans-serif" fill="#e8ddd4">
+    <rect x="40" y="434" width="720" height="64" rx="6" fill="url(#rungActive)" stroke="#c17817" stroke-width="1.5" opacity="0.8"/>
+    <text x="60" y="460" font-size="14" font-weight="600" fill="#c17817">1. Sketch</text>
+    <text x="60" y="480" font-size="10" fill="#b8a89a">ad-hoc submission</text>
+    <text x="280" y="460" font-size="11"><tspan font-family="monospace" fill="#c17817">--attr "Label=Value"</tspan></text>
+    <text x="280" y="476" font-size="11">via dao_client; no module yet</text>
+    <text x="600" y="460" font-size="11" fill="#b8a89a">how every event starts —</text>
+    <text x="600" y="476" font-size="11" fill="#b8a89a">most never need to climb.</text>
+  </g>
+
+  <!-- Forcing function arrows on the far right -->
+  <g font-family="'Inter', sans-serif" font-size="9" fill="#c17817">
+    <!-- 1 → 2 -->
+    <line x1="20" y1="430" x2="20" y2="362" stroke="#c17817" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+    <text x="14" y="402" text-anchor="middle" transform="rotate(-90 14 402)" fill="#c17817">usage frequency</text>
+    <!-- 2 → 3 -->
+    <line x1="20" y1="352" x2="20" y2="268" stroke="#c17817" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+    <text x="14" y="312" text-anchor="middle" transform="rotate(-90 14 312)" fill="#c17817">side-effect needed</text>
+    <!-- 3 → 4 -->
+    <line x1="20" y1="258" x2="20" y2="190" stroke="#c17817" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+    <text x="14" y="226" text-anchor="middle" transform="rotate(-90 14 226)" fill="#c17817">read frequency</text>
+    <!-- 4 → 5 -->
+    <line x1="20" y1="180" x2="20" y2="112" stroke="#c17817" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+    <text x="14" y="148" text-anchor="middle" transform="rotate(-90 14 148)" fill="#c17817">non-obvious nuance</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="400" y="528" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#b8a89a">Each rung is paid for by a forcing function. No graduations on schedule —</text>
+  <text x="400" y="544" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#b8a89a">events earn their place by being used.</text>
+</svg>
