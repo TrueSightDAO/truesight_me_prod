@@ -127,8 +127,26 @@
 
         <div id="fundraiser-status" class="section-lead" style="text-align: center;">Loading fundraisers…</div>
 
+        <!-- Same listing pattern as sunmint.html / agroverse.html:
+             .table-wrapper renders on desktop (>=641px), .shipments-cards on
+             mobile (<=640px). Both populated by the same JS render below. -->
+        <div class="table-wrapper">
+          <table class="shipment-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Fundraiser</th>
+                <th>Description</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody id="fundraiser-table-body">
+              <!-- Populated dynamically from treasury-cache/managed-ledgers/_index.json -->
+            </tbody>
+          </table>
+        </div>
         <div class="shipments-cards" id="fundraiser-cards">
-          <!-- Populated dynamically from treasury-cache/managed-ledgers/_index.json -->
+          <!-- Mobile-friendly card view; same data source as the table -->
         </div>
       </section>
 
@@ -231,39 +249,78 @@
           });
         }
 
+        // Build the per-fundraiser presentation hash once so the table and the
+        // card view stay byte-identical (same image, title, links).
+        function fundraiserView(l) {
+          var extra = EXTRA[l.ledger_id] || {};
+          var title = extra.program_name || l.ledger_id;
+          var explorerUrl = extra.explorer_url || ('https://' + l.ledger_id.toLowerCase() + '.truesight.me/');
+          var siteUrl = extra.site_url;
+          var image = extra.image;
+          return {
+            title: title,
+            description: l.description || '',
+            totals: formatCurrencyTotals(l.summary),
+            explorerUrl: explorerUrl,
+            siteUrl: siteUrl,
+            siteLabel: extra.site_label || 'Visit',
+            image: image,
+          };
+        }
+
+        function renderTableRow(v) {
+          var imageHtml = v.image
+            ? '<a href="' + v.explorerUrl + '" target="_blank" rel="noreferrer noopener"><img src="' + v.image + '" alt="' + escapeHtml(v.title) + '" class="shipment-table-image" loading="lazy" /></a>'
+            : '<span class="shipment-table-no-image">—</span>';
+          var siteLink = v.siteUrl
+            ? '<a href="' + v.siteUrl + '" target="_blank" rel="noreferrer noopener" class="cta secondary">' + escapeHtml(v.siteLabel) + '</a>'
+            : '';
+          return '' +
+            '<tr>' +
+              '<td class="shipment-table-image-cell">' + imageHtml + '</td>' +
+              '<td><strong>' + escapeHtml(v.title) + '</strong></td>' +
+              '<td>' + escapeHtml(v.description) + (v.totals ? '<div class="hero-meta" style="margin-top: var(--space-xs);">' + v.totals + '</div>' : '') + '</td>' +
+              '<td>' +
+                '<div style="display: flex; flex-direction: column; gap: var(--space-xs); align-items: flex-start;">' +
+                  '<a href="' + v.explorerUrl + '" target="_blank" rel="noreferrer noopener" class="cta secondary">View Ledger</a>' +
+                  siteLink +
+                '</div>' +
+              '</td>' +
+            '</tr>';
+        }
+
+        function renderCard(v) {
+          var imageHtml = v.image
+            ? '<a href="' + v.explorerUrl + '" target="_blank" rel="noreferrer noopener"><img src="' + v.image + '" alt="' + escapeHtml(v.title) + '" class="shipment-card-image" loading="lazy" /></a>'
+            : '';
+          var siteLink = v.siteUrl
+            ? '<a href="' + v.siteUrl + '" target="_blank" rel="noreferrer noopener" class="cta secondary" style="margin: var(--space-xs);">' + escapeHtml(v.siteLabel) + '</a>'
+            : '';
+          return '' +
+            '<article class="shipment-card">' +
+              imageHtml +
+              '<h3 class="shipment-card-title">' + escapeHtml(v.title) + '</h3>' +
+              '<p class="shipment-card-description">' + escapeHtml(v.description) + '</p>' +
+              (v.totals ? '<div class="hero-meta" style="justify-content: center; margin: var(--space-sm) 0;">' + v.totals + '</div>' : '') +
+              '<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-xs); margin: var(--space-md);">' +
+                '<a href="' + v.explorerUrl + '" target="_blank" rel="noreferrer noopener" class="cta primary">View Ledger</a>' +
+                siteLink +
+              '</div>' +
+            '</article>';
+        }
+
         function renderCards(ledgers) {
-          var container = document.getElementById('fundraiser-cards');
           var status = document.getElementById('fundraiser-status');
+          var tableBody = document.getElementById('fundraiser-table-body');
+          var cardContainer = document.getElementById('fundraiser-cards');
           if (ledgers.length === 0) {
             status.textContent = 'No active fundraisers right now.';
             return;
           }
           status.style.display = 'none';
-          container.innerHTML = ledgers.map(function (l) {
-            var extra = EXTRA[l.ledger_id] || {};
-            var title = extra.program_name || l.ledger_id;
-            var explorerUrl = extra.explorer_url || ('https://' + l.ledger_id.toLowerCase() + '.truesight.me/');
-            var siteUrl = extra.site_url;
-            var image = extra.image;
-            var totals = formatCurrencyTotals(l.summary);
-            var imageHtml = image
-              ? '<a href="' + explorerUrl + '" target="_blank" rel="noreferrer noopener"><img src="' + image + '" alt="' + escapeHtml(title) + '" class="shipment-card-image" loading="lazy" /></a>'
-              : '';
-            var siteLink = siteUrl
-              ? '<a href="' + siteUrl + '" target="_blank" rel="noreferrer noopener" class="cta secondary" style="margin: var(--space-xs);">' + escapeHtml(extra.site_label || 'Visit') + '</a>'
-              : '';
-            return '' +
-              '<article class="shipment-card">' +
-                imageHtml +
-                '<h3 class="shipment-card-title">' + escapeHtml(title) + '</h3>' +
-                '<p class="shipment-card-description">' + escapeHtml(l.description || '') + '</p>' +
-                (totals ? '<div class="hero-meta" style="justify-content: center; margin: var(--space-sm) 0;">' + totals + '</div>' : '') +
-                '<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-xs); margin: var(--space-md);">' +
-                  '<a href="' + explorerUrl + '" target="_blank" rel="noreferrer noopener" class="cta primary">View Ledger</a>' +
-                  siteLink +
-                '</div>' +
-              '</article>';
-          }).join('');
+          var views = ledgers.map(fundraiserView);
+          tableBody.innerHTML = views.map(renderTableRow).join('');
+          cardContainer.innerHTML = views.map(renderCard).join('');
         }
 
         fetch(INDEX_URL, { cache: 'no-cache' })
