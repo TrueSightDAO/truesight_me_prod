@@ -913,18 +913,6 @@
       })();
 
       // Network Sell-Through Report
-      function togglePartnerDetail(row) {
-        const pid = row.dataset.pid;
-        const container = document.getElementById('sell-through-content');
-        const detail = container.querySelector('.partner-detail[data-pid="' + pid + '"]');
-        const arrow = row.querySelector('.expand-arrow');
-        if (detail) {
-          const open = detail.style.display !== 'none';
-          detail.style.display = open ? 'none' : 'table-row';
-          if (arrow) arrow.textContent = open ? '▸' : '▾';
-        }
-      }
-
       (function() {
         const SELL_THROUGH_URL = 'https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/sell-through-report.json';
 
@@ -999,7 +987,7 @@
             const wos = p.weeks_of_stock;
             const hasItems = p.items && p.items.length > 0;
             const arrowHtml = hasItems ? '<span class="expand-arrow">▸</span> ' : '';
-            html += `<tr style="border-bottom:1px solid var(--border);${hasItems ? 'cursor:pointer;' : ''}" class="partner-row" data-pid="${p.partner_id}"${hasItems ? ' onclick="togglePartnerDetail(this)"' : ''}>
+            html += `<tr style="border-bottom:1px solid var(--border);cursor:pointer;" class="partner-row" data-pid="${p.partner_id}">
               <td style="padding:8px;">${arrowHtml}${p.partner_name}<br><small style="color:var(--muted);">${p.location}</small></td>
               <td style="padding:8px;text-align:right;">${fmt(p.inventory_units)}</td>
               <td style="padding:8px;text-align:right;">${fmt1(p.sales_monthly)}</td>
@@ -1016,7 +1004,20 @@
           }
           html += '</tbody></table></div>';
           container.innerHTML = html;
-          // Expand/collapse handled by inline onclick on partner-row
+
+          // Event delegation: click any .partner-row to toggle its detail
+          container.querySelector('table').addEventListener('click', function(e) {
+            const row = e.target.closest('.partner-row');
+            if (!row) return;
+            const pid = row.dataset.pid;
+            const detail = container.querySelector('.partner-detail[data-pid="' + pid + '"]');
+            const arrow = row.querySelector('.expand-arrow');
+            if (detail) {
+              const open = detail.style.display !== 'none';
+              detail.style.display = open ? 'none' : 'table-row';
+              if (arrow) arrow.textContent = open ? '▸' : '▾';
+            }
+          });
 
           container.innerHTML = html;
         }
