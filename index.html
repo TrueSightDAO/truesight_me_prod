@@ -916,8 +916,20 @@
       (function() {
         const SELL_THROUGH_URL = 'https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/sell-through-report.json';
 
-        function pct(v) { return v.toFixed(1) + '%'; }
-        function fmt(v) { return v.toFixed(1); }
+        function pct(v) { return Math.min(v, 100).toFixed(0) + '%'; }
+        function fmt(v) { return v.toFixed(0); }
+
+        function weeksLabel(w) {
+          if (w === null || w === undefined) return '—';
+          return w.toFixed(0) + 'w';
+        }
+
+        function weeksColor(w) {
+          if (w === null || w === undefined) return 'var(--muted)';
+          if (w < 4) return 'var(--accent-1)';
+          if (w <= 12) return 'var(--forest)';
+          return 'var(--accent-2)';
+        }
 
         async function loadSellThrough() {
           try {
@@ -940,27 +952,25 @@
           const s = data.summary;
 
           let html = '<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-sm); margin-bottom: var(--space-lg);">';
-          html += card('Overall Rate', pct(s.overall_sell_through_pct), s.overall_sell_through_pct < 30 ? 'var(--accent-2)' : 'var(--forest)');
-          html += card('Active Partners', s.partners_with_sales + ' / ' + s.total_usa_partners, 'var(--forest)');
-          html += card('Est. Monthly Sales', '$' + fmt(s.total_sales_monthly * 25), 'var(--forest)');
-          html += card('Zero-Sale Partners', s.partners_zero_sales, s.partners_zero_sales > 0 ? 'var(--accent-2)' : 'var(--muted)');
+          html += card('Active', s.active_partners + ' / ' + s.total_usa_partners, 'var(--forest)');
+          html += card('Total Inventory', fmt(s.total_inventory_units) + ' units', 'var(--forest)');
+          html += card('Monthly Sales', fmt(s.total_sales_monthly) + ' units', 'var(--forest)');
+          html += card('Low Stock (&lt;4w)', fmt(s.partners_low_stock), s.partners_low_stock > 0 ? 'var(--accent-1)' : 'var(--muted)');
           html += '</div>';
 
           html += '<h3 style="margin-bottom: var(--space-sm);">By Inventory Type</h3>';
           html += '<div style="overflow-x:auto; margin-bottom: var(--space-lg);">';
           html += '<table style="width:100%; border-collapse:collapse; font-size:0.9rem;">';
           html += '<thead><tr style="text-align:left; border-bottom:2px solid var(--border);">';
-          html += '<th style="padding:8px;">Type</th><th style="padding:8px;text-align:right;">Sales/mo</th><th style="padding:8px;text-align:right;">Restocks/mo</th><th style="padding:8px;text-align:right;">Sell-Thru</th><th style="padding:8px;text-align:right;">Partners</th>';
+          html += '<th style="padding:8px;">Type</th><th style="padding:8px;text-align:right;">Inventory</th><th style="padding:8px;text-align:right;">Sold/mo</th><th style="padding:8px;text-align:right;">Partners</th>';
           html += '</tr></thead><tbody>';
 
-          const types = Object.entries(data.by_inventory_type).sort((a, b) => b[1].sell_through_pct - a[1].sell_through_pct);
+          const types = Object.entries(data.by_inventory_type).sort((a, b) => b[1].total_inventory - a[1].total_inventory);
           for (const [name, t] of types) {
-            const color = t.sell_through_pct >= 50 ? 'var(--forest)' : t.sell_through_pct >= 25 ? 'var(--accent-2)' : 'var(--accent-1)';
             html += `<tr style="border-bottom:1px solid var(--border);">
               <td style="padding:8px;">${name}</td>
-              <td style="padding:8px;text-align:right;">${fmt(t.sales_monthly)}</td>
-              <td style="padding:8px;text-align:right;">${fmt(t.restocks_monthly)}</td>
-              <td style="padding:8px;text-align:right;color:${color};font-weight:600;">${pct(t.sell_through_pct)}</td>
+              <td style="padding:8px;text-align:right;">${fmt(t.total_inventory)}</td>
+              <td style="padding:8px;text-align:right;">${fmt(t.total_sales_monthly)}</td>
               <td style="padding:8px;text-align:right;">${t.partner_count}</td>
             </tr>`;
           }
@@ -968,21 +978,44 @@
 
           html += '<h3 style="margin-bottom: var(--space-sm);">By Partner</h3>';
           html += '<div style="overflow-x:auto;">';
-          html += '<table style="width:100%; border-collapse:collapse; font-size:0.9rem;">';
+          html += '<table style="width:100%; border-collapse:collapse; font-size:0.9rem;" id="partner-table">';
           html += '<thead><tr style="text-align:left; border-bottom:2px solid var(--border);">';
-          html += '<th style="padding:8px;">Partner</th><th style="padding:8px;text-align:right;">Sales/mo</th><th style="padding:8px;text-align:right;">Restocks/mo</th><th style="padding:8px;text-align:right;">Sell-Thru</th>';
+          html += '<th style="padding:8px;">Partner</th><th style="padding:8px;text-align:right;">Inventory</th><th style="padding:8px;text-align:right;">Sold/mo</th><th style="padding:8px;text-align:right;">Weeks Stock</th>';
           html += '</tr></thead><tbody>';
 
           for (const p of data.partners) {
-            const color = p.sell_through_pct >= 50 ? 'var(--forest)' : p.sell_through_pct >= 25 ? 'var(--accent-2)' : p.sell_through_pct > 0 ? 'var(--accent-1)' : 'var(--muted)';
-            html += `<tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:8px;">${p.partner_name}<br><small style="color:var(--muted);">${p.location}</small></td>
+            const wos = p.weeks_of_stock;
+            const hasItems = p.items && p.items.length > 0;
+            html += `<tr style="border-bottom:1px solid var(--border);${hasItems ? 'cursor:pointer;' : ''}" data-pid="${p.partner_id}" class="partner-row">
+              <td style="padding:8px;">${p.partner_name}${hasItems ? ' ▸' : ''}<br><small style="color:var(--muted);">${p.location}</small></td>
+              <td style="padding:8px;text-align:right;">${fmt(p.inventory_units)}</td>
               <td style="padding:8px;text-align:right;">${fmt(p.sales_monthly)}</td>
-              <td style="padding:8px;text-align:right;">${fmt(p.restocks_monthly)}</td>
-              <td style="padding:8px;text-align:right;color:${color};font-weight:600;">${pct(p.sell_through_pct)}</td>
+              <td style="padding:8px;text-align:right;color:${weeksColor(wos)};font-weight:600;">${weeksLabel(wos)}</td>
             </tr>`;
+            if (hasItems) {
+              html += `<tr class="partner-detail" data-pid="${p.partner_id}" style="display:none;"><td colspan="4" style="padding:8px 16px; background:var(--surface); font-size:0.85rem;">`;
+              html += '<table style="width:100%;">';
+              for (const item of p.items) {
+                html += `<tr><td style="padding:4px 0;">${item.inventory_type} &mdash; ${item.sku}</td><td style="padding:4px 0;text-align:right;">${fmt(item.sales_monthly)} sold/mo</td><td style="padding:4px 0;text-align:right;">${fmt(item.inventory_units)} on hand</td></tr>`;
+              }
+              html += '</table></td></tr>';
+            }
           }
           html += '</tbody></table></div>';
+          container.innerHTML = html;
+
+          // Click to expand partner rows
+          container.querySelectorAll('.partner-row').forEach(row => {
+            row.addEventListener('click', () => {
+              const pid = row.dataset.pid;
+              const detail = container.querySelector(`.partner-detail[data-pid="${pid}"]`);
+              if (detail) {
+                const open = detail.style.display !== 'none';
+                detail.style.display = open ? 'none' : 'table-row';
+                row.querySelector('td').innerHTML = row.querySelector('td').innerHTML.replace(open ? ' ▾' : ' ▸', open ? ' ▸' : ' ▾');
+              }
+            });
+          });
 
           container.innerHTML = html;
         }
