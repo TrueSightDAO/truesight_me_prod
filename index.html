@@ -960,19 +960,43 @@
 
           html += '<h3 style="margin-bottom: var(--space-sm);">By Inventory Type</h3>';
           html += '<div style="overflow-x:auto; margin-bottom: var(--space-lg);">';
-          html += '<table style="width:100%; border-collapse:collapse; font-size:0.9rem;">';
+          html += '<table style="width:100%; border-collapse:collapse; font-size:0.9rem;" id="type-table">';
           html += '<thead><tr style="text-align:left; border-bottom:2px solid var(--border);">';
-          html += '<th style="padding:8px;">Type</th><th style="padding:8px;text-align:right;">Inventory</th><th style="padding:8px;text-align:right;">Sold/mo</th><th style="padding:8px;text-align:right;">Partners</th>';
+          html += '<th style="padding:8px;text-align:left;">Type</th><th style="padding:8px;text-align:right;">Inventory</th><th style="padding:8px;text-align:right;">Sold/mo</th><th style="padding:8px;text-align:right;">Partners</th>';
           html += '</tr></thead><tbody>';
 
           const types = Object.entries(data.by_inventory_type).sort((a, b) => b[1].total_inventory - a[1].total_inventory);
           for (const [name, t] of types) {
-            html += `<tr style="border-bottom:1px solid var(--border);">
-              <td style="padding:8px;">${name}</td>
+            // Find partners whose items include this inventory_type so we can
+            // expand a type-row into the partner-level breakdown that
+            // contributed to the aggregate.
+            const partnersForType = data.partners
+              .map(p => {
+                const items = (p.items || []).filter(it => it.inventory_type === name);
+                if (!items.length) return null;
+                const inv = items.reduce((s, it) => s + (Number(it.inventory_units) || 0), 0);
+                const sales = items.reduce((s, it) => s + (Number(it.sales_monthly) || 0), 0);
+                return { partner_name: p.partner_name, location: p.location, items, inv, sales };
+              })
+              .filter(Boolean)
+              .sort((a, b) => b.inv - a.inv);
+            const hasPartners = partnersForType.length > 0;
+            const arrowHtml = hasPartners ? '<span class="expand-arrow">▸</span> ' : '';
+            html += `<tr style="border-top:1px solid var(--border);cursor:pointer;" class="type-row" data-type="${name.replace(/"/g, '&quot;')}">
+              <td style="padding:8px 12px;text-align:left;">${arrowHtml}${name}</td>
               <td style="padding:8px;text-align:right;">${fmt(t.total_inventory)}</td>
               <td style="padding:8px;text-align:right;">${fmt1(t.total_sales_monthly)}</td>
               <td style="padding:8px;text-align:right;">${t.partner_count}</td>
             </tr>`;
+            if (hasPartners) {
+              html += `<tr class="type-detail" data-type="${name.replace(/"/g, '&quot;')}" style="display:none;"><td colspan="4" style="padding:8px 12px; text-align:left; background:var(--surface); font-size:0.85rem;">`;
+              html += '<table style="width:100%;">';
+              for (const pt of partnersForType) {
+                const skuList = pt.items.map(it => it.sku).join(', ');
+                html += `<tr><td style="padding:4px 8px;text-align:left;">${pt.partner_name} <small style="color:var(--muted);">— ${skuList}</small></td><td style="padding:4px 0;text-align:right;">${fmt1(pt.sales)} sold/mo</td><td style="padding:4px 0;text-align:right;">${fmt(pt.inv)} on hand</td></tr>`;
+              }
+              html += '</table></td></tr>';
+            }
           }
           html += '</tbody></table></div>';
 
@@ -1014,6 +1038,20 @@
             if (!row) return;
             const detail = row.nextElementSibling;
             if (!detail || !detail.classList.contains('partner-detail')) return;
+            const arrow = row.querySelector('.expand-arrow');
+            const open = detail.style.display !== 'none';
+            detail.style.display = open ? 'none' : 'table-row';
+            if (arrow) arrow.textContent = open ? '▸' : '▾';
+          });
+
+          // Same pattern for By Inventory Type: click a type-row to expand
+          // the per-partner breakdown that contributed to that type's
+          // aggregate inventory/sales numbers.
+          container.querySelector('#type-table').addEventListener('click', function(e) {
+            const row = e.target.closest('.type-row');
+            if (!row) return;
+            const detail = row.nextElementSibling;
+            if (!detail || !detail.classList.contains('type-detail')) return;
             const arrow = row.querySelector('.expand-arrow');
             const open = detail.style.display !== 'none';
             detail.style.display = open ? 'none' : 'table-row';
