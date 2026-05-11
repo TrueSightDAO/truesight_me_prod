@@ -917,6 +917,7 @@
         const SELL_THROUGH_URL = 'https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/sell-through-report.json';
 
         function fmt(v) { return (v || 0).toFixed(0); }
+        function fmt1(v) { return (v || 0).toFixed(1); }
 
         function weeksLabel(w) {
           if (w === null || w === undefined) return '—';
@@ -953,7 +954,7 @@
           let html = '<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-sm); margin-bottom: var(--space-lg);">';
           html += card('Active', s.active_partners + ' / ' + s.total_usa_partners, 'var(--forest)');
           html += card('Total Inventory', fmt(s.total_inventory_units) + ' units', 'var(--forest)');
-          html += card('Monthly Sales', fmt(s.total_sales_monthly) + ' units', 'var(--forest)');
+          html += card('Monthly Sales', fmt1(s.total_sales_monthly) + ' units', 'var(--forest)');
           html += card('Low Stock (&lt;4w)', fmt(s.partners_low_stock), s.partners_low_stock > 0 ? 'var(--accent-1)' : 'var(--muted)');
           html += '</div>';
 
@@ -969,7 +970,7 @@
             html += `<tr style="border-bottom:1px solid var(--border);">
               <td style="padding:8px;">${name}</td>
               <td style="padding:8px;text-align:right;">${fmt(t.total_inventory)}</td>
-              <td style="padding:8px;text-align:right;">${fmt(t.total_sales_monthly)}</td>
+              <td style="padding:8px;text-align:right;">${fmt1(t.total_sales_monthly)}</td>
               <td style="padding:8px;text-align:right;">${t.partner_count}</td>
             </tr>`;
           }
@@ -988,14 +989,14 @@
             html += `<tr style="border-bottom:1px solid var(--border);${hasItems ? 'cursor:pointer;' : ''}" class="partner-row" data-pid="${p.partner_id}">
               <td style="padding:8px;">${hasItems ? '<span class="expand-arrow">▸</span> ' : ''}${p.partner_name}<br><small style="color:var(--muted);">${p.location}</small></td>
               <td style="padding:8px;text-align:right;">${fmt(p.inventory_units)}</td>
-              <td style="padding:8px;text-align:right;">${fmt(p.sales_monthly)}</td>
+              <td style="padding:8px;text-align:right;">${fmt1(p.sales_monthly)}</td>
               <td style="padding:8px;text-align:right;color:${weeksColor(wos)};font-weight:600;">${weeksLabel(wos)}</td>
             </tr>`;
             if (hasItems) {
               html += `<tr class="partner-detail" data-pid="${p.partner_id}" style="display:none;"><td colspan="4" style="padding:8px 16px; background:var(--surface); font-size:0.85rem;">`;
               html += '<table style="width:100%;">';
               for (const item of p.items) {
-                html += `<tr><td style="padding:4px 0;">${item.inventory_type} &mdash; ${item.sku}</td><td style="padding:4px 0;text-align:right;">${fmt(item.sales_monthly)} sold/mo</td><td style="padding:4px 0;text-align:right;">${fmt(item.inventory_units)} on hand</td></tr>`;
+                html += `<tr><td style="padding:4px 0;">${item.inventory_type} &mdash; ${item.sku}</td><td style="padding:4px 0;text-align:right;">${fmt1(item.sales_monthly)} sold/mo</td><td style="padding:4px 0;text-align:right;">${fmt(item.inventory_units)} on hand</td></tr>`;
               }
               html += '</table></td></tr>';
             }
