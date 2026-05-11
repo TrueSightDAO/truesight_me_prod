@@ -229,6 +229,22 @@
           <div id="chart-error" style="display: none; text-align: center; padding: var(--space-md); background: rgba(244, 163, 0, 0.1); border-radius: 8px; margin-top: var(--space-md); color: var(--accent-2);">
           </div>
         </div>
+
+        <!-- Network Sell-Through -->
+        <div id="sell-through-section" style="margin-top: var(--space-xl); display: none;">
+          <div style="text-align: center; margin-bottom: var(--space-md);">
+            <p class="pill">Network Health</p>
+            <h2 style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">Consignment Sell-Through</h2>
+            <p class="section-lead" style="max-width: 600px; margin: 0 auto;">
+              How quickly USA retail partners sell through inventory. Based on trailing 12-month sales vs. restocks.
+            </p>
+          </div>
+          <div id="sell-through-content" style="max-width: 1000px; margin: 0 auto;">
+            <div id="st-loading" style="text-align: center; padding: var(--space-xl); color: var(--muted);">
+              Loading sell-through data...
+            </div>
+          </div>
+        </div>
       </header>
 
       <section id="ecosystem-updates" class="ecosystem-updates-section" aria-labelledby="ecosystem-updates-heading">
@@ -893,6 +909,95 @@
           document.addEventListener('DOMContentLoaded', loadMonthlyStatistics);
         } else {
           loadMonthlyStatistics();
+        }
+      })();
+
+      // Network Sell-Through Report
+      (function() {
+        const SELL_THROUGH_URL = 'https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/sell-through-report.json';
+
+        function pct(v) { return v.toFixed(1) + '%'; }
+        function fmt(v) { return v.toFixed(1); }
+
+        async function loadSellThrough() {
+          try {
+            const res = await fetch(SELL_THROUGH_URL);
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const data = await res.json();
+            render(data);
+          } catch (e) {
+            console.error('Sell-through load error:', e);
+            document.getElementById('st-loading').textContent = 'Data unavailable. Check back soon.';
+          }
+        }
+
+        function render(data) {
+          const section = document.getElementById('sell-through-section');
+          const container = document.getElementById('sell-through-content');
+          document.getElementById('st-loading').style.display = 'none';
+          section.style.display = 'block';
+
+          const s = data.summary;
+
+          let html = '<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-sm); margin-bottom: var(--space-lg);">';
+          html += card('Overall Rate', pct(s.overall_sell_through_pct), s.overall_sell_through_pct < 30 ? 'var(--accent-2)' : 'var(--forest)');
+          html += card('Active Partners', s.partners_with_sales + ' / ' + s.total_usa_partners, 'var(--forest)');
+          html += card('Est. Monthly Sales', '$' + fmt(s.total_sales_monthly * 25), 'var(--forest)');
+          html += card('Zero-Sale Partners', s.partners_zero_sales, s.partners_zero_sales > 0 ? 'var(--accent-2)' : 'var(--muted)');
+          html += '</div>';
+
+          html += '<h3 style="margin-bottom: var(--space-sm);">By Inventory Type</h3>';
+          html += '<div style="overflow-x:auto; margin-bottom: var(--space-lg);">';
+          html += '<table style="width:100%; border-collapse:collapse; font-size:0.9rem;">';
+          html += '<thead><tr style="text-align:left; border-bottom:2px solid var(--border);">';
+          html += '<th style="padding:8px;">Type</th><th style="padding:8px;text-align:right;">Sales/mo</th><th style="padding:8px;text-align:right;">Restocks/mo</th><th style="padding:8px;text-align:right;">Sell-Thru</th><th style="padding:8px;text-align:right;">Partners</th>';
+          html += '</tr></thead><tbody>';
+
+          const types = Object.entries(data.by_inventory_type).sort((a, b) => b[1].sell_through_pct - a[1].sell_through_pct);
+          for (const [name, t] of types) {
+            const color = t.sell_through_pct >= 50 ? 'var(--forest)' : t.sell_through_pct >= 25 ? 'var(--accent-2)' : 'var(--accent-1)';
+            html += `<tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:8px;">${name}</td>
+              <td style="padding:8px;text-align:right;">${fmt(t.sales_monthly)}</td>
+              <td style="padding:8px;text-align:right;">${fmt(t.restocks_monthly)}</td>
+              <td style="padding:8px;text-align:right;color:${color};font-weight:600;">${pct(t.sell_through_pct)}</td>
+              <td style="padding:8px;text-align:right;">${t.partner_count}</td>
+            </tr>`;
+          }
+          html += '</tbody></table></div>';
+
+          html += '<h3 style="margin-bottom: var(--space-sm);">By Partner</h3>';
+          html += '<div style="overflow-x:auto;">';
+          html += '<table style="width:100%; border-collapse:collapse; font-size:0.9rem;">';
+          html += '<thead><tr style="text-align:left; border-bottom:2px solid var(--border);">';
+          html += '<th style="padding:8px;">Partner</th><th style="padding:8px;text-align:right;">Sales/mo</th><th style="padding:8px;text-align:right;">Restocks/mo</th><th style="padding:8px;text-align:right;">Sell-Thru</th>';
+          html += '</tr></thead><tbody>';
+
+          for (const p of data.partners) {
+            const color = p.sell_through_pct >= 50 ? 'var(--forest)' : p.sell_through_pct >= 25 ? 'var(--accent-2)' : p.sell_through_pct > 0 ? 'var(--accent-1)' : 'var(--muted)';
+            html += `<tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:8px;">${p.partner_name}<br><small style="color:var(--muted);">${p.location}</small></td>
+              <td style="padding:8px;text-align:right;">${fmt(p.sales_monthly)}</td>
+              <td style="padding:8px;text-align:right;">${fmt(p.restocks_monthly)}</td>
+              <td style="padding:8px;text-align:right;color:${color};font-weight:600;">${pct(p.sell_through_pct)}</td>
+            </tr>`;
+          }
+          html += '</tbody></table></div>';
+
+          container.innerHTML = html;
+        }
+
+        function card(label, value, color) {
+          return `<div style="background:var(--surface);padding:var(--space-md);border-radius:8px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            <div style="font-size:1.8rem;font-weight:700;color:${color};">${value}</div>
+            <div style="font-size:0.85rem;color:var(--muted);margin-top:4px;">${label}</div>
+          </div>`;
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', loadSellThrough);
+        } else {
+          loadSellThrough();
         }
       })();
     </script>
