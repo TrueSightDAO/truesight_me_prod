@@ -916,8 +916,7 @@
       (function() {
         const SELL_THROUGH_URL = 'https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/sell-through-report.json';
 
-        function pct(v) { return Math.min(v, 100).toFixed(0) + '%'; }
-        function fmt(v) { return v.toFixed(0); }
+        function fmt(v) { return (v || 0).toFixed(0); }
 
         function weeksLabel(w) {
           if (w === null || w === undefined) return '—';
@@ -986,8 +985,8 @@
           for (const p of data.partners) {
             const wos = p.weeks_of_stock;
             const hasItems = p.items && p.items.length > 0;
-            html += `<tr style="border-bottom:1px solid var(--border);${hasItems ? 'cursor:pointer;' : ''}" data-pid="${p.partner_id}" class="partner-row">
-              <td style="padding:8px;">${p.partner_name}${hasItems ? ' ▸' : ''}<br><small style="color:var(--muted);">${p.location}</small></td>
+            html += `<tr style="border-bottom:1px solid var(--border);${hasItems ? 'cursor:pointer;' : ''}" class="partner-row" data-pid="${p.partner_id}">
+              <td style="padding:8px;">${hasItems ? '<span class="expand-arrow">▸</span> ' : ''}${p.partner_name}<br><small style="color:var(--muted);">${p.location}</small></td>
               <td style="padding:8px;text-align:right;">${fmt(p.inventory_units)}</td>
               <td style="padding:8px;text-align:right;">${fmt(p.sales_monthly)}</td>
               <td style="padding:8px;text-align:right;color:${weeksColor(wos)};font-weight:600;">${weeksLabel(wos)}</td>
@@ -1009,10 +1008,11 @@
             row.addEventListener('click', () => {
               const pid = row.dataset.pid;
               const detail = container.querySelector(`.partner-detail[data-pid="${pid}"]`);
+              const arrow = row.querySelector('.expand-arrow');
               if (detail) {
                 const open = detail.style.display !== 'none';
                 detail.style.display = open ? 'none' : 'table-row';
-                row.querySelector('td').innerHTML = row.querySelector('td').innerHTML.replace(open ? ' ▾' : ' ▸', open ? ' ▸' : ' ▾');
+                if (arrow) arrow.textContent = open ? '▸' : '▾';
               }
             });
           });
