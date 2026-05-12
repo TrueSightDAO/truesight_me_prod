@@ -1010,7 +1010,10 @@
           html += '<th style="padding:8px;text-align:left;">Partner</th><th style="padding:8px;text-align:right;">Trees</th><th style="padding:8px;text-align:right;">Trees/mo</th><th style="padding:8px;text-align:right;">Weeks Stock</th>';
           html += '</tr></thead><tbody>';
 
-          for (const p of data.partners) {
+          const partnersSorted = data.partners.slice().sort(
+            (a, b) => (Number(b.sales_monthly) || 0) - (Number(a.sales_monthly) || 0)
+          );
+          for (const p of partnersSorted) {
             const wos = p.weeks_of_stock;
             const hasItems = p.items && p.items.length > 0;
             const arrowHtml = hasItems ? '<span class="expand-arrow">▸</span> ' : '';
