@@ -952,20 +952,23 @@
           document.getElementById('st-loading').style.display = 'none';
           section.style.display = 'block';
 
-          // Defensive filter — trees/mo accounting must include ONLY retail-
-          // distribution partner types (Consignment + Wholesale). Inventory
-          // leaving a warehouse Operator (e.g. Matheus in Ilhéus) or a Freight
-          // Provider (Omega Services) is in-transit movement to retail
-          // distribution, not actual sell-through to end consumers — would
-          // double-count trees. sync_sell_through_report.py applies the same
-          // filter at JSON generation (market_research#121), so this JS-side
-          // filter is belt-and-suspenders for any stale JSON snapshot the
-          // GitHub raw URL CDN is still serving. See
-          // agentic_ai_context/PARTNER_CHECK_IN_IMPLEMENTATION.md §"Dual-use".
-          const RETAIL_PARTNER_TYPES = new Set(['Consignment', 'Wholesale']);
+          // Defensive filter — trees/mo accounting excludes partner types that
+          // never sell to end consumers (Freight Provider, Supplier). Operator
+          // partners (e.g. Kiki's Cocoa) stay IN because some operators also
+          // handle online fulfillment; their sales_monthly is populated only
+          // from actual QR Code Sales events, so no double-counting.
+          // sync_sell_through_report.py applies the same deny-list filter at
+          // JSON generation (market_research#122) — this JS-side filter is
+          // belt-and-suspenders for any stale JSON snapshot the GitHub raw URL
+          // CDN is still serving. Matheus (Ilhéus) is naturally caught by the
+          // upstream _is_usa(location) filter.
+          // Known limitation: Operator partners with mixed bulk-warehouse +
+          // retail-ready stock may slightly over-count Trees in Pipeline; see
+          // agentic_ai_context/OPEN_FOLLOWUPS for the finer-grained tag.
+          const EXCLUDED_PARTNER_TYPES = new Set(['Freight Provider', 'Supplier']);
           if (Array.isArray(data.partners)) {
             data.partners = data.partners.filter(p =>
-              RETAIL_PARTNER_TYPES.has(String(p && p.partner_type || 'Consignment'))
+              !EXCLUDED_PARTNER_TYPES.has(String(p && p.partner_type || ''))
             );
           }
 
