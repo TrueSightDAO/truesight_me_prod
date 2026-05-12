@@ -956,7 +956,7 @@
 
           let html = '<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-sm); margin-bottom: var(--space-lg);">';
           html += card('Active', s.active_partners + ' / ' + s.total_usa_partners, 'var(--forest)');
-          html += card('Trees in Pipeline', fmt(s.total_inventory_units) + ' awaiting sale', 'var(--forest)');
+          html += card('Trees in Pipeline', fmt(s.total_inventory_units) + ' trees', 'var(--forest)');
           html += card('Trees Financed / mo', fmt1(s.total_sales_monthly) + ' trees', 'var(--forest)');
           html += card('Partners Running Low (&lt;4w)', fmt(s.partners_low_stock), s.partners_low_stock > 0 ? 'var(--accent-1)' : 'var(--muted)');
           html += '</div>';
