@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="smBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1f1712"/>
+      <stop offset="100%" stop-color="#3d2b1f"/>
+    </linearGradient>
+
+    <!-- Central document glow -->
+    <radialGradient id="docGlow" cx="0.5" cy="0.5" r="0.7">
+      <stop offset="0%" stop-color="#f4cf85" stop-opacity="0.55"/>
+      <stop offset="55%" stop-color="#e8a838" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#1f1712" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="docFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7e6c1"/>
+      <stop offset="100%" stop-color="#e8c987"/>
+    </linearGradient>
+
+    <!-- Four contractor halos — slightly different hues for lineage variety -->
+    <radialGradient id="agA" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#e8a838" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#1f1712" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="agB" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#c75b2a" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#1f1712" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="agC" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#a67c52" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#1f1712" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="agD" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#d8a85e" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#1f1712" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#smBg)" rx="8"/>
+
+  <!-- Subtle ambient warmth behind the center -->
+  <ellipse cx="400" cy="210" rx="280" ry="180" fill="url(#docGlow)"/>
+
+  <!-- Connecting threads — agent to document. Drawn first so the doc + figures sit over them. -->
+  <g stroke="#e8a838" stroke-width="1.1" fill="none" opacity="0.32" stroke-linecap="round">
+    <path d="M 180 130 Q 290 170 340 180"/>
+    <path d="M 620 130 Q 510 170 460 180"/>
+    <path d="M 180 305 Q 290 260 340 240"/>
+    <path d="M 620 305 Q 510 260 460 240"/>
+  </g>
+
+  <!-- Pulse dots travelling along the threads (suggesting read/write traffic) -->
+  <g fill="#f4cf85" opacity="0.7">
+    <circle cx="260" cy="155" r="2.4"/>
+    <circle cx="540" cy="155" r="2.4"/>
+    <circle cx="260" cy="280" r="2.4"/>
+    <circle cx="540" cy="280" r="2.4"/>
+  </g>
+
+  <!-- Central document — the shared memory / agentic_ai_context -->
+  <g transform="translate(335, 145)">
+    <!-- Soft glow halo -->
+    <rect x="-14" y="-14" width="158" height="158" rx="14" fill="#e8a838" opacity="0.14"/>
+    <!-- Document body -->
+    <rect x="0" y="0" width="130" height="130" rx="6" fill="url(#docFill)" stroke="#a67c52" stroke-width="1.4"/>
+
+    <!-- Subtle geometric grid texture, suggesting structured documentation -->
+    <g stroke="#a67c52" stroke-width="0.6" opacity="0.32">
+      <line x1="0" y1="22" x2="130" y2="22"/>
+      <line x1="0" y1="44" x2="130" y2="44"/>
+      <line x1="0" y1="66" x2="130" y2="66"/>
+      <line x1="0" y1="88" x2="130" y2="88"/>
+      <line x1="0" y1="110" x2="130" y2="110"/>
+      <line x1="32" y1="0" x2="32" y2="130"/>
+      <line x1="65" y1="0" x2="65" y2="130"/>
+      <line x1="98" y1="0" x2="98" y2="130"/>
+    </g>
+
+    <!-- A few "written" rows — short warm marks suggesting text -->
+    <g fill="#6b4226" opacity="0.7">
+      <rect x="10" y="14" width="64" height="3" rx="1.5"/>
+      <rect x="10" y="36" width="92" height="3" rx="1.5"/>
+      <rect x="10" y="58" width="48" height="3" rx="1.5"/>
+      <rect x="10" y="80" width="88" height="3" rx="1.5"/>
+      <rect x="10" y="102" width="56" height="3" rx="1.5"/>
+    </g>
+
+    <!-- One brighter, recently-edited row to suggest active writes -->
+    <rect x="10" y="58" width="48" height="3" rx="1.5" fill="#c75b2a" opacity="0.9"/>
+  </g>
+
+  <!-- Four contractor figures arranged around the document.
+       Each is a soft organic halo + a small kernel — different warm hues
+       to suggest different lineages (Claude / Kimi / Grok / Gemini, etc.) -->
+
+  <!-- top-left agent -->
+  <g>
+    <ellipse cx="155" cy="120" rx="64" ry="52" fill="url(#agA)"/>
+    <circle cx="155" cy="120" r="14" fill="#e8a838" opacity="0.55"/>
+    <circle cx="155" cy="120" r="6" fill="#f4cf85"/>
+  </g>
+
+  <!-- top-right agent -->
+  <g>
+    <ellipse cx="645" cy="120" rx="64" ry="52" fill="url(#agB)"/>
+    <circle cx="645" cy="120" r="14" fill="#c75b2a" opacity="0.5"/>
+    <circle cx="645" cy="120" r="6" fill="#f4cf85"/>
+  </g>
+
+  <!-- bottom-left agent -->
+  <g>
+    <ellipse cx="155" cy="315" rx="64" ry="52" fill="url(#agC)"/>
+    <circle cx="155" cy="315" r="14" fill="#a67c52" opacity="0.6"/>
+    <circle cx="155" cy="315" r="6" fill="#f4cf85"/>
+  </g>
+
+  <!-- bottom-right agent -->
+  <g>
+    <ellipse cx="645" cy="315" rx="64" ry="52" fill="url(#agD)"/>
+    <circle cx="645" cy="315" r="14" fill="#d8a85e" opacity="0.6"/>
+    <circle cx="645" cy="315" r="6" fill="#f4cf85"/>
+  </g>
+
+  <!-- Faint, near-invisible "rs" labels could go here in future to identify lineages,
+       but the post body covers that. Keep the visual abstract. -->
+</svg>
