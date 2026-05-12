@@ -958,7 +958,7 @@
           html += card('Active', s.active_partners + ' / ' + s.total_usa_partners, 'var(--forest)');
           html += card('Trees in Pipeline', fmt(s.total_inventory_units) + ' awaiting sale', 'var(--forest)');
           html += card('Trees Financed / mo', fmt1(s.total_sales_monthly) + ' trees', 'var(--forest)');
-          html += card('Low Stock (&lt;4w)', fmt(s.partners_low_stock), s.partners_low_stock > 0 ? 'var(--accent-1)' : 'var(--muted)');
+          html += card('Partners Running Low (&lt;4w)', fmt(s.partners_low_stock), s.partners_low_stock > 0 ? 'var(--accent-1)' : 'var(--muted)');
           html += '</div>';
 
           html += '<h3 style="margin-bottom: var(--space-sm);">By Inventory Type</h3>';
@@ -1008,7 +1008,7 @@
           html += '<div style="overflow-x:auto;">';
           html += '<table style="width:100%; border-collapse:collapse; font-size:0.9rem;" id="partner-table">';
           html += '<thead><tr style="text-align:left; border-bottom:2px solid var(--border);">';
-          html += '<th style="padding:8px;text-align:left;">Partner</th><th style="padding:8px;text-align:right;">Pipeline</th><th style="padding:8px;text-align:right;">Trees/mo</th><th style="padding:8px;text-align:right;">Weeks Stock</th>';
+          html += '<th style="padding:8px;text-align:left;">Partner</th><th style="padding:8px;text-align:right;">Pipeline</th><th style="padding:8px;text-align:right;">Trees/mo</th><th style="padding:8px;text-align:right;">Weeks of Pipeline</th>';
           html += '</tr></thead><tbody>';
 
           const partnersSorted = data.partners.slice().sort(
