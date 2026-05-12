@@ -933,7 +933,10 @@
 
         async function loadSellThrough() {
           try {
-            const res = await fetch(SELL_THROUGH_URL);
+            // Bypass browser + Fastly CDN cache so the page reflects the
+            // latest sell-through-report.json instead of a stale snapshot
+            // from earlier today (GitHub raw URLs are CDN-cached for ~5min).
+            const res = await fetch(SELL_THROUGH_URL + '?_=' + Date.now(), { cache: 'no-store' });
             if (!res.ok) throw new Error('HTTP ' + res.status);
             const data = await res.json();
             render(data);
