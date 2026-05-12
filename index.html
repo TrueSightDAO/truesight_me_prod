@@ -956,7 +956,7 @@
 
           let html = '<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-sm); margin-bottom: var(--space-lg);">';
           html += card('Active', s.active_partners + ' / ' + s.total_usa_partners, 'var(--forest)');
-          html += card('Trees in Inventory', fmt(s.total_inventory_units) + ' trees', 'var(--forest)');
+          html += card('Trees in Pipeline', fmt(s.total_inventory_units) + ' awaiting sale', 'var(--forest)');
           html += card('Trees Financed / mo', fmt1(s.total_sales_monthly) + ' trees', 'var(--forest)');
           html += card('Low Stock (&lt;4w)', fmt(s.partners_low_stock), s.partners_low_stock > 0 ? 'var(--accent-1)' : 'var(--muted)');
           html += '</div>';
@@ -965,7 +965,7 @@
           html += '<div style="overflow-x:auto; margin-bottom: var(--space-lg);">';
           html += '<table style="width:100%; border-collapse:collapse; font-size:0.9rem;" id="type-table">';
           html += '<thead><tr style="text-align:left; border-bottom:2px solid var(--border);">';
-          html += '<th style="padding:8px;text-align:left;">Type</th><th style="padding:8px;text-align:right;">Trees</th><th style="padding:8px;text-align:right;">Trees/mo</th><th style="padding:8px;text-align:right;">Partners</th>';
+          html += '<th style="padding:8px;text-align:left;">Type</th><th style="padding:8px;text-align:right;">Pipeline</th><th style="padding:8px;text-align:right;">Trees/mo</th><th style="padding:8px;text-align:right;">Partners</th>';
           html += '</tr></thead><tbody>';
 
           const types = Object.entries(data.by_inventory_type).sort((a, b) => b[1].total_inventory - a[1].total_inventory);
@@ -994,11 +994,12 @@
             if (hasPartners) {
               html += `<tr class="type-detail" data-type="${name.replace(/"/g, '&quot;')}" style="display:none;"><td colspan="4" style="padding:8px 12px; text-align:left; background:var(--surface); font-size:0.85rem;">`;
               html += '<table style="width:100%;">';
+              html += '<thead><tr style="border-bottom:1px solid var(--border);"><th style="padding:4px 8px;text-align:left;font-weight:600;color:var(--muted);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.04em;">Partner</th><th style="padding:4px 0;text-align:right;font-weight:600;color:var(--muted);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.04em;">Trees / mo</th><th style="padding:4px 0;text-align:right;font-weight:600;color:var(--muted);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.04em;">Pipeline</th></tr></thead><tbody>';
               for (const pt of partnersForType) {
                 const skuList = pt.items.map(it => it.sku).join(', ');
-                html += `<tr><td style="padding:4px 8px;text-align:left;">${pt.partner_name} <small style="color:var(--muted);">— ${skuList}</small></td><td style="padding:4px 0;text-align:right;">${fmt1(pt.sales)} trees/mo financed</td><td style="padding:4px 0;text-align:right;">${fmt(pt.inv)} trees on hand</td></tr>`;
+                html += `<tr><td style="padding:4px 8px;text-align:left;">${pt.partner_name} <small style="color:var(--muted);">— ${skuList}</small></td><td style="padding:4px 0;text-align:right;">${fmt1(pt.sales)}</td><td style="padding:4px 0;text-align:right;">${fmt(pt.inv)}</td></tr>`;
               }
-              html += '</table></td></tr>';
+              html += '</tbody></table></td></tr>';
             }
           }
           html += '</tbody></table></div>';
@@ -1007,7 +1008,7 @@
           html += '<div style="overflow-x:auto;">';
           html += '<table style="width:100%; border-collapse:collapse; font-size:0.9rem;" id="partner-table">';
           html += '<thead><tr style="text-align:left; border-bottom:2px solid var(--border);">';
-          html += '<th style="padding:8px;text-align:left;">Partner</th><th style="padding:8px;text-align:right;">Trees</th><th style="padding:8px;text-align:right;">Trees/mo</th><th style="padding:8px;text-align:right;">Weeks Stock</th>';
+          html += '<th style="padding:8px;text-align:left;">Partner</th><th style="padding:8px;text-align:right;">Pipeline</th><th style="padding:8px;text-align:right;">Trees/mo</th><th style="padding:8px;text-align:right;">Weeks Stock</th>';
           html += '</tr></thead><tbody>';
 
           const partnersSorted = data.partners.slice().sort(
@@ -1026,10 +1027,11 @@
             if (hasItems) {
               html += `<tr class="partner-detail" data-pid="${p.partner_id}" style="display:none;"><td colspan="4" style="padding:8px 12px; text-align:left; background:var(--surface); font-size:0.85rem;">`;
               html += '<table style="width:100%;">';
+              html += '<thead><tr style="border-bottom:1px solid var(--border);"><th style="padding:4px 8px;text-align:left;font-weight:600;color:var(--muted);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.04em;">Item</th><th style="padding:4px 0;text-align:right;font-weight:600;color:var(--muted);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.04em;">Trees / mo</th><th style="padding:4px 0;text-align:right;font-weight:600;color:var(--muted);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.04em;">Pipeline</th></tr></thead><tbody>';
               for (const item of p.items) {
-                html += `<tr><td style="padding:4px 8px;text-align:left;">${item.inventory_type} &mdash; ${item.sku}</td><td style="padding:4px 0;text-align:right;">${fmt1(item.sales_monthly)} trees/mo financed</td><td style="padding:4px 0;text-align:right;">${fmt(item.inventory_units)} trees on hand</td></tr>`;
+                html += `<tr><td style="padding:4px 8px;text-align:left;">${item.inventory_type} &mdash; ${item.sku}</td><td style="padding:4px 0;text-align:right;">${fmt1(item.sales_monthly)}</td><td style="padding:4px 0;text-align:right;">${fmt(item.inventory_units)}</td></tr>`;
               }
-              html += '</table></td></tr>';
+              html += '</tbody></table></td></tr>';
             }
           }
           html += '</tbody></table></div>';
