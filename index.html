@@ -215,7 +215,7 @@
         <div id="monthly-sales-chart-section" style="margin-top: var(--space-xl); display: none;">
           <div style="text-align: center; margin-bottom: var(--space-md);">
             <p class="pill">Sales Analytics</p>
-            <h2 style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">Monthly Sales Volume</h2>
+            <h2 style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">Monthly Revenue Funding Trees</h2>
             <p class="section-lead" style="max-width: 600px; margin: 0 auto;">
               Track our sales performance over time. Hover over any month to see both monthly sales and cumulative total.
             </p>
@@ -799,7 +799,7 @@
               labels: labels,
               datasets: [
                 {
-                  label: 'Monthly Sales',
+                  label: 'Revenue Funding Trees',
                   data: monthlySales,
                   borderColor: 'rgb(95, 111, 82)', // --forest color
                   backgroundColor: 'rgba(95, 111, 82, 0.1)',
@@ -850,7 +850,7 @@
                       const cumulativeValue = cumulativeSales[dataIndex];
                       
                       return [
-                        `Monthly Sales: ${formatCurrency(monthlyValue)}`,
+                        `Revenue Funding Trees: ${formatCurrency(monthlyValue)}`,
                         `Cumulative Total: ${formatCurrency(cumulativeValue)}`
                       ];
                     }
