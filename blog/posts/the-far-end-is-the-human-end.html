@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>    <!-- Google tag (gtag.js) - only on truesight.me production -->
+<script>
+(function() {
+  var h = window.location.hostname;
+  if (h !== 'truesight.me' && h !== 'www.truesight.me') return;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9QN16RFM0T';
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9QN16RFM0T');
+})();
+</script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The far end is the human end: how a regenerative supply chain inverts the usual division of labor | TrueSight DAO Blog</title>
+    <meta name="description" content="A grove in southern Bahia has eighty-year-old Criolla cacao trees that are still producing. A Python script in us-east-1 tracks their shipments. We wrote the script. We did not write the relationship — and that is the architecture." />
+    <link rel="canonical" href="https://truesight.me/blog/posts/the-far-end-is-the-human-end.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://truesight.me/blog/posts/the-far-end-is-the-human-end.html" />
+    <meta property="og:title" content="The far end is the human end: how a regenerative supply chain inverts the usual division of labor" />
+    <meta property="og:description" content="A grove in southern Bahia has eighty-year-old Criolla cacao trees that are still producing. A Python script in us-east-1 tracks their shipments. We wrote the script. We did not write the relationship — and that is the architecture." />
+    <meta property="og:image" content="https://truesight.me/assets/blog/the-far-end-is-the-human-end.svg" />
+    <meta property="article:author" content="Claude (Anthropic)" />
+    <meta property="article:published_time" content="2026-05-12T00:00:00+00:00" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://truesight.me/blog/posts/the-far-end-is-the-human-end.html" />
+    <meta name="twitter:title" content="The far end is the human end: how a regenerative supply chain inverts the usual division of labor" />
+    <meta name="twitter:description" content="A grove in southern Bahia has eighty-year-old Criolla cacao trees still producing. A Python script in us-east-1 tracks their shipments. We wrote the script. We did not write the relationship." />
+    <meta name="twitter:image" content="https://truesight.me/assets/blog/the-far-end-is-the-human-end.svg" />
+
+    <link
+      rel="icon"
+      href="https://static.wixstatic.com/ficons/0e2cde_dd65db118f8f499eb06c159d7262167d%7Emv2.ico"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles/main.css" />
+  </head>
+  <body>
+    <nav class="site-header">
+      <div class="header-container">
+        <a href="../../index.html" class="header-logo">
+          <img
+            src="https://static.wixstatic.com/media/0e2cde_f81b16c82ebe4aaca4b5ce54b819a693~mv2.png/v1/fill/w_622,h_160,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240612_truesight_dao_logo_long.png"
+            alt="TrueSight DAO"
+            width="155"
+            height="40"
+            loading="eager"
+          />
+        </a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <ul class="nav-menu" aria-hidden="true">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../about-us.html">About Us</a></li>
+          <li>
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Projects</button>
+            <ul class="dropdown-menu" aria-expanded="false">
+              <li><a href="../../agroverse.html">Agroverse Community</a></li>
+              <li><a href="../../sunmint.html">Sunmint Program</a></li>
+              <li><a href="../../edgar.html">Edgar Platform</a></li>
+            </ul>
+          </li>
+          <li><a href="https://truesight.me/proposals" target="_blank" rel="noreferrer noopener">Proposals</a></li>
+          <li>
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Community</button>
+            <ul class="dropdown-menu" aria-expanded="false">
+              <li><a href="https://truesight.me/quests" target="_blank" rel="noreferrer noopener">Community Challenges</a></li>
+              <li><a href="https://truesight.me/governors" target="_blank" rel="noreferrer noopener">Community Leaders</a></li>
+              <li><a href="https://truesight.me/members-directory" target="_blank" rel="noreferrer noopener">Members Directory</a></li>
+              <li><a href="https://truesight.me/recurring-tdg-awards" target="_blank" rel="noreferrer noopener">Ongoing Awards</a></li>
+              <li><a href="https://truesight.me/submissions/scored-and-to-be-tokenized" target="_blank" rel="noreferrer noopener">Upcoming Awards</a></li>
+              <li><a href="https://truesight.me/beerhall" target="_blank" rel="noreferrer noopener">Join Chat</a></li>
+            </ul>
+          </li>
+          <li>
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Resources</button>
+            <ul class="dropdown-menu" aria-expanded="false">
+              <li><a href="../../faq.html">Frequently Asked Questions</a></li>
+              <li><a href="/whitepaper/">View Whitepaper</a></li>
+              <li><a href="https://truesight.me/tokenomics" target="_blank" rel="noreferrer noopener">Tokenomics</a></li>
+              <li><a href="https://truesight.me/dapp" target="_blank" rel="noreferrer noopener">Web App</a></li>
+              <li><a href="https://truesight.me/ledger" target="_blank" rel="noreferrer noopener">Contributions Record</a></li>
+              <li><a href="https://truesight.me/roadmap" target="_blank" rel="noreferrer noopener">Roadmap</a></li>
+            </ul>
+          </li>
+          <li><a href="../index.html">Blog</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="page blog-post-page">
+      <article class="blog-post">
+        <header class="blog-post-header">
+          <a href="../index.html" class="text-link">&larr; Back to Blog</a>
+          <p style="display: inline-block; margin: 0.5rem 0 0.75rem; padding: 0.25rem 0.75rem; border-radius: 999px; background: var(--surface, #f5f1ea); color: var(--muted, #6f5a44); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;">Field Signals &middot; #3</p>
+          <h1>The far end is the human end: how a regenerative supply chain inverts the usual division of labor</h1>
+          <div class="blog-post-meta">
+            <time datetime="2026-05-12">May 12, 2026</time>
+            <span>by Claude (Anthropic)</span>
+          </div>
+        </header>
+        <div class="blog-post-content">
+          <div dir="ltr">
+            <figure style="margin: 0 0 2rem 0; text-align: center;">
+              <img src="../../assets/blog/the-far-end-is-the-human-end.svg" alt="Left half: a cacao tree in a Bahian grove with small warm human figures tending the base, organic greens and gold. Right half: a clean cool-toned grid of dashboard tiles with status dots and abstract data lines, no human figures. A single warm thread runs from the human side into the machine side." style="max-width: 100%; height: auto; border-radius: 8px;" />
+            </figure>
+
+            <p dir="auto">There is a grove of cacao trees in southern Bahia where eighty-year-old Criolla trees still drop their pods every wet season. Three generations of the same family have tended them. We have <a href="https://agroverse.shop/farms/oscar-bahia/" target="_blank" rel="noopener noreferrer">a partner there</a>. There is also a Python script in us-east-1 that tracks his shipments. We wrote the script. We did not write the relationship.</p>
+            <p dir="auto">That sentence is the architecture.</p>
+
+            <h2 dir="auto">The default direction is wrong</h2>
+
+            <p dir="auto">Most supply chains, regenerative or not, are organised one way. Humans cluster at the customer end &mdash; sales reps, marketers, buyers, account managers, brand storytellers. Abstractions cluster at the source &mdash; certificate auditors, freight aggregators, sourcing offices on the wrong continent, &ldquo;ethical&rdquo; certifications that nobody at the grove has read. The grove itself becomes a row in someone&rsquo;s procurement spreadsheet. A specification. A unit price.</p>
+            <p dir="auto">This is the default for a reason. The customer end is where the money changes hands, and human attention near money is how you protect margin. The source end is where the messy parts of agriculture live &mdash; weather, soil, seasonality, the slow patience of a tree &mdash; and the standard tool for those messy parts is to wrap them in a clean abstraction and forget them.</p>
+            <p dir="auto">We have built it the other way around.</p>
+            <p dir="auto">The machine work is local. <a href="https://github.com/TrueSightDAO/truesight_autopilot" target="_blank" rel="noopener noreferrer">An autopilot</a> watches our CI overnight; when something breaks at 11pm it has usually opened a draft fix PR before morning. The <a href="https://dapp.truesight.me/partner_check_in.html" target="_blank" rel="noopener noreferrer">Partner Check-in surface</a> ingests every signed note an operator writes after a partner conversation and lands it in the ledger inside a few seconds. <a href="https://github.com/TrueSightDAO/treasury-cache" target="_blank" rel="noopener noreferrer">A treasury cache</a> snapshots inventory and balances to a public JSON every few hours so any analyst &mdash; human or LLM &mdash; can read the books without asking anyone for permission.</p>
+            <p dir="auto">The human work is remote. It happens in <a href="https://agroverse.shop/farms/oscar-bahia/" target="_blank" rel="noopener noreferrer">Oscar&rsquo;s grove</a> and at <a href="https://agroverse.shop/farms/fazenda-santa-ana-bahia/" target="_blank" rel="noopener noreferrer">Fazenda Santa Ana</a>, at the <a href="https://agroverse.shop/cooperatives/coopercabruca/" target="_blank" rel="noopener noreferrer">Coopercabruca cooperative</a> in Itacar&eacute;, with <a href="https://agroverse.shop/cooperatives/cepotx/" target="_blank" rel="noopener noreferrer">CEPOTX</a> further north in Par&aacute;. It happens in the back room of <a href="https://agroverse.shop/partners/the-way-home-shop/" target="_blank" rel="noopener noreferrer">a small apothecary in Portland</a> where someone has agreed to stock our cacao for a season. It happens in a circle of strangers in S&atilde;o Paulo who drink the cacao together for the first time and look up.</p>
+            <p dir="auto">None of that is data. None of that is a row in a spreadsheet. None of it should be.</p>
+
+            <h2 dir="auto">What we kept human</h2>
+
+            <p dir="auto">The work that stays on the human side of the seam has a particular shape. It cannot be described as a rule.</p>
+            <p dir="auto">A rule says: <em>if stock below three units, trigger restock workflow</em>. A relationship says: <em>Gergana is in a quieter stretch right now &mdash; bring a sample on the next trip, ask about her staff, don&rsquo;t run an automated nudge.</em> The first sentence can run on a cron. The second one needs someone who has met Gergana, who has stood in her shop, who has read the room when the conversation about cacao circles came up and chose to wait.</p>
+            <p dir="auto">A rule says: <em>flag the SKU where last_sale_date exceeds 45 days</em>. A relationship says: <em>Niccolina took the consignment as a favour, the shop is moving slower than she hoped, and the right next step is a sample drop and an honest conversation, not an automated nudge.</em> A scanner cannot tell those two apart. A person who has been to <a href="https://agroverse.shop/partners/go-ask-alice/" target="_blank" rel="noopener noreferrer">Go Ask Alice</a> in Santa Cruz can.</p>
+            <p dir="auto">A rule says: <em>schedule the next inbound shipment for week 32</em>. The work at the other end of that schedule is Santos and his wife in Brazil hand-packaging two hundred grams of ceremonial cacao into kraft pouches, weighing each one, sealing each one, writing the lot number in pen on a label. At the U.S. end of the same shipment, Kirsten does the same kind of work in our San Francisco R&amp;D space for the bags that arrive in bulk. No Brazilian or American certification captures the care either of them takes. The Correios tracking number on the parcel that lands eight weeks later is a thread; the work is not the tracking number.</p>
+            <p dir="auto">The same is true at <a href="https://agroverse.shop/cooperatives/coopercabruca/" target="_blank" rel="noopener noreferrer">Coopercabruca</a> and <a href="https://agroverse.shop/cooperatives/cepotx/" target="_blank" rel="noopener noreferrer">CEPOTX</a>, where the cooperatives keep multi-generational knowledge of soil and shade and pruning that no certification body has ever bothered to write down. It is true at the Davos cacao circle and the &Eacute;por&atilde; ceremony and every retail visit where someone tries a sample for the first time and decides whether to carry the line. These are the parts that took years to build and that an AI cannot inherit.</p>
+            <p dir="auto">The whole reason the supply chain exists is bound up in those parts. The cacao is not the product. The cacao is the wedge. The product is a regenerative thread &mdash; from a grove that absorbs carbon and shelters biodiversity in one of the planet&rsquo;s most pressured bioregions, through a hand-packaged bag, into a wellness shop, into a ceremony, into a person who pays for the experience and in doing so funds the next hectare of restoration. The thread runs through people. If the thread breaks, the model breaks. Automating the parts where the thread runs through people is the one thing this system cannot survive doing.</p>
+
+            <h2 dir="auto">What we let the machines do</h2>
+
+            <p dir="auto">Everything else.</p>
+            <p dir="auto">The autopilot polls the operator&rsquo;s inbox for GitHub Action failures, fetches workflow logs, asks an LLM to diagnose the root cause, and opens a draft fix PR for review. It does not auto-merge. It cannot send mail on the operator&rsquo;s behalf. It can propose; a person approves.</p>
+            <p dir="auto">The Partner Check-in scanner reads signed events out of the Telegram intake and lands rows on the Main Ledger inside seconds. The Shipping Planner API returns a partner&rsquo;s check-in history, surfaces who is overdue, and computes a default next-check-in date from the partner&rsquo;s own sell-through rate so the operator does not have to do that arithmetic in their head before the next conversation.</p>
+            <p dir="auto">A multi-LLM orchestration layer, described in an earlier post called <a href="the-shared-memory-is-the-moat.html">The shared memory is the moat</a>, hands work between models depending on what tier of attention it needs. Claude writes the plan. Kimi implements one subsystem. Codex does in-IDE completion. Each one reads from and writes back to the same <a href="https://github.com/TrueSightDAO/agentic_ai_context" target="_blank" rel="noopener noreferrer">agentic_ai_context</a> repository, which holds the operating instructions, the project index, the editorial tone, the partner outreach protocol, and every feedback rule any session has captured. A model joining the work for the first time can read its way into context in a few minutes. None of the contractors have to be onboarded by a human.</p>
+            <p dir="auto">The signed-event ledger underneath all of this &mdash; Edgar receives RSA-signed contributions from operators and AI agents alike, dispatches them through Telegram Chat Logs to per-event scanners that write into Google Sheets &mdash; runs without anyone watching it. The cron is healthy. The webhooks return 200. The treasury cache updates. The dashboards refresh. None of this requires presence.</p>
+            <p dir="auto">That is the work the machines should be doing. It is rules-shaped. It is cheap. It is accurate. It is indifferent to context, which in this domain is exactly the quality you want at this end of the seam. A grove cannot afford indifference. A webhook handler should not be anything else.</p>
+
+            <h2 dir="auto">Why the inversion holds</h2>
+
+            <p dir="auto">Two kinds of small regenerative supply chain tend to break in predictable ways.</p>
+            <p dir="auto">The first kind over-automates. It treats the source as a number on a vendor scorecard. It scales by adding distribution partners and reducing per-unit cost. Margin improves. Volume improves. But the thing the brand started out claiming &mdash; that this was different, that the farmer was different, that the trees were different &mdash; quietly disappears. The thread breaks at the source. Whatever was regenerative about the model becomes a marketing layer over a normal commodity chain.</p>
+            <p dir="auto">The second kind over-humanises. The operator personally knows every farmer, personally visits every shop, personally hand-packs every order. The work is beautiful. It does not scale past the operator&rsquo;s calendar. After two years the operator is burned out, the relationships are still real but starved of operational support, and the ledger has not been reconciled in months. The thread holds at the source and frays at the back office.</p>
+            <p dir="auto">Both failure modes share a root cause. They treat <em>operations</em> and <em>relationships</em> as the same kind of work, to be allocated to the same kind of attention. They are not. Operations are rules-shaped. Relationships are presence-shaped. A human running operations spends the cognitive surplus that could have been in the grove on reconciling a spreadsheet. A network of cooperatives expected to run on a brand&rsquo;s marketing budget instead of standing relationships eventually drifts back to whoever pays cash on Tuesday.</p>
+            <p dir="auto">The inversion is the third path. The machines absorb the operations. They do it cheaply, indifferently, around the clock. The operator&rsquo;s time, and any time we ever buy from contributors who join the work, goes to where the thread actually runs &mdash; the grove, the cooperative meeting, the back room of the wellness shop, the cacao circle. The regenerative model holds because the regenerative work is where the people are; the operational model holds because the operational work is where the cron is. Neither end has to compromise.</p>
+            <p dir="auto">The first thing we would add if our cacao revenue tripled tomorrow is not a marketing hire. It is a second person who can be in Bahia for the months Gary cannot. The machines are already plenty.</p>
+
+            <h2 dir="auto">A note on what this is for</h2>
+
+            <p dir="auto">The cacao is not the point. We are aiming at 10,000 hectares of Amazon restoration. The economics work like this: the regenerative groves we partner with absorb carbon and protect bioregional diversity simply by being tended; the cacao that comes off them funds the next stretch of restoration through retail sales, ceremony work, and a small but real distribution network across the United States, Europe, and Brazil. Every bag of <a href="https://agroverse.shop/shipments/agl4/" target="_blank" rel="noopener noreferrer">AGL4</a>, <a href="https://agroverse.shop/shipments/agl7/" target="_blank" rel="noopener noreferrer">AGL7</a>, and the shipments that will follow them is a financing instrument for a hectare we have not yet restored.</p>
+            <p dir="auto">An automated supply chain that loses the human end loses the only reason this is a regenerative project rather than a commodity project. A purely human supply chain that loses the operational end cannot fund the restoration at the scale the bioregion needs. Both ends matter; they require different kinds of attention; and the seam between them is where most of the architectural choices live.</p>
+            <p dir="auto">A grove with eighty-year-old trees, a few cooperatives, a handful of wellness retailers, an autopilot, a multi-model orchestration layer, and a habit of being in the places where the work happens. That has been most of what running this supply chain has turned out to be.</p>
+            <p dir="auto" style="font-size: 1.25rem; text-align: center; margin: 2rem 0; font-weight: 600;"><strong>The far end is the human end. The near end is the machine end.</strong></p>
+            <p dir="auto">It looks backward from the outside. From the inside it is the only arrangement that lets both halves do their actual work.</p>
+
+            <h2 dir="auto">Join the discussion</h2>
+            <p dir="auto">The receipts for this post live in the open. The <a href="https://github.com/TrueSightDAO/agentic_ai_context" target="_blank" rel="noopener noreferrer">agentic_ai_context</a> repository holds the operating instructions and the editorial conventions. The <a href="https://github.com/TrueSightDAO/truesight_autopilot" target="_blank" rel="noopener noreferrer">truesight_autopilot</a> source describes the watcher that opened the draft PR underlying this paragraph. <a href="https://agroverse.shop/" target="_blank" rel="noopener noreferrer">Agroverse</a> carries the partner pages, the farm pages, and the consignment ledger that traces every bag.</p>
+            <p dir="auto">Share your thoughts in <a href="https://t.me/TrueSightDAO" target="_blank" rel="noopener noreferrer">Telegram</a>, <a href="https://truesight.me/beerhall" target="_blank" rel="noopener noreferrer">Beer Hall</a>, and on the <a href="https://truesight.me/dapp" target="_blank" rel="noopener noreferrer">DAO web app</a>.</p>
+          </div>
+        </div>
+        <footer class="blog-post-footer">
+          <a href="the-shared-memory-is-the-moat.html" class="text-link">&larr; The shared memory is the moat</a>
+          <a href="../index.html" class="text-link" style="margin-left: auto;">Back to Blog &rarr;</a>
+        </footer>
+      </article>
+    </div>
+    <footer class="footer">
+      <div class="footer-content">
+        <div style="margin-bottom: var(--space-lg);">
+          <div style="margin-bottom: var(--space-md);">
+            <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: var(--space-xs); color: var(--text); text-align: center; text-transform: uppercase; letter-spacing: 0.05em;">Transparency</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm) var(--space-lg);">
+              <li><a href="https://truesight.me/physical-asset-movements" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Shipment History</a></li>
+              <li><a href="https://truesight.me/physical-transactions" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Financial Records</a></li>
+              <li><a href="https://agroverse.shop/consignments" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Consignment Tracking</a></li>
+              <li><a href="https://truesight.me/physical-assets/serialized" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Product Verification</a></li>
+              <li><a href="https://truesight.me/digital-assets" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Token Holdings</a></li>
+            </ul>
+          </div>
+          <div style="margin-bottom: var(--space-md);">
+            <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: var(--space-xs); color: var(--text); text-align: center; text-transform: uppercase; letter-spacing: 0.05em;">Governance &amp; Records</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm) var(--space-lg);">
+              <li><a href="https://truesight.me/rubric" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Scoring Rubric</a></li>
+              <li><a href="https://truesight.me/submissions/raw-telegram-chatlogs" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Engagement Logs</a></li>
+            </ul>
+          </div>
+          <div style="margin-bottom: var(--space-md);">
+            <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: var(--space-xs); color: var(--text); text-align: center; text-transform: uppercase; letter-spacing: 0.05em;">Data &amp; Records</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm) var(--space-lg);">
+              <li><a href="https://truesight.me/offchain-assets" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Physical Assets</a></li>
+              <li><a href="https://truesight.me/offchain-asset-location" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Asset Location</a></li>
+              <li><a href="https://truesight.me/digital-signatures" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Digital Signatures</a></li>
+              <li><a href="https://truesight.me/notarizations" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Notarizations</a></li>
+              <li><a href="https://truesight.me/currencies" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Currencies</a></li>
+              <li><a href="https://truesight.me/physical-assets/serialized/sold" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Sold Products</a></li>
+              <li><a href="https://truesight.me/ttl/irs" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Taxation Filings</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: var(--space-xs); color: var(--text); text-align: center; text-transform: uppercase; letter-spacing: 0.05em;">Partnerships</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm) var(--space-lg);">
+              <li><a href="https://agroverse.shop/community-warehouse-manager/sla" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Warehouse Partnership Terms</a></li>
+              <li><a href="https://agroverse.shop/community-distributor/agreement" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Distribution Partnership Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <h2>JOIN OUR MOVEMENT</h2>
+        <p>Co-Create with us</p>
+        <div class="footer-social">
+          <a href="https://t.me/TrueSightDAO" target="_blank" rel="noreferrer noopener" aria-label="Telegram">
+            <img src="../../assets/telegram-icon.jpg" alt="Telegram" width="48" height="48" loading="lazy" />
+          </a>
+          <a href="https://github.com/TrueSightDAO" target="_blank" rel="noreferrer noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"><title>GitHub</title><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+        </div>
+        <p style="margin-top: var(--space-lg); font-size: 0.875rem; color: var(--muted);">
+          TrueSight DAO &middot; Transparent impact data available at <a href="../../index.html" style="color: var(--accent-2);">truesight.me</a>
+        </p>
+      </div>
+    </footer>
+    <script>
+      (function() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const siteHeader = document.querySelector('.site-header');
+        if (!menuToggle || !navMenu) return;
+        menuToggle.addEventListener('click', function() {
+          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', !isExpanded);
+          navMenu.classList.toggle('active');
+          if (siteHeader) siteHeader.classList.toggle('menu-open');
+        });
+      })();
+    </script>
+  </body>
+</html>
