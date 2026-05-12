@@ -952,6 +952,23 @@
           document.getElementById('st-loading').style.display = 'none';
           section.style.display = 'block';
 
+          // Defensive filter — trees/mo accounting must include ONLY retail-
+          // distribution partner types (Consignment + Wholesale). Inventory
+          // leaving a warehouse Operator (e.g. Matheus in Ilhéus) or a Freight
+          // Provider (Omega Services) is in-transit movement to retail
+          // distribution, not actual sell-through to end consumers — would
+          // double-count trees. sync_sell_through_report.py applies the same
+          // filter at JSON generation (market_research#121), so this JS-side
+          // filter is belt-and-suspenders for any stale JSON snapshot the
+          // GitHub raw URL CDN is still serving. See
+          // agentic_ai_context/PARTNER_CHECK_IN_IMPLEMENTATION.md §"Dual-use".
+          const RETAIL_PARTNER_TYPES = new Set(['Consignment', 'Wholesale']);
+          if (Array.isArray(data.partners)) {
+            data.partners = data.partners.filter(p =>
+              RETAIL_PARTNER_TYPES.has(String(p && p.partner_type || 'Consignment'))
+            );
+          }
+
           const s = data.summary;
 
           let html = '<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: var(--space-sm); margin-bottom: var(--space-lg);">';
