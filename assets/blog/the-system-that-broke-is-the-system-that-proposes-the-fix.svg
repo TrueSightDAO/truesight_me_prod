@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="sysBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1f1712"/>
+      <stop offset="100%" stop-color="#3d2b1f"/>
+    </linearGradient>
+
+    <radialGradient id="brokenGlow" cx="0.5" cy="0.5" r="0.6">
+      <stop offset="0%" stop-color="#c75b2a" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#1f1712" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="proposalGlow" cx="0.5" cy="0.5" r="0.6">
+      <stop offset="0%" stop-color="#e8a838" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#1f1712" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="paperFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7e6c1"/>
+      <stop offset="100%" stop-color="#e8c987"/>
+    </linearGradient>
+
+    <!-- Recursive loop arrow head -->
+    <marker id="arrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a838" opacity="0.8"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#sysBg)" rx="8"/>
+
+  <!-- LEFT HALF: cracked machine -->
+  <g transform="translate(110, 130)">
+    <!-- Glow -->
+    <ellipse cx="100" cy="80" rx="170" ry="130" fill="url(#brokenGlow)"/>
+
+    <!-- Machine body (rounded rect) — cracked open mid-fault -->
+    <g stroke="#a67c52" stroke-width="2" fill="none">
+      <!-- Top half of the body -->
+      <path d="M 30 20 L 30 80 Q 30 70 60 70 L 90 70" />
+      <!-- Bottom half of the body, offset showing the crack -->
+      <path d="M 110 78 Q 130 78 140 80 L 170 80 L 170 140 Q 170 150 160 150 L 40 150 Q 30 150 30 140 L 30 110" />
+    </g>
+    <!-- Body fills (translucent so the crack reads) -->
+    <rect x="32" y="22" width="138" height="56" rx="6" fill="#3d2b1f" stroke="#a67c52" stroke-width="1.4" opacity="0.85"/>
+    <rect x="32" y="82" width="138" height="68" rx="6" fill="#3d2b1f" stroke="#a67c52" stroke-width="1.4" opacity="0.85"/>
+
+    <!-- The crack — a jagged warm-orange seam between the halves -->
+    <path d="M 32 78 L 50 80 L 65 76 L 85 81 L 110 77 L 135 80 L 155 76 L 170 80"
+          stroke="#c75b2a" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.9"/>
+
+    <!-- A few small warm sparks at the crack -->
+    <g fill="#e8a838" opacity="0.9">
+      <circle cx="68" cy="77" r="2"/>
+      <circle cx="118" cy="78" r="1.6"/>
+      <circle cx="148" cy="77" r="2"/>
+    </g>
+
+    <!-- A blinking "fault" indicator (small dot, top right of the body) -->
+    <circle cx="155" cy="35" r="4" fill="#c75b2a" opacity="0.95"/>
+    <circle cx="155" cy="35" r="9" fill="#c75b2a" opacity="0.18"/>
+
+    <!-- Three subtle horizontal lines suggesting a status panel inside -->
+    <g stroke="#a67c52" stroke-width="0.8" opacity="0.4">
+      <line x1="44" y1="38" x2="105" y2="38"/>
+      <line x1="44" y1="50" x2="120" y2="50"/>
+      <line x1="44" y1="62" x2="90" y2="62"/>
+    </g>
+  </g>
+
+  <!-- RIGHT HALF: same machine, offering up a folded PR document -->
+  <g transform="translate(490, 130)">
+    <!-- Glow -->
+    <ellipse cx="100" cy="80" rx="170" ry="130" fill="url(#proposalGlow)"/>
+
+    <!-- Machine body — intact, calmer outline (the same machine, same dimensions) -->
+    <rect x="32" y="22" width="138" height="128" rx="6" fill="#3d2b1f" stroke="#a67c52" stroke-width="1.4"/>
+
+    <!-- Three subtle horizontal lines (same status panel suggestion) -->
+    <g stroke="#a67c52" stroke-width="0.8" opacity="0.4">
+      <line x1="44" y1="38" x2="105" y2="38"/>
+      <line x1="44" y1="50" x2="120" y2="50"/>
+      <line x1="44" y1="62" x2="90" y2="62"/>
+      <line x1="44" y1="80" x2="115" y2="80"/>
+      <line x1="44" y1="92" x2="100" y2="92"/>
+    </g>
+
+    <!-- Folded paper marked PR, presented out of the machine's right side.
+         A small angled rectangle with a fold corner + the letters PR. -->
+    <g transform="translate(115, 88) rotate(-12)">
+      <!-- Paper body -->
+      <path d="M 0 0 L 70 0 L 70 50 L 0 50 z" fill="url(#paperFill)" stroke="#a67c52" stroke-width="1.2"/>
+      <!-- Folded top-right corner -->
+      <path d="M 56 0 L 70 0 L 70 14 z" fill="#d8b878" stroke="#a67c52" stroke-width="1"/>
+      <path d="M 56 0 L 56 14 L 70 14" fill="none" stroke="#a67c52" stroke-width="1"/>
+      <!-- "PR" letters -->
+      <text x="35" y="34" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700"
+            fill="#6b4226" text-anchor="middle">PR</text>
+    </g>
+  </g>
+
+  <!-- RECURSIVE LOOP — arc from the crack on the left, through the PR paper on the right,
+       and back into the right machine's frame. -->
+  <g fill="none" stroke="#e8a838" stroke-width="1.6" opacity="0.7">
+    <!-- Outgoing arc: crack region -> over the top -> down to the paper -->
+    <path d="M 240 200 Q 320 60 460 90 Q 540 110 600 200"
+          stroke-linecap="round" marker-end="url(#arrowHead)"/>
+    <!-- Returning arc: from below the paper -> under the diptych -> back into the left machine -->
+    <path d="M 600 280 Q 540 360 400 340 Q 260 320 240 240"
+          stroke-linecap="round" marker-end="url(#arrowHead)"/>
+  </g>
+
+  <!-- Pulse dots travelling along the loop, suggesting active flow -->
+  <g fill="#f4cf85" opacity="0.85">
+    <circle cx="320" cy="115" r="2.6"/>
+    <circle cx="500" cy="92" r="2.6"/>
+    <circle cx="500" cy="335" r="2.6"/>
+    <circle cx="310" cy="330" r="2.6"/>
+  </g>
+</svg>

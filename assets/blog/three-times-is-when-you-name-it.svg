@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1f1712"/>
+      <stop offset="100%" stop-color="#3d2b1f"/>
+    </linearGradient>
+
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.7">
+      <stop offset="0%" stop-color="#e8a838" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#c75b2a" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#1f1712" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="dim" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#a67c52" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#1f1712" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bg3)" rx="8"/>
+
+  <!-- Three glyphs in a row at y=210. First two are small + dim;
+       the third is haloed with a handwritten-style label hanging off it. -->
+
+  <!-- INSTANCE 1 (dim) -->
+  <g transform="translate(180, 210)">
+    <ellipse cx="0" cy="0" rx="60" ry="50" fill="url(#dim)"/>
+    <!-- A simple geometric glyph: rounded square + inner mark -->
+    <rect x="-22" y="-22" width="44" height="44" rx="6"
+          fill="#3d2b1f" stroke="#a67c52" stroke-width="1.4" opacity="0.85"/>
+    <line x1="-12" y1="-8" x2="12" y2="-8" stroke="#a67c52" stroke-width="1.2" opacity="0.55"/>
+    <line x1="-12" y1="0" x2="12" y2="0" stroke="#a67c52" stroke-width="1.2" opacity="0.55"/>
+    <line x1="-12" y1="8" x2="6" y2="8" stroke="#a67c52" stroke-width="1.2" opacity="0.55"/>
+  </g>
+
+  <!-- Connecting wisp from glyph 1 -> glyph 2 -->
+  <path d="M 240 210 Q 290 195 340 210"
+        fill="none" stroke="#a67c52" stroke-width="1" opacity="0.45"
+        stroke-dasharray="3 3" stroke-linecap="round"/>
+
+  <!-- INSTANCE 2 (dim, slight echo of 1) -->
+  <g transform="translate(400, 210)">
+    <ellipse cx="0" cy="0" rx="60" ry="50" fill="url(#dim)"/>
+    <rect x="-22" y="-22" width="44" height="44" rx="6"
+          fill="#3d2b1f" stroke="#a67c52" stroke-width="1.4" opacity="0.85"/>
+    <line x1="-12" y1="-8" x2="12" y2="-8" stroke="#a67c52" stroke-width="1.2" opacity="0.55"/>
+    <line x1="-12" y1="0" x2="12" y2="0" stroke="#a67c52" stroke-width="1.2" opacity="0.55"/>
+    <line x1="-12" y1="8" x2="6" y2="8" stroke="#a67c52" stroke-width="1.2" opacity="0.55"/>
+    <!-- A faint question-mark suggestion (coincidence or convergence?) -->
+    <text x="34" y="-22" font-family="Inter, system-ui, sans-serif"
+          font-size="22" font-weight="500" fill="#a67c52" opacity="0.4">?</text>
+  </g>
+
+  <!-- Connecting wisp from glyph 2 -> glyph 3 (slightly stronger now) -->
+  <path d="M 460 210 Q 510 195 560 210"
+        fill="none" stroke="#e8a838" stroke-width="1.2" opacity="0.6"
+        stroke-dasharray="4 3" stroke-linecap="round"/>
+
+  <!-- INSTANCE 3 (haloed + named) -->
+  <g transform="translate(620, 210)">
+    <!-- Soft warm halo ring -->
+    <ellipse cx="0" cy="0" rx="78" ry="68" fill="url(#halo)"/>
+    <ellipse cx="0" cy="0" rx="50" ry="44" fill="none"
+             stroke="#e8a838" stroke-width="1.3" opacity="0.7"/>
+
+    <!-- The same glyph, now in the warm palette -->
+    <rect x="-22" y="-22" width="44" height="44" rx="6"
+          fill="#f7e6c1" stroke="#c75b2a" stroke-width="1.6"/>
+    <line x1="-12" y1="-8" x2="12" y2="-8" stroke="#6b4226" stroke-width="1.4"/>
+    <line x1="-12" y1="0" x2="12" y2="0" stroke="#6b4226" stroke-width="1.4"/>
+    <line x1="-12" y1="8" x2="6" y2="8" stroke="#6b4226" stroke-width="1.4"/>
+
+    <!-- A handwritten-style "label" hanging off the top-right of the glyph,
+         tied with a thin string. The label is the moment the name lands. -->
+    <line x1="20" y1="-14" x2="48" y2="-44" stroke="#a67c52" stroke-width="1" opacity="0.7"/>
+    <g transform="translate(48, -44) rotate(-6)">
+      <rect x="0" y="-12" width="86" height="24" rx="3"
+            fill="#f7e6c1" stroke="#c75b2a" stroke-width="1.2"/>
+      <!-- A small hole where the string ties -->
+      <circle cx="6" cy="0" r="2" fill="#3d2b1f" opacity="0.85"/>
+      <text x="48" y="5" font-family="Space Grotesk, Inter, system-ui, sans-serif"
+            font-size="12" font-weight="600" fill="#6b4226" text-anchor="middle"
+            letter-spacing="0.04em">PATTERN</text>
+    </g>
+  </g>
+
+  <!-- A small numeric tally above the row, subtle:
+       1   2   3 -->
+  <g font-family="Space Grotesk, Inter, system-ui, sans-serif"
+     font-size="14" font-weight="600" fill="#a67c52" opacity="0.55"
+     text-anchor="middle" letter-spacing="0.08em">
+    <text x="180" y="120">1</text>
+    <text x="400" y="120">2</text>
+    <text x="620" y="120">3</text>
+  </g>
+
+  <!-- A small caption-style notation under the row, also subtle:
+       (the third instance is when the name lands) -->
+  <text x="400" y="370" font-family="Inter, system-ui, sans-serif"
+        font-size="13" fill="#a67c52" opacity="0.5"
+        text-anchor="middle" font-style="italic">
+    the third instance is when the name lands
+  </text>
+</svg>
