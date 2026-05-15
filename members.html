@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Members | TrueSight DAO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Governors and active members of TrueSight DAO. Each profile cites the underlying ledger for every claim." />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.truesight.me/members.html" />
+    <meta property="og:title" content="Members | TrueSight DAO" />
+    <meta property="og:description" content="Governors and active members of TrueSight DAO." />
+    <meta property="og:image" content="https://www.truesight.me/assets/truesight-logo.png" />
+    <meta property="og:site_name" content="TrueSight DAO" />
+
+    <link
+      rel="icon"
+      href="https://static.wixstatic.com/ficons/0e2cde_dd65db118f8f499eb06c159d7262167d%7Emv2.ico"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+    <style>
+      .members-page { max-width: 1100px; margin: 0 auto; padding: var(--space-xl) 0; }
+      .members-hero { text-align: center; margin-bottom: var(--space-xl); }
+      .members-hero .pill {
+        display: inline-block; padding: 0.25rem 0.7rem; background: var(--surface, #f5f5f5);
+        border-radius: 999px; font-size: 0.78rem; text-transform: uppercase;
+        letter-spacing: 0.08em; font-weight: 600; color: var(--muted, #555);
+      }
+      .members-hero h1 { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 2.4rem; margin: var(--space-sm) 0 var(--space-xs); }
+      .members-hero p { color: var(--muted, #666); max-width: 640px; margin: 0 auto; }
+      .members-section h2 {
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em;
+        color: var(--text, #222); margin: var(--space-xl) 0 var(--space-md);
+        border-bottom: 1px solid var(--border, #ddd); padding-bottom: 0.35rem;
+      }
+      .members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-sm); }
+      .member-card {
+        display: block; padding: var(--space-md);
+        background: var(--surface, #fafafa); border: 1px solid var(--border, #e8e8e8);
+        border-radius: 10px; text-decoration: none; color: inherit;
+        transition: transform 0.12s ease, box-shadow 0.12s ease;
+      }
+      .member-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+      .member-card .name { font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 600; font-size: 1.05rem; color: var(--text, #111); margin-bottom: 0.25rem; }
+      .member-card .meta { font-size: 0.82rem; color: var(--muted, #666); }
+      .member-card .badges { margin-top: 0.5rem; display: flex; gap: 0.35rem; flex-wrap: wrap; }
+      .member-card .badge {
+        display: inline-block; padding: 0.1rem 0.55rem;
+        font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;
+        font-weight: 600; border-radius: 999px;
+      }
+      .badge.governor { background: #2f4f2e; color: #fff; }
+      .badge.dao { background: #e8eef6; color: #2c4a73; }
+      .badge.practitioner { background: #f3e8d8; color: #6a4a1a; }
+      .members-empty { text-align: center; color: var(--muted, #666); padding: var(--space-xl) 0; font-style: italic; }
+      .members-error { color: #c33; background: #fee; padding: var(--space-sm); border-radius: 6px; text-align: center; }
+    </style>
+  </head>
+  <body>
+    <nav class="site-header">
+      <div class="header-container">
+        <a href="index.html" class="header-logo">
+          <img
+            src="https://static.wixstatic.com/media/0e2cde_f81b16c82ebe4aaca4b5ce54b819a693~mv2.png/v1/fill/w_622,h_160,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240612_truesight_dao_logo_long.png"
+            alt="TrueSight DAO" width="155" height="40" loading="eager" />
+        </a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+        </button>
+        <ul class="nav-menu" aria-hidden="true">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="members.html">Members</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="page">
+      <div class="members-page">
+        <div class="members-hero">
+          <span class="pill">TrueSight DAO</span>
+          <h1>Members & Governors</h1>
+          <p>Public, lineage-anchored credential profiles. Every claim cites the underlying ledger or repo — open a profile and audit it.</p>
+        </div>
+
+        <div id="members-status">Loading members…</div>
+        <div id="members-error" class="members-error" style="display:none"></div>
+
+        <section id="governors-section" class="members-section" style="display:none">
+          <h2>Governors</h2>
+          <div id="governors-grid" class="members-grid"></div>
+        </section>
+
+        <section id="members-section" class="members-section" style="display:none">
+          <h2>Members</h2>
+          <div id="members-grid" class="members-grid"></div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        'use strict';
+        const INDEX_URL = 'https://raw.githubusercontent.com/TrueSightDAO/lineage-credentials/main/_cache/index.json';
+
+        function escapeHtml(s) {
+          return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+          });
+        }
+
+        function memberCardHtml(m) {
+          const slug = m.slug || (m.pk_hash || '');
+          let html = '<a class="member-card" href="credentials/#' + encodeURIComponent(slug) + '">';
+          html += '<div class="name">' + escapeHtml(m.display_name || slug) + '</div>';
+          const subParts = [];
+          if (m.primary_program) subParts.push(escapeHtml(m.primary_program));
+          if (m.voting_rights) subParts.push(escapeHtml(m.voting_rights) + ' voting rights');
+          if (subParts.length) {
+            html += '<div class="meta">' + subParts.join(' · ') + '</div>';
+          }
+          html += '<div class="badges">';
+          if (m.is_governor) html += '<span class="badge governor">Governor</span>';
+          if (m.has_dao_contributions) html += '<span class="badge dao">DAO</span>';
+          if (m.has_elective_records) html += '<span class="badge practitioner">Practitioner</span>';
+          html += '</div></a>';
+          return html;
+        }
+
+        function sortMembers(members) {
+          // Governors first; within each section, voting_rights desc, then display_name asc.
+          const governors = members.filter(m => m.is_governor);
+          const regulars = members.filter(m => !m.is_governor);
+          const byRights = (a, b) => {
+            const diff = (b.voting_rights || 0) - (a.voting_rights || 0);
+            if (diff !== 0) return diff;
+            return (a.display_name || '').localeCompare(b.display_name || '');
+          };
+          governors.sort(byRights);
+          regulars.sort(byRights);
+          return { governors, regulars };
+        }
+
+        async function loadMembers() {
+          const status = document.getElementById('members-status');
+          try {
+            const url = INDEX_URL + '?_=' + Date.now();
+            const res = await fetch(url, { cache: 'no-store' });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const data = await res.json();
+            const members = data.members || [];
+
+            const { governors, regulars } = sortMembers(members);
+            const govEl = document.getElementById('governors-grid');
+            const regEl = document.getElementById('members-grid');
+
+            if (governors.length) {
+              govEl.innerHTML = governors.map(memberCardHtml).join('');
+              document.getElementById('governors-section').style.display = 'block';
+            }
+            if (regulars.length) {
+              regEl.innerHTML = regulars.map(memberCardHtml).join('');
+              document.getElementById('members-section').style.display = 'block';
+            }
+            if (!governors.length && !regulars.length) {
+              status.textContent = '';
+              document.getElementById('members-error').textContent = 'No members in the index yet — the cache may still be warming up.';
+              document.getElementById('members-error').style.display = 'block';
+            } else {
+              status.textContent = '';
+            }
+          } catch (err) {
+            status.textContent = '';
+            const e = document.getElementById('members-error');
+            e.textContent = 'Failed to load members: ' + err.message;
+            e.style.display = 'block';
+          }
+        }
+        document.addEventListener('DOMContentLoaded', loadMembers);
+      })();
+    </script>
+  </body>
+</html>
