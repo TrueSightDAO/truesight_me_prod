@@ -157,14 +157,26 @@
           const subParts = [];
           if (m.primary_program) subParts.push(escapeHtml(m.primary_program));
           if (m.voting_rights) subParts.push(escapeHtml(m.voting_rights) + ' voting rights');
+          // Show TDG controlled — more useful than the redundant "DAO" badge,
+          // since every entry on this page is a DAO contributor by definition.
+          if (m.total_tdg_controlled != null && m.total_tdg_controlled > 0) {
+            subParts.push(Number(m.total_tdg_controlled).toLocaleString(undefined, { maximumFractionDigits: 0 }) + ' TDG');
+          }
+          if (m.total_contributions) {
+            subParts.push(escapeHtml(String(m.total_contributions)) + (m.total_contributions === 1 ? ' contribution' : ' contributions'));
+          }
           if (subParts.length) {
             html += '<div class="meta">' + subParts.join(' · ') + '</div>';
           }
-          html += '<div class="badges">';
-          if (m.is_governor) html += '<span class="badge governor">Governor</span>';
-          if (m.has_dao_contributions) html += '<span class="badge dao">DAO</span>';
-          if (m.has_elective_records) html += '<span class="badge practitioner">Practitioner</span>';
-          html += '</div></a>';
+          // Badges: keep Governor + Practitioner (meaningful filters); drop
+          // the DAO pill since every card already implies DAO membership.
+          if (m.is_governor || m.has_elective_records) {
+            html += '<div class="badges">';
+            if (m.is_governor) html += '<span class="badge governor">Governor</span>';
+            if (m.has_elective_records) html += '<span class="badge practitioner">Practitioner</span>';
+            html += '</div>';
+          }
+          html += '</a>';
           return html;
         }
 
