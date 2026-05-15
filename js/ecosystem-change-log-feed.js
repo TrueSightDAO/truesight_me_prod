@@ -1,19 +1,43 @@
 /**
- * Load Beer Hall / ecosystem_change_logs JSON from the public GitHub raw tree.
+ * Load Beer Hall / ecosystem_change_logs JSON from a CDN with fallback.
  * Used by index.html (preview) and beerhall/updates.html (list + detail).
+ *
+ * Why two bases (2026-05-14):
+ *   raw.githubusercontent.com is regionally unreliable — blocked by the
+ *   GFW for users in mainland China, and occasionally throttles aggressive
+ *   refreshes. jsDelivr proxies the same Git tree via a global edge CDN
+ *   (Cloudflare + Bunny) that reaches into China and serves cached blobs
+ *   sub-second. We try jsDelivr first, fall back to raw on any error so
+ *   the homepage Beer Hall section degrades gracefully if either CDN is
+ *   blocked, throttled, or stale.
+ *
+ *   jsDelivr caches `@main` aggressively (~12h TTL). That's acceptable
+ *   here because Beer Hall digests are weekly-ish; if an operator needs
+ *   to surface a freshly-merged digest immediately, raw.githubusercontent
+ *   will pick it up on the fallback path.
  */
 (function () {
   'use strict';
 
-  var RAW_BASE = 'https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/';
+  var PRIMARY_BASE = 'https://cdn.jsdelivr.net/gh/TrueSightDAO/ecosystem_change_logs@main/';
+  var FALLBACK_BASE = 'https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/';
+
+  function fetchJsonFrom(base, relPath) {
+    return fetch(base + relPath, { cache: 'default' }).then(function (res) {
+      if (!res.ok) {
+        throw new Error(base + relPath + ': HTTP ' + res.status);
+      }
+      return res.json();
+    });
+  }
 
   function repoFetch(relPath) {
     var path = String(relPath || '').replace(/^\//, '');
-    return fetch(RAW_BASE + path, { cache: 'default' }).then(function (res) {
-      if (!res.ok) {
-        throw new Error(path + ': HTTP ' + res.status);
-      }
-      return res.json();
+    return fetchJsonFrom(PRIMARY_BASE, path).catch(function (primaryErr) {
+      try {
+        console.warn('ecosystem feed primary failed, retrying via raw:', primaryErr && primaryErr.message);
+      } catch (e) {}
+      return fetchJsonFrom(FALLBACK_BASE, path);
     });
   }
 
@@ -43,7 +67,10 @@
   }
 
   window.TrueSightEcosystemFeed = {
-    RAW_BASE: RAW_BASE,
+    // Historical alias — some callers reference RAW_BASE directly.
+    RAW_BASE: FALLBACK_BASE,
+    PRIMARY_BASE: PRIMARY_BASE,
+    FALLBACK_BASE: FALLBACK_BASE,
     repoFetch: repoFetch,
     formatPostedAt: formatPostedAt,
     entryStemFromJsonPath: entryStemFromJsonPath,
