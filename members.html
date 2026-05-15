@@ -78,8 +78,40 @@
         <ul class="nav-menu" aria-hidden="true">
           <li><a href="index.html">Home</a></li>
           <li><a href="about-us.html">About Us</a></li>
-          <li><a href="members.html">Members</a></li>
-          <li><a href="faq.html">FAQ</a></li>
+          <li>
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Projects</button>
+            <ul class="dropdown-menu" aria-expanded="false">
+              <li><a href="agroverse.html">Agroverse Community</a></li>
+              <li><a href="sunmint.html">Sunmint Program</a></li>
+              <li><a href="edgar.html">Edgar Platform</a></li>
+              <li><a href="fundraisers.html">Fundraisers</a></li>
+            </ul>
+          </li>
+          <li><a href="https://truesight.me/proposals" target="_blank" rel="noreferrer noopener">Proposals</a></li>
+          <li>
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Community</button>
+            <ul class="dropdown-menu" aria-expanded="false">
+              <li><a href="https://truesight.me/quests" target="_blank" rel="noreferrer noopener">Community Challenges</a></li>
+              <li><a href="https://truesight.me/governors" target="_blank" rel="noreferrer noopener">Community Leaders</a></li>
+              <li><a href="members.html">Members Directory</a></li>
+              <li><a href="https://truesight.me/recurring-tdg-awards" target="_blank" rel="noreferrer noopener">Ongoing Awards</a></li>
+              <li><a href="https://truesight.me/submissions/scored-and-to-be-tokenized" target="_blank" rel="noreferrer noopener">Upcoming Awards</a></li>
+              <li><a href="https://truesight.me/beerhall" target="_blank" rel="noreferrer noopener">Join Chat</a></li>
+              <li><a href="beerhall/updates.html">Beer Hall digests</a></li>
+            </ul>
+          </li>
+          <li>
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Resources</button>
+            <ul class="dropdown-menu" aria-expanded="false">
+              <li><a href="faq.html">Frequently Asked Questions</a></li>
+              <li><a href="/whitepaper/">View Whitepaper</a></li>
+              <li><a href="https://truesight.me/tokenomics" target="_blank" rel="noreferrer noopener">Tokenomics</a></li>
+              <li><a href="https://truesight.me/dapp" target="_blank" rel="noreferrer noopener">Web App</a></li>
+              <li><a href="https://truesight.me/ledger" target="_blank" rel="noreferrer noopener">Contributions Record</a></li>
+              <li><a href="https://truesight.me/roadmap" target="_blank" rel="noreferrer noopener">Roadmap</a></li>
+            </ul>
+          </li>
+          <li><a href="blog/index.html">Blog</a></li>
         </ul>
       </div>
     </nav>
@@ -186,6 +218,52 @@
           }
         }
         document.addEventListener('DOMContentLoaded', loadMembers);
+      })();
+    </script>
+    <script>
+      // Hamburger menu toggle and dropdown functionality (shared with index.html)
+      (function() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const siteHeader = document.querySelector('.site-header');
+        if (!menuToggle || !navMenu) return;
+        menuToggle.addEventListener('click', function() {
+          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', !isExpanded);
+          navMenu.setAttribute('aria-hidden', isExpanded);
+          siteHeader.classList.toggle('menu-open', !isExpanded);
+        });
+        const dropdownToggles = navMenu.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(function(toggle) {
+          toggle.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+              e.preventDefault(); e.stopPropagation();
+              const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+              const dropdownMenu = toggle.nextElementSibling;
+              toggle.setAttribute('aria-expanded', !isExpanded);
+              if (dropdownMenu) dropdownMenu.setAttribute('aria-expanded', !isExpanded);
+            }
+          });
+        });
+        navMenu.addEventListener('click', function(e) {
+          if (e.target.tagName === 'A') {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            navMenu.setAttribute('aria-hidden', 'true');
+            siteHeader.classList.remove('menu-open');
+            dropdownToggles.forEach(function(toggle) {
+              toggle.setAttribute('aria-expanded', 'false');
+              const dropdownMenu = toggle.nextElementSibling;
+              if (dropdownMenu) dropdownMenu.setAttribute('aria-expanded', 'false');
+            });
+          }
+        });
+        siteHeader.addEventListener('click', function(e) {
+          if (e.target === siteHeader || e.target.classList.contains('site-header')) {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            navMenu.setAttribute('aria-hidden', 'true');
+            siteHeader.classList.remove('menu-open');
+          }
+        });
       })();
     </script>
   </body>
