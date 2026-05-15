@@ -156,7 +156,13 @@
           html += '<div class="name">' + escapeHtml(m.display_name || slug) + '</div>';
           const subParts = [];
           if (m.primary_program) subParts.push(escapeHtml(m.primary_program));
-          if (m.voting_rights) subParts.push(escapeHtml(m.voting_rights) + ' voting rights');
+          if (m.voting_rights) {
+            const vp = Number(m.voting_rights);
+            const vpStr = (Number.isFinite(vp) && vp > 0)
+              ? (vp >= 1 ? vp.toFixed(2) : vp.toFixed(3)) + '% voting power'
+              : escapeHtml(String(m.voting_rights)) + ' voting power';
+            subParts.push(vpStr);
+          }
           // Show TDG controlled — more useful than the redundant "DAO" badge,
           // since every entry on this page is a DAO contributor by definition.
           if (m.total_tdg_controlled != null && m.total_tdg_controlled > 0) {
