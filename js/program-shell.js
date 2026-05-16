@@ -204,6 +204,36 @@
         html += '</section>';
       }
 
+      // Per-program QR + Download credential PDF.
+      // Spec: agentic_ai_context/CREDENTIALING_PROGRAM_PAGES.md §15.5 + §15.7.
+      // Artifacts emitted by lineage-engine build_cv_cache.py whenever a CV
+      // participates in this program AND a logo is vendored at
+      // program_assets/<url-slug>/logo.png.
+      // URL slug for the artifact filename comes from the manifest itself
+      // (which lives at programs/<url-slug>/manifest.json and carries
+      // program_slug = <url-slug>), NOT from the data-side primary_program
+      // (which can be a legacy / longer slug like 'capoeira-tribo-mirim').
+      var artifactSlug = manifest.program_slug || programFilter;
+      var qrFilename = slug + '__' + artifactSlug + '.qr.png';
+      var pdfFilename = slug + '__' + artifactSlug + '.pdf';
+      var qrPrimary = 'https://cdn.jsdelivr.net/gh/TrueSightDAO/lineage-credentials@main/_cache/cv/' + encodeURIComponent(qrFilename);
+      var qrFallback = 'https://raw.githubusercontent.com/TrueSightDAO/lineage-credentials/main/_cache/cv/' + encodeURIComponent(qrFilename);
+      var pdfPrimary = 'https://cdn.jsdelivr.net/gh/TrueSightDAO/lineage-credentials@main/_cache/cv/' + encodeURIComponent(pdfFilename);
+      // Canonical fallback for the QR if the program-scoped artifact 404s
+      // (e.g., logo not yet vendored, or build hasn't run since this CV
+      // joined the program). Spec §15.5 graceful-fallback rule — the
+      // canonical QR encodes the canonical URL not the program-scoped
+      // one, but at least the page still shows something scannable.
+      var qrCanonicalFallback = 'https://cdn.jsdelivr.net/gh/TrueSightDAO/lineage-credentials@main/_cache/cv/' + encodeURIComponent(slug) + '.qr.png';
+
+      html += '<section class="credential-qr">';
+      html += '<h3>Scan this credential</h3>';
+      html += '<img class="credential-qr-img" src="' + qrPrimary + '" alt="QR code linking to this credential" ' +
+              'onerror="if (this.dataset.tried === \'fallback\') { if (this.dataset.tried === \'canonical\') { this.style.display=\'none\'; } else { this.dataset.tried=\'canonical\'; this.src=\'' + qrCanonicalFallback + '\'; } } else { this.dataset.tried=\'fallback\'; this.src=\'' + qrFallback + '\'; }" />';
+      html += '<p class="credential-qr-hint">Or open the link: <code>https://truesight.me/programs/' + escapeHtml(artifactSlug) + '/credentials/#' + escapeHtml(slug) + '</code></p>';
+      html += '<a class="btn-link" href="' + pdfPrimary + '" target="_blank" rel="noopener noreferrer">⬇ Download credential PDF</a>';
+      html += '</section>';
+
       html += '<footer class="credential-footer">';
       html += '<a class="btn-link" href="../../../credentials/#' + encodeURIComponent(slug) + '">View full credential profile →</a>';
       html += '<a class="btn-link secondary" href="../members.html">All ' + escapeHtml(manifest.display_name) + ' cohort →</a>';
