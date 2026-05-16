@@ -329,6 +329,11 @@
         // user types — match by display_name, slug, and primary program, all
         // lowercased. Hides empty section headers so a filter to "fatima"
         // doesn't show an empty "Governors" header above the result.
+        //
+        // Filter persists across refresh in two places:
+        //   - URL query param ?q=...  (shareable deep link)
+        //   - localStorage           (survives nav-away when no query supplied)
+        // Order of precedence on load: query param > localStorage > empty.
         function initMembersSearch(totalCount) {
           const wrap = document.getElementById('members-search');
           const input = document.getElementById('members-search-input');
@@ -344,6 +349,33 @@
             c.dataset.haystack = txt.toLowerCase();
           });
 
+          const SEARCH_STORAGE_KEY = 'truesight-members-search';
+          function readInitialQuery() {
+            try {
+              const url = new URL(window.location.href);
+              const qParam = url.searchParams.get('q');
+              if (qParam !== null) return qParam;
+              const stored = localStorage.getItem(SEARCH_STORAGE_KEY);
+              return stored || '';
+            } catch (_) {
+              return '';
+            }
+          }
+
+          function persistQuery(q) {
+            // Mirror the query to the URL via history.replaceState so refresh
+            // restores it AND the URL is shareable as a deep link. Also persist
+            // to localStorage so leaving the page and coming back without a URL
+            // also restores it.
+            try {
+              const url = new URL(window.location.href);
+              if (q) url.searchParams.set('q', q); else url.searchParams.delete('q');
+              window.history.replaceState(null, '', url.toString());
+              if (q) localStorage.setItem(SEARCH_STORAGE_KEY, q);
+              else localStorage.removeItem(SEARCH_STORAGE_KEY);
+            } catch (_) { /* non-fatal */ }
+          }
+
           function applyFilter() {
             const q = (input.value || '').trim().toLowerCase();
             let shown = 0;
@@ -352,7 +384,6 @@
               c.classList.toggle('is-hidden', !match);
               if (match) shown++;
             });
-            // Hide section headers whose grids are now entirely filtered out.
             ['governors-section', 'members-section'].forEach(function (id) {
               const sec = document.getElementById(id);
               if (!sec) return;
@@ -362,10 +393,15 @@
             count.textContent = q
               ? shown + ' of ' + totalCount + ' matching'
               : totalCount + ' members';
+            persistQuery(q);
           }
 
+          // Restore prior query (URL > localStorage > empty) before binding the
+          // input handler so the first apply runs against the restored value.
+          input.value = readInitialQuery();
+          applyFilter();
+
           input.addEventListener('input', applyFilter);
-          // Focus once on page load so / or just typing starts a search.
           input.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') { input.value = ''; applyFilter(); }
           });
