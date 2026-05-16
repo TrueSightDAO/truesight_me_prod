@@ -54,6 +54,20 @@
     });
   }
 
+  // Minimal inline-markdown renderer for manifest description_md fields. We
+  // only support the two constructs in active use: [label](http(s)://url) and
+  // `code`. Authors who need anything more should keep adding to this shim
+  // rather than introducing a full markdown dependency. Escape first so any
+  // pre-existing HTML in the manifest is neutralised before we add our own.
+  function renderInlineMarkdown(md) {
+    var s = escapeHtml(md);
+    s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, function (_, text, url) {
+      return '<a href="' + url + '" target="_blank" rel="noreferrer noopener">' + text + '</a>';
+    });
+    s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+    return s;
+  }
+
   function formatDate(iso) {
     if (!iso) return '';
     try {
@@ -270,7 +284,7 @@
         // Render landing-specific fields
         if (type === 'landing') {
           var descEl = document.getElementById('program-description');
-          if (descEl && manifest.description_md) descEl.textContent = manifest.description_md;
+          if (descEl && manifest.description_md) descEl.innerHTML = renderInlineMarkdown(manifest.description_md);
           var taglineEl = document.getElementById('program-tagline');
           if (taglineEl && manifest.tagline) taglineEl.textContent = manifest.tagline;
           var nameEl = document.getElementById('program-name');
