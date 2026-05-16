@@ -41,6 +41,30 @@
         color: var(--text, #222); margin: var(--space-xl) 0 var(--space-md);
         border-bottom: 1px solid var(--border, #ddd); padding-bottom: 0.35rem;
       }
+      .governors-note {
+        background: var(--surface, #f6f3ec);
+        border-left: 3px solid #2f4f2e;
+        padding: var(--space-md) var(--space-lg);
+        border-radius: 6px;
+        margin: 0 0 var(--space-md);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+      .governors-note > p { margin: 0; color: var(--text, #222); }
+      .governors-note details { margin-top: 0.6rem; }
+      .governors-note summary {
+        cursor: pointer; font-weight: 600;
+        color: var(--text, #2f4f2e); user-select: none;
+        padding: 0.2rem 0;
+      }
+      .governors-note summary:hover { text-decoration: underline; }
+      .governors-rights h4 {
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em;
+        color: var(--muted, #6f5a44); margin: 0.9rem 0 0.3rem;
+      }
+      .governors-rights ul { margin: 0.2rem 0 0; padding-left: 1.2rem; }
+      .governors-rights li { margin: 0.2rem 0; }
       .members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-sm); }
       .member-card {
         display: block; padding: var(--space-md);
@@ -129,6 +153,38 @@
 
         <section id="governors-section" class="members-section" style="display:none">
           <h2>Governors</h2>
+          <div class="governors-note">
+            <p>
+              Governors are <strong>system-chosen</strong>, not nominated:
+              every season a formula on the
+              <a href="https://docs.google.com/spreadsheets/d/1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU/edit#gid=842148543" target="_blank" rel="noreferrer noopener">Governors tab of the Main Ledger</a>
+              automatically elects the top 10 contributors over the trailing 90 days.
+              Seats <strong>rotate every ~3 months</strong> at each Spring Equinox, Summer Solstice,
+              Autumn Equinox, and Winter Solstice. No campaigning, no
+              self-nomination — the only path in is sustained contribution.
+            </p>
+            <details>
+              <summary>What governors can do</summary>
+              <div class="governors-rights">
+                <h4>Privileges (from the <a href="https://truesight.me/whitepaper/#privileges" target="_blank" rel="noreferrer noopener">whitepaper</a>)</h4>
+                <ul>
+                  <li>Editing rights to the <a href="https://truesight.me/ledger" target="_blank" rel="noreferrer noopener">Main Ledger</a>.</li>
+                  <li>Editing rights to the <a href="https://truesight.me/rubric" target="_blank" rel="noreferrer noopener">scoring rubric</a>.</li>
+                  <li>Administrative rights on the DAO&rsquo;s WhatsApp / Telegram channels.</li>
+                </ul>
+                <h4>Duties</h4>
+                <ul>
+                  <li>Around each solstice and equinox, review Edgar-scored DApp submissions and approve consolidated ledger entries.</li>
+                  <li>Resolve any notarization disputes surfaced by DAO members.</li>
+                </ul>
+                <h4>Governor-only DApp surfaces</h4>
+                <ul>
+                  <li><a href="https://dapp.truesight.me/governor_permissions.html" target="_blank" rel="noreferrer noopener">Permissions viewer + editor</a> — read or change the DApp permission matrix (who can see / use which surface).</li>
+                  <li><a href="https://dapp.truesight.me/governor_contributor_admin.html" target="_blank" rel="noreferrer noopener">Add new contributor</a> — register a new DAO contributor with name + email so they can sign and submit.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
           <div id="governors-grid" class="members-grid"></div>
         </section>
 
