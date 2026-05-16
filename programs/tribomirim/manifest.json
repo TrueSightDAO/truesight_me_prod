@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "program_slug": "tribomirim",
+  "display_name": "Tribo Bahia Mirim — Capoeira lineage",
+  "partner_organization": "Tribo Bahia Mirim",
+  "partner_url": "https://capoeira.agroverse.shop/",
+  "partner_contact_label": "Bico Duro (lineage root)",
+  "tagline": "Capoeira practice and lineage transmission, credentialed on-chain.",
+  "description_md": "Tribo Bahia Mirim teaches capoeira to youth in Bahia, Brazil, anchored to the Bico Duro lineage. Practitioners log their training sessions through `capoeira.agroverse.shop/practice.html`; each session becomes an attested record on the DAO ledger and accrues to the practitioner's lineage credential. Donations are welcome but the platform's primary contract is experiential learning.",
+  "co_brand": {
+    "partner_logo_url": "https://capoeira.agroverse.shop/assets/images/tribo-bahia-mirim-logo.png",
+    "primary_color": "#8B5A2B",
+    "secondary_color": "#F2E4CE"
+  },
+  "source_pages": [
+    "https://capoeira.agroverse.shop/practice.html"
+  ],
+  "membership_filter": {
+    "primary_program": "capoeira-tribo-mirim"
+  },
+  "credential_visibility_default": "public",
+  "issuer_lineage_root": "Bico Duro",
+  "last_reviewed": "2026-05-16"
+}
