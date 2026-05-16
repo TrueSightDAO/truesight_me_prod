@@ -282,6 +282,18 @@
             sourceEl.href = manifest.source_pages[0];
             sourceEl.style.display = 'inline-block';
           }
+          // Hero logo — manifest co_brand.partner_logo_url. Hidden by default
+          // in the HTML; revealed only when the image actually loads, so a
+          // drifted URL gracefully degrades to no logo rather than a broken
+          // image icon.
+          var heroLogo = document.getElementById('program-hero-logo');
+          var heroLogoUrl = manifest.co_brand && manifest.co_brand.partner_logo_url;
+          if (heroLogo && heroLogoUrl) {
+            heroLogo.alt = (manifest.partner_organization || manifest.display_name || '') + ' logo';
+            heroLogo.onerror = function () { heroLogo.style.display = 'none'; };
+            heroLogo.onload = function () { heroLogo.style.display = 'block'; };
+            heroLogo.src = heroLogoUrl;
+          }
         }
         if (type === 'members') renderMembers(manifest);
         if (type === 'credential') renderCredential(manifest);

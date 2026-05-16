@@ -20,6 +20,10 @@
     <style>
       .program-page { max-width: 920px; margin: 0 auto; padding: var(--space-xl) 0; }
       .program-hero { text-align: center; margin-bottom: var(--space-xl); }
+      .program-hero-logo {
+        display: block; max-width: 180px; max-height: 180px;
+        margin: 0 auto var(--space-md); object-fit: contain;
+      }
       .program-hero .pill {
         display: inline-block; padding: 0.25rem 0.7rem; background: var(--surface, #f5f5f5);
         border-radius: 999px; font-size: 0.78rem; text-transform: uppercase;
@@ -118,6 +122,7 @@
         <div id="cobrand-strip"></div>
 
         <div class="program-hero">
+          <img id="program-hero-logo" class="program-hero-logo" alt="" style="display:none" />
           <span class="pill">Experiential learning credentialing</span>
           <h1 id="program-name">Butterfly Effect</h1>
           <div class="partner-line">By <span id="program-partner">ERA Professionals</span></div>
