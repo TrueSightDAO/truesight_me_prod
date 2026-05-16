@@ -86,6 +86,24 @@
       .badge.practitioner { background: #f3e8d8; color: #6a4a1a; }
       .members-empty { text-align: center; color: var(--muted, #666); padding: var(--space-xl) 0; font-style: italic; }
       .members-error { color: #c33; background: #fee; padding: var(--space-sm); border-radius: 6px; text-align: center; }
+      .members-search {
+        display: flex; gap: var(--space-sm); align-items: center;
+        margin: 0 0 var(--space-md); flex-wrap: wrap;
+      }
+      .members-search input[type="search"] {
+        flex: 1 1 280px; min-width: 0;
+        padding: 0.55rem 0.9rem; font-size: 0.95rem;
+        border: 1px solid var(--border, #ddd); border-radius: 8px;
+        background: #fff; color: var(--text, #222);
+        font-family: inherit;
+      }
+      .members-search input[type="search"]:focus {
+        outline: none; border-color: #2f4f2e; box-shadow: 0 0 0 3px rgba(47,79,46,0.12);
+      }
+      .members-search .count {
+        font-size: 0.82rem; color: var(--muted, #666); white-space: nowrap;
+      }
+      .member-card.is-hidden { display: none; }
     </style>
   </head>
   <body>
@@ -151,6 +169,11 @@
 
         <div id="members-status">Loading members…</div>
         <div id="members-error" class="members-error" style="display:none"></div>
+
+        <div class="members-search" id="members-search" style="display:none">
+          <input type="search" id="members-search-input" placeholder="Search by name or slug…" autocomplete="off" spellcheck="false" />
+          <span class="count" id="members-search-count"></span>
+        </div>
 
         <section id="governors-section" class="members-section" style="display:none">
           <h2>Governors</h2>
@@ -286,6 +309,7 @@
               document.getElementById('members-error').style.display = 'block';
             } else {
               status.textContent = '';
+              initMembersSearch(governors.length + regulars.length);
             }
           } catch (err) {
             status.textContent = '';
@@ -293,6 +317,52 @@
             e.textContent = 'Failed to load members: ' + err.message;
             e.style.display = 'block';
           }
+        }
+
+        // Wires the search box once cards are in the DOM. Filters live as the
+        // user types — match by display_name, slug, and primary program, all
+        // lowercased. Hides empty section headers so a filter to "fatima"
+        // doesn't show an empty "Governors" header above the result.
+        function initMembersSearch(totalCount) {
+          const wrap = document.getElementById('members-search');
+          const input = document.getElementById('members-search-input');
+          const count = document.getElementById('members-search-count');
+          if (!wrap || !input || !count) return;
+          wrap.style.display = 'flex';
+          count.textContent = totalCount + ' members';
+
+          const cards = Array.from(document.querySelectorAll('.member-card'));
+          // Pre-compute haystacks so each keystroke is one cheap includes() call per card.
+          cards.forEach(function (c) {
+            const txt = (c.textContent || '') + ' ' + (c.getAttribute('href') || '');
+            c.dataset.haystack = txt.toLowerCase();
+          });
+
+          function applyFilter() {
+            const q = (input.value || '').trim().toLowerCase();
+            let shown = 0;
+            cards.forEach(function (c) {
+              const match = !q || c.dataset.haystack.indexOf(q) >= 0;
+              c.classList.toggle('is-hidden', !match);
+              if (match) shown++;
+            });
+            // Hide section headers whose grids are now entirely filtered out.
+            ['governors-section', 'members-section'].forEach(function (id) {
+              const sec = document.getElementById(id);
+              if (!sec) return;
+              const visibleCards = sec.querySelectorAll('.member-card:not(.is-hidden)').length;
+              sec.style.display = visibleCards > 0 ? 'block' : 'none';
+            });
+            count.textContent = q
+              ? shown + ' of ' + totalCount + ' matching'
+              : totalCount + ' members';
+          }
+
+          input.addEventListener('input', applyFilter);
+          // Focus once on page load so / or just typing starts a search.
+          input.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') { input.value = ''; applyFilter(); }
+          });
         }
         document.addEventListener('DOMContentLoaded', loadMembers);
       })();
