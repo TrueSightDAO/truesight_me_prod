@@ -1,0 +1,24 @@
+# Asserts every HTML page on truesight_me shares the canonical top nav.
+# Runs scripts/sync_top_nav.py --check; fails the build when any page's nav
+# diverges so the operator runs the script locally to fix.
+
+name: Nav consistency
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify top nav matches canonical across all pages
+        run: python3 scripts/sync_top_nav.py --check
