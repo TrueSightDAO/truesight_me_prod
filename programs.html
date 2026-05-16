@@ -30,12 +30,22 @@
       .programs-hero p { color: var(--muted, #666); max-width: 720px; margin: 0 auto; }
       .programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-md); }
       .program-card {
-        display: block; padding: var(--space-md); background: var(--surface, #fafafa);
+        display: block; padding: 0; background: var(--surface, #fafafa);
         border: 1px solid var(--border, #e8e8e8); border-radius: 12px;
         text-decoration: none; color: inherit;
         transition: transform 0.15s ease, box-shadow 0.15s ease;
+        overflow: hidden;
       }
       .program-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.07); }
+      .program-card .logo-banner {
+        height: 140px; background: #f5efe1;
+        display: flex; align-items: center; justify-content: center;
+        border-bottom: 1px solid var(--border, #e8e8e8);
+      }
+      .program-card .logo-banner img {
+        max-width: 70%; max-height: 100px; object-fit: contain;
+      }
+      .program-card .body { padding: var(--space-md); }
       .program-card .name {
         font-family: 'Space Grotesk', system-ui, sans-serif;
         font-size: 1.25rem; font-weight: 600; color: var(--text, #111);
@@ -136,16 +146,22 @@
 
         <div class="programs-grid">
           <a class="program-card" href="programs/tribomirim/index.html" data-program-slug="tribomirim">
-            <div class="name-row"><div class="name">Tribo Bahia Mirim</div><span class="status-pill" data-status-slot style="display:none"></span></div>
-            <div class="partner">Capoeira lineage · Bahia, Brazil</div>
-            <div class="tagline">Capoeira practice and lineage transmission, credentialed on-chain. Practitioners log sessions through capoeira.agroverse.shop; each session becomes an attested record.</div>
-            <span class="cta">View program →</span>
+            <div class="logo-banner" data-logo-slot></div>
+            <div class="body">
+              <div class="name-row"><div class="name">Tribo Bahia Mirim</div><span class="status-pill" data-status-slot style="display:none"></span></div>
+              <div class="partner">Capoeira lineage · Bahia, Brazil</div>
+              <div class="tagline">Capoeira practice and lineage transmission, credentialed on-chain. Practitioners log sessions through capoeira.agroverse.shop; each session becomes an attested record.</div>
+              <span class="cta">View program →</span>
+            </div>
           </a>
           <a class="program-card" href="programs/butterfly-effect/index.html" data-program-slug="butterfly-effect">
-            <div class="name-row"><div class="name">Butterfly Effect</div><span class="status-pill" data-status-slot style="display:none"></span></div>
-            <div class="partner">ERA Professionals · Youth experiential learning</div>
-            <div class="tagline">Hands-on modules for youth. Certificates issued at completion with a QR code that scans back to the participant's TrueSight DAO–anchored profile.</div>
-            <span class="cta">View program →</span>
+            <div class="logo-banner" data-logo-slot></div>
+            <div class="body">
+              <div class="name-row"><div class="name">Butterfly Effect</div><span class="status-pill" data-status-slot style="display:none"></span></div>
+              <div class="partner">ERA Professionals · Youth experiential learning</div>
+              <div class="tagline">Hands-on modules for youth. Certificates issued at completion with a QR code that scans back to the participant's TrueSight DAO–anchored profile.</div>
+              <span class="cta">View program →</span>
+            </div>
           </a>
         </div>
 
@@ -171,14 +187,35 @@
           fetch('programs/' + slug + '/manifest.json', { cache: 'no-store' })
             .then(function (r) { return r.ok ? r.json() : null; })
             .then(function (m) {
-              if (!m || !m.status || m.status === 'active') return;
-              var slot = card.querySelector('[data-status-slot]');
-              if (!slot) return;
-              slot.classList.add(m.status);
-              slot.textContent = m.status.charAt(0).toUpperCase() + m.status.slice(1);
-              slot.style.display = 'inline-block';
+              if (!m) return;
+              // Status pill — onboarding/archived only; 'active' / missing stays hidden.
+              if (m.status && m.status !== 'active') {
+                var statusSlot = card.querySelector('[data-status-slot]');
+                if (statusSlot) {
+                  statusSlot.classList.add(m.status);
+                  statusSlot.textContent = m.status.charAt(0).toUpperCase() + m.status.slice(1);
+                  statusSlot.style.display = 'inline-block';
+                }
+              }
+              // Logo banner — manifest co_brand.partner_logo_url drives it.
+              // Gracefully hide the whole banner if the URL is missing or 404s.
+              var logoSlot = card.querySelector('[data-logo-slot]');
+              var logoUrl = m.co_brand && m.co_brand.partner_logo_url;
+              if (logoSlot && logoUrl) {
+                var img = document.createElement('img');
+                img.alt = (m.partner_organization || m.display_name || '') + ' logo';
+                img.onerror = function () { logoSlot.style.display = 'none'; };
+                img.src = logoUrl;
+                logoSlot.appendChild(img);
+              } else if (logoSlot) {
+                logoSlot.style.display = 'none';
+              }
+              // Tint the banner with the manifest's secondary_color if present.
+              if (logoSlot && m.co_brand && m.co_brand.secondary_color) {
+                logoSlot.style.background = m.co_brand.secondary_color;
+              }
             })
-            .catch(function () { /* silent — pill stays hidden */ });
+            .catch(function () { /* silent — banner + pill stay default */ });
         });
       })();
     </script>
