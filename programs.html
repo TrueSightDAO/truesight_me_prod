@@ -55,6 +55,16 @@
         font-family: 'Space Grotesk', system-ui, sans-serif;
         margin: 0 0 0.35rem;
       }
+      .program-card .status-pill {
+        display: inline-block; margin-left: 0.5rem;
+        padding: 0.1rem 0.55rem; font-size: 0.7rem;
+        font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+        border-radius: 999px; vertical-align: middle;
+      }
+      .program-card .status-pill.onboarding { background: #fff3d6; color: #8a5a18; border: 1px solid #eed9a8; }
+      .program-card .status-pill.archived { background: #eee; color: #777; border: 1px solid #ddd; }
+      .program-card .name-row { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.35rem; }
+      .program-card .name-row .name { margin-bottom: 0; }
     </style>
   </head>
   <body>
@@ -102,14 +112,14 @@
         </div>
 
         <div class="programs-grid">
-          <a class="program-card" href="programs/tribomirim/index.html">
-            <div class="name">Tribo Bahia Mirim</div>
+          <a class="program-card" href="programs/tribomirim/index.html" data-program-slug="tribomirim">
+            <div class="name-row"><div class="name">Tribo Bahia Mirim</div><span class="status-pill" data-status-slot style="display:none"></span></div>
             <div class="partner">Capoeira lineage · Bahia, Brazil</div>
             <div class="tagline">Capoeira practice and lineage transmission, credentialed on-chain. Practitioners log sessions through capoeira.agroverse.shop; each session becomes an attested record.</div>
             <span class="cta">View cohort →</span>
           </a>
-          <a class="program-card" href="programs/butterfly-effect/index.html">
-            <div class="name">Butterfly Effect</div>
+          <a class="program-card" href="programs/butterfly-effect/index.html" data-program-slug="butterfly-effect">
+            <div class="name-row"><div class="name">Butterfly Effect</div><span class="status-pill" data-status-slot style="display:none"></span></div>
             <div class="partner">ERA Professionals · Youth experiential learning</div>
             <div class="tagline">Hands-on modules for youth. Certificates issued at completion with a QR code that scans back to the participant's TrueSight DAO–anchored profile.</div>
             <span class="cta">View cohort →</span>
@@ -123,6 +133,32 @@
       </div>
     </div>
 
+    <script>
+      // Decorate each program card with its manifest-driven status pill.
+      // Cards with `data-program-slug` cause us to fetch
+      // `programs/<slug>/manifest.json` and, if status === 'onboarding'
+      // or 'archived', surface the matching pill. Missing / 'active'
+      // status leaves the pill hidden — keeps the default card chrome clean.
+      // Spec: agentic_ai_context/CREDENTIALING_PROGRAM_PAGES.md §6.
+      (function () {
+        var cards = document.querySelectorAll('.program-card[data-program-slug]');
+        cards.forEach(function (card) {
+          var slug = card.getAttribute('data-program-slug');
+          if (!slug) return;
+          fetch('programs/' + slug + '/manifest.json', { cache: 'no-store' })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (m) {
+              if (!m || !m.status || m.status === 'active') return;
+              var slot = card.querySelector('[data-status-slot]');
+              if (!slot) return;
+              slot.classList.add(m.status);
+              slot.textContent = m.status.charAt(0).toUpperCase() + m.status.slice(1);
+              slot.style.display = 'inline-block';
+            })
+            .catch(function () { /* silent — pill stays hidden */ });
+        });
+      })();
+    </script>
     <script>
       // Hamburger menu toggle and dropdown functionality (shared with index.html)
       (function() {

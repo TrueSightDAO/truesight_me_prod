@@ -20,5 +20,6 @@
   },
   "credential_visibility_default": "public",
   "issuer_lineage_root": "Butterfly Effect",
+  "status": "onboarding",
   "last_reviewed": "2026-05-16"
 }
