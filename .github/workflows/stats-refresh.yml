@@ -1,0 +1,48 @@
+# Regenerates `stats/current.json` from public DAO data sources so LLM agents
+# (and any HTTP client) can read headline numbers without executing the
+# landing page's JavaScript. Pairs with `llms.txt` which directs agents to
+# fetch this file first.
+#
+# The script only reads public raw.github URLs — no credentials needed.
+# Cron runs every 6 hours, offset from top-of-hour to avoid collision with
+# the advisory-snapshot-refresh in go_to_market.
+
+name: Stats refresh
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "37 */6 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stats-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Regenerate stats/current.json
+        run: python3 scripts/build_stats_current.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name 'truesight-me-stats-bot'
+          git config user.email 'truesight-me-stats-bot@users.noreply.github.com'
+          git add stats/current.json
+          if git diff --cached --quiet; then
+            echo "No stats changes."
+            exit 0
+          fi
+          git commit -m "chore(stats): refresh stats/current.json [skip ci]"
+          git push
