@@ -26,9 +26,19 @@
   var LINEAGE_PRIMARY = 'https://cdn.jsdelivr.net/gh/TrueSightDAO/lineage-credentials@main';
   var LINEAGE_FALLBACK = 'https://raw.githubusercontent.com/TrueSightDAO/lineage-credentials/main';
 
-  function fetchJsonWithFallback(relPath) {
+  function fetchJsonWithFallback(relPath, opts) {
+    opts = opts || {};
     var primary = LINEAGE_PRIMARY + relPath;
     var fallback = LINEAGE_FALLBACK + relPath;
+
+    // For index.json, skip jsDelivr's long cache — accuracy matters more than speed.
+    if (opts.fresh) {
+      return fetch(fallback, { cache: 'no-store' }).then(function (r) {
+        if (!r.ok) throw new Error(relPath + ': HTTP ' + r.status);
+        return r.json();
+      });
+    }
+
     return fetch(primary, { cache: 'default' }).then(function (r) {
       if (!r.ok) throw new Error('primary HTTP ' + r.status);
       return r.json();
@@ -131,7 +141,7 @@
 
     var filterProgram = (manifest.membership_filter && manifest.membership_filter.primary_program) || manifest.program_slug;
 
-    fetchJsonWithFallback('/_cache/index.json').then(function (data) {
+    fetchJsonWithFallback('/_cache/index.json', { fresh: true }).then(function (data) {
       if (statusEl) statusEl.textContent = '';
       var all = data.members || [];
       var cohort = all.filter(function (m) { return m.primary_program === filterProgram; });
