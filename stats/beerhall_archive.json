@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-18T21:42:28Z",
+  "generated_at_utc": "2026-05-18T21:50:19Z",
   "source": "https://api.github.com/repos/TrueSightDAO/ecosystem_change_logs/contents/beer_hall/entries?ref=main",
   "interpretation_hint": "Every Beer Hall digest ever published, sorted newest-first. Each entry: date, slug, filename, raw_url. Use the slug as a quick topic hint; fetch raw_url for the full markdown body. For headline numbers + the 10 most-recent entries, fetch https://truesight.me/stats/current.json instead.",
   "total_entries": 30,

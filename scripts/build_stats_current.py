@@ -29,6 +29,29 @@ BEERHALL_ARCHIVE_PATH = REPO_ROOT / "stats" / "beerhall_archive.json"
 REPOS_INDEX_PATH = REPO_ROOT / "stats" / "repos_index.json"
 
 GITHUB_ORG_REPOS_URL = "https://api.github.com/orgs/TrueSightDAO/repos?per_page=100&type=public"
+PROGRAMS_LISTING_URL = "https://api.github.com/repos/TrueSightDAO/lineage-credentials/contents/programs?ref=main"
+PARTNERS_INVENTORY_URL = "https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/partners-inventory.json"
+
+# Known production deploy targets per repo. Hand-maintained because most repos
+# have a deploy target that isn't discoverable from the repo metadata alone
+# (CNAME files only cover Pages; Edgar lives on EC2; some repos are data-only).
+# Update when a new public surface ships. Repos not listed here either don't
+# deploy (libraries, CLIs, data caches) or the deploy is intentionally private.
+REPO_DEPLOY_TARGETS: dict[str, str] = {
+    "truesight_me_beta":       "https://truesight.me",
+    "truesight_me_prod":       "https://truesight.me",
+    "agroverse_shop_beta":     "https://agroverse.shop",
+    "dapp":                    "https://dapp.truesight.me",
+    "oracle":                  "https://oracle.truesight.me",
+    "iching_oracle":           "https://oracle.truesight.me",
+    "capoeira":                "https://capoeira.agroverse.shop",
+    "sentiment_importer":      "https://edgar.truesight.me",
+    "agroverse-inventory":     "https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/",
+    "treasury-cache":          "https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/",
+    "lineage-credentials":     "https://raw.githubusercontent.com/TrueSightDAO/lineage-credentials/main/",
+    "ecosystem_change_logs":   "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/",
+    "agentic_ai_context":      "https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/",
+}
 
 SOURCES = {
     "treasury_cache": "https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_offchain_treasury.json",
@@ -52,6 +75,12 @@ def fetch_json(url: str) -> dict | list | None:
 
 
 def summarize_treasury(treasury: dict | None) -> dict:
+    """Roll up treasury cache by currency AND surface the per-ledger
+    breakdown for each currency. Without the ledger breakdown an LLM
+    (or human) only sees totals — they can't tell whether $19k of USD
+    is sitting in Kirsten's float, in the Main Ledger, or spread across
+    five managed ledgers. The breakdown is what makes the number useful.
+    """
     if not treasury or not isinstance(treasury, dict):
         return {"error": "treasury cache unavailable"}
     items = treasury.get("items", []) or []
@@ -60,12 +89,12 @@ def summarize_treasury(treasury: dict | None) -> dict:
         ccy = (it.get("currency") or "?").strip()
         qty = it.get("total_quantity") or 0
         usd = it.get("total_value_usd") or 0
-        ledger_count = len((it.get("ledgers") or {}))
+        ledgers = it.get("ledgers") or {}
         bucket = by_currency.setdefault(ccy, {
             "total_quantity": 0.0,
             "total_value_usd": 0.0,
             "items": 0,
-            "ledger_breakdown_keys": 0,
+            "ledger_breakdown": {},
         })
         try:
             bucket["total_quantity"] += float(qty)
@@ -76,7 +105,13 @@ def summarize_treasury(treasury: dict | None) -> dict:
         except (TypeError, ValueError):
             pass
         bucket["items"] += 1
-        bucket["ledger_breakdown_keys"] = max(bucket["ledger_breakdown_keys"], ledger_count)
+        for lname, lqty in (ledgers.items() if isinstance(ledgers, dict) else []):
+            try:
+                bucket["ledger_breakdown"][lname] = (
+                    bucket["ledger_breakdown"].get(lname, 0.0) + float(lqty or 0)
+                )
+            except (TypeError, ValueError):
+                pass
     return {
         "generated_at": treasury.get("generated_at"),
         "schema_version": treasury.get("schema_version"),
@@ -86,6 +121,13 @@ def summarize_treasury(treasury: dict | None) -> dict:
                 "total_quantity": round(v["total_quantity"], 2),
                 "total_value_usd": round(v["total_value_usd"], 2),
                 "item_count": v["items"],
+                "ledger_breakdown": {
+                    lname: round(lqty, 2)
+                    for lname, lqty in sorted(
+                        v["ledger_breakdown"].items(),
+                        key=lambda kv: -kv[1],
+                    )
+                },
             }
             for ccy, v in sorted(by_currency.items())
         },
@@ -176,6 +218,162 @@ def summarize_beerhall(listing: list | None, top_n: int = 10) -> dict:
     }
 
 
+def write_programs_index() -> int:
+    """Enumerate every credentialing program in lineage-credentials/programs/
+    and pull each manifest.json into a single index file. LLM agents asking
+    "what programs does the DAO run?" / "what's the lineage for capoeira?" /
+    "what kinds of practice events does Y program accept?" can answer in
+    one fetch.
+
+    Each entry mirrors the manifest schema (program slug, display_name,
+    lineage_root, lineage_root_public_key, authorized_attestors,
+    practice_types, attestation_types, source_pages, notes) plus a
+    canonical credential viewer URL.
+    """
+    listing = fetch_json(PROGRAMS_LISTING_URL)
+    REPOS_INDEX_PATH_PARENT = REPO_ROOT / "stats"
+    out_path = REPOS_INDEX_PATH_PARENT / "programs_index.json"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    if not isinstance(listing, list):
+        out_path.write_text(
+            json.dumps({"error": "programs listing unavailable", "programs": []}, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        return 0
+
+    programs: list[dict] = []
+    for entry in listing:
+        if not isinstance(entry, dict):
+            continue
+        if entry.get("type") != "dir":
+            continue
+        slug = entry.get("name")
+        if not slug:
+            continue
+        manifest_url = f"https://raw.githubusercontent.com/TrueSightDAO/lineage-credentials/main/programs/{slug}/manifest.json"
+        manifest = fetch_json(manifest_url)
+        if not isinstance(manifest, dict):
+            programs.append({
+                "slug": slug,
+                "manifest_url": manifest_url,
+                "error": "manifest unavailable",
+            })
+            continue
+        programs.append({
+            "slug": slug,
+            "program": manifest.get("program"),
+            "display_name": manifest.get("display_name") or slug,
+            "lineage_root": manifest.get("lineage_root"),
+            "lineage_root_public_key": manifest.get("lineage_root_public_key"),
+            "authorized_attestors": manifest.get("authorized_attestors") or [],
+            "practice_types": list((manifest.get("practice_types") or {}).keys()),
+            "attestation_types": list((manifest.get("attestation_types") or {}).keys()),
+            "source_pages": manifest.get("source_pages") or [],
+            "notes": manifest.get("notes"),
+            "manifest_url": manifest_url,
+            "credentials_view_url": f"https://truesight.me/credentials/?program={slug}",
+        })
+
+    programs.sort(key=lambda p: (p.get("display_name") or "").lower())
+
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+    payload = {
+        "generated_at_utc": now,
+        "source_listing": PROGRAMS_LISTING_URL,
+        "interpretation_hint": (
+            "Every credentialing program registered in lineage-credentials. "
+            "Each entry mirrors the program's manifest.json: lineage root, "
+            "authorized attestors, practice / attestation type catalog, "
+            "source page URLs (the practice surface), notes. Use this to "
+            "answer 'what programs does the DAO credential?' / 'what's the "
+            "lineage for X?' / 'how do you become a Y in this program?'. "
+            "Fetch manifest_url for the full schema reference per program."
+        ),
+        "total_programs": len(programs),
+        "programs": programs,
+        "platform_design_doc": "https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/CREDENTIALING_PLATFORM.md",
+    }
+    out_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return len(programs)
+
+
+def write_partners_index() -> int:
+    """Aggregate the per-partner cacao inventory into a single LLM-friendly
+    index. Each entry: partner slug, item count, total inventory units,
+    SKUs in stock, top-3 products by inventory, link to upstream inventory.
+
+    Note: agroverse-inventory does NOT carry region/address per partner —
+    that lives on the Agroverse Partners sheet in the Main Ledger. A
+    "by region" digest would need sheet-API credentials (out of scope
+    for this unauthenticated builder). For now we surface what's
+    available: which partners are active and what they're carrying.
+    """
+    inv = fetch_json(PARTNERS_INVENTORY_URL)
+    out_path = REPO_ROOT / "stats" / "partners_index.json"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    if not isinstance(inv, dict) or "partners" not in inv:
+        out_path.write_text(
+            json.dumps({"error": "partner inventory unavailable", "partners": {}}, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        return 0
+
+    partners_raw = inv.get("partners") or {}
+    partners: list[dict] = []
+    for slug, body in partners_raw.items():
+        items = (body or {}).get("items") or []
+        total_units = 0
+        sku_count = 0
+        top_items: list[dict] = []
+        for it in items:
+            if not isinstance(it, dict):
+                continue
+            sku_count += 1
+            qty = it.get("inventory") or 0
+            try:
+                total_units += int(qty)
+            except (TypeError, ValueError):
+                pass
+            top_items.append({
+                "product_id": it.get("productId"),
+                "product_name": it.get("productName"),
+                "inventory": qty,
+                "shipment": it.get("shipment"),
+                "farm": it.get("farm"),
+            })
+        top_items.sort(key=lambda x: -(int(x.get("inventory") or 0) if isinstance(x.get("inventory"), (int, str)) and str(x.get("inventory")).lstrip("-").isdigit() else 0))
+        partners.append({
+            "slug": slug,
+            "active_sku_count": sku_count,
+            "total_inventory_units": total_units,
+            "top_products": top_items[:3],
+        })
+
+    partners.sort(key=lambda p: -(p.get("total_inventory_units") or 0))
+
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+    payload = {
+        "generated_at_utc": now,
+        "source": PARTNERS_INVENTORY_URL,
+        "interpretation_hint": (
+            "Active Agroverse partner storage points. Each entry: partner "
+            "slug, active SKU count, total inventory units across SKUs, and "
+            "the top-3 products by stock. Use this for 'which partners are "
+            "currently carrying inventory?' / 'who has the most stock?' / "
+            "'where can someone buy product X?'. The full per-item detail "
+            "(price, GTIN, image, farm of origin, shipment ID) is at the "
+            "source URL above. Partner location / region is NOT carried "
+            "here — for region grouping you'd need the Agroverse Partners "
+            "sheet, which requires authenticated access."
+        ),
+        "total_active_partners": len(partners),
+        "partners": partners,
+        "raw_inventory_url": PARTNERS_INVENTORY_URL,
+    }
+    out_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return len(partners)
+
+
 def write_repos_index() -> int:
     """Enumerate every public TrueSightDAO repo via the GitHub Org API and
     write stats/repos_index.json. Gives LLM agents a programmatic map of
@@ -222,6 +420,7 @@ def write_repos_index() -> int:
             "updated_at": r.get("updated_at"),
             "readme_url": f"https://raw.githubusercontent.com/{full}/{default_branch}/README.md",
             "tree_url": f"https://github.com/{full}/tree/{default_branch}",
+            "deploy_target": REPO_DEPLOY_TARGETS.get(name),
         })
 
     # Sort by recency of pushed_at so the most-active repos surface first.
@@ -366,6 +565,14 @@ def main() -> int:
     # Repos index — every public TrueSightDAO repo, for code-surface queries.
     m = write_repos_index()
     print(f"✅ wrote {REPOS_INDEX_PATH.relative_to(REPO_ROOT)} ({m} active repos)")
+
+    # Programs index — every credentialing program (capoeira, butterfly, etc.)
+    p = write_programs_index()
+    print(f"✅ wrote stats/programs_index.json ({p} programs)")
+
+    # Partners index — active Agroverse partner inventory.
+    q = write_partners_index()
+    print(f"✅ wrote stats/partners_index.json ({q} partners)")
     return 0
 
 

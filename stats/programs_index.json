@@ -1,0 +1,49 @@
+{
+  "generated_at_utc": "2026-05-18T21:50:20Z",
+  "source_listing": "https://api.github.com/repos/TrueSightDAO/lineage-credentials/contents/programs?ref=main",
+  "interpretation_hint": "Every credentialing program registered in lineage-credentials. Each entry mirrors the program's manifest.json: lineage root, authorized attestors, practice / attestation type catalog, source page URLs (the practice surface), notes. Use this to answer 'what programs does the DAO credential?' / 'what's the lineage for X?' / 'how do you become a Y in this program?'. Fetch manifest_url for the full schema reference per program.",
+  "total_programs": 2,
+  "programs": [
+    {
+      "slug": "butterfly-effect",
+      "program": "butterfly-effect",
+      "display_name": "Butterfly Effect",
+      "lineage_root": "Butterfly Effect",
+      "lineage_root_public_key": null,
+      "authorized_attestors": [],
+      "practice_types": [
+        "module-completion"
+      ],
+      "attestation_types": [
+        "program-completion"
+      ],
+      "source_pages": [
+        "https://era-professionals.com/butterfly-effect/"
+      ],
+      "notes": "Butterfly Effect is ERA Professionals' youth experiential-learning program (program lead: Bilal; first deployment at Narowal Public School & College, BEC Club Program 2025-2026, signatory Shereen Abdullah). v1 captures self-signed [PRACTICE EVENT] / module-completion records. Authorized attestor chain (Shereen as signing officer) is not yet wired — practice events stand on their own for now. Co-issuer co-brand chrome and printed certificate live in truesight_me/programs/butterfly-effect/ + lineage-engine/scripts/program_assets/butterfly-effect/.",
+      "manifest_url": "https://raw.githubusercontent.com/TrueSightDAO/lineage-credentials/main/programs/butterfly-effect/manifest.json",
+      "credentials_view_url": "https://truesight.me/credentials/?program=butterfly-effect"
+    },
+    {
+      "slug": "capoeira-tribo-mirim",
+      "program": "capoeira-tribo-mirim",
+      "display_name": "Capoeira — Tribo Bahia Mirim",
+      "lineage_root": "Bico Duro",
+      "lineage_root_public_key": null,
+      "authorized_attestors": [],
+      "practice_types": [
+        "training-session"
+      ],
+      "attestation_types": [
+        "corda-promotion"
+      ],
+      "source_pages": [
+        "https://capoeira.agroverse.shop/practice.html"
+      ],
+      "notes": "Lineage root + authorized attestors are placeholders. The MVP captures self-signed [PRACTICE EVENT] only. The qualification + attestation chain is unwired until v2 (institution-onboarding) per the design doc.",
+      "manifest_url": "https://raw.githubusercontent.com/TrueSightDAO/lineage-credentials/main/programs/capoeira-tribo-mirim/manifest.json",
+      "credentials_view_url": "https://truesight.me/credentials/?program=capoeira-tribo-mirim"
+    }
+  ],
+  "platform_design_doc": "https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/CREDENTIALING_PLATFORM.md"
+}
