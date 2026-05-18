@@ -26,6 +26,9 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 OUT_PATH = REPO_ROOT / "stats" / "current.json"
 BEERHALL_ARCHIVE_PATH = REPO_ROOT / "stats" / "beerhall_archive.json"
+REPOS_INDEX_PATH = REPO_ROOT / "stats" / "repos_index.json"
+
+GITHUB_ORG_REPOS_URL = "https://api.github.com/orgs/TrueSightDAO/repos?per_page=100&type=public"
 
 SOURCES = {
     "treasury_cache": "https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_offchain_treasury.json",
@@ -173,6 +176,83 @@ def summarize_beerhall(listing: list | None, top_n: int = 10) -> dict:
     }
 
 
+def write_repos_index() -> int:
+    """Enumerate every public TrueSightDAO repo via the GitHub Org API and
+    write stats/repos_index.json. Gives LLM agents a programmatic map of
+    the DAO's code surface so "where is X implemented?" / "what does
+    Y repo do?" questions resolve in one fetch instead of scraping
+    individual READMEs.
+
+    Each entry includes name, description, primary language, topics,
+    default branch, pushed_at timestamp, fork/archived flags, and a
+    raw README URL on default branch so the LLM can drill straight to
+    the README without another GitHub Contents API call.
+
+    Filters out forks and archived repos by default — keeps the index
+    focused on live, owned code.
+
+    Returns the number of entries written (0 on failure)."""
+    raw = fetch_json(GITHUB_ORG_REPOS_URL)
+    if not isinstance(raw, list):
+        REPOS_INDEX_PATH.parent.mkdir(parents=True, exist_ok=True)
+        REPOS_INDEX_PATH.write_text(
+            json.dumps({"error": "repos listing unavailable", "repos": []}, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        return 0
+
+    entries: list[dict] = []
+    for r in raw:
+        if not isinstance(r, dict):
+            continue
+        if r.get("fork") or r.get("archived"):
+            continue
+        name = r.get("name")
+        default_branch = r.get("default_branch") or "main"
+        full = r.get("full_name") or f"TrueSightDAO/{name}"
+        entries.append({
+            "name": name,
+            "full_name": full,
+            "html_url": r.get("html_url"),
+            "description": r.get("description") or "",
+            "primary_language": r.get("language"),
+            "topics": r.get("topics") or [],
+            "default_branch": default_branch,
+            "pushed_at": r.get("pushed_at"),
+            "updated_at": r.get("updated_at"),
+            "readme_url": f"https://raw.githubusercontent.com/{full}/{default_branch}/README.md",
+            "tree_url": f"https://github.com/{full}/tree/{default_branch}",
+        })
+
+    # Sort by recency of pushed_at so the most-active repos surface first.
+    entries.sort(key=lambda r: (r.get("pushed_at") or ""), reverse=True)
+
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+    payload = {
+        "generated_at_utc": now,
+        "source": GITHUB_ORG_REPOS_URL,
+        "org": "TrueSightDAO",
+        "curated_catalog_url": "https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/PROJECT_INDEX.md",
+        "interpretation_hint": (
+            "Every active (non-fork, non-archived) public repo in the "
+            "TrueSightDAO org, sorted by most-recent push. Each entry "
+            "links to its README and its tree on GitHub. For a curated, "
+            "purpose-grouped view of the most load-bearing repos see "
+            "curated_catalog_url (PROJECT_INDEX.md in agentic_ai_context). "
+            "Use this index when answering 'where is X implemented?' / "
+            "'what does Y repo do?' / 'show me everything written in Z language'."
+        ),
+        "total_active_repos": len(entries),
+        "repos": entries,
+    }
+    REPOS_INDEX_PATH.parent.mkdir(parents=True, exist_ok=True)
+    REPOS_INDEX_PATH.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    return len(entries)
+
+
 def write_beerhall_archive(listing: list | None) -> int:
     """Write the full Beer Hall archive index to stats/beerhall_archive.json
     so LLM agents asking historical questions ('what shipped in March?',
@@ -282,6 +362,10 @@ def main() -> int:
     beerhall_listing = fetch_json(SOURCES["beerhall_listing"])
     n = write_beerhall_archive(beerhall_listing)
     print(f"✅ wrote {BEERHALL_ARCHIVE_PATH.relative_to(REPO_ROOT)} ({n} entries)")
+
+    # Repos index — every public TrueSightDAO repo, for code-surface queries.
+    m = write_repos_index()
+    print(f"✅ wrote {REPOS_INDEX_PATH.relative_to(REPO_ROOT)} ({m} active repos)")
     return 0
 
 
