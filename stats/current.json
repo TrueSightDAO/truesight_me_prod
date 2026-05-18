@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-18T21:24:59Z",
+  "generated_at_utc": "2026-05-18T21:30:14Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -524,11 +524,81 @@
       "partner_count": 24
     }
   },
+  "recent_beerhall_digests": {
+    "total_entries": 30,
+    "recent": [
+      {
+        "date": "2026-05-18",
+        "slug": "programs-markdown-inventory-sellthrough",
+        "filename": "beer-hall_2026-05-18T035653Z_programs-markdown-inventory-sellthrough.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-18T035653Z_programs-markdown-inventory-sellthrough.md"
+      },
+      {
+        "date": "2026-05-17",
+        "slug": "programs-pages-live-partner-check-in-ux",
+        "filename": "beer-hall_2026-05-17T034043Z_programs-pages-live-partner-check-in-ux.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-17T034043Z_programs-pages-live-partner-check-in-ux.md"
+      },
+      {
+        "date": "2026-05-16",
+        "slug": "field-signals-6-the-alchemist-credentialing-v1",
+        "filename": "beer-hall_2026-05-16T032711Z_field-signals-6-the-alchemist-credentialing-v1.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-16T032711Z_field-signals-6-the-alchemist-credentialing-v1.md"
+      },
+      {
+        "date": "2026-05-15",
+        "slug": "field-signals-4-5-autopilot-self-healing",
+        "filename": "beer-hall_2026-05-15T034220Z_field-signals-4-5-autopilot-self-healing.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-15T034220Z_field-signals-4-5-autopilot-self-healing.md"
+      },
+      {
+        "date": "2026-05-13",
+        "slug": "partner-check-in-v03-field-signals-3-live",
+        "filename": "beer-hall_2026-05-13T033754Z_partner-check-in-v03-field-signals-3-live.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-13T033754Z_partner-check-in-v03-field-signals-3-live.md"
+      },
+      {
+        "date": "2026-05-11",
+        "slug": "fundraisers-page-live-qmdj-advisor-currency-tools",
+        "filename": "beer-hall_2026-05-11T170750Z_fundraisers-page-live-qmdj-advisor-currency-tools.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-11T170750Z_fundraisers-page-live-qmdj-advisor-currency-tools.md"
+      },
+      {
+        "date": "2026-05-10",
+        "slug": "batch-qr-oracle-persist-autopilot-auth",
+        "filename": "beer-hall_2026-05-10T024057Z_batch-qr-oracle-persist-autopilot-auth.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-10T024057Z_batch-qr-oracle-persist-autopilot-auth.md"
+      },
+      {
+        "date": "2026-05-09",
+        "slug": "batch-qr-inventory-oracle-persistence-prospect-auto-promote",
+        "filename": "beer-hall_2026-05-09T023633Z_batch-qr-inventory-oracle-persistence-prospect-auto-promote.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-09T023633Z_batch-qr-inventory-oracle-persistence-prospect-auto-promote.md"
+      },
+      {
+        "date": "2026-05-08",
+        "slug": "asset-receipt-page-autopilot-self-deploy-cacao-samples",
+        "filename": "beer-hall_2026-05-08T024249Z_asset-receipt-page-autopilot-self-deploy-cacao-samples.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-08T024249Z_asset-receipt-page-autopilot-self-deploy-cacao-samples.md"
+      },
+      {
+        "date": "2026-05-07",
+        "slug": "agentic-auth-asset-receipt-cacao-transfer",
+        "filename": "beer-hall_2026-05-07T023654Z_agentic-auth-asset-receipt-cacao-transfer.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-07T023654Z_agentic-auth-asset-receipt-cacao-transfer.md"
+      }
+    ],
+    "directory_url": "https://github.com/TrueSightDAO/ecosystem_change_logs/tree/main/beer_hall/entries",
+    "raw_url_pattern": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/<filename>",
+    "human_index_url": "https://truesight.me/beerhall/updates.html",
+    "interpretation_hint": "Each entry is a community digest summarizing recent shipped work. The slug encodes the headline themes; the date is when the digest was published. Fetch raw_url for the full markdown body."
+  },
   "canonical_sources": {
     "treasury_cache": "https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_offchain_treasury.json",
     "members_index": "https://raw.githubusercontent.com/TrueSightDAO/lineage-credentials/main/_cache/index.json",
     "store_inventory": "https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/store-inventory.json",
-    "partner_inventory": "https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/partners-inventory.json"
+    "partner_inventory": "https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/partners-inventory.json",
+    "beerhall_listing": "https://api.github.com/repos/TrueSightDAO/ecosystem_change_logs/contents/beer_hall/entries?ref=main"
   },
   "canonical_context_docs": {
     "advisory_base": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/advisory/BASE.md",

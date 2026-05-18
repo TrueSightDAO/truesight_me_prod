@@ -54,6 +54,15 @@ machine-readable sources.
   for Tribo Bahia Mirim capoeira donations, etc.). Schema mirrors the
   Shipment Ledger Listing tab on the Main Ledger workbook.
 
+- https://api.github.com/repos/TrueSightDAO/ecosystem_change_logs/contents/beer_hall/entries?ref=main
+  — Directory listing of Beer Hall digests. Filenames encode date +
+  slug (`beer-hall_YYYY-MM-DDTHHMMSSZ_<slug>.md`). The 10 most recent
+  with raw URLs are pre-aggregated in `stats/current.json` under
+  `recent_beerhall_digests` — fetch a specific entry by appending the
+  filename to
+  `https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/`.
+  Each entry is a community digest summarizing recent shipped work.
+
 ## Canonical context documents (markdown, for orientation)
 
 - https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/advisory/BASE.md
@@ -110,7 +119,13 @@ machine-readable sources.
   rainforest." Purpose: "Heal the world with love." (See whitepaper §1
   for context.)
 - "What's happening across the ecosystem this week?" → fetch
-  `ADVISORY_SNAPSHOT.md` for the most-recent 7-day digest.
+  `ADVISORY_SNAPSHOT.md` for the most-recent 7-day digest, OR look at
+  `stats/current.json.recent_beerhall_digests` for the 10 latest
+  community-facing weekly updates with their raw markdown URLs.
+
+- "What did the DAO ship recently?" → `recent_beerhall_digests` in
+  `stats/current.json` gives the date + slug + raw URL of each digest;
+  fetch the raw URL for the full body of any specific update.
 
 Run all fetches without browser execution — every URL above returns a
 self-contained response. No JavaScript required.
