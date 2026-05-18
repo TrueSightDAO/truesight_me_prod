@@ -1303,6 +1303,53 @@ section h2 {
   display: block;
 }
 
+/* Stat breakdown — click-to-expand panel under a stat card surfacing the
+   underlying per-ledger / per-currency values that the headline number rolls
+   up. Lazy-fetched from treasury-cache on first open. */
+.stat-breakdown {
+  margin-top: var(--space-sm);
+  width: 100%;
+  text-align: left;
+  font-size: 0.78rem;
+}
+.stat-breakdown > summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-weight: 500;
+  padding: 0.2rem 0;
+  list-style: none;
+}
+.stat-breakdown > summary::-webkit-details-marker { display: none; }
+.stat-breakdown > summary::before {
+  content: "▸ ";
+  display: inline-block;
+  transition: transform 0.12s ease;
+  color: var(--accent, #2f4f2e);
+}
+.stat-breakdown[open] > summary::before { content: "▾ "; }
+.stat-breakdown > summary:hover { color: var(--text, #222); }
+.stat-breakdown-body {
+  margin-top: 0.4rem;
+  padding: 0.5rem 0.7rem;
+  background: rgba(0, 0, 0, 0.025);
+  border-radius: 4px;
+  color: var(--text, #222);
+}
+.stat-breakdown-body table { width: 100%; border-collapse: collapse; }
+.stat-breakdown-body td {
+  padding: 0.18rem 0.3rem;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.08);
+  font-variant-numeric: tabular-nums;
+}
+.stat-breakdown-body td:last-child { text-align: right; }
+.stat-breakdown-body tr:last-child td { border-bottom: none; font-weight: 600; }
+.stat-breakdown-body .meta {
+  margin-top: 0.4rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
 .card li {
   margin-bottom: var(--space-xs);
   line-height: 1.7;
