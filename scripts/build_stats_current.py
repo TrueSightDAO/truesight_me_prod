@@ -25,6 +25,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 OUT_PATH = REPO_ROOT / "stats" / "current.json"
+BEERHALL_ARCHIVE_PATH = REPO_ROOT / "stats" / "beerhall_archive.json"
 
 SOURCES = {
     "treasury_cache": "https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_offchain_treasury.json",
@@ -120,18 +121,16 @@ def summarize_members(members_idx: dict | None) -> dict:
     }
 
 
-def summarize_beerhall(listing: list | None, top_n: int = 10) -> dict:
-    """Recent Beer Hall digests — each entry is a community-facing weekly-ish
-    update Gary publishes after a discrete arc of work ships. Parses the
-    GitHub Contents API listing for the entries/ dir, returns the N most
-    recent with date, slug, and raw markdown URL so an LLM can fetch the
-    body directly without scraping HTML or scanning the repo.
+def parse_beerhall_listing(listing: list | None) -> list[dict]:
+    """Parse GitHub Contents API directory listing into a flat list of
+    {date, slug, filename, raw_url} sorted newest-first. Returns empty
+    list on any failure so downstream callers can degrade gracefully.
 
     Filename convention: beer-hall_YYYY-MM-DDTHHMMSSZ_<slug>.md
     """
     import re
     if not isinstance(listing, list):
-        return {"error": "beerhall listing unavailable"}
+        return []
     pat = re.compile(r"^beer-hall_(\d{4}-\d{2}-\d{2})T(\d{6})Z_(.+)\.md$")
     entries: list[dict] = []
     for f in listing:
@@ -146,18 +145,68 @@ def summarize_beerhall(listing: list | None, top_n: int = 10) -> dict:
             "raw_url": f"{BEERHALL_RAW_BASE}/{name}",
         })
     entries.sort(key=lambda e: (e["date"], e["filename"]), reverse=True)
+    return entries
+
+
+def summarize_beerhall(listing: list | None, top_n: int = 10) -> dict:
+    """Headline view: 10 most recent Beer Hall digests for the
+    single-fetch case. Includes a pointer to the full archive for
+    historical lookups.
+    """
+    entries = parse_beerhall_listing(listing)
+    if not entries:
+        return {"error": "beerhall listing unavailable"}
     return {
         "total_entries": len(entries),
         "recent": entries[:top_n],
+        "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
         "directory_url": "https://github.com/TrueSightDAO/ecosystem_change_logs/tree/main/beer_hall/entries",
         "raw_url_pattern": f"{BEERHALL_RAW_BASE}/<filename>",
         "human_index_url": "https://truesight.me/beerhall/updates.html",
         "interpretation_hint": (
             "Each entry is a community digest summarizing recent shipped work. "
             "The slug encodes the headline themes; the date is when the digest "
-            "was published. Fetch raw_url for the full markdown body."
+            "was published. Fetch raw_url for the full markdown body. "
+            "For digests older than the 10 most-recent shown here, fetch "
+            "full_archive_url for the complete historical index."
         ),
     }
+
+
+def write_beerhall_archive(listing: list | None) -> int:
+    """Write the full Beer Hall archive index to stats/beerhall_archive.json
+    so LLM agents asking historical questions ('what shipped in March?',
+    'how did the credentialing arc start?') can walk back through every
+    digest without hitting the GitHub Contents API directly. Returns the
+    number of entries written (0 on failure)."""
+    entries = parse_beerhall_listing(listing)
+    if not entries:
+        BEERHALL_ARCHIVE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        BEERHALL_ARCHIVE_PATH.write_text(
+            json.dumps({"error": "beerhall listing unavailable", "entries": []}, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        return 0
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+    payload = {
+        "generated_at_utc": now,
+        "source": "https://api.github.com/repos/TrueSightDAO/ecosystem_change_logs/contents/beer_hall/entries?ref=main",
+        "interpretation_hint": (
+            "Every Beer Hall digest ever published, sorted newest-first. "
+            "Each entry: date, slug, filename, raw_url. Use the slug as "
+            "a quick topic hint; fetch raw_url for the full markdown body. "
+            "For headline numbers + the 10 most-recent entries, fetch "
+            "https://truesight.me/stats/current.json instead."
+        ),
+        "total_entries": len(entries),
+        "entries": entries,
+    }
+    BEERHALL_ARCHIVE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    BEERHALL_ARCHIVE_PATH.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    return len(entries)
 
 
 def summarize_inventory(store_inv: dict | None, partner_inv: dict | None) -> dict:
@@ -222,10 +271,17 @@ def build_stats() -> dict:
 
 
 def main() -> int:
+    # Stats (headline + 10 recent digests)
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     stats = build_stats()
     OUT_PATH.write_text(json.dumps(stats, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"✅ wrote {OUT_PATH.relative_to(REPO_ROOT)}")
+
+    # Full Beer Hall archive (historical lookups). Reuse the listing fetched
+    # for stats to avoid a duplicate API hit.
+    beerhall_listing = fetch_json(SOURCES["beerhall_listing"])
+    n = write_beerhall_archive(beerhall_listing)
+    print(f"✅ wrote {BEERHALL_ARCHIVE_PATH.relative_to(REPO_ROOT)} ({n} entries)")
     return 0
 
 
