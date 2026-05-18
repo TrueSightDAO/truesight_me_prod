@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-18T21:42:32Z",
+  "generated_at_utc": "2026-05-18T21:50:20Z",
   "source": "https://api.github.com/orgs/TrueSightDAO/repos?per_page=100&type=public",
   "org": "TrueSightDAO",
   "curated_catalog_url": "https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/PROJECT_INDEX.md",
@@ -7,17 +7,18 @@
   "total_active_repos": 39,
   "repos": [
     {
-      "name": "truesight_me_beta",
-      "full_name": "TrueSightDAO/truesight_me_beta",
-      "html_url": "https://github.com/TrueSightDAO/truesight_me_beta",
-      "description": "Main DAO landing page",
-      "primary_language": "HTML",
+      "name": "agentic_ai_context",
+      "full_name": "TrueSightDAO/agentic_ai_context",
+      "html_url": "https://github.com/TrueSightDAO/agentic_ai_context",
+      "description": "",
+      "primary_language": "Python",
       "topics": [],
       "default_branch": "main",
-      "pushed_at": "2026-05-18T21:35:23Z",
-      "updated_at": "2026-05-18T21:35:26Z",
-      "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/truesight_me_beta/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/truesight_me_beta/tree/main"
+      "pushed_at": "2026-05-18T21:50:14Z",
+      "updated_at": "2026-05-18T21:50:17Z",
+      "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/README.md",
+      "tree_url": "https://github.com/TrueSightDAO/agentic_ai_context/tree/main",
+      "deploy_target": "https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/"
     },
     {
       "name": "ecosystem_change_logs",
@@ -27,10 +28,39 @@
       "primary_language": "Python",
       "topics": [],
       "default_branch": "main",
-      "pushed_at": "2026-05-18T21:30:38Z",
-      "updated_at": "2026-05-18T21:30:42Z",
+      "pushed_at": "2026-05-18T21:49:38Z",
+      "updated_at": "2026-05-18T21:49:42Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/ecosystem_change_logs/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/ecosystem_change_logs/tree/main",
+      "deploy_target": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/"
+    },
+    {
+      "name": "treasury-cache",
+      "full_name": "TrueSightDAO/treasury-cache",
+      "html_url": "https://github.com/TrueSightDAO/treasury-cache",
+      "description": "",
+      "primary_language": "JavaScript",
+      "topics": [],
+      "default_branch": "main",
+      "pushed_at": "2026-05-18T21:49:06Z",
+      "updated_at": "2026-05-18T21:49:09Z",
+      "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/README.md",
+      "tree_url": "https://github.com/TrueSightDAO/treasury-cache/tree/main",
+      "deploy_target": "https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/"
+    },
+    {
+      "name": "truesight_me_beta",
+      "full_name": "TrueSightDAO/truesight_me_beta",
+      "html_url": "https://github.com/TrueSightDAO/truesight_me_beta",
+      "description": "Main DAO landing page",
+      "primary_language": "HTML",
+      "topics": [],
+      "default_branch": "main",
+      "pushed_at": "2026-05-18T21:43:01Z",
+      "updated_at": "2026-05-18T21:43:04Z",
+      "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/truesight_me_beta/main/README.md",
+      "tree_url": "https://github.com/TrueSightDAO/truesight_me_beta/tree/main",
+      "deploy_target": "https://truesight.me"
     },
     {
       "name": ".github",
@@ -43,7 +73,8 @@
       "pushed_at": "2026-05-18T21:20:55Z",
       "updated_at": "2026-05-18T21:21:00Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/.github/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/.github/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/.github/tree/main",
+      "deploy_target": null
     },
     {
       "name": "lineage-credentials",
@@ -56,7 +87,8 @@
       "pushed_at": "2026-05-18T21:18:37Z",
       "updated_at": "2026-05-18T21:18:46Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/lineage-credentials/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/lineage-credentials/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/lineage-credentials/tree/main",
+      "deploy_target": "https://raw.githubusercontent.com/TrueSightDAO/lineage-credentials/main/"
     },
     {
       "name": "dao_client",
@@ -69,7 +101,8 @@
       "pushed_at": "2026-05-18T21:18:31Z",
       "updated_at": "2026-05-18T21:18:35Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/dao_client/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/dao_client/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/dao_client/tree/main",
+      "deploy_target": null
     },
     {
       "name": "lineage-engine",
@@ -82,20 +115,8 @@
       "pushed_at": "2026-05-18T21:16:11Z",
       "updated_at": "2026-05-18T21:16:14Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/lineage-engine/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/lineage-engine/tree/main"
-    },
-    {
-      "name": "treasury-cache",
-      "full_name": "TrueSightDAO/treasury-cache",
-      "html_url": "https://github.com/TrueSightDAO/treasury-cache",
-      "description": "",
-      "primary_language": "JavaScript",
-      "topics": [],
-      "default_branch": "main",
-      "pushed_at": "2026-05-18T20:48:39Z",
-      "updated_at": "2026-05-18T20:48:42Z",
-      "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/treasury-cache/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/lineage-engine/tree/main",
+      "deploy_target": null
     },
     {
       "name": "capoeira",
@@ -108,20 +129,8 @@
       "pushed_at": "2026-05-18T20:34:54Z",
       "updated_at": "2026-05-18T20:34:59Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/capoeira/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/capoeira/tree/main"
-    },
-    {
-      "name": "agentic_ai_context",
-      "full_name": "TrueSightDAO/agentic_ai_context",
-      "html_url": "https://github.com/TrueSightDAO/agentic_ai_context",
-      "description": "",
-      "primary_language": "Python",
-      "topics": [],
-      "default_branch": "main",
-      "pushed_at": "2026-05-18T20:18:32Z",
-      "updated_at": "2026-05-18T20:18:39Z",
-      "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/agentic_ai_context/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/capoeira/tree/main",
+      "deploy_target": "https://capoeira.agroverse.shop"
     },
     {
       "name": "notarizations",
@@ -134,7 +143,8 @@
       "pushed_at": "2026-05-18T19:51:44Z",
       "updated_at": "2026-05-18T19:51:48Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/notarizations/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/notarizations/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/notarizations/tree/main",
+      "deploy_target": null
     },
     {
       "name": "oracle_logs",
@@ -147,7 +157,8 @@
       "pushed_at": "2026-05-18T15:35:24Z",
       "updated_at": "2026-05-18T15:37:02Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/oracle_logs/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/oracle_logs/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/oracle_logs/tree/main",
+      "deploy_target": null
     },
     {
       "name": "agroverse-inventory",
@@ -160,7 +171,8 @@
       "pushed_at": "2026-05-18T10:50:03Z",
       "updated_at": "2026-05-18T10:50:07Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/agroverse-inventory/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/agroverse-inventory/tree/main",
+      "deploy_target": "https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/"
     },
     {
       "name": "governor_chatbot_service",
@@ -173,7 +185,8 @@
       "pushed_at": "2026-05-18T10:18:37Z",
       "updated_at": "2026-05-18T10:18:42Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/governor_chatbot_service/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/governor_chatbot_service/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/governor_chatbot_service/tree/main",
+      "deploy_target": null
     },
     {
       "name": "tokenomics",
@@ -186,7 +199,8 @@
       "pushed_at": "2026-05-16T21:37:48Z",
       "updated_at": "2026-05-16T21:37:50Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/tokenomics/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/tokenomics/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/tokenomics/tree/main",
+      "deploy_target": null
     },
     {
       "name": "agroverse_shop_beta",
@@ -199,7 +213,8 @@
       "pushed_at": "2026-05-16T00:30:58Z",
       "updated_at": "2026-05-16T00:31:00Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/agroverse_shop_beta/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/agroverse_shop_beta/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/agroverse_shop_beta/tree/main",
+      "deploy_target": "https://agroverse.shop"
     },
     {
       "name": "go_to_market",
@@ -212,7 +227,8 @@
       "pushed_at": "2026-05-15T23:32:53Z",
       "updated_at": "2026-05-15T23:32:55Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/go_to_market/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/go_to_market/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/go_to_market/tree/main",
+      "deploy_target": null
     },
     {
       "name": "truesight_autopilot_transcript",
@@ -225,7 +241,8 @@
       "pushed_at": "2026-05-15T19:10:48Z",
       "updated_at": "2026-05-15T19:10:54Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/truesight_autopilot_transcript/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/truesight_autopilot_transcript/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/truesight_autopilot_transcript/tree/main",
+      "deploy_target": null
     },
     {
       "name": "truesight_autopilot",
@@ -238,7 +255,8 @@
       "pushed_at": "2026-05-14T02:21:06Z",
       "updated_at": "2026-05-14T02:21:08Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/truesight_autopilot/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/truesight_autopilot/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/truesight_autopilot/tree/main",
+      "deploy_target": null
     },
     {
       "name": "places-cache",
@@ -251,7 +269,8 @@
       "pushed_at": "2026-05-13T22:48:07Z",
       "updated_at": "2026-05-13T22:48:10Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/places-cache/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/places-cache/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/places-cache/tree/main",
+      "deploy_target": null
     },
     {
       "name": "dapp",
@@ -264,7 +283,8 @@
       "pushed_at": "2026-05-13T03:43:08Z",
       "updated_at": "2026-05-13T03:43:10Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/dapp/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/dapp/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/dapp/tree/main",
+      "deploy_target": "https://dapp.truesight.me"
     },
     {
       "name": "tribomirimbahia",
@@ -277,7 +297,8 @@
       "pushed_at": "2026-05-12T02:59:23Z",
       "updated_at": "2026-05-12T02:59:25Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/tribomirimbahia/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/tribomirimbahia/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/tribomirimbahia/tree/main",
+      "deploy_target": null
     },
     {
       "name": "store_interaction_attachments",
@@ -290,7 +311,8 @@
       "pushed_at": "2026-05-07T19:52:48Z",
       "updated_at": "2026-05-07T19:52:52Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/store_interaction_attachments/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/store_interaction_attachments/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/store_interaction_attachments/tree/main",
+      "deploy_target": null
     },
     {
       "name": "contributors-cache",
@@ -303,7 +325,8 @@
       "pushed_at": "2026-04-22T06:01:26Z",
       "updated_at": "2026-04-22T06:01:26Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/contributors-cache/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/contributors-cache/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/contributors-cache/tree/main",
+      "deploy_target": null
     },
     {
       "name": "Cypher-Defense",
@@ -316,7 +339,8 @@
       "pushed_at": "2026-04-18T19:49:43Z",
       "updated_at": "2026-04-18T19:49:46Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/Cypher-Defense/master/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/Cypher-Defense/tree/master"
+      "tree_url": "https://github.com/TrueSightDAO/Cypher-Defense/tree/master",
+      "deploy_target": null
     },
     {
       "name": "agroverse-freight-audit",
@@ -329,7 +353,8 @@
       "pushed_at": "2026-04-16T23:13:02Z",
       "updated_at": "2026-04-16T19:36:40Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/agroverse-freight-audit/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/agroverse-freight-audit/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/agroverse-freight-audit/tree/main",
+      "deploy_target": null
     },
     {
       "name": "point-of-sales-integrations-heierling",
@@ -342,7 +367,8 @@
       "pushed_at": "2026-04-07T18:00:19Z",
       "updated_at": "2026-04-07T18:00:35Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/point-of-sales-integrations-heierling/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/point-of-sales-integrations-heierling/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/point-of-sales-integrations-heierling/tree/main",
+      "deploy_target": null
     },
     {
       "name": "TrueChain",
@@ -355,7 +381,8 @@
       "pushed_at": "2026-03-13T19:30:51Z",
       "updated_at": "2026-03-13T19:29:22Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/TrueChain/master/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/TrueChain/tree/master"
+      "tree_url": "https://github.com/TrueSightDAO/TrueChain/tree/master",
+      "deploy_target": null
     },
     {
       "name": "proposals",
@@ -368,7 +395,8 @@
       "pushed_at": "2026-02-24T03:31:55Z",
       "updated_at": "2026-02-24T03:31:59Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/proposals/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/proposals/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/proposals/tree/main",
+      "deploy_target": null
     },
     {
       "name": "fda_fsvp",
@@ -381,7 +409,8 @@
       "pushed_at": "2025-10-24T21:20:38Z",
       "updated_at": "2025-10-24T21:20:39Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/fda_fsvp/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/fda_fsvp/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/fda_fsvp/tree/main",
+      "deploy_target": null
     },
     {
       "name": "qr_codes",
@@ -394,7 +423,8 @@
       "pushed_at": "2025-09-02T19:25:15Z",
       "updated_at": "2025-09-02T19:25:18Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/qr_codes/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/qr_codes/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/qr_codes/tree/main",
+      "deploy_target": null
     },
     {
       "name": "verify_public_signatures",
@@ -407,7 +437,8 @@
       "pushed_at": "2025-08-07T19:50:00Z",
       "updated_at": "2025-08-07T19:50:43Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/verify_public_signatures/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/verify_public_signatures/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/verify_public_signatures/tree/main",
+      "deploy_target": null
     },
     {
       "name": "sunmint",
@@ -420,7 +451,8 @@
       "pushed_at": "2025-08-02T03:26:28Z",
       "updated_at": "2025-08-02T03:26:30Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/sunmint/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/sunmint/tree/main",
+      "deploy_target": null
     },
     {
       "name": "TruthGpt",
@@ -433,7 +465,8 @@
       "pushed_at": "2023-11-04T22:50:19Z",
       "updated_at": "2023-11-04T22:50:19Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/TruthGpt/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/TruthGpt/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/TruthGpt/tree/main",
+      "deploy_target": null
     },
     {
       "name": "fda_haccp",
@@ -446,7 +479,8 @@
       "pushed_at": "2023-10-02T18:44:54Z",
       "updated_at": "2023-10-02T18:44:54Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/fda_haccp/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/fda_haccp/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/fda_haccp/tree/main",
+      "deploy_target": null
     },
     {
       "name": "truesight_protocol",
@@ -459,7 +493,8 @@
       "pushed_at": "2022-06-19T15:16:57Z",
       "updated_at": "2022-02-27T10:03:20Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/truesight_protocol/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/truesight_protocol/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/truesight_protocol/tree/main",
+      "deploy_target": null
     },
     {
       "name": "pyth_node_sandbox",
@@ -472,7 +507,8 @@
       "pushed_at": "2022-03-27T22:00:10Z",
       "updated_at": "2022-03-27T21:59:07Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/pyth_node_sandbox/master/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/pyth_node_sandbox/tree/master"
+      "tree_url": "https://github.com/TrueSightDAO/pyth_node_sandbox/tree/master",
+      "deploy_target": null
     },
     {
       "name": "metaplex",
@@ -485,7 +521,8 @@
       "pushed_at": "2022-03-18T00:14:51Z",
       "updated_at": "2022-03-17T20:03:42Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/metaplex/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/metaplex/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/metaplex/tree/main",
+      "deploy_target": null
     },
     {
       "name": "truesight_nft_test",
@@ -498,7 +535,8 @@
       "pushed_at": "2022-03-17T20:07:14Z",
       "updated_at": "2022-03-16T00:14:51Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/truesight_nft_test/master/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/truesight_nft_test/tree/master"
+      "tree_url": "https://github.com/TrueSightDAO/truesight_nft_test/tree/master",
+      "deploy_target": null
     },
     {
       "name": "documentation",
@@ -511,7 +549,8 @@
       "pushed_at": "2022-02-23T04:55:13Z",
       "updated_at": "2022-02-27T10:03:20Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/documentation/main/README.md",
-      "tree_url": "https://github.com/TrueSightDAO/documentation/tree/main"
+      "tree_url": "https://github.com/TrueSightDAO/documentation/tree/main",
+      "deploy_target": null
     }
   ]
 }

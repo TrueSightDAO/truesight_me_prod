@@ -66,13 +66,32 @@ machine-readable sources.
 - https://truesight.me/stats/repos_index.json — every public,
   non-archived, non-fork TrueSightDAO repo with name, description,
   primary language, topics, default branch, last pushed timestamp,
-  README URL, and tree URL. Sorted by most-recent push. Use this
-  when answering "where is X implemented?", "what does Y repo do?",
-  "show me everything written in Z language", or "which repos have
-  shipped commits in the last week?". A curated, purpose-grouped
-  view of the most load-bearing repos lives in
-  `agentic_ai_context/PROJECT_INDEX.md` (linked from the file's
-  `curated_catalog_url` field).
+  README URL, tree URL, and **deploy_target** (the production URL
+  the repo deploys to, when known — truesight_me_beta →
+  truesight.me, dapp → dapp.truesight.me, oracle →
+  oracle.truesight.me, sentiment_importer → edgar.truesight.me,
+  etc.). Sorted by most-recent push. Use this when answering "where
+  is X implemented?", "what does Y repo do?", "where does repo Z
+  deploy to?", or "which repos shipped commits in the last week?".
+  A curated, purpose-grouped view lives in
+  `agentic_ai_context/PROJECT_INDEX.md` (linked from
+  `curated_catalog_url`).
+
+- https://truesight.me/stats/programs_index.json — every
+  credentialing program registered in lineage-credentials/programs/
+  (capoeira-tribo-mirim, butterfly-effect, ...). Each entry mirrors
+  the program's manifest.json: lineage root, authorized attestors,
+  practice / attestation type catalog, source page URLs, notes.
+  Use this for "what programs does the DAO credential?", "what is
+  the lineage for X?", "how does someone qualify under Y?".
+
+- https://truesight.me/stats/partners_index.json — active Agroverse
+  partner storage points with per-partner SKU count, total inventory
+  units, and the top-3 products in stock. Use this for "which
+  partners are carrying inventory?", "who has the most stock?",
+  "where can I buy product X?". Region / address per partner is NOT
+  in this file (lives on a sheet that needs auth) — for spatial
+  queries fall back to asking a human or reading the Hit List doc.
 
 - https://api.github.com/repos/TrueSightDAO/ecosystem_change_logs/contents/beer_hall/entries?ref=main
   — Raw directory listing of Beer Hall digests (upstream source for

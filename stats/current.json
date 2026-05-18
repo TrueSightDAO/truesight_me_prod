@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-18T21:42:24Z",
+  "generated_at_utc": "2026-05-18T21:50:17Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -104,412 +104,666 @@
       "1 Gallon Zip Loc Bags": {
         "total_quantity": 34.0,
         "total_value_usd": 4.78,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 34.0
+        }
       },
       "22 Litres Insulated Box": {
         "total_quantity": 1.0,
         "total_value_usd": 6.26,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "8 Ounce Package Kraft Pouch  CP340992735BR": {
         "total_quantity": 28.0,
         "total_value_usd": 238.26,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 28.0
+        }
       },
       "8 Ounce Package Kraft Pouch - AGL2 + V2 bags": {
         "total_quantity": 5.0,
         "total_value_usd": 37.47,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 5.0
+        }
       },
       "8 Ounce Package Kraft Pouch - AGL6": {
         "total_quantity": 10.0,
         "total_value_usd": 92.14,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "AGL6": 10.0
+        }
       },
       "8 Ounce Package Kraft Pouch - CP340992695BR + v2 bags": {
         "total_quantity": 7.0,
         "total_value_usd": 58.41,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 7.0
+        }
       },
       "8 Ounce Package Kraft Pouch - Ilheus, Brazil 2024": {
         "total_quantity": 137.0,
         "total_value_usd": 909.68,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 137.0
+        }
       },
       "8 Ounce Package Kraft Pouch - Ilheus, Brazil 2024 + CP340993838BR - Zurich": {
         "total_quantity": 16.0,
         "total_value_usd": 151.2,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 16.0
+        }
       },
       "8 Ounce Package Kraft Pouch CP340992687BR": {
         "total_quantity": 10.0,
         "total_value_usd": 88.79,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 10.0
+        }
       },
       "8 Ounce Package Kraft Pouch CP340993268BR - Switzerland": {
         "total_quantity": 24.0,
         "total_value_usd": 238.87,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 24.0
+        }
       },
       "8 Ounce Package Kraft Pouch QN226716310BR - FounderHaus Brazil": {
         "total_quantity": 3.0,
         "total_value_usd": 25.78,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 3.0
+        }
       },
       "ATOLOMOTOR Coffee Bean Roaster": {
         "total_quantity": 1.0,
         "total_value_usd": 86.89,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "Agroverse Retractable Banner": {
         "total_quantity": 1.0,
         "total_value_usd": 72.57,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "Amazon LFSEMINI camping stove windscreen 16 plates + drawstring bag (per unit, order 111-8445495-0894600)": {
         "total_quantity": 1.0,
         "total_value_usd": 9.17,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "Bialetti Moka Express 18 Cup (ASIN B0000AN3QK, order 111-9241674-1033036)": {
         "total_quantity": 1.0,
         "total_value_usd": 116.91,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "Brazilian Reis": {
         "total_quantity": 2748.87,
         "total_value_usd": 638.56,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 2511.97,
+          "AGL8": 236.9
+        }
       },
       "CRYBY Coffee Bean Roaster, 14.5L/3.83 with 3 year warranty starting 20251027": {
         "total_quantity": 1.0,
         "total_value_usd": 162.37,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "Cacao Almonds (KG)": {
         "total_quantity": 274.09,
         "total_value_usd": 0.0,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "AGL8": 274.09
+        }
       },
       "Cacao Almonds KG - Organic": {
         "total_quantity": 2.3,
         "total_value_usd": 232.29,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 2.3
+        }
       },
       "Cacao Almonds KG from Oscar's farm - AGL14": {
         "total_quantity": 40.0,
         "total_value_usd": 456.49,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "AGL14": 40.0
+        }
       },
       "Cacao Almonds KG from Vivi's farm - AGL13": {
         "total_quantity": 15.0,
         "total_value_usd": 118.05,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "AGL13": 15.0
+        }
       },
       "Cacao Husk (KG) - Ilheus, Brazil": {
         "total_quantity": 20.0,
         "total_value_usd": 355.71,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 20.0
+        }
       },
       "Cacao Husk Bag (weight unknown)": {
         "total_quantity": 3.0,
         "total_value_usd": 0.0,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 3.0
+        }
       },
       "Cacao Mass Bar (40grams) CP340993869BR - AGL8": {
         "total_quantity": 3.25,
         "total_value_usd": 6.16,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "AGL8": 3.25
+        }
       },
       "Cacao Mass Bar (500grams) - Ilheus, Brazil 2024": {
         "total_quantity": 39.0,
         "total_value_usd": 612.11,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 39.0
+        }
       },
       "Cacao Mass Bar (500grams) - Ilheus, Brazil 2024 + CP340993237BR Poland": {
         "total_quantity": 20.0,
         "total_value_usd": 537.46,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 20.0
+        }
       },
       "Cacao Mass Bar (500grams) - Ilheus, Brazil 2024 + CP340993838BR - Zurich": {
         "total_quantity": 7.0,
         "total_value_usd": 167.83,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 7.0
+        }
       },
       "Cacao Mass Bar (loose grams) - AGL2": {
         "total_quantity": 50.0,
         "total_value_usd": 1.55,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 50.0
+        }
       },
       "Cacao Mass Bar (loose grams) - Ilheus, Brazil 2024 + CP340993838BR - Zurich": {
         "total_quantity": 240.0,
         "total_value_usd": 11.51,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 240.0
+        }
       },
       "Cacao Mass Bar CP340992687BR (500grams)": {
         "total_quantity": 1.0,
         "total_value_usd": 21.54,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "Cacao Molasses 250ml + 74 4476 6210 San Francisco": {
         "total_quantity": 2.0,
         "total_value_usd": 24.29,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 2.0
+        }
       },
       "Cacao Nibs (KG) - Ilheus, Brazil 2024": {
         "total_quantity": 80.0,
         "total_value_usd": 1969.48,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 80.0
+        }
       },
       "Cacao Nibs (Kilograms) Santos 20260213 - AGL13": {
         "total_quantity": 100.0,
         "total_value_usd": 1018.23,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "AGL13": 100.0
+        }
       },
       "Cacao Nibs Kraft Pouch": {
         "total_quantity": 866.0,
         "total_value_usd": 294.44,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 866.0
+        }
       },
       "Cacao Nibs Kraft Pouch - 20250219006": {
         "total_quantity": 530.0,
         "total_value_usd": 357.99,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 530.0
+        }
       },
       "Cacao Nibs Kraft Pouch - V2": {
         "total_quantity": 2460.0,
         "total_value_usd": 1730.17,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 2460.0
+        }
       },
       "Cacao Tea (Kilograms) Santos 20260213 - AGL13": {
         "total_quantity": 21.0,
         "total_value_usd": 213.83,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "AGL13": 21.0
+        }
       },
       "Cacao Tea - 20250219006 | Cacao Tea | Kilogram | Paulo 2024 | Santos 018-2025 016-2025 || Ilheus - AGL8": {
         "total_quantity": 14.68,
         "total_value_usd": 0.0,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "AGL8": 14.68
+        }
       },
       "Cacao Tree To Be Planted": {
         "total_quantity": 245.0,
         "total_value_usd": -367.5,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 245.0
+        }
       },
       "Cacao tree seedling (per seedling, Amazon reforest Altamira, R$40/10, Paulo Hernandez, 20260409)": {
         "total_quantity": 10.0,
         "total_value_usd": 9.29,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 10.0
+        }
       },
       "Canopy 4ft X 6ft with 2 years warranty": {
         "total_quantity": 1.0,
         "total_value_usd": 62.93,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "Caramelized Cacao Beans (KG) + CP340993299BR San Francisco AGL10": {
         "total_quantity": 0.17,
         "total_value_usd": 6.25,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "AGL10": 0.17
+        }
       },
       "Caramelized Cacao Kraft Pouch - Alibaba:269035810001023771": {
         "total_quantity": 427.0,
         "total_value_usd": 313.97,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 426.0,
+          "AGL10": 1.0
+        }
       },
       "Caramelized Cacao Kraft Pouch - Alibaba:269035810001023771 + Caramelized Cacao Beans CP340993299BR San Francisco AGL10": {
         "total_quantity": 12.0,
         "total_value_usd": 97.02,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "AGL10": 12.0
+        }
       },
       "Ceremonial Cacao Kraft Pouch - 20250219006": {
         "total_quantity": 358.0,
         "total_value_usd": 241.81,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 358.0
+        }
       },
       "Ceremonial Cacao Kraft Pouch - 20250219006 + Cacao Mass Bar CP327946643BR - AGL6": {
         "total_quantity": 11.0,
         "total_value_usd": 93.69,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "AGL6": 11.0
+        }
       },
       "Ceremonial Cacao Kraft Pouch - 20250219006 + Cacao Mass Bar CP340993299BR  San Francisco": {
         "total_quantity": 43.0,
         "total_value_usd": 387.83,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 43.0
+        }
       },
       "Ceremonial Cacao Kraft Pouch - 20250219006 + Cacao Mass Bar CP340993869BR San Francisco - AGL8": {
         "total_quantity": 5.0,
         "total_value_usd": 45.88,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "AGL8": 5.0
+        }
       },
       "Ceremonial Cacao Kraft Pouch - 20250219006 | Cacao Mass | 200 grams | Oscar 2024 | CP340993988BR San Francisco | Kirsten 20251107 | San Francisco - AGL8": {
         "total_quantity": 1.0,
         "total_value_usd": 8.32,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "Ceremonial Cacao Kraft Pouch - 20250219006 | Cacao Mass | 200 grams | Oscar 2024 | CP340993988BR San Francisco | Kirsten 20251124 | San Francisco - AGL4": {
         "total_quantity": 5.0,
         "total_value_usd": 41.58,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 5.0
+        }
       },
       "Ceremonial Cacao Kraft Pouch - 20250219006 | Cacao Mass | 200 grams | Paulo 2024 | Santos 018-2025 016-2025 || Ilheus - AGL8": {
         "total_quantity": 172.0,
         "total_value_usd": 1783.64,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "AGL8": 172.0
+        }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771": {
         "total_quantity": 368.0,
         "total_value_usd": 270.59,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 368.0
+        }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 + 8 Ounce Package Kraft Pouch CP340992735BR | Kirsten 20260121": {
         "total_quantity": 44.0,
         "total_value_usd": 373.73,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 44.0
+        }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 + Cacao Mass Bar CP340993299BR  San Francisco": {
         "total_quantity": 1.0,
         "total_value_usd": 9.08,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 | Cacao Mass | 200 grams | Oscar 2024 | CP340993988BR San Francisco | Kirsten 20251124 | San Francisco - AGL4": {
         "total_quantity": 17.0,
         "total_value_usd": 142.38,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 17.0
+        }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 | Cacao Mass | 200 grams | Oscar 2024 | CP340993988BR San Francisco | Kirsten 20251211 | San Francisco - AGL4": {
         "total_quantity": 27.0,
         "total_value_usd": 226.13,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 27.0
+        }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 | Cacao Mass | 200 grams | Santa Ana 2023 | Kirsten 20251227 | San Francisco - AGL2": {
         "total_quantity": 25.0,
         "total_value_usd": 60.11,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 25.0
+        }
       },
       "Chocolate Mold - 4 X 6 slots": {
         "total_quantity": 26.0,
         "total_value_usd": 30.94,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 26.0
+        }
       },
       "Chocolate Mold from Rusty": {
         "total_quantity": 50.0,
         "total_value_usd": 500.0,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 50.0
+        }
       },
       "Chocolate Wrapper Die Cutter from Rusty": {
         "total_quantity": 1.0,
         "total_value_usd": 0.0,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "Collapsible Foldable Wagon Beach Cart": {
         "total_quantity": 1.0,
         "total_value_usd": 54.3,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "ETH": {
         "total_quantity": 0.0,
         "total_value_usd": 0.0,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 0.0
+        }
       },
       "Foam container box - 120 kraft pouches capacity": {
         "total_quantity": 2.0,
         "total_value_usd": 48.22,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 2.0
+        }
       },
       "Foam container box - 46 cacao bar capacity (36cm X 40cm X 61cm)": {
         "total_quantity": 3.0,
         "total_value_usd": 15.56,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 3.0
+        }
       },
       "Hastings Serving Kettle Black - 1.5L": {
         "total_quantity": 1.0,
         "total_value_usd": 47.99,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "Hastings Serving Kettle White - 1.5L": {
         "total_quantity": 1.0,
         "total_value_usd": 47.99,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "Heat Sealer for Kraft Pouch": {
         "total_quantity": 1.0,
         "total_value_usd": 28.11,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "Heat Sealer for Kraft Pouch - Brazil": {
         "total_quantity": 1.0,
         "total_value_usd": 24.7,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "Joyberg kraft cash envelope 6.5x3.2in (per piece, Amazon 111-2611520-6121033)": {
         "total_quantity": 197.0,
         "total_value_usd": 13.89,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 197.0
+        }
       },
       "Label Maker": {
         "total_quantity": 2.0,
         "total_value_usd": 89.98,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 2.0
+        }
       },
       "Label Maker - Brazil": {
         "total_quantity": 1.0,
         "total_value_usd": 35.03,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "Large Cardboard Box for Moving Packaging 60x40x50": {
         "total_quantity": 5.0,
         "total_value_usd": 13.27,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 5.0
+        }
       },
       "Mercado Libre 80Kg Hand Truck": {
         "total_quantity": 1.0,
         "total_value_usd": 38.35,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       },
       "NovaGaia Tree Planting Pledge - QR Code": {
         "total_quantity": 297.0,
         "total_value_usd": 2079.0,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "SEF1": 297.0
+        }
       },
       "RLAVBL 7x5x4 corrugated ship box (50ct, Amazon 111-6184462-4075467)": {
         "total_quantity": 50.0,
         "total_value_usd": 27.7,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 50.0
+        }
       },
       "Refurbished wood pallet (per pallet, Matheus Ilheus, R$180/4 receipt 20260409)": {
         "total_quantity": 4.0,
         "total_value_usd": 41.81,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 4.0
+        }
       },
       "Sticker Mule 4x2in custom rectangle label (per piece, order R384751187)": {
         "total_quantity": 157.0,
         "total_value_usd": 86.98,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 157.0
+        }
       },
       "SunMint Tree Planting Pledge - QR Code": {
         "total_quantity": 10.0,
         "total_value_usd": 0.0,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "PP1": 10.0
+        }
       },
       "USD": {
         "total_quantity": 19493.19,
         "total_value_usd": 19493.19,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "AGL4": 9036.35,
+          "AGL15": 5307.67,
+          "Main Ledger": 3047.81,
+          "AGL6": 1337.59,
+          "AGL8": 518.95,
+          "AGL10": 228.83,
+          "SEF1": 16.0
+        }
       },
       "USD - provisions for voting rights cash out": {
         "total_quantity": 37.92,
         "total_value_usd": 37.92,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 37.92
+        }
       },
       "USDT": {
         "total_quantity": 66.93,
         "total_value_usd": 66.93,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 66.93
+        }
       },
       "Winnowing and Cracking Machine from Rusty": {
         "total_quantity": 1.0,
         "total_value_usd": 400.0,
-        "item_count": 1
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
       }
     }
   },
