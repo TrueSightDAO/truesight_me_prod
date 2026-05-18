@@ -31,7 +31,10 @@ SOURCES = {
     "members_index": "https://raw.githubusercontent.com/TrueSightDAO/lineage-credentials/main/_cache/index.json",
     "store_inventory": "https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/store-inventory.json",
     "partner_inventory": "https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/partners-inventory.json",
+    "beerhall_listing": "https://api.github.com/repos/TrueSightDAO/ecosystem_change_logs/contents/beer_hall/entries?ref=main",
 }
+
+BEERHALL_RAW_BASE = "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries"
 
 
 def fetch_json(url: str) -> dict | list | None:
@@ -117,6 +120,46 @@ def summarize_members(members_idx: dict | None) -> dict:
     }
 
 
+def summarize_beerhall(listing: list | None, top_n: int = 10) -> dict:
+    """Recent Beer Hall digests — each entry is a community-facing weekly-ish
+    update Gary publishes after a discrete arc of work ships. Parses the
+    GitHub Contents API listing for the entries/ dir, returns the N most
+    recent with date, slug, and raw markdown URL so an LLM can fetch the
+    body directly without scraping HTML or scanning the repo.
+
+    Filename convention: beer-hall_YYYY-MM-DDTHHMMSSZ_<slug>.md
+    """
+    import re
+    if not isinstance(listing, list):
+        return {"error": "beerhall listing unavailable"}
+    pat = re.compile(r"^beer-hall_(\d{4}-\d{2}-\d{2})T(\d{6})Z_(.+)\.md$")
+    entries: list[dict] = []
+    for f in listing:
+        name = (f or {}).get("name") or ""
+        m = pat.match(name)
+        if not m:
+            continue
+        entries.append({
+            "date": m.group(1),
+            "slug": m.group(3),
+            "filename": name,
+            "raw_url": f"{BEERHALL_RAW_BASE}/{name}",
+        })
+    entries.sort(key=lambda e: (e["date"], e["filename"]), reverse=True)
+    return {
+        "total_entries": len(entries),
+        "recent": entries[:top_n],
+        "directory_url": "https://github.com/TrueSightDAO/ecosystem_change_logs/tree/main/beer_hall/entries",
+        "raw_url_pattern": f"{BEERHALL_RAW_BASE}/<filename>",
+        "human_index_url": "https://truesight.me/beerhall/updates.html",
+        "interpretation_hint": (
+            "Each entry is a community digest summarizing recent shipped work. "
+            "The slug encodes the headline themes; the date is when the digest "
+            "was published. Fetch raw_url for the full markdown body."
+        ),
+    }
+
+
 def summarize_inventory(store_inv: dict | None, partner_inv: dict | None) -> dict:
     out: dict = {}
     if store_inv and isinstance(store_inv, dict):
@@ -141,6 +184,7 @@ def build_stats() -> dict:
     members_idx = fetch_json(SOURCES["members_index"])
     store_inv = fetch_json(SOURCES["store_inventory"])
     partner_inv = fetch_json(SOURCES["partner_inventory"])
+    beerhall = fetch_json(SOURCES["beerhall_listing"])
 
     return {
         "generated_at_utc": now,
@@ -154,6 +198,7 @@ def build_stats() -> dict:
         "members": summarize_members(members_idx),
         "treasury": summarize_treasury(treasury),
         "inventory": summarize_inventory(store_inv, partner_inv),
+        "recent_beerhall_digests": summarize_beerhall(beerhall),
         "canonical_sources": SOURCES,
         "canonical_context_docs": {
             "advisory_base":      "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/advisory/BASE.md",
