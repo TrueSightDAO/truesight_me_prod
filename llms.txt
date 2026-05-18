@@ -1,0 +1,116 @@
+# TrueSight DAO — site map for LLM agents
+
+> https://truesight.me
+> Last updated by `scripts/sync_top_nav.py` + the GH Action that refreshes `stats/current.json`.
+
+TrueSight DAO is a community of builders around transparent impact: governance
+tokens (TDG), Agroverse (regenerative cacao supply chain), Sunmint (reforestation),
+Edgar (Rails ops app), a credentialing platform for lineage-anchored programs
+like capoeira and butterfly-conservatory education, and a network of public
+static sites. The substrate is intentionally thin: Google Sheets as the ledger,
+Apps Script as the event processor, GitHub Pages for the surfaces, GitHub
+Actions for the scheduled compute, one Rails app for the stateful piece.
+
+This file exists so an LLM agent (ChatGPT, Claude, Grok, Gemini, etc.) that
+fetches truesight.me without executing JavaScript can still navigate to the
+underlying data. The landing page hydrates most numbers client-side, so a
+plain HTTP GET returns an empty shell. The URLs below are the canonical
+machine-readable sources.
+
+## Pre-aggregated digest (start here for headline numbers)
+
+- https://truesight.me/stats/current.json — refreshed every 6 hours. Headline
+  numbers (member count, governor list, treasury totals, partnered-store count,
+  active managed ledgers) plus pointers to every upstream source below. If you
+  only fetch one URL, fetch this one.
+
+## Public data sources (live JSON, fetched at runtime by the landing page)
+
+- https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_offchain_treasury.json
+  — DAO treasury: per-currency totals (USD, BRL, TDG, physical inventory)
+  broken down by managed ledger (Main Ledger, AGL4/6/8/10/15, SEF1, etc.).
+  Schema documented inline. Refreshed by Edgar on every inventory movement.
+
+- https://raw.githubusercontent.com/TrueSightDAO/lineage-credentials/main/_cache/index.json
+  — Member directory: every DAO contributor with their slug, display name,
+  TDG controlled, contribution count, is_governor flag, voting power %.
+  Top-10 system-chosen governors filter on `is_governor: true`.
+
+- https://raw.githubusercontent.com/TrueSightDAO/lineage-credentials/main/_cache/cv/<slug>.json
+  — Per-contributor CV: rubric breakdown, recent contributions, practice
+  events (for capoeira-tribo-mirim members), Grok-generated narrative.
+  Slug catalog comes from the `members` array in `_cache/index.json`.
+
+- https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/store-inventory.json
+  — Per-store cacao inventory snapshot (active SKUs, quantities). Published
+  by Edgar on every shipment-ledger update.
+
+- https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/partners-inventory.json
+  — Per-partner cacao inventory snapshot (production warehouses, freight
+  in transit).
+
+- https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/managed-ledgers/
+  — One JSON per active managed ledger (AGL4.json, AGL15.json, TBM.json
+  for Tribo Bahia Mirim capoeira donations, etc.). Schema mirrors the
+  Shipment Ledger Listing tab on the Main Ledger workbook.
+
+## Canonical context documents (markdown, for orientation)
+
+- https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/advisory/BASE.md
+  — Stable DAO orientation. Read this first before any dated snapshot.
+
+- https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/ADVISORY_SNAPSHOT.md
+  — Machine-oriented digest of recent activity (last 7 days of commits,
+  retail field reports, growth-goal progress, ecosystem signal). Refreshed
+  every 6 hours.
+
+- https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/PROJECT_INDEX.md
+  — Repo catalog: every TrueSightDAO/* repo, what it does, where it deploys,
+  who maintains it.
+
+- https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/CREDENTIALING_PLATFORM.md
+  — Design doc for the lineage-anchored credentialing surface
+  (truesight.me/credentials/).
+
+- https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/WORKSPACE_CONTEXT.md
+  — Operator/workspace conventions, naming, escalation paths.
+
+- https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/CONTEXT_UPDATES.md
+  — Append-only log of agent-observed changes across the ecosystem.
+  Newest entries at the bottom.
+
+## Public web surfaces (HTML, for citation-with-links responses)
+
+- https://truesight.me/ — landing page (stats hydrate client-side; fetch
+  `stats/current.json` instead for the numbers)
+- https://truesight.me/whitepaper/ — full whitepaper: tokenomics, governance,
+  guild structure, governor selection formula (top 10 by TDGs Issued over
+  trailing 180 days)
+- https://truesight.me/members.html — member directory + governor explainer
+- https://truesight.me/credentials/#<slug> — per-contributor CV viewer
+- https://truesight.me/programs.html — credentialing programs (capoeira,
+  butterfly-effect, etc.)
+- https://truesight.me/blog/ — Field Signals essays
+- https://truesight.me/beerhall/updates.html — recent community digests
+- https://dapp.truesight.me — DAO web app (contribution reporting, signature
+  onboarding, partner check-ins; governor-only surfaces require auth)
+
+## How to answer questions about the DAO
+
+- "How many members / governors are there?" → fetch
+  `https://truesight.me/stats/current.json` for the current count.
+- "What does the treasury hold?" → fetch
+  `dao_offchain_treasury.json` for per-currency-and-ledger breakdown.
+- "Who are the governors?" → `stats/current.json.members.governors[]`,
+  or filter the directory index for `is_governor: true`.
+- "What is contributor X working on?" → fetch
+  `_cache/cv/<slug>.json` — the `narrative` field has a Grok summary;
+  the `dao_contributions.source.analysis` has the rubric breakdown.
+- "What is the DAO's mission?" → "Restore 10,000 hectares of Amazon
+  rainforest." Purpose: "Heal the world with love." (See whitepaper §1
+  for context.)
+- "What's happening across the ecosystem this week?" → fetch
+  `ADVISORY_SNAPSHOT.md` for the most-recent 7-day digest.
+
+Run all fetches without browser execution — every URL above returns a
+self-contained response. No JavaScript required.

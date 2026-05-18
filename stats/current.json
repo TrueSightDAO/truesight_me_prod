@@ -1,0 +1,551 @@
+{
+  "generated_at_utc": "2026-05-18T21:24:59Z",
+  "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
+  "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
+  "llms_orientation": "https://truesight.me/llms.txt",
+  "north_star": {
+    "purpose": "Heal the world with love.",
+    "mission": "Restore 10,000 hectares of Amazon rainforest."
+  },
+  "members": {
+    "generated_at": "2026-05-18T21:18:32Z",
+    "total_contributors": 379,
+    "total_tdg_controlled_sum": 2549012.87,
+    "governors_count": 10,
+    "governors": [
+      {
+        "display_name": "Gary Teh",
+        "slug": "gary-teh",
+        "voting_power_pct": 40.77,
+        "tdg_controlled": 955998.0666666903,
+        "contribution_count": 3625,
+        "profile_url": "https://truesight.me/credentials/#gary-teh"
+      },
+      {
+        "display_name": "Fatima Toledo",
+        "slug": "fatima-toledo",
+        "voting_power_pct": 2.81,
+        "tdg_controlled": 65852.81000000003,
+        "contribution_count": 247,
+        "profile_url": "https://truesight.me/credentials/#fatima-toledo"
+      },
+      {
+        "display_name": "Jacob Nelan",
+        "slug": "jacob-nelan",
+        "voting_power_pct": 2.59,
+        "tdg_controlled": 60725.99,
+        "contribution_count": 62,
+        "profile_url": "https://truesight.me/credentials/#jacob-nelan"
+      },
+      {
+        "display_name": "Kirsten Ritschel",
+        "slug": "kirsten-ritschel",
+        "voting_power_pct": 0.79,
+        "tdg_controlled": 18574.049999999996,
+        "contribution_count": 110,
+        "profile_url": "https://truesight.me/credentials/#kirsten-ritschel"
+      },
+      {
+        "display_name": "Shena Davenport",
+        "slug": "shena-davenport",
+        "voting_power_pct": 0.37,
+        "tdg_controlled": 8659.83,
+        "contribution_count": 19,
+        "profile_url": "https://truesight.me/credentials/#shena-davenport"
+      },
+      {
+        "display_name": "Hans Martin Heierling",
+        "slug": "hans-martin-heierling",
+        "voting_power_pct": 0.15,
+        "tdg_controlled": 3627.25,
+        "contribution_count": 34,
+        "profile_url": "https://truesight.me/credentials/#hans-martin-heierling"
+      },
+      {
+        "display_name": "Andrea Catalina Falcon Rios De Pabst",
+        "slug": "andrea-catalina-falcon-rios-de-pabst",
+        "voting_power_pct": 0.06,
+        "tdg_controlled": 1398.33,
+        "contribution_count": 17,
+        "profile_url": "https://truesight.me/credentials/#andrea-catalina-falcon-rios-de-pabst"
+      },
+      {
+        "display_name": "AGL15",
+        "slug": "agl15",
+        "voting_power_pct": 0.05,
+        "tdg_controlled": 1127.12,
+        "contribution_count": 14,
+        "profile_url": "https://truesight.me/credentials/#agl15"
+      },
+      {
+        "display_name": "Andreas Quandt",
+        "slug": "andreas-quandt",
+        "voting_power_pct": 0.01,
+        "tdg_controlled": 283.33,
+        "contribution_count": 5,
+        "profile_url": "https://truesight.me/credentials/#andreas-quandt"
+      },
+      {
+        "display_name": "Fadi",
+        "slug": "fadi",
+        "voting_power_pct": 0.01,
+        "tdg_controlled": 200.0,
+        "contribution_count": 1,
+        "profile_url": "https://truesight.me/credentials/#fadi"
+      }
+    ],
+    "directory_url": "https://truesight.me/members.html"
+  },
+  "treasury": {
+    "generated_at": "2026-05-18T20:48:37.006Z",
+    "schema_version": 3,
+    "trigger": "cron",
+    "currency_totals": {
+      "1 Gallon Zip Loc Bags": {
+        "total_quantity": 34.0,
+        "total_value_usd": 4.78,
+        "item_count": 1
+      },
+      "22 Litres Insulated Box": {
+        "total_quantity": 1.0,
+        "total_value_usd": 6.26,
+        "item_count": 1
+      },
+      "8 Ounce Package Kraft Pouch  CP340992735BR": {
+        "total_quantity": 28.0,
+        "total_value_usd": 238.26,
+        "item_count": 1
+      },
+      "8 Ounce Package Kraft Pouch - AGL2 + V2 bags": {
+        "total_quantity": 5.0,
+        "total_value_usd": 37.47,
+        "item_count": 1
+      },
+      "8 Ounce Package Kraft Pouch - AGL6": {
+        "total_quantity": 10.0,
+        "total_value_usd": 92.14,
+        "item_count": 1
+      },
+      "8 Ounce Package Kraft Pouch - CP340992695BR + v2 bags": {
+        "total_quantity": 7.0,
+        "total_value_usd": 58.41,
+        "item_count": 1
+      },
+      "8 Ounce Package Kraft Pouch - Ilheus, Brazil 2024": {
+        "total_quantity": 137.0,
+        "total_value_usd": 909.68,
+        "item_count": 1
+      },
+      "8 Ounce Package Kraft Pouch - Ilheus, Brazil 2024 + CP340993838BR - Zurich": {
+        "total_quantity": 16.0,
+        "total_value_usd": 151.2,
+        "item_count": 1
+      },
+      "8 Ounce Package Kraft Pouch CP340992687BR": {
+        "total_quantity": 10.0,
+        "total_value_usd": 88.79,
+        "item_count": 1
+      },
+      "8 Ounce Package Kraft Pouch CP340993268BR - Switzerland": {
+        "total_quantity": 24.0,
+        "total_value_usd": 238.87,
+        "item_count": 1
+      },
+      "8 Ounce Package Kraft Pouch QN226716310BR - FounderHaus Brazil": {
+        "total_quantity": 3.0,
+        "total_value_usd": 25.78,
+        "item_count": 1
+      },
+      "ATOLOMOTOR Coffee Bean Roaster": {
+        "total_quantity": 1.0,
+        "total_value_usd": 86.89,
+        "item_count": 1
+      },
+      "Agroverse Retractable Banner": {
+        "total_quantity": 1.0,
+        "total_value_usd": 72.57,
+        "item_count": 1
+      },
+      "Amazon LFSEMINI camping stove windscreen 16 plates + drawstring bag (per unit, order 111-8445495-0894600)": {
+        "total_quantity": 1.0,
+        "total_value_usd": 9.17,
+        "item_count": 1
+      },
+      "Bialetti Moka Express 18 Cup (ASIN B0000AN3QK, order 111-9241674-1033036)": {
+        "total_quantity": 1.0,
+        "total_value_usd": 116.91,
+        "item_count": 1
+      },
+      "Brazilian Reis": {
+        "total_quantity": 2748.87,
+        "total_value_usd": 638.56,
+        "item_count": 1
+      },
+      "CRYBY Coffee Bean Roaster, 14.5L/3.83 with 3 year warranty starting 20251027": {
+        "total_quantity": 1.0,
+        "total_value_usd": 162.37,
+        "item_count": 1
+      },
+      "Cacao Almonds (KG)": {
+        "total_quantity": 274.09,
+        "total_value_usd": 0.0,
+        "item_count": 1
+      },
+      "Cacao Almonds KG - Organic": {
+        "total_quantity": 2.3,
+        "total_value_usd": 232.29,
+        "item_count": 1
+      },
+      "Cacao Almonds KG from Oscar's farm - AGL14": {
+        "total_quantity": 40.0,
+        "total_value_usd": 456.49,
+        "item_count": 1
+      },
+      "Cacao Almonds KG from Vivi's farm - AGL13": {
+        "total_quantity": 15.0,
+        "total_value_usd": 118.05,
+        "item_count": 1
+      },
+      "Cacao Husk (KG) - Ilheus, Brazil": {
+        "total_quantity": 20.0,
+        "total_value_usd": 355.71,
+        "item_count": 1
+      },
+      "Cacao Husk Bag (weight unknown)": {
+        "total_quantity": 3.0,
+        "total_value_usd": 0.0,
+        "item_count": 1
+      },
+      "Cacao Mass Bar (40grams) CP340993869BR - AGL8": {
+        "total_quantity": 3.25,
+        "total_value_usd": 6.16,
+        "item_count": 1
+      },
+      "Cacao Mass Bar (500grams) - Ilheus, Brazil 2024": {
+        "total_quantity": 39.0,
+        "total_value_usd": 612.11,
+        "item_count": 1
+      },
+      "Cacao Mass Bar (500grams) - Ilheus, Brazil 2024 + CP340993237BR Poland": {
+        "total_quantity": 20.0,
+        "total_value_usd": 537.46,
+        "item_count": 1
+      },
+      "Cacao Mass Bar (500grams) - Ilheus, Brazil 2024 + CP340993838BR - Zurich": {
+        "total_quantity": 7.0,
+        "total_value_usd": 167.83,
+        "item_count": 1
+      },
+      "Cacao Mass Bar (loose grams) - AGL2": {
+        "total_quantity": 50.0,
+        "total_value_usd": 1.55,
+        "item_count": 1
+      },
+      "Cacao Mass Bar (loose grams) - Ilheus, Brazil 2024 + CP340993838BR - Zurich": {
+        "total_quantity": 240.0,
+        "total_value_usd": 11.51,
+        "item_count": 1
+      },
+      "Cacao Mass Bar CP340992687BR (500grams)": {
+        "total_quantity": 1.0,
+        "total_value_usd": 21.54,
+        "item_count": 1
+      },
+      "Cacao Molasses 250ml + 74 4476 6210 San Francisco": {
+        "total_quantity": 2.0,
+        "total_value_usd": 24.29,
+        "item_count": 1
+      },
+      "Cacao Nibs (KG) - Ilheus, Brazil 2024": {
+        "total_quantity": 80.0,
+        "total_value_usd": 1969.48,
+        "item_count": 1
+      },
+      "Cacao Nibs (Kilograms) Santos 20260213 - AGL13": {
+        "total_quantity": 100.0,
+        "total_value_usd": 1018.23,
+        "item_count": 1
+      },
+      "Cacao Nibs Kraft Pouch": {
+        "total_quantity": 866.0,
+        "total_value_usd": 294.44,
+        "item_count": 1
+      },
+      "Cacao Nibs Kraft Pouch - 20250219006": {
+        "total_quantity": 530.0,
+        "total_value_usd": 357.99,
+        "item_count": 1
+      },
+      "Cacao Nibs Kraft Pouch - V2": {
+        "total_quantity": 2460.0,
+        "total_value_usd": 1730.17,
+        "item_count": 1
+      },
+      "Cacao Tea (Kilograms) Santos 20260213 - AGL13": {
+        "total_quantity": 21.0,
+        "total_value_usd": 213.83,
+        "item_count": 1
+      },
+      "Cacao Tea - 20250219006 | Cacao Tea | Kilogram | Paulo 2024 | Santos 018-2025 016-2025 || Ilheus - AGL8": {
+        "total_quantity": 14.68,
+        "total_value_usd": 0.0,
+        "item_count": 1
+      },
+      "Cacao Tree To Be Planted": {
+        "total_quantity": 245.0,
+        "total_value_usd": -367.5,
+        "item_count": 1
+      },
+      "Cacao tree seedling (per seedling, Amazon reforest Altamira, R$40/10, Paulo Hernandez, 20260409)": {
+        "total_quantity": 10.0,
+        "total_value_usd": 9.29,
+        "item_count": 1
+      },
+      "Canopy 4ft X 6ft with 2 years warranty": {
+        "total_quantity": 1.0,
+        "total_value_usd": 62.93,
+        "item_count": 1
+      },
+      "Caramelized Cacao Beans (KG) + CP340993299BR San Francisco AGL10": {
+        "total_quantity": 0.17,
+        "total_value_usd": 6.25,
+        "item_count": 1
+      },
+      "Caramelized Cacao Kraft Pouch - Alibaba:269035810001023771": {
+        "total_quantity": 427.0,
+        "total_value_usd": 313.97,
+        "item_count": 1
+      },
+      "Caramelized Cacao Kraft Pouch - Alibaba:269035810001023771 + Caramelized Cacao Beans CP340993299BR San Francisco AGL10": {
+        "total_quantity": 12.0,
+        "total_value_usd": 97.02,
+        "item_count": 1
+      },
+      "Ceremonial Cacao Kraft Pouch - 20250219006": {
+        "total_quantity": 358.0,
+        "total_value_usd": 241.81,
+        "item_count": 1
+      },
+      "Ceremonial Cacao Kraft Pouch - 20250219006 + Cacao Mass Bar CP327946643BR - AGL6": {
+        "total_quantity": 11.0,
+        "total_value_usd": 93.69,
+        "item_count": 1
+      },
+      "Ceremonial Cacao Kraft Pouch - 20250219006 + Cacao Mass Bar CP340993299BR  San Francisco": {
+        "total_quantity": 43.0,
+        "total_value_usd": 387.83,
+        "item_count": 1
+      },
+      "Ceremonial Cacao Kraft Pouch - 20250219006 + Cacao Mass Bar CP340993869BR San Francisco - AGL8": {
+        "total_quantity": 5.0,
+        "total_value_usd": 45.88,
+        "item_count": 1
+      },
+      "Ceremonial Cacao Kraft Pouch - 20250219006 | Cacao Mass | 200 grams | Oscar 2024 | CP340993988BR San Francisco | Kirsten 20251107 | San Francisco - AGL8": {
+        "total_quantity": 1.0,
+        "total_value_usd": 8.32,
+        "item_count": 1
+      },
+      "Ceremonial Cacao Kraft Pouch - 20250219006 | Cacao Mass | 200 grams | Oscar 2024 | CP340993988BR San Francisco | Kirsten 20251124 | San Francisco - AGL4": {
+        "total_quantity": 5.0,
+        "total_value_usd": 41.58,
+        "item_count": 1
+      },
+      "Ceremonial Cacao Kraft Pouch - 20250219006 | Cacao Mass | 200 grams | Paulo 2024 | Santos 018-2025 016-2025 || Ilheus - AGL8": {
+        "total_quantity": 172.0,
+        "total_value_usd": 1783.64,
+        "item_count": 1
+      },
+      "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771": {
+        "total_quantity": 368.0,
+        "total_value_usd": 270.59,
+        "item_count": 1
+      },
+      "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 + 8 Ounce Package Kraft Pouch CP340992735BR | Kirsten 20260121": {
+        "total_quantity": 44.0,
+        "total_value_usd": 373.73,
+        "item_count": 1
+      },
+      "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 + Cacao Mass Bar CP340993299BR  San Francisco": {
+        "total_quantity": 1.0,
+        "total_value_usd": 9.08,
+        "item_count": 1
+      },
+      "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 | Cacao Mass | 200 grams | Oscar 2024 | CP340993988BR San Francisco | Kirsten 20251124 | San Francisco - AGL4": {
+        "total_quantity": 17.0,
+        "total_value_usd": 142.38,
+        "item_count": 1
+      },
+      "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 | Cacao Mass | 200 grams | Oscar 2024 | CP340993988BR San Francisco | Kirsten 20251211 | San Francisco - AGL4": {
+        "total_quantity": 27.0,
+        "total_value_usd": 226.13,
+        "item_count": 1
+      },
+      "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 | Cacao Mass | 200 grams | Santa Ana 2023 | Kirsten 20251227 | San Francisco - AGL2": {
+        "total_quantity": 25.0,
+        "total_value_usd": 60.11,
+        "item_count": 1
+      },
+      "Chocolate Mold - 4 X 6 slots": {
+        "total_quantity": 26.0,
+        "total_value_usd": 30.94,
+        "item_count": 1
+      },
+      "Chocolate Mold from Rusty": {
+        "total_quantity": 50.0,
+        "total_value_usd": 500.0,
+        "item_count": 1
+      },
+      "Chocolate Wrapper Die Cutter from Rusty": {
+        "total_quantity": 1.0,
+        "total_value_usd": 0.0,
+        "item_count": 1
+      },
+      "Collapsible Foldable Wagon Beach Cart": {
+        "total_quantity": 1.0,
+        "total_value_usd": 54.3,
+        "item_count": 1
+      },
+      "ETH": {
+        "total_quantity": 0.0,
+        "total_value_usd": 0.0,
+        "item_count": 1
+      },
+      "Foam container box - 120 kraft pouches capacity": {
+        "total_quantity": 2.0,
+        "total_value_usd": 48.22,
+        "item_count": 1
+      },
+      "Foam container box - 46 cacao bar capacity (36cm X 40cm X 61cm)": {
+        "total_quantity": 3.0,
+        "total_value_usd": 15.56,
+        "item_count": 1
+      },
+      "Hastings Serving Kettle Black - 1.5L": {
+        "total_quantity": 1.0,
+        "total_value_usd": 47.99,
+        "item_count": 1
+      },
+      "Hastings Serving Kettle White - 1.5L": {
+        "total_quantity": 1.0,
+        "total_value_usd": 47.99,
+        "item_count": 1
+      },
+      "Heat Sealer for Kraft Pouch": {
+        "total_quantity": 1.0,
+        "total_value_usd": 28.11,
+        "item_count": 1
+      },
+      "Heat Sealer for Kraft Pouch - Brazil": {
+        "total_quantity": 1.0,
+        "total_value_usd": 24.7,
+        "item_count": 1
+      },
+      "Joyberg kraft cash envelope 6.5x3.2in (per piece, Amazon 111-2611520-6121033)": {
+        "total_quantity": 197.0,
+        "total_value_usd": 13.89,
+        "item_count": 1
+      },
+      "Label Maker": {
+        "total_quantity": 2.0,
+        "total_value_usd": 89.98,
+        "item_count": 1
+      },
+      "Label Maker - Brazil": {
+        "total_quantity": 1.0,
+        "total_value_usd": 35.03,
+        "item_count": 1
+      },
+      "Large Cardboard Box for Moving Packaging 60x40x50": {
+        "total_quantity": 5.0,
+        "total_value_usd": 13.27,
+        "item_count": 1
+      },
+      "Mercado Libre 80Kg Hand Truck": {
+        "total_quantity": 1.0,
+        "total_value_usd": 38.35,
+        "item_count": 1
+      },
+      "NovaGaia Tree Planting Pledge - QR Code": {
+        "total_quantity": 297.0,
+        "total_value_usd": 2079.0,
+        "item_count": 1
+      },
+      "RLAVBL 7x5x4 corrugated ship box (50ct, Amazon 111-6184462-4075467)": {
+        "total_quantity": 50.0,
+        "total_value_usd": 27.7,
+        "item_count": 1
+      },
+      "Refurbished wood pallet (per pallet, Matheus Ilheus, R$180/4 receipt 20260409)": {
+        "total_quantity": 4.0,
+        "total_value_usd": 41.81,
+        "item_count": 1
+      },
+      "Sticker Mule 4x2in custom rectangle label (per piece, order R384751187)": {
+        "total_quantity": 157.0,
+        "total_value_usd": 86.98,
+        "item_count": 1
+      },
+      "SunMint Tree Planting Pledge - QR Code": {
+        "total_quantity": 10.0,
+        "total_value_usd": 0.0,
+        "item_count": 1
+      },
+      "USD": {
+        "total_quantity": 19493.19,
+        "total_value_usd": 19493.19,
+        "item_count": 1
+      },
+      "USD - provisions for voting rights cash out": {
+        "total_quantity": 37.92,
+        "total_value_usd": 37.92,
+        "item_count": 1
+      },
+      "USDT": {
+        "total_quantity": 66.93,
+        "total_value_usd": 66.93,
+        "item_count": 1
+      },
+      "Winnowing and Cracking Machine from Rusty": {
+        "total_quantity": 1.0,
+        "total_value_usd": 400.0,
+        "item_count": 1
+      }
+    }
+  },
+  "inventory": {
+    "stores": {
+      "generated_at": "2026-05-18T10:42:55.000Z",
+      "store_count": 0,
+      "line_items": 12
+    },
+    "partners": {
+      "generated_at": "2026-05-18T10:42:55.000Z",
+      "partner_count": 24
+    }
+  },
+  "canonical_sources": {
+    "treasury_cache": "https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_offchain_treasury.json",
+    "members_index": "https://raw.githubusercontent.com/TrueSightDAO/lineage-credentials/main/_cache/index.json",
+    "store_inventory": "https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/store-inventory.json",
+    "partner_inventory": "https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/partners-inventory.json"
+  },
+  "canonical_context_docs": {
+    "advisory_base": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/advisory/BASE.md",
+    "advisory_snapshot": "https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/ADVISORY_SNAPSHOT.md",
+    "project_index": "https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/PROJECT_INDEX.md",
+    "credentialing_platform": "https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/CREDENTIALING_PLATFORM.md",
+    "workspace_context": "https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/WORKSPACE_CONTEXT.md",
+    "context_updates": "https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/CONTEXT_UPDATES.md"
+  },
+  "public_web_surfaces": {
+    "landing": "https://truesight.me/",
+    "whitepaper": "https://truesight.me/whitepaper/",
+    "members": "https://truesight.me/members.html",
+    "credentials": "https://truesight.me/credentials/",
+    "programs": "https://truesight.me/programs.html",
+    "blog": "https://truesight.me/blog/",
+    "beerhall": "https://truesight.me/beerhall/updates.html",
+    "dapp": "https://dapp.truesight.me/"
+  }
+}
