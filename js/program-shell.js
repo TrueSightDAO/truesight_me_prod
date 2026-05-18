@@ -240,12 +240,29 @@
       // one, but at least the page still shows something scannable.
       var qrCanonicalFallback = 'https://cdn.jsdelivr.net/gh/TrueSightDAO/lineage-credentials@main/_cache/cv/' + encodeURIComponent(slug) + '.qr.png';
 
+      // Partner-branded certificate PDF (Phase 3b). When the manifest
+      // declares `certificate.available: true`, surface a second download
+      // button pointing at `_cache/cv/<slug>__<program>__cert.pdf`. The
+      // certificate is the printable, partner-branded artifact (overlaid
+      // on the partner's PDF template); the credential PDF above is the
+      // raw practice-log render. Both embed the same per-program QR.
+      // Spec: agentic_ai_context/CREDENTIALING_PROGRAM_PAGES.md §17.7.
+      var hasCert = !!(manifest.certificate && manifest.certificate.available);
+      var certLabel = (manifest.certificate && manifest.certificate.label) || 'Download certificate';
+      var certFilename = slug + '__' + artifactSlug + '__cert.pdf';
+      var certPrimary = 'https://cdn.jsdelivr.net/gh/TrueSightDAO/lineage-credentials@main/_cache/cv/' + encodeURIComponent(certFilename);
+
       html += '<section class="credential-qr">';
       html += '<h3>Scan this credential</h3>';
       html += '<img class="credential-qr-img" src="' + qrPrimary + '" alt="QR code linking to this credential" ' +
               'onerror="if (this.dataset.tried === \'fallback\') { if (this.dataset.tried === \'canonical\') { this.style.display=\'none\'; } else { this.dataset.tried=\'canonical\'; this.src=\'' + qrCanonicalFallback + '\'; } } else { this.dataset.tried=\'fallback\'; this.src=\'' + qrFallback + '\'; }" />';
       html += '<p class="credential-qr-hint">Or open the link: <code>https://truesight.me/programs/' + escapeHtml(artifactSlug) + '/credentials/#' + escapeHtml(slug) + '</code></p>';
-      html += '<a class="btn-link" href="' + pdfPrimary + '" target="_blank" rel="noopener noreferrer">⬇ Download credential PDF</a>';
+      html += '<div class="credential-downloads">';
+      if (hasCert) {
+        html += '<a class="btn-link" href="' + certPrimary + '" target="_blank" rel="noopener noreferrer">⬇ ' + escapeHtml(certLabel) + '</a>';
+      }
+      html += '<a class="btn-link' + (hasCert ? ' secondary' : '') + '" href="' + pdfPrimary + '" target="_blank" rel="noopener noreferrer">⬇ Download credential PDF</a>';
+      html += '</div>';
       html += '</section>';
 
       html += '<footer class="credential-footer">';

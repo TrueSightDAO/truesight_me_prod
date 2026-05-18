@@ -20,6 +20,11 @@
   },
   "credential_visibility_default": "public",
   "issuer_lineage_root": "Butterfly Effect",
-  "status": "onboarding",
-  "last_reviewed": "2026-05-16"
+  "status": "active",
+  "certificate": {
+    "strategy": "pdf_overlay",
+    "available": true,
+    "label": "Download certificate"
+  },
+  "last_reviewed": "2026-05-18"
 }
