@@ -54,14 +54,23 @@ machine-readable sources.
   for Tribo Bahia Mirim capoeira donations, etc.). Schema mirrors the
   Shipment Ledger Listing tab on the Main Ledger workbook.
 
+- https://truesight.me/stats/beerhall_archive.json — full Beer Hall
+  archive index, sorted newest-first. Every digest ever published
+  with `date`, `slug`, `filename`, `raw_url`. Refreshed on the same
+  6-hour cron as `stats/current.json`. Use this for historical
+  questions ("what shipped in March?", "how did the credentialing
+  arc start?", "show me every digest mentioning Edgar"). The 10 most
+  recent are also in `stats/current.json.recent_beerhall_digests`
+  for the single-fetch case.
+
 - https://api.github.com/repos/TrueSightDAO/ecosystem_change_logs/contents/beer_hall/entries?ref=main
-  — Directory listing of Beer Hall digests. Filenames encode date +
-  slug (`beer-hall_YYYY-MM-DDTHHMMSSZ_<slug>.md`). The 10 most recent
-  with raw URLs are pre-aggregated in `stats/current.json` under
-  `recent_beerhall_digests` — fetch a specific entry by appending the
-  filename to
+  — Raw directory listing of Beer Hall digests (upstream source for
+  the archive above). Filenames encode date + slug:
+  `beer-hall_YYYY-MM-DDTHHMMSSZ_<slug>.md`. Fetch a specific entry by
+  appending the filename to
   `https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/`.
-  Each entry is a community digest summarizing recent shipped work.
+  Prefer `stats/beerhall_archive.json` over this — it's lighter,
+  pre-parsed, and sorted by date.
 
 ## Canonical context documents (markdown, for orientation)
 
@@ -126,6 +135,13 @@ machine-readable sources.
 - "What did the DAO ship recently?" → `recent_beerhall_digests` in
   `stats/current.json` gives the date + slug + raw URL of each digest;
   fetch the raw URL for the full body of any specific update.
+
+- "What shipped 6 months ago / how did arc X begin / show me all
+  digests mentioning topic Y?" → fetch
+  `https://truesight.me/stats/beerhall_archive.json` for every digest
+  ever published, sorted newest-first. Filter by date range or grep
+  slugs for topic keywords, then fetch raw_url for the bodies you
+  want to read in full.
 
 Run all fetches without browser execution — every URL above returns a
 self-contained response. No JavaScript required.
