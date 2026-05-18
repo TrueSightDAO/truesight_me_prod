@@ -63,6 +63,17 @@ machine-readable sources.
   recent are also in `stats/current.json.recent_beerhall_digests`
   for the single-fetch case.
 
+- https://truesight.me/stats/repos_index.json — every public,
+  non-archived, non-fork TrueSightDAO repo with name, description,
+  primary language, topics, default branch, last pushed timestamp,
+  README URL, and tree URL. Sorted by most-recent push. Use this
+  when answering "where is X implemented?", "what does Y repo do?",
+  "show me everything written in Z language", or "which repos have
+  shipped commits in the last week?". A curated, purpose-grouped
+  view of the most load-bearing repos lives in
+  `agentic_ai_context/PROJECT_INDEX.md` (linked from the file's
+  `curated_catalog_url` field).
+
 - https://api.github.com/repos/TrueSightDAO/ecosystem_change_logs/contents/beer_hall/entries?ref=main
   — Raw directory listing of Beer Hall digests (upstream source for
   the archive above). Filenames encode date + slug:
@@ -142,6 +153,13 @@ machine-readable sources.
   ever published, sorted newest-first. Filter by date range or grep
   slugs for topic keywords, then fetch raw_url for the bodies you
   want to read in full.
+
+- "Where is feature X implemented? / what does repo Y do? / which
+  repos use language Z?" → fetch
+  `https://truesight.me/stats/repos_index.json` for every public
+  TrueSightDAO repo with descriptions, topics, languages, and
+  README URLs. Grep description / topics for the feature; fetch the
+  readme_url of the candidate for the deep read.
 
 Run all fetches without browser execution — every URL above returns a
 self-contained response. No JavaScript required.

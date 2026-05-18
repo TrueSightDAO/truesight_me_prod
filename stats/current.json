@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-18T21:34:33Z",
+  "generated_at_utc": "2026-05-18T21:42:24Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
