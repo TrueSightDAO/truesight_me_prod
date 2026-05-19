@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-18T21:50:17Z",
+  "generated_at_utc": "2026-05-19T04:44:28Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-05-18T21:18:32Z",
+    "generated_at": "2026-05-19T03:11:56Z",
     "total_contributors": 379,
     "total_tdg_controlled_sum": 2549012.87,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-05-18T20:48:37.006Z",
+    "generated_at": "2026-05-19T03:48:42.220Z",
     "schema_version": 3,
     "trigger": "cron",
     "currency_totals": {
@@ -728,13 +728,13 @@
         }
       },
       "USD": {
-        "total_quantity": 19493.19,
-        "total_value_usd": 19493.19,
+        "total_quantity": 19492.95,
+        "total_value_usd": 19492.95,
         "item_count": 1,
         "ledger_breakdown": {
           "AGL4": 9036.35,
           "AGL15": 5307.67,
-          "Main Ledger": 3047.81,
+          "Main Ledger": 3047.58,
           "AGL6": 1337.59,
           "AGL8": 518.95,
           "AGL10": 228.83,
@@ -742,11 +742,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 37.92,
-        "total_value_usd": 37.92,
+        "total_quantity": 38.16,
+        "total_value_usd": 38.16,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 37.92
+          "Main Ledger": 38.16
         }
       },
       "USDT": {
@@ -779,8 +779,14 @@
     }
   },
   "recent_beerhall_digests": {
-    "total_entries": 30,
+    "total_entries": 31,
     "recent": [
+      {
+        "date": "2026-05-19",
+        "slug": "phase-4-1-live-llm-discovery-surface",
+        "filename": "beer-hall_2026-05-19T034716Z_phase-4-1-live-llm-discovery-surface.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-19T034716Z_phase-4-1-live-llm-discovery-surface.md"
+      },
       {
         "date": "2026-05-18",
         "slug": "programs-markdown-inventory-sellthrough",
@@ -834,12 +840,6 @@
         "slug": "asset-receipt-page-autopilot-self-deploy-cacao-samples",
         "filename": "beer-hall_2026-05-08T024249Z_asset-receipt-page-autopilot-self-deploy-cacao-samples.md",
         "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-08T024249Z_asset-receipt-page-autopilot-self-deploy-cacao-samples.md"
-      },
-      {
-        "date": "2026-05-07",
-        "slug": "agentic-auth-asset-receipt-cacao-transfer",
-        "filename": "beer-hall_2026-05-07T023654Z_agentic-auth-asset-receipt-cacao-transfer.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-07T023654Z_agentic-auth-asset-receipt-cacao-transfer.md"
       }
     ],
     "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
