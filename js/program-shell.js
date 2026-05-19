@@ -183,13 +183,49 @@
     });
   }
 
+  // Resolve a URL-fragment identifier to the canonical display slug used
+  // for `_cache/cv/<slug>.json` filenames.
+  //
+  // - Direct slug fragments (anything not starting with `pk-`) pass
+  //   through unchanged — preserves the existing behavior for QR scans
+  //   and in-site links that already carry the display slug.
+  // - `pk-<base64url>` fragments come from the Capoeira practice page
+  //   (capoeira/assets/js/practice-event-submit.js), which derives the
+  //   slug from the practitioner's local keypair before any DAO display
+  //   identity exists. Resolve those by scanning `_cache/index.json`
+  //   for a member record where `pk_hash === fragment`, and use that
+  //   record's `slug`.
+  // - If the pk-hash isn't in the index, return null so the caller can
+  //   render a "being generated" placeholder instead of the standard
+  //   hard error — the cache rebuilds every 6h, so a fresh practitioner
+  //   genuinely is in a "wait briefly" state, not a 404 state.
+  function resolveCredentialSlug(rawFragment) {
+    if (!rawFragment || rawFragment.indexOf('pk-') !== 0) {
+      return Promise.resolve(rawFragment);
+    }
+    return fetchJsonWithFallback('/_cache/index.json', { fresh: true }).then(function (data) {
+      var members = (data && data.members) || [];
+      for (var i = 0; i < members.length; i++) {
+        if (members[i] && members[i].pk_hash === rawFragment) {
+          return members[i].slug || rawFragment;
+        }
+      }
+      return null;
+    }).catch(function () {
+      // Index fetch failed entirely — last-ditch try the raw fragment.
+      // If the cv file also doesn't exist, the existing cv-fetch catch
+      // block will surface the standard error.
+      return rawFragment;
+    });
+  }
+
   function renderCredential(manifest) {
-    var slug = (window.location.hash || '').replace(/^#/, '').trim();
+    var rawFragment = (window.location.hash || '').replace(/^#/, '').trim();
     var errEl = document.getElementById('credential-error');
     var bodyEl = document.getElementById('credential-body');
     var statusEl = document.getElementById('credential-status');
 
-    if (!slug) {
+    if (!rawFragment) {
       if (statusEl) statusEl.textContent = '';
       if (errEl) {
         errEl.innerHTML = 'No member id in URL. Browse the <a href="../members.html">cohort listing</a> to find a profile.';
@@ -198,7 +234,24 @@
       return;
     }
 
-    fetchJsonWithFallback('/_cache/cv/' + encodeURIComponent(slug) + '.json').then(function (cv) {
+    resolveCredentialSlug(rawFragment).then(function (slug) {
+      if (slug === null) {
+        // pk-hash not yet in the index. Typical case: brand-new
+        // practitioner whose first practice event hasn't been picked
+        // up by the build_cv_cache cron yet (runs every 6h).
+        if (statusEl) statusEl.textContent = '';
+        if (errEl) {
+          errEl.innerHTML =
+            '<strong>Your training record is being generated.</strong> ' +
+            'The credential cache rebuilds every 6 hours — please refresh ' +
+            'shortly. In the meantime, browse <a href="../members.html">all ' +
+            escapeHtml(manifest.display_name) + ' members</a>.';
+          errEl.style.display = 'block';
+        }
+        return;
+      }
+
+      fetchJsonWithFallback('/_cache/cv/' + encodeURIComponent(slug) + '.json').then(function (cv) {
       if (statusEl) statusEl.textContent = '';
       var programFilter = (manifest.membership_filter && manifest.membership_filter.primary_program) || manifest.program_slug;
       var programs = cv.programs || {};
@@ -289,12 +342,13 @@
       html += '</footer>';
 
       if (bodyEl) bodyEl.innerHTML = html;
-    }).catch(function (err) {
-      if (statusEl) statusEl.textContent = '';
-      if (errEl) {
-        errEl.innerHTML = 'Could not load this credential. The id <code>' + escapeHtml(slug) + '</code> may not exist yet. Browse <a href="../members.html">all ' + escapeHtml(manifest.display_name) + ' members</a>.';
-        errEl.style.display = 'block';
-      }
+      }).catch(function (err) {
+        if (statusEl) statusEl.textContent = '';
+        if (errEl) {
+          errEl.innerHTML = 'Could not load this credential. The id <code>' + escapeHtml(slug) + '</code> may not exist yet. Browse <a href="../members.html">all ' + escapeHtml(manifest.display_name) + ' members</a>.';
+          errEl.style.display = 'block';
+        }
+      });
     });
 
     // React to hash changes (shouldn't happen for QR scans but useful for in-site nav)
