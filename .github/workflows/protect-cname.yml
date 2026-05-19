@@ -1,0 +1,54 @@
+# Self-healing CNAME guardrail for truesight_me_prod.
+#
+# Context (2026-05-19): a previous `gh repo sync TrueSightDAO/truesight_me_prod
+# --source TrueSightDAO/truesight_me_beta --force` overwrote this repo's
+# CNAME file (truesight.me) with beta's (beta.truesight.me). GitHub Pages
+# then released the truesight.me claim and the site went down with an
+# "already taken" error.
+#
+# This workflow runs on every push to main. If CNAME is not exactly
+# "truesight.me", it auto-restores the correct value. Future sync flows
+# (or accidental commits) will be self-corrected within a CI run instead
+# of taking the production site down silently.
+#
+# The right structural fix is to stop using `--force` for prod syncs; this
+# workflow is a backstop in case that discipline slips again.
+
+name: Protect CNAME
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  enforce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    if: "github.actor != 'github-actions[bot]'"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify CNAME contents
+        id: check
+        run: |
+          EXPECTED="truesight.me"
+          ACTUAL="$(cat CNAME 2>/dev/null | tr -d '\n')"
+          if [ "$ACTUAL" = "$EXPECTED" ]; then
+            echo "CNAME is correct ($ACTUAL); no action needed."
+            echo "needs_fix=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "CNAME drifted: got '$ACTUAL', expected '$EXPECTED'. Restoring."
+            echo "needs_fix=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Restore CNAME
+        if: steps.check.outputs.needs_fix == 'true'
+        run: |
+          printf 'truesight.me\n' > CNAME
+          git config user.name 'truesight-me-prod-cname-bot'
+          git config user.email 'truesight-me-prod-cname-bot@users.noreply.github.com'
+          git add CNAME
+          git commit -m 'chore(cname): restore truesight.me (drift detected)'
+          git push
