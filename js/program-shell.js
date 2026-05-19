@@ -88,6 +88,71 @@
     } catch (e) { return iso; }
   }
 
+  // Render one practice-event row inside the credential page's
+  // "Recent events" list. If the event carries a `payload` block (theme,
+  // moves_practiced, music_played, total_practice_minutes — populated by
+  // capoeira/assets/js/practice-event-submit.js and persisted through
+  // lineage-engine's cache build), wrap it in a <details> so tapping the
+  // row reveals what was actually practiced. Events without a payload
+  // (legacy or non-practice event types) fall back to the original
+  // single-line rendering.
+  function renderEventListItem(ev) {
+    var when = formatDate(ev.captured_at);
+    var what = ev.practice_type || ev.event_type || 'event';
+    var payload = (ev && ev.payload) || null;
+    var theme = payload && payload.theme;
+    var totalMin = payload && payload.total_practice_minutes;
+    var moves = (payload && payload.moves_practiced) || [];
+    var music = (payload && payload.music_played) || [];
+    var srcUrl = ev && ev.source_url;
+
+    var summaryHtml =
+      '<time>' + escapeHtml(when) + '</time>' +
+      ' · ' + escapeHtml(what) +
+      (theme ? ' · <span class="event-theme">' + escapeHtml(theme) + '</span>' : '') +
+      (totalMin ? ' · ' + escapeHtml(String(totalMin)) + ' min' : '');
+
+    var bodyHtml = '';
+    if (moves.length) {
+      bodyHtml += '<div class="event-detail-block"><h4>Moves practiced</h4><ul class="event-moves">';
+      for (var j = 0; j < moves.length; j++) {
+        var m = moves[j] || {};
+        var name = m.name_pt || m.name || m.id || 'move';
+        var secs = m.duration_seconds || 0;
+        var min = secs ? Math.round(secs / 60) : 0;
+        bodyHtml += '<li><span class="event-move-name">' + escapeHtml(name) + '</span>' +
+                    (min ? ' <span class="event-move-dur">· ' + escapeHtml(String(min)) + ' min</span>' : '') +
+                    '</li>';
+      }
+      bodyHtml += '</ul></div>';
+    }
+    if (music.length) {
+      bodyHtml += '<div class="event-detail-block"><h4>Music played</h4><ul class="event-music">';
+      for (var k = 0; k < music.length; k++) {
+        var t = music[k];
+        var label = (typeof t === 'string') ? t : (t && (t.title || t.id)) || 'track';
+        bodyHtml += '<li>' + escapeHtml(label) + '</li>';
+      }
+      bodyHtml += '</ul></div>';
+    }
+    if (srcUrl) {
+      bodyHtml += '<div class="event-detail-block"><a class="event-source-link" href="' +
+                  escapeHtml(srcUrl) + '" target="_blank" rel="noopener noreferrer">View source →</a></div>';
+    }
+
+    // No expandable content — render the original flat row.
+    if (!bodyHtml) {
+      var srcLink = srcUrl ? ' · <a href="' + escapeHtml(srcUrl) +
+                              '" target="_blank" rel="noopener noreferrer">source</a>' : '';
+      return '<li>' + summaryHtml + srcLink + '</li>';
+    }
+
+    return '<li class="event-item">' +
+           '<details><summary>' + summaryHtml + '</summary>' +
+           '<div class="event-body">' + bodyHtml + '</div>' +
+           '</details></li>';
+  }
+
   /** Insert a co-brand chrome strip into el. Idempotent. */
   function renderCoBrandStrip(el, manifest, opts) {
     if (!el || !manifest) return;
@@ -278,11 +343,7 @@
         if (events.length) {
           html += '<h3>Recent events</h3><ul class="credential-events">';
           for (var i = 0; i < Math.min(events.length, 10); i++) {
-            var ev = events[i];
-            var when = formatDate(ev.captured_at);
-            var what = ev.practice_type || ev.event_type || 'event';
-            var srcLink = ev.source_url ? ' · <a href="' + escapeHtml(ev.source_url) + '" target="_blank" rel="noopener noreferrer">source</a>' : '';
-            html += '<li><time>' + escapeHtml(when) + '</time> · ' + escapeHtml(what) + srcLink + '</li>';
+            html += renderEventListItem(events[i]);
           }
           html += '</ul>';
         }
