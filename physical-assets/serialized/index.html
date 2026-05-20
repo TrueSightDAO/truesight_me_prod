@@ -1,30 +1,276 @@
 <!doctype html>
 <html lang="en">
-  <head>    <!-- Google tag (gtag.js) - only on truesight.me production -->
-<script>
-(function() {
-  var h = window.location.hostname;
-  if (h !== 'truesight.me' && h !== 'www.truesight.me') return;
-  var s = document.createElement('script');
-  s.async = true;
-  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9QN16RFM0T';
-  document.head.appendChild(s);
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-9QN16RFM0T');
-})();
-</script>
-
+  <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=https://docs.google.com/spreadsheets/d/1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU/edit?gid=472328231#gid=472328231" />
-    <link rel="canonical" href="https://docs.google.com/spreadsheets/d/1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU/edit?gid=472328231#gid=472328231" />
+    <title>Product Verification | TrueSight DAO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Browse every QR-coded TrueSight DAO physical asset — cacao bags, trees, drums, memberships. Click any row to see its full attested provenance." />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.truesight.me/physical-assets/serialized/" />
+    <meta property="og:title" content="Product Verification | TrueSight DAO" />
+    <meta property="og:description" content="Searchable directory of every QR-coded TrueSight DAO physical asset." />
+    <meta property="og:image" content="https://www.truesight.me/assets/truesight-logo.png" />
+    <meta property="og:site_name" content="TrueSight DAO" />
+
+    <link rel="icon" href="https://static.wixstatic.com/ficons/0e2cde_dd65db118f8f499eb06c159d7262167d%7Emv2.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../styles/main.css" />
+
+    <!-- Google tag (gtag.js) - only on truesight.me production -->
     <script>
-      window.location.replace("https://docs.google.com/spreadsheets/d/1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU/edit?gid=472328231#gid=472328231");
+      (function () {
+        var h = window.location.hostname;
+        if (h !== 'truesight.me' && h !== 'www.truesight.me') return;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9QN16RFM0T';
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9QN16RFM0T');
+      })();
     </script>
-    <title>Redirecting...</title>
+
+    <style>
+      .verify-page { max-width: 1100px; margin: 0 auto; padding: var(--space-xl) 0; }
+      .verify-header { border-bottom: 2px solid var(--border, #e5e5e5); padding-bottom: var(--space-md); margin-bottom: var(--space-lg); }
+      .verify-title { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 2rem; font-weight: 700; margin: 0 0 0.4rem; color: var(--text, #111); }
+      .verify-sub { color: var(--muted, #666); font-size: 0.95rem; max-width: 720px; }
+      .verify-stats { display: flex; gap: var(--space-md); flex-wrap: wrap; margin: var(--space-md) 0; }
+      .verify-stat {
+        background: var(--surface, #f5f5f5);
+        border: 1px solid var(--border, #e5e5e5);
+        border-radius: 6px;
+        padding: 0.7rem 1rem;
+        min-width: 130px;
+      }
+      .verify-stat .label { font-size: 0.7rem; color: var(--muted, #666); text-transform: uppercase; letter-spacing: 0.05em; }
+      .verify-stat .value { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text, #111); }
+      .verify-controls {
+        display: flex; gap: var(--space-sm); flex-wrap: wrap;
+        align-items: center; margin: var(--space-md) 0;
+      }
+      .verify-controls input, .verify-controls select {
+        padding: 0.5rem 0.7rem; border: 1px solid var(--border, #e5e5e5);
+        border-radius: 4px; font-family: inherit; font-size: 0.95rem;
+        background: #fff;
+      }
+      .verify-controls input { flex: 1 1 220px; min-width: 220px; }
+      .verify-controls .verify-count { color: var(--muted, #666); font-size: 0.88rem; margin-left: auto; }
+      table.verify-table { width: 100%; border-collapse: collapse; margin-top: var(--space-md); font-size: 0.92rem; }
+      table.verify-table thead { background: var(--surface, #f8f8f5); }
+      table.verify-table th, table.verify-table td {
+        text-align: left; padding: 0.55rem 0.7rem;
+        border-bottom: 1px solid var(--border, #e5e5e5);
+      }
+      table.verify-table th { font-weight: 600; color: var(--muted, #666); text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.72rem; }
+      table.verify-table tr:hover { background: rgba(0,0,0,0.02); }
+      table.verify-table td.qr-id a {
+        font-family: 'SF Mono', Menlo, monospace; font-size: 0.86rem;
+        color: var(--text, #245785); text-decoration: none;
+      }
+      table.verify-table td.qr-id a:hover { text-decoration: underline; }
+      .badge {
+        display: inline-block; padding: 0.12rem 0.5rem;
+        border-radius: 999px; font-size: 0.68rem; font-weight: 600;
+        text-transform: uppercase; letter-spacing: 0.05em; color: #fff;
+        background: var(--muted, #666);
+      }
+      .badge.status-MINTED      { background: #245785; }
+      .badge.status-CONSIGNMENT { background: #b45309; }
+      .badge.status-SOLD        { background: #166534; }
+      .badge.status-RETIRED     { background: #525252; }
+      .badge.asset { background: #2f4f2e; }
+      .verify-empty { padding: var(--space-xl); text-align: center; color: var(--muted, #666); }
+      .verify-show-more {
+        display: inline-block; margin-top: var(--space-md);
+        padding: 0.6rem 1.2rem; background: var(--surface, #f5f5f5);
+        border: 1px solid var(--border, #e5e5e5); border-radius: 6px;
+        font-size: 0.92rem; color: var(--text, #111); cursor: pointer;
+      }
+      .verify-show-more:hover { background: #ececec; }
+      .verify-footer { margin-top: var(--space-xl); padding-top: var(--space-md); border-top: 1px solid var(--border, #e5e5e5); font-size: 0.8rem; color: var(--muted, #666); }
+      .verify-footer a { color: inherit; text-decoration: underline; }
+      @media (max-width: 720px) {
+        table.verify-table th.col-holder,
+        table.verify-table td.col-holder,
+        table.verify-table th.col-year,
+        table.verify-table td.col-year { display: none; }
+      }
+    </style>
   </head>
   <body>
-    <p>If you are not redirected automatically, <a href="https://docs.google.com/spreadsheets/d/1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU/edit?gid=472328231#gid=472328231">click here</a>.</p>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="site-brand">TrueSight DAO</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="verify-page">
+        <div class="verify-header">
+          <h1 class="verify-title">Product Verification</h1>
+          <p class="verify-sub">
+            Every QR-coded physical asset issued by TrueSight DAO — cacao bags, trees, drums, and memberships —
+            has a public provenance page. Click any row below to see the full attested lineage:
+            farm, mint date, holder history, and verification path through Edgar.
+          </p>
+          <div id="verify-stats" class="verify-stats"></div>
+        </div>
+
+        <div class="verify-controls">
+          <input id="verify-search" type="search" placeholder="Search by QR id, farm, holder…" autocomplete="off" />
+          <select id="verify-asset-type"><option value="">All asset types</option></select>
+          <select id="verify-status"><option value="">All statuses</option></select>
+          <span id="verify-count" class="verify-count"></span>
+        </div>
+
+        <div id="verify-table-mount"></div>
+        <div id="verify-empty" class="verify-empty" hidden>No QRs match the current filters.</div>
+        <div id="verify-show-more-mount"></div>
+
+        <div class="verify-footer">
+          Source of truth: <a href="https://github.com/TrueSightDAO/lineage-assets" target="_blank" rel="noopener">lineage-assets</a>
+          (per-QR manifests under <code>qrs/</code>). Index refreshed via <code>scripts/build_index.py</code>.
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> TrueSight DAO</p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        var INDEX_URL = 'https://raw.githubusercontent.com/TrueSightDAO/lineage-assets/main/qrs_index.json';
+        var PAGE_SIZE = 50;
+
+        var state = {
+          all: [],
+          filtered: [],
+          rendered: 0,
+          search: '',
+          assetType: '',
+          status: '',
+        };
+
+        function $(id) { return document.getElementById(id); }
+        function esc(s) {
+          return String(s == null ? '' : s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+
+        function renderStats(payload) {
+          var html = '';
+          html += '<div class="verify-stat"><div class="label">Total QRs</div><div class="value">' + payload.qr_count.toLocaleString() + '</div></div>';
+          ['MINTED', 'CONSIGNMENT', 'SOLD'].forEach(function (k) {
+            if (payload.by_status[k]) {
+              html += '<div class="verify-stat"><div class="label">' + k + '</div><div class="value">' + payload.by_status[k].toLocaleString() + '</div></div>';
+            }
+          });
+          $('verify-stats').innerHTML = html;
+        }
+
+        function populateSelect(selectEl, counts) {
+          var keys = Object.keys(counts).sort();
+          keys.forEach(function (k) {
+            var opt = document.createElement('option');
+            opt.value = k;
+            opt.textContent = k + ' (' + counts[k] + ')';
+            selectEl.appendChild(opt);
+          });
+        }
+
+        function applyFilters() {
+          var q = state.search.toLowerCase();
+          state.filtered = state.all.filter(function (r) {
+            if (state.assetType && r.asset_type !== state.assetType) return false;
+            if (state.status && r.status !== state.status) return false;
+            if (!q) return true;
+            var hay = (r.qr_id + ' ' + (r.farm || '') + ' ' + (r.country || '') + ' ' + (r.current_holder || '')).toLowerCase();
+            return hay.indexOf(q) !== -1;
+          });
+          state.rendered = 0;
+          $('verify-table-mount').innerHTML = '';
+          $('verify-show-more-mount').innerHTML = '';
+          renderNextPage();
+          $('verify-count').textContent = state.filtered.length.toLocaleString() + ' match' + (state.filtered.length === 1 ? '' : 'es');
+          $('verify-empty').hidden = state.filtered.length !== 0;
+        }
+
+        function renderNextPage() {
+          var mount = $('verify-table-mount');
+          var slice = state.filtered.slice(state.rendered, state.rendered + PAGE_SIZE);
+          if (slice.length === 0) return;
+
+          var table = mount.querySelector('table');
+          if (!table) {
+            table = document.createElement('table');
+            table.className = 'verify-table';
+            table.innerHTML =
+              '<thead><tr>' +
+                '<th>QR id</th>' +
+                '<th>Asset</th>' +
+                '<th>Status</th>' +
+                '<th>Farm</th>' +
+                '<th class="col-year">Year</th>' +
+                '<th class="col-holder">Holder</th>' +
+              '</tr></thead><tbody></tbody>';
+            mount.appendChild(table);
+          }
+          var tbody = table.querySelector('tbody');
+          var html = slice.map(function (r) {
+            return '<tr>' +
+              '<td class="qr-id"><a href="' + esc(r.scan_target) + '">' + esc(r.qr_id) + '</a></td>' +
+              '<td><span class="badge asset">' + esc(r.asset_type) + '</span></td>' +
+              '<td><span class="badge status-' + esc(r.status) + '">' + esc(r.status) + '</span></td>' +
+              '<td>' + esc(r.farm) + (r.country ? '<br><small style="color:var(--muted,#666)">' + esc(r.country) + '</small>' : '') + '</td>' +
+              '<td class="col-year">' + esc(r.harvest_year) + '</td>' +
+              '<td class="col-holder">' + esc(r.current_holder || '') + '</td>' +
+            '</tr>';
+          }).join('');
+          tbody.insertAdjacentHTML('beforeend', html);
+
+          state.rendered += slice.length;
+          var more = $('verify-show-more-mount');
+          more.innerHTML = '';
+          if (state.rendered < state.filtered.length) {
+            var btn = document.createElement('button');
+            btn.className = 'verify-show-more';
+            btn.textContent = 'Show ' + Math.min(PAGE_SIZE, state.filtered.length - state.rendered) + ' more (' + (state.filtered.length - state.rendered) + ' remaining)';
+            btn.addEventListener('click', renderNextPage);
+            more.appendChild(btn);
+          }
+        }
+
+        fetch(INDEX_URL, { cache: 'no-cache' })
+          .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+          .then(function (payload) {
+            state.all = payload.qrs || [];
+            renderStats(payload);
+            populateSelect($('verify-asset-type'), payload.by_asset_type || {});
+            populateSelect($('verify-status'),     payload.by_status || {});
+            $('verify-search').addEventListener('input', function (e) {
+              state.search = e.target.value.trim();
+              applyFilters();
+            });
+            $('verify-asset-type').addEventListener('change', function (e) { state.assetType = e.target.value; applyFilters(); });
+            $('verify-status').addEventListener('change',     function (e) { state.status     = e.target.value; applyFilters(); });
+            applyFilters();
+          })
+          .catch(function (err) {
+            $('verify-table-mount').innerHTML = '<div class="verify-empty">Could not load product index (' + esc(err.message) + ').</div>';
+          });
+      })();
+    </script>
   </body>
 </html>
