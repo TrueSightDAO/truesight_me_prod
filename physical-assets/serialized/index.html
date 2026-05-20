@@ -234,6 +234,28 @@
           });
         }
 
+        function syncStateToUrl() {
+          var params = new URLSearchParams();
+          if (state.search)    params.set('q',      state.search);
+          if (state.assetType) params.set('type',   state.assetType);
+          if (state.status)    params.set('status', state.status);
+          var qs = params.toString();
+          var newUrl = window.location.pathname + (qs ? '?' + qs : '') + window.location.hash;
+          // replaceState (not pushState) — filter typing shouldn't pollute browser history
+          window.history.replaceState(null, '', newUrl);
+        }
+
+        function readStateFromUrl() {
+          var params = new URLSearchParams(window.location.search);
+          state.search    = params.get('q')      || '';
+          state.assetType = params.get('type')   || '';
+          state.status    = params.get('status') || '';
+          // Reflect into the input/select UI so what's shown matches the URL
+          var s = $('verify-search'); if (s) s.value = state.search;
+          var t = $('verify-asset-type'); if (t) t.value = state.assetType;
+          var st = $('verify-status');    if (st) st.value = state.status;
+        }
+
         function applyFilters() {
           var q = state.search.toLowerCase();
           state.filtered = state.all.filter(function (r) {
@@ -249,6 +271,7 @@
           renderNextPage();
           $('verify-count').textContent = state.filtered.length.toLocaleString() + ' match' + (state.filtered.length === 1 ? '' : 'es');
           $('verify-empty').hidden = state.filtered.length !== 0;
+          syncStateToUrl();
         }
 
         function renderNextPage() {
@@ -303,12 +326,19 @@
             renderStats(payload);
             populateSelect($('verify-asset-type'), payload.by_asset_type || {});
             populateSelect($('verify-status'),     payload.by_status || {});
+            // Boot from URL query params if present (?q=&type=&status=)
+            readStateFromUrl();
             $('verify-search').addEventListener('input', function (e) {
               state.search = e.target.value.trim();
               applyFilters();
             });
             $('verify-asset-type').addEventListener('change', function (e) { state.assetType = e.target.value; applyFilters(); });
             $('verify-status').addEventListener('change',     function (e) { state.status     = e.target.value; applyFilters(); });
+            // React to browser back/forward (popstate fires when user navigates history)
+            window.addEventListener('popstate', function () {
+              readStateFromUrl();
+              applyFilters();
+            });
             applyFilters();
           })
           .catch(function (err) {
