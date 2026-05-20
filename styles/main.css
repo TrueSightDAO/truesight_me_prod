@@ -1069,6 +1069,10 @@ a {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
+  /* Each card sizes to its own content. Without this, expanding one card's
+     <details> stretches the entire grid row and pulls sibling cards' bottom
+     "View breakdown" buttons out of alignment. */
+  align-items: start;
 }
 
 /* Mobile: 1 column per row */
@@ -1302,6 +1306,21 @@ section h2 {
   line-height: 1.4;
   display: block;
 }
+
+/* Inline link replacing the old inline <details> breakdown when a stat card
+   has its own dedicated detail page (e.g. /treasury). Visually matches the
+   .stat-breakdown summary chrome so cards don't shift layout when one type
+   becomes a link and another stays a dropdown. */
+.stat-detail-link {
+  margin-top: var(--space-sm);
+  display: inline-block;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.2rem 0;
+}
+.stat-detail-link:hover { color: var(--text); text-decoration: underline; }
 
 /* Stat breakdown — click-to-expand panel under a stat card surfacing the
    underlying per-ledger / per-currency values that the headline number rolls
