@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Assets Under Management (AUM) · TrueSight DAO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Assets Under Management breakdown — per-ledger holdings and per-currency rollup across every managed ledger in the TrueSight DAO ecosystem." />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.truesight.me/aum/" />
+    <meta property="og:title" content="Assets Under Management (AUM) · TrueSight DAO" />
+    <meta property="og:description" content="Per-ledger and per-currency rollup of every asset across all managed ledgers." />
+    <meta property="og:image" content="https://www.truesight.me/assets/truesight-logo.png" />
+    <meta property="og:site_name" content="TrueSight DAO" />
+
+    <link rel="icon" href="https://static.wixstatic.com/ficons/0e2cde_dd65db118f8f499eb06c159d7262167d%7Emv2.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <style>
+      .aum-page { max-width: 980px; margin: 0 auto; padding: var(--space-xl) 0; }
+      .aum-header { margin-bottom: var(--space-lg); }
+      .aum-eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 0.4rem; }
+      .aum-title { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 2.2rem; font-weight: 700; margin: 0 0 0.4rem; color: var(--text); }
+      .aum-headline-amount { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 3rem; font-weight: 600; color: var(--text); margin: 0 0 0.25rem; line-height: 1.1; }
+      .aum-headline-sub { font-size: 0.9rem; color: var(--muted); margin: 0; }
+      .aum-error { display: none; color: #a8423a; background: #fbeae8; border: 1px solid #f0c4be; padding: var(--space-md); border-radius: 8px; }
+      .aum-section { background: var(--surface, #fff9f0); border: 1px solid var(--border, #e8e8e8); border-radius: 12px; padding: var(--space-md) var(--space-lg); margin-bottom: var(--space-md); }
+      .aum-section h2 { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 1.15rem; margin: 0 0 0.6rem; color: var(--text); }
+      .aum-section-note { color: var(--muted); font-size: 0.85rem; margin: 0 0 0.6rem; }
+
+      details.aum-group { border-bottom: 1px solid var(--border, rgba(95,111,82,0.18)); }
+      details.aum-group:last-child { border-bottom: none; }
+      details.aum-group > summary {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.6rem 0;
+      }
+      details.aum-group > summary::-webkit-details-marker { display: none; }
+      details.aum-group > summary::before {
+        content: '▸';
+        color: var(--muted, #888);
+        font-size: 0.78rem;
+        margin-right: 0.4rem;
+        transition: transform 0.12s ease;
+      }
+      details.aum-group[open] > summary::before { transform: rotate(90deg); }
+      details.aum-group > summary:hover { color: #6a4a1a; }
+
+      .aum-group-label { display: inline-flex; align-items: baseline; gap: 0.5rem; color: var(--text); font-weight: 500; flex: 1 1 auto; min-width: 0; }
+      .aum-group-label .aum-group-count { color: var(--muted); font-size: 0.82rem; font-weight: 400; }
+      .aum-group-amount { font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 600; color: var(--text); white-space: nowrap; font-variant-numeric: tabular-nums; }
+      .aum-group-body { padding: 0.3rem 0 0.85rem 1.5rem; }
+      .aum-subrow {
+        display: flex; align-items: baseline; justify-content: space-between;
+        gap: 1rem; padding: 0.3rem 0; font-size: 0.86rem; color: var(--muted);
+        border-bottom: 1px dashed rgba(95,111,82,0.12);
+      }
+      .aum-subrow:last-child { border-bottom: none; }
+      .aum-subrow .aum-subrow-label { color: var(--muted); flex: 1 1 auto; min-width: 0; }
+      .aum-subrow .aum-subrow-qty { color: var(--muted); font-size: 0.78rem; opacity: 0.85; }
+      .aum-subrow .aum-subrow-amount { font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 500; white-space: nowrap; font-variant-numeric: tabular-nums; }
+      .aum-ledger-link { color: inherit; text-decoration: none; }
+      .aum-ledger-link:hover { color: var(--text); text-decoration: underline; }
+      .aum-ledger-link-arrow { font-size: 0.74rem; opacity: 0.55; }
+
+      .aum-total {
+        display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+        padding: 0.7rem 0 0; margin-top: 0.4rem;
+        border-top: 2px solid var(--border, rgba(95,111,82,0.4));
+        font-weight: 700; font-family: 'Space Grotesk', system-ui, sans-serif;
+      }
+      .aum-formula {
+        background: rgba(244, 163, 0, 0.08);
+        border-left: 3px solid var(--accent, #f4a300);
+        padding: var(--space-sm) var(--space-md);
+        border-radius: 6px;
+        margin-bottom: var(--space-md);
+        font-size: 0.92rem;
+        line-height: 1.55;
+      }
+      .aum-formula strong { color: var(--text); }
+      .aum-methodology {
+        margin-top: var(--space-lg); padding: var(--space-md);
+        background: var(--surface-deep, #f2e5d4); border-radius: 8px;
+        font-size: 0.9rem; line-height: 1.6; color: var(--text);
+      }
+      .aum-methodology h3 { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 1rem; margin: 0 0 0.5rem; }
+      .aum-methodology p { margin: 0 0 0.6rem; }
+      .aum-methodology p:last-child { margin-bottom: 0; }
+      .aum-meta { font-size: 0.78rem; color: var(--muted); margin-top: var(--space-md); text-align: center; }
+      .aum-back { display: inline-block; margin-bottom: var(--space-md); color: var(--muted); font-size: 0.9rem; text-decoration: none; }
+      .aum-back:hover { color: var(--text); text-decoration: underline; }
+      .spinner {
+        width: 32px; height: 32px;
+        border: 3px solid var(--border, #ccc);
+        border-top-color: var(--accent, #f4a300);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        margin: 1rem auto;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      @media (max-width: 560px) {
+        .aum-headline-amount { font-size: 2.2rem; }
+        .aum-title { font-size: 1.6rem; }
+        .aum-section { padding: var(--space-sm) var(--space-md); }
+        .aum-group-body { padding-left: 0.75rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="site-header">
+      <div class="header-container">
+        <a href="../index.html" class="header-logo">
+          <img
+            src="https://static.wixstatic.com/media/0e2cde_f81b16c82ebe4aaca4b5ce54b819a693~mv2.png/v1/fill/w_622,h_160,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240612_truesight_dao_logo_long.png"
+            alt="TrueSight DAO"
+            width="155"
+            height="40"
+            loading="eager"
+          />
+        </a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <ul class="nav-menu" aria-hidden="true">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about-us.html">About Us</a></li>
+          <li><a href="https://truesight.me/proposals" target="_blank" rel="noreferrer noopener">Proposals</a></li>
+          <li><a href="../blog/index.html">Blog</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="page">
+      <div class="aum-page">
+        <a href="../index.html" class="aum-back">← Back to truesight.me</a>
+        <header class="aum-header">
+          <p class="aum-eyebrow">Across all managed ledgers · gross</p>
+          <h1 class="aum-title">Assets Under Management (AUM)</h1>
+          <p class="aum-headline-amount" id="aumHeadlineAmount">— USD</p>
+          <p class="aum-headline-sub" id="aumHeadlineSub">Loading…</p>
+        </header>
+
+        <div class="aum-error" id="aumError"></div>
+
+        <div id="aumBody" style="display:none">
+          <div class="aum-formula">
+            <strong>What this measures:</strong> the total USD-equivalent of every asset (cash, stablecoin, cacao inventory, partner SKUs, etc.) sitting in any ledger the DAO manages — including capital contributed by AGL investors. Unlike <a href="../treasury/">USD Treasury Balance</a>, which is DAO-owned only, AUM includes stakeholder capital that the DAO holds in trust.
+          </div>
+
+          <section class="aum-section">
+            <h2>1 · Assets by ledger</h2>
+            <p class="aum-section-note">Each ledger expanded to show the currencies / assets it holds. Click a ledger row to open its source spreadsheet.</p>
+            <div id="byLedgerRows"></div>
+            <div class="aum-total">
+              <span>Total</span>
+              <span class="aum-group-amount" id="byLedgerTotal">— USD</span>
+            </div>
+          </section>
+
+          <section class="aum-section">
+            <h2>2 · Per currency</h2>
+            <p class="aum-section-note">Same data rolled up the other direction — each currency expanded to show the per-ledger split.</p>
+            <div id="byCurrencyRows"></div>
+            <div class="aum-total">
+              <span>Total</span>
+              <span class="aum-group-amount" id="byCurrencyTotal">— USD</span>
+            </div>
+          </section>
+
+          <div class="aum-methodology">
+            <h3>About this number</h3>
+            <p>
+              AUM is the gross rollup of every line in <code>treasury-cache/dao_offchain_treasury.json</code> — the same source feeding the inline breakdown that used to live on the landing page. Each ledger reports its own balance; this page sums them.
+            </p>
+            <p>
+              The headline <strong>AUM</strong> stat on <a href="../index.html">truesight.me</a> is computed separately by GAS from the same underlying ledgers and may differ slightly due to currency-rate snapshots and which item types each side includes. Both surfaces are honest reads of the same data with different rollup rules — the per-ledger and per-currency sums below always match each other (same JSON, two pivots).
+            </p>
+            <p>
+              The <a href="../treasury/">USD Treasury Balance</a> is a stricter cut: off-chain cash + USDT vault + the DAO's <em>equity stake</em> in each AGL (not investor capital). AUM here includes the investor capital and the broader inventory.
+            </p>
+          </div>
+
+          <p class="aum-meta" id="aumMeta">Loading source timestamp…</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        'use strict';
+
+        // Two data sources, fetched in parallel:
+        //   - treasury-cache: the per-currency-per-ledger asset rollup
+        //   - GAS treasury_breakdown: only needed for its ledger_urls dict,
+        //     so each ledger row can link to its source spreadsheet
+        var TREASURY_CACHE_URL = 'https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_offchain_treasury.json';
+        var GAS_URL = 'https://script.google.com/macros/s/AKfycbzlfOBo9UqKOh7jIqGcmbPAMM1RxCbsJHb-UV_vM6VbvK_HSdT44KyGbbXIeo-_Ovfy/exec?type=treasury_breakdown';
+
+        function fmtUsd(n) {
+          var v = Number(n) || 0;
+          return v.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' USD';
+        }
+        function fmtQty(n) {
+          var v = Number(n) || 0;
+          return v.toLocaleString(undefined, { maximumFractionDigits: 4 });
+        }
+        function escapeHtml(s) {
+          return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+          });
+        }
+        function ledgerLink(label, urls) {
+          var url = urls && urls[label];
+          if (!url) return escapeHtml(label);
+          return '<a class="aum-ledger-link" href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + ' <span class="aum-ledger-link-arrow">↗</span></a>';
+        }
+
+        var errEl = document.getElementById('aumError');
+        var bodyEl = document.getElementById('aumBody');
+        var headlineEl = document.getElementById('aumHeadlineAmount');
+        var headlineSubEl = document.getElementById('aumHeadlineSub');
+
+        Promise.all([
+          fetch(TREASURY_CACHE_URL + '?_=' + Date.now(), { cache: 'no-store' })
+            .then(function (r) { if (!r.ok) throw new Error('treasury-cache HTTP ' + r.status); return r.json(); }),
+          fetch(GAS_URL + '&_=' + Date.now(), { cache: 'no-store' })
+            .then(function (r) { if (!r.ok) throw new Error('GAS HTTP ' + r.status); return r.json(); })
+            // GAS payload is optional — page still works without ledger URLs.
+            .catch(function () { return { data: { ledger_urls: {} } }; })
+        ]).then(function (results) {
+          var treasury = results[0];
+          var gas = results[1];
+          var items = (treasury && treasury.items) || [];
+          var ledgerUrls = (gas && gas.data && gas.data.ledger_urls) || {};
+          var totalUsd = items.reduce(function (s, it) { return s + (Number(it.total_value_usd) || 0); }, 0);
+
+          headlineEl.textContent = fmtUsd(totalUsd);
+          headlineSubEl.textContent = 'Sum of every line in treasury-cache, across all managed ledgers.';
+
+          // ===== Section 1: Assets by ledger =====
+          // Pivot items[] into ledger -> [{currency, qty, usd}].
+          // USD per (ledger, currency) is estimated proportionally from
+          // total_value_usd / total_quantity for that currency, since
+          // treasury-cache stores quantities-per-ledger, not USD-per-ledger.
+          var byLedger = {};
+          items.forEach(function (it) {
+            var currency = it.currency || '?';
+            var totalQty = Number(it.total_quantity) || 0;
+            var totalUsdItem = Number(it.total_value_usd) || 0;
+            var ledgersMap = it.ledgers || {};
+            Object.keys(ledgersMap).forEach(function (lid) {
+              var qty = Number(ledgersMap[lid]) || 0;
+              if (qty === 0) return;
+              var usd = totalQty ? (qty / totalQty) * totalUsdItem : 0;
+              if (!byLedger[lid]) byLedger[lid] = { total_usd: 0, currencies: [] };
+              byLedger[lid].total_usd += usd;
+              byLedger[lid].currencies.push({ currency: currency, qty: qty, usd: usd });
+            });
+          });
+          var ledgerRows = Object.keys(byLedger)
+            .map(function (lid) { return { id: lid, data: byLedger[lid] }; })
+            .sort(function (a, b) { return b.data.total_usd - a.data.total_usd; });
+
+          document.getElementById('byLedgerRows').innerHTML = ledgerRows.map(function (row) {
+            var ccyCount = row.data.currencies.length;
+            // Sort the currencies inside each ledger by USD value desc
+            row.data.currencies.sort(function (a, b) { return b.usd - a.usd; });
+            var subRowsHtml = row.data.currencies.map(function (c) {
+              return '<div class="aum-subrow">' +
+                     '<span class="aum-subrow-label">' + escapeHtml(c.currency) + ' <span class="aum-subrow-qty">· ' + fmtQty(c.qty) + ' units</span></span>' +
+                     '<span class="aum-subrow-amount">' + fmtUsd(c.usd) + '</span>' +
+                     '</div>';
+            }).join('');
+            return '<details class="aum-group">' +
+                   '<summary>' +
+                     '<span class="aum-group-label">' + ledgerLink(row.id, ledgerUrls) + ' <span class="aum-group-count">(' + ccyCount + (ccyCount === 1 ? ' currency' : ' currencies') + ')</span></span>' +
+                     '<span class="aum-group-amount">' + fmtUsd(row.data.total_usd) + '</span>' +
+                   '</summary>' +
+                   '<div class="aum-group-body">' + subRowsHtml + '</div>' +
+                   '</details>';
+          }).join('');
+          document.getElementById('byLedgerTotal').textContent = fmtUsd(totalUsd);
+
+          // ===== Section 2: Per currency =====
+          var byCurrency = items
+            .map(function (it) {
+              return {
+                currency: it.currency || '?',
+                qty: Number(it.total_quantity) || 0,
+                usd: Number(it.total_value_usd) || 0,
+                ledgers: it.ledgers || {}
+              };
+            })
+            .filter(function (r) { return r.usd !== 0 || r.qty !== 0; })
+            .sort(function (a, b) { return Math.abs(b.usd) - Math.abs(a.usd); });
+
+          document.getElementById('byCurrencyRows').innerHTML = byCurrency.map(function (c) {
+            var ledgerKeys = Object.keys(c.ledgers).filter(function (k) { return Number(c.ledgers[k]) !== 0; });
+            ledgerKeys.sort(function (a, b) { return Math.abs(Number(c.ledgers[b]) || 0) - Math.abs(Number(c.ledgers[a]) || 0); });
+            var perLedgerHtml = ledgerKeys.map(function (lid) {
+              var qty = Number(c.ledgers[lid]) || 0;
+              var usd = c.qty ? (qty / c.qty) * c.usd : 0;
+              return '<div class="aum-subrow">' +
+                     '<span class="aum-subrow-label">' + ledgerLink(lid, ledgerUrls) + ' <span class="aum-subrow-qty">· ' + fmtQty(qty) + ' units</span></span>' +
+                     '<span class="aum-subrow-amount">' + fmtUsd(usd) + '</span>' +
+                     '</div>';
+            }).join('');
+            return '<details class="aum-group">' +
+                   '<summary>' +
+                     '<span class="aum-group-label">' + escapeHtml(c.currency) + ' <span class="aum-group-count">· ' + fmtQty(c.qty) + ' units · ' + ledgerKeys.length + (ledgerKeys.length === 1 ? ' ledger' : ' ledgers') + '</span></span>' +
+                     '<span class="aum-group-amount">' + fmtUsd(c.usd) + '</span>' +
+                   '</summary>' +
+                   '<div class="aum-group-body">' + perLedgerHtml + '</div>' +
+                   '</details>';
+          }).join('');
+          document.getElementById('byCurrencyTotal').textContent = fmtUsd(totalUsd);
+
+          var ts = treasury.generated_at ? new Date(treasury.generated_at) : null;
+          document.getElementById('aumMeta').textContent =
+            'Source: treasury-cache' +
+            (ts ? ', as of ' + ts.toLocaleString() : '') +
+            '. Per-ledger and per-currency sums always reconcile (same JSON, two pivots).';
+
+          bodyEl.style.display = 'block';
+        }).catch(function (err) {
+          console.error(err);
+          headlineEl.textContent = '—';
+          headlineSubEl.textContent = '';
+          errEl.style.display = 'block';
+          errEl.innerHTML = 'Could not load the AUM breakdown. The source feed may be transiently down — please refresh shortly.';
+        });
+      })();
+    </script>
+  </body>
+</html>

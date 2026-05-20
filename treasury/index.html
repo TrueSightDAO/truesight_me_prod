@@ -37,6 +37,9 @@
       .treasury-subrow { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 0.35rem 0 0.35rem 1.25rem; font-size: 0.92rem; color: var(--muted); border-bottom: 1px dashed rgba(95,111,82,0.15); }
       .treasury-subrow:last-child { border-bottom: none; }
       .treasury-subrow .treasury-row-amount { color: var(--muted); font-weight: 500; }
+      .treasury-ledger-link { color: inherit; text-decoration: none; }
+      .treasury-ledger-link:hover { color: var(--text); text-decoration: underline; }
+      .treasury-ledger-link-arrow { font-size: 0.78rem; opacity: 0.55; }
       .treasury-total {
         display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
         padding: 0.7rem 0 0; margin-top: 0.4rem;
@@ -226,13 +229,19 @@
             document.getElementById('aglEquityTotal').textContent = fmtUsd(aglTotal);
             document.getElementById('grandTotal').textContent = fmtUsd(grand);
 
+            var ledgerUrls = (d.ledger_urls) || {};
             var rowsEl = document.getElementById('aglEquityRows');
             if (!aglEquity.length) {
               rowsEl.innerHTML = '<p class="treasury-row-note">No AGL ledgers report a TrueSight DAO USD row right now.</p>';
             } else {
               rowsEl.innerHTML = aglEquity.map(function (e) {
+                var id = e.ledger_id || '?';
+                var url = ledgerUrls[id];
+                var label = url
+                  ? '<a class="treasury-ledger-link" href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(id) + ' <span class="treasury-ledger-link-arrow">↗</span></a>'
+                  : escapeHtml(id);
                 return '<div class="treasury-subrow">' +
-                       '<span>' + escapeHtml(e.ledger_id || '?') + '</span>' +
+                       '<span>' + label + '</span>' +
                        '<span class="treasury-row-amount">' + fmtUsd(e.dao_equity_usd) + '</span>' +
                        '</div>';
               }).join('');

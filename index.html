@@ -153,10 +153,7 @@
             <div class="stat-explanation">
               <small><a href="blog/posts/understanding-assets-under-management-aum-truesight-dao-comprehensive-asset-tracking.html" class="text-link">Total assets across main ledger and all managed ledgers</a></small>
             </div>
-            <details class="stat-breakdown" data-breakdown="aum">
-              <summary>View per-currency / per-ledger breakdown</summary>
-              <div class="stat-breakdown-body">Loading…</div>
-            </details>
+            <a class="stat-detail-link" href="/aum/">View breakdown →</a>
           </article>
           <article class="stat-card">
             <div class="stat-label">
@@ -638,92 +635,9 @@
           }
 
           populateStats(exchangeRatesData);
-          wireStatBreakdowns();
         }).catch(function(error) {
           console.error('❌ Failed to load exchange rates:', error);
         });
-
-        // Treasury breakdown — lazy-fetches treasury-cache the first time a
-        // <details class="stat-breakdown"> is opened, renders the per-ledger
-        // (USD) or per-currency-plus-per-ledger (AUM) split inside the card.
-        // Source of truth: https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_offchain_treasury.json
-        // (same data feeding stats/current.json.treasury.currency_totals).
-        const TREASURY_CACHE_URL = 'https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_offchain_treasury.json';
-        let _treasuryCachePromise = null;
-        function fetchTreasuryCacheOnce() {
-          if (!_treasuryCachePromise) {
-            _treasuryCachePromise = fetch(TREASURY_CACHE_URL + '?_=' + Date.now(), { cache: 'no-store' })
-              .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-              .catch(function (e) { _treasuryCachePromise = null; throw e; });
-          }
-          return _treasuryCachePromise;
-        }
-        function fmtUsd(n) {
-          var v = Number(n) || 0;
-          return v.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        }
-        function renderUsdTreasuryBreakdown(body, treasury) {
-          var items = (treasury && treasury.items) || [];
-          var usd = items.find(function (i) { return (i.currency || '').trim() === 'USD'; });
-          if (!usd) { body.innerHTML = '<em>No USD line in treasury cache.</em>'; return; }
-          var ledgers = usd.ledgers || {};
-          var rows = Object.keys(ledgers)
-            .map(function (k) { return [k, Number(ledgers[k]) || 0]; })
-            .sort(function (a, b) { return b[1] - a[1]; });
-          var total = rows.reduce(function (s, r) { return s + r[1]; }, 0);
-          var html = '<table><tbody>';
-          rows.forEach(function (r) {
-            html += '<tr><td>' + r[0] + '</td><td>' + fmtUsd(r[1]) + ' USD</td></tr>';
-          });
-          html += '<tr><td>Total</td><td>' + fmtUsd(total) + ' USD</td></tr>';
-          html += '</tbody></table>';
-          html += '<div class="meta">Source: treasury-cache, as of ' + (treasury.generated_at || 'unknown time') + '. Same data on /stats/current.json.treasury.currency_totals.USD.</div>';
-          body.innerHTML = html;
-        }
-        function renderAumBreakdown(body, treasury) {
-          var items = (treasury && treasury.items) || [];
-          if (!items.length) { body.innerHTML = '<em>No items in treasury cache.</em>'; return; }
-          // Per-currency USD-equivalent value, sorted desc
-          var rows = items
-            .map(function (it) {
-              return {
-                currency: (it.currency || '?').trim(),
-                qty: Number(it.total_quantity) || 0,
-                usd: Number(it.total_value_usd) || 0,
-              };
-            })
-            .filter(function (r) { return r.usd !== 0 || r.qty !== 0; })
-            .sort(function (a, b) { return Math.abs(b.usd) - Math.abs(a.usd); });
-          var total = rows.reduce(function (s, r) { return s + r.usd; }, 0);
-          var html = '<table><thead><tr><td><strong>Currency / asset</strong></td><td><strong>USD value</strong></td></tr></thead><tbody>';
-          rows.forEach(function (r) {
-            html += '<tr><td>' + r.currency + ' (' + r.qty.toLocaleString() + ' units)</td><td>' + fmtUsd(r.usd) + ' USD</td></tr>';
-          });
-          html += '<tr><td>AUM total</td><td>' + fmtUsd(total) + ' USD</td></tr>';
-          html += '</tbody></table>';
-          html += '<div class="meta">Source: treasury-cache, as of ' + (treasury.generated_at || 'unknown time') + '. AUM rolls up every currency / asset across all managed ledgers; per-ledger split per currency is available at /stats/current.json.treasury.currency_totals.&lt;ccy&gt;.ledger_breakdown.</div>';
-          body.innerHTML = html;
-        }
-        function wireStatBreakdowns() {
-          var nodes = document.querySelectorAll('details.stat-breakdown');
-          nodes.forEach(function (node) {
-            var loaded = false;
-            node.addEventListener('toggle', function () {
-              if (!node.open || loaded) return;
-              loaded = true;
-              var body = node.querySelector('.stat-breakdown-body');
-              fetchTreasuryCacheOnce().then(function (t) {
-                var which = node.getAttribute('data-breakdown');
-                if (which === 'usd-treasury') renderUsdTreasuryBreakdown(body, t);
-                else if (which === 'aum') renderAumBreakdown(body, t);
-                else body.textContent = 'Unknown breakdown type.';
-              }).catch(function (e) {
-                body.innerHTML = '<em>Could not load breakdown: ' + (e && e.message || e) + '</em>';
-                loaded = false;
-              });
-            });
-          });
-        }
 
         // Handle "Show More Stats" button
         const showMoreButton = document.getElementById('show-more-stats');
