@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>QR Provenance | TrueSight DAO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Lineage-anchored provenance for a TrueSight DAO physical asset — cacao bag, tree, drum, or other QR-coded asset." />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.truesight.me/qr/" />
+    <meta property="og:title" content="QR Provenance | TrueSight DAO" />
+    <meta property="og:description" content="Full attested provenance for a TrueSight DAO QR-coded asset." />
+    <meta property="og:image" content="https://www.truesight.me/assets/truesight-logo.png" />
+    <meta property="og:site_name" content="TrueSight DAO" />
+
+    <link
+      rel="icon"
+      href="https://static.wixstatic.com/ficons/0e2cde_dd65db118f8f499eb06c159d7262167d%7Emv2.ico"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <style>
+      :root {
+        --status-minted: #245785;
+        --status-consignment: #b45309;
+        --status-sold: #166534;
+        --status-retired: #525252;
+      }
+      .qr-page { max-width: 880px; margin: 0 auto; padding: var(--space-xl) 0; }
+      .qr-header {
+        border-bottom: 2px solid var(--border, #e5e5e5);
+        padding-bottom: var(--space-md);
+        margin-bottom: var(--space-lg);
+        display: flex; gap: var(--space-lg);
+        align-items: flex-start; justify-content: space-between;
+      }
+      .qr-header-text { flex: 1 1 auto; min-width: 0; }
+      .qr-image-block { flex: 0 0 140px; text-align: center; }
+      .qr-image-block img {
+        width: 140px; height: 140px; display: block;
+        border: 1px solid var(--border, #e5e5e5); border-radius: 6px;
+        background: #fff; padding: 6px; box-sizing: border-box;
+      }
+      .qr-image-caption {
+        font-size: 0.72rem; color: var(--muted, #666);
+        margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em;
+      }
+      @media (max-width: 560px) {
+        .qr-header { flex-direction: column; }
+        .qr-image-block { flex: 0 0 auto; align-self: flex-start; }
+      }
+      .qr-id {
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-size: 1.9rem; font-weight: 700; margin: 0 0 0.4rem;
+        color: var(--text, #111); word-break: break-all;
+      }
+      .qr-badges { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+      .qr-badge {
+        display: inline-block; padding: 0.18rem 0.7rem; border-radius: 999px;
+        font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;
+        color: #fff; background: var(--muted, #666);
+      }
+      .qr-badge.asset { background: #2f4f2e; }
+      .qr-badge.status-MINTED { background: var(--status-minted); }
+      .qr-badge.status-CONSIGNMENT { background: var(--status-consignment); }
+      .qr-badge.status-SOLD { background: var(--status-sold); }
+      .qr-badge.status-RETIRED { background: var(--status-retired); }
+      .qr-section {
+        margin: var(--space-lg) 0;
+      }
+      .qr-section h2 {
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-size: 1.05rem; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 0.06em;
+        color: var(--muted, #666); margin: 0 0 0.6rem;
+        border-bottom: 1px solid var(--border, #e5e5e5); padding-bottom: 0.4rem;
+      }
+      .qr-lineage-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: var(--space-md); margin-top: var(--space-sm);
+      }
+      .qr-lineage-cell .label {
+        font-size: 0.72rem; color: var(--muted, #666);
+        text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;
+      }
+      .qr-lineage-cell .value { font-size: 1rem; color: var(--text, #111); word-break: break-word; }
+      .qr-lineage-cell .value.empty { color: var(--muted, #aaa); font-style: italic; }
+      .qr-events { list-style: none; padding: 0; margin: 0; }
+      .qr-events li {
+        padding: 0.6rem 0.9rem; border-left: 3px solid var(--border, #e5e5e5);
+        background: var(--surface, #f8f8f5); margin-bottom: 0.5rem; border-radius: 0 4px 4px 0;
+      }
+      .qr-events .when { font-size: 0.78rem; color: var(--muted, #666); margin-bottom: 0.2rem; }
+      .qr-events .what { font-size: 0.95rem; color: var(--text, #111); }
+      .qr-events .what .type {
+        display: inline-block; padding: 0.05rem 0.5rem; border-radius: 3px;
+        background: #2f4f2e; color: #fff; font-size: 0.72rem; font-weight: 600;
+        text-transform: uppercase; letter-spacing: 0.04em; margin-right: 0.4rem;
+      }
+      .qr-meta-line { color: var(--muted, #666); font-size: 0.88rem; margin-top: 0.4rem; }
+      .qr-meta-line a { color: inherit; text-decoration: underline; }
+      .qr-tree-media { display: flex; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-sm); }
+      .qr-tree-media a {
+        display: inline-block; padding: 0.4rem 0.9rem;
+        background: var(--surface, #f5f5f5); border: 1px solid var(--border, #e5e5e5);
+        border-radius: 4px; font-size: 0.88rem; color: var(--text, #111); text-decoration: none;
+      }
+      .qr-empty-state {
+        text-align: center; padding: var(--space-xl) var(--space-lg);
+        color: var(--muted, #666);
+      }
+      .qr-empty-state code {
+        background: var(--surface, #f5f5f5); padding: 0.15rem 0.4rem; border-radius: 3px;
+        font-family: 'SF Mono', Menlo, monospace; font-size: 0.9rem;
+      }
+      .qr-footer-meta {
+        margin-top: var(--space-xl); padding-top: var(--space-md);
+        border-top: 1px solid var(--border, #e5e5e5);
+        font-size: 0.78rem; color: var(--muted, #666);
+      }
+      .qr-footer-meta a { color: inherit; text-decoration: underline; }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="site-brand">TrueSight DAO</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="qr-page" id="qr-root">
+        <div class="qr-empty-state">Loading…</div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> TrueSight DAO</p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        var MANIFEST_BASE = 'https://raw.githubusercontent.com/TrueSightDAO/lineage-assets/main/qrs/';
+
+        function getQrId() {
+          var params = new URLSearchParams(window.location.search);
+          var id = params.get('id');
+          if (id) return id.trim();
+          // also accept fragment: /qr/#<id>
+          if (window.location.hash) {
+            return decodeURIComponent(window.location.hash.replace(/^#/, '')).trim();
+          }
+          return '';
+        }
+
+        function escapeHtml(s) {
+          return String(s == null ? '' : s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+
+        function renderEmpty(qrId, message) {
+          var root = document.getElementById('qr-root');
+          root.innerHTML =
+            '<div class="qr-empty-state">' +
+              '<h1>QR not found</h1>' +
+              '<p>' + escapeHtml(message || 'No manifest available for') +
+              (qrId ? ' <code>' + escapeHtml(qrId) + '</code>' : '') + '.</p>' +
+              '<p>If this QR was recently generated, the manifest may not yet be published. ' +
+              'Refresh in a few minutes, or check ' +
+              '<a href="https://github.com/TrueSightDAO/lineage-assets/tree/main/qrs">the lineage-assets repo</a>.</p>' +
+            '</div>';
+        }
+
+        function renderCell(label, value) {
+          var hasValue = value !== null && value !== undefined && String(value).trim() !== '';
+          return '<div class="qr-lineage-cell">' +
+            '<div class="label">' + escapeHtml(label) + '</div>' +
+            '<div class="value' + (hasValue ? '' : ' empty') + '">' +
+            (hasValue ? escapeHtml(value) : '—') +
+            '</div>' +
+          '</div>';
+        }
+
+        function renderLineageCacao(lineage) {
+          return '<div class="qr-lineage-grid">' +
+            renderCell('Farm', lineage.farm) +
+            renderCell('State', lineage.state) +
+            renderCell('Country', lineage.country) +
+            renderCell('Harvest year', lineage.harvest_year) +
+            renderCell('SKU', lineage.sku) +
+          '</div>';
+        }
+
+        function renderLineageTree(lineage) {
+          var coords = (lineage.latitude && lineage.longitude)
+            ? lineage.latitude + ', ' + lineage.longitude : '';
+          var html = '<div class="qr-lineage-grid">' +
+            renderCell('Farm', lineage.farm) +
+            renderCell('State', lineage.state) +
+            renderCell('Country', lineage.country) +
+            renderCell('Planted on', lineage.planted_at) +
+            renderCell('Coordinates', coords) +
+            renderCell('Location', lineage.location_text) +
+          '</div>';
+          var media = '';
+          if (lineage.planting_video_url) {
+            media += '<a href="' + escapeHtml(lineage.planting_video_url) + '" target="_blank" rel="noopener">Planting video →</a>';
+          }
+          if (lineage.seedling_photo_url) {
+            media += '<a href="' + escapeHtml(lineage.seedling_photo_url) + '" target="_blank" rel="noopener">Seedling photo →</a>';
+          }
+          if (media) {
+            html += '<div class="qr-tree-media">' + media + '</div>';
+          }
+          return html;
+        }
+
+        function renderLineage(assetType, lineage) {
+          if (!lineage) return '<p class="qr-lineage-cell"><span class="value empty">No lineage data.</span></p>';
+          if (assetType === 'tree') return renderLineageTree(lineage);
+          // default: cacao_bag layout (also reasonable for drums / memberships pending dedicated views)
+          return renderLineageCacao(lineage);
+        }
+
+        function renderEvents(events) {
+          if (!events || !events.length) {
+            return '<p class="qr-lineage-cell"><span class="value empty">No events recorded.</span></p>';
+          }
+          var parts = events.map(function (e) {
+            var when = e.at ? escapeHtml(e.at) : '—';
+            var by = e.by ? ' by <strong>' + escapeHtml(e.by) + '</strong>' : '';
+            var to = e.to ? ' → <strong>' + escapeHtml(e.to) + '</strong>' : '';
+            var notes = e.notes ? '<div class="when">' + escapeHtml(e.notes) + '</div>' : '';
+            return '<li>' +
+              '<div class="when">' + when + '</div>' +
+              '<div class="what"><span class="type">' + escapeHtml(e.type || 'event') + '</span>' + by + to + '</div>' +
+              notes +
+            '</li>';
+          });
+          return '<ul class="qr-events">' + parts.join('') + '</ul>';
+        }
+
+        function renderHolder(holder) {
+          if (!holder || (!holder.partner_name && !holder.partner_id)) {
+            return '<div class="qr-lineage-cell"><div class="value empty">Not currently held by a partner (sold direct or retired).</div></div>';
+          }
+          return '<div class="qr-lineage-cell">' +
+            '<div class="label">Currently held by</div>' +
+            '<div class="value">' + escapeHtml(holder.partner_name || holder.partner_id) + '</div>' +
+          '</div>';
+        }
+
+        function render(manifest) {
+          var root = document.getElementById('qr-root');
+          var statusClass = 'status-' + (manifest.status || 'MINTED');
+          var html = '';
+          html += '<div class="qr-header">';
+          html += '  <div class="qr-header-text">';
+          html += '    <div class="qr-badges">';
+          html += '      <span class="qr-badge asset">' + escapeHtml(manifest.asset_type || 'asset') + '</span>';
+          html += '      <span class="qr-badge ' + statusClass + '">' + escapeHtml(manifest.status || 'MINTED') + '</span>';
+          html += '    </div>';
+          html += '    <h1 class="qr-id">' + escapeHtml(manifest.qr_id) + '</h1>';
+          if (manifest.minted_at) {
+            html += '    <div class="qr-meta-line">Minted ' + escapeHtml(manifest.minted_at) +
+                    (manifest.minted_by ? ' by <strong>' + escapeHtml(manifest.minted_by) + '</strong>' : '') + '</div>';
+          }
+          html += '  </div>';
+          if (manifest.qr_image_url) {
+            html += '  <div class="qr-image-block">';
+            html += '    <a href="' + escapeHtml(manifest.qr_image_url) + '" target="_blank" rel="noopener">';
+            html += '      <img src="' + escapeHtml(manifest.qr_image_url) + '" alt="QR image for ' + escapeHtml(manifest.qr_id) + '" />';
+            html += '    </a>';
+            html += '    <div class="qr-image-caption">scan to verify</div>';
+            html += '  </div>';
+          }
+          html += '</div>';
+
+          html += '<section class="qr-section">';
+          html += '  <h2>Lineage</h2>';
+          html += renderLineage(manifest.asset_type, manifest.lineage);
+          html += '</section>';
+
+          html += '<section class="qr-section">';
+          html += '  <h2>Current status</h2>';
+          html += renderHolder(manifest.current_holder);
+          html += '</section>';
+
+          html += '<section class="qr-section">';
+          html += '  <h2>Event history</h2>';
+          html += renderEvents(manifest.events);
+          html += '</section>';
+
+          html += '<div class="qr-footer-meta">';
+          if (manifest.edgar_resolve_url) {
+            html += '<p>Verify via Edgar: <a href="' + escapeHtml(manifest.edgar_resolve_url) + '" target="_blank" rel="noopener">' +
+                    escapeHtml(manifest.edgar_resolve_url) + '</a></p>';
+          }
+          html += '<p>Manifest source: <a href="' + escapeHtml(MANIFEST_BASE + manifest.qr_id + '.json') + '" target="_blank" rel="noopener">lineage-assets/qrs/' + escapeHtml(manifest.qr_id) + '.json</a></p>';
+          html += '</div>';
+
+          root.innerHTML = html;
+          document.title = manifest.qr_id + ' · QR Provenance | TrueSight DAO';
+        }
+
+        var qrId = getQrId();
+        if (!qrId) {
+          renderEmpty('', 'No QR id supplied. Open this page with ?id=<qr_id> in the URL.');
+          return;
+        }
+        fetch(MANIFEST_BASE + encodeURIComponent(qrId) + '.json')
+          .then(function (r) {
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            return r.json();
+          })
+          .then(render)
+          .catch(function (err) {
+            renderEmpty(qrId, 'Could not load manifest (' + err.message + ').');
+          });
+      })();
+    </script>
+  </body>
+</html>
