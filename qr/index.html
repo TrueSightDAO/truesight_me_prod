@@ -41,9 +41,12 @@
         align-items: flex-start; justify-content: space-between;
       }
       .qr-header-text { flex: 1 1 auto; min-width: 0; }
-      .qr-image-block { flex: 0 0 140px; text-align: center; }
+      .qr-image-block { flex: 0 0 180px; text-align: center; }
       .qr-image-block img {
-        width: 140px; height: 140px; display: block;
+        width: 180px; height: 180px; display: block;
+        object-fit: contain;                 /* preserve aspect — qr_codes PNGs
+                                                are 450×350 compiled-with-label,
+                                                raw QRs (future mints) are 1:1 */
         border: 1px solid var(--border, #e5e5e5); border-radius: 6px;
         background: #fff; padding: 6px; box-sizing: border-box;
       }
@@ -51,6 +54,26 @@
         font-size: 0.72rem; color: var(--muted, #666);
         margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em;
       }
+      .qr-back-link {
+        display: inline-block; margin-bottom: var(--space-md);
+        color: var(--muted, #666); font-size: 0.88rem; text-decoration: none;
+      }
+      .qr-back-link:hover { color: var(--text, #111); text-decoration: underline; }
+      .qr-related-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: var(--space-sm);
+      }
+      .qr-related-link {
+        display: flex; flex-direction: column; gap: 0.2rem;
+        padding: 0.7rem 0.9rem; background: var(--surface, #f5f5f5);
+        border: 1px solid var(--border, #e5e5e5); border-radius: 6px;
+        text-decoration: none; color: var(--text, #111);
+      }
+      .qr-related-link:hover { background: #ececec; border-color: #cdd; }
+      .qr-related-link .label { font-size: 0.7rem; color: var(--muted, #666);
+        text-transform: uppercase; letter-spacing: 0.05em; }
+      .qr-related-link .value { font-size: 0.95rem; word-break: break-word; }
+      .qr-related-link .value .arrow { color: var(--muted, #666); margin-left: 0.3rem; }
       @media (max-width: 560px) {
         .qr-header { flex-direction: column; }
         .qr-image-block { flex: 0 0 auto; align-self: flex-start; }
@@ -195,6 +218,36 @@
     <script>
       (function () {
         var MANIFEST_BASE = 'https://raw.githubusercontent.com/TrueSightDAO/lineage-assets/main/qrs/';
+        var LISTING_URL = '/physical-assets/serialized/';
+        var SHOP_BASE = 'https://www.agroverse.shop';
+
+        // Map "Farm Name" (as it appears in the manifest's lineage.farm field)
+        // → farm-slug at agroverse.shop/farms/<slug>/. Slugs aren't trivially
+        // derivable from the display name (e.g. "Oscar Farm" → "oscar-bahia"
+        // drops 'Farm' and gains state), so we keep an explicit table.
+        // Add an entry when a new farm onboards. Falls back to NO link if
+        // there's no entry — better than a broken link.
+        var FARM_SLUG_MAP = {
+          'Oscar Farm':            'oscar-bahia',
+          'Fazenda Santa Ana':     'fazenda-santa-ana-bahia',
+          'Fazenda Capelavelha':   'fazenda-capelavelha-bahia',
+          'Fazenda Sao Jorge':     'fazenda-sao-jorge-bahia',
+          'Fazenda Analuana':      'fazenda-analuana-bahia',
+          "Paulo's La do Sitio":   'paulo-la-do-sitio-para',
+          'Vivi Jesus do Deus':    'vivi-jesus-do-deus-itacare',
+        };
+
+        function farmUrl(farmName) {
+          if (!farmName) return null;
+          var slug = FARM_SLUG_MAP[farmName];
+          if (slug) return SHOP_BASE + '/farms/' + slug + '/';
+          // Best-effort fallback: try a basic slugify. Some farms will 404 —
+          // accepted v0 trade-off until FARM_SLUG_MAP gains an explicit entry.
+          var slugified = farmName.toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+          return slugified ? SHOP_BASE + '/farms/' + slugified + '/' : null;
+        }
 
         function getQrId() {
           var params = new URLSearchParams(window.location.search);
@@ -216,6 +269,7 @@
         function renderEmpty(qrId, message) {
           var root = document.getElementById('qr-root');
           root.innerHTML =
+            '<a href="' + LISTING_URL + '" class="qr-back-link">← All products</a>' +
             '<div class="qr-empty-state">' +
               '<h1>QR not found</h1>' +
               '<p>' + escapeHtml(message || 'No manifest available for') +
@@ -309,6 +363,9 @@
           var root = document.getElementById('qr-root');
           var statusClass = 'status-' + (manifest.status || 'MINTED');
           var html = '';
+
+          html += '<a href="' + LISTING_URL + '" class="qr-back-link">← All products</a>';
+
           html += '<div class="qr-header">';
           html += '  <div class="qr-header-text">';
           html += '    <div class="qr-badges">';
@@ -350,6 +407,35 @@
           html += '  <h2>Event history</h2>';
           html += renderEvents(manifest.events);
           html += '</section>';
+
+          // Related links — shipment page (+ embedded lab report), farm
+          // profile (if known), and the current Edgar landing target.
+          var lineage = manifest.lineage || {};
+          var relatedHtml = '';
+          if (manifest.current_landing_page) {
+            relatedHtml +=
+              '<a class="qr-related-link" href="' + escapeHtml(manifest.current_landing_page) + '" target="_blank" rel="noopener">' +
+                '<span class="label">Shipment & lab report</span>' +
+                '<span class="value">' + escapeHtml(manifest.current_landing_page.replace(/^https?:\/\//, '')) +
+                  ' <span class="arrow">↗</span></span>' +
+              '</a>';
+          }
+          var fUrl = farmUrl(lineage.farm);
+          if (fUrl) {
+            relatedHtml +=
+              '<a class="qr-related-link" href="' + escapeHtml(fUrl) + '" target="_blank" rel="noopener">' +
+                '<span class="label">Farm profile</span>' +
+                '<span class="value">' + escapeHtml(lineage.farm) +
+                  (lineage.state ? ', ' + escapeHtml(lineage.state) : '') +
+                  ' <span class="arrow">↗</span></span>' +
+              '</a>';
+          }
+          if (relatedHtml) {
+            html += '<section class="qr-section">';
+            html += '  <h2>Related</h2>';
+            html += '  <div class="qr-related-grid">' + relatedHtml + '</div>';
+            html += '</section>';
+          }
 
           html += '<div class="qr-footer-meta">';
           if (manifest.edgar_resolve_url) {
