@@ -108,6 +108,16 @@
         table.verify-table th.col-year,
         table.verify-table td.col-year { display: none; }
       }
+      @media (max-width: 540px) {
+        table.verify-table th.col-minted,
+        table.verify-table td.col-minted { display: none; }
+      }
+      table.verify-table td.col-minted {
+        font-family: 'SF Mono', Menlo, monospace;
+        font-size: 0.84rem;
+        color: var(--text, #111);
+        white-space: nowrap;
+      }
     </style>
   </head>
   <body>
@@ -302,18 +312,21 @@
                 '<th>QR id</th>' +
                 '<th>Asset</th>' +
                 '<th>Status</th>' +
+                '<th class="col-minted">Minted</th>' +
                 '<th>Farm</th>' +
-                '<th class="col-year">Year</th>' +
+                '<th class="col-year">Harvest</th>' +
                 '<th class="col-holder">Holder</th>' +
               '</tr></thead><tbody></tbody>';
             mount.appendChild(table);
           }
           var tbody = table.querySelector('tbody');
           var html = slice.map(function (r) {
+            var minted = r.minted_at || '';
             return '<tr>' +
               '<td class="qr-id"><a href="' + esc(r.scan_target) + '">' + esc(r.qr_id) + '</a></td>' +
               '<td><span class="badge asset">' + esc(r.asset_type) + '</span></td>' +
               '<td><span class="badge status-' + esc((r.status || '').replace(/ /g, '_')) + '">' + esc(r.status) + '</span></td>' +
+              '<td class="col-minted">' + (minted ? esc(minted) : '<span style="color:var(--muted,#aaa)">—</span>') + '</td>' +
               '<td>' + esc(r.farm) + (r.country ? '<br><small style="color:var(--muted,#666)">' + esc(r.country) + '</small>' : '') + '</td>' +
               '<td class="col-year">' + esc(r.harvest_year) + '</td>' +
               '<td class="col-holder">' + esc(r.current_holder || '') + '</td>' +

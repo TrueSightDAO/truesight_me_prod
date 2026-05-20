@@ -244,6 +244,21 @@
           'Vivi Jesus do Deus':    'vivi-jesus-do-deus-itacare',
         };
 
+        // Append ?qr_code=<id> to a landing URL so the destination page knows
+        // which specific asset to render. Existing param is preserved.
+        function withQrParam(url, qrId) {
+          if (!url || !qrId) return url;
+          try {
+            var u = new URL(url);
+            if (!u.searchParams.has('qr_code')) {
+              u.searchParams.set('qr_code', qrId);
+            }
+            return u.toString();
+          } catch (e) {
+            return url + (url.indexOf('?') === -1 ? '?' : '&') + 'qr_code=' + encodeURIComponent(qrId);
+          }
+        }
+
         function farmUrl(farmName) {
           if (!farmName) return null;
           var slug = FARM_SLUG_MAP[farmName];
@@ -422,10 +437,11 @@
           var lineage = manifest.lineage || {};
           var relatedHtml = '';
           if (manifest.current_landing_page) {
+            var landingWithQr = withQrParam(manifest.current_landing_page, manifest.qr_id);
             relatedHtml +=
-              '<a class="qr-related-link" href="' + escapeHtml(manifest.current_landing_page) + '" target="_blank" rel="noopener">' +
+              '<a class="qr-related-link" href="' + escapeHtml(landingWithQr) + '" target="_blank" rel="noopener">' +
                 '<span class="label">Shipment & lab report</span>' +
-                '<span class="value">' + escapeHtml(manifest.current_landing_page.replace(/^https?:\/\//, '')) +
+                '<span class="value">' + escapeHtml(landingWithQr.replace(/^https?:\/\//, '')) +
                   ' <span class="arrow">↗</span></span>' +
               '</a>';
           }
