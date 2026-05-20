@@ -80,10 +80,17 @@
         text-transform: uppercase; letter-spacing: 0.05em; color: #fff;
         background: var(--muted, #666);
       }
-      .badge.status-MINTED      { background: #245785; }
-      .badge.status-CONSIGNMENT { background: #b45309; }
-      .badge.status-SOLD        { background: #166534; }
-      .badge.status-RETIRED     { background: #525252; }
+      /* Status palette mirrors qr/index.html. ON CONSIGNMENT (the actual sheet
+         value) has a space — we swap to underscore when building the class
+         name so the selector actually matches. */
+      .badge.status-MINTED                  { background: #245785; }  /* blue   — ready to go */
+      .badge.status-CONSIGNMENT,
+      .badge.status-ON_CONSIGNMENT          { background: #b45309; }  /* orange — at a partner */
+      .badge.status-SOLD                    { background: #166534; }  /* green  — completed sale */
+      .badge.status-SAMPLE                  { background: #0891b2; }  /* teal   — distributed during store visits */
+      .badge.status-GIFT                    { background: #be185d; }  /* rose   — given without expectation */
+      .badge.status-EXPENSED                { background: #6d28d9; }  /* violet — consumed internally */
+      .badge.status-RETIRED                 { background: #525252; }  /* gray   — no longer tracked */
       .badge.asset { background: #2f4f2e; }
       .verify-empty { padding: var(--space-xl); text-align: center; color: var(--muted, #666); }
       .verify-show-more {
@@ -216,9 +223,16 @@
         function renderStats(payload) {
           var html = '';
           html += '<div class="verify-stat"><div class="label">Total QRs</div><div class="value">' + payload.qr_count.toLocaleString() + '</div></div>';
-          ['MINTED', 'CONSIGNMENT', 'SOLD'].forEach(function (k) {
-            if (payload.by_status[k]) {
-              html += '<div class="verify-stat"><div class="label">' + k + '</div><div class="value">' + payload.by_status[k].toLocaleString() + '</div></div>';
+          // Show every non-zero status (sorted by count, highest first) — was
+          // hardcoded to MINTED/CONSIGNMENT/SOLD which missed ON CONSIGNMENT,
+          // SAMPLE, GIFT, EXPENSED, etc.
+          var byStatus = payload.by_status || {};
+          var statuses = Object.keys(byStatus).sort(function (a, b) {
+            return (byStatus[b] || 0) - (byStatus[a] || 0);
+          });
+          statuses.forEach(function (k) {
+            if (byStatus[k]) {
+              html += '<div class="verify-stat"><div class="label">' + esc(k) + '</div><div class="value">' + byStatus[k].toLocaleString() + '</div></div>';
             }
           });
           $('verify-stats').innerHTML = html;
@@ -299,7 +313,7 @@
             return '<tr>' +
               '<td class="qr-id"><a href="' + esc(r.scan_target) + '">' + esc(r.qr_id) + '</a></td>' +
               '<td><span class="badge asset">' + esc(r.asset_type) + '</span></td>' +
-              '<td><span class="badge status-' + esc(r.status) + '">' + esc(r.status) + '</span></td>' +
+              '<td><span class="badge status-' + esc((r.status || '').replace(/ /g, '_')) + '">' + esc(r.status) + '</span></td>' +
               '<td>' + esc(r.farm) + (r.country ? '<br><small style="color:var(--muted,#666)">' + esc(r.country) + '</small>' : '') + '</td>' +
               '<td class="col-year">' + esc(r.harvest_year) + '</td>' +
               '<td class="col-holder">' + esc(r.current_holder || '') + '</td>' +

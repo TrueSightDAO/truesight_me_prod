@@ -27,10 +27,13 @@
     <link rel="stylesheet" href="../styles/main.css" />
     <style>
       :root {
-        --status-minted: #245785;
-        --status-consignment: #b45309;
-        --status-sold: #166534;
-        --status-retired: #525252;
+        --status-minted:     #245785;  /* blue   — ready to go */
+        --status-consignment:#b45309;  /* orange — at a partner */
+        --status-sold:       #166534;  /* green  — completed sale */
+        --status-sample:     #0891b2;  /* teal   — given out for tasting/promo */
+        --status-gift:       #be185d;  /* rose   — given without expectation */
+        --status-expensed:   #6d28d9;  /* violet — consumed internally */
+        --status-retired:    #525252;  /* gray   — no longer tracked */
       }
       .qr-page { max-width: 880px; margin: 0 auto; padding: var(--space-xl) 0; }
       .qr-header {
@@ -90,10 +93,14 @@
         color: #fff; background: var(--muted, #666);
       }
       .qr-badge.asset { background: #2f4f2e; }
-      .qr-badge.status-MINTED { background: var(--status-minted); }
-      .qr-badge.status-CONSIGNMENT { background: var(--status-consignment); }
-      .qr-badge.status-SOLD { background: var(--status-sold); }
-      .qr-badge.status-RETIRED { background: var(--status-retired); }
+      .qr-badge.status-MINTED          { background: var(--status-minted); }
+      .qr-badge.status-CONSIGNMENT,
+      .qr-badge.status-ON_CONSIGNMENT  { background: var(--status-consignment); }
+      .qr-badge.status-SOLD            { background: var(--status-sold); }
+      .qr-badge.status-SAMPLE          { background: var(--status-sample); }
+      .qr-badge.status-GIFT            { background: var(--status-gift); }
+      .qr-badge.status-EXPENSED        { background: var(--status-expensed); }
+      .qr-badge.status-RETIRED         { background: var(--status-retired); }
       .qr-section {
         margin: var(--space-lg) 0;
       }
@@ -361,7 +368,9 @@
 
         function render(manifest) {
           var root = document.getElementById('qr-root');
-          var statusClass = 'status-' + (manifest.status || 'MINTED');
+          // Status can have spaces ("ON CONSIGNMENT") so swap them for underscores
+          // when building the CSS class — preserve the original for display.
+          var statusClass = 'status-' + (manifest.status || 'MINTED').replace(/ /g, '_');
           var html = '';
 
           html += '<a href="' + LISTING_URL + '" class="qr-back-link">← All products</a>';
