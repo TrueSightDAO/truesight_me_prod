@@ -26,5 +26,13 @@
     "available": true,
     "label": "Download certificate"
   },
-  "last_reviewed": "2026-05-18"
+  "program_mode": "cohort_credentialing",
+  "roster_sheet_url": "https://docs.google.com/spreadsheets/d/1pApVCRqsDw9AjPUTc3fMUfMh-8H4Ne1HYuQ_d6xItog/edit",
+  "roster_tab": "Cohort Roster",
+  "audit_trail_tab": "Audit Trail",
+  "admin_panel_url": "https://butterfly-effect-club.truesight.me/",
+  "program_repo": "https://github.com/TrueSightDAO/butterfly-effect-club",
+  "tokenomics_admin_endpoint": null,
+  "_tokenomics_admin_endpoint_note": "Populated post-deployment of tokenomics/google_app_scripts/tdg_credentialing/program_admin_endpoint.gs. Until then the admin panel renders a 'central endpoint not deployed' notice and the queue is read-only.",
+  "last_reviewed": "2026-05-22"
 }
