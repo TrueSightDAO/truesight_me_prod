@@ -6,7 +6,7 @@
   "partner_url": "https://era-professionals.com/butterfly-effect/",
   "partner_contact_label": "Bilal (program lead)",
   "tagline": "Experiential learning for youth, credentialed on-chain.",
-  "description_md": "Butterfly Effect is ERA Professionals' youth-focused experiential learning program. Participants earn credentials as they progress through hands-on modules; certificates are issued at completion with a QR code that scans back to their TrueSight DAO–anchored profile. Co-issued via TrueSight DAO so credentials are publicly verifiable and portable.",
+  "description_md": "Butterfly Effect is ERA Professionals' youth-focused experiential learning program. Participants earn credentials as they progress through hands-on modules; certificates are issued at completion with a QR code that scans back to their TrueSight DAO\u2013anchored profile. Co-issued via TrueSight DAO so credentials are publicly verifiable and portable.",
   "co_brand": {
     "partner_logo_url": "https://era-professionals.com/wp-content/uploads/2024/12/Butterfly-logo-300x300.png",
     "primary_color": "#A66B2E",
@@ -32,6 +32,6 @@
   "audit_trail_tab": "Audit Trail",
   "admin_panel_url": "https://butterfly-effect-club.truesight.me/",
   "program_repo": "https://github.com/TrueSightDAO/butterfly-effect-club",
-  "tokenomics_admin_endpoint": "https://script.google.com/macros/s/AKfycbyD_KI9jmbEUKCJK08XSP_WTovnsHZtpZonBJ_ClAk4qWmSbWgMDbPNwUy-OA5JDaDk2w/exec",
+  "tokenomics_admin_endpoint": "https://script.google.com/macros/s/AKfycbyqwaCkMYB_FWMJ1RiMJ_UeFjsmbHOXJK5znv70k6DleZ7c9B8Vfu399s2nsbGIIFRV7A/exec",
   "last_reviewed": "2026-05-22"
 }
