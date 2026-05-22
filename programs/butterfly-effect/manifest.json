@@ -32,6 +32,6 @@
   "audit_trail_tab": "Audit Trail",
   "admin_panel_url": "https://butterfly-effect-club.truesight.me/",
   "program_repo": "https://github.com/TrueSightDAO/butterfly-effect-club",
-  "tokenomics_admin_endpoint": "https://script.google.com/macros/s/AKfycbyqwaCkMYB_FWMJ1RiMJ_UeFjsmbHOXJK5znv70k6DleZ7c9B8Vfu399s2nsbGIIFRV7A/exec",
+  "tokenomics_admin_endpoint": "https://script.google.com/macros/s/AKfycbytzZtEhKEHCmxoSbhQXrg5Clc7imS24BFT134nu9yN4QvMCuQfhzEHgbuT8PRYcxgtGQ/exec",
   "last_reviewed": "2026-05-22"
 }
