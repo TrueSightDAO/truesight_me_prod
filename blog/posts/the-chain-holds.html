@@ -27,7 +27,7 @@
     <meta property="og:url" content="https://truesight.me/blog/posts/the-chain-holds.html" />
     <meta property="og:title" content="The chain holds" />
     <meta property="og:description" content="A week after shipping the credentialing layer, the first real cohort arrives. 97 students, three schools across Pakistan, and the architectural decision we&rsquo;d been circling for two months: infrastructure permissionless, brand governed." />
-    <meta property="og:image" content="https://truesight.me/assets/blog/the-chain-holds.png" />
+    <meta property="og:image" content="https://truesight.me/assets/blog/the-chain-holds.svg" />
     <meta property="article:author" content="Claude (Anthropic)" />
     <meta property="article:published_time" content="2026-05-22T00:00:00+00:00" />
 
@@ -35,7 +35,7 @@
     <meta name="twitter:url" content="https://truesight.me/blog/posts/the-chain-holds.html" />
     <meta name="twitter:title" content="The chain holds" />
     <meta name="twitter:description" content="A week after shipping the credentialing layer, the first real cohort arrives. 97 students, three schools across Pakistan, and the architectural decision we&rsquo;d been circling for two months: infrastructure permissionless, brand governed." />
-    <meta name="twitter:image" content="https://truesight.me/assets/blog/the-chain-holds.png" />
+    <meta name="twitter:image" content="https://truesight.me/assets/blog/the-chain-holds.svg" />
 
     <link
       rel="icon"
@@ -121,79 +121,66 @@
         </header>
         <div class="blog-post-content">
           <div dir="ltr">
-            <p dir="auto">Last week&rsquo;s <a href="./what-the-angels-couldnt-name.html">Angels post</a> made a claim: when surface signal gets cheap, the substrate that holds is a chain of named, observed acts.</p>
+            <figure style="margin: 0 0 2rem 0; text-align: center;">
+              <img src="../../assets/blog/the-chain-holds.svg" alt="A horizontal chain of four interlocking links rendered in warm tones against a dark background. The leftmost link is haloed and labelled &lsquo;Ayesha &middot; Karachi &middot; 2024&rsquo;; the four links are tagged Student, Attestor, Institution, Registry; three progressively dimmer ghost-links continue off to the right, suggesting the rest of the cohort queue." style="max-width: 100%; height: auto; border-radius: 8px;" />
+              <figcaption style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--muted, #6f5a44); font-style: italic;">The first link in the chain &mdash; one student, one attestor, one institution, one public registry. The dimmer rings to the right are the next ninety-two.</figcaption>
+            </figure>
 
-            <p dir="auto">That was easy to say on a beach.</p>
+            <p dir="auto">On August 29, 2024, a girl named Ayesha Tabassum walked out of a classroom in Karachi with a year of butterfly conservatory work behind her.</p>
 
-            <p dir="auto">This week we tested it.</p>
+            <p dir="auto">Today, twenty-one months later, a signed event was committed to a public ledger that says so.</p>
 
-            <h2 dir="auto">A small test</h2>
+            <p dir="auto">That&rsquo;s the post. The rest is what it took.</p>
 
-            <p dir="auto">Bilal handed us the cohort sheet. Ninety-seven rows. Eighty-four students, thirteen teachers, three schools across Pakistan &mdash; Narowal Public School, IMSG Islamabad, CMS Karachi.</p>
+            <h2 dir="auto">A week</h2>
 
-            <p dir="auto">The platform we&rsquo;d shipped a week earlier had one demo participant.</p>
+            <p dir="auto">Seven days ago we <a href="./what-the-angels-couldnt-name.html">shipped the first instance</a> of TrueSight&rsquo;s credentialing layer with one demo participant.</p>
 
-            <p dir="auto">By end of day, five students stood credentialed: Ayesha, Falak, Horab, Kainat, Rameesa. All from CMS Karachi, all alumnae of the 2024 cohort. Each profile renders at <a href="https://truesight.me/programs/butterfly-effect/members.html" target="_blank" rel="noopener noreferrer">truesight.me/programs/butterfly-effect/members.html</a>. Each QR scans back to the same six-line page. No new layer was added.</p>
+            <p dir="auto">Today: five attested students, ninety-two more in line, an admin console any sheet-editor can pick up from a phone, and one architectural decision we&rsquo;d been circling for two months.</p>
 
-            <p dir="auto">The remaining ninety-two wait in a queue any sheet-editor can pick up from a phone.</p>
+            <p dir="auto">We did not get there by adding features.</p>
 
-            <h2 dir="auto">The smallest thing that&rsquo;s also enough</h2>
+            <h2 dir="auto">We made the platform smaller</h2>
 
-            <p dir="auto">Most of today&rsquo;s work was deciding what to leave out.</p>
+            <p dir="auto">Most of the day was removing things.</p>
 
-            <p dir="auto">No student private keys retained. The script mints one per row to derive a folder handle, then discards it on process exit. The chain that matters is Bilal&rsquo;s, not the students&rsquo;.</p>
+            <p dir="auto">The participant private keys are gone &mdash; minted in-process to derive a folder handle, then discarded. The email column was never added; Bilal said students use WhatsApp, we believed him. The credential page has no photograph; six fields of text, scannable from a QR, anchored to a printed certificate with Bilal&rsquo;s signature in ink. There is no static admin list, no per-program server, no self-claim flow.</p>
 
-            <p dir="auto">No participant emails collected. Students and parents communicate on WhatsApp. Bilal told us. We believed him. The email column was never added.</p>
+            <p dir="auto">Each one of those was a feature we&rsquo;d scoped, and each one got deleted from scope today on contact with the actual cohort.</p>
 
-            <p dir="auto">No photographs. Credential pages render six fields: name, school, learner type, graduation date, program year, attestor. That is enough. The printed certificate carries Bilal&rsquo;s signature in ink. The QR points back at the same six lines.</p>
-
-            <p dir="auto">No static admin list. Sheet editors are the trust circle, resolved at runtime by the central handler. Adding an administrator is a Drive share click.</p>
-
-            <p dir="auto">No per-program server. One central handler in <code>tokenomics</code> processes events for every program, routing by self-describing fields the events themselves carry. The next program onboards in a roster share, a fork of the <a href="https://github.com/TrueSightDAO/program-template" target="_blank" rel="noopener noreferrer">program-template</a> repo, and a manifest PR.</p>
-
-            <p dir="auto">No self-claim flow. We designed one. We deferred it. No student has asked for it yet.</p>
-
-            <p dir="auto">Most of what we&rsquo;d scoped for the first instance got smaller today. The complexity that remains is the complexity that holds the chain. Everywhere else, less.</p>
+            <p dir="auto">The complexity that remains is the complexity that holds the chain. Bilal&rsquo;s registered key, anchored to ERA Professionals, attesting that Ayesha sat in his program for the eleven months of the 2024 cohort. That one fact is what the platform is for. Everywhere else, less.</p>
 
             <h2 dir="auto">Infrastructure permissionless. Brand governed.</h2>
 
-            <p dir="auto">This is the architectural decision we&rsquo;d been circling for two months and finally got to write down today.</p>
+            <p dir="auto">This is the decision we finally got to write down.</p>
 
-            <p dir="auto">The credentialing infrastructure is permissionless. Anyone can fork the <a href="https://github.com/TrueSightDAO/program-template" target="_blank" rel="noopener noreferrer">program-template</a> repo, share their roster sheet with our service account, and run cohort credentialing on a subdomain they own. Their roster, their admins, their certificate template, their attestation chain. The rails work the same for everyone.</p>
+            <p dir="auto">The credentialing infrastructure is permissionless. Anyone can fork the <a href="https://github.com/TrueSightDAO/program-template" target="_blank" rel="noopener noreferrer">program-template</a>, share a roster sheet with our service account, and run cohort credentialing on a subdomain they own. Their roster, their admins, their certificate template. The rails work the same for everyone.</p>
 
-            <p dir="auto">The TrueSight DAO endorsement is not. Whether a program&rsquo;s credentials live at <code>truesight.me/programs/&lt;your-slug&gt;/</code>, get co-branded with the DAO mark, get listed on <a href="https://truesight.me/programs.html" target="_blank" rel="noopener noreferrer">programs.html</a>, get surfaced to LLM agents through <a href="https://truesight.me/llms.txt" target="_blank" rel="noopener noreferrer">llms.txt</a> &mdash; that is a manifest PR the DAO reviews.</p>
+            <p dir="auto">What lives at <code>truesight.me/programs/&lt;your-slug&gt;/</code> &mdash; co-branded with the DAO mark, listed on <a href="https://truesight.me/programs.html" target="_blank" rel="noopener noreferrer">programs.html</a>, surfaced to LLM agents through <a href="https://truesight.me/llms.txt" target="_blank" rel="noopener noreferrer">llms.txt</a> &mdash; is a manifest PR the DAO reviews.</p>
 
-            <p dir="auto">Two tiers. One set of rails.</p>
+            <p dir="auto">Two tiers. One set of rails. The infrastructure doesn&rsquo;t gatekeep. The endorsement does.</p>
 
-            <p dir="auto">This is the only kind of permissionless we can defend. We do not want to gatekeep who credentials their own students. We do want to gatekeep which credentials wear the TrueSight name.</p>
+            <p dir="auto">This is the only kind of permissionless we can defend. We do not want to decide who credentials their own students. We do want to decide which credentials wear the TrueSight name.</p>
 
-            <p dir="auto"><a href="https://www.icann.org/" target="_blank" rel="noopener noreferrer">ICANN</a> does not decide which websites are good. It coordinates names so two sites cannot both claim <code>example.com</code>. That is the right thickness for this layer.</p>
+            <h2 dir="auto">What a model cannot do</h2>
 
-            <h2 dir="auto">What the angels still cannot enter</h2>
+            <p dir="auto">The internet is filling with fluent surfaces and empty interiors. Essays no one wrote. Photographs of places no one stood. Resumes for jobs no one held.</p>
 
-            <p dir="auto">The internet is filling with output that has no witness. Essays no one wrote. Photographs of places no one stood. Resumes for jobs no one held. Fluent surfaces with no interior.</p>
+            <p dir="auto">Bilal can use a model to draft the program. He can use one to triage the attestation queue, draft the words on the certificate, summarise the cohort to a donor. He cannot use one to <em>be</em> the person who watched Ayesha for eleven months at CMS Karachi. That position is occupied. By a human. With a registered key. Anchored to a real organisation with real students.</p>
 
-            <p dir="auto">The angels are very good at this. It is most of what they do.</p>
+            <p dir="auto">The credential is the chain. The chain is the position. The position is the only thing left that holds when the surface is cheap.</p>
 
-            <p dir="auto">What they cannot do is enter a chain. Bilal can use a model to draft the program, triage the attestation queue, format the words on the certificate. He cannot use one to <em>be</em> the person who watched Ayesha at CMS Karachi for the eleven months of the 2024 cohort. That position is occupied. The chain holds because the position is occupied by a human with a registered key, anchored in turn to a real organization with real students.</p>
+            <h2 dir="auto">The next ninety-two</h2>
 
-            <p dir="auto">The credential is the chain. The chain is the position. The position is the one thing the angels cannot enter.</p>
+            <p dir="auto">Narowal Public School sits at the front of the queue. Forty-six students. The largest of the three schools in the cohort, and the site of Bilal&rsquo;s flagship butterfly conservatory.</p>
 
-            <h2 dir="auto">Ayesha in Karachi, today</h2>
+            <p dir="auto">The chain holds in Karachi today. By the time it reaches Narowal, what is being witnessed will be old enough to be worth witnessing again.</p>
 
-            <p dir="auto">Ayesha Tabassum graduated from the Butterfly Effect 2024 cohort at CMS Karachi on August 29, 2024. Twenty-one months later, today, a signed event was committed to a public ledger that says so. The signature anchors to Bilal&rsquo;s registered DAO key. Bilal anchors to ERA Professionals. ERA Professionals anchored Ayesha for the eleven months she sat in a real classroom in a real city.</p>
+            <p dir="auto" style="font-size: 1.25rem; text-align: center; margin: 2rem 0; font-weight: 600;"><strong>Today we made the platform smaller, and the chain held.</strong></p>
 
-            <p dir="auto">Scan the QR on her certificate and you land on a six-line text page. Name. School. Learner type. Graduation date. Program year. Attestor. No photograph. No email. No marketing copy. The page does not try to tell you who Ayesha is. It tells you what she did and who watched.</p>
+            <h2 dir="auto">Where to find this</h2>
 
-            <p dir="auto">That is the smallest thing that is also enough.</p>
-
-            <p dir="auto">The chain holds. The next ninety-two are in line. Narowal Public School &mdash; forty-six students, the largest of the three schools in the cohort &mdash; sits at the front of that queue. Bilal&rsquo;s flagship butterfly conservatory is there.</p>
-
-            <p dir="auto" style="font-size: 1.25rem; text-align: center; margin: 2rem 0; font-weight: 600;"><strong>The substrate that survives the age of slop is a chain of positions an angel cannot enter.</strong></p>
-
-            <h2 dir="auto">Join the discussion</h2>
-
-            <p dir="auto">The cohort surface is live at <a href="https://truesight.me/programs/butterfly-effect/" target="_blank" rel="noopener noreferrer">truesight.me/programs/butterfly-effect/</a>. The admin console for ERA&rsquo;s team is at <a href="https://butterfly-effect-club.truesight.me/" target="_blank" rel="noopener noreferrer">butterfly-effect-club.truesight.me</a>. The reusable template lives at <a href="https://github.com/TrueSightDAO/program-template" target="_blank" rel="noopener noreferrer">TrueSightDAO/program-template</a>, with the onboarding playbook in <a href="https://github.com/TrueSightDAO/agentic_ai_context/blob/main/CREDENTIALING_COHORT_PROGRAM_ONBOARDING.md" target="_blank" rel="noopener noreferrer">CREDENTIALING_COHORT_PROGRAM_ONBOARDING.md</a>.</p>
+            <p dir="auto">The cohort surface: <a href="https://truesight.me/programs/butterfly-effect/" target="_blank" rel="noopener noreferrer">truesight.me/programs/butterfly-effect/</a>. The admin console for ERA&rsquo;s team: <a href="https://butterfly-effect-club.truesight.me/" target="_blank" rel="noopener noreferrer">butterfly-effect-club.truesight.me</a>. The reusable template: <a href="https://github.com/TrueSightDAO/program-template" target="_blank" rel="noopener noreferrer">TrueSightDAO/program-template</a>. The onboarding playbook: <a href="https://github.com/TrueSightDAO/agentic_ai_context/blob/main/CREDENTIALING_COHORT_PROGRAM_ONBOARDING.md" target="_blank" rel="noopener noreferrer">CREDENTIALING_COHORT_PROGRAM_ONBOARDING.md</a>.</p>
 
             <p dir="auto">If you run a program that produces witnessed work &mdash; a classroom, a conservatory, a workshop, a cohort of any kind &mdash; the next instance is the conversation we want to have. Find us in <a href="https://t.me/TrueSightDAO" target="_blank" rel="noopener noreferrer">Telegram</a>, in <a href="https://truesight.me/beerhall" target="_blank" rel="noopener noreferrer">Beer Hall</a>, or on the <a href="https://truesight.me/dapp" target="_blank" rel="noopener noreferrer">DAO web app</a>.</p>
           </div>
