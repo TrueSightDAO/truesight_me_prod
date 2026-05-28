@@ -45,9 +45,14 @@ export default defineConfig({
     },
   ],
 
-  webServer: {
-    command: 'echo "Tests run against production. No local server needed."',
-    port: 3000,
-    reuseExistingServer: true,
-  },
+  // When PLAYWRIGHT_BASE_URL is set (post-deploy CI against live beta), no local
+  // server is needed — omit webServer entirely. Otherwise the placeholder "echo"
+  // exited immediately and Playwright waited forever for port 3000.
+  ...(process.env.PLAYWRIGHT_BASE_URL ? {} : {
+    webServer: {
+      command: 'echo "Tests run against production. No local server needed."',
+      port: 3000,
+      reuseExistingServer: true,
+    },
+  }),
 });
