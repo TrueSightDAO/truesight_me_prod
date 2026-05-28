@@ -15,7 +15,9 @@ export default defineConfig({
     : 'html', // Local: just HTML report
   
   use: {
-    baseURL: 'https://www.truesight.me',
+    // PLAYWRIGHT_BASE_URL env lets CI point tests at the deployed beta
+    // (post-deploy run); default stays prod so local/manual runs are unchanged.
+    baseURL: process.env.PLAYWRIGHT_BASE_URL || 'https://www.truesight.me',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
   },
