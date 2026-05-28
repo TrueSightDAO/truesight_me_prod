@@ -122,7 +122,7 @@
             <p class="pill">Edgar Platform</p>
             <h1>Open-Source Automation for Grassroots Impact</h1>
             <p>
-              Edgar is an open-source toolkit built and maintained by the TrueSight DAO community. It helps grassroots social impact initiatives coordinate volunteer contributions, track impact, and manage community-driven governance—without the usual technical or financial barriers.
+              Edgar is an open-source toolkit built and maintained by the TrueSight DAO community. Three layers: a spreadsheet-native UX anyone can use today, a Python runtime any other DAO can fork tomorrow, and an AI operator that runs the place when nobody's awake. All open-source.
             </p>
             <div class="hero-meta">
               <span class="stat-chip">Status · Active & Ongoing</span>
@@ -170,41 +170,39 @@
 
       <section id="solution">
         <p class="pill">The solution</p>
-        <h2>Autonomous Impact Infrastructure Made Simple</h2>
+        <h2>Three Open Layers, One Stack</h2>
         <p class="section-lead">
-          Edgar removes the friction by providing ready-to-use, open-source modules that any grassroots group can deploy.
+          Edgar removes the friction with three layers of open-source infrastructure — each one preserves the layer below.
         </p>
         <div class="solution-features">
           <div class="solution-feature">
-            <h3>Familiar Tools</h3>
-            <p>Built on Google Sheets with simple copy-paste Google App Scripts, so no new software learning curve.</p>
+            <p class="pill" style="margin-bottom: 0.5rem;">Layer 1 · Contributor edge</p>
+            <h3>No code. Familiar tools.</h3>
+            <p>Google Sheets, Google Apps Script, Telegram, and the DApp. Anyone who can use a spreadsheet can coordinate contributions and governance. No wallet, no gas fees, no crypto expertise. Hosted on Google + GitHub at minimal operating cost.</p>
           </div>
           <div class="solution-feature">
-            <h3>Safe & Reversible</h3>
-            <p>Transactions can be manually adjusted or reverted if something goes wrong.</p>
+            <p class="pill" style="margin-bottom: 0.5rem;">Layer 2 · Open runtime</p>
+            <h3>A Python runtime you can fork.</h3>
+            <p>The signed-event API is a Python FastAPI service (<code>dao_protocol</code>) plus a Python SDK (<code>dao_client</code>) — fork it, host it, point your own DAO at it. Every contribution is an RSA-signed event with rollback by design, so a wrong action can be reversed.</p>
           </div>
           <div class="solution-feature">
-            <h3>Free or Low-Cost</h3>
-            <p>Hosted via Google Sheets and GitHub, with minimal operating costs.</p>
-          </div>
-          <div class="solution-feature">
-            <h3>No Expert Developers Needed</h3>
-            <p>Anyone who can use a spreadsheet can coordinate contributions and governance.</p>
-          </div>
-          <div class="solution-feature">
-            <h3>Open-Source & Community-Maintained</h3>
-            <p>Modules are publicly available, transparent, and continuously improved.</p>
+            <p class="pill" style="margin-bottom: 0.5rem;">Layer 3 · AI operator</p>
+            <h3>An AI that runs the DAO.</h3>
+            <p><code>truesight_autopilot</code> is an LLM agent with 36 tools that handles the ops work — Drive/Sheets/Docs/Gmail reach, AWS read across both DAO-contributed accounts, GitHub fix-PRs with draft auto-promote, PDF reports, QR scanning. Every action is RSA-signed by a governor first. <em>Currently private to TrueSight; ship-to-beta only, gated on green CI. Anyone can fork the repo and point it at their own DAO.</em></p>
           </div>
         </div>
         <p class="section-conclusion">
-          Edgar turns volunteer energy into measurable, scalable impact—without requiring crypto expertise or expensive infrastructure.
+          Edgar turns volunteer energy into measurable, scalable impact — and increasingly, runs itself.
         </p>
         <div style="margin-top: 3rem; padding: 2rem; background: rgba(255, 196, 0, 0.1); border: 2px dashed var(--accent); border-radius: 1rem; text-align: center;">
           <h3 style="margin-top: 0; margin-bottom: 1rem;">Open-Source on GitHub</h3>
-          <p style="margin-bottom: 1.5rem;">All Edgar modules are open-source and freely available. Contribute, fork, or deploy your own instance.</p>
-          <div class="cta-row" style="justify-content: center; gap: 1rem;">
-            <a class="cta secondary" href="https://github.com/TrueSightDAO/dapp" target="_blank" rel="noreferrer">View DApp Code</a>
-            <a class="cta secondary" href="https://github.com/TrueSightDAO/tokenomics" target="_blank" rel="noreferrer">View Tokenomics Code</a>
+          <p style="margin-bottom: 1.5rem;">All Edgar layers are open-source and freely available. Contribute, fork, or run your own.</p>
+          <div class="cta-row" style="justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <a class="cta secondary" href="https://github.com/TrueSightDAO/dapp" target="_blank" rel="noreferrer">DApp</a>
+            <a class="cta secondary" href="https://github.com/TrueSightDAO/tokenomics" target="_blank" rel="noreferrer">Tokenomics (GAS)</a>
+            <a class="cta secondary" href="https://github.com/TrueSightDAO/dao_protocol" target="_blank" rel="noreferrer">dao_protocol</a>
+            <a class="cta secondary" href="https://github.com/TrueSightDAO/dao_client" target="_blank" rel="noreferrer">dao_client (SDK)</a>
+            <a class="cta secondary" href="https://github.com/TrueSightDAO/truesight_autopilot" target="_blank" rel="noreferrer">truesight_autopilot</a>
           </div>
         </div>
       </section>
@@ -248,6 +246,15 @@
               <li><a href="https://truesight.me/physical-assets/serialized/sold" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Sold Products</a></li>
               <li><a href="https://truesight.me/ttl/irs" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Taxation Filings</a></li>
               <li><a href="https://truesight.me/credentials/" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Practitioner Credentials</a></li>
+            </ul>
+          </div>
+          <div style="margin-bottom: var(--space-md);">
+            <h4 style="font-size: 0.875rem; font-weight: 600; margin-bottom: var(--space-xs); color: var(--text); text-align: center; text-transform: uppercase; letter-spacing: 0.05em;">AI Operator</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm) var(--space-lg);">
+              <li><a href="https://github.com/TrueSightDAO/truesight_autopilot" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">truesight_autopilot (repo)</a></li>
+              <li><a href="https://github.com/TrueSightDAO/truesight_autopilot/blob/main/app/tools/README.md" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">Tool authoring guide</a></li>
+              <li><a href="https://github.com/TrueSightDAO/dao_protocol" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">dao_protocol (Python runtime)</a></li>
+              <li><a href="https://github.com/TrueSightDAO/dao_client" target="_blank" rel="noreferrer noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9375rem;">dao_client (Python SDK)</a></li>
             </ul>
           </div>
           <div>
@@ -304,7 +311,10 @@
         {"id":"d4b532e3-c77d-49ee-ad23-36194a3d300a","title":"Proposals","description":"Create proposals, review pending ones, and vote — a fully off-chain governance loop.","demoUrl":"https://dapp.truesight.me/view_open_proposals.html","sourceUrl":"https://github.com/TrueSightDAO/dapp/blob/main/create_proposal.html","order":15},
         {"id":"5882a354-1023-4d44-ad7e-faec5f44ed38","title":"Credentialing CV Platform","description":"Publish signed practice events as portable, public CVs without re-keying. Powers the Capoeira Tribo Bahia Mirim lineage records.","demoUrl":"https://truesight.me/credentials/","sourceUrl":"https://github.com/TrueSightDAO/lineage-credentials","order":16},
         {"id":"b1f7e2c4-2d8a-4e7f-9c3d-1a5b6e7f8a9c","title":"Capoeira Practice Platform","description":"Practitioner-facing session builder that signs each completed session into the Credentialing CV.","demoUrl":"https://capoeira.agroverse.shop/practice.html","sourceUrl":"https://github.com/TrueSightDAO/capoeira","order":17},
-        {"id":"943d2f3e-b7a1-4a31-8817-1978dadcda2c","title":"Telegram Chat Logger","description":"Logs Telegram messages to Google Sheets, supports attachments, credits, and classification.","demoUrl":"https://t.me/TrueSightDAO/1","sourceUrl":"https://github.com/TrueSightDAO/tokenomics/blob/main/google_app_scripts/tdg_scoring/transfer_scored_contributions_to_main_ledger.gs","order":18}
+        {"id":"943d2f3e-b7a1-4a31-8817-1978dadcda2c","title":"Telegram Chat Logger","description":"Logs Telegram messages to Google Sheets, supports attachments, credits, and classification.","demoUrl":"https://t.me/TrueSightDAO/1","sourceUrl":"https://github.com/TrueSightDAO/tokenomics/blob/main/google_app_scripts/tdg_scoring/transfer_scored_contributions_to_main_ledger.gs","order":18},
+        {"id":"a6c1d4e7-8b9f-4a52-b3e1-6f8c2d9b4e0a","title":"DAO Protocol (Python runtime)","description":"FastAPI service that powers signed-event dispatch behind edgar.truesight.me. The Layer-2 runtime any DAO can fork to host its own Edgar.","demoUrl":"https://edgar.truesight.me/dao_protocol/health","sourceUrl":"https://github.com/TrueSightDAO/dao_protocol","order":19},
+        {"id":"b7d2e5f8-9c0e-4d63-c4f2-7a9d3e0c5f1b","title":"DAO Client (Python SDK)","description":"Command-line and library for submitting signed events to Edgar. The tool every AI agent and automation reaches for.","demoUrl":"https://github.com/TrueSightDAO/dao_client#readme","sourceUrl":"https://github.com/TrueSightDAO/dao_client","order":20},
+        {"id":"c8e3f609-ad1f-4e74-d5a3-8b0e4f1d6a2c","title":"Autopilot · AI Operator","description":"LLM agent with 36 tools — Drive/Sheets/Docs/Gmail/AWS reach, GitHub PR fix + merge + draft auto-promote, PDF generation, QR scanning. Operates over Telegram, signs every action with a governor key. Currently private to TrueSight; fork it for your own DAO.","demoUrl":"https://github.com/TrueSightDAO/truesight_autopilot/blob/main/app/tools/README.md","sourceUrl":"https://github.com/TrueSightDAO/truesight_autopilot","order":21}
       ];
 
       (function() {

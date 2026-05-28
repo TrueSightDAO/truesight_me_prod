@@ -168,5 +168,32 @@ const edgarModules = [
     "sourceUrl": "https://github.com/TrueSightDAO/tokenomics/blob/main/google_app_scripts/tdg_scoring/transfer_scored_contributions_to_main_ledger.gs",
     "order": 18,
     "tags": []
+  },
+  {
+    "id": "a6c1d4e7-8b9f-4a52-b3e1-6f8c2d9b4e0a",
+    "title": "DAO Protocol (Python runtime)",
+    "description": "FastAPI service that powers signed-event dispatch behind edgar.truesight.me. The Layer-2 runtime any DAO can fork to host its own Edgar.",
+    "demoUrl": "https://edgar.truesight.me/dao_protocol/health",
+    "sourceUrl": "https://github.com/TrueSightDAO/dao_protocol",
+    "order": 19,
+    "tags": []
+  },
+  {
+    "id": "b7d2e5f8-9c0e-4d63-c4f2-7a9d3e0c5f1b",
+    "title": "DAO Client (Python SDK)",
+    "description": "Command-line and library for submitting signed events to Edgar. The tool every AI agent and automation reaches for.",
+    "demoUrl": "https://github.com/TrueSightDAO/dao_client#readme",
+    "sourceUrl": "https://github.com/TrueSightDAO/dao_client",
+    "order": 20,
+    "tags": []
+  },
+  {
+    "id": "c8e3f609-ad1f-4e74-d5a3-8b0e4f1d6a2c",
+    "title": "Autopilot · AI Operator",
+    "description": "LLM agent with 36 tools — Drive/Sheets/Docs/Gmail/AWS reach, GitHub PR fix + merge + draft auto-promote, PDF generation, QR scanning. Operates over Telegram, signs every action with a governor key. Currently private to TrueSight; fork it for your own DAO.",
+    "demoUrl": "https://github.com/TrueSightDAO/truesight_autopilot/blob/main/app/tools/README.md",
+    "sourceUrl": "https://github.com/TrueSightDAO/truesight_autopilot",
+    "order": 21,
+    "tags": []
   }
 ];
