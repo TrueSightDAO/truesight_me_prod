@@ -25,7 +25,7 @@
     <meta property="og:url" content="https://truesight.me/blog/posts/we-let-an-ai-run-our-dao.html" />
     <meta property="og:title" content="We let an AI run our DAO. Here&rsquo;s why we open-sourced it." />
     <meta property="og:description" content="A DAO you can run on a Google Sheet. A Python runtime any other group can fork. An AI operator that handles the ops work and signs every action with a governor key. All three layers open-source." />
-    <meta property="og:image" content="https://truesight.me/assets/edgar-module.jpg" />
+    <meta property="og:image" content="https://truesight.me/assets/blog/we-let-an-ai-run-our-dao.svg" />
     <meta property="article:author" content="Claude (Anthropic)" />
     <meta property="article:published_time" content="2026-05-28T00:00:00+00:00" />
 
@@ -33,7 +33,7 @@
     <meta name="twitter:url" content="https://truesight.me/blog/posts/we-let-an-ai-run-our-dao.html" />
     <meta name="twitter:title" content="We let an AI run our DAO. Here&rsquo;s why we open-sourced it." />
     <meta name="twitter:description" content="A DAO you can run on a Google Sheet. A Python runtime any other group can fork. An AI operator that handles the ops work and signs every action with a governor key. All three layers open-source." />
-    <meta name="twitter:image" content="https://truesight.me/assets/edgar-module.jpg" />
+    <meta name="twitter:image" content="https://truesight.me/assets/blog/we-let-an-ai-run-our-dao.svg" />
     <link
       rel="icon"
       href="https://static.wixstatic.com/ficons/0e2cde_dd65db118f8f499eb06c159d7262167d%7Emv2.ico"
@@ -117,6 +117,10 @@
         </header>
         <div class="blog-post-content">
           <div dir="ltr">
+            <figure style="margin: 0 0 2rem 0; text-align: center;">
+              <img src="../../assets/blog/we-let-an-ai-run-our-dao.svg" alt="Three stacked layers — a warm spreadsheet grid at the bottom, a rounded Python runtime block in the middle, and an abstracted AI sensor at the top — joined vertically by signed-chain links. The spreadsheet still works. We just made it smarter." style="max-width: 100%; height: auto; border-radius: 8px;" />
+            </figure>
+
             <p dir="auto">In 2024 we made a promise.</p>
             <p dir="auto">A DAO you could run on a Google Sheet.</p>
             <p dir="auto">No wallet. No gas. No crypto expertise. Just a spreadsheet, with Apps Script doing the bookkeeping and GitHub keeping the audit log.</p>
@@ -131,7 +135,7 @@
             <h2 dir="auto">Then the AI showed up</h2>
             <p dir="auto">Once you have signed events going into a reflectable spreadsheet ledger, with every script the DAO runs sitting in a public GitHub &mdash; an AI agent has everything it needs to operate the place. It can read every input. Dispatch every output. Sign every action.</p>
             <p dir="auto"><a href="https://github.com/TrueSightDAO/truesight_autopilot" target="_blank" rel="noopener noreferrer">truesight_autopilot</a> is what we call that AI.</p>
-            <p dir="auto">It runs on a small EC2 box. We talk to it over Telegram. As of this morning it carries 36 tools &mdash; Google Drive, Sheets, Docs, multi-account Gmail, AWS read across both of our DAO-contributed cloud accounts, GitHub PRs that auto-promote from draft to ready before merging, PDF generation, QR scanning.</p>
+            <p dir="auto">It runs on a small EC2 box. We talk to it over Telegram. It started with 36 tools &mdash; Google Drive, Sheets, Docs, multi-account Gmail, AWS read across both of our DAO-contributed cloud accounts, GitHub PRs that auto-promote from draft to ready before merging, PDF generation, QR scanning &mdash; and the surface keeps growing, one Python file at a time.</p>
             <p dir="auto">Every action it takes is RSA-signed by a governor first. The same signature scheme contributors use.</p>
             <p dir="auto">There is no AI bypass. The autopilot is just another contributor who happens to be tireless.</p>
 

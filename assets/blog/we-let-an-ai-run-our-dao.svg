@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420" role="img" aria-label="Three stacked layers — a warm spreadsheet grid at the bottom, a rounded Python runtime block in the middle, and an abstracted AI sensor at the top — joined vertically by signed-chain links. The spreadsheet still works. We just made it smarter.">
+  <defs>
+    <linearGradient id="bgAi" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1f1712"/>
+      <stop offset="100%" stop-color="#3d2b1f"/>
+    </linearGradient>
+
+    <!-- Warm halo behind the operator at the top, mirroring chain-holds.svg -->
+    <radialGradient id="haloOp" cx="0.5" cy="0.5" r="0.7">
+      <stop offset="0%" stop-color="#e8a838" stop-opacity="0.5"/>
+      <stop offset="55%" stop-color="#c75b2a" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#1f1712" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bgAi)" rx="8"/>
+
+  <!-- ── Layer 3 · AI OPERATOR (top, ~y=70) ─────────────────────────────── -->
+  <ellipse cx="400" cy="70" rx="170" ry="62" fill="url(#haloOp)"/>
+
+  <!-- Central sensor / "eye" — the AI body -->
+  <circle cx="400" cy="70" r="22" fill="none" stroke="#e8a838" stroke-width="3.2"/>
+  <circle cx="400" cy="70" r="14" fill="none" stroke="#e8a838" stroke-width="0.9" opacity="0.55"/>
+  <circle cx="400" cy="70" r="5"  fill="#e8a838" opacity="0.85"/>
+
+  <!-- Six tool spokes radiating from the sensor, evoking the 36-tool surface -->
+  <g stroke="#c89767" stroke-width="2" stroke-linecap="round" opacity="0.9">
+    <line x1="400" y1="38"  x2="400" y2="20"/>
+    <line x1="426" y1="56"  x2="442" y2="46"/>
+    <line x1="426" y1="84"  x2="442" y2="94"/>
+    <line x1="400" y1="102" x2="400" y2="120"/>
+    <line x1="374" y1="84"  x2="358" y2="94"/>
+    <line x1="374" y1="56"  x2="358" y2="46"/>
+  </g>
+  <!-- Tool tip dots -->
+  <g fill="#c89767" opacity="0.85">
+    <circle cx="400" cy="20"  r="2.4"/>
+    <circle cx="442" cy="46"  r="2.4"/>
+    <circle cx="442" cy="94"  r="2.4"/>
+    <circle cx="400" cy="120" r="2.4"/>
+    <circle cx="358" cy="94"  r="2.4"/>
+    <circle cx="358" cy="46"  r="2.4"/>
+  </g>
+
+  <!-- Layer-3 label -->
+  <text x="400" y="148" font-family="Space Grotesk, Inter, system-ui, sans-serif"
+        font-size="11" font-weight="600" fill="#a67c52" opacity="0.85"
+        text-anchor="middle" letter-spacing="0.18em">AI OPERATOR · truesight_autopilot</text>
+
+  <!-- ── Chain seam 3→2 — vertical interlocking links (RSA-signed handoff) ── -->
+  <g transform="translate(400, 175)" stroke="#c89767" stroke-width="2.2" fill="none" opacity="0.85">
+    <rect x="-9" y="-15" width="18" height="30" rx="9"/>
+    <rect x="-15" y="0" width="30" height="18" rx="9"/>
+  </g>
+
+  <!-- ── Layer 2 · PYTHON RUNTIME (middle, centered ~y=230) ───────────────── -->
+  <g transform="translate(400, 230)">
+    <!-- Outer rounded service block -->
+    <rect x="-150" y="-32" width="300" height="64" rx="14" ry="14"
+          fill="none" stroke="#e8a838" stroke-width="2.8" opacity="0.92"/>
+    <rect x="-142" y="-24" width="284" height="48" rx="10" ry="10"
+          fill="none" stroke="#e8a838" stroke-width="0.9" opacity="0.4"/>
+
+    <!-- Code-ish glyphs — three small bars with a function signature feel -->
+    <g stroke="#c89767" stroke-width="2" stroke-linecap="round" opacity="0.85">
+      <line x1="-118" y1="-12" x2="-78" y2="-12"/>
+      <line x1="-118" y1="0"   x2="-58" y2="0"/>
+      <line x1="-118" y1="12"  x2="-90" y2="12"/>
+    </g>
+    <!-- A FastAPI-ish "()" pairing -->
+    <path d="M -38 -14 q -10 14 0 28" stroke="#c89767" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <path d="M  38 -14 q  10 14  0 28" stroke="#c89767" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <!-- Inside-the-parens: a small request arrow -->
+    <line x1="-20" y1="0" x2="20" y2="0" stroke="#e8a838" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+    <polygon points="20,-4 28,0 20,4" fill="#e8a838" opacity="0.8"/>
+    <!-- A trailing pipe stripe to suggest "module" texture -->
+    <g stroke="#a67c52" stroke-width="1.4" opacity="0.6">
+      <line x1="70" y1="-12" x2="110" y2="-12"/>
+      <line x1="70" y1="0"   x2="118" y2="0"/>
+      <line x1="70" y1="12"  x2="100" y2="12"/>
+    </g>
+  </g>
+
+  <!-- Layer-2 label -->
+  <text x="400" y="285" font-family="Space Grotesk, Inter, system-ui, sans-serif"
+        font-size="11" font-weight="600" fill="#a67c52" opacity="0.85"
+        text-anchor="middle" letter-spacing="0.18em">PYTHON RUNTIME · dao_protocol</text>
+
+  <!-- ── Chain seam 2→1 — vertical interlocking links ─────────────────────── -->
+  <g transform="translate(400, 312)" stroke="#a67c52" stroke-width="2" fill="none" opacity="0.85">
+    <rect x="-9" y="-15" width="18" height="30" rx="9"/>
+    <rect x="-15" y="0" width="30" height="18" rx="9"/>
+  </g>
+
+  <!-- ── Layer 1 · CONTRIBUTOR EDGE / SPREADSHEET (bottom, ~y=355) ────────── -->
+  <g transform="translate(400, 355)">
+    <!-- Outer sheet body -->
+    <rect x="-120" y="-26" width="240" height="52" rx="4"
+          fill="none" stroke="#e8a838" stroke-width="2.6"/>
+    <!-- Sheet header row -->
+    <line x1="-120" y1="-12" x2="120" y2="-12" stroke="#e8a838" stroke-width="2" opacity="0.85"/>
+    <!-- Column dividers (5 cells × 3 rows) -->
+    <g stroke="#a67c52" stroke-width="1" opacity="0.75">
+      <line x1="-72" y1="-26" x2="-72" y2="26"/>
+      <line x1="-24" y1="-26" x2="-24" y2="26"/>
+      <line x1="24"  y1="-26" x2="24"  y2="26"/>
+      <line x1="72"  y1="-26" x2="72"  y2="26"/>
+      <line x1="-120" y1="2" x2="120" y2="2"/>
+    </g>
+    <!-- A few "filled cell" hints — signed rows landing in the ledger -->
+    <g fill="#e8a838" opacity="0.55">
+      <rect x="-116" y="6" width="40" height="3" rx="1"/>
+      <rect x="-68"  y="6" width="40" height="3" rx="1"/>
+      <rect x="-20"  y="6" width="40" height="3" rx="1"/>
+    </g>
+    <g fill="#c89767" opacity="0.45">
+      <rect x="-116" y="13" width="28" height="3" rx="1"/>
+      <rect x="-68"  y="13" width="32" height="3" rx="1"/>
+    </g>
+  </g>
+
+  <!-- Layer-1 label -->
+  <text x="400" y="402" font-family="Space Grotesk, Inter, system-ui, sans-serif"
+        font-size="11" font-weight="600" fill="#a67c52" opacity="0.85"
+        text-anchor="middle" letter-spacing="0.18em">CONTRIBUTOR EDGE · sheets &amp; telegram</text>
+
+  <!-- ── Handwritten-style label hanging off the operator, like chain-holds.svg ── -->
+  <line x1="416" y1="58" x2="540" y2="34" stroke="#a67c52" stroke-width="1" opacity="0.7"/>
+  <g transform="translate(540, 34) rotate(-4)">
+    <rect x="0" y="-13" width="200" height="26" rx="3"
+          fill="#f7e6c1" stroke="#c75b2a" stroke-width="1.2"/>
+    <circle cx="6" cy="0" r="2" fill="#3d2b1f" opacity="0.85"/>
+    <text x="106" y="5" font-family="Space Grotesk, Inter, system-ui, sans-serif"
+          font-size="10" font-weight="600" fill="#6b4226" text-anchor="middle"
+          letter-spacing="0.05em">RSA-SIGNED · 36 TOOLS · TELEGRAM</text>
+  </g>
+
+  <!-- Small "OPEN" pill near the runtime, hinting fork-it-yourself -->
+  <g transform="translate(196, 230)">
+    <rect x="-26" y="-9" width="52" height="18" rx="9"
+          fill="none" stroke="#c75b2a" stroke-width="1.2" opacity="0.85"/>
+    <text x="0" y="3" font-family="Space Grotesk, Inter, system-ui, sans-serif"
+          font-size="9" font-weight="700" fill="#c75b2a"
+          text-anchor="middle" letter-spacing="0.18em">OPEN</text>
+  </g>
+</svg>
