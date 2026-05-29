@@ -599,7 +599,7 @@
 <p class="whitepaper-p">For <strong>future</strong> Agroverse Guild Ledger (AGL) contracts that are <strong>shipment financing</strong> (direct shipment with physical collateral), the voted default <strong>fund management fee is 20%</strong>, unless a specific contract states otherwise. <strong>Operational funds</strong> ledgers that invest in other AGLs do <strong>not</strong> charge an additional fee at that layer, to avoid double-charging. Existing contracts stay on their prior terms unless amended by mutual agreement.
 </p>
 <p class="whitepaper-spacer">&nbsp;</p>
-<p class="whitepaper-p">In the event that a member chooses to exit their position prematurely, their governance tokens will be reclaimed from them at a significantly discounted value compared to their initial contribution. This serves as a penalty for early exits.
+<p class="whitepaper-p">In the event that a member chooses to exit their position prematurely, the <strong>equity position in the managed ledger</strong> they invested in will be reclaimed from them at a significantly discounted value compared to their initial contribution. This serves as a penalty for early exits. (The penalty applies to that managed-ledger equity position, not to governance tokens earned for contributions.)
 </p>
 <p class="whitepaper-spacer">&nbsp;</p>
 <h2 class="whitepaper-heading" id="nomenclature">Nomenclature
@@ -658,7 +658,7 @@
 <p class="whitepaper-spacer">&nbsp;</p>
 <h4 class="whitepaper-heading" id="beer-hall">Beer Hall &mdash; community digest, archive-only
 </h4>
-<p class="whitepaper-p">The <strong>Beer Hall</strong> is our community digest, not a realtime channel. A daily GitHub Action at 00:00 UTC drafts a two-message update via Claude (Message 1 = TLDR; Message 2 = <em>Shipped</em> links + community signals from the Telegram log), commits it to the static feed at <a href="https://github.com/TrueSightDAO/ecosystem_change_logs/tree/main/beer_hall/feed" rel="noopener noreferrer">ecosystem_change_logs/beer_hall/feed/</a>, and refreshes the advisory snapshot that feeds the Oracle. As of 2026-04-19 the digest is <em>archive-only</em> &mdash; OpenClaw no longer posts to WhatsApp. The previous WhatsApp firehose was flagged as too noisy by the community (Kirsten, Fatima, Garis); Fatima proposed a newsletter shape and that is what the static feed + Oracle Q&amp;A pattern now provides. Day-to-day ops chatter still happens in the small executor WhatsApp rooms below.
+<p class="whitepaper-p">The <strong>Beer Hall</strong> is our community digest, not a realtime channel. A daily GitHub Action at 00:00 UTC drafts a two-message update via Claude (Message 1 = TLDR; Message 2 = <em>Shipped</em> links + community signals from the Telegram log), commits it to the static feed at <a href="https://github.com/TrueSightDAO/ecosystem_change_logs/tree/main/beer_hall/feed" rel="noopener noreferrer">ecosystem_change_logs/beer_hall/feed/</a>, and refreshes the advisory snapshot that feeds the Oracle. As of 2026-04-19 the digest is <em>archive-only</em> &mdash; it is no longer broadcast to WhatsApp. The previous WhatsApp firehose was flagged as too noisy by the community (Kirsten, Fatima, Garis); Fatima proposed a newsletter shape and that is what the static feed + Oracle Q&amp;A pattern now provides. Day-to-day ops chatter still happens in the small executor WhatsApp rooms below.
 </p>
 <p class="whitepaper-spacer">&nbsp;</p>
 <h4 class="whitepaper-heading" id="agroverse-executor-channels">Agroverse executor channels
@@ -702,7 +702,7 @@
 </div>
 <h3 class="whitepaper-heading" id="governors">Governors
 </h3>
-<p class="whitepaper-p">Governors of our DAO are caretakers of our community. A formula on the <a href="https://docs.google.com/spreadsheets/d/1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU/edit#gid=842148543" rel="noopener noreferrer">Governors tab of the Main Ledger</a> ranks every contributor by total <strong>TDG issued over the trailing 180 days</strong> (excluding passive USDT-flow lines: &ldquo;1TDG For every 1USDT received&rdquo; and &ldquo;-1TDG For every 1USDT sent&rdquo;) and seats the top 10. The window slides daily, so the roster is technically continuous; equinoxes and solstices are the formal acknowledgment cadence, not the rotation event. That tab is the source of truth for editing rights on ledger, rubric, and WhatsApp administration. No campaigning, no self-nomination &mdash; the only path in is sustained contribution.
+<p class="whitepaper-p">Governors of our DAO are caretakers of our community. A formula on the <a href="https://docs.google.com/spreadsheets/d/1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU/edit#gid=842148543" rel="noopener noreferrer">Governors tab of the Main Ledger</a> ranks every contributor by total <strong>TDG issued over the trailing 180 days</strong> (excluding passive USDT-flow lines: &ldquo;1TDG For every 1USDT received&rdquo; and &ldquo;-1TDG For every 1USDT sent&rdquo;) and seats the top 10. The window slides daily, so the roster is technically continuous; equinoxes and solstices are the formal acknowledgment cadence, not the rotation event. That tab is the source of truth for editing rights on ledger, rubric, community-channel (WhatsApp and Telegram) administration, and the DApp permission system. No campaigning, no self-nomination &mdash; the only path in is sustained contribution.
 </p>
 <h4 class="whitepaper-heading" id="privileges">Privileges
 </h4>
@@ -710,7 +710,9 @@
 </div>
 <div class="whitepaper-bullet" style="--bullet-level:0">Editing rights to our rubric
 </div>
-<div class="whitepaper-bullet" style="--bullet-level:0">Administrative rights to our WhatsApp channels
+<div class="whitepaper-bullet" style="--bullet-level:0">Administrative rights to our WhatsApp and Telegram channels
+</div>
+<div class="whitepaper-bullet" style="--bullet-level:0">Authority over the DApp role &amp; permission system &mdash; governors sign permission changes applied to the DApp&rsquo;s <code>permissions.json</code> via <a href="https://dapp.truesight.me/governor_permissions.html" rel="noopener noreferrer">governor_permissions.html</a>
 </div>
 <h4 class="whitepaper-heading" id="duties">Duties
 </h4>
