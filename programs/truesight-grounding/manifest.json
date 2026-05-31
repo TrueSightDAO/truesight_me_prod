@@ -1,0 +1,19 @@
+{
+  "program_slug": "truesight-grounding",
+  "display_name": "TrueSight Grounding — Morning Oracle",
+  "partner_organization": "TrueSight DAO",
+  "tagline": "Daily I Ching oracle practice, credentialed on-chain.",
+  "description_md": "Each morning, practitioners cast the I Ching using the [TrueSight Oracle](https://oracle.truesight.me). Every session is signed with the practitioner's RSA keypair and submitted as a [PRACTICE EVENT] to the TrueSight DAO lineage-credentials ledger.\n\nThere is no attestation chain — this is a solo practice log. The credential is the cumulative record of your daily grounding sessions, verifiable from any QR code on a printed certificate.\n\n### How it works\n\n1. Visit [oracle.truesight.me](https://oracle.truesight.me) and cast your reading.\n2. The session auto-records to your credential.\n3. View your practice log here — each session shows the hexagrams drawn and the advisory received.",
+  "status": "active",
+  "membership_filter": {
+    "primary_program": "truesight-grounding"
+  },
+  "co_brand": {
+    "partner_logo_url": "https://oracle.truesight.me/assets/truesight-logo.png",
+    "secondary_color": "#f9f4ee"
+  },
+  "source_pages": ["https://oracle.truesight.me"],
+  "certificate": {
+    "available": false
+  }
+}
