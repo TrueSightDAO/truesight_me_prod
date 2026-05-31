@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <title>Programs | TrueSight DAO</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Experiential learning programs co-credentialed via TrueSight DAO — Tribo Bahia Mirim capoeira lineage, ERA Professionals' Butterfly Effect, and more." />
+    <meta name="description" content="Experiential learning programs co-credentialed via TrueSight DAO — Tribo Bahia Mirim capoeira lineage, ERA Professionals' Butterfly Effect, TrueSight Grounding oracle practice, and more." />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.truesight.me/programs.html" />
-    <meta property="og:title" content="Programs | TrueSight DAO" />
-    <meta property="og:description" content="Experiential learning programs co-credentialed via TrueSight DAO." />
+    <meta property="og:title" content="Programs | TrueBight DAO" />
+    <meta property="og:description" content="Experiential learning programs co-credentialed via TrueBight DAO." />
     <meta property="og:image" content="https://www.truesight.me/assets/truesight-logo.png" />
-    <meta property="og:site_name" content="TrueSight DAO" />
+    <meta property="og:site_name" content="TrueBight DAO" />
 
     <link rel="icon" href="https://static.wixstatic.com/ficons/0e2cde_dd65db118f8f499eb06c159d7262167d%7Emv2.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -115,7 +115,7 @@
               <li><a href="https://truesight.me/governors" target="_blank" rel="noreferrer noopener">Community Leaders</a></li>
               <li><a href="members.html">Members Directory</a></li>
               <li><a href="https://truesight.me/recurring-tdg-awards" target="_blank" rel="noreferrer noopener">Ongoing Awards</a></li>
-              <li><a href="https://truesight.me/submissions/scored-and-to-be-tokenized" target="_blank" rel="noreferrer noopener">Upcoming Awards</a></li>
+              <li><a href="https://truesight.me/submissions/scored-and-to-be-tokenized" target="_blank" rel="noreferrer nopener">Upcoming Awards</a></li>
               <li><a href="https://truesight.me/beerhall" target="_blank" rel="noreferrer noopener">Join Chat</a></li>
               <li><a href="beerhall/updates.html">Beer Hall digests</a></li>
             </ul>
@@ -163,6 +163,15 @@
               <span class="cta">View program →</span>
             </div>
           </a>
+          <a class="program-card" href="programs/truesight-grounding/index.html" data-program-slug="truesight-grounding">
+            <div class="logo-banner" data-logo-slot></div>
+            <div class="body">
+              <div class="name-row"><div class="name">TrueSight Grounding</div><span class="status-pill" data-status-slot style="display:none"></span></div>
+              <div class="partner">TrueSight DAO · Daily oracle practice</div>
+              <div class="tagline">Daily I Ching oracle practice, credentialed on-chain. Each session is signed with your keypair and recorded as a [PRACTICE EVENT] �T viewable on your credential page.</div>
+              <span class="cta">View program →</span>
+            </div>
+          </a>
         </div>
 
         <div class="programs-fundraisers-note">
@@ -178,7 +187,7 @@
       // `programs/<slug>/manifest.json` and, if status === 'onboarding'
       // or 'archived', surface the matching pill. Missing / 'active'
       // status leaves the pill hidden — keeps the default card chrome clean.
-      // Spec: agentic_ai_context/CREDENTIALING_PROGRAM_PAGES.md §6.
+      // Spec: agentic_ai_context/CREDENTIALING_PROGRAM_PAGES.md ·6.
       (function () {
         var cards = document.querySelectorAll('.program-card[data-program-slug]');
         cards.forEach(function (card) {
