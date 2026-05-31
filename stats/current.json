@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-30T19:51:39Z",
+  "generated_at_utc": "2026-05-31T05:07:54Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-05-30T19:12:27Z",
+    "generated_at": "2026-05-31T05:02:52Z",
     "total_contributors": 388,
     "total_tdg_controlled_sum": 2549012.87,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-05-30T19:48:30.855Z",
+    "generated_at": "2026-05-31T04:48:35.744Z",
     "schema_version": 3,
     "trigger": "cron",
     "currency_totals": {
@@ -728,13 +728,13 @@
         }
       },
       "USD": {
-        "total_quantity": 19477.12,
-        "total_value_usd": 19477.12,
+        "total_quantity": 19476.97,
+        "total_value_usd": 19476.97,
         "item_count": 1,
         "ledger_breakdown": {
           "AGL4": 9036.35,
           "AGL15": 5293.97,
-          "Main Ledger": 3045.44,
+          "Main Ledger": 3045.29,
           "AGL6": 1337.59,
           "AGL8": 518.95,
           "AGL10": 228.83,
@@ -742,11 +742,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 40.3,
-        "total_value_usd": 40.3,
+        "total_quantity": 40.44,
+        "total_value_usd": 40.44,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 40.3
+          "Main Ledger": 40.44
         }
       },
       "USDT": {
@@ -779,8 +779,14 @@
     }
   },
   "recent_beerhall_digests": {
-    "total_entries": 42,
+    "total_entries": 43,
     "recent": [
+      {
+        "date": "2026-05-31",
+        "slug": "sophia-self-deploy-and-advisory-cutover",
+        "filename": "beer-hall_2026-05-31T040458Z_sophia-self-deploy-and-advisory-cutover.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-31T040458Z_sophia-self-deploy-and-advisory-cutover.md"
+      },
       {
         "date": "2026-05-30",
         "slug": "gas-restructure-vault-and-whitepaper",
@@ -834,12 +840,6 @@
         "slug": "oracle-fix-partner-ops-tooling",
         "filename": "beer-hall_2026-05-22T035436Z_oracle-fix-partner-ops-tooling.md",
         "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-22T035436Z_oracle-fix-partner-ops-tooling.md"
-      },
-      {
-        "date": "2026-05-21",
-        "slug": "treasury-aum-pages-qr-lineage-live",
-        "filename": "beer-hall_2026-05-21T035840Z_treasury-aum-pages-qr-lineage-live.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-21T035840Z_treasury-aum-pages-qr-lineage-live.md"
       }
     ],
     "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
