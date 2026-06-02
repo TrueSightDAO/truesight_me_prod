@@ -263,12 +263,11 @@
           if (!farmName) return null;
           var slug = FARM_SLUG_MAP[farmName];
           if (slug) return SHOP_BASE + '/farms/' + slug + '/';
-          // Best-effort fallback: try a basic slugify. Some farms will 404 —
-          // accepted v0 trade-off until FARM_SLUG_MAP gains an explicit entry.
-          var slugified = farmName.toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/^-+|-+$/g, '');
-          return slugified ? SHOP_BASE + '/farms/' + slugified + '/' : null;
+          // No link when the farm isn't an explicitly-mapped agroverse.shop farm
+          // page. The old slugify guess produced broken links for non-farm origins
+          // (e.g. "ERA Butterfly Effect Club" → /farms/era-butterfly-effect-club/ 404).
+          // Credential-tree assets surface their credential page via the landing link instead.
+          return null;
         }
 
         function getQrId() {
