@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-01T21:52:38Z",
+  "generated_at_utc": "2026-06-02T05:14:09Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-06-01T21:33:29Z",
+    "generated_at": "2026-06-02T03:45:52Z",
     "total_contributors": 465,
     "total_tdg_controlled_sum": 2549012.87,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-06-01T21:48:37.435Z",
+    "generated_at": "2026-06-02T04:48:45.846Z",
     "schema_version": 3,
     "trigger": "cron",
     "currency_totals": {
@@ -118,11 +118,11 @@
         }
       },
       "8 Ounce Package Kraft Pouch  CP340992735BR": {
-        "total_quantity": 28.0,
-        "total_value_usd": 238.26,
+        "total_quantity": 27.0,
+        "total_value_usd": 229.75,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 28.0
+          "Main Ledger": 27.0
         }
       },
       "8 Ounce Package Kraft Pouch - AGL2 + V2 bags": {
@@ -407,11 +407,11 @@
         }
       },
       "Cacao Tree To Be Planted": {
-        "total_quantity": 245.0,
-        "total_value_usd": -367.5,
+        "total_quantity": 248.0,
+        "total_value_usd": -372.0,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 245.0
+          "Main Ledger": 248.0
         }
       },
       "Cacao tree seedling (per seedling, Amazon reforest Altamira, R$40/10, Paulo Hernandez, 20260409)": {
@@ -520,11 +520,11 @@
         }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 + 8 Ounce Package Kraft Pouch CP340992735BR | Kirsten 20260121": {
-        "total_quantity": 44.0,
-        "total_value_usd": 373.73,
+        "total_quantity": 42.0,
+        "total_value_usd": 356.74,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 44.0
+          "Main Ledger": 42.0
         }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 + Cacao Mass Bar CP340993299BR  San Francisco": {
@@ -728,13 +728,13 @@
         }
       },
       "USD": {
-        "total_quantity": 19462.71,
-        "total_value_usd": 19462.71,
+        "total_quantity": 19533.48,
+        "total_value_usd": 19533.48,
         "item_count": 1,
         "ledger_breakdown": {
           "AGL4": 9036.35,
           "AGL15": 5279.73,
-          "Main Ledger": 3045.28,
+          "Main Ledger": 3116.04,
           "AGL6": 1337.59,
           "AGL8": 518.95,
           "AGL10": 228.83,
@@ -742,11 +742,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 40.46,
-        "total_value_usd": 40.46,
+        "total_quantity": 40.49,
+        "total_value_usd": 40.49,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 40.46
+          "Main Ledger": 40.49
         }
       },
       "USDT": {
@@ -769,7 +769,7 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-06-01T12:11:51.000Z",
+      "generated_at": "2026-06-01T23:28:37.291Z",
       "store_count": 0,
       "line_items": 12
     },
@@ -779,8 +779,14 @@
     }
   },
   "recent_beerhall_digests": {
-    "total_entries": 44,
+    "total_entries": 45,
     "recent": [
+      {
+        "date": "2026-06-02",
+        "slug": "grounding-renderer-and-onboarding-tools",
+        "filename": "beer-hall_2026-06-02T041231Z_grounding-renderer-and-onboarding-tools.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-02T041231Z_grounding-renderer-and-onboarding-tools.md"
+      },
       {
         "date": "2026-06-01",
         "slug": "truesight-grounding-launch-oracle-draw",
@@ -834,12 +840,6 @@
         "slug": "treasury-aum-dashboard-live",
         "filename": "beer-hall_2026-05-24T035235Z_treasury-aum-dashboard-live.md",
         "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-24T035235Z_treasury-aum-dashboard-live.md"
-      },
-      {
-        "date": "2026-05-23",
-        "slug": "butterfly-effect-scaffold-v9-credentialing",
-        "filename": "beer-hall_2026-05-23T033035Z_butterfly-effect-scaffold-v9-credentialing.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-23T033035Z_butterfly-effect-scaffold-v9-credentialing.md"
       }
     ],
     "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
