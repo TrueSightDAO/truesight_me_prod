@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+  <head>    <!-- Google tag (gtag.js) - only on truesight.me production -->
+<script>
+(function() {
+  var h = window.location.hostname;
+  if (h !== 'truesight.me' && h !== 'www.truesight.me') return;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9QN16RFM0T';
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9QN16RFM0T');
+})();
+</script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register your program · Lineage | TrueSight DAO</title>
+    <meta
+      name="description"
+      content="Tell us about your program and request a Lineage credentialing slot. We create your DAO identity for you — no wallet, no keys to manage — and a governor reviews your request before anything goes live."
+    />
+    <meta name="robots" content="noindex" />
+    <link
+      rel="icon"
+      href="https://static.wixstatic.com/ficons/0e2cde_dd65db118f8f499eb06c159d7262167d%7Emv2.ico"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+    <style>
+      .reg-form { max-width: 720px; margin: 0 auto; }
+      .reg-form .field { margin-bottom: var(--space-lg); text-align: left; }
+      .reg-form label.field-label { display: block; font-weight: 600; margin-bottom: 0.4rem; }
+      .reg-form .hint { display: block; font-weight: 400; color: var(--muted); font-size: 0.85rem; margin-top: 0.2rem; }
+      .reg-form input[type="text"],
+      .reg-form input[type="email"],
+      .reg-form input[type="url"],
+      .reg-form textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.7rem 0.85rem;
+        border: 1px solid rgba(95, 111, 82, 0.25);
+        border-radius: 10px;
+        font: inherit;
+        background: rgba(255, 255, 255, 0.85);
+      }
+      .reg-form textarea { min-height: 110px; resize: vertical; }
+      .reg-form input:focus, .reg-form textarea:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
+      .reg-form .req { color: #c0392b; }
+      .cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+      @media (max-width: 560px) { .cap-grid { grid-template-columns: 1fr; } }
+      .cap-option {
+        display: flex; gap: 0.6rem; align-items: flex-start;
+        padding: 0.7rem 0.85rem; border: 1px solid rgba(95, 111, 82, 0.2);
+        border-radius: 10px; cursor: pointer; background: rgba(255,255,255,0.6);
+      }
+      .cap-option input { margin-top: 0.2rem; }
+      .cap-option .cap-title { font-weight: 600; display: block; }
+      .cap-option .cap-desc { color: var(--muted); font-size: 0.82rem; }
+      #regResult, #verifyBanner { display: none; }
+      .result-card {
+        text-align: left; padding: 1.5rem; border-radius: 16px;
+        background: rgba(255, 196, 0, 0.08); border: 1px solid rgba(244, 163, 0, 0.3);
+        margin-bottom: var(--space-lg);
+      }
+      .result-card h3 { margin-top: 0; }
+      .keybox {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.75rem;
+        word-break: break-all; background: rgba(0,0,0,0.05); padding: 0.6rem 0.7rem;
+        border-radius: 8px; max-height: 110px; overflow: auto;
+      }
+      .muted-note { color: var(--muted); font-size: 0.85rem; }
+      details.payload-dump summary { cursor: pointer; color: var(--muted); font-size: 0.85rem; }
+      details.payload-dump pre {
+        white-space: pre-wrap; word-break: break-word; font-size: 0.72rem;
+        background: rgba(0,0,0,0.05); padding: 0.7rem; border-radius: 8px;
+      }
+      .reg-error { color: #c0392b; font-weight: 600; margin-top: var(--space-md); }
+    </style>
+  </head>
+  <body>
+    <nav class="site-header">
+      <div class="header-container">
+        <a href="index.html" class="header-logo">
+          <img
+            src="https://static.wixstatic.com/media/0e2cde_f81b16c82ebe4aaca4b5ce54b819a693~mv2.png/v1/fill/w_622,h_160,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240612_truesight_dao_logo_long.png"
+            alt="TrueSight DAO"
+            width="155"
+            height="40"
+            loading="eager"
+          />
+        </a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <ul class="nav-menu" aria-hidden="true">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li>
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Projects</button>
+            <ul class="dropdown-menu" aria-expanded="false">
+              <li><a href="agroverse.html">Agroverse Community</a></li>
+              <li><a href="sunmint.html">Sunmint Program</a></li>
+              <li><a href="edgar.html">Edgar Platform</a></li>
+              <li><a href="lineage.html">Lineage Credentialing</a></li>
+              <li><a href="programs.html">Programs</a></li>
+              <li><a href="fundraisers.html">Fundraisers</a></li>
+            </ul>
+          </li>
+          <li><a href="https://truesight.me/proposals" target="_blank" rel="noreferrer noopener">Proposals</a></li>
+          <li><a href="blog/index.html">Blog</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="page lineage-page">
+      <header class="hero">
+        <div class="hero-content" style="max-width: 760px; margin: 0 auto; text-align: center;">
+          <p class="pill">Lineage · Program registration</p>
+          <h1>Register your program</h1>
+          <p>
+            Tell us about your program and we'll get you onboarded. <strong>We create your DAO identity
+            for you</strong> — no crypto wallet, no keys to manage. When you submit, two things happen
+            automatically: your email is registered to a fresh signing identity, and a
+            <strong>registration request</strong> is filed for a DAO governor to review and approve.
+          </p>
+        </div>
+      </header>
+
+      <!-- Shown when the page is opened from a verification email link (?vk=&em=). -->
+      <section id="verifyBanner">
+        <div class="result-card" id="verifyBox">
+          <h3 id="verifyTitle">Verifying your email…</h3>
+          <p id="verifyMsg" class="muted-note">One moment.</p>
+        </div>
+      </section>
+
+      <section id="formSection">
+        <form class="reg-form" id="regForm" novalidate>
+          <div class="field">
+            <label class="field-label" for="email">Your email <span class="req">*</span>
+              <span class="hint">We'll send a verification link here. Required so a governor can reach you.</span>
+            </label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="contactName">Your name
+              <span class="hint">Who's submitting this request.</span>
+            </label>
+            <input type="text" id="contactName" name="contactName" autocomplete="name" />
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="displayName">Program name <span class="req">*</span>
+              <span class="hint">e.g. "Butterfly Effect Club" or "Tribo Bahia Mirim".</span>
+            </label>
+            <input type="text" id="displayName" name="displayName" required />
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="org">Organization
+              <span class="hint">The school, studio, dojo, or community behind the program. Defaults to the program name.</span>
+            </label>
+            <input type="text" id="org" name="org" />
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="description">What does your program do? <span class="req">*</span>
+              <span class="hint">A short paragraph — what you teach/run and who you'd credential.</span>
+            </label>
+            <textarea id="description" name="description" required></textarea>
+          </div>
+
+          <div class="field">
+            <label class="field-label">Which pathways do you want? <span class="req">*</span>
+              <span class="hint">Start with credentialing; layer on the rest only if they fit.</span>
+            </label>
+            <div class="cap-grid">
+              <label class="cap-option">
+                <input type="checkbox" name="cap" value="credentialing" checked />
+                <span><span class="cap-title">🎓 Credentialing</span><span class="cap-desc">Verifiable credential page + printable QR certificate per member.</span></span>
+              </label>
+              <label class="cap-option">
+                <input type="checkbox" name="cap" value="activity-reporting" />
+                <span><span class="cap-title">📿 Activity reporting</span><span class="cap-desc">Members log practice/activity onto a living credential.</span></span>
+              </label>
+              <label class="cap-option">
+                <input type="checkbox" name="cap" value="trees" />
+                <span><span class="cap-title">🌳 A tree per credential</span><span class="cap-desc">A real cacao tree planted + QR-linked to each credential.</span></span>
+              </label>
+              <label class="cap-option">
+                <input type="checkbox" name="cap" value="donations" />
+                <span><span class="cap-title">💸 Donation transparency</span><span class="cap-desc">A public, auditable donation ledger for your program.</span></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="website">Website
+              <span class="hint">Optional — your program or organization site.</span>
+            </label>
+            <input type="url" id="website" name="website" placeholder="https://" />
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="logoUrl">Logo URL
+              <span class="hint">Optional — a link to your logo image (we co-brand your listing).</span>
+            </label>
+            <input type="url" id="logoUrl" name="logoUrl" placeholder="https://" />
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="rosterUrl">Cohort / roster Google Sheet URL
+              <span class="hint">Optional now — a Google Sheet of your members, shared with our service account. We mint each credential from it; you can add this later.</span>
+            </label>
+            <input type="url" id="rosterUrl" name="rosterUrl" placeholder="https://docs.google.com/…" />
+          </div>
+
+          <div class="field" id="priceField" style="display:none;">
+            <label class="field-label" for="proposedPrice">Proposed price per tree
+              <span class="hint">Optional — only if you picked the tree pathway. A governor confirms final pricing.</span>
+            </label>
+            <input type="text" id="proposedPrice" name="proposedPrice" placeholder="e.g. USD $1" />
+          </div>
+
+          <div class="cta-row" style="justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <button type="submit" class="cta primary" id="submitBtn">Submit registration request</button>
+            <a class="cta secondary" href="lineage.html">Back to Lineage</a>
+          </div>
+          <p class="muted-note" style="text-align:center; margin-top: var(--space-md);">
+            By submitting you create a DAO signing identity in this browser. Keep using the same browser to manage it.
+          </p>
+          <p class="reg-error" id="regError" style="display:none;"></p>
+        </form>
+      </section>
+
+      <section id="regResult">
+        <div class="result-card">
+          <h3>✅ Request submitted</h3>
+          <p>A DAO governor will review your program and approve it before anything goes live. Once approved,
+             we provision your listing, admin subdomain, and any ledgers your pathways need.</p>
+        </div>
+        <div class="result-card">
+          <h3>📧 Verify your email</h3>
+          <p>We sent a verification link to <strong id="resEmail"></strong>. Open it <em>in this same browser</em>
+             — it returns here and activates your identity. (If you don't see it, check spam.)</p>
+        </div>
+        <div class="result-card">
+          <h3>🔑 Your DAO identity</h3>
+          <p class="muted-note">Identity fingerprint: <strong id="resSlug"></strong> ·
+             <a id="resCvLink" href="#" target="_blank" rel="noreferrer">your identity page</a></p>
+          <p>This browser now holds your private signing key. <strong>Download a backup</strong> — it's the only copy,
+             and you'll need it to manage your program from another device.</p>
+          <p><button type="button" class="cta secondary" id="downloadKeyBtn">⬇ Download my private key backup</button></p>
+          <details class="payload-dump" style="margin-top: var(--space-md);">
+            <summary>Show the signed submissions (for transparency)</summary>
+            <p class="muted-note" style="margin-top:0.6rem;">Email registration:</p>
+            <pre id="dumpEmail"></pre>
+            <p class="muted-note">Program registration request:</p>
+            <pre id="dumpProgram"></pre>
+          </details>
+        </div>
+        <div class="cta-row" style="justify-content: center;">
+          <a class="cta secondary" href="programs.html">Browse live programs</a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <h2>JOIN OUR MOVEMENT</h2>
+          <p>Co-Create with us</p>
+          <div class="footer-social">
+            <a href="https://t.me/TrueSightDAO" target="_blank" rel="noreferrer noopener" aria-label="Telegram">
+              <img src="assets/telegram-icon.jpg" alt="Telegram" width="48" height="48" loading="lazy" />
+            </a>
+            <a href="https://github.com/TrueSightDAO" target="_blank" rel="noreferrer noopener" aria-label="GitHub">
+              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor">
+                <title>GitHub</title>
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
+          <p style="margin-top: var(--space-lg); font-size: 0.875rem; color: var(--muted);">
+            TrueSight DAO · Transparent impact data available at <a href="index.html" style="color: var(--accent-2);">truesight.me</a>
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="js/lineage-register.js"></script>
+    <script>
+      (function () {
+        // Hamburger + dropdown (mirrors other pages).
+        var toggle = document.querySelector('.menu-toggle');
+        var menu = document.querySelector('.nav-menu');
+        if (toggle && menu) {
+          toggle.addEventListener('click', function () {
+            var open = menu.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+          });
+        }
+        document.querySelectorAll('.dropdown-toggle').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var dd = btn.nextElementSibling;
+            var open = dd.classList.toggle('open');
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            dd.setAttribute('aria-expanded', open ? 'true' : 'false');
+          });
+        });
+
+        // Reveal the price field only when the tree pathway is selected.
+        var treeCap = document.querySelector('input[name="cap"][value="trees"]');
+        var priceField = document.getElementById('priceField');
+        if (treeCap && priceField) {
+          treeCap.addEventListener('change', function () {
+            priceField.style.display = treeCap.checked ? 'block' : 'none';
+          });
+        }
+
+        // Email-verification return: ?vk=&em= → sign + submit the verification event.
+        (async function () {
+          if (!window.LineageRegister) return;
+          var params = new URLSearchParams(window.location.search);
+          if (!params.get('vk') || !params.get('em')) return;
+          var banner = document.getElementById('verifyBanner');
+          var title = document.getElementById('verifyTitle');
+          var msg = document.getElementById('verifyMsg');
+          banner.style.display = 'block';
+          var res = await window.LineageRegister.handleVerificationReturn();
+          if (res && res.ok) {
+            title.textContent = res.activated ? '✅ Email verified' : '✅ Verification received';
+            msg.textContent = res.activated
+              ? 'Your identity is active. Your program request is with a DAO governor for review.'
+              : 'Thanks — your verification was recorded.';
+          } else {
+            title.textContent = '⚠️ Could not verify';
+            msg.textContent = (res && res.error) || 'Please try the link again from the browser you registered in.';
+          }
+        })();
+
+        // Form submit.
+        var form = document.getElementById('regForm');
+        var errEl = document.getElementById('regError');
+        var lastPrivateKey = null;
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          errEl.style.display = 'none';
+          var caps = Array.prototype.slice
+            .call(document.querySelectorAll('input[name="cap"]:checked'))
+            .map(function (c) { return c.value; });
+          var data = {
+            email: document.getElementById('email').value.trim(),
+            contactName: document.getElementById('contactName').value.trim(),
+            displayName: document.getElementById('displayName').value.trim(),
+            org: document.getElementById('org').value.trim(),
+            description: document.getElementById('description').value.trim(),
+            website: document.getElementById('website').value.trim(),
+            logoUrl: document.getElementById('logoUrl').value.trim(),
+            rosterUrl: document.getElementById('rosterUrl').value.trim(),
+            proposedPrice: document.getElementById('proposedPrice').value.trim(),
+            capabilities: caps,
+          };
+          if (!data.email || data.email.indexOf('@') < 0) { showErr('Please enter a valid email.'); return; }
+          if (!data.displayName) { showErr('Please enter your program name.'); return; }
+          if (!data.description) { showErr('Please describe your program.'); return; }
+          if (caps.length === 0) { showErr('Pick at least one pathway.'); return; }
+
+          var btn = document.getElementById('submitBtn');
+          btn.disabled = true; btn.textContent = 'Submitting…';
+          try {
+            var result = await window.LineageRegister.registerProgram(data);
+            lastPrivateKey = result.privateKey;
+            document.getElementById('resEmail').textContent = data.email;
+            document.getElementById('resSlug').textContent = result.slug;
+            var cv = document.getElementById('resCvLink');
+            cv.href = result.cvUrl; cv.textContent = result.cvUrl;
+            document.getElementById('dumpEmail').textContent = result.payloads.email;
+            document.getElementById('dumpProgram').textContent = result.payloads.program;
+            document.getElementById('formSection').style.display = 'none';
+            document.getElementById('regResult').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } catch (err) {
+            showErr('Something went wrong: ' + (err && err.message || err) + ' — please try again, or email admin@truesight.me.');
+            btn.disabled = false; btn.textContent = 'Submit registration request';
+          }
+        });
+
+        document.getElementById('downloadKeyBtn').addEventListener('click', function () {
+          var pk = lastPrivateKey || (window.LineageRegister && window.LineageRegister.getStoredPrivateKey());
+          if (!pk) return;
+          var pub = window.LineageRegister.getStoredPublicKey();
+          var body = 'TrueSight DAO — Lineage identity backup\n'
+            + '=========================================\n'
+            + 'Keep this file safe and private. It is the ONLY copy of your private key.\n\n'
+            + 'PUBLIC KEY (base64 SPKI):\n' + pub + '\n\n'
+            + 'PRIVATE KEY (base64 PKCS#8):\n' + pk + '\n';
+          var blob = new Blob([body], { type: 'text/plain' });
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'truesight-lineage-identity-backup.txt';
+          document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        });
+
+        function showErr(m) { errEl.textContent = m; errEl.style.display = 'block'; }
+      })();
+    </script>
+  </body>
+</html>
