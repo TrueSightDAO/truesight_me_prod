@@ -297,11 +297,12 @@
       </section>
 
       <style>
-        /* Four initiative tiles: 4-across on wide desktop, 2×2 on tablet, single column on
-           mobile — so the 4th never gets squeezed and it reads cleanly on phones. */
-        #initiatives .card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-        @media (max-width: 1024px) { #initiatives .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-        @media (max-width: 600px)  { #initiatives .card-grid { grid-template-columns: 1fr; } }
+        /* Four initiative tiles: 2×2 on desktop/tablet (roomy, not squished), single column
+           on mobile. Uniform card-image height so mismatched aspect ratios (e.g. the capoeira
+           photo vs the module shots) all line up. */
+        #initiatives .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        @media (max-width: 640px) { #initiatives .card-grid { grid-template-columns: 1fr; } }
+        #initiatives .card--media-top img { height: 220px; object-fit: cover; }
       </style>
       <section id="initiatives">
         <p class="pill">Community initiatives</p>
