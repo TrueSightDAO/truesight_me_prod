@@ -298,11 +298,10 @@
 
       <style>
         /* Four initiative tiles: 2×2 on desktop/tablet (roomy, not squished), single column
-           on mobile. Uniform card-image height so mismatched aspect ratios (e.g. the capoeira
-           photo vs the module shots) all line up. */
+           on mobile. All four card images share the same portrait crop (554×892) so they
+           line up at natural height — no awkward object-fit cropping. */
         #initiatives .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         @media (max-width: 640px) { #initiatives .card-grid { grid-template-columns: 1fr; } }
-        #initiatives .card--media-top img { height: 220px; object-fit: cover; }
       </style>
       <section id="initiatives">
         <p class="pill">Community initiatives</p>
@@ -392,7 +391,7 @@
 
           <article class="card card--media-top">
             <a href="lineage.html" style="display: block;">
-              <img src="assets/lineage-hero.jpg" alt="Capoeira roda at sunset in Itacaré — Tribo Bahia Mirim lineage" loading="lazy" />
+              <img src="assets/lineage-card.jpg" alt="Capoeira roda at sunset in Itacaré — Tribo Bahia Mirim lineage" loading="lazy" />
             </a>
             <div class="card-body">
               <div class="pill">Lineage</div>
