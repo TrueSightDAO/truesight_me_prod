@@ -296,6 +296,13 @@
         </div>
       </section>
 
+      <style>
+        /* Four initiative tiles: 4-across on wide desktop, 2×2 on tablet, single column on
+           mobile — so the 4th never gets squeezed and it reads cleanly on phones. */
+        #initiatives .card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        @media (max-width: 1024px) { #initiatives .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 600px)  { #initiatives .card-grid { grid-template-columns: 1fr; } }
+      </style>
       <section id="initiatives">
         <p class="pill">Community initiatives</p>
         <h2>Community Initiatives</h2>
@@ -378,6 +385,29 @@
                 <a class="text-link" href="https://truesight.me/ledger" target="_blank" rel="noreferrer">Contributions Ledger</a>
                 <span style="color: var(--muted);">·</span>
                 <a class="text-link" href="https://dapp.truesight.me" target="_blank" rel="noreferrer">DApp Tools</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card--media-top">
+            <a href="lineage.html" style="display: block;">
+              <img src="assets/lineage-hero.jpg" alt="Capoeira roda at sunset in Itacaré — Tribo Bahia Mirim lineage" loading="lazy" />
+            </a>
+            <div class="card-body">
+              <div class="pill">Lineage</div>
+              <h3>Experiential-Learning Credentialing</h3>
+              <p>
+                Schools, studios, and communities issue portable, verifiable credentials co-stamped by the DAO — optionally with a cacao tree planted per credential or a transparent donation ledger.
+              </p>
+              <ul>
+                <li>Portable, QR-discoverable member credentials</li>
+                <li>A cacao tree per credential (optional)</li>
+                <li>Transparent program donation ledgers</li>
+              </ul>
+              <div>
+                <a class="text-link" href="lineage.html">Explore Lineage</a>
+                <span style="color: var(--muted);">·</span>
+                <a class="text-link" href="programs.html">Live programs</a>
               </div>
             </div>
           </article>
