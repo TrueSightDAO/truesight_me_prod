@@ -403,6 +403,31 @@
       html += '</footer>';
 
       if (bodyEl) bodyEl.innerHTML = html;
+
+      // 🌳 Tree link — if a serialized tree QR exists for this member (the
+      // attestation→tree-planting binding: qr_code == pk_hash), surface a link
+      // to its public QR page. Program-agnostic: only shows when a tree manifest
+      // exists in lineage-assets. See agentic_ai_context/PROGRAM_PARTNER_ONBOARDING.md §B.6.
+      var pkHash = (cv && cv.pk_hash) || (rawFragment.indexOf('pk-') === 0 ? rawFragment : '');
+      if (pkHash && bodyEl) {
+        var treePrimary = 'https://cdn.jsdelivr.net/gh/TrueSightDAO/lineage-assets@main/qrs/' + encodeURIComponent(pkHash) + '.json';
+        var treeFallback = 'https://raw.githubusercontent.com/TrueSightDAO/lineage-assets/main/qrs/' + encodeURIComponent(pkHash) + '.json';
+        fetch(treePrimary, { cache: 'default' })
+          .then(function (r) { return r.ok ? r.json() : fetch(treeFallback).then(function (r2) { return r2.ok ? r2.json() : null; }); })
+          .then(function (tree) {
+            if (!tree || tree.asset_type !== 'tree') return;
+            var qrUrl = 'https://truesight.me/qr/?id=' + encodeURIComponent(pkHash);
+            var sec = document.createElement('section');
+            sec.className = 'credential-section credential-tree';
+            sec.innerHTML = '<h2>🌳 A tree was planted for this credential</h2>' +
+              '<p>A cacao tree was issued in honour of this credential.</p>' +
+              '<p><a class="btn-link" href="' + qrUrl + '">View the tree &amp; its provenance →</a></p>';
+            var header = bodyEl.querySelector('.credential-header');
+            if (header && header.nextSibling) bodyEl.insertBefore(sec, header.nextSibling);
+            else bodyEl.appendChild(sec);
+          })
+          .catch(function () { /* no tree / fetch failed — silently skip */ });
+      }
       }).catch(function (err) {
         if (statusEl) statusEl.textContent = '';
         if (errEl) {
