@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Dashboard — TrueSight DAO</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/security-dashboard.css">
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+</head>
+<body>
+  <div id="app">
+    <!-- Site-standard header -->
+    <header class="site-header">
+      <div class="header-container">
+        <a href="/" class="header-logo">
+          <img src="/assets/images/logo.png" alt="TrueSight DAO" height="42">
+        </a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <nav class="nav-menu" aria-hidden="true">
+          <li><a href="/">Home</a></li>
+          <li><a href="/dao">DAO</a></li>
+          <li><a href="/security-dashboard" class="active">Security</a></li>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="hero" style="text-align: left;">
+        <span class="pill">Security Dashboard</span>
+        <h1>Infrastructure <span>Health</span></h1>
+        <p class="section-lead">Automated daily scan of our digital infrastructure — AWS, web security, GitHub repos, and phishing blacklist.</p>
+        <div class="sd-last-scanned" id="lastScanned">Waiting for first scan...</div>
+      </div>
+
+      <!-- Score -->
+      <section id="scoreSection">
+        <h2>Overall Score</h2>
+        <div class="sd-score-card">
+          <div class="sd-score-gauge" id="scoreGauge">
+            <div class="sd-score-ring">
+              <svg viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="54" fill="none" stroke="var(--border)" stroke-width="8"/>
+                <circle cx="60" cy="60" r="54" fill="none" stroke="var(--accent)" stroke-width="8"
+                  stroke-dasharray="339.292" stroke-dashoffset="339.292" id="scoreArc"
+                  transform="rotate(-90 60 60)"/>
+              </svg>
+              <div class="sd-score-text">
+                <span class="sd-score-number" id="scoreNumber">--</span>
+                <span class="sd-score-grade" id="scoreGrade">-</span>
+              </div>
+            </div>
+          </div>
+          <div class="sd-score-deductions" id="deductions"></div>
+        </div>
+      </section>
+
+      <!-- AWS -->
+      <section>
+        <h2>AWS Inventory</h2>
+        <div class="sd-cards" id="awsCards">
+          <div class="sd-loading">Loading...</div>
+        </div>
+      </section>
+
+      <!-- Web Security -->
+      <section>
+        <h2>Web Security</h2>
+        <div class="sd-table-wrap" id="webTable">
+          <div class="sd-loading">Loading...</div>
+        </div>
+      </section>
+
+      <!-- GitHub -->
+      <section>
+        <h2>GitHub Repo Health</h2>
+        <div class="sd-cards" id="ghCards">
+          <div class="sd-loading">Loading...</div>
+        </div>
+      </section>
+
+      <!-- Phishing Blacklist -->
+      <section>
+        <h2>Phishing Blacklist</h2>
+        <div class="sd-cards" id="phishingCards">
+          <div class="sd-loading">Loading...</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <p>Data sourced from <a href="https://github.com/TrueSightDAO/Cypher-Defense" target="_blank" class="text-link">Cypher-Defense</a> daily scans &middot; Published to <a href="https://github.com/TrueSightDAO/treasury-cache" target="_blank" class="text-link">treasury-cache</a></p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/security-dashboard/app.js"></script>
+</body>
+</html>
