@@ -109,7 +109,7 @@ function renderWeb(data) {
   }
   const table = el("table", "sd-table sd-table-web");
   table.innerHTML = `
-    <thead><tr><th>Domain</th><th>TLS</th><th>Days Left</th><th>Security Headers</th></tr></thead>
+    <thead><tr><th>Domain</th><th>Hosting</th><th>TLS</th><th>Days Left</th><th>Security Headers</th></tr></thead>
     <tbody id="webBody"></tbody>
   `;
   const tbody = table.querySelector("#webBody");
@@ -125,9 +125,14 @@ function renderWeb(data) {
     const presentList = (headers.present || []).map(hdrName).filter(Boolean).join(", ");
     const missingList = (headers.missing || []).map(hdrName).filter(Boolean).join(", ");
 
+    const HOSTING_LABELS = { "github-pages": "GitHub Pages", "ec2": "EC2", "cloudfront": "CloudFront", "s3": "S3", "aws": "AWS", "alias": "Alias", "external": "External" };
+    const hostLabel = HOSTING_LABELS[site.hosting] || (site.hosting || "—");
+    const hostTitle = site.target ? ` title="${site.target}"` : "";
+
     const tr = el("tr", "sd-web-row");
     tr.innerHTML = `
       <td><a href="${site.url}" target="_blank">${site.name}</a></td>
+      <td><span class="sd-vis-badge sd-host-${site.hosting || 'unknown'}"${hostTitle}>${hostLabel}</span></td>
       <td>${statusBadge(tlsOk).outerHTML}</td>
       <td style="color:${daysColor(days)}">${days !== null ? days + "d" : "?"}</td>
       <td>${headerCount}/${headerTotal} ${statusBadge(headerCount === headerTotal).outerHTML}</td>
@@ -146,7 +151,7 @@ function renderWeb(data) {
     const detailTr = el("tr", "sd-web-detail");
     detailTr.id = "web-detail-" + idx;
     detailTr.style.display = "none";
-    let detailHtml = "<td colspan='4'><div class='sd-web-detail-inner'>";
+    let detailHtml = "<td colspan='5'><div class='sd-web-detail-inner'>";
     detailHtml += "<div class='sd-web-detail-section'><strong>TLS</strong>";
     if (tls.valid) {
       detailHtml += `<p>Valid: Yes</p>`;
