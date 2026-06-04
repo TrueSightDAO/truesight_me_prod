@@ -243,7 +243,7 @@
             <input type="url" id="logoUrl" name="logoUrl" placeholder="https://" />
           </div>
 
-          <div class="field">
+          <div class="field" id="rosterField">
             <label class="field-label" for="rosterUrl">Cohort / roster Google Sheet URL
               <span class="hint">Optional now — a Google Sheet of your members, shared with our service account. We mint each credential from it; you can add this later.</span>
             </label>
@@ -373,14 +373,70 @@
           });
         });
 
-        // Reveal the price field only when the tree pathway is selected.
-        var treeCap = document.querySelector('input[name="cap"][value="trees"]');
+        // ── Checkbox ↔ URL sync + conditional fields ──
+        //
+        // Every checkbox change updates the URL so the operator can copy-paste
+        // a pre-filled onboarding link (e.g. ?cap=credentialing&cap=trees&price=5).
+        // On page load, URL params restore checkbox state so shared links land
+        // with the right options already checked.
+        //
+        // Conditional visibility:
+        //   Trees price field → shown only when "trees" is checked.
+        //   Roster sheet field → shown only when "credentialing" OR "activity-reporting" is checked
+        //     (trees-only / donations-only programs don't need a member roster).
+
+        var ALL_CAPS = ['credentialing', 'activity-reporting', 'trees', 'donations'];
+        var checkboxes = {};
+        ALL_CAPS.forEach(function (v) {
+          checkboxes[v] = document.querySelector('input[name="cap"][value="' + v + '"]');
+        });
+
         var priceField = document.getElementById('priceField');
-        if (treeCap && priceField) {
-          treeCap.addEventListener('change', function () {
-            priceField.style.display = treeCap.checked ? 'block' : 'none';
+        var rosterField = document.getElementById('rosterField');
+
+        function isChecked(v) { return checkboxes[v] && checkboxes[v].checked; }
+
+        function updateConditionalFields() {
+          if (priceField) {
+            priceField.style.display = isChecked('trees') ? 'block' : 'none';
+          }
+          if (rosterField) {
+            rosterField.style.display = (isChecked('credentialing') || isChecked('activity-reporting')) ? 'block' : 'none';
+          }
+        }
+
+        function syncUrlFromCheckboxes() {
+          var params = new URLSearchParams();
+          ALL_CAPS.forEach(function (v) {
+            if (isChecked(v)) params.append('cap', v);
+          });
+          // currently checked — persist in URL even if field is hidden
+          var c = checkboxes['credentialing'] || checkboxes['activity-reporting'];
+          var url = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+          window.history.replaceState(null, '', url);
+        }
+
+        // Page load: restore checkboxes from URL, then update conditional fields.
+        var urlParams = new URLSearchParams(window.location.search);
+        var capsFromUrl = urlParams.getAll('cap');
+        if (capsFromUrl.length > 0) {
+          ALL_CAPS.forEach(function (v) {
+            if (checkboxes[v]) {
+              checkboxes[v].checked = capsFromUrl.indexOf(v) >= 0;
+            }
           });
         }
+        updateConditionalFields();
+
+        // Wire checkbox change listeners.
+        ALL_CAPS.forEach(function (v) {
+          if (checkboxes[v]) {
+            checkboxes[v].addEventListener('change', function () {
+              syncUrlFromCheckboxes();
+              updateConditionalFields();
+            });
+          }
+        });
 
         // Email-verification return: ?vk=&em= → sign + submit the verification event.
         (async function () {
