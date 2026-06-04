@@ -198,7 +198,7 @@ function renderGitHub(data) {
             const bp = r.branch_protection ? r.branch_protection.required_pull_request_reviews : false;
             const ss = r.secret_scanning || "?";
             return `<tr>
-              <td><span class="sd-repo-name">${r.name}</span>${r.archived ? ' <span class="sd-badge sd-badge-archived">archived</span>' : ''}</td>
+              <td><a class="sd-repo-name" href="https://github.com/TrueSightDAO/${encodeURIComponent(r.name)}" target="_blank" rel="noreferrer">${r.name}</a>${r.archived ? ' <span class="sd-badge sd-badge-archived">archived</span>' : ''}</td>
               <td><span class="sd-vis-badge sd-vis-${r.visibility}">${r.visibility === "public" ? "pub" : r.visibility === "private" ? "priv" : r.visibility || "?"}</span></td>
               <td>${bp ? statusBadge(true).outerHTML : '<span class="sd-badge sd-badge-warn">none</span>'}</td>
               <td>${ss === "enabled" ? statusBadge(true).outerHTML : ss === "disabled" ? '<span class="sd-badge sd-badge-warn">off</span>' : '<span class="sd-badge sd-badge-warn">?</span>'}</td>
