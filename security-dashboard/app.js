@@ -69,7 +69,9 @@ function renderScore(data) {
 
 function renderAWS(data) {
   const container = $("awsCards");
-  const accounts = data?.aws;
+  // Cypher-Defense renamed the top-level keys (aws_inventory/web_security/github_security);
+  // accept both the new and legacy names so the dashboard stays resilient to either schema.
+  const accounts = data?.aws_inventory || data?.aws;
   if (!accounts || !Array.isArray(accounts) || accounts.length === 0) {
     container.innerHTML = '<div class="sd-empty">AWS scan not available</div>';
     return;
@@ -100,7 +102,7 @@ function renderAWS(data) {
 
 function renderWeb(data) {
   const container = $("webTable");
-  const sites = data?.web;
+  const sites = data?.web_security || data?.web;
   if (!sites || !Array.isArray(sites) || sites.length === 0) {
     container.innerHTML = '<div class="sd-empty">Web scan not available</div>';
     return;
@@ -118,8 +120,10 @@ function renderWeb(data) {
     const tlsOk = tls.valid && days !== null && days > 0;
     const headerCount = (headers.present || []).length;
     const headerTotal = headerCount + (headers.missing || []).length;
-    const presentList = (headers.present || []).join(", ");
-    const missingList = (headers.missing || []).join(", ");
+    // present/missing may be arrays of strings (legacy) or {header,value} objects (new schema).
+    const hdrName = h => (typeof h === "string" ? h : (h && h.header) || "");
+    const presentList = (headers.present || []).map(hdrName).filter(Boolean).join(", ");
+    const missingList = (headers.missing || []).map(hdrName).filter(Boolean).join(", ");
 
     const tr = el("tr", "sd-web-row");
     tr.innerHTML = `
@@ -170,7 +174,7 @@ function renderWeb(data) {
 
 function renderGitHub(data) {
   const container = $("ghCards");
-  const gh = data?.github;
+  const gh = data?.github_security || data?.github;
   if (!gh || !gh.repos || !Array.isArray(gh.repos)) {
     container.innerHTML = '<div class="sd-empty">GitHub scan not available</div>';
     return;
