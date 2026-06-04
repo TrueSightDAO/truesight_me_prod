@@ -1,0 +1,331 @@
+/* Security Dashboard — TrueSight DAO
+   Saffron Monk palette, static layout */
+
+:root {
+  --sd-bg: #1a1a2e;
+  --sd-card-bg: #16213e;
+  --sd-accent: #e6b800;
+  --sd-text: #e0e0e0;
+  --sd-muted: #888;
+  --sd-green: #27ae60;
+  --sd-red: #e74c3c;
+  --sd-orange: #f39c12;
+  --score-color: #666;
+}
+
+.sd-header {
+  background: #0f0f23;
+  border-bottom: 1px solid #2a2a4a;
+  padding: 1rem 2rem;
+}
+
+.sd-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sd-logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--sd-accent);
+  text-decoration: none;
+}
+
+.sd-nav a {
+  color: var(--sd-muted);
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.sd-nav a.active,
+.sd-nav a:hover {
+  color: var(--sd-accent);
+}
+
+.sd-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.sd-hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.sd-hero h1 {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0;
+}
+
+.sd-subtitle {
+  color: var(--sd-muted);
+  margin: 0.5rem 0;
+}
+
+.sd-last-scanned {
+  font-size: 0.85rem;
+  color: var(--sd-muted);
+  margin-top: 0.5rem;
+}
+
+.sd-section {
+  margin-bottom: 2.5rem;
+}
+
+.sd-section h2 {
+  font-size: 1.3rem;
+  color: #fff;
+  border-bottom: 1px solid #2a2a4a;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Score Card */
+.sd-score-card {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  background: var(--sd-card-bg);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.sd-score-gauge {
+  flex-shrink: 0;
+}
+
+.sd-score-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.sd-score-ring svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sd-score-ring circle {
+  transition: stroke-dashoffset 1s ease;
+}
+
+.sd-score-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.sd-score-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.sd-score-grade {
+  display: block;
+  font-size: 1rem;
+  color: var(--score-color);
+}
+
+.sd-score-deductions {
+  flex: 1;
+}
+
+.sd-deduction-list {
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
+}
+
+.sd-deduction-list li {
+  color: var(--sd-orange);
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+}
+
+.sd-clean {
+  color: var(--sd-green);
+}
+
+/* Cards */
+.sd-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.sd-card {
+  background: var(--sd-card-bg);
+  border-radius: 8px;
+  padding: 1.2rem;
+}
+
+.sd-card-wide {
+  grid-column: 1 / -1;
+}
+
+.sd-card h3 {
+  font-size: 1rem;
+  color: var(--sd-accent);
+  margin: 0 0 0.8rem 0;
+}
+
+.sd-acct-id {
+  font-size: 0.75rem;
+  color: var(--sd-muted);
+  margin: -0.5rem 0 0.8rem 0;
+}
+
+.sd-stat-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.sd-stat {
+  flex: 1;
+  font-size: 0.8rem;
+  color: var(--sd-muted);
+}
+
+.sd-stat-num {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.sd-stat-green { color: var(--sd-green); }
+.sd-stat-red { color: var(--sd-red); }
+.sd-stat-orange { color: var(--sd-orange); }
+
+.sd-warn-text {
+  color: var(--sd-orange);
+  font-size: 0.8rem;
+  margin: 0.5rem 0 0 0;
+}
+
+.sd-error-text {
+  color: var(--sd-red);
+  font-size: 0.8rem;
+  margin: 0.5rem 0 0 0;
+}
+
+/* Table */
+.sd-table-wrap {
+  overflow-x: auto;
+}
+
+.sd-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--sd-card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sd-table th,
+.sd-table td {
+  padding: 0.7rem 1rem;
+  text-align: left;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #2a2a4a;
+}
+
+.sd-table th {
+  background: #0f0f23;
+  color: var(--sd-accent);
+  font-weight: 600;
+}
+
+.sd-table td a {
+  color: var(--sd-accent);
+  text-decoration: none;
+}
+
+.sd-table td a:hover {
+  text-decoration: underline;
+}
+
+.sd-table-compact td,
+.sd-table-compact th {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+/* Badges */
+.sd-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.sd-badge-ok {
+  background: rgba(39, 174, 96, 0.2);
+  color: var(--sd-green);
+}
+
+.sd-badge-warn {
+  background: rgba(231, 76, 60, 0.2);
+  color: var(--sd-red);
+}
+
+/* Big numbers */
+.sd-big-num {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.sd-small {
+  font-size: 0.8rem;
+  color: var(--sd-muted);
+  margin: 0.3rem 0 0 0;
+}
+
+/* States */
+.sd-loading,
+.sd-empty {
+  color: var(--sd-muted);
+  font-style: italic;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Footer */
+.sd-footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--sd-muted);
+  font-size: 0.8rem;
+  border-top: 1px solid #2a2a4a;
+}
+
+.sd-footer a {
+  color: var(--sd-accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sd-score-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .sd-stat-row {
+    flex-wrap: wrap;
+  }
+  .sd-cards {
+    grid-template-columns: 1fr;
+  }
+}

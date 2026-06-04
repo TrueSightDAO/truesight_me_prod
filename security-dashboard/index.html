@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Dashboard — TrueSight DAO</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/security-dashboard.css">
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+</head>
+<body>
+  <div id="app">
+    <header class="sd-header">
+      <div class="sd-header-inner">
+        <a href="/" class="sd-logo">TrueSight DAO</a>
+        <nav class="sd-nav">
+          <a href="/">Home</a>
+          <a href="/dao">DAO</a>
+          <a href="/security-dashboard" class="active">Security</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="sd-main">
+      <div class="sd-hero">
+        <h1>Security Dashboard</h1>
+        <p class="sd-subtitle">Automated daily scan of our digital infrastructure</p>
+        <div class="sd-last-scanned" id="lastScanned">Scanning...</div>
+      </div>
+
+      <!-- Score -->
+      <section class="sd-section" id="scoreSection">
+        <div class="sd-score-card">
+          <div class="sd-score-gauge" id="scoreGauge">
+            <div class="sd-score-ring">
+              <svg viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="54" fill="none" stroke="#2a2a2a" stroke-width="8"/>
+                <circle cx="60" cy="60" r="54" fill="none" stroke="var(--score-color, #666)" stroke-width="8"
+                  stroke-dasharray="339.292" stroke-dashoffset="339.292" id="scoreArc"
+                  transform="rotate(-90 60 60)"/>
+              </svg>
+              <div class="sd-score-text">
+                <span class="sd-score-number" id="scoreNumber">--</span>
+                <span class="sd-score-grade" id="scoreGrade">-</span>
+              </div>
+            </div>
+          </div>
+          <div class="sd-score-deductions" id="deductions"></div>
+        </div>
+      </section>
+
+      <!-- AWS -->
+      <section class="sd-section">
+        <h2>AWS Inventory</h2>
+        <div class="sd-cards" id="awsCards">
+          <div class="sd-loading">Loading...</div>
+        </div>
+      </section>
+
+      <!-- Web Security -->
+      <section class="sd-section">
+        <h2>Web Security</h2>
+        <div class="sd-table-wrap" id="webTable">
+          <div class="sd-loading">Loading...</div>
+        </div>
+      </section>
+
+      <!-- GitHub -->
+      <section class="sd-section">
+        <h2>GitHub Repo Health</h2>
+        <div class="sd-cards" id="ghCards">
+          <div class="sd-loading">Loading...</div>
+        </div>
+      </section>
+
+      <!-- Phishing Blacklist -->
+      <section class="sd-section">
+        <h2>Phishing Blacklist</h2>
+        <div class="sd-cards" id="phishingCards">
+          <div class="sd-loading">Loading...</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="sd-footer">
+      <p>Data sourced from <a href="https://github.com/TrueSightDAO/Cypher-Defense" target="_blank">Cypher-Defense</a> daily scans &middot; Published to <a href="https://github.com/TrueSightDAO/treasury-cache" target="_blank">treasury-cache</a></p>
+    </footer>
+  </div>
+
+  <script src="/security-dashboard/app.js"></script>
+</body>
+</html>
