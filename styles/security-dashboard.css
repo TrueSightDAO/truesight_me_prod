@@ -1,0 +1,240 @@
+/* Security Dashboard — TrueSight DAO
+   Uses the site's Saffron Monk design tokens from main.css. */
+
+/* ── Score Card ── */
+.sd-score-card {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: var(--space-xl);
+}
+
+.sd-score-gauge { flex-shrink: 0; }
+
+.sd-score-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.sd-score-ring svg { width: 100%; height: 100%; }
+
+.sd-score-ring circle { transition: stroke-dashoffset 1s ease; }
+
+.sd-score-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.sd-score-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.sd-score-grade {
+  display: block;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.sd-score-deductions { flex: 1; }
+
+.sd-deduction-list {
+  margin: var(--space-xs) 0;
+  padding-left: var(--space-lg);
+}
+
+.sd-deduction-list li {
+  color: var(--clay);
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+}
+
+.sd-clean { color: var(--forest); }
+
+/* ── Cards Grid ── */
+.sd-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+
+.sd-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: var(--space-lg);
+  transition: all var(--transition-base);
+}
+
+.sd-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(43, 29, 20, 0.08);
+  border-color: rgba(95, 111, 82, 0.2);
+}
+
+.sd-card-wide { grid-column: 1 / -1; }
+
+.sd-card h3 {
+  font-size: 1rem;
+  color: var(--accent-2);
+  margin: 0 0 var(--space-sm) 0;
+}
+
+.sd-acct-id {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: -0.5rem 0 var(--space-sm) 0;
+}
+
+.sd-stat-row {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.sd-stat {
+  flex: 1;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.sd-stat-num {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.sd-stat-green { color: var(--forest); }
+.sd-stat-red { color: #c0392b; }
+.sd-stat-orange { color: var(--clay); }
+
+.sd-warn-text {
+  color: var(--clay);
+  font-size: 0.8rem;
+  margin: var(--space-xs) 0 0 0;
+}
+
+.sd-error-text {
+  color: #c0392b;
+  font-size: 0.8rem;
+  margin: var(--space-xs) 0 0 0;
+}
+
+/* ── Tables ── */
+.sd-table-wrap { overflow-x: auto; }
+
+.sd-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.sd-table thead { background: rgba(244, 163, 0, 0.1); }
+
+.sd-table th {
+  padding: var(--space-md);
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  border-bottom: 2px solid rgba(244, 163, 0, 0.2);
+}
+
+.sd-table td {
+  padding: var(--space-md);
+  border-bottom: 1px solid rgba(95, 111, 82, 0.08);
+  color: var(--muted);
+  vertical-align: middle;
+}
+
+.sd-table tbody tr { transition: all var(--transition-fast); }
+.sd-table tbody tr:hover { background: rgba(244, 163, 0, 0.05); }
+.sd-table tbody tr:last-child td { border-bottom: none; }
+
+.sd-table td a {
+  color: var(--accent-2);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.sd-table td a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.sd-table-compact td,
+.sd-table-compact th {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+/* ── Badges ── */
+.sd-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.sd-badge-ok {
+  background: rgba(95, 111, 82, 0.15);
+  color: var(--forest);
+}
+
+.sd-badge-warn {
+  background: rgba(192, 132, 87, 0.15);
+  color: var(--clay);
+}
+
+/* ── Big numbers ── */
+.sd-big-num {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.sd-small {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0.3rem 0 0 0;
+}
+
+/* ── States ── */
+.sd-loading,
+.sd-empty {
+  color: var(--muted);
+  font-style: italic;
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.sd-last-scanned {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: var(--space-xs);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .sd-score-card { flex-direction: column; text-align: center; }
+  .sd-stat-row { flex-wrap: wrap; }
+  .sd-cards { grid-template-columns: 1fr; }
+}
