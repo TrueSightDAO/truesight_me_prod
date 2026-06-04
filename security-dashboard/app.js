@@ -105,27 +105,64 @@ function renderWeb(data) {
     container.innerHTML = '<div class="sd-empty">Web scan not available</div>';
     return;
   }
-  const table = el("table", "sd-table");
+  const table = el("table", "sd-table sd-table-web");
   table.innerHTML = `
     <thead><tr><th>Domain</th><th>TLS</th><th>Days Left</th><th>Security Headers</th></tr></thead>
     <tbody id="webBody"></tbody>
   `;
   const tbody = table.querySelector("#webBody");
-  sites.forEach(site => {
+  sites.forEach((site, idx) => {
     const tls = site.tls || {};
     const headers = site.headers || {};
     const days = tls.days_remaining;
-    const tr = el("tr", "");
     const tlsOk = tls.valid && days !== null && days > 0;
     const headerCount = (headers.present || []).length;
     const headerTotal = headerCount + (headers.missing || []).length;
+    const presentList = (headers.present || []).join(", ");
+    const missingList = (headers.missing || []).join(", ");
+
+    const tr = el("tr", "sd-web-row");
     tr.innerHTML = `
       <td><a href="${site.url}" target="_blank">${site.name}</a></td>
       <td>${statusBadge(tlsOk).outerHTML}</td>
       <td style="color:${daysColor(days)}">${days !== null ? days + "d" : "?"}</td>
       <td>${headerCount}/${headerTotal} ${statusBadge(headerCount === headerTotal).outerHTML}</td>
     `;
+    tr.addEventListener("click", function() {
+      const detail = document.getElementById("web-detail-" + idx);
+      if (detail) {
+        const open = detail.style.display !== "none";
+        detail.style.display = open ? "none" : "table-row";
+        tr.classList.toggle("sd-web-row-expanded", !open);
+      }
+    });
     tbody.appendChild(tr);
+
+    // Detail row
+    const detailTr = el("tr", "sd-web-detail");
+    detailTr.id = "web-detail-" + idx;
+    detailTr.style.display = "none";
+    let detailHtml = "<td colspan='4'><div class='sd-web-detail-inner'>";
+    detailHtml += "<div class='sd-web-detail-section'><strong>TLS</strong>";
+    if (tls.valid) {
+      detailHtml += `<p>Valid: Yes</p>`;
+      detailHtml += `<p>Issuer: ${tls.issuer || "?"}</p>`;
+      detailHtml += `<p>Expires: ${tls.expiry || "?"}</p>`;
+      detailHtml += `<p>Days remaining: <span style="color:${daysColor(days)}">${days !== null ? days + "d" : "?"}</span></p>`;
+    } else {
+      detailHtml += `<p>Valid: No</p>`;
+      if (tls.error) detailHtml += `<p>Error: ${tls.error}</p>`;
+    }
+    detailHtml += "</div>";
+    detailHtml += "<div class='sd-web-detail-section'><strong>Security Headers</strong>";
+    if (presentList) detailHtml += `<p>Present: ${presentList}</p>`;
+    if (missingList) detailHtml += `<p class='sd-warn-text'>Missing: ${missingList}</p>`;
+    if (!presentList && !missingList) detailHtml += "<p>No header data</p>";
+    detailHtml += "</div>";
+    if (site.error) detailHtml += `<div class='sd-web-detail-section'><p class='sd-error-text'>Error: ${site.error}</p></div>`;
+    detailHtml += "</div></td>";
+    detailTr.innerHTML = detailHtml;
+    tbody.appendChild(detailTr);
   });
   container.innerHTML = "";
   container.appendChild(table);
@@ -177,6 +214,37 @@ function renderPhishing(data) {
     return;
   }
   const s = phish.summary;
+
+  let detailHtml = "";
+  if (phish.domains && phish.domains.length > 0) {
+    detailHtml += "<div class='sd-phish-section'><h4>Blacklisted Domains</h4><ul>";
+    phish.domains.forEach(d => {
+      detailHtml += `<li><strong>${d.value}</strong> <span class="sd-badge sd-badge-warn">${d.status}</span> <small style="color:var(--muted)">flagged by ${d.flagger || "unknown"}</small></li>`;
+    });
+    detailHtml += "</ul></div>";
+  }
+  if (phish.people && phish.people.length > 0) {
+    detailHtml += "<div class='sd-phish-section'><h4>Blacklisted People</h4><ul>";
+    phish.people.forEach(p => {
+      detailHtml += `<li>${p}</li>`;
+    });
+    detailHtml += "</ul></div>";
+  }
+  if (phish.urls && phish.urls.length > 0) {
+    detailHtml += "<div class='sd-phish-section'><h4>Blacklisted URLs</h4><ul>";
+    phish.urls.forEach(u => {
+      detailHtml += `<li><a href="${u}" target="_blank" class="text-link" style="word-break:break-all;font-size:0.8rem;">${u}</a></li>`;
+    });
+    detailHtml += "</ul></div>";
+  }
+  if (phish.verified_domains && phish.verified_domains.length > 0) {
+    detailHtml += "<div class='sd-phish-section'><h4>Verified Domains</h4><ul>";
+    phish.verified_domains.forEach(d => {
+      detailHtml += `<li><span class="sd-badge sd-badge-ok">verified</span> ${d}</li>`;
+    });
+    detailHtml += "</ul></div>";
+  }
+
   container.innerHTML = `
     <div class="sd-card"><h3>Blacklisted Domains</h3><div class="sd-big-num">${s.blacklisted_domains || 0}</div></div>
     <div class="sd-card"><h3>Verified Domains</h3><div class="sd-big-num">${s.verified_domains || 0}</div></div>
@@ -187,6 +255,7 @@ function renderPhishing(data) {
       <div class="sd-big-num">${s.total_entries || 0}</div>
       <p class="sd-small">Across all blacklist categories</p>
     </div>
+    ${detailHtml ? `<div class="sd-card sd-card-wide sd-phish-details">${detailHtml}</div>` : ""}
   `;
 }
 

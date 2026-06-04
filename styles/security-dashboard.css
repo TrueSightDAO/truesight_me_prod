@@ -293,3 +293,70 @@
   font-size: 0.6rem;
   padding: 0.1rem 0.3rem;
 }
+
+/* ── Web Security — expandable rows ── */
+.sd-table-web { width: 100%; }
+
+.sd-web-row { cursor: pointer; }
+.sd-web-row:hover { background: rgba(244, 163, 0, 0.08) !important; }
+.sd-web-row-expanded { background: rgba(244, 163, 0, 0.06) !important; }
+
+.sd-web-detail { background: var(--surface-deep); }
+.sd-web-detail td { padding: 0 !important; }
+
+.sd-web-detail-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+}
+
+.sd-web-detail-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.sd-web-detail-section strong {
+  display: block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: var(--space-xs);
+}
+
+.sd-web-detail-section p {
+  margin: 0.2rem 0;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+/* ── Phishing — detail section ── */
+.sd-phish-details {
+  margin-top: 0 !important;
+}
+
+.sd-phish-section {
+  margin-bottom: var(--space-md);
+}
+
+.sd-phish-section:last-child { margin-bottom: 0; }
+
+.sd-phish-section h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-2);
+  margin: 0 0 var(--space-xs) 0;
+}
+
+.sd-phish-section ul {
+  margin: 0;
+  padding-left: var(--space-lg);
+}
+
+.sd-phish-section li {
+  font-size: 0.85rem;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+  line-height: 1.5;
+}
