@@ -21,7 +21,7 @@
     <title>Register your program · Lineage | TrueSight DAO</title>
     <meta
       name="description"
-      content="Tell us about your program and request a Lineage credentialing slot. We create your DAO identity for you — no wallet, no keys to manage — and a governor reviews your request before anything goes live."
+      content="Tell us about your program and request a Lineage credentialing slot. We create your DAO identity for you — no wallet, no keys to manage — and a DAO governor reviews your request before submitting it for community voting."
     />
     <meta name="robots" content="noindex" />
     <link
@@ -248,6 +248,36 @@
               <span class="hint">Optional now — a Google Sheet of your members, shared with our service account. We mint each credential from it; you can add this later.</span>
             </label>
             <input type="url" id="rosterUrl" name="rosterUrl" placeholder="https://docs.google.com/…" />
+            <details style="margin-top:0.6rem; font-size:0.85rem; color:var(--muted);">
+              <summary style="cursor:pointer; color:var(--accent-2); font-weight:500;">Expected format (click to expand)</summary>
+              <div style="margin-top:0.5rem; overflow-x:auto;">
+                <table style="border-collapse:collapse; font-size:0.8rem; width:100%;">
+                  <thead>
+                    <tr style="background:#f5f5f5;">
+                      <th style="border:1px solid #ddd; padding:0.3rem 0.5rem; text-align:left;">Name *</th>
+                      <th style="border:1px solid #ddd; padding:0.3rem 0.5rem; text-align:left;">Email</th>
+                      <th style="border:1px solid #ddd; padding:0.3rem 0.5rem; text-align:left;">(your own columns…)</th>
+                      <th style="border:1px solid #ddd; padding:0.3rem 0.5rem; text-align:left; color:#888;">← Audit columns (auto-filled)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="border:1px solid #eee; padding:0.3rem 0.5rem;">Jane Doe</td>
+                      <td style="border:1px solid #eee; padding:0.3rem 0.5rem;">jane@example.org</td>
+                      <td style="border:1px solid #eee; padding:0.3rem 0.5rem; color:#888;">…</td>
+                      <td style="border:1px solid #eee; padding:0.3rem 0.5rem; color:#999;">—</td>
+                    </tr>
+                    <tr>
+                      <td style="border:1px solid #eee; padding:0.3rem 0.5rem;">John Smith</td>
+                      <td style="border:1px solid #eee; padding:0.3rem 0.5rem;">john@example.org</td>
+                      <td style="border:1px solid #eee; padding:0.3rem 0.5rem; color:#888;">…</td>
+                      <td style="border:1px solid #eee; padding:0.3rem 0.5rem; color:#999;">—</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p style="margin-top:0.4rem;"><strong>Rules:</strong> Tab must be named <code>Cohort Roster</code>. First column = Name (required). Add any extra columns you need (school, course, graduation date, etc.). Don't add <code>public_key</code> / <code>pk_hash</code> columns — the credentialing pipeline writes those. Share the sheet with <strong>Editor</strong> access to the service account address we'll give you during onboarding.</p>
+              </div>
+            </details>
           </div>
 
           <div class="field" id="priceField" style="display:none;">
@@ -271,7 +301,7 @@
       <section id="regResult">
         <div class="result-card">
           <h3>✅ Request submitted</h3>
-          <p>A DAO governor will review your program and approve it before anything goes live. Once approved,
+          <p>A DAO governor will review your request and submit it as a DAO proposal for community voting. Once the proposal passes,
              we provision your listing, admin subdomain, and any ledgers your pathways need.</p>
         </div>
         <div class="result-card">
