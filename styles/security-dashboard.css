@@ -185,6 +185,13 @@
 }
 
 /* ── GitHub Repo Table — full width, no fixed columns ── */
+/* The GitHub table renders inside #ghCards, which is a CSS grid (.sd-cards). Without this,
+   the table-wrap occupies a single ~280px grid cell and the table looks squished. Span all
+   columns so it fills the section width like the Web Security table. */
+.sd-cards .sd-table-wrap {
+  grid-column: 1 / -1;
+}
+
 .sd-table-github {
   width: 100%;
 }
