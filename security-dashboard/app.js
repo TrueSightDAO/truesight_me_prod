@@ -1,4 +1,4 @@
-const DATA_URL = "https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/managed-ledgers/security-dashboard.json";
+const DATA_URL = "https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/managed-ledgers/security-dashboard.json?_=" + Date.now();
 
 function $(id) { return document.getElementById(id); }
 
