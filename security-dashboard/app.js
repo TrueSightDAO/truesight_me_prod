@@ -150,17 +150,19 @@ function renderGitHub(data) {
       </div>
     </div>
     <div class="sd-table-wrap">
-      <table class="sd-table sd-table-compact">
+      <table class="sd-table sd-table-compact sd-table-github">
         <thead><tr><th>Repo</th><th>Visibility</th><th>Branch Protection</th><th>Secret Scanning</th></tr></thead>
         <tbody>
-          ${gh.repos.map(r => `
-            <tr>
-              <td>${r.name}${r.archived ? ' <span class="sd-badge">archived</span>' : ''}</td>
-              <td>${r.visibility || "?"}</td>
-              <td>${r.branch_protection ? statusBadge(r.branch_protection.required_pull_request_reviews).outerHTML : '<span class="sd-badge sd-badge-warn">none</span>'}</td>
-              <td>${r.secret_scanning ? r.secret_scanning : "?"}</td>
-            </tr>
-          `).join("")}
+          ${gh.repos.map(r => {
+            const bp = r.branch_protection ? r.branch_protection.required_pull_request_reviews : false;
+            const ss = r.secret_scanning || "?";
+            return `<tr>
+              <td><span class="sd-repo-name">${r.name}</span>${r.archived ? ' <span class="sd-badge sd-badge-archived">archived</span>' : ''}</td>
+              <td><span class="sd-vis-badge sd-vis-${r.visibility}">${r.visibility === "public" ? "pub" : r.visibility === "private" ? "priv" : r.visibility || "?"}</span></td>
+              <td>${bp ? statusBadge(true).outerHTML : '<span class="sd-badge sd-badge-warn">none</span>'}</td>
+              <td>${ss === "enabled" ? statusBadge(true).outerHTML : ss === "disabled" ? '<span class="sd-badge sd-badge-warn">off</span>' : '<span class="sd-badge sd-badge-warn">?</span>'}</td>
+            </tr>`;
+          }).join("")}
         </tbody>
       </table>
     </div>
