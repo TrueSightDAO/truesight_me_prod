@@ -64,18 +64,82 @@
     });
   }
 
-  // Minimal inline-markdown renderer for manifest description_md fields. We
-  // only support the two constructs in active use: [label](http(s)://url) and
-  // `code`. Authors who need anything more should keep adding to this shim
-  // rather than introducing a full markdown dependency. Escape first so any
-  // pre-existing HTML in the manifest is neutralised before we add our own.
+  // Minimal inline-markdown renderer for manifest description_md fields.
+  // Supports: ### headings, 1. ordered lists, - /* unordered lists,
+  // [label](url) links, `code`, and \n\n paragraph breaks.
+  // Escape first so any pre-existing HTML in the manifest is neutralised
+  // before we add our own.
   function renderInlineMarkdown(md) {
     var s = escapeHtml(md);
-    s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, function (_, text, url) {
-      return '<a href="' + url + '" target="_blank" rel="noreferrer noopener">' + text + '</a>';
-    });
-    s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
-    return s;
+
+    // Process inline constructs (links, code) within a line of text.
+    function renderLine(line) {
+      var r = line;
+      r = r.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, function (_, text, url) {
+        return '<a href="' + url + '" target="_blank" rel="noreferrer noopener">' + text + '</a>';
+      });
+      r = r.replace(/`([^`]+)`/g, '<code>$1</code>');
+      return r;
+    }
+
+    // Split into paragraphs on \n\n (or \r\n\r\n).
+    var paragraphs = s.split(/\n{2,}|\r\n{2,}/);
+    var out = [];
+    for (var i = 0; i < paragraphs.length; i++) {
+      var block = paragraphs[i].trim();
+      if (!block) continue;
+
+      // ### heading
+      var headingMatch = block.match(/^#{3}\s+(.+)$/m);
+      if (headingMatch) {
+        out.push('<h3>' + renderLine(headingMatch[1]) + '</h3>');
+        continue;
+      }
+
+      // Ordered list: lines starting with /^\d+\.\s/
+      var olLines = [];
+      var lines = block.split(/\n/);
+      var isOl = true;
+      for (var j = 0; j < lines.length; j++) {
+        var l = lines[j].trim();
+        if (!l) continue;
+        var liMatch = l.match(/^\d+\.\s+(.+)$/);
+        if (liMatch) {
+          olLines.push('<li>' + renderLine(liMatch[1]) + '</li>');
+        } else {
+          isOl = false;
+          break;
+        }
+      }
+      if (isOl && olLines.length) {
+        out.push('<ol>' + olLines.join('') + '</ol>');
+        continue;
+      }
+
+      // Unordered list: lines starting with /^[-*]\s/
+      var ulLines = [];
+      var isUl = true;
+      for (var k = 0; k < lines.length; k++) {
+        var l2 = lines[k].trim();
+        if (!l2) continue;
+        var liMatch2 = l2.match(/^[-*]\s+(.+)$/);
+        if (liMatch2) {
+          ulLines.push('<li>' + renderLine(liMatch2[1]) + '</li>');
+        } else {
+          isUl = false;
+          break;
+        }
+      }
+      if (isUl && ulLines.length) {
+        out.push('<ul>' + ulLines.join('') + '</ul>');
+        continue;
+      }
+
+      // Plain paragraph — render inline and wrap.
+      out.push('<p>' + renderLine(block) + '</p>');
+    }
+
+    return out.join('\n');
   }
 
   function formatDate(iso) {
