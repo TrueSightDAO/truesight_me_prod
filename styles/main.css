@@ -1254,6 +1254,7 @@ section h2 {
 }
 
 .card .pill {
+  display: block;
   margin-bottom: var(--space-sm);
   align-self: flex-start;
 }
