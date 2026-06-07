@@ -82,6 +82,8 @@
         font-weight: 600; border-radius: 999px;
       }
       .badge.governor { background: #2f4f2e; color: #fff; }
+      .badge.sentinel { background: #3a2c50; color: #fff; }
+      .member-card.sentinel-card { cursor: default; }
       .badge.dao { background: #e8eef6; color: #2c4a73; }
       .badge.practitioner { background: #f3e8d8; color: #6a4a1a; }
       .members-empty { text-align: center; color: var(--muted, #666); padding: var(--space-xl) 0; font-style: italic; }
@@ -220,6 +222,21 @@
           <div id="governors-grid" class="members-grid"></div>
         </section>
 
+        <section id="sentinels-section" class="members-section" style="display:none">
+          <h2>Sentinels</h2>
+          <div class="governors-note">
+            <p>
+              Sentinels are <strong>autonomous agent personas</strong> that operate on
+              behalf of the DAO — most notably <a href="https://sophia.truesight.me" target="_blank" rel="noreferrer noopener">Sophia</a>,
+              the autopilot. They hold their own contributor identities and signing keys
+              and submit signed events like any member, but they are <strong>non-human</strong>.
+              They&rsquo;re listed separately here so it&rsquo;s always clear which
+              identities on the ledger are agents rather than people.
+            </p>
+          </div>
+          <div id="sentinels-grid" class="members-grid"></div>
+        </section>
+
         <section id="members-section" class="members-section" style="display:none">
           <h2>Members</h2>
           <div id="members-grid" class="members-grid"></div>
@@ -231,6 +248,11 @@
       (function () {
         'use strict';
         const INDEX_URL = 'https://raw.githubusercontent.com/TrueSightDAO/lineage-credentials/main/_cache/index.json';
+        // dao_members.json is the DAO-wide contributor cache (a different, larger
+        // population than the credentialed-practitioner index above). It's the
+        // source of the "sentinel" role, so sentinel personas (Sophia, the
+        // autopilot) that aren't credentialed practitioners still surface here.
+        const DAO_MEMBERS_URL = 'https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_members.json';
 
         function escapeHtml(s) {
           return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
@@ -288,6 +310,43 @@
           return { governors, regulars };
         }
 
+        // Sentinel cards come from dao_members.json, not the credential index,
+        // so they're non-clickable divs (these personas have no CV profile).
+        function sentinelCardHtml(m) {
+          const name = m.name || m.display_name || '';
+          let html = '<div class="member-card sentinel-card">';
+          html += '<div class="name">' + escapeHtml(name) + '</div>';
+          const subParts = [];
+          if (m.voting_rights) {
+            const vp = Number(m.voting_rights);
+            if (Number.isFinite(vp) && vp > 0) subParts.push(vp.toLocaleString(undefined, { maximumFractionDigits: 0 }) + ' TDG');
+          }
+          if (subParts.length) html += '<div class="meta">' + subParts.join(' · ') + '</div>';
+          html += '<div class="badges"><span class="badge sentinel">Sentinel</span></div>';
+          html += '</div>';
+          return html;
+        }
+
+        async function loadSentinels() {
+          try {
+            const res = await fetch(DAO_MEMBERS_URL + '?_=' + Date.now(), { cache: 'no-store' });
+            if (!res.ok) return 0;
+            const data = await res.json();
+            const all = data.contributors || data.members || [];
+            const sentinels = all.filter(function (m) {
+              return (m.roles || []).indexOf('sentinel') >= 0;
+            }).sort(function (a, b) {
+              return String(a.name || '').localeCompare(String(b.name || ''));
+            });
+            if (!sentinels.length) return 0;
+            document.getElementById('sentinels-grid').innerHTML = sentinels.map(sentinelCardHtml).join('');
+            document.getElementById('sentinels-section').style.display = 'block';
+            return sentinels.length;
+          } catch (_) {
+            return 0; // non-fatal — sentinel section just stays hidden
+          }
+        }
+
         async function loadMembers() {
           const status = document.getElementById('members-status');
           try {
@@ -296,6 +355,7 @@
             if (!res.ok) throw new Error('HTTP ' + res.status);
             const data = await res.json();
             const members = data.members || [];
+            const sentinelCount = await loadSentinels();
 
             const { governors, regulars } = sortMembers(members);
             const govEl = document.getElementById('governors-grid');
@@ -309,13 +369,13 @@
               regEl.innerHTML = regulars.map(memberCardHtml).join('');
               document.getElementById('members-section').style.display = 'block';
             }
-            if (!governors.length && !regulars.length) {
+            if (!governors.length && !regulars.length && !sentinelCount) {
               status.textContent = '';
               document.getElementById('members-error').textContent = 'No members in the index yet — the cache may still be warming up.';
               document.getElementById('members-error').style.display = 'block';
             } else {
               status.textContent = '';
-              initMembersSearch(governors.length + regulars.length);
+              initMembersSearch(governors.length + regulars.length + sentinelCount);
             }
           } catch (err) {
             status.textContent = '';
@@ -384,7 +444,7 @@
               c.classList.toggle('is-hidden', !match);
               if (match) shown++;
             });
-            ['governors-section', 'members-section'].forEach(function (id) {
+            ['governors-section', 'sentinels-section', 'members-section'].forEach(function (id) {
               const sec = document.getElementById(id);
               if (!sec) return;
               const visibleCards = sec.querySelectorAll('.member-card:not(.is-hidden)').length;
