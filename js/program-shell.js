@@ -386,9 +386,43 @@
       var programs = cv.programs || {};
       var programRecord = programs[programFilter] || null;
 
+      // Resolve display name: if the CV has one, use it. Otherwise try
+      // dao_members.json — oracle practitioners who linked their email
+      // after their first practice event will have their public key in
+      // dao_members but an empty display_name in the CV.
+      var displayName = cv.display_name || '';
+      if (!displayName && cv.pk_hash) {
+        var daoMembersPrimary = 'https://cdn.jsdelivr.net/gh/TrueSightDAO/treasury-cache@main/dao_members.json';
+        var daoMembersFallback = 'https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_members.json';
+        fetch(daoMembersPrimary, { cache: 'default' })
+          .then(function (r) { return r.ok ? r.json() : fetch(daoMembersFallback).then(function (r2) { return r2.ok ? r2.json() : null; }); })
+          .then(function (daoData) {
+            if (daoData && daoData.contributors) {
+              for (var ci = 0; ci < daoData.contributors.length; ci++) {
+                var c = daoData.contributors[ci];
+                if (c.public_keys && c.public_keys.length) {
+                  for (var pi = 0; pi < c.public_keys.length; pi++) {
+                    if (c.public_keys[pi].public_key === cv.pk_hash) {
+                      displayName = c.name || '';
+                      break;
+                    }
+                  }
+                }
+                if (displayName) break;
+              }
+            }
+          })
+          .catch(function () { /* dao_members fetch failed — fall through to slug */ })
+          .finally(function () {
+            // Re-render the name header now that we have the resolved name
+            var nameEl = document.querySelector('.credential-name');
+            if (nameEl) nameEl.textContent = escapeHtml(displayName || slug);
+          });
+      }
+
       var html = '';
       html += '<header class="credential-header">';
-      html += '<h1 class="credential-name">' + escapeHtml(cv.display_name || slug) + '</h1>';
+      html += '<h1 class="credential-name">' + escapeHtml(displayName || slug) + '</h1>';
       html += '<p class="credential-tagline">Credentialed via <strong>' + escapeHtml(manifest.display_name) + '</strong></p>';
       html += '</header>';
 
