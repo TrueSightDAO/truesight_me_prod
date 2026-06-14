@@ -1403,6 +1403,11 @@ section h2 {
   margin-top: var(--space-lg);
 }
 
+/* Prevent grid items from expanding columns beyond fr allocation */
+.card-grid > * {
+  min-width: 0;
+}
+
 /* Card with media on top - full-bleed image */
 .card--media-top {
   padding: 0;
@@ -1417,13 +1422,13 @@ section h2 {
   transition: transform var(--transition-base), opacity var(--transition-base);
 }
 
-.card--media-top a {
+.card--media-top a:first-child {
   display: block;
   overflow: hidden;
   border-radius: 16px 16px 0 0;
 }
 
-.card--media-top a:hover img {
+.card--media-top a:first-child:hover img {
   transform: scale(1.02);
   opacity: 0.9;
 }
