@@ -301,10 +301,10 @@
       </section>
 
       <style>
-        /* Four initiative tiles: 2×2 on desktop/tablet (roomy, not squished), single column
-           on mobile. All four card images share the same portrait crop (554×892) so they
+        /* Three initiative tiles: all on one row on desktop/tablet, single column
+           on mobile. All card images share the same portrait crop (554×892) so they
            line up at natural height — no awkward object-fit cropping. */
-        #initiatives .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        #initiatives .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         @media (max-width: 640px) { #initiatives .card-grid { grid-template-columns: 1fr; } }
       </style>
       <section id="initiatives">
