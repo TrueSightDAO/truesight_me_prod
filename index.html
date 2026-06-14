@@ -136,122 +136,6 @@
           </a>
         </div>
 
-        <div class="stats-grid" aria-label="Ecosystem statistics" id="stats-grid">
-          <!-- Stats will be populated dynamically from exchange-rates.json -->
-          <article class="stat-card">
-            <div class="stat-label">
-              <h3>USD Treasury Balance</h3>
-            </div>
-            <div class="stat-value-container">
-              <p class="stat-value" data-key="USD_TREASURY_BALANCE">—</p>
-            </div>
-            <a class="stat-detail-link" href="/treasury/">View breakdown →</a>
-          </article>
-          <article class="stat-card">
-            <div class="stat-label">
-              <h3>Assets Under Management (AUM)</h3>
-            </div>
-            <div class="stat-value-container">
-              <p class="stat-value" data-key="AUM">—</p>
-            </div>
-            <div class="stat-explanation">
-              <small><a href="blog/posts/understanding-assets-under-management-aum-truesight-dao-comprehensive-asset-tracking.html" class="text-link">Total assets across main ledger and all managed ledgers</a></small>
-            </div>
-            <a class="stat-detail-link" href="/aum/">View breakdown →</a>
-          </article>
-          <article class="stat-card">
-            <div class="stat-label">
-              <h3>Asset per TDG Issued</h3>
-            </div>
-            <div class="stat-value-container">
-              <p class="stat-value" data-key="ASSET_PER_TDG_ISSUED">—</p>
-            </div>
-          </article>
-          <article class="stat-card">
-            <div class="stat-label">
-              <h3>Total TDG Issued</h3>
-            </div>
-            <div class="stat-value-container">
-              <p class="stat-value" data-key="TDG_ISSUED">—</p>
-            </div>
-          </article>
-          <article class="stat-card">
-            <div class="stat-label">
-              <h3>Past 30 Days Sales</h3>
-            </div>
-            <div class="stat-value-container">
-              <p class="stat-value" data-key="PAST_30_DAYS_SALES">—</p>
-            </div>
-            <div class="stat-explanation">
-              <small>Total ecosystem sales (all ledgers)</small>
-            </div>
-          </article>
-          <article class="stat-card">
-            <div class="stat-label">
-              <h3>Past 30 Days DAO Revenue</h3>
-            </div>
-            <div class="stat-value-container">
-              <p class="stat-value" data-key="PAST_30_DAYS_DAO_REVENUE">—</p>
-            </div>
-            <div class="stat-explanation">
-              <small>Main ledger revenue (for buy-back budget)</small>
-            </div>
-          </article>
-          <article class="stat-card stat-card-hidden" id="stat-card-7">
-            <div class="stat-label">
-              <h3>
-                Daily Buy-Back Budget
-                <span class="info-icon" title="Calculated from DAO treasury revenue (main ledger only). Based on (Last 30 days DAO revenue / 30) × min(Asset per TDG, 1 - Treasury yield). This is conservatively calculated from treasury revenue, not total ecosystem sales.">ℹ️</span>
-              </h3>
-            </div>
-            <div class="stat-value-container">
-              <p class="stat-value" data-key="TDG_DAILY_BUY_BACK_BUDGET">—</p>
-            </div>
-            <div class="stat-explanation">
-              <small><a href="blog/posts/understanding-truesight-dao-s-daily-buy-back-budget-a-dynamic-force-for-stability.html" class="text-link">Based on DAO treasury revenue, not total ecosystem sales</a></small>
-            </div>
-          </article>
-        </div>
-        <div style="text-align: center; margin-top: var(--space-md);">
-          <button id="show-more-stats" class="cta secondary" style="font-size: 0.875rem; padding: var(--space-sm) var(--space-md);">
-            Show More Stats
-          </button>
-        </div>
-
-        <!-- Monthly Sales Chart Section -->
-        <div id="monthly-sales-chart-section" style="margin-top: var(--space-xl); display: none;">
-          <div style="text-align: center; margin-bottom: var(--space-md);">
-            <p class="pill">Sales Analytics</p>
-            <h2 style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">Monthly Revenue Funding Trees</h2>
-            <p class="section-lead" style="max-width: 600px; margin: 0 auto;">
-              Cacao tree funding over time. Hover any month for that month's revenue and the cumulative total.
-            </p>
-          </div>
-          <div style="position: relative; height: 400px; max-width: 1000px; margin: 0 auto; background: var(--surface); padding: var(--space-md); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-            <canvas id="monthlySalesChart"></canvas>
-          </div>
-          <div id="chart-loading" style="text-align: center; padding: var(--space-xl); color: var(--muted);">
-            Loading sales data...
-          </div>
-          <div id="chart-error" style="display: none; text-align: center; padding: var(--space-md); background: rgba(244, 163, 0, 0.1); border-radius: 8px; margin-top: var(--space-md); color: var(--accent-2);">
-          </div>
-        </div>
-
-        <!-- Network Sell-Through -->
-        <div id="sell-through-section" style="margin-top: var(--space-xl); display: none;">
-          <div style="text-align: center; margin-bottom: var(--space-md);">
-            <p class="pill">Network Health</p>
-            <h2 style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">Consignment Sell-Through</h2>
-            <p class="section-lead" style="max-width: 600px; margin: 0 auto;">
-              How quickly USA retail partners sell through inventory. Based on trailing 12-month sales vs. restocks.
-            </p>
-          </div>
-          <div id="sell-through-content" style="max-width: 1000px; margin: 0 auto;">
-            <div id="st-loading" style="text-align: center; padding: var(--space-xl); color: var(--muted);">
-              Loading sell-through data...
-            </div>
-          </div>
-        </div>
       </header>
 
       <section id="ecosystem-updates" class="ecosystem-updates-section" aria-labelledby="ecosystem-updates-heading">
@@ -270,33 +154,6 @@
         </p>
         <div id="ecosystem-updates-root" class="ecosystem-updates-root">
           <p class="ecosystem-updates-status">Loading recent updates…</p>
-        </div>
-      </section>
-
-      <section id="movement">
-        <div class="split">
-          <div>
-            <h2>Join Our Movement</h2>
-            <p class="section-lead">
-              Contribute acts of compassion at <strong>100&nbsp;TDG per hour</strong>, or <strong>1&nbsp;TDG per USD</strong>,
-              and help us co-create a regenerative economy. Every contribution is logged on-chain so anyone can track our
-              shared impact.
-            </p>
-            <p>
-              Whether you design systems, plant trees, mentor farmers, or storytell, there is room for your gifts. Learn
-              how we score contributions, mint TDG, and put capital to work for the Amazon rainforest and the people who
-              steward it.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Ways to Get Involved</h3>
-            <p>Start where you are—our community values compassion in action over pedigree.</p>
-            <ul>
-              <li>Log compassionate actions to earn TDG governance tokens.</li>
-              <li>Prototype open-source tools that make impact data auditable.</li>
-              <li>Channel liquidity toward agroforestry and regenerative ventures.</li>
-            </ul>
-          </div>
         </div>
       </section>
 
@@ -467,6 +324,152 @@
         </div>
       </section>
 
+      <!-- System health & statistics -->
+      <section id="system-stats">
+        <div class="stats-grid" aria-label="Ecosystem statistics" id="stats-grid">
+          <!-- Stats will be populated dynamically from exchange-rates.json -->
+          <article class="stat-card">
+            <div class="stat-label">
+              <h3>USD Treasury Balance</h3>
+            </div>
+            <div class="stat-value-container">
+              <p class="stat-value" data-key="USD_TREASURY_BALANCE">—</p>
+            </div>
+            <a class="stat-detail-link" href="/treasury/">View breakdown →</a>
+          </article>
+          <article class="stat-card">
+            <div class="stat-label">
+              <h3>Assets Under Management (AUM)</h3>
+            </div>
+            <div class="stat-value-container">
+              <p class="stat-value" data-key="AUM">—</p>
+            </div>
+            <div class="stat-explanation">
+              <small><a href="blog/posts/understanding-assets-under-management-aum-truesight-dao-comprehensive-asset-tracking.html" class="text-link">Total assets across main ledger and all managed ledgers</a></small>
+            </div>
+            <a class="stat-detail-link" href="/aum/">View breakdown →</a>
+          </article>
+          <article class="stat-card">
+            <div class="stat-label">
+              <h3>Asset per TDG Issued</h3>
+            </div>
+            <div class="stat-value-container">
+              <p class="stat-value" data-key="ASSET_PER_TDG_ISSUED">—</p>
+            </div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-label">
+              <h3>Total TDG Issued</h3>
+            </div>
+            <div class="stat-value-container">
+              <p class="stat-value" data-key="TDG_ISSUED">—</p>
+            </div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-label">
+              <h3>Past 30 Days Sales</h3>
+            </div>
+            <div class="stat-value-container">
+              <p class="stat-value" data-key="PAST_30_DAYS_SALES">—</p>
+            </div>
+            <div class="stat-explanation">
+              <small>Total ecosystem sales (all ledgers)</small>
+            </div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-label">
+              <h3>Past 30 Days DAO Revenue</h3>
+            </div>
+            <div class="stat-value-container">
+              <p class="stat-value" data-key="PAST_30_DAYS_DAO_REVENUE">—</p>
+            </div>
+            <div class="stat-explanation">
+              <small>Main ledger revenue (for buy-back budget)</small>
+            </div>
+          </article>
+          <article class="stat-card stat-card-hidden" id="stat-card-7">
+            <div class="stat-label">
+              <h3>
+                Daily Buy-Back Budget
+                <span class="info-icon" title="Calculated from DAO treasury revenue (main ledger only). Based on (Last 30 days DAO revenue / 30) × min(Asset per TDG, 1 - Treasury yield). This is conservatively calculated from treasury revenue, not total ecosystem sales.">ℹ️</span>
+              </h3>
+            </div>
+            <div class="stat-value-container">
+              <p class="stat-value" data-key="TDG_DAILY_BUY_BACK_BUDGET">—</p>
+            </div>
+            <div class="stat-explanation">
+              <small><a href="blog/posts/understanding-truesight-dao-s-daily-buy-back-budget-a-dynamic-force-for-stability.html" class="text-link">Based on DAO treasury revenue, not total ecosystem sales</a></small>
+            </div>
+          </article>
+        </div>
+        <div style="text-align: center; margin-top: var(--space-md);">
+          <button id="show-more-stats" class="cta secondary" style="font-size: 0.875rem; padding: var(--space-sm) var(--space-md);">
+            Show More Stats
+          </button>
+        </div>
+
+        <!-- Monthly Sales Chart Section -->
+        <div id="monthly-sales-chart-section" style="margin-top: var(--space-xl); display: none;">
+          <div style="text-align: center; margin-bottom: var(--space-md);">
+            <p class="pill">Sales Analytics</p>
+            <h2 style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">Monthly Revenue Funding Trees</h2>
+            <p class="section-lead" style="max-width: 600px; margin: 0 auto;">
+              Cacao tree funding over time. Hover any month for that month's revenue and the cumulative total.
+            </p>
+          </div>
+          <div style="position: relative; height: 400px; max-width: 1000px; margin: 0 auto; background: var(--surface); padding: var(--space-md); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <canvas id="monthlySalesChart"></canvas>
+          </div>
+          <div id="chart-loading" style="text-align: center; padding: var(--space-xl); color: var(--muted);">
+            Loading sales data...
+          </div>
+          <div id="chart-error" style="display: none; text-align: center; padding: var(--space-md); background: rgba(244, 163, 0, 0.1); border-radius: 8px; margin-top: var(--space-md); color: var(--accent-2);">
+          </div>
+        </div>
+
+        <!-- Network Sell-Through -->
+        <div id="sell-through-section" style="margin-top: var(--space-xl); display: none;">
+          <div style="text-align: center; margin-bottom: var(--space-md);">
+            <p class="pill">Network Health</p>
+            <h2 style="margin-top: var(--space-sm); margin-bottom: var(--space-sm);">Consignment Sell-Through</h2>
+            <p class="section-lead" style="max-width: 600px; margin: 0 auto;">
+              How quickly USA retail partners sell through inventory. Based on trailing 12-month sales vs. restocks.
+            </p>
+          </div>
+          <div id="sell-through-content" style="max-width: 1000px; margin: 0 auto;">
+            <div id="st-loading" style="text-align: center; padding: var(--space-xl); color: var(--muted);">
+              Loading sell-through data...
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="movement">
+        <div class="split">
+          <div>
+            <h2>Join Our Movement</h2>
+            <p class="section-lead">
+              Contribute acts of compassion at <strong>100&nbsp;TDG per hour</strong>, or <strong>1&nbsp;TDG per USD</strong>,
+              and help us co-create a regenerative economy. Every contribution is logged on-chain so anyone can track our
+              shared impact.
+            </p>
+            <p>
+              Whether you design systems, plant trees, mentor farmers, or storytell, there is room for your gifts. Learn
+              how we score contributions, mint TDG, and put capital to work for the Amazon rainforest and the people who
+              steward it.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Ways to Get Involved</h3>
+            <p>Start where you are—our community values compassion in action over pedigree.</p>
+            <ul>
+              <li>Log compassionate actions to earn TDG governance tokens.</li>
+              <li>Prototype open-source tools that make impact data auditable.</li>
+              <li>Channel liquidity toward agroforestry and regenerative ventures.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
       <section id="governance">
         <p class="pill">Governed by the community</p>
