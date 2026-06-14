@@ -1441,9 +1441,19 @@ section h2 {
 /* Steps/Process Cards - Refined */
 .steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-lg);
   margin-top: var(--space-lg);
+}
+
+@media (max-width: 640px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+.steps > * {
+  min-width: 0;
 }
 
 .step-card {
