@@ -368,32 +368,6 @@
           </article>
 
           <article class="card card--media-top">
-            <a href="edgar.html" style="display: block;">
-              <img src="assets/edgar-module.jpg" alt="Edgar AI interface visual" loading="lazy" />
-            </a>
-            <div class="card-body">
-              <div class="pill">Edgar</div>
-              <h3>AI Agent for Transparent Impact</h3>
-              <p>
-                Edgar tokenizes contributions, streamlines cacao sales, and enables TDG cash-outs via our Community
-                Collaborations Tool.
-              </p>
-              <ul>
-                <li>Tokenizing contributions for governance rewards</li>
-                <li>Automating cacao sales for forest restoration</li>
-                <li>Cash-out flows that keep liquidity circulating</li>
-              </ul>
-              <div>
-                <a class="text-link" href="edgar.html">Explore Edgar</a>
-                <span style="color: var(--muted);">·</span>
-                <a class="text-link" href="https://truesight.me/ledger" target="_blank" rel="noreferrer">Contributions Ledger</a>
-                <span style="color: var(--muted);">·</span>
-                <a class="text-link" href="https://dapp.truesight.me" target="_blank" rel="noreferrer">DApp Tools</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card card--media-top">
             <a href="lineage.html" style="display: block;">
               <img src="assets/lineage-card.jpg" alt="Capoeira roda at sunset in Itacaré — Tribo Bahia Mirim lineage" loading="lazy" />
             </a>
@@ -417,6 +391,82 @@
           </article>
         </div>
       </section>
+
+
+      <section id="platform-services">
+        <p class="pill">Platform services</p>
+        <h2>Platform Services</h2>
+        <p class="section-lead">
+          Three services power the DAO's operations. Each has its own domain and purpose.
+        </p>
+
+        <div class="card-grid">
+          <article class="card card--media-top">
+            <div class="card-body">
+              <div class="pill">Edgar</div>
+              <h3>DAO Protocol API</h3>
+              <p>
+                The operational backbone. Every DAO action — contributions, inventory, sales, votes, credentialing —
+                flows through Edgar as a signed event. No API keys, just RSA-2048 signatures.
+              </p>
+              <ul>
+                <li>Submit signed events via <code>POST /dao/submit_contribution</code></li>
+                <li>Sandbox for experimenting with payloads</li>
+                <li>GAS proxy for cross-border DApp access</li>
+                <li>Stripe webhook handler for subscriptions</li>
+              </ul>
+              <div>
+                <a class="text-link" href="https://edgar.truesight.me" target="_blank" rel="noreferrer">edgar.truesight.me →</a>
+                <span style="color: var(--muted);">·</span>
+                <a class="text-link" href="https://dapp.truesight.me" target="_blank" rel="noreferrer">DApp Tools</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card--media-top">
+            <div class="card-body">
+              <div class="pill">Perch</div>
+              <h3>Market Steward</h3>
+              <p>
+                Market intelligence and sentiment analysis. Perch ingests daily news, extracts sentiment entities,
+                and surfaces market signals to inform DAO strategy and treasury decisions.
+              </p>
+              <ul>
+                <li>Daily news ingestion and sentiment scoring</li>
+                <li>Entity correlation over time</li>
+                <li>Market signal generation for treasury ops</li>
+                <li>Backtesting and strategy evaluation</li>
+              </ul>
+              <div>
+                <a class="text-link" href="https://perch.truesight.me" target="_blank" rel="noreferrer">perch.truesight.me →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card--media-top">
+            <div class="card-body">
+              <div class="pill">Sophia</div>
+              <h3>Autopilot — AI SRE &amp; Developer Assistant</h3>
+              <p>
+                An autonomous agent that manages DAO infrastructure, processes QR codes, files PRs, runs diagnostics,
+                and executes approved actions on behalf of verified governors. Lives on EC2, works in Telegram.
+              </p>
+              <ul>
+                <li>Infrastructure monitoring and incident response</li>
+                <li>QR code scanning and inventory tracking</li>
+                <li>Automated PR creation and code fixes</li>
+                <li>Oracle readings and attention direction</li>
+              </ul>
+              <div>
+                <a class="text-link" href="https://github.com/TrueSightDAO/truesight_autopilot" target="_blank" rel="noreferrer">Source →</a>
+                <span style="color: var(--muted);">·</span>
+                <a class="text-link" href="https://truesight.me/beerhall" target="_blank" rel="noreferrer">Chat with Sophia</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
 
       <section id="governance">
         <p class="pill">Governed by the community</p>
