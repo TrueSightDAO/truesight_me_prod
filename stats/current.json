@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-14T20:08:47Z",
+  "generated_at_utc": "2026-06-15T05:41:26Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-06-14T19:26:31Z",
+    "generated_at": "2026-06-15T04:05:27Z",
     "total_contributors": 469,
     "total_tdg_controlled_sum": 2549012.87,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-06-14T19:48:36.530Z",
+    "generated_at": "2026-06-15T04:48:40.293Z",
     "schema_version": 4,
     "trigger": "cron",
     "currency_totals": {
@@ -728,13 +728,13 @@
         }
       },
       "USD": {
-        "total_quantity": 20082.89,
-        "total_value_usd": 20082.89,
+        "total_quantity": 20082.79,
+        "total_value_usd": 20082.79,
         "item_count": 1,
         "ledger_breakdown": {
           "AGL4": 9036.35,
           "AGL15": 5222.8,
-          "Main Ledger": 3476.27,
+          "Main Ledger": 3476.16,
           "AGL6": 1337.59,
           "AGL8": 569.95,
           "AGL10": 330.83,
@@ -743,11 +743,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 41.07,
-        "total_value_usd": 41.07,
+        "total_quantity": 41.17,
+        "total_value_usd": 41.17,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 41.07
+          "Main Ledger": 41.17
         }
       },
       "USDT": {
@@ -780,8 +780,14 @@
     }
   },
   "recent_beerhall_digests": {
-    "total_entries": 57,
+    "total_entries": 58,
     "recent": [
+      {
+        "date": "2026-06-15",
+        "slug": "kopi-bar-onboarding-legal-v7",
+        "filename": "beer-hall_2026-06-15T042930Z_kopi-bar-onboarding-legal-v7.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-15T042930Z_kopi-bar-onboarding-legal-v7.md"
+      },
       {
         "date": "2026-06-14",
         "slug": "narrative-update-sophia-context-plan",
@@ -835,12 +841,6 @@
         "slug": "oracle-permalinks-outreach-automation",
         "filename": "beer-hall_2026-06-06T034159Z_oracle-permalinks-outreach-automation.md",
         "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-06T034159Z_oracle-permalinks-outreach-automation.md"
-      },
-      {
-        "date": "2026-06-05",
-        "slug": "security-dashboard-live-aora-modules",
-        "filename": "beer-hall_2026-06-05T040057Z_security-dashboard-live-aora-modules.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-05T040057Z_security-dashboard-live-aora-modules.md"
       }
     ],
     "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
