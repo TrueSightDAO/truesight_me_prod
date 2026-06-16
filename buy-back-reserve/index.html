@@ -290,6 +290,28 @@
             document.getElementById('reserve-updated').textContent = 'Last updated: ' + d.toLocaleString('en-US', { dateStyle: 'long', timeStyle: 'short' });
           }
 
+          // Render provisions table
+          const provisions = data.provisions || [];
+          const countEl = document.getElementById('provisions-count');
+          if (countEl) {
+            countEl.textContent = provisions.length + ' daily provision' + (provisions.length !== 1 ? 's' : '') + ' recorded';
+          }
+          const tbody = document.getElementById('provisions-tbody');
+          if (tbody && provisions.length > 0) {
+            const sorted = [...provisions].sort((a, b) => b.date.localeCompare(a.date));
+            for (const p of sorted) {
+              const tr = document.createElement('tr');
+              tr.style.borderBottom = '1px solid var(--border, #e8e8e8)';
+              const dateStr = p.date.slice(0, 4) + '-' + p.date.slice(4, 6) + '-' + p.date.slice(6, 8);
+              tr.innerHTML = '<td style="padding: 0.4rem 0.75rem; white-space: nowrap;">' + dateStr + '</td>' +
+                '<td style="padding: 0.4rem 0.75rem;">' + (p.description || 'Daily buy-back provision') + '</td>' +
+                '<td style="padding: 0.4rem 0.75rem; text-align: right;">$' + p.amount.toFixed(2) + '</td>';
+              tbody.appendChild(tr);
+            }
+          } else if (tbody) {
+            tbody.innerHTML = '<tr><td colspan="3" style="padding: 1rem; text-align: center; color: var(--muted);">No provision records available.</td></tr>';
+          }
+
           document.getElementById('meta-timestamp').textContent = 'Data retrieved: ' + new Date().toLocaleString('en-US', { dateStyle: 'long', timeStyle: 'short' });
 
           document.getElementById('loading').style.display = 'none';
