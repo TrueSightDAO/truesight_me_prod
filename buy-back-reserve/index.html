@@ -220,7 +220,7 @@
     </footer>
 
     <script>
-      const PERFORMANCE_STATISTICS_URL = 'https://script.google.com/macros/s/AKfycbzlfOBo9UqKOh7jIqGcmbPAMM1RxCbsJHb-UV_vM6VbvK_HSdT44KyGbbXIeo-_Ovfy/exec';
+      const PERFORMANCE_STATISTICS_URL = 'https://script.google.com/macros/s/AKfycbwyuuJpYQ5SclOomXnxA_NUBDUmT6tBMdQpi32Bp_rHpsl1tDJpGIgBFFYg9hGIAVam/exec';
 
       function formatNumber(num, decimals) {
         if (num === null || num === undefined) return '&mdash;';
@@ -230,26 +230,46 @@
         });
       }
 
+      const CACHE_URL = 'https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/buy-back-reserve.json';
+
       async function loadReserve() {
         try {
-          const response = await fetch(PERFORMANCE_STATISTICS_URL);
-          if (!response.ok) throw new Error('HTTP ' + response.status);
-          const result = await response.json();
-          if (result.error) throw new Error(result.message || 'Web service error');
-
-          const data = result.data || {};
-          const reserve = data['BUY_BACK_RESERVE'];
-
-          if (!reserve || reserve.exchangeRate === null || reserve.exchangeRate === undefined) {
-            throw new Error('BUY_BACK_RESERVE not yet available. The GAS sync needs to be run first.');
+          // Try JSON cache first (fast, from GitHub CDN)
+          let data;
+          try {
+            const response = await fetch(CACHE_URL);
+            if (response.ok) {
+              data = await response.json();
+            }
+          } catch (_) {
+            // Cache unavailable, fall through to GAS
           }
 
-          const amount = reserve.exchangeRate;
-          const updated = reserve.updatedDate || null;
+          if (!data) {
+            // Fallback: load from GAS Performance Statistics endpoint
+            const response = await fetch(PERFORMANCE_STATISTICS_URL);
+            if (!response.ok) throw new Error('HTTP ' + response.status);
+            const result = await response.json();
+            if (result.error) throw new Error(result.message || 'Web service error');
+
+            const stats = result.data || {};
+            const reserve = stats['BUY_BACK_RESERVE'];
+            if (!reserve || reserve.exchangeRate === null || reserve.exchangeRate === undefined) {
+              throw new Error('BUY_BACK_RESERVE not yet available. The GAS sync needs to be run first.');
+            }
+
+            data = {
+              reserve: { total_usd: reserve.exchangeRate },
+              generated_at: reserve.updatedDate || new Date().toISOString()
+            };
+          }
+
+          const amount = data.reserve.total_usd;
+          const generatedAt = data.generated_at || null;
 
           document.getElementById('reserve-amount').textContent = '$' + formatNumber(amount, 2) + ' USD';
-          if (updated) {
-            const d = new Date(updated);
+          if (generatedAt) {
+            const d = new Date(generatedAt);
             document.getElementById('reserve-updated').textContent = 'Last updated: ' + d.toLocaleString('en-US', { dateStyle: 'long', timeStyle: 'short' });
           }
 
