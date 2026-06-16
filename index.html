@@ -387,6 +387,18 @@
               <small>Main ledger revenue (for buy-back budget)</small>
             </div>
           </article>
+          <article class="stat-card">
+            <div class="stat-label">
+              <h3>Accumulated Buy-Back Reserve</h3>
+            </div>
+            <div class="stat-value-container">
+              <p class="stat-value" data-key="BUY_BACK_RESERVE">—</p>
+            </div>
+            <div class="stat-explanation">
+              <small>Total USD provisions set aside for buy-back / voting rights cash out</small>
+            </div>
+            <a class="stat-detail-link" href="/buy-back-reserve/">View history →</a>
+          </article>
           <article class="stat-card stat-card-hidden" id="stat-card-7">
             <div class="stat-label">
               <h3>
@@ -597,6 +609,8 @@
             case '30_DAYS_SALES':
               return `${formatNumber(value, 2)} USD`;
             case 'PAST_30_DAYS_DAO_REVENUE':
+              return `${formatNumber(value, 2)} USD`;
+            case 'BUY_BACK_RESERVE':
               return `${formatNumber(value, 2)} USD`;
             case 'TDG_DAILY_BUY_BACK_BUDGET':
             case 'DAILY_BUY_BACK_BUDGET':
