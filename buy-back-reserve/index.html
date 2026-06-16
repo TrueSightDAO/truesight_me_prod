@@ -158,6 +158,23 @@
             <p><a href="../blog/posts/understanding-truesight-dao-s-daily-buy-back-budget-a-dynamic-force-for-stability.html" class="text-link">Read the full blog post &rarr;</a></p>
           </div>
 
+          <div class="section-card" id="provisions-card">
+            <h2>Daily Provision History</h2>
+            <p class="status-text" id="provisions-count"></p>
+            <div style="overflow-x: auto;">
+              <table class="provisions-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                <thead>
+                  <tr style="border-bottom: 2px solid var(--border, #e8e8e8);">
+                    <th style="text-align: left; padding: 0.5rem 0.75rem; font-weight: 600;">Date</th>
+                    <th style="text-align: left; padding: 0.5rem 0.75rem; font-weight: 600;">Description</th>
+                    <th style="text-align: right; padding: 0.5rem 0.75rem; font-weight: 600;">Amount (USD)</th>
+                  </tr>
+                </thead>
+                <tbody id="provisions-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
           <div class="methodology-box">
             <h3>Data Source</h3>
             <p>The reserve value is read directly from the <strong>off chain asset balance</strong> sheet in the DAO's main ledger, specifically the <strong>&ldquo;USD - provisions for voting rights cash out&rdquo;</strong> row. This is the same source used by the <code>syncAllPerformanceStatistics()</code> automation to populate the <code>BUY_BACK_RESERVE</code> key in the Performance Statistics sheet, which feeds this page and the homepage stat card.</p>
