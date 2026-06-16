@@ -387,7 +387,7 @@
               <small>Main ledger revenue (for buy-back budget)</small>
             </div>
           </article>
-          <article class="stat-card">
+          <article class="stat-card stat-card-hidden" id="stat-card-6">
             <div class="stat-label">
               <h3>Accumulated Buy-Back Reserve</h3>
             </div>
@@ -743,19 +743,21 @@
 
         // Handle "Show More Stats" button
         const showMoreButton = document.getElementById('show-more-stats');
-        const hiddenStatCard = document.getElementById('stat-card-7');
+        const hiddenStatCards = document.querySelectorAll('.stat-card-hidden, .stat-card-visible');
         
-        if (showMoreButton && hiddenStatCard) {
+        if (showMoreButton && hiddenStatCards.length > 0) {
           showMoreButton.addEventListener('click', function() {
-            if (hiddenStatCard.classList.contains('stat-card-hidden')) {
-              hiddenStatCard.classList.remove('stat-card-hidden');
-              hiddenStatCard.classList.add('stat-card-visible');
-              showMoreButton.textContent = 'Show Less Stats';
-            } else {
-              hiddenStatCard.classList.remove('stat-card-visible');
-              hiddenStatCard.classList.add('stat-card-hidden');
-              showMoreButton.textContent = 'Show More Stats';
-            }
+            const showing = hiddenStatCards[0].classList.contains('stat-card-hidden');
+            hiddenStatCards.forEach(function(card) {
+              if (showing) {
+                card.classList.remove('stat-card-hidden');
+                card.classList.add('stat-card-visible');
+              } else {
+                card.classList.remove('stat-card-visible');
+                card.classList.add('stat-card-hidden');
+              }
+            });
+            showMoreButton.textContent = showing ? 'Show Less Stats' : 'Show More Stats';
           });
         }
       })();
