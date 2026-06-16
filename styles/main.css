@@ -348,6 +348,7 @@ a {
     max-height: 0;
     overflow: hidden;
     transition: max-height var(--transition-base);
+    list-style: none;
   }
 
   .nav-menu .dropdown-menu[aria-expanded="true"] {
