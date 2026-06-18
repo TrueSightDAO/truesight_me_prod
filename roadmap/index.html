@@ -168,8 +168,8 @@
         <pre class="mermaid">
 flowchart TD
     G["Graeme Read / Amazon Restoration Partnership"]:::new
-    T5["Legal Entity Structuring"]:::offline --> T7
-    T6["GACC / Brazil Compliance"]:::offline --> T7
+    T5["Legal Entity Structuring"]:::offline
+    T6["GACC / Brazil Compliance"]:::offline
     T7["Brazil Export Entity&lt;br/&gt;CNPJ / NF-e / CNAE"]:::gate --> T8
     T7 --> T9
     T7 --> T10
@@ -221,7 +221,7 @@ flowchart TD
               <td><span class="status-badge status-gate">🔴 Gate</span></td>
               <td>Matheus / Paloma / Gary</td>
               <td>~Jun 26</td>
-              <td>Legal Entity Structuring</td>
+              <td>—</td>
             </tr>
             <tr>
               <td><strong>Chocolate Subscription Delivery</strong></td>
@@ -273,7 +273,7 @@ flowchart TD
       <h2>Track Details</h2>
 
       <!-- Legal Entity Structuring -->
-      <div class="track-card offline">
+      <div class="track-card offline" id="legal-entity-structuring">
         <h3>Legal Entity Structuring</h3>
         <div class="meta">
           <span><strong>Status:</strong> 🟡 Offline research</span>
@@ -282,12 +282,12 @@ flowchart TD
         <p><strong>Goal:</strong> Choose holding entity structure (DUNA vs Próspera) for DAO-owned Brazilian export CNPJ.</p>
         <p><strong>Next milestone:</strong> Mon Jun 22, 2026 · 11am PDT — call with Layon Costa (counsel), Breno, Paloma. <a href="https://meet.google.com/eht-bdgp-tdh" target="_blank" rel="noreferrer noopener" class="doc-link">Google Meet →</a></p>
         <p><strong>Dependencies:</strong> None — parallel work.</p>
-        <p><strong>Blocks:</strong> Brazil Export Entity (entity must exist to own the new CNPJ).</p>
+        <p><strong>Blocks:</strong> None — parallel to all other tracks.</p>
         <a href="https://github.com/TrueSightDAO/agentic_ai_context/blob/main/BRAZIL_EXPORT_ENTITY_BRIEF.md" target="_blank" rel="noreferrer noopener" class="doc-link">📄 BRAZIL_EXPORT_ENTITY_BRIEF.md →</a>
       </div>
 
       <!-- GACC / Brazil Compliance -->
-      <div class="track-card offline">
+      <div class="track-card offline" id="gacc-brazil-compliance">
         <h3>GACC / Brazil Compliance</h3>
         <div class="meta">
           <span><strong>Status:</strong> 🟡 Offline prep</span>
@@ -295,12 +295,12 @@ flowchart TD
         </div>
         <p><strong>Goal:</strong> Regulatory filing prep for Brazil-to-China cacao export (GACC registration).</p>
         <p><strong>Dependencies:</strong> None — parallel work.</p>
-        <p><strong>Blocks:</strong> Brazil Export Entity (export entity must exist to register with GACC).</p>
+        <p><strong>Blocks:</strong> None — parallel to all other tracks.</p>
         <a href="https://github.com/TrueSightDAO/agentic_ai_context/blob/main/BRAZIL_TO_CHINA_GACC_REGISTRATION_GUIDE.md" target="_blank" rel="noreferrer noopener" class="doc-link">📄 GACC Registration Guide →</a>
       </div>
 
       <!-- Brazil Export Entity -->
-      <div class="track-card gate">
+      <div class="track-card gate" id="brazil-export-entity">
         <h3>Brazil Export Entity (CNPJ / NF-e / CNAE) ← THE GATE</h3>
         <div class="meta">
           <span><strong>Status:</strong> 🔴 Critical blocker</span>
@@ -313,8 +313,8 @@ flowchart TD
           <a href="https://github.com/TrueSightDAO/.github/blob/main/attachments/2026-06-19_matheus_cnae_timeline.jpg" target="_blank" rel="noreferrer noopener" class="doc-link">📸 Source: Matheus, 2026-06-19 →</a>
         </div>
         <p><strong>Context:</strong> Black King (CNPJ 50.042.585/0001-80) is an Empresário Individual with only service CNAEs (82.30-0-01). Cannot issue export NF-e. New entity needs CNAE 46.23-1/04 + IE + NF-e model 55 at SEFAZ-BA.</p>
-        <p><strong>Dependencies:</strong> Legal Entity Structuring (holding entity must own the new CNPJ).</p>
-        <p><strong>Blocks:</strong> Everything below.</p>
+        <p><strong>Dependencies:</strong> None — parallel to <a href="#legal-entity-structuring">Legal Entity Structuring</a> and <a href="#gacc-brazil-compliance">GACC / Brazil Compliance</a>.</p>
+        <p><strong>Blocks:</strong> <a href="#chocolate-subscription-delivery">Chocolate Subscription Delivery</a>, <a href="#china-aora-events">China / Aora Events</a>, <a href="#chives-root-consignment">Chives Root Consignment</a>, <a href="#michael-johnson-consignment">Michael Johnson Consignment</a>, <a href="#kopi-bar-jul-10-tasting">Kopi Bar Jul 10 Tasting</a>.</p>
         <a href="https://github.com/TrueSightDAO/agentic_ai_context/blob/main/BRAZIL_EXPORT_ENTITY_BRIEF.md" target="_blank" rel="noreferrer noopener" class="doc-link">📄 BRAZIL_EXPORT_ENTITY_BRIEF.md →</a>
 
         <div class="chain">
@@ -330,64 +330,66 @@ flowchart TD
       </div>
 
       <!-- Chocolate Subscription Delivery -->
-      <div class="track-card blocked">
+      <div class="track-card blocked" id="chocolate-subscription-delivery">
         <h3>Chocolate Subscription Delivery</h3>
         <div class="meta">
           <span><strong>Status:</strong> 🟡 Blocked</span>
           <span><strong>Owner:</strong> Gary</span>
         </div>
         <p><strong>Goal:</strong> Fulfill chocolate bar subscriptions. Phase 1 (subscribe engine + PDPs + homepage card) is built and merged. Phase 2 (fulfillment automation) deferred until export entity clears.</p>
-        <div class="blocker-note">🔴 <strong>Blocked by:</strong> Brazil Export Entity — cannot ship bars without legal export.</div>
+        <div class="blocker-note">🔴 <strong>Blocked by:</strong> <a href="#brazil-export-entity">Brazil Export Entity</a> — cannot ship bars without legal export.</div>
         <a href="https://github.com/TrueSightDAO/agentic_ai_context/blob/main/CHOCOLATE_SUBSCRIPTION_PLAN.md" target="_blank" rel="noreferrer noopener" class="doc-link">📄 CHOCOLATE_SUBSCRIPTION_PLAN.md →</a>
       </div>
 
       <!-- China / Aora Events -->
-      <div class="track-card blocked">
+      <div class="track-card blocked" id="china-aora-events">
         <h3>China / Aora Events (100 chocolate bars)</h3>
         <div class="meta">
           <span><strong>Status:</strong> 🟡 Blocked</span>
           <span><strong>Owner:</strong> Gary / Elizabeth Wong (Liz) / Jerri</span>
         </div>
         <p><strong>Goal:</strong> Aora pilot in China with GO/Nucleus network. 100 chocolate bars (50g, 81% cacao) for experiential learning events. Gary backpack-carry to China.</p>
-        <div class="blocker-note">🔴 <strong>Blocked by:</strong> Brazil Export Entity — bars must be produced in Brazil and exported legally.</div>
+        <div class="blocker-note">🔴 <strong>Blocked by:</strong> <a href="#brazil-export-entity">Brazil Export Entity</a> — bars must be produced in Brazil and exported legally.</div>
+        <p><strong>Event plan:</strong> Jerri shared a 40-page detailed event plan (Jul 2026 beta + Autumn public launch). <a href="https://github.com/TrueSightDAO/.github/blob/main/attachments/2026-06-19_aora_agroverse_event_plan.pdf" target="_blank" rel="noreferrer noopener" class="doc-link">📄 Full PDF →</a></p>
+        <p><strong>July beta:</strong> 10–15 seed families (ages 6–12), co-invited by Teacher Evan + Liz. 90-min immersive experience. Gary as "Guardian of the Cacao Rainforest." 4-tier technical plan (1C recommended: 1 projector + 6 scenes). 15-item risk register.</p>
         <a href="https://github.com/TrueSightDAO/agentic_ai_context/blob/main/AORA_EXPERIENCE_PLAN.md" target="_blank" rel="noreferrer noopener" class="doc-link">📄 AORA_EXPERIENCE_PLAN.md →</a>
       </div>
 
       <!-- Jul 10 Kopi Bar Tasting -->
-      <div class="track-card blocked">
+      <div class="track-card blocked" id="kopi-bar-jul-10-tasting">
         <h3>Jul 10 Kopi Bar Tasting</h3>
         <div class="meta">
           <span><strong>Status:</strong> 🟡 Blocked</span>
           <span><strong>Owner:</strong> Nora Haron / Gary</span>
         </div>
         <p><strong>Goal:</strong> Nora Haron from Kopi Bar &amp; Cafe organizing a July 10 gathering for chocolate tasting. Bars must clear the full export chain to arrive in time.</p>
-        <div class="blocker-note">🔴 <strong>Blocked by:</strong> Brazil Export Entity — bars need to clear Matheus → Omega Services → SeaCoast Logistics → Kirsten chain.</div>
+        <div class="blocker-note">🔴 <strong>Blocked by:</strong> <a href="#brazil-export-entity">Brazil Export Entity</a> — bars need to clear Matheus → Omega Services → SeaCoast Logistics → Kirsten chain.</div>
       </div>
 
       <!-- Chives Root -->
-      <div class="track-card blocked">
+      <div class="track-card blocked" id="chives-root-consignment">
         <h3>Chives Root — Consignment (10 bags ceremonial cacao)</h3>
         <div class="meta">
           <span><strong>Status:</strong> 🟡 Blocked</span>
           <span><strong>Owner:</strong> Chives Root / Gary</span>
         </div>
         <p><strong>Goal:</strong> 10 bags of ceremonial cacao shipped to Chives Root so she can start consignment-based sales.</p>
-        <div class="blocker-note">🔴 <strong>Blocked by:</strong> Brazil Export Entity — riding on Matheus freight arriving.</div>
+        <div class="blocker-note">🔴 <strong>Blocked by:</strong> <a href="#brazil-export-entity">Brazil Export Entity</a> — riding on Matheus freight arriving.</div>
       </div>
 
       <!-- Michael Johnson -->
-      <div class="track-card blocked">
+      <div class="track-card blocked" id="michael-johnson-consignment">
         <h3>Michael Johnson — Consignment</h3>
         <div class="meta">
           <span><strong>Status:</strong> 🟡 Blocked</span>
           <span><strong>Owner:</strong> Michael Johnson / Gary</span>
         </div>
         <p><strong>Goal:</strong> Consignment-based sales for Michael Johnson. Riding on the same freight chain.</p>
-        <div class="blocker-note">🔴 <strong>Blocked by:</strong> Brazil Export Entity — riding on Matheus freight arriving.</div>
+        <div class="blocker-note">🔴 <strong>Blocked by:</strong> <a href="#brazil-export-entity">Brazil Export Entity</a> — riding on Matheus freight arriving.</div>
       </div>
 
       <!-- Graeme Read -->
-      <div class="track-card new">
+      <div class="track-card new" id="graeme-read">
         <h3>Graeme Read / Amazon Restoration Partnership</h3>
         <div class="meta">
           <span><strong>Status:</strong> 🔵 New / Exploratory</span>
