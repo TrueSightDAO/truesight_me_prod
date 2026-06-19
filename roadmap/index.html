@@ -168,18 +168,23 @@
         <pre class="mermaid">
 flowchart TD
     G["Graeme Read / Amazon Restoration Partnership"]:::new
+    T13["Pará Tree Planting&lt;br/&gt;Paolo, financing secured"]:::offline
     T5["Legal Entity Structuring"]:::offline
-    T6["GACC / Brazil Compliance"]:::offline
-    T7["Brazil Export Entity&lt;br/&gt;CNPJ / NF-e / CNAE"]:::gate --> T8
-    T7 --> T9
+    T5a["New Export Entity&lt;br/&gt;DUNA / Próspera"]:::offline
+    T6["GACC / Brazil Compliance&lt;br/&gt;China-only, 3-6 months"]:::offline
+    T7["Black King CNAE / IE / NF-e&lt;br/&gt;CNAE amendment on existing CNPJ"]:::gate
     T7 --> T10
     T7 --> T11
     T7 --> T12
-    T8["Chocolate Subscription Delivery"]:::blocked
-    T9["China / Aora Events&lt;br/&gt;100 chocolate bars"]:::blocked
-    T10["Jul 10 Kopi Bar Tasting&lt;br/&gt;Nora Haron"]:::blocked
-    T11["Chives Root&lt;br/&gt;10 bags ceremonial cacao"]:::blocked
-    T12["Michael Johnson&lt;br/&gt;Consignment"]:::blocked
+    T7 --> T8
+    T7 --> T9
+    T6 --> T8
+    T6 --> T9
+    T8["China / Aora Events&lt;br/&gt;100 chocolate bars"]:::blocked
+    T9["Chocolate Subscription Delivery"]:::blocked
+    T10["Chives Root Consignment&lt;br/&gt;10 bags ceremonial cacao"]:::blocked
+    T11["Michael Johnson Consignment"]:::blocked
+    T12["Kopi Bar Jul 10 Tasting&lt;br/&gt;Nora Haron"]:::blocked
 
     classDef gate fill:#e74c3c,color:#fff,stroke:#c0392b,stroke-width:2px
     classDef blocked fill:#f39c12,color:#fff,stroke:#e67e22
