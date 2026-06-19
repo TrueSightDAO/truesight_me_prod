@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) - only on truesight.me production -->
+<script>
+(function() {
+  var h = window.location.hostname;
+  if (h !== 'truesight.me' && h !== 'www.truesight.me') return;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9QN16RFM0T';
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9QN16RFM0T');
+})();
+</script>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Smart Contracts | TrueSight DAO</title>
+<meta name="description" content="Complete catalog of all 30 RSA-signed smart contracts on the TrueSight DAO protocol. Each contract is a signed event submitted to Edgar." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.truesight.me/contracts/" />
+<meta property="og:title" content="Smart Contracts | TrueSight DAO" />
+<meta property="og:description" content="Complete catalog of all 30 RSA-signed smart contracts on the TrueSight DAO protocol." />
+<meta property="og:image" content="https://www.truesight.me/assets/truesight-logo.png" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://www.truesight.me/contracts/" />
+<meta name="twitter:title" content="Smart Contracts | TrueSight DAO" />
+<meta name="twitter:description" content="Complete catalog of all 30 RSA-signed smart contracts on the TrueSight DAO protocol." />
+
+<link rel="icon" href="https://static.wixstatic.com/ficons/0e2cde_dd65db118f8f499eb06c159d7262167d%7Emv2.ico" type="image/x-icon" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles/main.css" />
+
+<style>
+  /* Contracts page specific styles */
+  .contracts-hero {
+    text-align: center;
+    padding: var(--space-xl) var(--space-lg) var(--space-lg);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .contracts-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: var(--space-sm);
+  }
+  .contracts-hero h1 span {
+    color: var(--accent);
+  }
+  .contracts-hero p {
+    color: var(--muted);
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+
+  /* Architecture Diagram */
+  .arch-section {
+    max-width: 900px;
+    margin: 0 auto var(--space-xl);
+    padding: 0 var(--space-lg);
+  }
+  .arch-section h2 {
+    text-align: center;
+    color: var(--forest);
+    font-size: 1.5rem;
+    margin-bottom: var(--space-lg);
+  }
+  .arch-diagram {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: var(--space-lg);
+    overflow-x: auto;
+  }
+  .arch-diagram svg {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    display: block;
+    margin: 0 auto;
+  }
+  .arch-caption {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.875rem;
+    margin-top: var(--space-sm);
+    font-style: italic;
+  }
+
+  /* Stats bar */
+  .contracts-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    padding: var(--space-lg);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .contracts-stats .stat {
+    text-align: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: var(--space-md) var(--space-lg);
+    min-width: 140px;
+  }
+  .contracts-stats .stat .num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+  }
+  .contracts-stats .stat .label {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* Category sections */
+  .category {
+    max-width: 900px;
+    margin: 0 auto var(--space-xl);
+    padding: 0 var(--space-lg);
+  }
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--accent);
+  }
+  .category-header .icon {
+    font-size: 1.5rem;
+  }
+  .category-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin: 0;
+  }
+  .category-header .count {
+    background: var(--accent);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-left: auto;
+  }
+
+  /* Contract cards */
+  .contract-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    transition: box-shadow var(--transition-fast);
+  }
+  .contract-card:hover {
+    box-shadow: 0 4px 16px rgba(95, 111, 82, 0.12);
+  }
+  .contract-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin: 0 0 var(--space-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  .contract-card h3 .event-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent-2);
+    background: rgba(244, 163, 0, 0.1);
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+  .contract-card .purpose {
+    color: var(--muted);
+    font-size: 0.9375rem;
+    margin: 0 0 var(--space-sm);
+    line-height: 1.6;
+  }
+  .contract-card .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-md);
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+  .contract-card .meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .contract-card .meta .tag {
+    background: rgba(95, 111, 82, 0.1);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  .contract-card .fields {
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--border);
+  }
+  .contract-card .fields summary {
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--forest);
+    user-select: none;
+  }
+  .contract-card .fields summary:hover {
+    color: var(--accent-2);
+  }
+  .contract-card .fields ul {
+    margin: var(--space-xs) 0 0;
+    padding-left: var(--space-md);
+    font-size: 0.8125rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .contract-card .fields ul li.required::marker {
+    color: var(--accent);
+    content: "* ";
+  }
+
+  /* Variant sub-cards */
+  .variant {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: var(--space-sm);
+    margin-top: var(--space-sm);
+  }
+  .variant h4 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin: 0 0 var(--space-xs);
+  }
+  .variant h4 .var-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--clay);
+  }
+  .variant p {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin: 0 0 var(--space-xs);
+  }
+
+  /* DApp link */
+  .dapp-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: var(--space-sm);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--accent-2);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  .dapp-link:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  /* How signing works */
+  .how-it-works {
+    max-width: 900px;
+    margin: 0 auto var(--space-xl);
+    padding: 0 var(--space-lg);
+  }
+  .how-it-works h2 {
+    text-align: center;
+    color: var(--forest);
+    font-size: 1.5rem;
+    margin-bottom: var(--space-lg);
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-md);
+  }
+  .step {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: var(--space-md);
+    text-align: center;
+  }
+  .step .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: var(--space-sm);
+  }
+  .step h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin: 0 0 var(--space-xs);
+  }
+  .step p {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .contracts-stats {
+      gap: var(--space-sm);
+    }
+    .contracts-stats .stat {
+      min-width: 100px;
+      padding: var(--space-sm);
+    }
+    .contracts-stats .stat .num {
+      font-size: 1.5rem;
+    }
+    .category-header {
+      flex-wrap: wrap;
+    }
+    .category-header .count {
+      margin-left: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-header">
+  <div class="header-container">
+    <a href="../index.html" class="header-logo">
+      <img src="https://static.wixstatic.com/media/0e2cde_f81b16c82ebe4aaca4b5ce54b819a693~mv2.png/v1/fill/w_622,h_160,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/20240612_truesight_dao_logo_long.png" alt="TrueSight DAO" width="155" height="40" loading="eager" />
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    <ul class="nav-menu" aria-hidden="true">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about-us.html">About Us</a></li>
+      <li>
+        <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Projects</button>
+        <ul class="dropdown-menu" aria-expanded="false">
+          <li><a href="../agroverse.html">Agroverse Community</a></li>
+          <li><a href="../sunmint.html">Sunmint Program</a></li>
+          <li><a href="../edgar.html">Edgar Platform</a></li>
+          <li><a href="../programs.html">Programs</a></li>
+          <li><a href="../fundraisers.html">Fundraisers</a></li>
+        </ul>
+      </li>
+      <li><a href="https://truesight.me/proposals" target="_blank" rel="noreferrer noopener">Proposals</a></li>
+      <li>
+        <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Community</button>
+        <ul class="dropdown-menu" aria-expanded="false">
+          <li><a href="https://truesight.me/quests" target="_blank" rel="noreferrer noopener">Community Challenges</a></li>
+          <li><a href="https://truesight.me/governors" target="_blank" rel="noreferrer noopener">Community Leaders</a></li>
+          <li><a href="../members.html">Members Directory</a></li>
+          <li><a href="https://truesight.me/recurring-tdg-awards" target="_blank" rel="noreferrer noopener">Ongoing Awards</a></li>
+          <li><a href="https://truesight.me/submissions/scored-and-to-be-tokenized" target="_blank" rel="noreferrer noopener">Upcoming Awards</a></li>
+          <li><a href="https://sophia.truesight.me" target="_blank" rel="noreferrer noopener">Join Chat</a></li>
+          <li><a href="../beerhall/updates.html">Beer Hall digests</a></li>
+        </ul>
+      </li>
+      <li>
+        <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Resources</button>
+        <ul class="dropdown-menu" aria-expanded="false">
+          <li><a href="../faq.html">Frequently Asked Questions</a></li>
+          <li><a href="/whitepaper/">View Whitepaper</a></li>
+          <li><a href="https://truesight.me/tokenomics" target="_blank" rel="noreferrer noopener">Tokenomics</a></li>
+          <li><a href="https://truesight.me/dapp" target="_blank" rel="noreferrer noopener">Web App</a></li>
+          <li><a href="https://truesight.me/ledger" target="_blank" rel="noreferrer noopener">Contributions Record</a></li>
+          <li><a href="https://truesight.me/roadmap" target="_blank" rel="noreferrer noopener">Roadmap</a></li>
+          <li><a href="../security-dashboard/">Security Dashboard</a></li>
+        </ul>
+      </li>
+      <li><a href="../blog/index.html">Blog</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- Hero -->
+  <section class="contracts-hero">
+    <p class="pill">TrueSight DAO Protocol</p>
+    <h1>Smart <span>Contracts</span></h1>
+    <p>
+      Every action in the TrueSight DAO is an RSA-signed smart contract. Each contract is a cryptographically
+      signed event submitted to <strong>Edgar</strong> — the DAO's execution layer — which verifies the signature,
+      applies state transitions, and records the result on the ledger and TrueChain audit trail.
+    </p>
+  </section>
+
+  <!-- Stats -->
+  <div class="contracts-stats">
+    <div class="stat">
+      <span class="num">30</span>
+      <span class="label">Smart Contracts</span>
+    </div>
+    <div class="stat">
+      <span class="num">6</span>
+      <span class="label">Categories</span>
+    </div>
+    <div class="stat">
+      <span class="num">RSA-2048</span>
+      <span class="label">Signature Algorithm</span>
+    </div>
+    <div class="stat">
+      <span class="num">SHA-256</span>
+      <span class="label">Hash Function</span>
+    </div>
+  </div>
+
+  <!-- Architecture Diagram -->
+  <section class="arch-section">
+    <h2>Protocol Architecture</h2>
+    <div class="arch-diagram">
+      <svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TrueSight DAO Protocol Architecture Diagram">
+        <defs>
+          <linearGradient id="layer1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f4a300" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#f4a300" stop-opacity="0.05"/>
+          </linearGradient>
+          <linearGradient id="layer2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#5f6f52" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#5f6f52" stop-opacity="0.05"/>
+          </linearGradient>
+          <linearGradient id="layer3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#c08457" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#c08457" stop-opacity="0.05"/>
+          </linearGradient>
+          <linearGradient id="layer4" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2b1d14" stop-opacity="0.12"/>
+            <stop offset="100%" stop-color="#2b1d14" stop-opacity="0.04"/>
+          </linearGradient>
+          <filter id="shadow">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+          </filter>
+        </defs>
+
+        <!-- Layer backgrounds -->
+        <rect x="40" y="20" width="720" height="70" rx="10" fill="url(#layer1)" stroke="#f4a300" stroke-width="1.5" stroke-opacity="0.3"/>
+        <rect x="40" y="110" width="720" height="70" rx="10" fill="url(#layer2)" stroke="#5f6f52" stroke-width="1.5" stroke-opacity="0.3"/>
+        <rect x="40" y="200" width="720" height="70" rx="10" fill="url(#layer3)" stroke="#c08457" stroke-width="1.5" stroke-opacity="0.3"/>
+        <rect x="40" y="290" width="720" height="110" rx="10" fill="url(#layer4)" stroke="#2b1d14" stroke-width="1.5" stroke-opacity="0.2"/>
+
+        <!-- Layer 1: Wallet / DApp -->
+        <text x="60" y="48" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#d38900">LAYER 1</text>
+        <text x="60" y="68" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#2b1d14">Wallet / DApp</text>
+        <text x="60" y="84" font-family="Inter, sans-serif" font-size="11" fill="#6f5a44">dapp.truesight.me — Key generation, identity registration, contract signing</text>
+
+        <!-- Layer 2: Smart Contracts -->
+        <text x="60" y="138" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#5f6f52">LAYER 2</text>
+        <text x="60" y="158" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#2b1d14">Smart Contracts</text>
+        <text x="60" y="174" font-family="Inter, sans-serif" font-size="11" fill="#6f5a44">30 RSA-signed event types — [SALES EVENT], [INVENTORY MOVEMENT], [CONTRIBUTION EVENT], etc.</text>
+
+        <!-- Layer 3: Edgar (Execution Layer) -->
+        <text x="60" y="228" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#c08457">LAYER 3</text>
+        <text x="60" y="248" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#2b1d14">Edgar — Execution Layer</text>
+        <text x="60" y="264" font-family="Inter, sans-serif" font-size="11" fill="#6f5a44">edgar.truesight.me — Signature verification, state transitions, event routing</text>
+
+        <!-- Layer 4: Ledger + TrueChain -->
+        <text x="60" y="318" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#2b1d14">LAYER 4</text>
+        <text x="60" y="338" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#2b1d14">Ledger &amp; TrueChain</text>
+        <text x="60" y="354" font-family="Inter, sans-serif" font-size="11" fill="#6f5a44">Google Sheets (canonical ledger) + TrueChain (hash-linked audit trail)</text>
+        <text x="60" y="370" font-family="Inter, sans-serif" font-size="11" fill="#6f5a44">truesight.me — Transparency layer: browse events, verify signatures, track impact</text>
+        <text x="60" y="386" font-family="Inter, sans-serif" font-size="11" fill="#6f5a44">Sophia (AI Autopilot) — Natural language interface to submit &amp; query contracts</text>
+
+        <!-- Arrows between layers -->
+        <line x1="400" y1="90" x2="400" y2="110" stroke="#f4a300" stroke-width="2" stroke-opacity="0.5" marker-end="url(#arrow1)"/>
+        <line x1="400" y1="180" x2="400" y2="200" stroke="#5f6f52" stroke-width="2" stroke-opacity="0.5"/>
+        <line x1="400" y1="270" x2="400" y2="290" stroke="#c08457" stroke-width="2" stroke-opacity="0.5"/>
+
+        <!-- Arrow markers -->
+        <defs>
+          <marker id="arrow1" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#f4a300" fill-opacity="0.5"/>
+          </marker>
+        </defs>
+
+        <!-- Side labels -->
+        <text x="770" y="55" font-family="Inter, sans-serif" font-size="10" fill="#6f5a44" text-anchor="end">User-facing</text>
+        <text x="770" y="375" font-family="Inter, sans-serif" font-size="10" fill="#6f5a44" text-anchor="end">Persistence</text>
+      </svg>
+    </div>
+    <p class="arch-caption">The four-layer architecture of the TrueSight DAO protocol. Every signed event flows from the DApp through the smart contract layer to Edgar, which verifies and records it.</p>
+  </section>
+
+  <!-- How Signing Works -->
+  <section class="how-it-works">
+    <h2>How Signing Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Generate Keypair</h3>
+        <p>Create an RSA-2048 keypair in the DApp or via the CLI. Your public key becomes your DAO identity.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Register Identity</h3>
+        <p>Submit an [EMAIL REGISTERED EVENT] to bind your public key to your email. Verify via the link sent to your inbox.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Sign a Contract</h3>
+        <p>Choose an event type, fill in the fields, and sign the canonical payload with your private key.</p>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <h3>Submit to Edgar</h3>
+        <p>POST the signed payload to edgar.truesight.me. Edgar verifies the signature and executes the state transition.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category 1: Identity & Registration -->
+  <section class="category">
+    <div class="category-header">
+      <span class="icon">🔑</span>
+      <h2>Identity &amp; Registration</h2>
+      <span class="count">6 contracts</span>
+    </div>
+
+    <div class="contract-card">
+      <h3>Email Registered Event <span class="event-name">[EMAIL REGISTERED EVENT]</span></h3>
+      <p class="purpose">Register a new email address with the DAO. The first step to creating a DAO identity — binds an email to a public key.</p>
+      <div class="meta">
+        <span class="tag">Anyone</span>
+        <span>Required: Email</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Email Verification Event <span class="event-name">[EMAIL VERIFICATION EVENT]</span></h3>
+      <p class="purpose">Verify ownership of an email address by signing a challenge. Completes the identity registration flow.</p>
+      <div class="meta">
+        <span class="tag">Anyone (with pending registration)</span>
+        <span>Required: Email, Verification Key</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Contributor Add Event <span class="event-name">[CONTRIBUTOR ADD EVENT]</span></h3>
+      <p class="purpose">Onboard a new contributor to the DAO. Records their name, email, and role in the contributor registry.</p>
+      <div class="meta">
+        <span class="tag">Governor</span>
+        <span>Required: Contributor Name, Email, Role</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>DApp Permission Change Event <span class="event-name">[DAPP PERMISSION CHANGE EVENT]</span></h3>
+      <p class="purpose">Grant or revoke DApp access permissions for a contributor. Controls who can sign contracts via the web interface.</p>
+      <div class="meta">
+        <span class="tag">Governor</span>
+        <span>Required: Contributor Email, Permission Level</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Withdraw Voting Rights Event <span class="event-name">[WITHDRAW VOTING RIGHTS EVENT]</span></h3>
+      <p class="purpose">Remove a contributor's voting rights. A governance action for managing DAO membership.</p>
+      <div class="meta">
+        <span class="tag">Governor</span>
+        <span>Required: Contributor Email</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Program Registration Event <span class="event-name">[PROGRAM REGISTRATION EVENT]</span></h3>
+      <p class="purpose">Register a new program or initiative within the DAO ecosystem (e.g. credentialing cohort, community challenge).</p>
+      <div class="meta">
+        <span class="tag">Governor</span>
+        <span>Required: Program Name, Program Type, Start Date</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category 2: Inventory & Supply Chain -->
+  <section class="category">
+    <div class="category-header">
+      <span class="icon">📦</span>
+      <h2>Inventory &amp; Supply Chain</h2>
+      <span class="count">5 contracts</span>
+    </div>
+
+    <div class="contract-card">
+      <h3>QR Code Registration <span class="event-name">[QR CODE REGISTRATION]</span></h3>
+      <p class="purpose">Register a new batch of QR codes for cacao bags. Each QR code uniquely identifies a bag in the supply chain.</p>
+      <div class="meta">
+        <span class="tag">Governor / Inventory Manager</span>
+        <span>Required: QR Code(s), Batch ID, Product Type</span>
+      </div>
+      <details class="fields">
+        <summary>Variants</summary>
+        <div class="variant">
+          <h4>Single Registration <span class="var-name">(one QR code)</span></h4>
+          <p>Register one QR code at a time for individual bag tracking.</p>
+        </div>
+        <div class="variant">
+          <h4>Batch Registration <span class="var-name">(bulk QR codes)</span></h4>
+          <p>Register multiple QR codes in a single transaction for efficiency.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="contract-card">
+      <h3>Inventory Movement <span class="event-name">[INVENTORY MOVEMENT]</span></h3>
+      <p class="purpose">Transfer custody of cacao bags between known supply-chain holders. QR status remains IN INVENTORY throughout.</p>
+      <div class="meta">
+        <span class="tag">Inventory Manager</span>
+        <span>Required: Manager Name, Recipient Name, QR Code(s), Quantity</span>
+      </div>
+      <details class="fields">
+        <summary>Variants</summary>
+        <div class="variant">
+          <h4>Single Transfer <span class="var-name">(one bag)</span></h4>
+          <p>Move one bag from one holder to another.</p>
+        </div>
+        <div class="variant">
+          <h4>Batch Transfer <span class="var-name">(multiple bags)</span></h4>
+          <p>Move multiple bags in a single transaction.</p>
+        </div>
+        <div class="variant">
+          <h4>Consignment Transfer <span class="var-name">(to retailer on consignment)</span></h4>
+          <p>Transfer bags to a retailer with consignment terms. Bags remain DAO property until sold.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="contract-card">
+      <h3>Sales Event <span class="event-name">[SALES EVENT]</span></h3>
+      <p class="purpose">Record a retail sale of cacao to an end customer. QR status becomes SOLD. Triggers revenue tracking.</p>
+      <div class="meta">
+        <span class="tag">Seller / Retailer</span>
+        <span>Required: Item, Sales Price, Sold By, Cash Proceeds Collected By, Owner Email</span>
+      </div>
+      <details class="fields">
+        <summary>Variants</summary>
+        <div class="variant">
+          <h4>Single Sale <span class="var-name">(one bag)</span></h4>
+          <p>Sell one bag to a customer.</p>
+        </div>
+        <div class="variant">
+          <h4>Bulk Sale <span class="var-name">(multiple bags)</span></h4>
+          <p>Sell multiple bags in a single transaction.</p>
+        </div>
+        <div class="variant">
+          <h4>Consignment Settlement <span class="var-name">(sale from consignment stock)</span></h4>
+          <p>Settle a sale from bags previously placed on consignment. Triggers revenue split between DAO and retailer.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="contract-card">
+      <h3>Asset Receipt <span class="event-name">[ASSET RECEIPT]</span></h3>
+      <p class="purpose">Confirm receipt of physical assets (cacao bags, materials) into inventory. Creates the initial inventory record.</p>
+      <div class="meta">
+        <span class="tag">Inventory Manager</span>
+        <span>Required: Asset Type, Quantity, Received By, Source</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Currency Conversion <span class="event-name">[CURRENCY CONVERSION]</span></h3>
+      <p class="purpose">Record a currency conversion event (e.g. USD to BRL) for financial tracking across the supply chain.</p>
+      <div class="meta">
+        <span class="tag">Treasury Manager</span>
+        <span>Required: From Currency, To Currency, Amount, Exchange Rate</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category 3: Contribution & Finance -->
+  <section class="category">
+    <div class="category-header">
+      <span class="icon">💰</span>
+      <h2>Contribution &amp; Finance</h2>
+      <span class="count">8 contracts</span>
+    </div>
+
+    <div class="contract-card">
+      <h3>Contribution Event <span class="event-name">[CONTRIBUTION EVENT]</span></h3>
+      <p class="purpose">Record time or value contributed to the DAO. The primary mechanism for earning TDG governance tokens.</p>
+      <div class="meta">
+        <span class="tag">Any Contributor</span>
+        <span>Required: Type (Time/USD), Amount, Contributor(s), Description</span>
+      </div>
+      <details class="fields">
+        <summary>Variants</summary>
+        <div class="variant">
+          <h4>Time Contribution <span class="var-name">(minutes worked)</span></h4>
+          <p>Log time spent on DAO work. Converted to TDG at the current rate.</p>
+        </div>
+        <div class="variant">
+          <h4>USD Contribution <span class="var-name">(monetary value)</span></h4>
+          <p>Record a USD-denominated contribution (e.g. services rendered at market rate).</p>
+        </div>
+        <div class="variant">
+          <h4>AI Agent Contribution <span class="var-name">(automated)</span></h4>
+          <p>Sophia and other AI agents submit this variant to log autonomous work.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="contract-card">
+      <h3>Capital Injection Event <span class="event-name">[CAPITAL INJECTION EVENT]</span></h3>
+      <p class="purpose">Record a capital injection into the DAO treasury. Tracks funding sources and amounts.</p>
+      <div class="meta">
+        <span class="tag">Treasury Manager / Governor</span>
+        <span>Required: Amount, Source, Currency, Purpose</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>DAO Expenses Event <span class="event-name">[DAO EXPENSES EVENT]</span></h3>
+      <p class="purpose">Record an expense paid from the DAO treasury. Tracks operational costs and reimbursements.</p>
+      <div class="meta">
+        <span class="tag">Treasury Manager</span>
+        <span>Required: Amount, Category, Payee, Description</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Mint Donation Event <span class="event-name">[MINT DONATION EVENT]</span></h3>
+      <p class="purpose">Mint a donation receipt as an on-chain record. Used for charitable contributions and tax receipting.</p>
+      <div class="meta">
+        <span class="tag">Treasury Manager</span>
+        <span>Required: Donor Name, Amount, Currency, Project</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Payment Event <span class="event-name">[PAYMENT EVENT]</span></h3>
+      <p class="purpose">Record a payment made or received by the DAO. Tracks all financial transactions.</p>
+      <div class="meta">
+        <span class="tag">Treasury Manager</span>
+        <span>Required: Amount, Payee/Payer, Currency, Reference</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Notarize Event <span class="event-name">[NOTARIZE EVENT]</span></h3>
+      <p class="purpose">Notarize a document or record by hashing it and storing the hash on-chain. Provides timestamped proof of existence.</p>
+      <div class="meta">
+        <span class="tag">Any Contributor</span>
+        <span>Required: Document Hash, Description, Timestamp</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Link Attestations to Trees <span class="event-name">[LINK ATTESTATIONS TO TREES]</span></h3>
+      <p class="purpose">Link attestation records to specific trees in the Sunmint reforestation program. Proves impact per tree.</p>
+      <div class="meta">
+        <span class="tag">Program Manager</span>
+        <span>Required: Tree ID(s), Attestation Hash, Program</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Repackaging Planner <span class="event-name">[REPACKAGING PLANNER]</span></h3>
+      <p class="purpose">Plan and record the repackaging of bulk cacao into smaller retail units. Tracks bag conversions.</p>
+      <div class="meta">
+        <span class="tag">Inventory Manager</span>
+        <span>Required: Source QR Code(s), Destination Quantity, Package Size</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category 4: Governance & Proposals -->
+  <section class="category">
+    <div class="category-header">
+      <span class="icon">🗳️</span>
+      <h2>Governance &amp; Proposals</h2>
+      <span class="count">4 contracts</span>
+    </div>
+
+    <div class="contract-card">
+      <h3>Create Proposal Event <span class="event-name">[CREATE PROPOSAL EVENT]</span></h3>
+      <p class="purpose">Submit a new governance proposal to the DAO. Proposals can cover treasury allocation, policy changes, or new initiatives.</p>
+      <div class="meta">
+        <span class="tag">Governor</span>
+        <span>Required: Title, Description, Proposed By, Voting Period</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Review Proposal Event <span class="event-name">[REVIEW PROPOSAL EVENT]</span></h3>
+      <p class="purpose">Submit a review or evaluation of a governance proposal. Part of the proposal lifecycle.</p>
+      <div class="meta">
+        <span class="tag">Reviewer / Governor</span>
+        <span>Required: Proposal ID, Decision, Comments</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Update Store Event <span class="event-name">[UPDATE STORE EVENT]</span></h3>
+      <p class="purpose">Update store or retailer information in the DAO registry. Manages the partner network.</p>
+      <div class="meta">
+        <span class="tag">Governor / Partner Manager</span>
+        <span>Required: Store ID, Field to Update, New Value</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Add Hit List Store <span class="event-name">[ADD HIT LIST STORE]</span></h3>
+      <p class="purpose">Add a store to the outreach hit list for partner onboarding. Tracks prospective retail partners.</p>
+      <div class="meta">
+        <span class="tag">Partner Manager</span>
+        <span>Required: Store Name, Location, Contact, Priority</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category 5: Partner & Retailer Operations -->
+  <section class="category">
+    <div class="category-header">
+      <span class="icon">🤝</span>
+      <h2>Partner &amp; Retailer Operations</h2>
+      <span class="count">4 contracts</span>
+    </div>
+
+    <div class="contract-card">
+      <h3>Partner Add Event <span class="event-name">[PARTNER ADD EVENT]</span></h3>
+      <p class="purpose">Onboard a new partner organization to the DAO ecosystem. Partners can be retailers, distributors, or program collaborators.</p>
+      <div class="meta">
+        <span class="tag">Governor</span>
+        <span>Required: Partner Name, Partner Email, Partner Type</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Partner Check-in Event <span class="event-name">[PARTNER CHECK-IN EVENT]</span></h3>
+      <p class="purpose">Log a check-in with an existing partner. Tracks relationship health and follow-up actions.</p>
+      <div class="meta">
+        <span class="tag">Partner Manager</span>
+        <span>Required: Partner Name, Check-in Date, Notes, Status</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Onboard Partner Event <span class="event-name">[ONBOARD PARTNER EVENT]</span></h3>
+      <p class="purpose">Complete the full onboarding workflow for a partner. Includes agreement signing, orientation, and system access setup.</p>
+      <div class="meta">
+        <span class="tag">Governor / Partner Manager</span>
+        <span>Required: Partner Name, Agreement Signed, Onboarding Date</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Register Farm Event <span class="event-name">[REGISTER FARM EVENT]</span></h3>
+      <p class="purpose">Register a farm in the DAO's supply chain. Tracks farm location, farmer details, and certification status.</p>
+      <div class="meta">
+        <span class="tag">Supply Chain Manager</span>
+        <span>Required: Farm Name, Farmer Name, Location, Certification</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category 6: Environmental & Impact -->
+  <section class="category">
+    <div class="category-header">
+      <span class="icon">🌱</span>
+      <h2>Environmental &amp; Impact</h2>
+      <span class="count">3 contracts</span>
+    </div>
+
+    <div class="contract-card">
+      <h3>Tree Planting Event <span class="event-name">[TREE PLANTING EVENT]</span></h3>
+      <p class="purpose">Record a tree planting activity in the Sunmint reforestation program. Tracks species, location, and planter.</p>
+      <div class="meta">
+        <span class="tag">Program Manager / Planter</span>
+        <span>Required: Tree Species, Quantity, Location, Planter Name, Program</span>
+      </div>
+      <details class="fields">
+        <summary>Variants</summary>
+        <div class="variant">
+          <h4>Individual Planting <span class="var-name">(single tree)</span></h4>
+          <p>Record one tree planted with specific coordinates and species.</p>
+        </div>
+        <div class="variant">
+          <h4>Batch Planting <span class="var-name">(multiple trees)</span></h4>
+          <p>Record multiple trees planted in a session or at a site.</p>
+        </div>
+        <div class="variant">
+          <h4>Pledge Fulfillment <span class="var-name">(from Sunmint pledge)</span></h4>
+          <p>Fulfill a previously made Sunmint pledge by planting the promised trees.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="contract-card">
+      <h3>Update QR Code Event <span class="event-name">[UPDATE QR CODE EVENT]</span></h3>
+      <p class="purpose">Update the status or metadata of an existing QR code. Used for corrections and lifecycle management.</p>
+      <div class="meta">
+        <span class="tag">Inventory Manager</span>
+        <span>Required: QR Code, Field to Update, New Value</span>
+      </div>
+    </div>
+
+    <div class="contract-card">
+      <h3>Ping Sophia Event <span class="event-name">[PING SOPHIA EVENT]</span></h3>
+      <p class="purpose">A heartbeat/liveness check for the Sophia AI autopilot. Ensures the autonomous agent is operational.</p>
+      <div class="meta">
+        <span class="tag">System / Governor</span>
+        <span>Required: Agent Name, Status, Timestamp</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer CTA -->
+  <section style="text-align: center; padding: var(--space-xl) var(--space-lg); max-width: 600px; margin: 0 auto;">
+    <h2 style="color: var(--forest); font-size: 1.5rem; margin-bottom: var(--space-sm);">Ready to Sign?</h2>
+    <p style="color: var(--muted); margin-bottom: var(--space-md);">
+      Generate your keypair and start signing smart contracts in the DApp.
+    </p>
+    <a class="cta primary" href="https://dapp.truesight.me" target="_blank" rel="noreferrer">
+      Open DApp →
+    </a>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<footer style="background: var(--surface); border-top: 1px solid var(--border); padding: var(--space-lg); text-align: center; color: var(--muted); font-size: 0.875rem;">
+  <p>TrueSight DAO — Building a better world based on compassion.</p>
+  <p style="margin-top: var(--space-xs);">
+    <a href="https://github.com/TrueSightDAO" target="_blank" rel="noreferrer" style="color: var(--accent-2);">GitHub</a>
+    &nbsp;·&nbsp;
+    <a href="https://truesight.me/whitepaper/" style="color: var(--accent-2);">Whitepaper</a>
+    &nbsp;·&nbsp;
+    <a href="https://dapp.truesight.me" target="_blank" rel="noreferrer" style="color: var(--accent-2);">DApp</a>
+  </p>
+</footer>
+
+<script>
+// Mobile menu toggle
+(function() {
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.nav-menu');
+  const header = document.querySelector('.site-header');
+  if (toggle && menu) {
+    toggle.addEventListener('click', function() {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !expanded);
+      menu.setAttribute('aria-hidden', expanded);
+      header.classList.toggle('menu-open', !expanded);
+    });
+  }
+  // Dropdown toggles for mobile
+  document.querySelectorAll('.dropdown-toggle').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      if (window.innerWidth > 768) return;
+      e.preventDefault();
+      const menu = this.nextElementSibling;
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !expanded);
+      if (menu) menu.setAttribute('aria-expanded', !expanded);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
