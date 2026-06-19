@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-18T21:05:06Z",
+  "generated_at_utc": "2026-06-19T05:36:11Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-06-18T20:35:44Z",
+    "generated_at": "2026-06-19T04:07:59Z",
     "total_contributors": 469,
     "total_tdg_controlled_sum": 2549012.87,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-06-18T20:48:36.841Z",
+    "generated_at": "2026-06-19T04:48:31.476Z",
     "schema_version": 4,
     "trigger": "cron",
     "currency_totals": {
@@ -118,11 +118,11 @@
         }
       },
       "8 Ounce Package Kraft Pouch  CP340992735BR": {
-        "total_quantity": 19.0,
-        "total_value_usd": 161.68,
+        "total_quantity": 22.0,
+        "total_value_usd": 187.21,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 19.0
+          "Main Ledger": 22.0
         }
       },
       "8 Ounce Package Kraft Pouch - AGL2 + V2 bags": {
@@ -134,11 +134,11 @@
         }
       },
       "8 Ounce Package Kraft Pouch - AGL6": {
-        "total_quantity": 10.0,
-        "total_value_usd": 92.14,
+        "total_quantity": 9.0,
+        "total_value_usd": 82.93,
         "item_count": 1,
         "ledger_breakdown": {
-          "AGL6": 10.0
+          "AGL6": 9.0
         }
       },
       "8 Ounce Package Kraft Pouch - CP340992695BR + v2 bags": {
@@ -295,11 +295,11 @@
         }
       },
       "Cacao Mass Bar (500grams) - Ilheus, Brazil 2024": {
-        "total_quantity": 39.0,
-        "total_value_usd": 612.11,
+        "total_quantity": 38.0,
+        "total_value_usd": 596.41,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 39.0
+          "Main Ledger": 38.0
         }
       },
       "Cacao Mass Bar (500grams) - Ilheus, Brazil 2024 + CP340993237BR Poland": {
@@ -340,6 +340,14 @@
         "item_count": 1,
         "ledger_breakdown": {
           "Main Ledger": 1.0
+        }
+      },
+      "Cacao Mass Bar CP340992687BR (loose grams)": {
+        "total_quantity": 96.57,
+        "total_value_usd": 4.16,
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 96.57
         }
       },
       "Cacao Molasses 250ml + 74 4476 6210 San Francisco": {
@@ -464,11 +472,11 @@
         }
       },
       "Ceremonial Cacao Kraft Pouch - 20250219006 + Cacao Mass Bar CP327946643BR - AGL6": {
-        "total_quantity": 11.0,
-        "total_value_usd": 93.69,
+        "total_quantity": 9.0,
+        "total_value_usd": 76.65,
         "item_count": 1,
         "ledger_breakdown": {
-          "AGL6": 11.0
+          "AGL6": 9.0
         }
       },
       "Ceremonial Cacao Kraft Pouch - 20250219006 + Cacao Mass Bar CP340993299BR  San Francisco": {
@@ -485,14 +493,6 @@
         "item_count": 1,
         "ledger_breakdown": {
           "AGL8": 4.0
-        }
-      },
-      "Ceremonial Cacao Kraft Pouch - 20250219006 | Cacao Mass | 200 grams | Oscar 2024 | CP340993988BR San Francisco | Kirsten 20251107 | San Francisco - AGL8": {
-        "total_quantity": 1.0,
-        "total_value_usd": 8.32,
-        "item_count": 1,
-        "ledger_breakdown": {
-          "Main Ledger": 1.0
         }
       },
       "Ceremonial Cacao Kraft Pouch - 20250219006 | Cacao Mass | 200 grams | Oscar 2024 | CP340993988BR San Francisco | Kirsten 20251124 | San Francisco - AGL4": {
@@ -520,11 +520,11 @@
         }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 + 8 Ounce Package Kraft Pouch CP340992735BR | Kirsten 20260121": {
-        "total_quantity": 34.0,
-        "total_value_usd": 288.79,
+        "total_quantity": 48.0,
+        "total_value_usd": 407.7,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 34.0
+          "Main Ledger": 48.0
         }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 + Cacao Mass Bar CP340993299BR  San Francisco": {
@@ -544,11 +544,11 @@
         }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 | Cacao Mass | 200 grams | Oscar 2024 | CP340993988BR San Francisco | Kirsten 20251211 | San Francisco - AGL4": {
-        "total_quantity": 27.0,
-        "total_value_usd": 226.13,
+        "total_quantity": 26.0,
+        "total_value_usd": 217.76,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 27.0
+          "Main Ledger": 26.0
         }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 | Cacao Mass | 200 grams | Santa Ana 2023 | Kirsten 20251227 | San Francisco - AGL2": {
@@ -728,13 +728,13 @@
         }
       },
       "USD": {
-        "total_quantity": 20079.2,
-        "total_value_usd": 20079.2,
+        "total_quantity": 20059.97,
+        "total_value_usd": 20059.97,
         "item_count": 1,
         "ledger_breakdown": {
           "AGL4": 9036.35,
           "AGL15": 5197.8,
-          "Main Ledger": 3497.57,
+          "Main Ledger": 3478.34,
           "AGL6": 1337.59,
           "AGL8": 569.95,
           "AGL10": 330.83,
@@ -770,7 +770,7 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-06-18T18:28:41.933Z",
+      "generated_at": "2026-06-19T03:11:13.756Z",
       "store_count": 0,
       "line_items": 12
     },
@@ -780,8 +780,14 @@
     }
   },
   "recent_beerhall_digests": {
-    "total_entries": 61,
+    "total_entries": 62,
     "recent": [
+      {
+        "date": "2026-06-19",
+        "slug": "sentinel-role-live-and-roadmap-track-map",
+        "filename": "beer-hall_2026-06-19T043014Z_sentinel-role-live-and-roadmap-track-map.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-19T043014Z_sentinel-role-live-and-roadmap-track-map.md"
+      },
       {
         "date": "2026-06-18",
         "slug": "sophia-auto-advance-and-gacc-updates",
@@ -835,12 +841,6 @@
         "slug": "subscription-roadmap-oracle-identity-updates",
         "filename": "beer-hall_2026-06-10T035900Z_subscription-roadmap-oracle-identity-updates.md",
         "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-10T035900Z_subscription-roadmap-oracle-identity-updates.md"
-      },
-      {
-        "date": "2026-06-09",
-        "slug": "dao-client-migration-sentinel-roster",
-        "filename": "beer-hall_2026-06-09T034402Z_dao-client-migration-sentinel-roster.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-09T034402Z_dao-client-migration-sentinel-roster.md"
       }
     ],
     "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
