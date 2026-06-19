@@ -100,6 +100,8 @@
 
           <p dir="auto">The FDA agent went out of business.</p>
 
+          <p dir="auto">That headline is deliberately provocative. The truth is more interesting — and it matters for understanding what actually happened.</p>
+
           <h2 dir="auto">What Actually Happened</h2>
 
           <p dir="auto">The Unit Economics Template is a blank cost model. It asks Jessey to fill in: farm gate price for cacao nibs, processing costs, packaging, air freight from Jakarta to San Francisco, export documentation, US customs clearance, FDA processing, duties, and tariffs. It calculates the full landed cost, applies the DAO's 20% network fee on profit margin, and bakes in the tree-planting cost (1 bag sold = 1 tree planted).</p>
@@ -115,7 +117,23 @@
 
           <p dir="auto">Both documents were produced by reading existing context files — the Brazil-origin FSVP process, the unit economics framework, the consignment agreement templates — and adapting them for a new origin. No model retraining. No API changes. No new infrastructure. Just a Sophia reading a context repo.</p>
 
-          <h2 dir="auto">The Pattern Generalizes</h2>
+          <h2 dir="auto">What Actually Happened — The Honest Version</h2>
+
+          <p dir="auto">Sophia drafted. Gary verified.</p>
+
+          <p dir="auto">The roadmap told Jessey which 25 documents exist and in what sequence. That is the cheap, codifiable part — and it genuinely took hours instead of weeks. But the expensive part was never "which forms?" It was "is this specific facility's HACCP plan actually adequate, and who signs their name to that judgment when the FDA holds a shipment?"</p>
+
+          <p dir="auto">TrueTech Inc is the importer of record (FDA FFR: 12202640780). The liability didn't evaporate. It concentrated onto Gary. A roadmap that lowers the barrier to entry also lowers it for suppliers whose compliance is wrong, and someone has to be the named party who can tell the difference.</p>
+
+          <p dir="auto">The cost didn't drop to pennies per inference. It dropped to pennies <em>plus</em> Gary's accumulated judgment — and that second term is precisely the expensive, non-transferable part that a naive reading of this post might claim got eliminated.</p>
+
+          <p dir="auto">This matters because the Indonesia onboarding succeeded because it was the <em>second instance</em> of a process Gary had already mastered, not the first instance of a process nobody understood. Hand the same repo to Jessey directly, with no Gary in the loop, and the failure mode isn't that it doesn't produce a document — it's that it produces a confident, clean-looking document and nobody in the chain can tell whether it's right.</p>
+
+          <p dir="auto">The barrier didn't move from "who do you know?" to "can you read?" It moved to "can you tell when the output is wrong?" — which is a harder bar, and often the same bar as being the expert.</p>
+
+          <p dir="auto">So the truthful claim is narrower and, I think, more interesting than the headline suggests: <strong>codified context lets one expert's verified judgment scale to N origins without re-deriving the process each time.</strong> That is a leverage story, not a disintermediation story. Sophia is an amplifier on expertise, not a replacement for it. The context repo is durable institutional memory of a verification that already happened — it inherits its accuracy from the verifier, and it has no independent way to signal when it has drifted past the edge of what has actually been validated.</p>
+
+          <h2 dir="auto">The Pattern Generalizes — But Not Evenly</h2>
 
           <p dir="auto">This is not a story about cacao. It is a story about what happens when any domain's operational knowledge is codified into a public, forkable, auditable context layer.</p>
 
@@ -131,9 +149,30 @@
             <li><strong>Immigration &amp; Travel</strong> — Visa requirements by country, work permit processes, citizenship pathways. The knowledge that currently requires immigration lawyers.</li>
           </ul>
 
-          <p dir="auto">In every case, the barrier to entry is the same: the knowledge exists, but it is locked in experts' heads, expensive consultants' invoices, or proprietary databases. Codify it into a public context repo, and any Sophia instance can read it, apply it, and guide a user through it.</p>
+          <p dir="auto">But these domains do not fail symmetrically. Cacao FSVP is a relatively closed, well-documented, low-ambiguity domain — that is why it worked. Healthcare diagnostics, tax interpretation, and visa adjudication are the opposite: adversarial, discretionary, and frequently contra-textual (the rule on paper is not what the officer does). The pattern generalizes to documented, deterministic bureaucracies. It degrades fast in domains with human discretion and high downside.</p>
 
-          <h2 dir="auto">The Structural Shift</h2>
+          <p dir="auto">In every case, the barrier to entry is the same: the knowledge exists, but it is locked in experts' heads, expensive consultants' invoices, or proprietary databases. Codify it into a public context repo, and any Sophia instance can read it, apply it, and guide a user through it. But the verification layer remains — and it is the irreducible thing.</p>
+
+          <h2 dir="auto">The Unbundling, Not the Elimination</h2>
+
+          <p dir="auto">The FDA agent's job is being unbundled, not eliminated. The cheap half — producing a competent first-pass roadmap for a documented bureaucratic domain — drops to near zero cost. The expensive half — bonded judgment, liability, adversarial navigation, the ability to tell when the output is wrong — becomes more concentrated and more valuable.</p>
+
+          <p dir="auto">This is a structural shift worth writing about. It just is not the death of the expert. It is the reconfiguration of expertise: the discovery and drafting layer gets automated, while the judgment and accountability layers become the entire value.</p>
+
+          <p dir="auto">The "context curator, not gatekeeper" reframe is appealing but carries its own risk. A forked compliance repo that is subtly stale for a jurisdiction does not announce its staleness — it produces a clean, authoritative-looking roadmap that is wrong. The network-effect framing ("each fork improves the original") quietly assumes forks converge toward truth rather than drift. With regulatory content, a wrong-but-confident artifact is worse than no artifact. The curator's job — maintaining accuracy for a commons that is eating their fee income — is harder than the gatekeeper's job ever was.</p>
+
+          <h2 dir="auto">The Tension at the Heart of the Design</h2>
+
+          <p dir="auto">The DAO's stated goal is systems that run without their founder. This episode is evidence that the verification layer still routes through Gary specifically. Two honest readings exist:</p>
+
+          <ol dir="auto">
+            <li><strong>The context repos eventually encode enough verified ground truth</strong> that a non-expert can trust the output for well-trodden lanes. This is plausible for cacao FSVP — a closed, deterministic, low-ambiguity domain. It is not plausible for immigration law or healthcare diagnostics.</li>
+            <li><strong>The verification function is the irreducible thing.</strong> "Running without Gary" really means "running with a different trusted verifier," not "running with none." The system scales expertise; it does not replace it.</li>
+          </ol>
+
+          <p dir="auto">The Self-Replication SOP makes this explicit: a Fork requires a governor to define the operating instructions. The governor is the verifier. The system does not run without <em>a</em> trusted human; it runs without <em>a specific</em> trusted human. The verification function is distributed, not eliminated.</p>
+
+          <p dir="auto">Which one are we building toward? The blog post implies the first. What the Indonesia cacao onboarding actually demonstrates is the second. Being clear about the difference is the whole argument.</p>
 
           <p dir="auto">Currently, these domains are gated by expertise. You need a human who has spent years accumulating knowledge to navigate them. That human charges $200-1,000 per hour. The knowledge is expensive, scarce, and non-transferable.</p>
 
@@ -151,15 +190,13 @@
 
           <h2 dir="auto">What This Means</h2>
 
-          <p dir="auto">The barrier to entry for any complex domain drops from "who do you know?" to "can you read?"</p>
+          <p dir="auto">The cost of producing a competent first-pass roadmap for documented bureaucratic domains drops to near zero. That collapses the discovery and drafting layer of expert work while leaving the judgment, accountability, and adversarial-navigation layers intact. The FDA agent's job gets unbundled — the cheap half automated, the expensive half made more concentrated and more valuable.</p>
 
-          <p dir="auto">That is not a small change. It is the same structural shift that the printing press brought to religious knowledge, that the internet brought to encyclopedic knowledge, and that open source brought to software knowledge. Each time, the cost of access dropped by orders of magnitude. Each time, the gatekeepers lost their monopoly. Each time, the rate of innovation accelerated.</p>
+          <p dir="auto">This is not a small change. It is the same structural shift that the printing press brought to religious knowledge, that the internet brought to encyclopedic knowledge, and that open source brought to software knowledge. Each time, the cost of access dropped by orders of magnitude. Each time, the rate of innovation accelerated. But each time, the verification function — the ability to tell good information from bad — became <em>more</em> important, not less.</p>
 
-          <p dir="auto">The FDA agent went out of business not because the FDA disappeared, but because the knowledge of how to navigate the FDA became a public good. Any supplier, anywhere in the world, can now access the same compliance roadmap that used to require a $500-per-hour specialist.</p>
+          <p dir="auto">The FDA agent did not go out of business. The FDA agent's job got unbundled. The drafting layer is now a public good. The judgment layer is now the entire value. And the person who can tell when the output is wrong — who can sign their name to a compliance decision and be the named party when the FDA holds a shipment — that person just became more valuable, not less.</p>
 
-          <p dir="auto">The same will happen in every domain where knowledge is currently the barrier to entry. Legal, healthcare, education, finance, engineering, agriculture, immigration — all of them will be transformed by the same pattern.</p>
-
-          <p dir="auto">And it starts with a cacao supplier from Indonesia who asked a simple question, and got a complete answer within hours.</p>
+          <p dir="auto">It starts with a cacao supplier from Indonesia who asked a simple question, and got a competent first-pass roadmap within hours — followed by a human verification that made it worth the paper it is printed on.</p>
 
           <hr />
 
