@@ -421,6 +421,53 @@
     line-height: 1.6;
   }
 
+  /* Sample payload */
+  .contract-card .payload {
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--border);
+  }
+  .contract-card .payload summary {
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--forest);
+    user-select: none;
+  }
+  .contract-card .payload summary:hover {
+    color: var(--accent-2);
+  }
+  .contract-card .payload pre {
+    background: #1a1a2e;
+    color: #e0e0e0;
+    padding: var(--space-sm);
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    margin: var(--space-xs) 0 0;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .contract-card .payload code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  .contracts-hero .payload-note {
+    font-size: 0.9375rem;
+    color: var(--accent-2);
+    background: rgba(244, 163, 0, 0.08);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 8px;
+    margin-top: var(--space-md);
+    border: 1px solid rgba(244, 163, 0, 0.2);
+  }
+  .contracts-hero .payload-note a {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
   @media (max-width: 640px) {
     .contracts-stats {
       gap: var(--space-sm);
@@ -507,6 +554,7 @@
       signed event submitted to <strong>Edgar</strong> — the DAO's execution layer — which verifies the signature,
       applies state transitions, and records the result on the ledger and TrueChain audit trail.
     </p>
+    <p class="payload-note">Each payload below is a real example — copy it, sign with your RSA key, and submit to Edgar at <a href="https://edgar.truesight.me">edgar.truesight.me</a> to see the contract execute.</p>
   </section>
 
   <!-- Stats -->
@@ -662,6 +710,15 @@
           <li><a href="https://github.com/TrueSightDAO/sentiment_importer/blob/main/app/controllers/dao_controller.rb" target="_blank" rel="noreferrer">Edgar Controller: dao_controller.rb</a></li>
         </ul>
       </details>
+      <details class="payload">
+        <summary>📋 Sample Payload</summary>
+        <pre><code>{
+  "event": "EMAIL REGISTERED EVENT",
+  "Email": "alice@example.com",
+  "Public Key": "-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEA...\n-----END RSA PUBLIC KEY-----",
+  "Timestamp": "2026-06-20T12:00:00Z"
+}</code></pre>
+      </details>
     </div>
 
     <div class="contract-card">
@@ -685,6 +742,15 @@
           <li><a href="https://github.com/TrueSightDAO/tokenomics/blob/main/google_app_scripts/tdg_identity_management/email_verification_from_edgar.gs" target="_blank" rel="noreferrer">GAS Handler: email_verification_from_edgar.gs</a></li>
           <li><a href="https://github.com/TrueSightDAO/sentiment_importer/blob/main/app/controllers/dao_controller.rb" target="_blank" rel="noreferrer">Edgar Controller: dao_controller.rb</a></li>
         </ul>
+      </details>
+      <details class="payload">
+        <summary>📋 Sample Payload</summary>
+        <pre><code>{
+  "event": "EMAIL VERIFICATION EVENT",
+  "Email": "alice@example.com",
+  "Verification Key": "vkey_abc123def456",
+  "Timestamp": "2026-06-20T12:05:00Z"
+}</code></pre>
       </details>
     </div>
 
@@ -711,6 +777,18 @@
           <li><a href="https://github.com/TrueSightDAO/sentiment_importer/blob/main/app/controllers/dao_controller.rb" target="_blank" rel="noreferrer">Edgar Controller: dao_controller.rb</a></li>
         </ul>
       </details>
+      <details class="payload">
+        <summary>📋 Sample Payload</summary>
+        <pre><code>{
+  "event": "CONTRIBUTOR ADD EVENT",
+  "Contributor Name": "Alice Chen",
+  "Contributor Email": "alice@example.com",
+  "Governor Name": "Gary Teh",
+  "Governor Email": "gary@truesight.me",
+  "Role": "Contributor",
+  "Timestamp": "2026-06-20T12:10:00Z"
+}</code></pre>
+      </details>
     </div>
 
     <div class="contract-card">
@@ -736,6 +814,17 @@
           <li><a href="https://github.com/TrueSightDAO/sentiment_importer/blob/main/app/controllers/dao_controller.rb" target="_blank" rel="noreferrer">Edgar Controller: dao_controller.rb</a></li>
         </ul>
       </details>
+      <details class="payload">
+        <summary>📋 Sample Payload</summary>
+        <pre><code>{
+  "event": "DAPP PERMISSION CHANGE EVENT",
+  "Contributor Email": "bob@example.com",
+  "Permission Level": "Inventory Manager",
+  "Governor Name": "Gary Teh",
+  "Governor Email": "gary@truesight.me",
+  "Timestamp": "2026-06-20T12:15:00Z"
+}</code></pre>
+      </details>
     </div>
 
     <div class="contract-card">
@@ -759,6 +848,16 @@
           <li><a href="https://github.com/TrueSightDAO/dao_protocol/blob/main/truesight_dao_client/modules/withdraw_voting_rights.py" target="_blank" rel="noreferrer">Module: withdraw_voting_rights.py</a></li>
           <li><a href="https://github.com/TrueSightDAO/sentiment_importer/blob/main/app/controllers/dao_controller.rb" target="_blank" rel="noreferrer">Edgar Controller: dao_controller.rb</a></li>
         </ul>
+      </details>
+      <details class="payload">
+        <summary>📋 Sample Payload</summary>
+        <pre><code>{
+  "event": "WITHDRAW VOTING RIGHTS EVENT",
+  "Contributor Email": "charlie@example.com",
+  "Governor Name": "Gary Teh",
+  "Governor Email": "gary@truesight.me",
+  "Timestamp": "2026-06-20T12:20:00Z"
+}</code></pre>
       </details>
     </div>
 
@@ -784,6 +883,18 @@
           <li><a href="https://github.com/TrueSightDAO/tokenomics/blob/main/google_app_scripts/" target="_blank" rel="noreferrer">GAS Handler: (see tokenomics/google_app_scripts/)</a></li>
           <li><a href="https://github.com/TrueSightDAO/sentiment_importer/blob/main/app/controllers/dao_controller.rb" target="_blank" rel="noreferrer">Edgar Controller: dao_controller.rb</a></li>
         </ul>
+      </details>
+      <details class="payload">
+        <summary>📋 Sample Payload</summary>
+        <pre><code>{
+  "event": "PROGRAM REGISTRATION EVENT",
+  "Program Name": "Sunmint Phase 3",
+  "Program Type": "Reforestation",
+  "Start Date": "2026-07-01",
+  "Governor Name": "Gary Teh",
+  "Governor Email": "gary@truesight.me",
+  "Timestamp": "2026-06-20T12:25:00Z"
+}</code></pre>
       </details>
     </div>
   </section>
@@ -818,6 +929,17 @@
           <li><a href="https://github.com/TrueSightDAO/tokenomics/blob/main/google_app_scripts/tdg_inventory_management/qr_code_registration_handler.gs" target="_blank" rel="noreferrer">GAS Handler: qr_code_registration_handler.gs</a></li>
           <li><a href="https://github.com/TrueSightDAO/sentiment_importer/blob/main/app/controllers/dao_controller.rb" target="_blank" rel="noreferrer">Edgar Controller: dao_controller.rb</a></li>
         </ul>
+      </details>
+      <details class="payload">
+        <summary>📋 Sample Payload</summary>
+        <pre><code>{
+  "event": "QR CODE REGISTRATION",
+  "QR Code(s)": ["QR-CACAO-2026-001", "QR-CACAO-2026-002"],
+  "Batch ID": "BATCH-2026-06",
+  "Product Type": "Cacao Beans (Organic)",
+  "Registered By": "Maria Santos",
+  "Timestamp": "2026-06-20T13:00:00Z"
+}</code></pre>
       </details>
       <details class="fields">
         <summary>Variants</summary>
@@ -854,6 +976,18 @@
           <li><a href="https://github.com/TrueSightDAO/tokenomics/blob/main/google_app_scripts/tdg_inventory_management/inventory_movement_handler.gs" target="_blank" rel="noreferrer">GAS Handler: inventory_movement_handler.gs</a></li>
           <li><a href="https://github.com/TrueSightDAO/sentiment_importer/blob/main/app/controllers/dao_controller.rb" target="_blank" rel="noreferrer">Edgar Controller: dao_controller.rb</a></li>
         </ul>
+      </details>
+      <details class="payload">
+        <summary>📋 Sample Payload</summary>
+        <pre><code>{
+  "event": "INVENTORY MOVEMENT",
+  "Manager Name": "Maria Santos",
+  "Recipient Name": "Green Valley Market",
+  "QR Code(s)": ["QR-CACAO-2026-001", "QR-CACAO-2026-002"],
+  "Quantity": 2,
+  "Movement Type": "Consignment Transfer",
+  "Timestamp": "2026-06-20T14:00:00Z"
+}</code></pre>
       </details>
       <details class="fields">
         <summary>Variants</summary>
@@ -895,6 +1029,18 @@
           <li><a href="https://github.com/TrueSightDAO/sentiment_importer/blob/main/app/controllers/dao_controller.rb" target="_blank" rel="noreferrer">Edgar Controller: dao_controller.rb</a></li>
         </ul>
       </details>
+      <details class="payload">
+        <summary>📋 Sample Payload</summary>
+        <pre><code>{
+  "event": "SALES EVENT",
+  "Item": "QR-CACAO-2026-001",
+  "Sales Price": 25.00,
+  "Sold By": "Green Valley Market",
+  "Cash Proceeds Collected By": "DAO Treasury",
+  "Owner Email": "owner@greenvalley.com",
+  "Timestamp": "2026-06-20T15:30:00Z"
+}</code></pre>
+      </details>
       <details class="fields">
         <summary>Variants</summary>
         <div class="variant">
@@ -935,6 +1081,17 @@
           <li><a href="https://github.com/TrueSightDAO/sentiment_importer/blob/main/app/controllers/dao_controller.rb" target="_blank" rel="noreferrer">Edgar Controller: dao_controller.rb</a></li>
         </ul>
       </details>
+      <details class="payload">
+        <summary>📋 Sample Payload</summary>
+        <pre><code>{
+  "event": "ASSET RECEIPT",
+  "Asset Type": "Cacao Beans (Organic)",
+  "Quantity": 50,
+  "Received By": "Maria Santos",
+  "Source": "Cooperativa Agroflorestal do Sul",
+  "Timestamp": "2026-06-20T13:30:00Z"
+}</code></pre>
+      </details>
     </div>
 
     <div class="contract-card">
@@ -959,6 +1116,18 @@
           <li><a href="https://github.com/TrueSightDAO/tokenomics/blob/main/google_app_scripts/tdg_finance/currency_conversion_handler.gs" target="_blank" rel="noreferrer">GAS Handler: currency_conversion_handler.gs</a></li>
           <li><a href="https://github.com/TrueSightDAO/sentiment_importer/blob/main/app/controllers/dao_controller.rb" target="_blank" rel="noreferrer">Edgar Controller: dao_controller.rb</a></li>
         </ul>
+      </details>
+      <details class="payload">
+        <summary>📋 Sample Payload</summary>
+        <pre><code>{
+  "event": "CURRENCY CONVERSION",
+  "From Currency": "USD",
+  "To Currency": "BRL",
+  "Amount": 1000.00,
+  "Exchange Rate": 5.12,
+  "Converted By": "Treasury Manager",
+  "Timestamp": "2026-06-20T16:00:00Z"
+}</code></pre>
       </details>
     </div>
   </section>
