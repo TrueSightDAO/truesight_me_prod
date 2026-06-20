@@ -471,6 +471,45 @@
     text-decoration: underline;
   }
 
+  /* Try It Section */
+  .try-it-section {
+    max-width: 900px;
+    margin: 0 auto var(--space-xl);
+    padding: 0 var(--space-lg);
+    text-align: center;
+  }
+  .try-it-section h2 {
+    color: var(--forest);
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+  }
+  .try-it-section p {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+  }
+  .try-it-section textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: var(--space-md);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--surface);
+    resize: vertical;
+    transition: border-color var(--transition-fast);
+    box-sizing: border-box;
+  }
+  .try-it-section textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(244, 163, 0, 0.15);
+  }
+
   @media (max-width: 640px) {
     .contracts-stats {
       gap: var(--space-sm);
@@ -578,6 +617,18 @@
       <span class="num">SHA-256</span>
       <span class="label">Hash Function</span>
     </div>
+  </div>
+
+  <!-- Try It Section -->
+  <div class="try-it-section">
+    <h2>🧪 Try It</h2>
+    <p>Paste a signed payload below to verify it against Edgar. Works with any of the 30 contract types listed on this page.</p>
+    <textarea id="tryItInput" placeholder="Paste your signed payload here...">[VOTING RIGHTS WITHDRAWAL REQUEST]
+amount to withdraw: 70
+asking price: 90
+--------
+
+My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0</textarea>
   </div>
 
   <!-- Architecture Diagram -->
@@ -853,14 +904,15 @@
         </ul>
       </details>
       <details class="payload">
-        <summary>📋 Sample Payload</summary>
-        <pre><code>{
-  "event": "WITHDRAW VOTING RIGHTS EVENT",
-  "Contributor Email": "charlie@example.com",
-  "Governor Name": "Gary Teh",
-  "Governor Email": "gary@truesight.me",
-  "Timestamp": "2026-06-20T12:20:00Z"
-}</code></pre>
+        <summary>📋 Sample Payload (copy-paste into verify page)</summary>
+        <pre><code>[VOTING RIGHTS WITHDRAWAL REQUEST]
+amount to withdraw: 70
+asking price: 90
+--------
+
+My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0D70xOu3BmuhnWJ5sAXdmJyglssswFUqcjjESrwdEeygjXkQaMcckbW4dt4Q6CmlHUKPshMDfy8Zrp+hVvr6WE6oC4cZe/faL20xNCmS0wos8w+USdvoGbvEC6yMop6XGR3r29fDwK1JohrXXrMpPYT3KYM6NlVvBnjOEejvOg0H1tWxwVXSMPwxfrPDJbfpY7oI+mK+lPbVsnuilKH7GCMTQMG1wlwo69nan5uIahtYl5WYCt7SuOYe91ziryNtJSweZK+9Vxv6k5oyopPxTZ+r5EMIneT0jsOZR7svp5rpSuEOP+1KSZ2dpHqgKw+OoGUXHbs0ANJwriV8erOAywIDAQAB
+
+Request Transaction ID: PV0ZZI3FKJJPqjfaqWltHPgmka+pWfFkNnXlTILNNOnpp9hrlewy7SMHlA1mqAPmo+r+WP2klbJTBxys871CG7kDcehJWN59awrRCzKF6AIuSzfq2T/PfVgufIJoZuDYD4FZgD3Z6nnpnuiBUCSW0vHQm9DnimRcZwQOyGAjMUHOKHglrtO6l1Y7J9oftkotXAjO7VceUoUKNgdCTrr8hoQL68Pd2p6ImazyPWgW+KKK3QGUrv0wOnqI/BE7rHC0G/VnOh6TwdA+PLGszXg74HizMTq4q4ELw1TllT6NExeaV4kYDyPr1fK1xYSa8lrpiTJ1cwE3BP94txrs2pBMrQ==</code></pre>
       </details>
     </div>
 
@@ -1622,6 +1674,19 @@
           <h4>Pledge Fulfillment <span class="var-name">(from Sunmint pledge)</span></h4>
           <p>Fulfill a previously made Sunmint pledge by planting the promised trees.</p>
         </div>
+      </details>
+      <details class="payload">
+        <summary>📋 Sample Payload (copy-paste into verify page)</summary>
+        <pre><code>[TREE PLANTING EVENT]
+- Latitude: -13.123456
+- Longitude: -48.123456
+- Species: Cacao
+- Quantity: 500
+--------
+
+My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0D70xOu3BmuhnWJ5sAXdmJyglssswFUqcjjESrwdEeygjXkQaMcckbW4dt4Q6CmlHUKPshMDfy8Zrp+hVvr6WE6oC4cZe/faL20xNCmS0wos8w+USdvoGbvEC6yMop6XGR3r29fDwK1JohrXXrMpPYT3KYM6NlVvBnjOEejvOg0H1tWxwVXSMPwxfrPDJbfpY7oI+mK+lPbVsnuilKH7GCMTQMG1wlwo69nan5uIahtYl5WYCt7SuOYe91ziryNtJSweZK+9Vxv6k5oyopPxTZ+r5EMIneT0jsOZR7svp5rpSuEOP+1KSZ2dpHqgKw+OoGUXHbs0ANJwriV8erOAywIDAQAB
+
+Request Transaction ID: PV0ZZI3FKJJPqjfaqWltHPgmka+pWfFkNnXlTILNNOnpp9hrlewy7SMHlA1mqAPmo+r+WP2klbJTBxys871CG7kDcehJWN59awrRCzKF6AIuSzfq2T/PfVgufIJoZuDYD4FZgD3Z6nnpnuiBUCSW0vHQm9DnimRcZwQOyGAjMUHOKHglrtO6l1Y7J9oftkotXAjO7VceUoUKNgdCTrr8hoQL68Pd2p6ImazyPWgW+KKK3QGUrv0wOnqI/BE7rHC0G/VnOh6TwdA+PLGszXg74HizMTq4q4ELw1TllT6NExeaV4kYDyPr1fK1xYSa8lrpiTJ1cwE3BP94txrs2pBMrQ==</code></pre>
       </details>
     </div>
 
