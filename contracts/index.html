@@ -270,7 +270,7 @@
   .contract-card .source-code ul li {
     padding: 2px 0;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 6px;
   }
   .contract-card .source-code ul li::before {
@@ -282,6 +282,9 @@
     text-decoration: none;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.75rem;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    hyphens: none;
   }
   .contract-card .source-code a:hover {
     text-decoration: underline;
