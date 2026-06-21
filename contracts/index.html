@@ -450,12 +450,16 @@
     line-height: 1.5;
     margin: var(--space-xs) 0 0;
     font-family: 'JetBrains Mono', monospace;
+    white-space: pre;
+    word-break: keep-all;
   }
   .contract-card .payload code {
     background: none;
     color: inherit;
     padding: 0;
     font-size: inherit;
+    white-space: pre;
+    word-break: keep-all;
   }
   .contracts-hero .payload-note {
     font-size: 0.9375rem;
@@ -471,43 +475,51 @@
     text-decoration: underline;
   }
 
-  /* Try It Section */
-  .try-it-section {
-    max-width: 900px;
-    margin: 0 auto var(--space-xl);
-    padding: 0 var(--space-lg);
-    text-align: center;
+  /* Inline verify */
+  .contract-card .payload .verify-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: var(--space-sm);
+    padding: 6px 16px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition-fast);
   }
-  .try-it-section h2 {
-    color: var(--forest);
-    font-size: 1.5rem;
-    margin-bottom: var(--space-sm);
+  .contract-card .payload .verify-btn:hover {
+    background: var(--accent-2);
   }
-  .try-it-section p {
-    color: var(--muted);
-    font-size: 1rem;
-    margin-bottom: var(--space-md);
-    line-height: 1.6;
-  }
-  .try-it-section textarea {
-    width: 100%;
-    min-height: 200px;
-    padding: var(--space-md);
-    border: 2px solid var(--border);
-    border-radius: 12px;
-    font-family: 'JetBrains Mono', monospace;
+  .contract-card .payload .verify-result {
+    display: none;
+    margin-top: var(--space-sm);
+    padding: var(--space-sm);
+    border-radius: 8px;
     font-size: 0.8125rem;
     line-height: 1.6;
-    color: var(--text);
-    background: var(--surface);
-    resize: vertical;
-    transition: border-color var(--transition-fast);
-    box-sizing: border-box;
   }
-  .try-it-section textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(244, 163, 0, 0.15);
+  .contract-card .payload .verify-result.valid {
+    display: block;
+    background: rgba(95, 111, 82, 0.1);
+    color: var(--forest);
+    border: 1px solid rgba(95, 111, 82, 0.3);
+  }
+  .contract-card .payload .verify-result.invalid {
+    display: block;
+    background: rgba(200, 50, 50, 0.08);
+    color: #a33;
+    border: 1px solid rgba(200, 50, 50, 0.2);
+  }
+  .contract-card .payload .verify-result.loading {
+    display: block;
+    background: rgba(244, 163, 0, 0.08);
+    color: var(--accent-2);
+    border: 1px solid rgba(244, 163, 0, 0.2);
   }
 
   @media (max-width: 640px) {
@@ -596,7 +608,7 @@
       signed event submitted to <strong>Edgar</strong> — the DAO's execution layer — which verifies the signature,
       applies state transitions, and records the result on the ledger and TrueChain audit trail.
     </p>
-    <p class="payload-note">Each payload below is a real example — copy it, sign with your RSA key, and submit to Edgar at <a href="https://edgar.truesight.me">edgar.truesight.me</a> to see the contract execute.</p>
+    <p class="payload-note">Each payload below includes a <strong>Verify</strong> button — click it to check the signature locally in your browser. To execute a real contract, sign it with your RSA key and submit to Edgar at <a href="https://edgar.truesight.me">edgar.truesight.me</a>.</p>
   </section>
 
   <!-- Stats -->
@@ -617,18 +629,6 @@
       <span class="num">SHA-256</span>
       <span class="label">Hash Function</span>
     </div>
-  </div>
-
-  <!-- Try It Section -->
-  <div class="try-it-section">
-    <h2>🧪 Try It</h2>
-    <p>Paste a signed payload below to verify it against Edgar. Works with any of the 30 contract types listed on this page.</p>
-    <textarea id="tryItInput" placeholder="Paste your signed payload here...">[VOTING RIGHTS WITHDRAWAL REQUEST]
-amount to withdraw: 70
-asking price: 90
---------
-
-My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0</textarea>
   </div>
 
   <!-- Architecture Diagram -->
@@ -766,12 +766,19 @@ My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0</textarea>
       </details>
       <details class="payload">
         <summary>📋 Sample Payload</summary>
-        <pre><code>{
-  "event": "EMAIL REGISTERED EVENT",
-  "Email": "alice@example.com",
-  "Public Key": "-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEA...\n-----END RSA PUBLIC KEY-----",
-  "Timestamp": "2026-06-20T12:00:00Z"
-}</code></pre>
+        <pre><code>[EMAIL REGISTERED EVENT]
+- Email: alice@example.com
+- Public Key: -----BEGIN RSA PUBLIC KEY-----
+  MIIBCgKCAQEA...
+  -----END RSA PUBLIC KEY-----
+- Timestamp: 2026-06-20T12:00:00Z
+--------
+
+My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7Q1EeiwmgW3gDvGY3izv485fBH/Yty/oYuGlgl7fMyJ4SVwwijV3xL2+XFMnuEJnC3etBbeRQwFvXW0zSbZ4xmGDlswnrUpEywdADRkAQez+1LYC83K16e5n95DxbjajfhIpAO/z73m+h5V2RdgLqYlmlykKBngAAkP2slkdQQoJD4yxyLPOMVgk2abgBwA5sf1GtuUOGUrLuAYpI7QOEBecLmJM8yXoh377lWZq1rvv4xqK64n5/oe4A0ig9/QtL3BVu+BsQC4x2PJNRvoZXmmVJljG4JzeSUOarLv9nx4xnyk5Szgd3PxAN7ChYEQ7ttxI3SDnoeLBhlKrYGXvVQIDAQAB
+
+Request Transaction ID: Lao3RCkQXxPC2pJTGF8tz0V//hUx2aK6xE6mWnm5xU4mxE6yBSOlRNIcAIPgUehjlV/uFx8WTlvbJINkWnGyn8GegwMdGxCLz+9nC2wWej+08fHokF6CJtodfzyLh3XoQ8jJS+Ftryy4kUFkCObYtcSgqX80SJ9z7UeKz2nWMZRlDYX05z71Mxu4HTomJ+ZdUKHMiLmEC22YDv5VUOcMnIMg6hOgYJv70BLZAhCElw7n8TfdUoPLDeTyG4xC68al9HrWNpGvX3TbQW+lrBDaitOxKP9chYX9DVxt/cXDrv9Y79eN2F/WK5culUOeAD9HyN9CCTPsGRFaN8pQjP8ZJw==</code></pre>
+            <button class="verify-btn" onclick="verifyPayload(this)">Verify</button>
+            <div class="verify-result"></div>
       </details>
     </div>
 
@@ -799,12 +806,17 @@ My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0</textarea>
       </details>
       <details class="payload">
         <summary>📋 Sample Payload</summary>
-        <pre><code>{
-  "event": "EMAIL VERIFICATION EVENT",
-  "Email": "alice@example.com",
-  "Verification Key": "vkey_abc123def456",
-  "Timestamp": "2026-06-20T12:05:00Z"
-}</code></pre>
+        <pre><code>[EMAIL VERIFICATION EVENT]
+- Email: alice@example.com
+- Verification Key: vkey_abc123def456
+- Timestamp: 2026-06-20T12:05:00Z
+--------
+
+My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7Q1EeiwmgW3gDvGY3izv485fBH/Yty/oYuGlgl7fMyJ4SVwwijV3xL2+XFMnuEJnC3etBbeRQwFvXW0zSbZ4xmGDlswnrUpEywdADRkAQez+1LYC83K16e5n95DxbjajfhIpAO/z73m+h5V2RdgLqYlmlykKBngAAkP2slkdQQoJD4yxyLPOMVgk2abgBwA5sf1GtuUOGUrLuAYpI7QOEBecLmJM8yXoh377lWZq1rvv4xqK64n5/oe4A0ig9/QtL3BVu+BsQC4x2PJNRvoZXmmVJljG4JzeSUOarLv9nx4xnyk5Szgd3PxAN7ChYEQ7ttxI3SDnoeLBhlKrYGXvVQIDAQAB
+
+Request Transaction ID: UcCJxpaXEK8UqB78+vp6GpBzhpSyzasM2hIBM52J64eiPg84eqgAzHp6ixRXMnWan8PSLwQuvCxxL59m/8fXKhKJKHE2+wpHEZkCgX0W05axjmDy67GSBWH+1bHhewtcVr0Lv4i0/H9HYPMgtb9vOBBYQk7Dw5VrRO/ldCT4JswxEd5LCcNKkimLc9AVOCmVDsDzyT+GlEqM8euuOwp1PNSxPCSyXqwfsPWdxVpscP9b7OUEgPrMG2qli17mtrISOEs+f/D/IvN7qaCE95NcmrIrNTTlSs6cLro8rqlpi9jQwupmrqaBfo9V/orpYbpNEd8RkuSRTJG2eCBhMpUdUw==</code></pre>
+            <button class="verify-btn" onclick="verifyPayload(this)">Verify</button>
+            <div class="verify-result"></div>
       </details>
     </div>
 
@@ -833,15 +845,20 @@ My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0</textarea>
       </details>
       <details class="payload">
         <summary>📋 Sample Payload</summary>
-        <pre><code>{
-  "event": "CONTRIBUTOR ADD EVENT",
-  "Contributor Name": "Alice Chen",
-  "Contributor Email": "alice@example.com",
-  "Governor Name": "Gary Teh",
-  "Governor Email": "gary@truesight.me",
-  "Role": "Contributor",
-  "Timestamp": "2026-06-20T12:10:00Z"
-}</code></pre>
+        <pre><code>[CONTRIBUTOR ADD EVENT]
+- Contributor Name: Alice Chen
+- Contributor Email: alice@example.com
+- Governor Name: Gary Teh
+- Governor Email: gary@truesight.me
+- Role: Contributor
+- Timestamp: 2026-06-20T12:10:00Z
+--------
+
+My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7Q1EeiwmgW3gDvGY3izv485fBH/Yty/oYuGlgl7fMyJ4SVwwijV3xL2+XFMnuEJnC3etBbeRQwFvXW0zSbZ4xmGDlswnrUpEywdADRkAQez+1LYC83K16e5n95DxbjajfhIpAO/z73m+h5V2RdgLqYlmlykKBngAAkP2slkdQQoJD4yxyLPOMVgk2abgBwA5sf1GtuUOGUrLuAYpI7QOEBecLmJM8yXoh377lWZq1rvv4xqK64n5/oe4A0ig9/QtL3BVu+BsQC4x2PJNRvoZXmmVJljG4JzeSUOarLv9nx4xnyk5Szgd3PxAN7ChYEQ7ttxI3SDnoeLBhlKrYGXvVQIDAQAB
+
+Request Transaction ID: H1S6uKT6h1H7nQE1y1kA7PnMXXrYHBNDP0iDkrct9rUKsQVwTYA04B6rB/nVAVqBbnAb/k/09dFESzEAMewo1neFirqeBsOkpxPGMZwovaunm9pam1uNPXgb1/Y6mbtoV55+vHY0T7nfitHHzQU0idZ0GV3gIqkh7MZhH7qppjoa1qA5tSHK1ZWg1wKxskEHfnasT1GnyMGwAuMwJAuPDBcMuCef3dSg22qP3CGOnx18yrJUhj3sQWamvxVYJYPG6K0NGokQom7LUzET5RK81hEMmLhHNyUzoVCPvE9d2vlNKPqXdci/iOADUShjEcQmwEo2olbkXW5t/6RqmRqSIw==</code></pre>
+            <button class="verify-btn" onclick="verifyPayload(this)">Verify</button>
+            <div class="verify-result"></div>
       </details>
     </div>
 
@@ -870,14 +887,19 @@ My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0</textarea>
       </details>
       <details class="payload">
         <summary>📋 Sample Payload</summary>
-        <pre><code>{
-  "event": "DAPP PERMISSION CHANGE EVENT",
-  "Contributor Email": "bob@example.com",
-  "Permission Level": "Inventory Manager",
-  "Governor Name": "Gary Teh",
-  "Governor Email": "gary@truesight.me",
-  "Timestamp": "2026-06-20T12:15:00Z"
-}</code></pre>
+        <pre><code>[DAPP PERMISSION CHANGE EVENT]
+- Contributor Email: bob@example.com
+- Permission Level: Inventory Manager
+- Governor Name: Gary Teh
+- Governor Email: gary@truesight.me
+- Timestamp: 2026-06-20T12:15:00Z
+--------
+
+My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7Q1EeiwmgW3gDvGY3izv485fBH/Yty/oYuGlgl7fMyJ4SVwwijV3xL2+XFMnuEJnC3etBbeRQwFvXW0zSbZ4xmGDlswnrUpEywdADRkAQez+1LYC83K16e5n95DxbjajfhIpAO/z73m+h5V2RdgLqYlmlykKBngAAkP2slkdQQoJD4yxyLPOMVgk2abgBwA5sf1GtuUOGUrLuAYpI7QOEBecLmJM8yXoh377lWZq1rvv4xqK64n5/oe4A0ig9/QtL3BVu+BsQC4x2PJNRvoZXmmVJljG4JzeSUOarLv9nx4xnyk5Szgd3PxAN7ChYEQ7ttxI3SDnoeLBhlKrYGXvVQIDAQAB
+
+Request Transaction ID: sF6gx9D+U3mk6SKBJ0a5r7DZB/PAcESxCu4wPzb4c+nJHEzWJnVMXUydBJ0rhDr2uM1vMbo3WmtFy601ANtD8eHGeV5VzR6xXakE5NDpKZTz4jR2GeaUIra3n6GIQX/Ov5DRN/7W2PxzyCGt4ywliCdoPUxJRSQ4TQ3tHONpw8VT4YziklPLGp9P3AhS+1Mj7B6Ve9QBJH9Wf4qLzIanBm3o8LjzQL6wjHmnFksH5mRrEagKhCkiB2auCPlQW9T10szqMRybda5R8QwgKXuHbL6m0V4jj/gSUlTF8DHiUS9krXYi50cTs+fM2EWCEucJWJ/9vHm3XoSztxLx/9mxRg==</code></pre>
+            <button class="verify-btn" onclick="verifyPayload(this)">Verify</button>
+            <div class="verify-result"></div>
       </details>
     </div>
 
@@ -906,13 +928,15 @@ My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0</textarea>
       <details class="payload">
         <summary>📋 Sample Payload (copy-paste into verify page)</summary>
         <pre><code>[VOTING RIGHTS WITHDRAWAL REQUEST]
-amount to withdraw: 70
-asking price: 90
+- amount to withdraw: 70
+- asking price: 90
 --------
 
-My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0D70xOu3BmuhnWJ5sAXdmJyglssswFUqcjjESrwdEeygjXkQaMcckbW4dt4Q6CmlHUKPshMDfy8Zrp+hVvr6WE6oC4cZe/faL20xNCmS0wos8w+USdvoGbvEC6yMop6XGR3r29fDwK1JohrXXrMpPYT3KYM6NlVvBnjOEejvOg0H1tWxwVXSMPwxfrPDJbfpY7oI+mK+lPbVsnuilKH7GCMTQMG1wlwo69nan5uIahtYl5WYCt7SuOYe91ziryNtJSweZK+9Vxv6k5oyopPxTZ+r5EMIneT0jsOZR7svp5rpSuEOP+1KSZ2dpHqgKw+OoGUXHbs0ANJwriV8erOAywIDAQAB
+My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7Q1EeiwmgW3gDvGY3izv485fBH/Yty/oYuGlgl7fMyJ4SVwwijV3xL2+XFMnuEJnC3etBbeRQwFvXW0zSbZ4xmGDlswnrUpEywdADRkAQez+1LYC83K16e5n95DxbjajfhIpAO/z73m+h5V2RdgLqYlmlykKBngAAkP2slkdQQoJD4yxyLPOMVgk2abgBwA5sf1GtuUOGUrLuAYpI7QOEBecLmJM8yXoh377lWZq1rvv4xqK64n5/oe4A0ig9/QtL3BVu+BsQC4x2PJNRvoZXmmVJljG4JzeSUOarLv9nx4xnyk5Szgd3PxAN7ChYEQ7ttxI3SDnoeLBhlKrYGXvVQIDAQAB
 
-Request Transaction ID: PV0ZZI3FKJJPqjfaqWltHPgmka+pWfFkNnXlTILNNOnpp9hrlewy7SMHlA1mqAPmo+r+WP2klbJTBxys871CG7kDcehJWN59awrRCzKF6AIuSzfq2T/PfVgufIJoZuDYD4FZgD3Z6nnpnuiBUCSW0vHQm9DnimRcZwQOyGAjMUHOKHglrtO6l1Y7J9oftkotXAjO7VceUoUKNgdCTrr8hoQL68Pd2p6ImazyPWgW+KKK3QGUrv0wOnqI/BE7rHC0G/VnOh6TwdA+PLGszXg74HizMTq4q4ELw1TllT6NExeaV4kYDyPr1fK1xYSa8lrpiTJ1cwE3BP94txrs2pBMrQ==</code></pre>
+Request Transaction ID: I3lA37M42gmQTwf8VeqdDJyCj09gj2US1UgzaXlxYlR0Eu0njndMhMX+sclmO20K3PiArktkmu3WApF2g8K2W2D+/Vfc2L86ArlzcfX7ZB7ZroMa0NfxsxU3VIwlQf7ycckY9gGYs6nL1uChA+84utfXFr2nwbutnEVqygvjT5ro4tl3tZGiWY+5H2dzU+w4KFnwIkl4iMf0oyKID0NDpPvYyDI4+8tfAsSpFD2ADvD1gaf10pw7yOt2A+nzlxGqQ+h/dQKjH7LQfQjR+P5iGFWWtASiL0J2ZNWG5Kos3/BqBD3+KsrZThxjiPRFkb8L696rercmHunako2uOEAS9Q==</code></pre>
+            <button class="verify-btn" onclick="verifyPayload(this)">Verify</button>
+            <div class="verify-result"></div>
       </details>
     </div>
 
@@ -941,15 +965,20 @@ Request Transaction ID: PV0ZZI3FKJJPqjfaqWltHPgmka+pWfFkNnXlTILNNOnpp9hrlewy7SMH
       </details>
       <details class="payload">
         <summary>📋 Sample Payload</summary>
-        <pre><code>{
-  "event": "PROGRAM REGISTRATION EVENT",
-  "Program Name": "Sunmint Phase 3",
-  "Program Type": "Reforestation",
-  "Start Date": "2026-07-01",
-  "Governor Name": "Gary Teh",
-  "Governor Email": "gary@truesight.me",
-  "Timestamp": "2026-06-20T12:25:00Z"
-}</code></pre>
+        <pre><code>[PROGRAM REGISTRATION EVENT]
+- Program Name: Sunmint Phase 3
+- Program Type: Reforestation
+- Start Date: 2026-07-01
+- Governor Name: Gary Teh
+- Governor Email: gary@truesight.me
+- Timestamp: 2026-06-20T12:25:00Z
+--------
+
+My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7Q1EeiwmgW3gDvGY3izv485fBH/Yty/oYuGlgl7fMyJ4SVwwijV3xL2+XFMnuEJnC3etBbeRQwFvXW0zSbZ4xmGDlswnrUpEywdADRkAQez+1LYC83K16e5n95DxbjajfhIpAO/z73m+h5V2RdgLqYlmlykKBngAAkP2slkdQQoJD4yxyLPOMVgk2abgBwA5sf1GtuUOGUrLuAYpI7QOEBecLmJM8yXoh377lWZq1rvv4xqK64n5/oe4A0ig9/QtL3BVu+BsQC4x2PJNRvoZXmmVJljG4JzeSUOarLv9nx4xnyk5Szgd3PxAN7ChYEQ7ttxI3SDnoeLBhlKrYGXvVQIDAQAB
+
+Request Transaction ID: YDVXvKFuBnzy+fF5leSskdf2KDD6T0XnzjzY1SV0VCvBOcHuN6skghPG+UQehlXQnqX7o5809z0Tm5n5/yJoTmG27zxwne8hY4PO2mLITMdBHRuYvVCYIp3QOdLjwJPbjbH3Y5hHJsGeyV/7/TfywMCAyBF5oH9OIanyfcYc4GrnjChEepTU4MSvG1hWjCMuAeqZc5lwj1VlSsVab0TusCCWsFPYhni1tCEsHdaGrqKmDE8oj3Q78m37K/jOz/bm3Rjdr6v41Cz7re2hMw3N9I9+86T+azM3XHRDKW9Z54WJyLFzNjWKlgmOLc1WXxUnzib83xh8pKoV7MRq+3dUzw==</code></pre>
+            <button class="verify-btn" onclick="verifyPayload(this)">Verify</button>
+            <div class="verify-result"></div>
       </details>
     </div>
   </section>
@@ -987,14 +1016,19 @@ Request Transaction ID: PV0ZZI3FKJJPqjfaqWltHPgmka+pWfFkNnXlTILNNOnpp9hrlewy7SMH
       </details>
       <details class="payload">
         <summary>📋 Sample Payload</summary>
-        <pre><code>{
-  "event": "QR CODE REGISTRATION",
-  "QR Code(s)": ["QR-CACAO-2026-001", "QR-CACAO-2026-002"],
-  "Batch ID": "BATCH-2026-06",
-  "Product Type": "Cacao Beans (Organic)",
-  "Registered By": "Maria Santos",
-  "Timestamp": "2026-06-20T13:00:00Z"
-}</code></pre>
+        <pre><code>[QR CODE REGISTRATION]
+- QR Code(s): QR-CACAO-2026-001, QR-CACAO-2026-002
+- Batch ID: BATCH-2026-06
+- Product Type: Cacao Beans (Organic)
+- Registered By: Maria Santos
+- Timestamp: 2026-06-20T13:00:00Z
+--------
+
+My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7Q1EeiwmgW3gDvGY3izv485fBH/Yty/oYuGlgl7fMyJ4SVwwijV3xL2+XFMnuEJnC3etBbeRQwFvXW0zSbZ4xmGDlswnrUpEywdADRkAQez+1LYC83K16e5n95DxbjajfhIpAO/z73m+h5V2RdgLqYlmlykKBngAAkP2slkdQQoJD4yxyLPOMVgk2abgBwA5sf1GtuUOGUrLuAYpI7QOEBecLmJM8yXoh377lWZq1rvv4xqK64n5/oe4A0ig9/QtL3BVu+BsQC4x2PJNRvoZXmmVJljG4JzeSUOarLv9nx4xnyk5Szgd3PxAN7ChYEQ7ttxI3SDnoeLBhlKrYGXvVQIDAQAB
+
+Request Transaction ID: DAOiXAL189+Gn63i2ytadrSJ8Bp04rORbkzOCEeEYdFb1zRzAxlyDjgVV3i77Vl2GTsjJhRB7CmwRlzJnuk3/ZEZNlDOpcy6avekbDdDqjm3r9O7UncLc89ViLrXArm/Uhv+MUFNYslk+z/6tvzmCri9Kx0RnwFTUWAdTlqw6bb1+LID3BnBGd9GWetHXvrmPk07F7O25JQCRD7PeypXws37o/ODANEf/slZ+7WLTtoITEXOybRF5TB7H5xO6Cx36vb/05H2D4sHkHISiH6fB+OV2eJIMhP98vYxfSKcRhEtNAnEvataR8I5SRzLvi4397Ag/H3QDejF4uBmQRlWug==</code></pre>
+            <button class="verify-btn" onclick="verifyPayload(this)">Verify</button>
+            <div class="verify-result"></div>
       </details>
       <details class="fields">
         <summary>Variants</summary>
@@ -1034,15 +1068,20 @@ Request Transaction ID: PV0ZZI3FKJJPqjfaqWltHPgmka+pWfFkNnXlTILNNOnpp9hrlewy7SMH
       </details>
       <details class="payload">
         <summary>📋 Sample Payload</summary>
-        <pre><code>{
-  "event": "INVENTORY MOVEMENT",
-  "Manager Name": "Maria Santos",
-  "Recipient Name": "Green Valley Market",
-  "QR Code(s)": ["QR-CACAO-2026-001", "QR-CACAO-2026-002"],
-  "Quantity": 2,
-  "Movement Type": "Consignment Transfer",
-  "Timestamp": "2026-06-20T14:00:00Z"
-}</code></pre>
+        <pre><code>[INVENTORY MOVEMENT]
+- Manager Name: Maria Santos
+- Recipient Name: Green Valley Market
+- QR Code(s): QR-CACAO-2026-001, QR-CACAO-2026-002
+- Quantity: 2
+- Movement Type: Consignment Transfer
+- Timestamp: 2026-06-20T14:00:00Z
+--------
+
+My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7Q1EeiwmgW3gDvGY3izv485fBH/Yty/oYuGlgl7fMyJ4SVwwijV3xL2+XFMnuEJnC3etBbeRQwFvXW0zSbZ4xmGDlswnrUpEywdADRkAQez+1LYC83K16e5n95DxbjajfhIpAO/z73m+h5V2RdgLqYlmlykKBngAAkP2slkdQQoJD4yxyLPOMVgk2abgBwA5sf1GtuUOGUrLuAYpI7QOEBecLmJM8yXoh377lWZq1rvv4xqK64n5/oe4A0ig9/QtL3BVu+BsQC4x2PJNRvoZXmmVJljG4JzeSUOarLv9nx4xnyk5Szgd3PxAN7ChYEQ7ttxI3SDnoeLBhlKrYGXvVQIDAQAB
+
+Request Transaction ID: Gm988y3l4mBVYPvEkaNL2zJ+adWatSO91zanl+197j3bO9dlUMeE6y0HWbnHGOWD+A5V7s32TWxCOuTw4jQGQzSJ6jwBiF62a6JtbhQFD2/EW7tqtemM4kIK5zAcMsm1dJPAgAlTqU+Hvvqg28jH8Zq288D6qhMlQgS+SvkHt92EfuO79r+FKFIAqrvVC4t3QIFa4yn0bJiOZp6ovyJvxlAyu/4rfNpumVr0yDpDpRTvYxQKzosk8N2L1JWvHd/ZURCJ2OHH+O7yF/UQstfoqilQbTuKOw8EFy7fFI4LnetpgtQUiM3Z4bX18eSO21uYueQOqbNObNPGmZ0DClOgXQ==</code></pre>
+            <button class="verify-btn" onclick="verifyPayload(this)">Verify</button>
+            <div class="verify-result"></div>
       </details>
       <details class="fields">
         <summary>Variants</summary>
@@ -1086,15 +1125,20 @@ Request Transaction ID: PV0ZZI3FKJJPqjfaqWltHPgmka+pWfFkNnXlTILNNOnpp9hrlewy7SMH
       </details>
       <details class="payload">
         <summary>📋 Sample Payload</summary>
-        <pre><code>{
-  "event": "SALES EVENT",
-  "Item": "QR-CACAO-2026-001",
-  "Sales Price": 25.00,
-  "Sold By": "Green Valley Market",
-  "Cash Proceeds Collected By": "DAO Treasury",
-  "Owner Email": "owner@greenvalley.com",
-  "Timestamp": "2026-06-20T15:30:00Z"
-}</code></pre>
+        <pre><code>[SALES EVENT]
+- Item: QR-CACAO-2026-001
+- Sales Price: 25.00
+- Sold By: Green Valley Market
+- Cash Proceeds Collected By: DAO Treasury
+- Owner Email: owner@greenvalley.com
+- Timestamp: 2026-06-20T15:30:00Z
+--------
+
+My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7Q1EeiwmgW3gDvGY3izv485fBH/Yty/oYuGlgl7fMyJ4SVwwijV3xL2+XFMnuEJnC3etBbeRQwFvXW0zSbZ4xmGDlswnrUpEywdADRkAQez+1LYC83K16e5n95DxbjajfhIpAO/z73m+h5V2RdgLqYlmlykKBngAAkP2slkdQQoJD4yxyLPOMVgk2abgBwA5sf1GtuUOGUrLuAYpI7QOEBecLmJM8yXoh377lWZq1rvv4xqK64n5/oe4A0ig9/QtL3BVu+BsQC4x2PJNRvoZXmmVJljG4JzeSUOarLv9nx4xnyk5Szgd3PxAN7ChYEQ7ttxI3SDnoeLBhlKrYGXvVQIDAQAB
+
+Request Transaction ID: u796wVLEOXWzV3HquqIGgdiZb7IlTi62cHIB/zmhIqz1avzrxISb4JO2RKQLJMdgaNfqiRSUuYMVzoQisjgBANT3hlAUJqIKs3QzSk/IxGPl9NmSF2zEN3dzR4FHC3cnN1/dB70zYpPF0mJpWNV2qGPo7yjoUikqeawV/UGaxaWIKzhmV6WQrVopfkK91UJc7eMzmf6QhrkNLnABCMUTx88bvoQ9t/lmK13h/rWVoQPsez+TyJpJrXBK4T0QCIzkB8kEIwoLLTqtXD/vSL5qZzOPaOivgi7GCm2YhQDVJQkuc+6HozkE2nVe4ZP5iElzFO+r3ZcLUsikCG3AtvKv0A==</code></pre>
+            <button class="verify-btn" onclick="verifyPayload(this)">Verify</button>
+            <div class="verify-result"></div>
       </details>
       <details class="fields">
         <summary>Variants</summary>
@@ -1138,14 +1182,19 @@ Request Transaction ID: PV0ZZI3FKJJPqjfaqWltHPgmka+pWfFkNnXlTILNNOnpp9hrlewy7SMH
       </details>
       <details class="payload">
         <summary>📋 Sample Payload</summary>
-        <pre><code>{
-  "event": "ASSET RECEIPT",
-  "Asset Type": "Cacao Beans (Organic)",
-  "Quantity": 50,
-  "Received By": "Maria Santos",
-  "Source": "Cooperativa Agroflorestal do Sul",
-  "Timestamp": "2026-06-20T13:30:00Z"
-}</code></pre>
+        <pre><code>[ASSET RECEIPT]
+- Asset Type: Cacao Beans (Organic)
+- Quantity: 50
+- Received By: Maria Santos
+- Source: Cooperativa Agroflorestal do Sul
+- Timestamp: 2026-06-20T13:30:00Z
+--------
+
+My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7Q1EeiwmgW3gDvGY3izv485fBH/Yty/oYuGlgl7fMyJ4SVwwijV3xL2+XFMnuEJnC3etBbeRQwFvXW0zSbZ4xmGDlswnrUpEywdADRkAQez+1LYC83K16e5n95DxbjajfhIpAO/z73m+h5V2RdgLqYlmlykKBngAAkP2slkdQQoJD4yxyLPOMVgk2abgBwA5sf1GtuUOGUrLuAYpI7QOEBecLmJM8yXoh377lWZq1rvv4xqK64n5/oe4A0ig9/QtL3BVu+BsQC4x2PJNRvoZXmmVJljG4JzeSUOarLv9nx4xnyk5Szgd3PxAN7ChYEQ7ttxI3SDnoeLBhlKrYGXvVQIDAQAB
+
+Request Transaction ID: wreVZ2oKppSVrwI7s2zzdEMGRAbf7b01qiYpdEa11Q86Nt+Hq69JK0dwfCWLXMmA9dqS/E9KDjAAM50onWXF/OeYdWl7ugnh+D4NMEFvdElbicbS+TJCXEeoi8KDGthfh06BhIUIRMc1TB8EFG10/uXAzpETU/C8NySPfQqh9HrkJHv3LTOfZEt0lszFF28LitdIc4pkMXUVFWdBiXsgWycXOXBf8u6xWJ1NSMt4bFztb2ae1NwuT+3rpavAydcT96ZZaG+Ms3e6KDqaxHcdLCJTcaTbIkKsTjwz96bii6FVDlFF89x5FC/e3ihPC1L7bUZTyzWFMU4QxE0fTQM8eg==</code></pre>
+            <button class="verify-btn" onclick="verifyPayload(this)">Verify</button>
+            <div class="verify-result"></div>
       </details>
     </div>
 
@@ -1174,15 +1223,20 @@ Request Transaction ID: PV0ZZI3FKJJPqjfaqWltHPgmka+pWfFkNnXlTILNNOnpp9hrlewy7SMH
       </details>
       <details class="payload">
         <summary>📋 Sample Payload</summary>
-        <pre><code>{
-  "event": "CURRENCY CONVERSION",
-  "From Currency": "USD",
-  "To Currency": "BRL",
-  "Amount": 1000.00,
-  "Exchange Rate": 5.12,
-  "Converted By": "Treasury Manager",
-  "Timestamp": "2026-06-20T16:00:00Z"
-}</code></pre>
+        <pre><code>[CURRENCY CONVERSION]
+- From Currency: USD
+- To Currency: BRL
+- Amount: 1000.00
+- Exchange Rate: 5.12
+- Converted By: Treasury Manager
+- Timestamp: 2026-06-20T16:00:00Z
+--------
+
+My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7Q1EeiwmgW3gDvGY3izv485fBH/Yty/oYuGlgl7fMyJ4SVwwijV3xL2+XFMnuEJnC3etBbeRQwFvXW0zSbZ4xmGDlswnrUpEywdADRkAQez+1LYC83K16e5n95DxbjajfhIpAO/z73m+h5V2RdgLqYlmlykKBngAAkP2slkdQQoJD4yxyLPOMVgk2abgBwA5sf1GtuUOGUrLuAYpI7QOEBecLmJM8yXoh377lWZq1rvv4xqK64n5/oe4A0ig9/QtL3BVu+BsQC4x2PJNRvoZXmmVJljG4JzeSUOarLv9nx4xnyk5Szgd3PxAN7ChYEQ7ttxI3SDnoeLBhlKrYGXvVQIDAQAB
+
+Request Transaction ID: Z4bwigNtBgGY0xAd1qDyXmtHg4MsTCcTALve+76RbTWcuXfSZOe/r1mv+hMUKEq1V3bCf8erIEcJHgfAIiDrrmdqgCy2WfK3M7F3Q05llWcynfK/Et7I7KMcO2aDlE31ZAMPam6opZ+cBFlpP+lZ8IqccgBqc2NXXeAtnZSUGJfkx0srFn5CH8iiqzDdZIvaG9TAFP/1VfV+Z4Jq7mZLLIYHug/NaDy9LQqgZwHtxkFAKEqmPDScFR2YQ5eny80a1yYhwrVyfNlm85XjmqR8Q6YnuEUqiQtXAhIVC4hqTFv15eAHGA7Tcxo7wI44cmc/sFuv+QO+Yp0oHt6Dut8R5Q==</code></pre>
+            <button class="verify-btn" onclick="verifyPayload(this)">Verify</button>
+            <div class="verify-result"></div>
       </details>
     </div>
   </section>
@@ -1684,9 +1738,11 @@ Request Transaction ID: PV0ZZI3FKJJPqjfaqWltHPgmka+pWfFkNnXlTILNNOnpp9hrlewy7SMH
 - Quantity: 500
 --------
 
-My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0D70xOu3BmuhnWJ5sAXdmJyglssswFUqcjjESrwdEeygjXkQaMcckbW4dt4Q6CmlHUKPshMDfy8Zrp+hVvr6WE6oC4cZe/faL20xNCmS0wos8w+USdvoGbvEC6yMop6XGR3r29fDwK1JohrXXrMpPYT3KYM6NlVvBnjOEejvOg0H1tWxwVXSMPwxfrPDJbfpY7oI+mK+lPbVsnuilKH7GCMTQMG1wlwo69nan5uIahtYl5WYCt7SuOYe91ziryNtJSweZK+9Vxv6k5oyopPxTZ+r5EMIneT0jsOZR7svp5rpSuEOP+1KSZ2dpHqgKw+OoGUXHbs0ANJwriV8erOAywIDAQAB
+My Digital Signature: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7Q1EeiwmgW3gDvGY3izv485fBH/Yty/oYuGlgl7fMyJ4SVwwijV3xL2+XFMnuEJnC3etBbeRQwFvXW0zSbZ4xmGDlswnrUpEywdADRkAQez+1LYC83K16e5n95DxbjajfhIpAO/z73m+h5V2RdgLqYlmlykKBngAAkP2slkdQQoJD4yxyLPOMVgk2abgBwA5sf1GtuUOGUrLuAYpI7QOEBecLmJM8yXoh377lWZq1rvv4xqK64n5/oe4A0ig9/QtL3BVu+BsQC4x2PJNRvoZXmmVJljG4JzeSUOarLv9nx4xnyk5Szgd3PxAN7ChYEQ7ttxI3SDnoeLBhlKrYGXvVQIDAQAB
 
-Request Transaction ID: PV0ZZI3FKJJPqjfaqWltHPgmka+pWfFkNnXlTILNNOnpp9hrlewy7SMHlA1mqAPmo+r+WP2klbJTBxys871CG7kDcehJWN59awrRCzKF6AIuSzfq2T/PfVgufIJoZuDYD4FZgD3Z6nnpnuiBUCSW0vHQm9DnimRcZwQOyGAjMUHOKHglrtO6l1Y7J9oftkotXAjO7VceUoUKNgdCTrr8hoQL68Pd2p6ImazyPWgW+KKK3QGUrv0wOnqI/BE7rHC0G/VnOh6TwdA+PLGszXg74HizMTq4q4ELw1TllT6NExeaV4kYDyPr1fK1xYSa8lrpiTJ1cwE3BP94txrs2pBMrQ==</code></pre>
+Request Transaction ID: v2gZ0x6uulSrH5JVnzEZH7YhckF2jHShl0ihuin7U7v19RpEiM+9a6Ai14j21HsTZADOS1cNJyq1dXl5cLZQOE13ODRJYmG5V3CJiRz0sA8JsHoFNKFV+pmLNutTCm0pjb7UP1DYpAO/56/SR4o2CLlsoVWEH50nz0dX5GwpNwt+IiYcfElp1eYiAsh4yZ97XAnf2Z1YlfOJOA2Az9YkdW0jCs7HZBupBtZWTZxkyuSd9e/i1HDHie3pFYZun9lYJbF+KIXvcSrKOvR4enhHoqJK8OhxSIiXKzsqPpDgsg7E9tLTSF3hdzQEo7qT2q7Vh+jWC6Z06qMCLEDERkUTZg==</code></pre>
+            <button class="verify-btn" onclick="verifyPayload(this)">Verify</button>
+            <div class="verify-result"></div>
       </details>
     </div>
 
@@ -1767,6 +1823,167 @@ Request Transaction ID: PV0ZZI3FKJJPqjfaqWltHPgmka+pWfFkNnXlTILNNOnpp9hrlewy7SMH
 </footer>
 
 <script>
+// Client-side RSA signature verification for payload samples
+function verifyPayload(btn) {
+  var details = btn.closest('.payload');
+  var result = details.querySelector('.verify-result');
+  var code = details.querySelector('code');
+  var text = (code.textContent || code.innerText || '').trim();
+
+  if (!text) {
+    result.className = 'verify-result invalid';
+    result.innerHTML = 'No payload content found.';
+    return;
+  }
+
+  // Check if payload is signed (has signature markers)
+  var hasSignature = text.indexOf('My Digital Signature:') !== -1;
+  var hasTxnId = text.indexOf('Request Transaction ID:') !== -1;
+
+  if (!hasSignature && !hasTxnId) {
+    // Unsigned template - can't verify cryptographically
+    result.className = 'verify-result loading';
+    result.innerHTML = '<strong>Unsigned template</strong><br>This is a sample payload structure. To verify or execute, replace the placeholder values with real data, sign with your RSA private key, and add <code style="font-size:0.75rem">My Digital Signature:</code> and <code style="font-size:0.75rem">Request Transaction ID:</code> blocks.<br><br>Submit signed payloads at <a href="https://edgar.truesight.me" style="color:var(--accent)">edgar.truesight.me</a> or via the <a href="https://dapp.truesight.me" style="color:var(--accent)">DApp</a>.';
+    return;
+  }
+
+  // Signed payload - parse and verify
+  result.className = 'verify-result loading';
+  result.innerHTML = 'Verifying signature...';
+
+  try {
+    var lines = text.split('\n');
+
+    // Find the -------- separator
+    var separatorIndex = -1;
+    for (var i = 0; i < lines.length; i++) {
+      if (lines[i].trim() === '--------') {
+        separatorIndex = i;
+        break;
+      }
+    }
+
+    if (separatorIndex === -1) {
+      throw new Error('Could not find the content separator (--------). Make sure the request format is correct.');
+    }
+
+    // Message to verify: everything from start through the -------- line
+    var message = lines.slice(0, separatorIndex + 1).join('\n');
+
+    // Find signature and transaction ID lines
+    var signatureStartIndex = -1;
+    var transactionIdStartIndex = -1;
+
+    for (var i = separatorIndex + 1; i < lines.length; i++) {
+      var line = lines[i];
+      if (line.indexOf('My Digital Signature:') === 0) {
+        signatureStartIndex = i;
+      } else if (line.indexOf('Request Transaction ID:') === 0) {
+        transactionIdStartIndex = i;
+        break;
+      }
+    }
+
+    if (signatureStartIndex === -1 || transactionIdStartIndex === -1) {
+      throw new Error('Could not find digital signature or transaction ID. Make sure they start with "My Digital Signature:" and "Request Transaction ID:".');
+    }
+
+    // Extract signature value (public key)
+    var sigLine = lines[signatureStartIndex];
+    var digitalSignature = sigLine.replace('My Digital Signature:', '').trim();
+    if (!digitalSignature && signatureStartIndex + 1 < lines.length) {
+      digitalSignature = lines[signatureStartIndex + 1].trim();
+    }
+
+    // Extract transaction ID value (the RSA signature)
+    var txnLine = lines[transactionIdStartIndex];
+    var transactionId = txnLine.replace('Request Transaction ID:', '').trim();
+    if (!transactionId && transactionIdStartIndex + 1 < lines.length) {
+      transactionId = lines[transactionIdStartIndex + 1].trim();
+    }
+
+    if (!digitalSignature || !transactionId) {
+      throw new Error('Could not extract signature or transaction ID values.');
+    }
+
+    // Shorten for display
+    function shorten(s) {
+      return s.length > 30 ? s.substring(0, 15) + '...' + s.substring(s.length - 15) : s;
+    }
+
+    // Run verification
+    verifyRSASignature(message, digitalSignature, transactionId).then(function(isValid) {
+      if (isValid) {
+        result.className = 'verify-result valid';
+        result.innerHTML = '<strong>Signature valid</strong><br>This signed payload passes cryptographic verification against the public key.<br>Public key: <span style="font-family:JetBrains Mono,monospace;font-size:0.75rem">' + escHtml(shorten(digitalSignature)) + '</span><br>Txn ID: <span style="font-family:JetBrains Mono,monospace;font-size:0.75rem">' + escHtml(shorten(transactionId)) + '</span>';
+      } else {
+        result.className = 'verify-result invalid';
+        result.innerHTML = '<strong>Signature invalid</strong><br>The cryptographic signature does not match the payload content. This sample may use demo keys — it is not a valid signed contract.<br>Public key: <span style="font-family:JetBrains Mono,monospace;font-size:0.75rem">' + escHtml(shorten(digitalSignature)) + '</span>';
+      }
+    }).catch(function(err) {
+      result.className = 'verify-result invalid';
+      result.innerHTML = '<strong>Verification error</strong><br>' + escHtml(err.message) + '<br>This may be a demo signature using non-standard formatting.';
+    });
+
+  } catch (err) {
+    result.className = 'verify-result invalid';
+    result.innerHTML = '<strong>Verification failed</strong><br>' + escHtml(err.message);
+  }
+}
+
+function verifyRSASignature(message, digitalSignature, signatureBase64) {
+  // Strip PEM headers if present, then decode
+  var rawBase64 = digitalSignature
+    .replace('-----BEGIN PUBLIC KEY-----', '')
+    .replace('-----END PUBLIC KEY-----', '')
+    .replace('-----BEGIN RSA PUBLIC KEY-----', '')
+    .replace('-----END RSA PUBLIC KEY-----', '')
+    .replace(/\s+/g, '');
+
+  return importPublicKey(rawBase64).then(function(publicKey) {
+    var signature = base64ToArrayBuffer(signatureBase64);
+    var encoder = new TextEncoder();
+    var data = encoder.encode(message);
+    return window.crypto.subtle.verify(
+      'RSASSA-PKCS1-v1_5',
+      publicKey,
+      signature,
+      data
+    );
+  });
+}
+
+function importPublicKey(base64) {
+  var binaryDer = base64ToArrayBuffer(base64);
+  return window.crypto.subtle.importKey(
+    'spki',
+    binaryDer,
+    { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' },
+    true,
+    ['verify']
+  );
+}
+
+function base64ToArrayBuffer(base64) {
+  var raw = base64.replace(/[\r\n]+/g, '').replace(/-/g, '+').replace(/_/g, '/');
+  raw = raw + '==='.slice((raw.length + 3) % 4);
+  var binary = atob(raw);
+  var bytes = new Uint8Array(binary.length);
+  for (var i = 0; i < binary.length; i++) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+  return bytes.buffer;
+}
+
+function escHtml(unsafe) {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 // Mobile menu toggle
 (function() {
   const toggle = document.querySelector('.menu-toggle');
