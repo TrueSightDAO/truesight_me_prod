@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-21T20:15:02Z",
+  "generated_at_utc": "2026-06-22T06:09:37Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-06-21T19:30:16Z",
+    "generated_at": "2026-06-22T04:03:00Z",
     "total_contributors": 469,
     "total_tdg_controlled_sum": 2549012.87,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-06-21T19:48:29.363Z",
+    "generated_at": "2026-06-22T05:48:35.998Z",
     "schema_version": 4,
     "trigger": "cron",
     "currency_totals": {
@@ -728,12 +728,12 @@
         }
       },
       "USD": {
-        "total_quantity": 20739.97,
-        "total_value_usd": 20739.97,
+        "total_quantity": 20667.31,
+        "total_value_usd": 20667.31,
         "item_count": 1,
         "ledger_breakdown": {
           "AGL4": 9036.35,
-          "AGL15": 5197.8,
+          "AGL15": 5125.14,
           "Main Ledger": 4158.34,
           "AGL6": 1337.59,
           "AGL8": 569.95,
@@ -780,8 +780,14 @@
     }
   },
   "recent_beerhall_digests": {
-    "total_entries": 64,
+    "total_entries": 65,
     "recent": [
+      {
+        "date": "2026-06-22",
+        "slug": "smart-contracts-rsa-verification",
+        "filename": "beer-hall_2026-06-22T042740Z_smart-contracts-rsa-verification.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-22T042740Z_smart-contracts-rsa-verification.md"
+      },
       {
         "date": "2026-06-21",
         "slug": "soha-postmortem-and-batch-execution",
@@ -835,12 +841,6 @@
         "slug": "tech-fest-recap-sophia-hotfix",
         "filename": "beer-hall_2026-06-13T035924Z_tech-fest-recap-sophia-hotfix.md",
         "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-13T035924Z_tech-fest-recap-sophia-hotfix.md"
-      },
-      {
-        "date": "2026-06-12",
-        "slug": "friends-rainforest-live-sophia-phase-0",
-        "filename": "beer-hall_2026-06-12T041228Z_friends-rainforest-live-sophia-phase-0.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-12T041228Z_friends-rainforest-live-sophia-phase-0.md"
       }
     ],
     "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
