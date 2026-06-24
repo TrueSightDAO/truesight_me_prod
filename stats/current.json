@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-24T15:21:21Z",
+  "generated_at_utc": "2026-06-24T20:21:07Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-06-24T14:36:17Z",
+    "generated_at": "2026-06-24T19:46:15Z",
     "total_contributors": 469,
     "total_tdg_controlled_sum": 2549012.87,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-06-24T14:48:40.433Z",
+    "generated_at": "2026-06-24T19:48:36.248Z",
     "schema_version": 4,
     "trigger": "cron",
     "currency_totals": {
@@ -728,12 +728,12 @@
         }
       },
       "USD": {
-        "total_quantity": 20666.48,
-        "total_value_usd": 20666.48,
+        "total_quantity": 20648.88,
+        "total_value_usd": 20648.88,
         "item_count": 1,
         "ledger_breakdown": {
           "AGL4": 9036.35,
-          "AGL15": 5125.14,
+          "AGL15": 5107.54,
           "Main Ledger": 4157.51,
           "AGL6": 1337.59,
           "AGL8": 569.95,
