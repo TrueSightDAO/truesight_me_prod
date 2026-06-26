@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-26T04:53:34Z",
+  "generated_at_utc": "2026-06-26T09:59:47Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-06-26T03:32:45Z",
+    "generated_at": "2026-06-26T09:24:51Z",
     "total_contributors": 469,
     "total_tdg_controlled_sum": 2549012.87,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-06-26T04:48:32.425Z",
+    "generated_at": "2026-06-26T09:48:32.959Z",
     "schema_version": 4,
     "trigger": "cron",
     "currency_totals": {
@@ -118,11 +118,11 @@
         }
       },
       "8 Ounce Package Kraft Pouch  CP340992735BR": {
-        "total_quantity": 22.0,
-        "total_value_usd": 187.21,
+        "total_quantity": 21.0,
+        "total_value_usd": 178.7,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 22.0
+          "Main Ledger": 21.0
         }
       },
       "8 Ounce Package Kraft Pouch - AGL2 + V2 bags": {
@@ -415,11 +415,11 @@
         }
       },
       "Cacao Tree To Be Planted": {
-        "total_quantity": 307.0,
-        "total_value_usd": -460.5,
+        "total_quantity": 309.0,
+        "total_value_usd": -463.5,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 307.0
+          "Main Ledger": 309.0
         }
       },
       "Cacao tree seedling (per seedling, Amazon reforest Altamira, R$40/10, Paulo Hernandez, 20260409)": {
@@ -728,13 +728,13 @@
         }
       },
       "USD": {
-        "total_quantity": 20642.68,
-        "total_value_usd": 20642.68,
+        "total_quantity": 20692.68,
+        "total_value_usd": 20692.68,
         "item_count": 1,
         "ledger_breakdown": {
           "AGL4": 9036.35,
           "AGL15": 5101.34,
-          "Main Ledger": 4157.51,
+          "Main Ledger": 4207.51,
           "AGL6": 1337.59,
           "AGL8": 569.95,
           "AGL10": 330.83,
@@ -770,12 +770,12 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-06-25T09:46:52.000Z",
+      "generated_at": "2026-06-26T09:53:33.000Z",
       "store_count": 0,
       "line_items": 12
     },
     "partners": {
-      "generated_at": "2026-06-25T09:46:52.000Z",
+      "generated_at": "2026-06-26T09:53:33.000Z",
       "partner_count": 24
     }
   },
