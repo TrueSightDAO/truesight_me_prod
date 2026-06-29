@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-29T11:33:32Z",
+  "generated_at_utc": "2026-06-29T16:26:17Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-06-29T10:56:39Z",
+    "generated_at": "2026-06-29T15:51:45Z",
     "total_contributors": 469,
     "total_tdg_controlled_sum": 2549012.87,
     "governors_count": 10,
@@ -97,9 +97,9 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-06-29T11:18:47.144Z",
+    "generated_at": "2026-06-29T15:48:35.507Z",
     "schema_version": 4,
-    "trigger": "sales_update_main",
+    "trigger": "cron",
     "currency_totals": {
       "1 Gallon Zip Loc Bags": {
         "total_quantity": 34.0,
@@ -423,11 +423,11 @@
         }
       },
       "Cacao Tree To Be Planted": {
-        "total_quantity": 317.0,
-        "total_value_usd": -475.5,
+        "total_quantity": 318.0,
+        "total_value_usd": -477.0,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 317.0
+          "Main Ledger": 318.0
         }
       },
       "Cacao tree seedling (per seedling, Amazon reforest Altamira, R$40/10, Paulo Hernandez, 20260409)": {
@@ -544,11 +544,11 @@
         }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 | Cacao Mass | 200 grams | 8 Ounce Nibs CP340992735BR | Kirsten 20260620 | San Francisco - AGL4": {
-        "total_quantity": 2.0,
-        "total_value_usd": 23.23,
+        "total_quantity": 1.0,
+        "total_value_usd": 11.61,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 2.0
+          "Main Ledger": 1.0
         }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 | Cacao Mass | 200 grams | Oscar 2024 | CP340993988BR San Francisco | Kirsten 20251124 | San Francisco - AGL4": {
@@ -744,13 +744,13 @@
         }
       },
       "USD": {
-        "total_quantity": 20807.2,
-        "total_value_usd": 20807.2,
+        "total_quantity": 20817.3,
+        "total_value_usd": 20817.3,
         "item_count": 1,
         "ledger_breakdown": {
           "AGL4": 9036.35,
           "AGL15": 5101.34,
-          "Main Ledger": 4322.03,
+          "Main Ledger": 4332.13,
           "AGL6": 1337.59,
           "AGL8": 569.95,
           "AGL10": 330.83,
