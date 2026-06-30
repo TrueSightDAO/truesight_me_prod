@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-29T20:29:29Z",
+  "generated_at_utc": "2026-06-30T04:48:30Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-06-29T19:57:08Z",
+    "generated_at": "2026-06-30T03:31:00Z",
     "total_contributors": 469,
     "total_tdg_controlled_sum": 2549012.87,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-06-29T19:48:38.763Z",
+    "generated_at": "2026-06-30T03:48:42.734Z",
     "schema_version": 4,
     "trigger": "cron",
     "currency_totals": {
@@ -423,11 +423,11 @@
         }
       },
       "Cacao Tree To Be Planted": {
-        "total_quantity": 318.0,
-        "total_value_usd": -477.0,
+        "total_quantity": 320.0,
+        "total_value_usd": -480.0,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 318.0
+          "Main Ledger": 320.0
         }
       },
       "Cacao tree seedling (per seedling, Amazon reforest Altamira, R$40/10, Paulo Hernandez, 20260409)": {
@@ -538,14 +538,6 @@
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 + Cacao Mass Bar CP340993299BR  San Francisco": {
         "total_quantity": 1.0,
         "total_value_usd": 9.08,
-        "item_count": 1,
-        "ledger_breakdown": {
-          "Main Ledger": 1.0
-        }
-      },
-      "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 | Cacao Mass | 200 grams | 8 Ounce Nibs CP340992735BR | Kirsten 20260620 | San Francisco - AGL4": {
-        "total_quantity": 1.0,
-        "total_value_usd": 11.61,
         "item_count": 1,
         "ledger_breakdown": {
           "Main Ledger": 1.0
@@ -744,13 +736,13 @@
         }
       },
       "USD": {
-        "total_quantity": 20817.3,
-        "total_value_usd": 20817.3,
+        "total_quantity": 20876.36,
+        "total_value_usd": 20876.36,
         "item_count": 1,
         "ledger_breakdown": {
           "AGL4": 9036.35,
           "AGL15": 5101.34,
-          "Main Ledger": 4332.13,
+          "Main Ledger": 4391.19,
           "AGL6": 1337.59,
           "AGL8": 569.95,
           "AGL10": 330.83,
@@ -786,7 +778,7 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-06-29T11:25:20.000Z",
+      "generated_at": "2026-06-30T01:28:39.169Z",
       "store_count": 0,
       "line_items": 12
     },
@@ -796,8 +788,14 @@
     }
   },
   "recent_beerhall_digests": {
-    "total_entries": 72,
+    "total_entries": 73,
     "recent": [
+      {
+        "date": "2026-06-30",
+        "slug": "sophia-expense-reporting-plan-live",
+        "filename": "beer-hall_2026-06-30T035358Z_sophia-expense-reporting-plan-live.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-30T035358Z_sophia-expense-reporting-plan-live.md"
+      },
       {
         "date": "2026-06-29",
         "slug": "repackaging-settlement-governor-sync",
@@ -851,12 +849,6 @@
         "slug": "soha-postmortem-and-batch-execution",
         "filename": "beer-hall_2026-06-21T042534Z_soha-postmortem-and-batch-execution.md",
         "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-21T042534Z_soha-postmortem-and-batch-execution.md"
-      },
-      {
-        "date": "2026-06-20",
-        "slug": "smart-contracts-catalog-and-fda-blog",
-        "filename": "beer-hall_2026-06-20T035437Z_smart-contracts-catalog-and-fda-blog.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-20T035437Z_smart-contracts-catalog-and-fda-blog.md"
       }
     ],
     "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
