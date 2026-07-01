@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-01T05:09:32Z",
+  "generated_at_utc": "2026-07-01T10:31:16Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,40 +8,40 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-07-01T04:51:32Z",
-    "total_contributors": 469,
-    "total_tdg_controlled_sum": 2549012.87,
+    "generated_at": "2026-07-01T09:33:16Z",
+    "total_contributors": 476,
+    "total_tdg_controlled_sum": 2415810.29,
     "governors_count": 10,
     "governors": [
       {
         "display_name": "Gary Teh",
         "slug": "gary-teh",
-        "voting_power_pct": 40.77,
-        "tdg_controlled": 955998.0666666903,
+        "voting_power_pct": 42.17,
+        "tdg_controlled": 1021935.0,
         "contribution_count": 3625,
         "profile_url": "https://truesight.me/credentials/#gary-teh"
       },
       {
         "display_name": "Fatima Toledo",
         "slug": "fatima-toledo",
-        "voting_power_pct": 2.81,
-        "tdg_controlled": 65852.81000000003,
+        "voting_power_pct": 2.73,
+        "tdg_controlled": 66061.0,
         "contribution_count": 247,
         "profile_url": "https://truesight.me/credentials/#fatima-toledo"
       },
       {
         "display_name": "Jacob Nelan",
         "slug": "jacob-nelan",
-        "voting_power_pct": 2.59,
-        "tdg_controlled": 60725.99,
+        "voting_power_pct": 2.57,
+        "tdg_controlled": 62279.0,
         "contribution_count": 62,
         "profile_url": "https://truesight.me/credentials/#jacob-nelan"
       },
       {
         "display_name": "Kirsten Ritschel",
         "slug": "kirsten-ritschel",
-        "voting_power_pct": 0.79,
-        "tdg_controlled": 18574.049999999996,
+        "voting_power_pct": 0.87,
+        "tdg_controlled": 21157.0,
         "contribution_count": 110,
         "profile_url": "https://truesight.me/credentials/#kirsten-ritschel"
       },
@@ -49,7 +49,7 @@
         "display_name": "Shena Davenport",
         "slug": "shena-davenport",
         "voting_power_pct": 0.37,
-        "tdg_controlled": 8659.83,
+        "tdg_controlled": 9060.0,
         "contribution_count": 19,
         "profile_url": "https://truesight.me/credentials/#shena-davenport"
       },
@@ -57,49 +57,49 @@
         "display_name": "Hans Martin Heierling",
         "slug": "hans-martin-heierling",
         "voting_power_pct": 0.15,
-        "tdg_controlled": 3627.25,
+        "tdg_controlled": 3627.0,
         "contribution_count": 34,
         "profile_url": "https://truesight.me/credentials/#hans-martin-heierling"
+      },
+      {
+        "display_name": "Elizabeth Wong",
+        "slug": null,
+        "voting_power_pct": 0.12,
+        "tdg_controlled": 2936.0,
+        "contribution_count": 0,
+        "profile_url": "https://truesight.me/credentials/#None"
+      },
+      {
+        "display_name": "AGL15",
+        "slug": "agl15",
+        "voting_power_pct": 0.1,
+        "tdg_controlled": 2471.0,
+        "contribution_count": 14,
+        "profile_url": "https://truesight.me/credentials/#agl15"
       },
       {
         "display_name": "Andrea Catalina Falcon Rios De Pabst",
         "slug": "andrea-catalina-falcon-rios-de-pabst",
         "voting_power_pct": 0.06,
-        "tdg_controlled": 1398.33,
+        "tdg_controlled": 1398.0,
         "contribution_count": 17,
         "profile_url": "https://truesight.me/credentials/#andrea-catalina-falcon-rios-de-pabst"
       },
       {
-        "display_name": "AGL15",
-        "slug": "agl15",
-        "voting_power_pct": 0.05,
-        "tdg_controlled": 1127.12,
-        "contribution_count": 14,
-        "profile_url": "https://truesight.me/credentials/#agl15"
-      },
-      {
-        "display_name": "Andreas Quandt",
-        "slug": "andreas-quandt",
+        "display_name": "Linda Gorski",
+        "slug": "linda-gorski",
         "voting_power_pct": 0.01,
-        "tdg_controlled": 283.33,
-        "contribution_count": 5,
-        "profile_url": "https://truesight.me/credentials/#andreas-quandt"
-      },
-      {
-        "display_name": "Fadi",
-        "slug": "fadi",
-        "voting_power_pct": 0.01,
-        "tdg_controlled": 200.0,
+        "tdg_controlled": 208.0,
         "contribution_count": 1,
-        "profile_url": "https://truesight.me/credentials/#fadi"
+        "profile_url": "https://truesight.me/credentials/#linda-gorski"
       }
     ],
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-07-01T04:49:40.528Z",
+    "generated_at": "2026-07-01T09:48:33.480Z",
     "schema_version": 4,
-    "trigger": "manual",
+    "trigger": "cron",
     "currency_totals": {
       "1 Gallon Zip Loc Bags": {
         "total_quantity": 34.0,
@@ -736,12 +736,12 @@
         }
       },
       "USD": {
-        "total_quantity": 11840.01,
-        "total_value_usd": 11840.01,
+        "total_quantity": 11790.01,
+        "total_value_usd": 11790.01,
         "item_count": 1,
         "ledger_breakdown": {
           "AGL15": 5101.34,
-          "Main Ledger": 4391.19,
+          "Main Ledger": 4341.19,
           "AGL6": 1337.59,
           "AGL8": 569.95,
           "AGL10": 330.83,
@@ -777,12 +777,12 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-06-30T22:28:40.543Z",
+      "generated_at": "2026-07-01T10:16:43.000Z",
       "store_count": 0,
       "line_items": 12
     },
     "partners": {
-      "generated_at": "2026-06-30T10:03:08.000Z",
+      "generated_at": "2026-07-01T10:16:43.000Z",
       "partner_count": 24
     }
   },
