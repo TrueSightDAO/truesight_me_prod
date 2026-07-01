@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-30T20:31:56Z",
+  "generated_at_utc": "2026-07-01T05:09:32Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-06-30T19:56:00Z",
+    "generated_at": "2026-07-01T04:51:32Z",
     "total_contributors": 469,
     "total_tdg_controlled_sum": 2549012.87,
     "governors_count": 10,
@@ -97,9 +97,9 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-06-30T19:48:36.357Z",
+    "generated_at": "2026-07-01T04:49:40.528Z",
     "schema_version": 4,
-    "trigger": "cron",
+    "trigger": "manual",
     "currency_totals": {
       "1 Gallon Zip Loc Bags": {
         "total_quantity": 34.0,
@@ -198,11 +198,11 @@
         }
       },
       "Agroverse 81% Cacao Chocolate Bar 50g | 8 Ounce Nibs CP340992735BR | Kirsten 20260620 | San Francisco - AGL4": {
-        "total_quantity": 4.0,
-        "total_value_usd": 11.61,
+        "total_quantity": 8.0,
+        "total_value_usd": 23.23,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 4.0
+          "Main Ledger": 8.0
         }
       },
       "Agroverse Retractable Banner": {
@@ -736,11 +736,10 @@
         }
       },
       "USD": {
-        "total_quantity": 20876.36,
-        "total_value_usd": 20876.36,
+        "total_quantity": 11840.01,
+        "total_value_usd": 11840.01,
         "item_count": 1,
         "ledger_breakdown": {
-          "AGL4": 9036.35,
           "AGL15": 5101.34,
           "Main Ledger": 4391.19,
           "AGL6": 1337.59,
@@ -778,7 +777,7 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-06-30T10:03:08.000Z",
+      "generated_at": "2026-06-30T22:28:40.543Z",
       "store_count": 0,
       "line_items": 12
     },
@@ -788,8 +787,14 @@
     }
   },
   "recent_beerhall_digests": {
-    "total_entries": 73,
+    "total_entries": 74,
     "recent": [
+      {
+        "date": "2026-07-01",
+        "slug": "expense-parsing-fix-aora-program-scope",
+        "filename": "beer-hall_2026-07-01T040709Z_expense-parsing-fix-aora-program-scope.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-01T040709Z_expense-parsing-fix-aora-program-scope.md"
+      },
       {
         "date": "2026-06-30",
         "slug": "sophia-expense-reporting-plan-live",
@@ -843,12 +848,6 @@
         "slug": "smart-contracts-rsa-verification",
         "filename": "beer-hall_2026-06-22T042740Z_smart-contracts-rsa-verification.md",
         "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-22T042740Z_smart-contracts-rsa-verification.md"
-      },
-      {
-        "date": "2026-06-21",
-        "slug": "soha-postmortem-and-batch-execution",
-        "filename": "beer-hall_2026-06-21T042534Z_soha-postmortem-and-batch-execution.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-21T042534Z_soha-postmortem-and-batch-execution.md"
       }
     ],
     "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
