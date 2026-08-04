@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-03T20:16:11Z",
+  "generated_at_utc": "2026-08-04T03:52:17Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-08-03T19:24:14Z",
+    "generated_at": "2026-08-04T03:31:01Z",
     "total_contributors": 479,
     "total_tdg_controlled_sum": 2416872.29,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-08-03T19:48:41.516Z",
+    "generated_at": "2026-08-04T03:48:40.427Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -744,11 +744,11 @@
         }
       },
       "USD": {
-        "total_quantity": 11184.78,
-        "total_value_usd": 11184.78,
+        "total_quantity": 11184.73,
+        "total_value_usd": 11184.73,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 4493.15,
+          "Main Ledger": 4493.1,
           "AGL15": 4327.15,
           "AGL6": 1337.59,
           "AGL8": 569.95,
@@ -758,11 +758,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 51.17,
-        "total_value_usd": 51.17,
+        "total_quantity": 51.22,
+        "total_value_usd": 51.22,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 51.17
+          "Main Ledger": 51.22
         }
       },
       "USDT": {
@@ -795,8 +795,14 @@
     }
   },
   "recent_beerhall_digests": {
-    "total_entries": 94,
+    "total_entries": 95,
     "recent": [
+      {
+        "date": "2026-08-04",
+        "slug": "prospera-operating-agreement-signed-china-market-strategy",
+        "filename": "beer-hall_2026-08-04T024220Z_prospera-operating-agreement-signed-china-market-strategy.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-04T024220Z_prospera-operating-agreement-signed-china-market-strategy.md"
+      },
       {
         "date": "2026-08-01",
         "slug": "cacao-pack-visuals-sop",
@@ -850,12 +856,6 @@
         "slug": "operating-agreement-signed-shop-updates",
         "filename": "beer-hall_2026-07-14T023918Z_operating-agreement-signed-shop-updates.md",
         "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-14T023918Z_operating-agreement-signed-shop-updates.md"
-      },
-      {
-        "date": "2026-07-13",
-        "slug": "narrative-reality-check-docs-reorg",
-        "filename": "beer-hall_2026-07-13T025806Z_narrative-reality-check-docs-reorg.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-13T025806Z_narrative-reality-check-docs-reorg.md"
       }
     ],
     "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
