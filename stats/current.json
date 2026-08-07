@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-07T00:26:57Z",
+  "generated_at_utc": "2026-08-07T03:34:16Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-08-06T23:55:52Z",
+    "generated_at": "2026-08-07T03:30:04Z",
     "total_contributors": 479,
     "total_tdg_controlled_sum": 2416872.29,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-08-06T23:57:03.926Z",
+    "generated_at": "2026-08-07T02:48:32.253Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -795,8 +795,14 @@
     }
   },
   "recent_beerhall_digests": {
-    "total_entries": 95,
+    "total_entries": 96,
     "recent": [
+      {
+        "date": "2026-08-07",
+        "slug": "robotics-barter-strategy-maintenance-peg",
+        "filename": "beer-hall_2026-08-07T024448Z_robotics-barter-strategy-maintenance-peg.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-07T024448Z_robotics-barter-strategy-maintenance-peg.md"
+      },
       {
         "date": "2026-08-04",
         "slug": "prospera-operating-agreement-signed-china-market-strategy",
@@ -850,12 +856,6 @@
         "slug": "white-label-fixes-subscription-sync",
         "filename": "beer-hall_2026-07-15T023656Z_white-label-fixes-subscription-sync.md",
         "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-15T023656Z_white-label-fixes-subscription-sync.md"
-      },
-      {
-        "date": "2026-07-14",
-        "slug": "operating-agreement-signed-shop-updates",
-        "filename": "beer-hall_2026-07-14T023918Z_operating-agreement-signed-shop-updates.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-14T023918Z_operating-agreement-signed-shop-updates.md"
       }
     ],
     "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
