@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-19T02:04:56Z",
+  "generated_at_utc": "2026-08-19T07:22:36Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-08-19T01:48:32.975Z",
+    "generated_at": "2026-08-19T06:50:01.258Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -744,11 +744,11 @@
         }
       },
       "USD": {
-        "total_quantity": 11601.0,
-        "total_value_usd": 11601.0,
+        "total_quantity": 11600.9,
+        "total_value_usd": 11600.9,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 4909.37,
+          "Main Ledger": 4909.27,
           "AGL15": 4327.15,
           "AGL6": 1337.59,
           "AGL8": 569.95,
@@ -758,11 +758,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 52.07,
-        "total_value_usd": 52.07,
+        "total_quantity": 52.17,
+        "total_value_usd": 52.17,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 52.07
+          "Main Ledger": 52.17
         }
       },
       "USDT": {
@@ -785,12 +785,12 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-08-18T07:06:39.000Z",
+      "generated_at": "2026-08-19T07:07:41.000Z",
       "store_count": 0,
       "line_items": 13
     },
     "partners": {
-      "generated_at": "2026-08-18T07:06:39.000Z",
+      "generated_at": "2026-08-19T07:07:41.000Z",
       "partner_count": 23
     }
   },
