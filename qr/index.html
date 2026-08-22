@@ -291,6 +291,22 @@
           if (media) {
             html += '<div class="qr-tree-media">' + media + '</div>';
           }
+          if (lineage.latitude && lineage.longitude) {
+            var lat = parseFloat(lineage.latitude);
+            var lng = parseFloat(lineage.longitude);
+            if (!isNaN(lat) && !isNaN(lng)) {
+              var d = 0.005;
+              var bbox = (lng - d) + ',' + (lat - d) + ',' + (lng + d) + ',' + (lat + d);
+              var osmSrc = 'https://www.openstreetmap.org/export/embed.html?bbox=' + bbox +
+                           '&marker=' + lat + ',' + lng;
+              html += '<div class="qr-tree-map">' +
+                '<iframe title="Map showing where this tree was planted" src="' + escapeHtml(osmSrc) +
+                '" style="width:100%;height:300px;border:1px solid #ddd;border-radius:8px;" loading="lazy" allowfullscreen></iframe>' +
+                '<p class="qr-map-note"><a href="https://www.openstreetmap.org/?mlat=' + lat + '&mlon=' + lng +
+                '#map=16/' + lat + '/' + lng + '" target="_blank" rel="noopener">Open larger map →</a></p>' +
+              '</div>';
+            }
+          }
           return html;
         }
 
