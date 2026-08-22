@@ -320,12 +320,14 @@
           var parts = events.map(function (e) {
             var when = e.at ? escapeHtml(e.at) : '—';
             var by = e.by ? ' by <strong>' + escapeHtml(e.by) + '</strong>' : '';
+            var signed = e.signed_by ? ' · signed by <strong>' + escapeHtml(e.signed_by) + '</strong>' : '';
             var to = e.to ? ' → <strong>' + escapeHtml(e.to) + '</strong>' : '';
+            var ref = e.sig_ref ? '<div class="when">ref ' + escapeHtml(e.sig_ref) + '</div>' : '';
             var notes = e.notes ? '<div class="when">' + escapeHtml(e.notes) + '</div>' : '';
             return '<li>' +
               '<div class="when">' + when + '</div>' +
-              '<div class="what"><span class="type">' + escapeHtml(e.type || 'event') + '</span>' + by + to + '</div>' +
-              notes +
+              '<div class="what"><span class="type">' + escapeHtml(e.type || 'event') + '</span>' + by + signed + to + '</div>' +
+              notes + ref +
             '</li>';
           });
           return '<ul class="qr-events">' + parts.join('') + '</ul>';
