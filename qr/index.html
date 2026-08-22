@@ -284,7 +284,7 @@
           if (lineage.seedling_photo_url) {
             var photoUrl = normalizeImageUrl(lineage.seedling_photo_url);
             media += '<a href="' + escapeHtml(photoUrl) + '" target="_blank" rel="noopener" class="qr-tree-photo">';
-            media += '  <img src="' + escapeHtml(photoUrl) + '" alt="Seedling photo for ' + escapeHtml(manifest.qr_id) +
+            media += '  <img src="' + escapeHtml(photoUrl) + '" alt="Seedling photo for ' + escapeHtml(qrId) +
                     '" onerror="this.style.display=\'none\'" />';
             media += '</a>';
           }
