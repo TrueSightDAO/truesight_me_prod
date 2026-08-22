@@ -282,12 +282,28 @@
             media += '<a href="' + escapeHtml(lineage.planting_video_url) + '" target="_blank" rel="noopener">Planting video →</a>';
           }
           if (lineage.seedling_photo_url) {
-            media += '<a href="' + escapeHtml(lineage.seedling_photo_url) + '" target="_blank" rel="noopener">Seedling photo →</a>';
+            var photoUrl = normalizeImageUrl(lineage.seedling_photo_url);
+            media += '<a href="' + escapeHtml(photoUrl) + '" target="_blank" rel="noopener" class="qr-tree-photo">';
+            media += '  <img src="' + escapeHtml(photoUrl) + '" alt="Seedling photo for ' + escapeHtml(manifest.qr_id) +
+                    '" onerror="this.style.display=\'none\'" />';
+            media += '</a>';
           }
           if (media) {
             html += '<div class="qr-tree-media">' + media + '</div>';
           }
           return html;
+        }
+
+        function normalizeImageUrl(url) {
+          // Rewrite github.com/<owner>/<repo>/tree/<ref>/<path> (an HTML browse
+          // page) into raw.githubusercontent.com/<owner>/<repo>/<ref>/<path>
+          // (the actual bytes) so it renders as an <img>.
+          if (!url) return url;
+          var m = url.match(/^https?:\/\/github\.com\/([^\/]+)\/([^\/]+)\/tree\/([^\/]+)\/(.+)$/);
+          if (m) {
+            return 'https://raw.githubusercontent.com/' + m[1] + '/' + m[2] + '/' + m[3] + '/' + m[4];
+          }
+          return url;
         }
 
         function renderLineage(assetType, lineage) {
