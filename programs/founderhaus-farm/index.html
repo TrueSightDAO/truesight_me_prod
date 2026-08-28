@@ -69,14 +69,18 @@
         text-align: center; color: var(--muted, #666); font-size: 0.85rem; margin: 0 auto var(--space-lg); max-width: 720px;
       }
       .program-qr-row {
-        display: flex; gap: 1.25rem; align-items: center; justify-content: center;
+        display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: center;
         background: var(--surface, #fafafa); border: 1px solid var(--border, #ddd); border-radius: 10px;
-        padding: var(--space-md); margin-bottom: var(--space-md);
+        padding: var(--space-md); margin-bottom: var(--space-md); max-width: 100%;
       }
       .program-qr-row img { width: 128px; height: 128px; object-fit: contain; flex-shrink: 0; }
-      .program-qr-row p { margin: 0; font-size: 0.92rem; line-height: 1.55; }
-      .program-qr-row a { color: #6a4a1a; }
+      .program-qr-row p { margin: 0; font-size: 0.92rem; line-height: 1.55; min-width: 0; overflow-wrap: anywhere; }
+      .program-qr-row a { color: #6a4a1a; overflow-wrap: anywhere; word-break: break-word; }
       .program-pdf-cta { text-align: center; margin-top: var(--space-md); }
+      @media (max-width: 520px) {
+        .program-qr-row { flex-direction: column; text-align: center; }
+        .program-qr-row img { width: 96px; height: 96px; }
+      }
     </style>
   </head>
   <body>
