@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-29T07:19:37Z",
+  "generated_at_utc": "2026-08-29T16:51:08Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,16 +8,16 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-08-29T04:50:19Z",
-    "total_contributors": 490,
-    "total_tdg_controlled_sum": 2416897.29,
+    "generated_at": "2026-08-29T16:15:02Z",
+    "total_contributors": 489,
+    "total_tdg_controlled_sum": 2418502.29,
     "governors_count": 10,
     "governors": [
       {
         "display_name": "Gary Teh",
         "slug": "gary-teh",
-        "voting_power_pct": 42.17,
-        "tdg_controlled": 1022165.0,
+        "voting_power_pct": 42.14,
+        "tdg_controlled": 1022195.0,
         "contribution_count": 3625,
         "profile_url": "https://truesight.me/credentials/#gary-teh"
       },
@@ -25,7 +25,7 @@
         "display_name": "Fatima Toledo",
         "slug": "fatima-toledo",
         "voting_power_pct": 2.73,
-        "tdg_controlled": 66061.0,
+        "tdg_controlled": 66186.0,
         "contribution_count": 247,
         "profile_url": "https://truesight.me/credentials/#fatima-toledo"
       },
@@ -38,10 +38,18 @@
         "profile_url": "https://truesight.me/credentials/#jacob-nelan"
       },
       {
+        "display_name": "Matheus Reis",
+        "slug": "matheus-reis",
+        "voting_power_pct": 1.23,
+        "tdg_controlled": 29853.0,
+        "contribution_count": 180,
+        "profile_url": "https://truesight.me/credentials/#matheus-reis"
+      },
+      {
         "display_name": "Kirsten Ritschel",
         "slug": "kirsten-ritschel",
-        "voting_power_pct": 0.87,
-        "tdg_controlled": 21157.0,
+        "voting_power_pct": 0.88,
+        "tdg_controlled": 21317.0,
         "contribution_count": 110,
         "profile_url": "https://truesight.me/credentials/#kirsten-ritschel"
       },
@@ -70,34 +78,26 @@
         "profile_url": "https://truesight.me/credentials/#agl15"
       },
       {
-        "display_name": "Andreas Quandt",
-        "slug": "andreas-quandt",
-        "voting_power_pct": 0.01,
-        "tdg_controlled": 283.0,
-        "contribution_count": 5,
-        "profile_url": "https://truesight.me/credentials/#andreas-quandt"
+        "display_name": "Nima Kaz",
+        "slug": "nima-kaz",
+        "voting_power_pct": 0.07,
+        "tdg_controlled": 1705.0,
+        "contribution_count": 18,
+        "profile_url": "https://truesight.me/credentials/#nima-kaz"
       },
       {
-        "display_name": "Kaon Krasniqi",
-        "slug": null,
-        "voting_power_pct": 0.01,
-        "tdg_controlled": 150.0,
-        "contribution_count": 0,
-        "profile_url": "https://truesight.me/credentials/#None"
-      },
-      {
-        "display_name": "Claude",
-        "slug": "claude",
-        "voting_power_pct": 0.0,
-        "tdg_controlled": 103.0,
-        "contribution_count": 1,
-        "profile_url": "https://truesight.me/credentials/#claude"
+        "display_name": "Andrea Catalina Falcon Rios De Pabst",
+        "slug": "andrea-catalina-falcon-rios-de-pabst",
+        "voting_power_pct": 0.06,
+        "tdg_controlled": 1558.0,
+        "contribution_count": 17,
+        "profile_url": "https://truesight.me/credentials/#andrea-catalina-falcon-rios-de-pabst"
       }
     ],
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-08-29T06:48:41.907Z",
+    "generated_at": "2026-08-29T16:48:41.209Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -190,11 +190,11 @@
         }
       },
       "81% Dark Chocolate Bar 50g | Cacao Almonds KG - Organic (Fazenda São Jorge) | Gary Teh 20260710 | San Francisco": {
-        "total_quantity": 22.0,
-        "total_value_usd": 123.73,
+        "total_quantity": 19.0,
+        "total_value_usd": 106.86,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 22.0
+          "Main Ledger": 19.0
         }
       },
       "ATOLOMOTOR Coffee Bean Roaster": {
@@ -227,6 +227,14 @@
         "item_count": 1,
         "ledger_breakdown": {
           "Main Ledger": 1.0
+        }
+      },
+      "BRL": {
+        "total_quantity": 220.0,
+        "total_value_usd": 42.69,
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 220.0
         }
       },
       "Bialetti Moka Express 18 Cup (ASIN B0000AN3QK, order 111-9241674-1033036)": {
@@ -463,11 +471,11 @@
         }
       },
       "Cacao Tree To Be Planted": {
-        "total_quantity": 347.0,
-        "total_value_usd": -520.5,
+        "total_quantity": 350.0,
+        "total_value_usd": -525.0,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 347.0
+          "Main Ledger": 350.0
         }
       },
       "Cacao tree seedling (per seedling, Amazon reforest Altamira, R$40/10, Paulo Hernandez, 20260409)": {
@@ -751,22 +759,6 @@
           "SEF1": 297.0
         }
       },
-      "QA Verification Sticker 4x3cm (Test 20260827)": {
-        "total_quantity": 100.0,
-        "total_value_usd": 10000.0,
-        "item_count": 1,
-        "ledger_breakdown": {
-          "Main Ledger": 100.0
-        }
-      },
-      "QA Verification Sticker 4x3cm Round2 (Test 20260827b)": {
-        "total_quantity": 100.0,
-        "total_value_usd": 5.81,
-        "item_count": 1,
-        "ledger_breakdown": {
-          "Main Ledger": 100.0
-        }
-      },
       "QR Code Sticker 4x3cm (Kraft Pouch) - Brazil": {
         "total_quantity": 100.0,
         "total_value_usd": 5.81,
@@ -816,11 +808,11 @@
         }
       },
       "USD": {
-        "total_quantity": 11640.03,
-        "total_value_usd": 11640.03,
+        "total_quantity": 11670.03,
+        "total_value_usd": 11670.03,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 4948.4,
+          "Main Ledger": 4978.4,
           "AGL15": 4327.15,
           "AGL6": 1337.59,
           "AGL8": 569.95,
@@ -857,12 +849,12 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-08-28T18:46:13.000Z",
+      "generated_at": "2026-08-29T12:43:49.000Z",
       "store_count": 0,
       "line_items": 14
     },
     "partners": {
-      "generated_at": "2026-08-28T18:46:13.000Z",
+      "generated_at": "2026-08-29T12:43:49.000Z",
       "partner_count": 23
     }
   },
