@@ -224,6 +224,30 @@
         </div>
       </section>
 
+      <section id="impact-map" class="impact-map-section">
+        <p class="pill">Live Impact Map</p>
+        <h2>See Our Trees from Space</h2>
+        <p class="impact-map-intro">Every planted tree is registered on-chain and shown here against recent satellite imagery of the pilot area. Ground measurements (photo + calibration card) feed the carbon numbers; satellite imagery provides the wide-area verification layer.</p>
+        <div id="plotSelector" style="display:none; margin-bottom:10px; align-items:center; flex-wrap:wrap; gap:6px;"></div>
+        <div id="viewSelector" style="display:none; margin-bottom:10px; align-items:center; flex-wrap:wrap; gap:6px;"></div>
+        <div id="impactMap" class="impact-map-canvas" style="height: 480px; width: 100%; border-radius: 12px; z-index: 1;"></div>
+        <div class="impact-map-controls" style="margin-top: 10px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+          <button id="mapLayerTrueColor" class="map-layer-btn" style="padding: 6px 14px; border-radius: 6px; border: 1px solid #ccc; background: #f5f5f5; cursor: pointer;">Satellite</button>
+          <button id="mapLayerNdvi" class="map-layer-btn" style="padding: 6px 14px; border-radius: 6px; border: 1px solid #ccc; background: #fff; cursor: pointer;">Map</button>
+          <span class="impact-map-note" style="color: #666; font-size: 0.85em;">Satellite: Sentinel-2, ~10 m resolution, ~5-day revisit. Markers: registered trees from the SunMint registry.</span>
+        </div>
+        <p class="impact-map-honest" style="color: #888; font-size: 0.8em; margin-top: 8px;">Acquisition date shown per scene; imagery is a verification layer, not per-tree measurement. Tree markers update from the live registry index.</p>
+        <div id="satelliteHistory" style="margin-top: 12px; display: none;">
+          <div style="font-weight: 600; margin-bottom: 6px;">Satellite history <span style="font-weight:400;color:#888;">(pilot area, Sentinel-2)</span></div>
+          <div id="satHistoryThumbs" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
+          <div id="satHistoryDetail" style="margin-top: 10px; display: none;">
+            <img id="satHistoryImg" alt="Satellite preview" style="max-width: 100%; border-radius: 8px; border: 1px solid #ddd;" />
+            <p id="satHistoryMeta" style="color: #555; font-size: 0.85em; margin: 6px 0 0;"></p>
+            <label style="font-size: 0.85em; display: block; margin-top: 6px;"><input type="checkbox" id="satOverlayToggle" /> Show on map (preview stretched for context, approx. tile footprint)</label>
+          </div>
+        </div>
+      </section>
+
       <div id="site-footer"></div>
 <script src="/js/footer.js"></script>
     </div>
@@ -395,6 +419,319 @@
             siteHeader.classList.remove('menu-open');
           }
         });
+      })();
+    </script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+      // Live Impact Map: registered trees + Sentinel-2 satellite layer (anonymous WMS)
+      (function () {
+        var MAP_INDEX_URLS = [
+          'https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/trees/index.geojson?cb=' + Date.now(),
+          'https://cdn.jsdelivr.net/gh/TrueSightDAO/sunmint@main/trees/index.geojson?cb=' + Date.now()
+        ];
+        // Pilot area default: Altamira region (Rancho Maranta, family of Jedielcio)
+        var PILOT_CENTER = [-3.2940, -52.5780];
+        var __viewChosen = false; // user picked a view -> plot auto-fit must not override
+        // Sentinel-2 L2A WMS (Copernicus Data Space, anonymous tile access)
+        // Satellite basemap: ESRI World Imagery (free, no API key, verified live).
+        // High-resolution Sentinel-2 layers (true-color + NDVI) will come from the
+        // CDSE cache pipeline (sunmint/satellite/...) once credentials are set.
+        var SATELLITE_BASEMAP = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+
+        function initMap(features) {
+          var map = L.map('impactMap', { maxZoom: 17 }).setView(PILOT_CENTER, 11);
+          // maxZoom 17: Esri World Imagery has no tiles above z17 in the Altamira region (z18+ returns gray 'data not yet available' placeholders).
+          window.__satMap = map;
+          var sat = L.tileLayer(SATELLITE_BASEMAP, {
+            attribution: '&copy; Esri, Maxar, Earthstar Geographics'
+          }).addTo(map);
+          var base = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO'
+          });
+
+          var treePoints = [];
+          function addTreeMarkers(feats) {
+            var count = 0;
+            feats.forEach(function (f) {
+              var p = f.properties || {};
+              var coords = f.geometry && f.geometry.coordinates;
+              if (!coords || coords.length < 2) return;
+              var lat = coords[1], lng = coords[0];
+              if (isNaN(lat) || isNaN(lng)) return;
+              count++;
+              treePoints.push({ lat: lat, lng: lng, id: p.tree_id || 'tree' });
+              var icon = L.divIcon({
+                className: 'tree-marker',
+                html: '<div style="width:14px;height:14px;border-radius:50%;background:#2e7d32;border:2px solid #fff;box-shadow:0 0 4px rgba(0,0,0,.4);"></div>',
+                iconSize: [14, 14]
+              });
+              L.marker([lat, lng], { icon: icon }).addTo(map)
+                .bindPopup('<strong>' + (p.tree_id || p.treeId || 'tree') + '</strong><br/>' +
+                  (p.species || '') + (p.status ? '<br/>' + p.status : ''));
+            });
+            return count;
+          }
+
+          var n = addTreeMarkers(features);
+          document.querySelector('.impact-map-note').textContent =
+            'Satellite: Esri World Imagery basemap. Markers: ' + n + ' registered trees from the SunMint registry. High-res Sentinel-2 true-color/NDVI layers arrive via the CDSE cache pipeline.';
+
+          // View switcher: pilot area (Altamira), Florianopolis plantings, or everything.
+          var VIEWS = [
+            { id: 'altamira', label: 'Altamira (pilot)', center: [-3.2940, -52.5780], zoom: 12 },
+            { id: 'floripa', label: 'Florianopolis (planted)', center: [-27.44, -48.50], zoom: 15 },
+            { id: 'all', label: 'All trees', center: null, zoom: null }
+          ];
+          function nearCenter(pt, center, deg) {
+            return Math.abs(pt.lat - center[0]) <= deg && Math.abs(pt.lng - center[1]) <= deg;
+          }
+          function classifyView(pt) {
+            if (nearCenter(pt, VIEWS[0].center, 2.0)) return 'altamira';
+            if (nearCenter(pt, VIEWS[1].center, 0.8)) return 'floripa';
+            return 'all';
+          }
+          var perView = { altamira: [], floripa: [], all: [] };
+          treePoints.forEach(function (pt) {
+            var v = classifyView(pt);
+            perView[v].push(pt);
+            perView.all.push(pt);
+          });
+          var viewSel = document.getElementById('viewSelector');
+          if (viewSel && treePoints.length) {
+            viewSel.style.display = 'flex';
+            viewSel.innerHTML = '<span style="font-size:0.85em;color:#666;">View:</span>' +
+              VIEWS.map(function (v) {
+                var cnt = perView[v.id].length;
+                return '<button class="view-chip" data-view="' + v.id + '" style="padding:5px 12px;border-radius:16px;border:1px solid #2e7d32;background:#fff;color:#2e7d32;cursor:pointer;font-size:0.8em;">' + v.label + (cnt ? ' (' + cnt + ')' : '') + '</button>';
+              }).join('');
+            viewSel.querySelectorAll('.view-chip').forEach(function (btn) {
+              btn.addEventListener('click', function () {
+                var v = VIEWS.filter(function (x) { return x.id === btn.getAttribute('data-view'); })[0];
+                if (v.center) {
+                  map.flyTo(v.center, v.zoom);
+                } else if (perView.all.length) {
+                  var b = L.latLngBounds(perView.all.map(function (p) { return [p.lat, p.lng]; }));
+                  map.flyToBounds(b, { padding: [40, 40] });
+                }
+                __viewChosen = true;
+                Array.prototype.forEach.call(viewSel.querySelectorAll('.view-chip'), function (b) {
+                  b.style.background = '#fff'; b.style.color = '#2e7d32';
+                });
+                btn.style.background = '#2e7d32'; btn.style.color = '#fff';
+                // exclusive pill group: selecting a view clears any active plot chip
+                Array.prototype.forEach.call(document.querySelectorAll('.plot-chip'), function (b) {
+                  b.style.background = '#fff'; b.style.color = b.style.borderColor;
+                });
+              });
+            });
+          }
+
+          document.getElementById('mapLayerTrueColor').addEventListener('click', function () {
+            map.removeLayer(base); map.addLayer(sat);
+          });
+          document.getElementById('mapLayerNdvi').addEventListener('click', function () {
+            map.removeLayer(sat); map.addLayer(base);
+          });
+          // start with satellite layer visible
+          map.addLayer(sat);
+
+          loadSatelliteHistory(map);
+          loadPlots(map);
+        }
+
+        var _satOverlay = null;
+        function loadSatelliteHistory(map) {
+          var MANIFEST_URL = 'https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/satellite/manifest.json?cb=' + Date.now();
+          var container = document.getElementById('satelliteHistory');
+          fetch(MANIFEST_URL)
+            .then(function (r) { if (!r.ok) throw new Error('manifest ' + r.status); return r.json(); })
+            .then(function (m) {
+              var cells = m.cells || {};
+              stashCells(m);
+              var cellKeys = Object.keys(cells);
+              if (!cellKeys.length) { container.style.display = 'none'; return; }
+              // Prefer the cell nearest the map's current view (falls back to
+              // the first cached cell). Any plot/cell with cached scenes shows
+              // its own history -- Rancho Maranta now has real scenes too.
+              function cellDist(key) {
+                var parts = String(key).split('_');
+                var lat = parseFloat(parts[0]), lng = parseFloat(parts[1]);
+                if (isNaN(lat) || isNaN(lng)) return 1e9;
+                try {
+                  var c = map.getCenter();
+                  return Math.abs(lat - c.lat) + Math.abs(lng - c.lng);
+                } catch (e) { return Math.abs(lat - PILOT_CENTER[0]) + Math.abs(lng - PILOT_CENTER[1]); }
+              }
+              cellKeys.sort(function (a, b) { return cellDist(a) - cellDist(b); });
+              var cell = cells[cellKeys[0]];
+              var scenes = (cell.scenes || []).slice().sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+              if (!scenes.length) { container.style.display = 'none'; return; }
+              container.style.display = 'block';
+              var thumbs = document.getElementById('satHistoryThumbs');
+              thumbs.innerHTML = '';
+              scenes.forEach(function (sc) {
+                var imgUrl = sc.asset_url || ('https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/satellite/' + cellKeys[0] + '/' + sc.file);
+                var cloudBadge = (sc.cloud_cover !== undefined) ? '<span style="position:absolute;top:2px;left:2px;background:rgba(0,0,0,.7);color:#fff;font-size:0.68em;padding:1px 4px;border-radius:4px;">' + Math.round(sc.cloud_cover) + '% cloud</span>' : '';
+                var el = document.createElement('div');
+                el.style.cssText = 'position:relative;cursor:pointer;border:2px solid transparent;border-radius:8px;overflow:hidden;';
+                el.innerHTML = '<img src="' + imgUrl + '" alt="' + sc.date + '" style="width:96px;height:96px;object-fit:cover;display:block;" />' + cloudBadge +
+                  '<span style="position:absolute;bottom:2px;left:2px;background:rgba(0,0,0,.7);color:#fff;font-size:0.68em;padding:1px 4px;border-radius:4px;">' + sc.date + '</span>';
+                el.addEventListener('click', function () {
+                  Array.prototype.forEach.call(thumbs.children, function (c) { c.style.borderColor = 'transparent'; });
+                  el.style.borderColor = '#2e7d32';
+                  var detail = document.getElementById('satHistoryDetail');
+                  detail.style.display = 'block';
+                  document.getElementById('satHistoryImg').src = imgUrl;
+                  var meta = 'Scene ' + (sc.id || '') + ' &middot; acquired ' + sc.date +
+                    (sc.cloud_cover !== undefined ? ' &middot; ' + Math.round(sc.cloud_cover) + '% cloud' : '');
+                  document.getElementById('satHistoryMeta').innerHTML = meta;
+                  var toggle = document.getElementById('satOverlayToggle');
+                  toggle.checked = true;
+                  toggleOverlay(map, cell, imgUrl, sc);
+                });
+                thumbs.appendChild(el);
+              });
+              // Auto-select the clearest scene (lowest cloud) on first load.
+              var clear = scenes.slice().sort(function (a, b) { return (a.cloud_cover||99) - (b.cloud_cover||99); })[0];
+              var first = thumbs.children[scenes.indexOf(clear)];
+              if (first) first.click();
+            })
+            .catch(function () { container.style.display = 'none'; });
+        }
+
+        function toggleOverlay(map, cell, imgUrl, sc) {
+          var toggle = document.getElementById('satOverlayToggle');
+          var m = map || window.__satMap;
+          if (_satOverlay) { m.removeLayer(_satOverlay); _satOverlay = null; }
+          if (!toggle.checked) return;
+          var c = (cell && cell.center) || PILOT_CENTER;
+          var dLat = 0.5, dLng = 0.5; // approx. half-footprint of a Sentinel-2 tile (~1 deg box)
+          var bounds = [[c.lat - dLat, c.lng - dLng], [c.lat + dLat, c.lng + dLng]];
+          _satOverlay = L.imageOverlay(imgUrl, bounds, { opacity: 0.65, interactive: false }).addTo(map);
+        }
+
+        var PLOT_COLORS = ['#7b1fa2', '#1565c0', '#c62828', '#2e7d32', '#e65100', '#00695c'];
+        function loadPlots(map) {
+          var PLOTS_URLS = [
+            'https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/plots/index.geojson?cb=' + Date.now(),
+            'https://cdn.jsdelivr.net/gh/TrueSightDAO/sunmint@main/plots/index.geojson'
+          ];
+          var sel = document.getElementById('plotSelector');
+          function render(plots) {
+            var feats = (plots && plots.features) || [];
+            var plotIds = {};
+            feats.forEach(function (p, i) {
+              var props = p.properties || {};
+              var id = props.plot_id || props.id || ('plot_' + i);
+              var name = props.name || id;
+              var geom = p.geometry;
+              if (!geom || geom.type !== 'Polygon') return;
+              var color = PLOT_COLORS[i % PLOT_COLORS.length];
+              var latlngs = (geom.coordinates[0] || []).map(function (c) { return [c[1], c[0]]; });
+              if (!latlngs.length) return;
+              plotIds[id] = { id: id, name: name, color: color, latlngs: latlngs };
+              L.polygon(latlngs, {
+                color: color, weight: 2, fillColor: color, fillOpacity: 0.12
+              }).addTo(map).bindPopup('<strong>' + name + '</strong>' +
+                ((props.hectares || props.area_ha) ? '<br/>' + (props.hectares || props.area_ha) + ' ha' : '') +
+                (props.status ? '<br/>' + props.status : ''));
+            });
+            var ids = Object.keys(plotIds);
+            if (ids.length) {
+              var allBounds = null;
+              ids.forEach(function (id) {
+                var p = plotIds[id];
+                if (!p.latlngs.length) return;
+                var b = L.latLngBounds(p.latlngs);
+                allBounds = allBounds ? allBounds.extend(b) : b;
+              });
+              if (allBounds && !__viewChosen) map.fitBounds(allBounds, { padding: [40, 40] });
+            }
+            if (sel) {
+              if (ids.length) {
+                sel.style.display = 'flex';
+                sel.innerHTML = '<span style="font-size:0.85em;color:#666;">Plots:</span>' +
+                  ids.map(function (id) {
+                    var p = plotIds[id];
+                    return '<button class="plot-chip" data-plot="' + id + '" style="padding:5px 12px;border-radius:16px;border:1px solid ' + p.color + ';background:#fff;color:' + p.color + ';cursor:pointer;font-size:0.8em;">' + p.name + '</button>';
+                  }).join('');
+                ids.forEach(function (id) {
+                  var btn = sel.querySelector('[data-plot="' + id + '"]');
+                  if (!btn) return;
+                  btn.addEventListener('click', function () {
+                    var p = plotIds[id];
+                    if (p.latlngs.length === 1) map.flyTo(p.latlngs[0], 15);
+                    else map.flyToBounds(L.latLngBounds(p.latlngs));
+                    Array.prototype.forEach.call(sel.querySelectorAll('.plot-chip'), function (b) {
+                      b.style.background = '#fff'; b.style.color = b.style.borderColor;
+                    });
+                    btn.style.background = btn.style.borderColor; btn.style.color = '#fff';
+                    // exclusive pill group: selecting a plot clears any active view chip
+                    Array.prototype.forEach.call(document.querySelectorAll('.view-chip'), function (b) {
+                      b.style.background = '#fff'; b.style.color = '#2e7d32';
+                    });
+                  });
+                });
+              } else {
+                sel.style.display = 'none';
+              }
+            }
+            var note = document.querySelector('.impact-map-note');
+            if (note && ids.length) {
+              note.textContent += ' · Plots: ' + ids.length;
+            }
+          }
+          fetch(PLOTS_URLS[0]).then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('first')); })
+            .then(render)
+            .catch(function () {
+              return fetch(PLOTS_URLS[1]).then(function (r) { return r.json(); }).then(render);
+            })
+            .catch(function () { if (sel) sel.style.display = 'none'; });
+        }
+
+        document.addEventListener('change', function (e) {
+          var t = e.target;
+          if (t && t.id === 'satOverlayToggle') {
+            if (!t.checked && _satOverlay) {
+              _satOverlay.remove(); _satOverlay = null;
+            } else if (t.checked && !_satOverlay) {
+              var cells = (window.__satCells || {});
+              var keys = Object.keys(cells);
+              if (keys.length) {
+                var img = document.getElementById('satHistoryImg');
+                var sc = cells[keys[0]].scenes[0];
+                if (img && sc) toggleOverlay(null, cells[keys[0]], img.src, sc);
+              }
+            }
+          }
+        });
+
+        // stash the manifest cells for the global toggle handler
+        function stashCells(m) { window.__satCells = m.cells || {}; }
+
+        function loadIndex() {
+          var url = MAP_INDEX_URLS[0];
+          fetch(url).then(function (r) { return r.ok ? r.json() : Promise.reject(new Error('first url')); })
+            .then(function (geo) { initMap(geo.features || []); })
+            .catch(function () {
+              return fetch(MAP_INDEX_URLS[1]).then(function (r) { return r.json(); })
+                .then(function (geo) { initMap(geo.features || []); });
+            })
+            .catch(function () {
+              // Last resort: show the map with the pilot-area default basemap only.
+              var map = L.map('impactMap', { maxZoom: 17 }).setView(PILOT_CENTER, 11);
+              L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; OpenStreetMap &copy; CARTO'
+              }).addTo(map);
+              document.querySelector('.impact-map-note').textContent =
+                'Tree registry temporarily unavailable. Showing pilot area basemap.';
+            });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', loadIndex);
+        } else { loadIndex(); }
       })();
     </script>
   </body>

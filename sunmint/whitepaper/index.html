@@ -70,6 +70,7 @@
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#1-project-description">1. Project Description</a></li>
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#2-purpose-and-objectives">2. Purpose and Objectives</a></li>
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#3-project-boundary">3. Project Boundary</a></li>
+          <li class="whitepaper-toc-item whitepaper-toc-item--depth-3"><a href="#3-1-geospatial-data-model">3.1 Geospatial Data Model: Tree Points and Plot Boundaries</a></li>
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#4-baseline-scenario">4. Baseline Scenario</a></li>
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#5-additionality">5. Additionality</a></li>
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#6-project-activities">6. Project Activities</a></li>
@@ -80,6 +81,7 @@
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#10-environmental-and-social-safeguards">10. Environmental and Social Safeguards</a></li>
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#11-risk-assessment-and-mitigation">11. Risk Assessment and Mitigation</a></li>
           <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#12-scaling-and-replication-strategy">12. Scaling and Replication Strategy</a></li>
+          <li class="whitepaper-toc-item whitepaper-toc-item--depth-2"><a href="#13-on-chain-carbon-credit-lifecycle">13. On-Chain Carbon Credit Lifecycle</a></li>
         </ul>
       </nav>
     </aside>
@@ -121,6 +123,19 @@
 <div class="whitepaper-bullet" style="--bullet-level:0"><strong>Temporal Scope:</strong> 30 years, with ongoing monitoring and periodic verification
 </div>
 <div class="whitepaper-bullet" style="--bullet-level:0"><strong>Carbon Pools Considered:</strong> Aboveground biomass, belowground biomass, soil organic carbon
+</div>
+<p class="whitepaper-spacer">&nbsp;</p>
+<h4 class="whitepaper-heading" id="3-1-geospatial-data-model"><strong>3.1 Geospatial Data Model: Tree Points and Plot Boundaries
+</strong></h4>
+<p class="whitepaper-p">SunMint records geospatial data as two complementary GeoJSON entity types, allowing both single-point registrations today and full plot boundaries as they are digitized:
+</p>
+<div class="whitepaper-bullet" style="--bullet-level:0"><strong>Trees are always Points.</strong> Each registered tree is a GeoJSON Point carrying its coordinates plus species, status, QR link and measurement history. Points are the measurement and carbon-accounting anchor.
+</div>
+<div class="whitepaper-bullet" style="--bullet-level:0"><strong>Plots are always Polygons.</strong> A plot is a GeoJSON Polygon defining the project parcel boundary. Each tree carries a plot_id linking it to its plot; a tree without a plot_id stands alone as a point and remains fully valid.
+</div>
+<div class="whitepaper-bullet" style="--bullet-level:0"><strong>Why this separation is required:</strong> carbon methodologies (VM0047 / PM002) assess baseline, additionality and monitoring at the plot/parcel level, not per tree point. Plot boundaries make the carbon accounting and satellite verification defensible; tree points alone cannot define a project area. Satellite scene caching is clipped to plot boundaries rather than grid cells, and the impact map renders plots as shaded polygons with tree markers on top.
+</div>
+<div class="whitepaper-bullet" style="--bullet-level:0"><strong>Backfill tolerance:</strong> boundaries may be added after registration without migrating legacy records. Trees without a plot simply render as standalone points until their plot is defined, keeping every consumer (map, cache, carbon calculation, on-chain anchor) on a stable contract.
 </div>
 <p class="whitepaper-spacer">&nbsp;</p>
 <h4 class="whitepaper-heading" id="4-baseline-scenario"><strong>4. Baseline Scenario
@@ -288,6 +303,30 @@
 </p>
 <p class="whitepaper-p"><strong>Execution has started — the first funded tree:</strong> QR code <code>FOUNDERHAUS_BOUGAINVILLEA_20260821_1</code> — SunMint Tree Planting Pledge, status ASSIGNED_TO_TREE, owner paloma@founderhaus.club, manager Gary Teh, ledger <a href="https://truesight.me/sunmint/main" rel="noopener noreferrer">truesight.me/sunmint/main</a>, linked 2026-08-22 (first real non-test tree–QR link). Scan: https://edgar.truesight.me/agroverse/qr-code-check?qr_code=FOUNDERHAUS_BOUGAINVILLEA_20260821_1
 </p>
+<h4 class="whitepaper-heading" id="13-on-chain-carbon-credit-lifecycle"><strong>13. On-Chain Carbon Credit Lifecycle — the Tree as Transaction Anchor
+</strong></h4>
+<p class="whitepaper-p">Every carbon credit issued by SunMint is born <strong>attached to a specific tree</strong>, and every subsequent value movement — sale, proceeds, farmer payout — is recorded on-chain as a transaction referencing that same tree. The tree is the anchor; the chain is the audit trail; the farmer is the beneficiary. This follows the TrueChain architecture already used across the DAO (DApp/Edgar → Google Sheets → Mirror Service → TrueChain private PoA chain, chain ID 98794616), where Sheets remain the source of truth and an immutable transaction is appended for each event, with a transaction hash written back to the sheet row (“TrueChain Tx” column) for idempotency and “View on TrueChain” lookups.
+</p>
+<div class="whitepaper-bullet" style="--bullet-level:0"><strong>1. Credit issuance (attached to the tree):</strong> a verified measurement (farmer photo + calibration card → DBH → allometric biomass → CO₂e) is recorded against the tree’s identity. The credit is issued with the tree ID as its provenance anchor — it cannot exist without the tree that produced it.
+</div>
+<div class="whitepaper-bullet" style="--bullet-level:0"><strong>2. Credit sale (a sales transaction):</strong> when a credit is sold, a sales transaction records buyer → credit, sale price, and timestamp, all tied to the tree’s identity — the same pattern used for cacao bag sales receipts.
+</div>
+<div class="whitepaper-bullet" style="--bullet-level:0"><strong>3. Proceeds return to the tree:</strong> the sale proceeds are booked back to the tree’s carbon account — a payment event whose recipient is the tree’s on-chain record — so revenue is provably attributable to the trees that generated it.
+</div>
+<div class="whitepaper-bullet" style="--bullet-level:0"><strong>4. Farmer payout (a payout transaction):</strong> money moves from the tree’s carbon account to the farmer, recorded with the farmer’s identity, the tree ID, and the amount — every payment is auditable, and farmers can see exactly which tree paid them.
+</div>
+<h4 class="whitepaper-heading" id="13-1-how-carbon-is-calculated"><strong>13.1 How Carbon Is Calculated — the measurement-to-CO₂e chain</strong></h4>
+<p class="whitepaper-p">Every tree’s carbon number comes from its trunk diameter (DBH), measured in the close-up photo with the calibration card. The chain is fully transparent and reproducible:</p>
+<div class="whitepaper-bullet" style="--bullet-level:0"><strong>AGB = a × DBH<sup>b</sup></strong> — above-ground biomass (kg), species allometric equation (Chave et al. 2014 pantropical form; per-species coefficients for cacao, Brazil nut, açaí, mahogany, jatobá).</div>
+<div class="whitepaper-bullet" style="--bullet-level:0"><strong>BGB = AGB × 0.32</strong> — below-ground (root) biomass, IPCC default root:shoot ratio.</div>
+<div class="whitepaper-bullet" style="--bullet-level:0"><strong>C = (AGB + BGB) × 0.47</strong> — carbon content, IPCC default carbon fraction.</div>
+<div class="whitepaper-bullet" style="--bullet-level:0"><strong>CO₂e = C × 44/12</strong> — CO₂ equivalent, the carbon-to-CO₂ molar ratio.</div>
+<p class="whitepaper-p">Worked example: a cacao tree (a = 0.0673, b = 2.397) at DBH 10 cm → AGB ≈ 25.1 kg → total biomass ≈ 33.1 kg → carbon ≈ 15.6 kg → <strong>CO₂e ≈ 57 kg</strong> (project-level 10% achievement reserve and 20% risk buffer applied at the program level). Each photo-pair measurement drives this exact chain, so the number on every tree is method-backed and auditable.</p>
+<p class="whitepaper-p">Partner one-liner: “We measure each tree’s trunk diameter from a photo with a calibration card, convert it to biomass using the standard tropical allometric equation (Chave et al. 2014), then apply IPCC factors (roots ×0.32, carbon ×0.47, CO₂ ×44/12) — so every tree has a verifiable, method-backed CO₂e number.”</p>
+<p class="whitepaper-spacer">&nbsp;</p>
+<p class="whitepaper-p">The result is a per-tree provenance timeline anyone can follow: <strong>planted → measured → credit issued → credit sold → farmer paid</strong>. It is the same registry pattern TrueChain already runs for contributions, invoices, QR codes, and sales receipts — SunMint adds the carbon lifecycle as a first-class flow on that existing infrastructure. One honest dependency: the credit-issuance leg is only as strong as the measurement pipeline behind it (the calibration-card photo analysis that computes DBH automatically), which is why the measurement workflow and its audit trail are the foundation this lifecycle is built on.
+</p>
+<p class="whitepaper-spacer">&nbsp;</p>
 <p class="whitepaper-spacer">&nbsp;</p>
 <p class="whitepaper-spacer">&nbsp;</p>
 <p class="whitepaper-spacer">&nbsp;</p>
