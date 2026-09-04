@@ -433,6 +433,19 @@
                   ' <span class="arrow">↗</span></span>' +
               '</a>';
           }
+          // Tree-linked QRs (2026-09-04): deep-link to this exact tree on the
+          // live SunMint impact map — sunmint.html does its own lookup
+          // against the trees registry by qr_code, so no coordinates are
+          // needed here, just the QR id.
+          if (manifest.asset_type === 'tree') {
+            var sunmintUrl = 'https://beta.truesight.me/sunmint.html?qr=' + encodeURIComponent(manifest.qr_id);
+            relatedHtml +=
+              '<a class="qr-related-link" href="' + escapeHtml(sunmintUrl) + '" target="_blank" rel="noopener">' +
+                '<span class="label">🌱 SunMint impact map</span>' +
+                '<span class="value">View this tree on the map' +
+                  ' <span class="arrow">↗</span></span>' +
+              '</a>';
+          }
           if (relatedHtml) {
             html += '<section class="qr-section">';
             html += '  <h2>Related</h2>';

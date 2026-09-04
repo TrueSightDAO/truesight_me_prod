@@ -461,11 +461,11 @@
         // independently) and scrolls the section into view — but only on the
         // restore path, not on every ordinary click, since the user is
         // already looking at the map when they click it themselves.
+        var IMPACT_MAP_URL_PARAMS = ['view', 'plot', 'tree', 'qr'];
         function impactMapSetUrlParam(name, value) {
           try {
             var url = new URL(window.location.href);
-            url.searchParams.delete('view');
-            url.searchParams.delete('plot');
+            IMPACT_MAP_URL_PARAMS.forEach(function (p) { url.searchParams.delete(p); });
             if (value) url.searchParams.set(name, value);
             window.history.replaceState(null, '', url.toString());
           } catch (e) { /* URL API unavailable — never block the UI */ }
@@ -512,12 +512,25 @@
                 iconSize: [14, 14]
               });
               var qr = p.qr_code || p.qrCode || '';
+              var treeId = p.tree_id || p.treeId || '';
               var qrLink = qr
                 ? '<br/><a href="https://truesight.me/qr/?id=' + encodeURIComponent(qr) + '" target="_blank" rel="noopener">View linked QR profile ↗</a>'
                 : '';
               var tm = L.marker([lat, lng], { icon: icon }).addTo(map)
-                .bindPopup('<strong>' + (p.tree_id || p.treeId || 'tree') + '</strong><br/>' +
+                .bindPopup('<strong>' + (treeId || 'tree') + '</strong><br/>' +
                   (p.species || '') + (p.status ? '<br/>' + p.status : '') + qrLink);
+              // Tagged for deep-linking (2026-09-04): ?tree=<tree_id> or
+              // ?qr=<qr_code> flies to and opens this specific tree's popup
+              // on load (see impactMapRestoreTreeFromUrl below); clicking a
+              // marker updates the URL the same way, so the location is
+              // shareable. Prefers qr when both are present since that's
+              // the more human-shareable identifier (matches the QR profile
+              // page's own "View on SunMint impact map" link back here).
+              tm.__treeId = treeId;
+              tm.__qrCode = qr;
+              tm.on('click', function () {
+                impactMapSetUrlParam(qr ? 'qr' : 'tree', qr || treeId);
+              });
               window.__treeMarkers.push(tm);
             });
             return count;
@@ -526,6 +539,27 @@
           var n = addTreeMarkers(features);
           document.querySelector('.impact-map-note').textContent =
             'Satellite: Esri World Imagery basemap. Markers: ' + n + ' registered trees from the SunMint registry. High-res Sentinel-2 true-color/NDVI layers arrive via the CDSE cache pipeline.';
+
+          // Deep-link to a specific tree via ?tree=<tree_id> or ?qr=<qr_code>
+          // (checked before the view/plot restores below, since a specific
+          // tree is more precise than either).
+          (function impactMapRestoreTreeFromUrl() {
+            var wantTree = impactMapGetUrlParam('tree');
+            var wantQr = impactMapGetUrlParam('qr');
+            if (!wantTree && !wantQr) return;
+            var markers = window.__treeMarkers || [];
+            var match = null;
+            for (var i = 0; i < markers.length; i++) {
+              var m = markers[i];
+              if (wantQr && m.__qrCode && m.__qrCode === wantQr) { match = m; break; }
+              if (wantTree && m.__treeId && m.__treeId === wantTree) { match = m; break; }
+            }
+            if (!match) return;
+            __viewChosen = true; // don't let the plot auto-fit override this
+            map.flyTo(match.getLatLng(), 17);
+            match.openPopup();
+            impactMapScrollIntoView();
+          })();
 
           // View switcher: pilot area (Altamira), Florianopolis plantings, or everything.
           var VIEWS = [
@@ -677,6 +711,12 @@
           function render(plots) {
             var feats = (plots && plots.features) || [];
             var plotIds = {};
+            // Moved up from inside the per-plot forEach below (2026-09-04
+            // fix): esc() was only in scope for that one callback, so the
+            // farmSelector block further down (which also calls esc())
+            // threw "esc is not defined" -- silently caught by the fetch
+            // chain's catch-all, which then hid the whole plot selector.
+            function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
             feats.forEach(function (p, i) {
               var props = p.properties || {};
               var id = props.plot_id || props.id || ('plot_' + i);
@@ -687,7 +727,6 @@
               var latlngs = (geom.coordinates[0] || []).map(function (c) { return [c[1], c[0]]; });
               if (!latlngs.length) return;
               plotIds[id] = { id: id, name: name, color: color, latlngs: latlngs };
-              function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
               var BA_LABEL = { approx: 'Approx (photo hull)', gps_walk: 'GPS walk', car: 'CAR polygon', incra: 'INCRA polygon' };
               var ST_LABEL = { proposed: 'Proposed', planted: 'Planted', verified: 'Verified' };
               var ST_COLOR = { proposed: '#e65100', planted: '#2e7d32', verified: '#1565c0' };
@@ -731,6 +770,14 @@
               window.__plotFarms = window.__plotFarms || {};
               window.__plotFarms[id] = fid || props.farm_name || props.farm || "";
             });
+            // Moved up from below (2026-09-04 fix): this used to be declared
+            // after the farmSelector block that reads it, so `ids` was still
+            // `undefined` here (var hoisting) and `ids.length` threw a
+            // TypeError. The whole fetch chain's catch-all silently caught
+            // it and hid the plot selector -- no console error, no visible
+            // failure, pills just never appeared (found live on production,
+            // https://truesight.me/sunmint.html?view=altamira, no plot pills).
+            var ids = Object.keys(plotIds);
             var fSel = document.getElementById('farmSelector');
             if (fSel && ids.length) {
               var fids = [];
@@ -786,7 +833,6 @@
                 });
               }
             }
-            var ids = Object.keys(plotIds);
             if (ids.length) {
               var allBounds = null;
               ids.forEach(function (id) {
