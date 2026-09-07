@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-06T20:45:59Z",
+  "generated_at_utc": "2026-09-07T05:10:06Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-09-06T19:47:51Z",
+    "generated_at": "2026-09-07T04:00:00Z",
     "total_contributors": 491,
     "total_tdg_controlled_sum": 2419605.29,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-09-06T18:48:32.736Z",
+    "generated_at": "2026-09-07T04:48:41.894Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -808,11 +808,11 @@
         }
       },
       "USD": {
-        "total_quantity": 11649.68,
-        "total_value_usd": 11649.68,
+        "total_quantity": 11649.55,
+        "total_value_usd": 11649.55,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 4977.41,
+          "Main Ledger": 4977.29,
           "AGL15": 4307.78,
           "AGL6": 1337.59,
           "AGL8": 569.95,
@@ -822,11 +822,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 54.35,
-        "total_value_usd": 54.35,
+        "total_quantity": 54.47,
+        "total_value_usd": 54.47,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 54.35
+          "Main Ledger": 54.47
         }
       },
       "USDT": {
@@ -859,8 +859,14 @@
     }
   },
   "recent_beerhall_digests": {
-    "total_entries": 110,
+    "total_entries": 111,
     "recent": [
+      {
+        "date": "2026-09-07",
+        "slug": "fsvp-blocks-fazenda-clara-ledger",
+        "filename": "beer-hall_2026-09-07T032714Z_fsvp-blocks-fazenda-clara-ledger.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-07T032714Z_fsvp-blocks-fazenda-clara-ledger.md"
+      },
       {
         "date": "2026-09-05",
         "slug": "sunmint-deep-links-farms-cepotx-deal",
@@ -914,12 +920,6 @@
         "slug": "cacao-tea-launch-media-refactor",
         "filename": "beer-hall_2026-08-22T011925Z_cacao-tea-launch-media-refactor.md",
         "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-22T011925Z_cacao-tea-launch-media-refactor.md"
-      },
-      {
-        "date": "2026-08-19",
-        "slug": "tree-planting-links-ivy-page",
-        "filename": "beer-hall_2026-08-19T012020Z_tree-planting-links-ivy-page.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-19T012020Z_tree-planting-links-ivy-page.md"
       }
     ],
     "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
