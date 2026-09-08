@@ -175,8 +175,8 @@
         <p class="pill">Live Impact Map</p>
         <h2>See Our Trees from Space</h2>
         <p class="impact-map-intro">Every planted tree is registered on-chain and shown here against recent satellite imagery of the pilot area. Ground measurements (photo + calibration card) feed the carbon numbers; satellite imagery provides the wide-area verification layer.</p>
-        <div id="farmSelector" style="display:none; margin-bottom:10px; align-items:center; flex-wrap:wrap; gap:6px;"></div>
         <div id="plotSelector" style="display:none; margin-bottom:10px; align-items:center; flex-wrap:wrap; gap:6px;"></div>
+        <div id="treeLookup" style="display:none; margin-bottom:10px; align-items:center; flex-wrap:wrap; gap:8px;"></div>
         <div id="viewSelector" style="display:none; margin-bottom:10px; align-items:center; flex-wrap:wrap; gap:6px;"></div>
         <div id="impactMap" class="impact-map-canvas" style="height: 480px; width: 100%; border-radius: 12px; z-index: 1;"></div>
         <div class="impact-map-controls" style="margin-top: 10px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
@@ -278,7 +278,7 @@
         const impactRegistry = [
           {
             title: 'AGL14',
-            description: 'In the heart of Bahia\'s ancient groves, where 70-year-old native cacao trees whisper secrets of the earth, Oscar Fazenda delivers 40kg of Harvest 2025\'s finest—a creamy elixir of luxurious dark chocolate allure, bridging Brazil\'s wild heritage with Europe\'s refined elegance.',
+            description: 'In the heart of Bahia\'s ancient groves, where 70-year-old native cacao trees whisper secrets of the earth, <a href=\"https://www.agroverse.shop/farms/oscar-bahia\" target=\"_blank\" rel=\"noopener\" class=\"text-link\">Oscar Fazenda</a> delivers 40kg of Harvest 2025\'s finest—a creamy elixir of luxurious dark chocolate allure, bridging Brazil\'s wild heritage with Europe\'s refined elegance.',
             url: 'sunmint-tree-planting-pledges/agl14',
             image: 'assets/shipments/agl14.avif'
           },
@@ -296,7 +296,7 @@
           },
           {
             title: 'AGL6',
-            description: '10 bars of 500gram cacao mass<br>125 bars of⁠ 40 gram cacao mass bars<br>44 bags of ⁠⁠8 ounce cacao nibs kraft pouches',
+            description: '<a href=\"https://www.agroverse.shop/farms/fazenda-sao-jorge-bahia\" target=\"_blank\" rel=\"noopener\" class=\"text-link\">Fazenda São Jorge</a> — 10 bars of 500gram cacao mass<br>125 bars of⁠ 40 gram cacao mass bars<br>44 bags of ⁠⁠8 ounce cacao nibs kraft pouches',
             url: 'sunmint-tree-planting-pledges/agl6',
             image: 'assets/shipments/agl6.avif'
           },
@@ -531,6 +531,8 @@
               tm.on('click', function () {
                 impactMapSetUrlParam(qr ? 'qr' : 'tree', qr || treeId);
               });
+              (window.__treeLookupData = window.__treeLookupData || []).push(
+                { id: treeId, qr: qr, species: p.species || '', status: p.status || '', marker: tm });
               window.__treeMarkers.push(tm);
             });
             return count;
@@ -560,6 +562,99 @@
             match.openPopup();
             impactMapScrollIntoView();
           })();
+
+          // Tree / QR lookup box: pick a registered tree by a readable label
+          // (id, species, or linked QR) instead of hunting overlapping markers.
+          // Filter-as-you-type combobox (a datalist only matches the option's
+          // *value*, which would break species/QR partial search once there are
+          // hundreds of trees). Choosing one flies to it + opens its popup
+          // (mirrors ?tree=/?qr=).
+          function buildTreeLookup(map) {
+            function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+            var wrap = document.getElementById('treeLookup');
+            var rows = window.__treeLookupData || [];
+            if (!wrap || !rows.length) return;
+            wrap.style.display = 'flex';
+            var lab = document.createElement('span');
+            lab.style.cssText = 'font-size:0.85em;color:#666;';
+            lab.textContent = 'Tree / QR:';
+            var box = document.createElement('span');
+            box.style.cssText = 'position:relative;';
+            var input = document.createElement('input');
+            input.id = 'treeLookupInput';
+            input.placeholder = 'Choose a tree \u2014 type to filter (id, species, QR)\u2026';
+            input.style.cssText = 'padding:5px 10px;border-radius:8px;border:1px solid #ccc;font-size:0.85em;min-width:230px;';
+            var dd = document.createElement('div');
+            dd.id = 'treeLookupResults';
+            dd.style.cssText = 'display:none;position:absolute;top:100%;left:0;z-index:2000;background:#fff;border:1px solid #ccc;border-radius:8px;max-height:220px;overflow-y:auto;min-width:280px;box-shadow:0 4px 12px rgba(0,0,0,.15);';
+            var hint = document.createElement('span');
+            hint.style.cssText = 'font-size:0.8em;color:#888;';
+            hint.textContent = rows.length + ' trees';
+            wrap.appendChild(lab); wrap.appendChild(box); box.appendChild(input); box.appendChild(dd); wrap.appendChild(hint);
+            function shortLabel(r) {
+              var parts = [r.id];
+              if (r.species) parts.push(r.species);
+              if (r.qr) parts.push(r.qr);
+              return parts.join(' \u00b7 ').slice(0, 110);
+            }
+            function closeDd() { dd.style.display = 'none'; dd.innerHTML = ''; }
+            function pick(r) {
+              input.value = r.id;
+              closeDd();
+              map.flyTo(r.marker.getLatLng(), 17);
+              r.marker.openPopup();
+              impactMapSetUrlParam(r.qr ? 'qr' : 'tree', r.qr || r.id);
+              impactMapScrollIntoView();
+              hint.textContent = rows.length + ' trees';
+            }
+            function matches(r, q) {
+              return (r.id + ' ' + (r.species || '') + ' ' + (r.qr || '')).toLowerCase().indexOf(q) !== -1;
+            }
+            function renderRows(list) {
+              closeDd();
+              if (!list.length) { hint.textContent = 'No tree matches \u201c' + input.value + '\u201d'; return; }
+              hint.textContent = list.length + ' of ' + rows.length + ' trees';
+              dd.innerHTML = list.slice(0, 20).map(function (r) {
+                return '<div style="padding:6px 10px;cursor:pointer;border-bottom:1px solid #f0f0f0;font-size:0.82em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' +
+                  esc(shortLabel(r)) + '</div>';
+              }).join('');
+              // re-map indices safely (list, not rows)
+              Array.prototype.forEach.call(dd.children, function (el, idx) {
+                el.style.cssText += 'padding:6px 10px;cursor:pointer;border-bottom:1px solid #f0f0f0;font-size:0.82em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+                el.addEventListener('click', function () { pick(list[idx]); });
+                el.addEventListener('mouseenter', function () { el.style.background = '#f5f5f5'; });
+                el.addEventListener('mouseleave', function () { el.style.background = ''; });
+              });
+              dd.style.display = 'block';
+            }
+            // Click-to-open dropdown: focusing with an empty query shows ALL trees;
+            // typing narrows the list (species/QR partial match). That makes this
+            // a real dropdown with the ability to filter.
+            input.addEventListener('focus', function () {
+              var q = (input.value || '').toLowerCase().trim();
+              if (!q) { renderRows(rows.slice()); return; }
+              var hits = [];
+              for (var i = 0; i < rows.length; i++) { if (matches(rows[i], q)) hits.push(rows[i]); }
+              renderRows(hits);
+            });
+            input.addEventListener('input', function () {
+              var q = (input.value || '').toLowerCase().trim();
+              if (!q) { renderRows(rows.slice()); return; }
+              var hits = [];
+              for (var i = 0; i < rows.length; i++) { if (matches(rows[i], q)) hits.push(rows[i]); }
+              renderRows(hits);
+            });
+            input.addEventListener('keydown', function (e) {
+              if (e.key === 'Enter') {
+                var first = dd.querySelector('div');
+                if (first) { first.click(); e.preventDefault(); }
+              } else if (e.key === 'Escape') { closeDd(); }
+            });
+            document.addEventListener('click', function (e) {
+              if (e.target !== input && !box.contains(e.target)) closeDd();
+            });
+          }
+          buildTreeLookup(map);
 
           // View switcher: pilot area (Altamira), Florianopolis plantings, or everything.
           var VIEWS = [
@@ -592,21 +687,28 @@
             viewSel.querySelectorAll('.view-chip').forEach(function (btn) {
               btn.addEventListener('click', function () {
                 var v = VIEWS.filter(function (x) { return x.id === btn.getAttribute('data-view'); })[0];
-                if (v.center) {
+                // Frame the trees this view actually counts. The old code flew
+                // to the view's hardcoded center, but the pilot trees sit ~57 km
+                // from it (Bom Sucesso vs Rancho Maranta), so '?view=altamira'
+                // showed an empty map. Bounds over the classified points (fall
+                // back to the fixed center only when the view has no trees).
+                var pts = (perView[v.id] || []).slice();
+                if (pts.length === 1) {
+                  map.flyTo([pts[0].lat, pts[0].lng], 17);
+                } else if (pts.length > 1) {
+                  var b = L.latLngBounds(pts.map(function (p) { return [p.lat, p.lng]; }));
+                  map.flyToBounds(b, { padding: [50, 50], maxZoom: 17 });
+                } else if (v.center) {
                   map.flyTo(v.center, v.zoom);
-                } else if (perView.all.length) {
-                  var b = L.latLngBounds(perView.all.map(function (p) { return [p.lat, p.lng]; }));
-                  map.flyToBounds(b, { padding: [40, 40] });
                 }
                 __viewChosen = true;
                 Array.prototype.forEach.call(viewSel.querySelectorAll('.view-chip'), function (b) {
                   b.style.background = '#fff'; b.style.color = '#2e7d32';
                 });
                 btn.style.background = '#2e7d32'; btn.style.color = '#fff';
-                // exclusive pill group: selecting a view clears any active plot chip
-                Array.prototype.forEach.call(document.querySelectorAll('.plot-chip'), function (b) {
-                  b.style.background = '#fff'; b.style.color = b.style.borderColor;
-                });
+                // exclusive: selecting a view clears any active plot selection
+                var ps = document.getElementById('plotSelect');
+                if (ps && ps.value) { ps.value = ''; impactMapSetUrlParam('plot', ''); }
                 impactMapSetUrlParam('view', v.id);
               });
             });
@@ -778,117 +880,161 @@
             // failure, pills just never appeared (found live on production,
             // https://truesight.me/sunmint.html?view=altamira, no plot pills).
             var ids = Object.keys(plotIds);
-            var fSel = document.getElementById('farmSelector');
-            if (fSel && ids.length) {
-              var fids = [];
-              Object.keys(plotIds).forEach(function (pid) {
-                var f = (window.__plotFarms || {})[pid];
-                if (f && fids.indexOf(f) === -1) fids.push(f);
-              });
-              fids.sort();
-              if (fids.length > 1 || (fids.length === 1 && fids[0])) {
-                fSel.style.display = 'flex';
-                fSel.innerHTML = '<span style="font-size:0.85em;color:#666;">Farm:</span>' +
-                  '<select id="farmSelect" style="padding:5px 10px;border-radius:8px;border:1px solid #ccc;font-size:0.85em;">' +
-                  '<option value="">All farms</option>' +
-                  fids.map(function (f) {
-                    var label = (f).replace(/-/g, ' ');
-                    label = label.replace(/\b\w/g, function (c) { return c.toUpperCase(); });
-                    return '<option value="' + esc(f) + '">' + esc(label) + '</option>';
-                  }).join('') + '</select>';
-                var fs = fSel.querySelector('#farmSelect');
-                fs.addEventListener('change', function () {
-                  var v = fs.value;
+            // Grouped single control: replaces the old separate Farm select +
+            // flat Plot chips (they contradicted each other and the farm filter
+            // felt dead). One "Plots:" dropdown, <optgroup> per farm; each
+            // group's first option = "all <farm> plots" (the old farm filter).
+            var FARM_LABELS = {
+              'rancho-maranta': 'Rancho Maranta',
+              'santa-anna-fazenda': 'Santa Anna Fazenda',
+              'fazenda-cleide': 'Fazenda Cleide',
+              'paulo-la-do-sitio-para': 'Paulo La do Sitio',
+              'fazenda-bom-sucesso': 'Fazenda Bom Sucesso',
+              'raimundo-geniza-para': 'Sítio Raimundo & Geniza',
+              'fazenda-dona-rosa': 'Fazenda Dona Rosa',
+              'fazenda-santa-rosa': 'Fazenda Santa Rosa',
+              'fazenda-sao-jorge-bahia': 'Fazenda Sao Jorge',
+              'fazenda-clara-bahia': 'Fazenda Clara',
+              'oscar-bahia': 'Oscar Fazenda',
+              'fazenda-santa-ana-bahia': 'Fazenda Santa Ana'
+            };
+            function farmLabel(fid) {
+              if (FARM_LABELS[fid]) return FARM_LABELS[fid];
+              var l = String(fid || '').replace(/-/g, ' ');
+              return l.replace(/\b\w/g, function (c) { return c.toUpperCase(); }) || 'Other';
+            }
+            var farmGroups = {};
+            ids.forEach(function (id) {
+              var fid = (window.__plotFarms || {})[id] || '';
+              if (!farmGroups[fid]) farmGroups[fid] = { label: farmLabel(fid), ids: [] };
+              farmGroups[fid].ids.push(id);
+            });
+            var farmOrder = Object.keys(farmGroups).sort(function (a, b) {
+              return farmGroups[a].label.localeCompare(farmGroups[b].label);
+            });
+            var __initialPlot = impactMapGetUrlParam('plot');
+            if (__initialPlot) __viewChosen = true; // plot restore overrides auto-fit
+            var plotSelect = null;
+            if (sel) {
+              if (ids.length) {
+                var plotSelHtml = '<span style="font-size:0.85em;color:#666;">Plots:</span>' +
+                  '<select id="plotSelect" style="padding:5px 10px;border-radius:8px;border:1px solid #ccc;font-size:0.85em;max-width:360px;">' +
+                  '<option value="">All plots (' + ids.length + ')</option>';
+                farmOrder.forEach(function (fid) {
+                  var g = farmGroups[fid];
+                  plotSelHtml += '<optgroup label="' + esc(g.label) + ' (' + g.ids.length + ')">';
+                  plotSelHtml += '<option value="farm:' + esc(fid) + '">— all ' + esc(g.label) + ' plots —</option>';
+                  g.ids.slice().sort(function (a, b) {
+                    return (plotIds[a].name || a).localeCompare(plotIds[b].name || b);
+                  }).forEach(function (id) {
+                    var p = plotIds[id];
+                    plotSelHtml += '<option value="plot:' + esc(id) + '">' + esc(p.name) + '</option>';
+                  });
+                  plotSelHtml += '</optgroup>';
+                });
+                plotSelHtml += '</select>';
+                sel.style.display = 'flex';
+                sel.innerHTML = plotSelHtml;
+                plotSelect = sel.querySelector('#plotSelect');
+                plotSelect.addEventListener('change', function () {
+                  var v = plotSelect.value;
+                  // Exclusive with View chips: selecting a plot/view clears the other.
+                  Array.prototype.forEach.call(document.querySelectorAll('.view-chip'), function (b) {
+                    b.style.background = '#fff'; b.style.color = '#2e7d32';
+                  });
+                  __viewChosen = true;
+                  if (!v) {
+                    impactMapSetUrlParam('plot', '');
+                    Object.keys(window.__plotLayers || {}).forEach(function (pid) {
+                      var ly = window.__plotLayers[pid];
+                      if (!map.hasLayer(ly)) ly.addTo(map);
+                    });
+                    (window.__treeMarkers || []).forEach(function (m) { if (!map.hasLayer(m)) m.addTo(map); });
+                    if (ids.length) {
+                      var ab = null;
+                      ids.forEach(function (id) {
+                        var p = plotIds[id];
+                        if (!p.latlngs.length) return;
+                        var b = L.latLngBounds(p.latlngs);
+                        ab = ab ? ab.extend(b) : b;
+                      });
+                      if (ab) map.flyToBounds(ab, { padding: [40, 40] });
+                    }
+                    return;
+                  }
+                  var kind = v.indexOf('farm:') === 0 ? 'farm' : (v.indexOf('plot:') === 0 ? 'plot' : '');
+                  var val = v.slice(kind.length + 1);
+                  var wantFarm = kind === 'farm' ? val : ((window.__plotFarms || {})[val] || '');
+                  var wantPlot = kind === 'plot' ? val : '';
+                  if (kind === 'plot') impactMapSetUrlParam('plot', val); else impactMapSetUrlParam('plot', '');
+                  var fb = null;
                   Object.keys(window.__plotLayers || {}).forEach(function (pid) {
-                    var match = !v || (window.__plotFarms || {})[pid] === v;
                     var ly = window.__plotLayers[pid];
-                    if (match) { if (!map.hasLayer(ly)) ly.addTo(map); }
-                    else { if (map.hasLayer(ly)) map.removeLayer(ly); }
+                    var pf = (window.__plotFarms || {})[pid] || '';
+                    var match = !wantFarm || pf === wantFarm;
+                    if (!match) { if (map.hasLayer(ly)) map.removeLayer(ly); return; }
+                    if (!map.hasLayer(ly)) ly.addTo(map);
+                    // Polygon.getLatLngs() returns NESTED rings ([[LatLng,...]]);
+                    // L.latLngBounds() over that yields NaN bounds and flyToBounds
+                    // silently no-ops -- the 'selecting a plot doesn't move the map'
+                    // bug. Unwrap the flat ring (same as the hit-test below).
+                    var flatA = ly.getLatLngs(); var fA0 = flatA && flatA[0];
+                    if (fA0 && fA0[0]) flatA = fA0;
+                    if (wantPlot && pid === wantPlot) { fb = L.latLngBounds(flatA); }
+                    else if (wantFarm && pf === wantFarm) {
+                      var b2 = L.latLngBounds(flatA);
+                      fb = fb ? fb.extend(b2) : b2;
+                    }
                   });
                   (window.__treeMarkers || []).forEach(function (m) {
-                    var hit = !v;
-                    if (v) {
-                      var ring = null;
+                    var hit = !wantFarm;
+                    if (wantFarm) {
+                      var pt = m.getLatLng();
                       Object.keys(window.__plotLayers || {}).forEach(function (pid) {
-                        if ((window.__plotFarms || {})[pid] === v && !ring) {
-                          var ll = window.__plotLayers[pid].getLatLngs();
-                          var first = ll[0];
-                          if (first && first[0]) ring = first; else ring = ll;
-                        }
-                      });
-                      if (ring) {
-                        var pt = m.getLatLng();
+                        if (hit || (window.__plotFarms || {})[pid] !== wantFarm) return;
+                        var ll = window.__plotLayers[pid].getLatLngs();
+                        var ring = ll;
+                        var first = ll[0];
+                        if (first && first[0]) ring = first; else ring = ll;
                         var inside = false;
                         for (var i = 0, j = ring.length - 1; i < ring.length; j = i++) {
                           var xi = ring[i].lat, yi = ring[i].lng;
                           var xj = ring[j].lat, yj = ring[j].lng;
                           if (((yi > pt.lng) !== (yj > pt.lng)) && (pt.lat < (xj - xi) * (pt.lng - yi) / (yj - yi) + xi)) inside = !inside;
                         }
-                        hit = inside;
-                      }
+                        if (inside) hit = true;
+                      });
                     }
                     if (hit) { if (!map.hasLayer(m)) m.addTo(map); }
                     else { if (map.hasLayer(m)) map.removeLayer(m); }
                   });
+                  if (fb) map.flyToBounds(fb, { padding: [40, 40] });
                 });
-              }
-            }
-            if (ids.length) {
-              var allBounds = null;
-              ids.forEach(function (id) {
-                var p = plotIds[id];
-                if (!p.latlngs.length) return;
-                var b = L.latLngBounds(p.latlngs);
-                allBounds = allBounds ? allBounds.extend(b) : b;
-              });
-              if (allBounds && !__viewChosen) map.fitBounds(allBounds, { padding: [40, 40] });
-            var fs2 = document.getElementById('farmSelect');
-            if (fs2 && fs2.value) {
-              var fb = null;
-              Object.keys(window.__plotLayers || {}).forEach(function (pid) {
-                if ((window.__plotFarms || {})[pid] === fs2.value) {
-                  var b2 = L.latLngBounds(window.__plotLayers[pid].getLatLngs());
-                  fb = fb ? fb.extend(b2) : b2;
-                }
-              });
-              if (fb) map.flyToBounds(fb, { padding: [40, 40] });
-            }
-            }
-            if (sel) {
-              if (ids.length) {
-                sel.style.display = 'flex';
-                sel.innerHTML = '<span style="font-size:0.85em;color:#666;">Plots:</span>' +
-                  ids.map(function (id) {
-                    var p = plotIds[id];
-                    return '<button class="plot-chip" data-plot="' + id + '" style="padding:5px 12px;border-radius:16px;border:1px solid ' + p.color + ';background:#fff;color:' + p.color + ';cursor:pointer;font-size:0.8em;">' + p.name + '</button>';
-                  }).join('');
-                ids.forEach(function (id) {
-                  var btn = sel.querySelector('[data-plot="' + id + '"]');
-                  if (!btn) return;
-                  btn.addEventListener('click', function () {
-                    var p = plotIds[id];
-                    if (p.latlngs.length === 1) map.flyTo(p.latlngs[0], 15);
-                    else map.flyToBounds(L.latLngBounds(p.latlngs));
-                    Array.prototype.forEach.call(sel.querySelectorAll('.plot-chip'), function (b) {
-                      b.style.background = '#fff'; b.style.color = b.style.borderColor;
-                    });
-                    btn.style.background = btn.style.borderColor; btn.style.color = '#fff';
-                    // exclusive pill group: selecting a plot clears any active view chip
-                    Array.prototype.forEach.call(document.querySelectorAll('.view-chip'), function (b) {
-                      b.style.background = '#fff'; b.style.color = '#2e7d32';
-                    });
-                    impactMapSetUrlParam('plot', id);
-                  });
-                });
-                var __initialPlot = impactMapGetUrlParam('plot');
                 if (__initialPlot && plotIds[__initialPlot]) {
-                  var __plotBtn = sel.querySelector('[data-plot="' + __initialPlot + '"]');
-                  if (__plotBtn) { __plotBtn.click(); impactMapScrollIntoView(); }
+                  plotSelect.value = 'plot:' + __initialPlot;
+                  var evt = document.createEvent('Event');
+                  evt.initEvent('change', true, true);
+                  plotSelect.dispatchEvent(evt);
+                  impactMapScrollIntoView();
                 }
               } else {
                 sel.style.display = 'none';
               }
             }
+            // Default camera: fit to all plots on first load (unless a view
+            // chip or a ?plot= deep-link already chose the camera).
+            if (ids.length && !__viewChosen && !impactMapGetUrlParam('plot')) {
+              var ab = null;
+              ids.forEach(function (id) {
+                var p = plotIds[id];
+                if (!p.latlngs.length) return;
+                var b = L.latLngBounds(p.latlngs);
+                ab = ab ? ab.extend(b) : b;
+              });
+              if (ab) map.fitBounds(ab, { padding: [40, 40] });
+            }
+            // (farm-filtered camera restore from the removed #farmSelect was
+            // folded into the grouped dropdown above -- no dangling refs.)
             function renderFarms(feats) {
               var farmMap = {};
               feats.forEach(function (p) {
