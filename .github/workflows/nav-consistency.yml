@@ -5,6 +5,11 @@
 # Before 2026-07, the nav was duplicated inline and sync_top_nav.py enforced
 # consistency. Now the shared js/nav.js injects the nav — all pages just need
 # the placeholder.
+#
+# Redirect stubs (0-second meta-refresh / window.location.replace pages such
+# as dapp/, beerhall/, dao/, ledger/ and other legacy sub-app entries) never
+# render the site nav by design — a nav would flash on a page that leaves
+# instantly. They are excluded from the scan.
 
 name: Nav consistency
 
@@ -26,6 +31,10 @@ jobs:
           set -e
           missing=0
           for f in $(find . -name '*.html' -not -path './node_modules/*' -not -path './.git/*' -not -path './static/*' -not -path './assets/raw/*'); do
+            # Redirect stubs never render the site nav — skip them.
+            if grep -qE 'http-equiv="refresh"|window\.location\.(replace|href *=)' "$f"; then
+              continue
+            fi
             if ! grep -q 'id="site-nav"' "$f"; then
               echo "MISSING site-nav placeholder: $f"
               missing=1
