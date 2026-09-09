@@ -496,6 +496,11 @@
 
           var treePoints = [];
           window.__treeMarkers = window.__treeMarkers || [];
+          // esc() hoisted to initMap scope (2026-09-09): the tree popup now
+          // renders photo_url via esc(photo) (PR #363 parity); without this,
+          // esc was only in scope inside buildTreeLookup -> silent map-render
+          // regression class (mirrors beta fix 77fa0fc3).
+          function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
           function addTreeMarkers(feats) {
             var count = 0;
             feats.forEach(function (f) {
@@ -516,9 +521,14 @@
               var qrLink = qr
                 ? '<br/><a href="https://truesight.me/qr/?id=' + encodeURIComponent(qr) + '" target="_blank" rel="noopener">View linked QR profile ↗</a>'
                 : '';
+              var photo = p.photo_url || p.photoUrl || '';
+              if (photo === 'N/A' || photo === 'na') photo = '';
+              var popupHtml = (photo
+                ? '<img src="' + esc(photo) + '" onerror="this.style.display=\'none\';" alt="Tree photo" style="width:100%;max-width:220px;height:auto;border-radius:6px;border:1px solid #ddd;margin-bottom:6px;object-fit:cover;" loading="lazy"/>'
+                : '') + '<strong>' + (treeId || 'tree') + '</strong><br/>' +
+                  (p.species || '') + (p.status ? '<br/>' + p.status : '') + qrLink;
               var tm = L.marker([lat, lng], { icon: icon }).addTo(map)
-                .bindPopup('<strong>' + (treeId || 'tree') + '</strong><br/>' +
-                  (p.species || '') + (p.status ? '<br/>' + p.status : '') + qrLink);
+                .bindPopup(popupHtml);
               // Tagged for deep-linking (2026-09-04): ?tree=<tree_id> or
               // ?qr=<qr_code> flies to and opens this specific tree's popup
               // on load (see impactMapRestoreTreeFromUrl below); clicking a
