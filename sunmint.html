@@ -453,6 +453,13 @@
         // Pilot area default: Altamira region (Rancho Maranta, family of Jedielcio)
         var PILOT_CENTER = [-3.2940, -52.5780];
         var __viewChosen = false; // user picked a view -> plot auto-fit must not override
+        // Single HTML-escaper at IIFE scope (2026-09-08 root fix: PR #363
+        // reintroduced an out-of-scope ReferenceError (esc is not defined)
+        // in addTreeMarkers(), which silently killed the whole map render.
+        // addTreeMarkers(), buildTreeLookup() and render() all close over
+        // this one copy; the per-function local copies are removed below so
+        // the bug class cannot recur.)
+        function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 
         // Pill state <-> URL sync: selecting a view or plot chip updates
         // ?view=<id> / ?plot=<id> (mutually exclusive, mirrors the exclusive
@@ -516,9 +523,14 @@
               var qrLink = qr
                 ? '<br/><a href="https://truesight.me/qr/?id=' + encodeURIComponent(qr) + '" target="_blank" rel="noopener">View linked QR profile ↗</a>'
                 : '';
+              var photo = p.photo_url || p.photoUrl || '';
+              if (photo === 'N/A' || photo === 'na') photo = '';
+              var popupHtml = (photo
+                ? '<img src="' + esc(photo) + '" onerror="this.style.display=\'none\';" alt="Tree photo" style="width:100%;max-width:220px;height:auto;border-radius:6px;border:1px solid #ddd;margin-bottom:6px;object-fit:cover;" loading="lazy"/>'
+                : '') + '<strong>' + (treeId || 'tree') + '</strong><br/>' +
+                  (p.species || '') + (p.status ? '<br/>' + p.status : '') + qrLink;
               var tm = L.marker([lat, lng], { icon: icon }).addTo(map)
-                .bindPopup('<strong>' + (treeId || 'tree') + '</strong><br/>' +
-                  (p.species || '') + (p.status ? '<br/>' + p.status : '') + qrLink);
+                .bindPopup(popupHtml);
               // Tagged for deep-linking (2026-09-04): ?tree=<tree_id> or
               // ?qr=<qr_code> flies to and opens this specific tree's popup
               // on load (see impactMapRestoreTreeFromUrl below); clicking a
@@ -570,7 +582,6 @@
           // hundreds of trees). Choosing one flies to it + opens its popup
           // (mirrors ?tree=/?qr=).
           function buildTreeLookup(map) {
-            function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
             var wrap = document.getElementById('treeLookup');
             var rows = window.__treeLookupData || [];
             if (!wrap || !rows.length) return;
@@ -818,7 +829,6 @@
             // farmSelector block further down (which also calls esc())
             // threw "esc is not defined" -- silently caught by the fetch
             // chain's catch-all, which then hid the whole plot selector.
-            function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
             feats.forEach(function (p, i) {
               var props = p.properties || {};
               var id = props.plot_id || props.id || ('plot_' + i);
@@ -917,8 +927,18 @@
             var plotSelect = null;
             if (sel) {
               if (ids.length) {
-                var plotSelHtml = '<span style="font-size:0.85em;color:#666;">Plots:</span>' +
-                  '<select id="plotSelect" style="padding:5px 10px;border-radius:8px;border:1px solid #ccc;font-size:0.85em;max-width:360px;">' +
+                // Plots filter-as-you-type combobox (2026-09-09, mirrors the Tree / QR
+                // box above): the native #plotSelect below stays as the hidden source
+                // of truth -- picking a filtered row just sets it + dispatches
+                // 'change', so ALL existing layer/camera/URL logic is preserved and
+                // there is exactly one code path that acts on a plot selection.
+                var plotSelHtml = '<span style="font-size:0.85em;color:#666;white-space:nowrap;">Plots:</span>' +
+                  '<span style="position:relative;display:inline-block;">' +
+                  '<input id="plotFilterInput" placeholder="Choose a plot \u2014 type to filter (name, farm, id)\u2026" ' +
+                  'style="padding:5px 10px;border-radius:8px;border:1px solid #ccc;font-size:0.85em;min-width:240px;" />' +
+                  '<div id="plotFilterResults" style="display:none;position:absolute;top:100%;left:0;z-index:2000;background:#fff;border:1px solid #ccc;border-radius:8px;max-height:220px;overflow-y:auto;min-width:300px;box-shadow:0 4px 12px rgba(0,0,0,.15);"></div>' +
+                  '</span>' +
+                  '<select id="plotSelect" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;opacity:0;pointer-events:none;" tabindex="-1" aria-hidden="true">' +
                   '<option value="">All plots (' + ids.length + ')</option>';
                 farmOrder.forEach(function (fid) {
                   var g = farmGroups[fid];
@@ -1009,6 +1029,9 @@
                     else { if (map.hasLayer(m)) map.removeLayer(m); }
                   });
                   if (fb) map.flyToBounds(fb, { padding: [40, 40] });
+                  // Parity with ?tree=/the Tree box: choosing a specific plot
+                  // opens its popup (the 'dialogue'), not just frames it.
+                  if (kind === 'plot' && window.__plotLayers[val]) window.__plotLayers[val].openPopup();
                 });
                 if (__initialPlot && plotIds[__initialPlot]) {
                   plotSelect.value = 'plot:' + __initialPlot;
@@ -1017,6 +1040,63 @@
                   plotSelect.dispatchEvent(evt);
                   impactMapScrollIntoView();
                 }
+                // --- Plots filter-as-you-type combobox -----------------------
+                // Mirrors the Tree / QR box: focus shows all plots, typing narrows
+                // by name / farm / id. Picking a row sets the hidden #plotSelect +
+                // dispatches 'change', so it reuses the exact same selection path
+                // (layers, camera, URL, popup) as the native dropdown and ?plot=.
+                (function buildPlotFilter() {
+                  var rows = ids.map(function (id) {
+                    var p = plotIds[id];
+                    var fid = (window.__plotFarms || {})[id] || '';
+                    return { id: id, name: p.name || id, farm: fid, farmLabel: farmLabel(fid), q: (p.name + ' ' + fid + ' ' + id).toLowerCase() };
+                  });
+                  var input = document.getElementById('plotFilterInput');
+                  var dd = document.getElementById('plotFilterResults');
+                  if (!input || !dd) return;
+                  function closeDd() { dd.style.display = 'none'; dd.innerHTML = ''; }
+                  function setVal(id, name) {
+                    plotSelect.value = 'plot:' + id;
+                    var ev2 = document.createEvent('Event');
+                    ev2.initEvent('change', true, true);
+                    plotSelect.dispatchEvent(ev2);   // layers + camera + URL + popup
+                    input.value = name;
+                    closeDd();
+                  }
+                  function renderRows(list) {
+                    closeDd();
+                    if (!list.length) { input.placeholder = 'No plot matches'; return; }
+                    dd.innerHTML = list.slice(0, 30).map(function (r) {
+                      var row = '<div class="plot-result-row" style="padding:6px 10px;cursor:pointer;border-bottom:1px solid #f0f0f0;font-size:0.82em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' +
+                        '<strong>' + esc(r.name) + '</strong>' +
+                        (r.farmLabel ? ' &middot; ' + esc(r.farmLabel) : '') +
+                        ' <span style="color:#999;">(' + esc(r.id) + ')</span></div>';
+                      return row;
+                    }).join('');
+                    Array.prototype.forEach.call(dd.children, function (el, idx) {
+                      el.addEventListener('click', function () { setVal(list[idx].id, list[idx].name); });
+                      el.addEventListener('mouseenter', function () { el.style.background = '#f5f5f5'; });
+                      el.addEventListener('mouseleave', function () { el.style.background = ''; });
+                    });
+                    dd.style.display = 'block';
+                  }
+                  function filter() {
+                    var q = (input.value || '').toLowerCase().trim();
+                    if (!q) { renderRows(rows.slice()); return; }
+                    var hits = [];
+                    for (var i = 0; i < rows.length; i++) { if (rows[i].q.indexOf(q) !== -1) hits.push(rows[i]); }
+                    renderRows(hits);
+                  }
+                  input.addEventListener('focus', filter);
+                  input.addEventListener('input', filter);
+                  input.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter') { var f = dd.querySelector('.plot-result-row'); if (f) f.click(); e.preventDefault(); }
+                    else if (e.key === 'Escape') { closeDd(); }
+                  });
+                  document.addEventListener('click', function (e) {
+                    if (e.target !== input && !(input.parentNode && input.parentNode.contains(e.target))) closeDd();
+                  });
+                })();
               } else {
                 sel.style.display = 'none';
               }
