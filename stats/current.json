@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-08T21:22:36Z",
+  "generated_at_utc": "2026-09-09T05:09:12Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-09-08T20:31:39Z",
+    "generated_at": "2026-09-09T03:27:36Z",
     "total_contributors": 493,
     "total_tdg_controlled_sum": 2419605.29,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-09-08T20:48:51.988Z",
+    "generated_at": "2026-09-09T04:48:36.859Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -808,11 +808,11 @@
         }
       },
       "USD": {
-        "total_quantity": 11649.43,
-        "total_value_usd": 11649.43,
+        "total_quantity": 11649.31,
+        "total_value_usd": 11649.31,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 4977.17,
+          "Main Ledger": 4977.05,
           "AGL15": 4307.78,
           "AGL6": 1337.59,
           "AGL8": 569.95,
@@ -822,11 +822,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 54.59,
-        "total_value_usd": 54.59,
+        "total_quantity": 54.72,
+        "total_value_usd": 54.72,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 54.59
+          "Main Ledger": 54.72
         }
       },
       "USDT": {
@@ -859,74 +859,7 @@
     }
   },
   "recent_beerhall_digests": {
-    "total_entries": 111,
-    "recent": [
-      {
-        "date": "2026-09-07",
-        "slug": "fsvp-blocks-fazenda-clara-ledger",
-        "filename": "beer-hall_2026-09-07T032714Z_fsvp-blocks-fazenda-clara-ledger.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-07T032714Z_fsvp-blocks-fazenda-clara-ledger.md"
-      },
-      {
-        "date": "2026-09-05",
-        "slug": "sunmint-deep-links-farms-cepotx-deal",
-        "filename": "beer-hall_2026-09-05T032747Z_sunmint-deep-links-farms-cepotx-deal.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-05T032747Z_sunmint-deep-links-farms-cepotx-deal.md"
-      },
-      {
-        "date": "2026-09-01",
-        "slug": "sunmint-map-filters-boundary-webhook-live",
-        "filename": "beer-hall_2026-09-01T040402Z_sunmint-map-filters-boundary-webhook-live.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-01T040402Z_sunmint-map-filters-boundary-webhook-live.md"
-      },
-      {
-        "date": "2026-08-31",
-        "slug": "sunmint-impact-map-farm-pages-invalidation-fix",
-        "filename": "beer-hall_2026-08-31T041857Z_sunmint-impact-map-farm-pages-invalidation-fix.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-31T041857Z_sunmint-impact-map-farm-pages-invalidation-fix.md"
-      },
-      {
-        "date": "2026-08-29",
-        "slug": "founderhaus-content-launch-bitangels-event",
-        "filename": "beer-hall_2026-08-29T060614Z_founderhaus-content-launch-bitangels-event.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-29T060614Z_founderhaus-content-launch-bitangels-event.md"
-      },
-      {
-        "date": "2026-08-27",
-        "slug": "sunmint-monitor-plan-backend-sync",
-        "filename": "beer-hall_2026-08-27T080454Z_sunmint-monitor-plan-backend-sync.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-27T080454Z_sunmint-monitor-plan-backend-sync.md"
-      },
-      {
-        "date": "2026-08-26",
-        "slug": "sunmint-monitoring-page-deploy-sop",
-        "filename": "beer-hall_2026-08-26T012318Z_sunmint-monitoring-page-deploy-sop.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-26T012318Z_sunmint-monitoring-page-deploy-sop.md"
-      },
-      {
-        "date": "2026-08-24",
-        "slug": "founderhaus-launch-fund-transfer-state",
-        "filename": "beer-hall_2026-08-24T012305Z_founderhaus-launch-fund-transfer-state.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-24T012305Z_founderhaus-launch-fund-transfer-state.md"
-      },
-      {
-        "date": "2026-08-23",
-        "slug": "qr-map-updates-email-oauth-fix",
-        "filename": "beer-hall_2026-08-23T012558Z_qr-map-updates-email-oauth-fix.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-23T012558Z_qr-map-updates-email-oauth-fix.md"
-      },
-      {
-        "date": "2026-08-22",
-        "slug": "cacao-tea-launch-media-refactor",
-        "filename": "beer-hall_2026-08-22T011925Z_cacao-tea-launch-media-refactor.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-22T011925Z_cacao-tea-launch-media-refactor.md"
-      }
-    ],
-    "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
-    "directory_url": "https://github.com/TrueSightDAO/ecosystem_change_logs/tree/main/beer_hall/entries",
-    "raw_url_pattern": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/<filename>",
-    "human_index_url": "https://truesight.me/beerhall/updates.html",
-    "interpretation_hint": "Each entry is a community digest summarizing recent shipped work. The slug encodes the headline themes; the date is when the digest was published. Fetch raw_url for the full markdown body. For digests older than the 10 most-recent shown here, fetch full_archive_url for the complete historical index."
+    "error": "beerhall listing unavailable"
   },
   "canonical_sources": {
     "treasury_cache": "https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_offchain_treasury.json",
