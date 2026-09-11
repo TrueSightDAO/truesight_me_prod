@@ -544,7 +544,16 @@
                 impactMapSetUrlParam(qr ? 'qr' : 'tree', qr || treeId);
               });
               (window.__treeLookupData = window.__treeLookupData || []).push(
-                { id: treeId, qr: qr, species: p.species || '', status: p.status || '', marker: tm });
+                { id: treeId, qr: qr, species: p.species || '', status: p.status || '', plot: p.plot_id || '', marker: tm });
+              // Per-plot tree index (2026-09-10, thread 25178): lets the plot
+              // popup list the trees that belong to it. Trees carry plot_id
+              // (added by build_tree_geojson.py); populated here because
+              // addTreeMarkers() runs before loadPlots().
+              if (p.plot_id) {
+                (window.__treesByPlot = window.__treesByPlot || {})[p.plot_id] =
+                  (window.__treesByPlot[p.plot_id] || []).concat(
+                    [{ id: treeId, qr: qr, species: p.species || '', status: p.status || '', marker: tm }]);
+              }
               window.__treeMarkers.push(tm);
             });
             return count;
@@ -585,6 +594,17 @@
             var wrap = document.getElementById('treeLookup');
             var rows = window.__treeLookupData || [];
             if (!wrap || !rows.length) return;
+            // Newest-first (2026-09-10, thread 25178): trees/index.geojson is
+            // emitted in sheet order, so the most recently planted trees sit
+            // LAST. Combined with the old list.slice(0,20) row cap, the newest
+            // plantings (e.g. the 2026-09-09 batch of 25) were unreachable in
+            // this dropdown unless you typed an exact id. Sort by the 14-digit
+            // timestamp embedded in the tree_id so recent plantings show first.
+            rows = rows.slice().sort(function (a, b) {
+              var ta = (String(a.id || '').match(/(\d{14})/) || [''])[0];
+              var tb = (String(b.id || '').match(/(\d{14})/) || [''])[0];
+              return tb.localeCompare(ta);
+            });
             wrap.style.display = 'flex';
             var lab = document.createElement('span');
             lab.style.cssText = 'font-size:0.85em;color:#666;';
@@ -625,7 +645,7 @@
               closeDd();
               if (!list.length) { hint.textContent = 'No tree matches \u201c' + input.value + '\u201d'; return; }
               hint.textContent = list.length + ' of ' + rows.length + ' trees';
-              dd.innerHTML = list.slice(0, 20).map(function (r) {
+              dd.innerHTML = list.slice(0, 500).map(function (r) {  // was 20; render all matches (dropdown scrolls)
                 return '<div style="padding:6px 10px;cursor:pointer;border-bottom:1px solid #f0f0f0;font-size:0.82em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' +
                   esc(shortLabel(r)) + '</div>';
               }).join('');
@@ -871,6 +891,23 @@
                   popupHtml += '<img src="' + esc(src) + '" onerror="this.onerror=null;this.src=\'' + esc(raw) + '\';" alt="Plot evidence" style="width:64px;height:64px;object-fit:cover;border-radius:6px;border:1px solid #ddd;" loading="lazy"/>';
                 });
                 popupHtml += '</div>';
+              }
+              // Trees in this plot (2026-09-10, thread 25178): the popup used to
+              // show only plot metadata, so clicking a plot gave no way to see
+              // which trees were planted in it. Join on plot_id.
+              var plotTrees = (window.__treesByPlot || {})[id] || [];
+              if (plotTrees.length) {
+                popupHtml += '<div style="margin-top:8px;font-weight:600;">Trees in this plot (' + plotTrees.length + ')</div>' +
+                  '<ul style="margin:4px 0 0 0;padding-left:16px;max-height:150px;overflow-y:auto;">';
+                plotTrees.forEach(function (t) {
+                  var extra = [];
+                  if (t.species) extra.push(t.species);
+                  if (t.status) extra.push(t.status);
+                  var label = esc(t.id || 'tree') + (extra.length ? ' \u2014 ' + esc(extra.join(', ')) : '');
+                  if (t.qr) label = '<a href="https://truesight.me/qr/?id=' + encodeURIComponent(t.qr) + '" target="_blank" rel="noopener">' + label + '</a>';
+                  popupHtml += '<li style="font-size:12px;">' + label + '</li>';
+                });
+                popupHtml += '</ul>';
               }
               var STYLE = {
                 proposed: { weight: 2, dashArray: '6 4', fillOpacity: 0.08 },
