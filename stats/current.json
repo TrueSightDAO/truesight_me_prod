@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-11T11:45:04Z",
+  "generated_at_utc": "2026-09-11T16:43:52Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-09-11T08:26:44Z",
+    "generated_at": "2026-09-11T13:59:12Z",
     "total_contributors": 493,
     "total_tdg_controlled_sum": 2419605.29,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-09-11T10:48:38.908Z",
+    "generated_at": "2026-09-11T15:48:43.101Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -808,13 +808,14 @@
         }
       },
       "USD": {
-        "total_quantity": 11702.79,
-        "total_value_usd": 11702.79,
+        "total_quantity": 12467.29,
+        "total_value_usd": 12467.29,
         "item_count": 1,
         "ledger_breakdown": {
           "Main Ledger": 5030.53,
           "AGL15": 4307.78,
           "AGL6": 1337.59,
+          "AGL14": 764.5,
           "AGL8": 569.95,
           "AGL10": 347.83,
           "BEC": 93.12,
@@ -859,7 +860,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-09-11T11:45:04Z",
+    "generated_at_utc": "2026-09-11T16:43:52Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
@@ -1033,7 +1034,7 @@
         "items": 977,
         "videos": 641,
         "photos": 336,
-        "published_youtube": 416,
+        "published_youtube": 449,
         "transcribed": 104
       },
       "per_farm": [
@@ -1123,9 +1124,9 @@
           "items": 64,
           "videos": 33,
           "photos": 31,
-          "published_youtube": 0,
+          "published_youtube": 33,
           "transcribed": 29,
-          "updated": "2026-09-10",
+          "updated": "2026-09-11",
           "s3_archive_prefix": null
         },
         {
