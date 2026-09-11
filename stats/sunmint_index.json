@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-10T21:07:45Z",
+  "generated_at_utc": "2026-09-11T05:10:26Z",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "schema": "sunmint_index/1",
   "north_star": {
@@ -8,13 +8,14 @@
     "progress_pct": 2.7343
   },
   "trees": {
-    "total": 100,
+    "total": 126,
     "by_status": {
       "LINKED": 1,
-      "NEW": 99
+      "NEW": 125
     },
     "by_species": {
-      "Cacau - Hybrid": 98,
+      "Cacau - Hybrid": 114,
+      "Cumaru": 10,
       "Bougainvillea": 1,
       "Cacau": 1
     },
