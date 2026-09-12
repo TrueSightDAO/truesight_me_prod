@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-12T11:12:56Z",
+  "generated_at_utc": "2026-09-12T15:47:48Z",
   "source_listing": "https://api.github.com/repos/TrueSightDAO/lineage-credentials/contents/programs?ref=main",
   "interpretation_hint": "Every credentialing program registered in lineage-credentials. Each entry mirrors the program's manifest.json: lineage root, authorized attestors, practice / attestation type catalog, source page URLs (the practice surface), notes. Use this to answer 'what programs does the DAO credential?' / 'what's the lineage for X?' / 'how do you become a Y in this program?'. Fetch manifest_url for the full schema reference per program.",
   "total_programs": 4,
