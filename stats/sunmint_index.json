@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-13T16:35:47Z",
+  "generated_at_utc": "2026-09-13T21:06:20Z",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "schema": "sunmint_index/1",
   "north_star": {
@@ -170,10 +170,10 @@
   "media": {
     "farm_count": 15,
     "totals": {
-      "items": 977,
+      "items": 967,
       "videos": 641,
-      "photos": 336,
-      "published_youtube": 449,
+      "photos": 326,
+      "published_youtube": 463,
       "transcribed": 104
     },
     "per_farm": [
@@ -321,19 +321,6 @@
         "s3_archive_prefix": null
       },
       {
-        "farm_id": "crf-anapu-para",
-        "farm_name": null,
-        "region": "Anapu, Pará, Brazil",
-        "manifest_url": "https://raw.githubusercontent.com/TrueSightDAO/farm_media_manifests/main/crf-anapu-para.json",
-        "items": 24,
-        "videos": 14,
-        "photos": 10,
-        "published_youtube": 0,
-        "transcribed": 0,
-        "updated": "2026-09-11",
-        "s3_archive_prefix": null
-      },
-      {
         "farm_id": "fazenda-dona-rosa",
         "farm_name": null,
         "region": null,
@@ -357,6 +344,19 @@
         "published_youtube": 14,
         "transcribed": 0,
         "updated": "2026-09-04",
+        "s3_archive_prefix": null
+      },
+      {
+        "farm_id": "crf-anapu-para",
+        "farm_name": null,
+        "region": null,
+        "manifest_url": "https://raw.githubusercontent.com/TrueSightDAO/farm_media_manifests/main/crf-anapu-para.json",
+        "items": 14,
+        "videos": 14,
+        "photos": 0,
+        "published_youtube": 14,
+        "transcribed": 0,
+        "updated": "2026-09-11",
         "s3_archive_prefix": null
       },
       {

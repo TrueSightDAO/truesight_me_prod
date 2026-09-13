@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-13T16:35:47Z",
+  "generated_at_utc": "2026-09-13T21:06:20Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-09-13T14:39:57Z",
+    "generated_at": "2026-09-13T20:02:16Z",
     "total_contributors": 493,
     "total_tdg_controlled_sum": 2419605.29,
     "governors_count": 10,
@@ -97,9 +97,9 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-09-13T15:59:53.141Z",
+    "generated_at": "2026-09-13T20:48:31.236Z",
     "schema_version": 5,
-    "trigger": "process_sales",
+    "trigger": "cron",
     "currency_totals": {
       "1 Gallon Zip Loc Bags": {
         "total_quantity": 34.0,
@@ -150,11 +150,11 @@
         }
       },
       "8 Ounce Package Kraft Pouch - Ilheus, Brazil 2024": {
-        "total_quantity": 137.0,
-        "total_value_usd": 909.68,
+        "total_quantity": 135.0,
+        "total_value_usd": 896.4,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 137.0
+          "Main Ledger": 135.0
         }
       },
       "8 Ounce Package Kraft Pouch - Ilheus, Brazil 2024 + CP340993838BR - Zurich": {
@@ -254,11 +254,11 @@
         }
       },
       "Brazilian Reis": {
-        "total_quantity": 1866.51,
-        "total_value_usd": 433.59,
+        "total_quantity": 1576.51,
+        "total_value_usd": 366.22,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 1629.61,
+          "Main Ledger": 1339.61,
           "AGL8": 236.9
         }
       },
@@ -399,11 +399,11 @@
         }
       },
       "Cacao Nibs (Kilograms) Santos 20260213 - AGL13": {
-        "total_quantity": 100.0,
-        "total_value_usd": 1018.23,
+        "total_quantity": 99.0,
+        "total_value_usd": 1008.05,
         "item_count": 1,
         "ledger_breakdown": {
-          "AGL13": 100.0
+          "AGL13": 99.0
         }
       },
       "Cacao Nibs Kraft Pouch": {
@@ -791,6 +791,14 @@
           "Main Ledger": 100.0
         }
       },
+      "Plastic Pallet (per pallet, FBN Tambores Ilheus, R$240/3 receipt 20260912)": {
+        "total_quantity": 3.0,
+        "total_value_usd": 56.27,
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 3.0
+        }
+      },
       "QR Code Sticker 4x3cm (Kraft Pouch) - Brazil": {
         "total_quantity": 100.0,
         "total_value_usd": 5.81,
@@ -908,7 +916,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-09-13T16:35:47Z",
+    "generated_at_utc": "2026-09-13T21:06:20Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
@@ -1079,10 +1087,10 @@
     "media": {
       "farm_count": 15,
       "totals": {
-        "items": 977,
+        "items": 967,
         "videos": 641,
-        "photos": 336,
-        "published_youtube": 449,
+        "photos": 326,
+        "published_youtube": 463,
         "transcribed": 104
       },
       "per_farm": [
@@ -1230,19 +1238,6 @@
           "s3_archive_prefix": null
         },
         {
-          "farm_id": "crf-anapu-para",
-          "farm_name": null,
-          "region": "Anapu, Pará, Brazil",
-          "manifest_url": "https://raw.githubusercontent.com/TrueSightDAO/farm_media_manifests/main/crf-anapu-para.json",
-          "items": 24,
-          "videos": 14,
-          "photos": 10,
-          "published_youtube": 0,
-          "transcribed": 0,
-          "updated": "2026-09-11",
-          "s3_archive_prefix": null
-        },
-        {
           "farm_id": "fazenda-dona-rosa",
           "farm_name": null,
           "region": null,
@@ -1266,6 +1261,19 @@
           "published_youtube": 14,
           "transcribed": 0,
           "updated": "2026-09-04",
+          "s3_archive_prefix": null
+        },
+        {
+          "farm_id": "crf-anapu-para",
+          "farm_name": null,
+          "region": null,
+          "manifest_url": "https://raw.githubusercontent.com/TrueSightDAO/farm_media_manifests/main/crf-anapu-para.json",
+          "items": 14,
+          "videos": 14,
+          "photos": 0,
+          "published_youtube": 14,
+          "transcribed": 0,
+          "updated": "2026-09-11",
           "s3_archive_prefix": null
         },
         {
