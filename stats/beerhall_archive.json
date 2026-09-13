@@ -1,9 +1,15 @@
 {
-  "generated_at_utc": "2026-09-12T20:54:08Z",
+  "generated_at_utc": "2026-09-13T05:19:23Z",
   "source": "https://api.github.com/repos/TrueSightDAO/ecosystem_change_logs/contents/beer_hall/entries?ref=main",
   "interpretation_hint": "Every Beer Hall digest ever published, sorted newest-first. Each entry: date, slug, filename, raw_url. Use the slug as a quick topic hint; fetch raw_url for the full markdown body. For headline numbers + the 10 most-recent entries, fetch https://truesight.me/stats/current.json instead.",
-  "total_entries": 114,
+  "total_entries": 115,
   "entries": [
+    {
+      "date": "2026-09-13",
+      "slug": "media-gallery-complete-and-reserved-qr-status",
+      "filename": "beer-hall_2026-09-13T034519Z_media-gallery-complete-and-reserved-qr-status.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-13T034519Z_media-gallery-complete-and-reserved-qr-status.md"
+    },
     {
       "date": "2026-09-12",
       "slug": "crf-anapu-gallery-and-black-king-update",
