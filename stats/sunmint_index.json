@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-14T05:23:29Z",
+  "generated_at_utc": "2026-09-14T13:16:51Z",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "schema": "sunmint_index/1",
   "north_star": {
@@ -168,13 +168,13 @@
     "source": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/farms/index.json"
   },
   "media": {
-    "farm_count": 16,
+    "farm_count": 18,
     "totals": {
-      "items": 999,
-      "videos": 641,
-      "photos": 358,
-      "published_youtube": 463,
-      "transcribed": 104
+      "items": 1065,
+      "videos": 689,
+      "photos": 376,
+      "published_youtube": 511,
+      "transcribed": 134
     },
     "per_farm": [
       {
@@ -308,6 +308,19 @@
         "s3_archive_prefix": null
       },
       {
+        "farm_id": "fazenda-santa-rosa",
+        "farm_name": "Fazenda Santa Rosa (Antonio & Graca)",
+        "region": "Uruara, Para, Brazil",
+        "manifest_url": "https://raw.githubusercontent.com/TrueSightDAO/farm_media_manifests/main/fazenda-santa-rosa.json",
+        "items": 49,
+        "videos": 31,
+        "photos": 18,
+        "published_youtube": 31,
+        "transcribed": 30,
+        "updated": "2026-09-14",
+        "s3_archive_prefix": null
+      },
+      {
         "farm_id": "santa-anna-fazenda-para",
         "farm_name": null,
         "region": null,
@@ -344,6 +357,19 @@
         "published_youtube": 19,
         "transcribed": 0,
         "updated": "2026-09-05",
+        "s3_archive_prefix": null
+      },
+      {
+        "farm_id": "fazenda-bom-sucesso",
+        "farm_name": "Fazenda Bom Sucesso",
+        "region": "Vitória do Xingu, Pará, Brazil",
+        "manifest_url": "https://raw.githubusercontent.com/TrueSightDAO/farm_media_manifests/main/farms/fazenda-bom-sucesso.json",
+        "items": 17,
+        "videos": 17,
+        "photos": 0,
+        "published_youtube": 17,
+        "transcribed": 0,
+        "updated": "2026-09-14",
         "s3_archive_prefix": null
       },
       {
