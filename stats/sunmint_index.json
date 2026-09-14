@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-13T21:06:20Z",
+  "generated_at_utc": "2026-09-14T05:23:29Z",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "schema": "sunmint_index/1",
   "north_star": {
@@ -168,11 +168,11 @@
     "source": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/farms/index.json"
   },
   "media": {
-    "farm_count": 15,
+    "farm_count": 16,
     "totals": {
-      "items": 967,
+      "items": 999,
       "videos": 641,
-      "photos": 326,
+      "photos": 358,
       "published_youtube": 463,
       "transcribed": 104
     },
@@ -318,6 +318,19 @@
         "published_youtube": 5,
         "transcribed": 0,
         "updated": "2026-08-31",
+        "s3_archive_prefix": null
+      },
+      {
+        "farm_id": "cepotx-office-altamira",
+        "farm_name": null,
+        "region": null,
+        "manifest_url": "https://raw.githubusercontent.com/TrueSightDAO/farm_media_manifests/main/cepotx-office-altamira.json",
+        "items": 32,
+        "videos": 0,
+        "photos": 32,
+        "published_youtube": 0,
+        "transcribed": 0,
+        "updated": "2026-09-13",
         "s3_archive_prefix": null
       },
       {
