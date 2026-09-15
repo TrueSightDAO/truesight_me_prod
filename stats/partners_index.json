@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-15T05:16:09Z",
+  "generated_at_utc": "2026-09-15T12:03:08Z",
   "source": "https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/partners-inventory.json",
   "interpretation_hint": "Active Agroverse partner storage points. Each entry: partner slug, active SKU count, total inventory units across SKUs, and the top-3 products by stock. Use this for 'which partners are currently carrying inventory?' / 'who has the most stock?' / 'where can someone buy product X?'. The full per-item detail (price, GTIN, image, farm of origin, shipment ID) is at the source URL above. Partner location / region is NOT carried here — for region grouping you'd need the Agroverse Partners sheet, which requires authenticated access.",
   "total_active_partners": 23,
@@ -7,7 +7,7 @@
     {
       "slug": "black-king-ilheus",
       "active_sku_count": 2,
-      "total_inventory_units": 307,
+      "total_inventory_units": 305,
       "top_products": [
         {
           "product_id": "ceremonial-cacao-paulo-s-la-do-sitio-farm-200g",
@@ -19,7 +19,7 @@
         {
           "product_id": "8-ounce-organic-cacao-nibs",
           "product_name": "Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs",
-          "inventory": 137,
+          "inventory": 135,
           "shipment": "AGL4",
           "farm": "Oscar"
         }

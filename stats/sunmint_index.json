@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-15T05:16:05Z",
+  "generated_at_utc": "2026-09-15T12:03:06Z",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "schema": "sunmint_index/1",
   "north_star": {
@@ -173,7 +173,7 @@
       "items": 1065,
       "videos": 689,
       "photos": 376,
-      "published_youtube": 511,
+      "published_youtube": 519,
       "transcribed": 134
     },
     "per_farm": [
@@ -328,7 +328,7 @@
         "items": 45,
         "videos": 13,
         "photos": 32,
-        "published_youtube": 5,
+        "published_youtube": 13,
         "transcribed": 0,
         "updated": "2026-08-31",
         "s3_archive_prefix": null
