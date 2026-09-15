@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-15T12:03:06Z",
+  "generated_at_utc": "2026-09-15T17:14:27Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-09-15T11:09:53Z",
+    "generated_at": "2026-09-15T13:01:12Z",
     "total_contributors": 494,
     "total_tdg_controlled_sum": 2419605.29,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-09-15T11:48:33.496Z",
+    "generated_at": "2026-09-15T15:48:41.210Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -655,6 +655,14 @@
           "Main Ledger": 1.0
         }
       },
+      "Coopercabruca Cacao Butter (KG)": {
+        "total_quantity": 5.0,
+        "total_value_usd": 86.65,
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 5.0
+        }
+      },
       "Digital Kitchen Scale, 10kg Capacity": {
         "total_quantity": 1.0,
         "total_value_usd": 5.01,
@@ -924,7 +932,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-09-15T12:03:06Z",
+    "generated_at_utc": "2026-09-15T17:14:27Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
