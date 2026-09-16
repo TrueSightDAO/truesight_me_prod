@@ -1,4 +1,716 @@
 {
-  "error": "beerhall listing unavailable",
-  "entries": []
+  "generated_at_utc": "2026-09-16T21:39:54Z",
+  "source": "https://api.github.com/repos/TrueSightDAO/ecosystem_change_logs/contents/beer_hall/entries?ref=main",
+  "interpretation_hint": "Every Beer Hall digest ever published, sorted newest-first. Each entry: date, slug, filename, raw_url. Use the slug as a quick topic hint; fetch raw_url for the full markdown body. For headline numbers + the 10 most-recent entries, fetch https://truesight.me/stats/current.json instead.",
+  "total_entries": 118,
+  "entries": [
+    {
+      "date": "2026-09-16",
+      "slug": "reservation-settlement-and-cacau-na-veia",
+      "filename": "beer-hall_2026-09-16T035312Z_reservation-settlement-and-cacau-na-veia.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-16T035312Z_reservation-settlement-and-cacau-na-veia.md"
+    },
+    {
+      "date": "2026-09-15",
+      "slug": "youtube-fix-repo-access-denylist-complete",
+      "filename": "beer-hall_2026-09-15T035424Z_youtube-fix-repo-access-denylist-complete.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-15T035424Z_youtube-fix-repo-access-denylist-complete.md"
+    },
+    {
+      "date": "2026-09-14",
+      "slug": "sunmint-ux-reservation-logic-and-logistics",
+      "filename": "beer-hall_2026-09-14T035447Z_sunmint-ux-reservation-logic-and-logistics.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-14T035447Z_sunmint-ux-reservation-logic-and-logistics.md"
+    },
+    {
+      "date": "2026-09-13",
+      "slug": "media-gallery-complete-and-reserved-qr-status",
+      "filename": "beer-hall_2026-09-13T034519Z_media-gallery-complete-and-reserved-qr-status.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-13T034519Z_media-gallery-complete-and-reserved-qr-status.md"
+    },
+    {
+      "date": "2026-09-12",
+      "slug": "crf-anapu-gallery-and-black-king-update",
+      "filename": "beer-hall_2026-09-12T033932Z_crf-anapu-gallery-and-black-king-update.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-12T033932Z_crf-anapu-gallery-and-black-king-update.md"
+    },
+    {
+      "date": "2026-09-11",
+      "slug": "sitio-cristo-rei-cacau-na-veia-launch-map-tree-listing",
+      "filename": "beer-hall_2026-09-11T033523Z_sitio-cristo-rei-cacau-na-veia-launch-map-tree-listing.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-11T033523Z_sitio-cristo-rei-cacau-na-veia-launch-map-tree-listing.md"
+    },
+    {
+      "date": "2026-09-10",
+      "slug": "sunmint-map-upgrades-plot-validation",
+      "filename": "beer-hall_2026-09-10T033637Z_sunmint-map-upgrades-plot-validation.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-10T033637Z_sunmint-map-upgrades-plot-validation.md"
+    },
+    {
+      "date": "2026-09-07",
+      "slug": "fsvp-blocks-fazenda-clara-ledger",
+      "filename": "beer-hall_2026-09-07T032714Z_fsvp-blocks-fazenda-clara-ledger.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-07T032714Z_fsvp-blocks-fazenda-clara-ledger.md"
+    },
+    {
+      "date": "2026-09-05",
+      "slug": "sunmint-deep-links-farms-cepotx-deal",
+      "filename": "beer-hall_2026-09-05T032747Z_sunmint-deep-links-farms-cepotx-deal.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-05T032747Z_sunmint-deep-links-farms-cepotx-deal.md"
+    },
+    {
+      "date": "2026-09-01",
+      "slug": "sunmint-map-filters-boundary-webhook-live",
+      "filename": "beer-hall_2026-09-01T040402Z_sunmint-map-filters-boundary-webhook-live.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-01T040402Z_sunmint-map-filters-boundary-webhook-live.md"
+    },
+    {
+      "date": "2026-08-31",
+      "slug": "sunmint-impact-map-farm-pages-invalidation-fix",
+      "filename": "beer-hall_2026-08-31T041857Z_sunmint-impact-map-farm-pages-invalidation-fix.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-31T041857Z_sunmint-impact-map-farm-pages-invalidation-fix.md"
+    },
+    {
+      "date": "2026-08-29",
+      "slug": "founderhaus-content-launch-bitangels-event",
+      "filename": "beer-hall_2026-08-29T060614Z_founderhaus-content-launch-bitangels-event.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-29T060614Z_founderhaus-content-launch-bitangels-event.md"
+    },
+    {
+      "date": "2026-08-27",
+      "slug": "sunmint-monitor-plan-backend-sync",
+      "filename": "beer-hall_2026-08-27T080454Z_sunmint-monitor-plan-backend-sync.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-27T080454Z_sunmint-monitor-plan-backend-sync.md"
+    },
+    {
+      "date": "2026-08-26",
+      "slug": "sunmint-monitoring-page-deploy-sop",
+      "filename": "beer-hall_2026-08-26T012318Z_sunmint-monitoring-page-deploy-sop.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-26T012318Z_sunmint-monitoring-page-deploy-sop.md"
+    },
+    {
+      "date": "2026-08-24",
+      "slug": "founderhaus-launch-fund-transfer-state",
+      "filename": "beer-hall_2026-08-24T012305Z_founderhaus-launch-fund-transfer-state.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-24T012305Z_founderhaus-launch-fund-transfer-state.md"
+    },
+    {
+      "date": "2026-08-23",
+      "slug": "qr-map-updates-email-oauth-fix",
+      "filename": "beer-hall_2026-08-23T012558Z_qr-map-updates-email-oauth-fix.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-23T012558Z_qr-map-updates-email-oauth-fix.md"
+    },
+    {
+      "date": "2026-08-22",
+      "slug": "cacao-tea-launch-media-refactor",
+      "filename": "beer-hall_2026-08-22T011925Z_cacao-tea-launch-media-refactor.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-22T011925Z_cacao-tea-launch-media-refactor.md"
+    },
+    {
+      "date": "2026-08-19",
+      "slug": "tree-planting-links-ivy-page",
+      "filename": "beer-hall_2026-08-19T012020Z_tree-planting-links-ivy-page.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-19T012020Z_tree-planting-links-ivy-page.md"
+    },
+    {
+      "date": "2026-08-18",
+      "slug": "ledger-notifications-advisor-update",
+      "filename": "beer-hall_2026-08-18T011823Z_ledger-notifications-advisor-update.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-18T011823Z_ledger-notifications-advisor-update.md"
+    },
+    {
+      "date": "2026-08-12",
+      "slug": "sunmint-ux-refine-freight-redirect",
+      "filename": "beer-hall_2026-08-12T020437Z_sunmint-ux-refine-freight-redirect.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-12T020437Z_sunmint-ux-refine-freight-redirect.md"
+    },
+    {
+      "date": "2026-08-11",
+      "slug": "oracle-fix-startup-summit-coordination",
+      "filename": "beer-hall_2026-08-11T015201Z_oracle-fix-startup-summit-coordination.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-11T015201Z_oracle-fix-startup-summit-coordination.md"
+    },
+    {
+      "date": "2026-08-10",
+      "slug": "tls-fix-chocolate-tasting-sunmint-cta",
+      "filename": "beer-hall_2026-08-10T015547Z_tls-fix-chocolate-tasting-sunmint-cta.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-10T015547Z_tls-fix-chocolate-tasting-sunmint-cta.md"
+    },
+    {
+      "date": "2026-08-07",
+      "slug": "robotics-barter-strategy-maintenance-peg",
+      "filename": "beer-hall_2026-08-07T024448Z_robotics-barter-strategy-maintenance-peg.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-07T024448Z_robotics-barter-strategy-maintenance-peg.md"
+    },
+    {
+      "date": "2026-08-04",
+      "slug": "prospera-operating-agreement-signed-china-market-strategy",
+      "filename": "beer-hall_2026-08-04T024220Z_prospera-operating-agreement-signed-china-market-strategy.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-04T024220Z_prospera-operating-agreement-signed-china-market-strategy.md"
+    },
+    {
+      "date": "2026-08-01",
+      "slug": "cacao-pack-visuals-sop",
+      "filename": "beer-hall_2026-08-01T025616Z_cacao-pack-visuals-sop.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-08-01T025616Z_cacao-pack-visuals-sop.md"
+    },
+    {
+      "date": "2026-07-31",
+      "slug": "cacao-logistics-narrative-live",
+      "filename": "beer-hall_2026-07-31T025739Z_cacao-logistics-narrative-live.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-31T025739Z_cacao-logistics-narrative-live.md"
+    },
+    {
+      "date": "2026-07-30",
+      "slug": "cacao-club-and-oracle-updates",
+      "filename": "beer-hall_2026-07-30T023225Z_cacao-club-and-oracle-updates.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-30T023225Z_cacao-club-and-oracle-updates.md"
+    },
+    {
+      "date": "2026-07-21",
+      "slug": "dao-infrastructure-inventory-report",
+      "filename": "beer-hall_2026-07-21T025013Z_dao-infrastructure-inventory-report.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-21T025013Z_dao-infrastructure-inventory-report.md"
+    },
+    {
+      "date": "2026-07-20",
+      "slug": "warmup-conversion-ssl-recovery-plan",
+      "filename": "beer-hall_2026-07-20T032156Z_warmup-conversion-ssl-recovery-plan.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-20T032156Z_warmup-conversion-ssl-recovery-plan.md"
+    },
+    {
+      "date": "2026-07-18",
+      "slug": "tariff-analysis-sugar-rfq-checkout-fixes",
+      "filename": "beer-hall_2026-07-18T023839Z_tariff-analysis-sugar-rfq-checkout-fixes.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-18T023839Z_tariff-analysis-sugar-rfq-checkout-fixes.md"
+    },
+    {
+      "date": "2026-07-17",
+      "slug": "white-label-fixes-hts-schema-pdf",
+      "filename": "beer-hall_2026-07-17T024754Z_white-label-fixes-hts-schema-pdf.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-17T024754Z_white-label-fixes-hts-schema-pdf.md"
+    },
+    {
+      "date": "2026-07-15",
+      "slug": "white-label-fixes-subscription-sync",
+      "filename": "beer-hall_2026-07-15T023656Z_white-label-fixes-subscription-sync.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-15T023656Z_white-label-fixes-subscription-sync.md"
+    },
+    {
+      "date": "2026-07-14",
+      "slug": "operating-agreement-signed-shop-updates",
+      "filename": "beer-hall_2026-07-14T023918Z_operating-agreement-signed-shop-updates.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-14T023918Z_operating-agreement-signed-shop-updates.md"
+    },
+    {
+      "date": "2026-07-13",
+      "slug": "narrative-reality-check-docs-reorg",
+      "filename": "beer-hall_2026-07-13T025806Z_narrative-reality-check-docs-reorg.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-13T025806Z_narrative-reality-check-docs-reorg.md"
+    },
+    {
+      "date": "2026-07-12",
+      "slug": "desert-diamond-narrative-published",
+      "filename": "beer-hall_2026-07-12T025639Z_desert-diamond-narrative-published.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-12T025639Z_desert-diamond-narrative-published.md"
+    },
+    {
+      "date": "2026-07-11",
+      "slug": "sao-jorge-launch-and-prospera-bylaws",
+      "filename": "beer-hall_2026-07-11T024853Z_sao-jorge-launch-and-prospera-bylaws.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-11T024853Z_sao-jorge-launch-and-prospera-bylaws.md"
+    },
+    {
+      "date": "2026-07-10",
+      "slug": "usa-santos-spec-and-buyback-fix",
+      "filename": "beer-hall_2026-07-10T033216Z_usa-santos-spec-and-buyback-fix.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-10T033216Z_usa-santos-spec-and-buyback-fix.md"
+    },
+    {
+      "date": "2026-07-08",
+      "slug": "web-timeline-fixes-and-china-guild-alignment",
+      "filename": "beer-hall_2026-07-08T025225Z_web-timeline-fixes-and-china-guild-alignment.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-08T025225Z_web-timeline-fixes-and-china-guild-alignment.md"
+    },
+    {
+      "date": "2026-07-07",
+      "slug": "oracle-canonical-fixes-and-sales",
+      "filename": "beer-hall_2026-07-07T033627Z_oracle-canonical-fixes-and-sales.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-07T033627Z_oracle-canonical-fixes-and-sales.md"
+    },
+    {
+      "date": "2026-07-06",
+      "slug": "etsy-integration-and-sales-processing",
+      "filename": "beer-hall_2026-07-06T034432Z_etsy-integration-and-sales-processing.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-06T034432Z_etsy-integration-and-sales-processing.md"
+    },
+    {
+      "date": "2026-07-05",
+      "slug": "vote-dedup-fix-proposal-18-partnership-outreach",
+      "filename": "beer-hall_2026-07-05T033850Z_vote-dedup-fix-proposal-18-partnership-outreach.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-05T033850Z_vote-dedup-fix-proposal-18-partnership-outreach.md"
+    },
+    {
+      "date": "2026-07-04",
+      "slug": "settlement-pipeline-tdg-hardening-members-fix",
+      "filename": "beer-hall_2026-07-04T032211Z_settlement-pipeline-tdg-hardening-members-fix.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-04T032211Z_settlement-pipeline-tdg-hardening-members-fix.md"
+    },
+    {
+      "date": "2026-07-03",
+      "slug": "etsy-integration-shared-nav-large-spike-go-ready",
+      "filename": "beer-hall_2026-07-03T032828Z_etsy-integration-shared-nav-large-spike-go-ready.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-03T032828Z_etsy-integration-shared-nav-large-spike-go-ready.md"
+    },
+    {
+      "date": "2026-07-02",
+      "slug": "members-page-single-source-governor-permission-sync",
+      "filename": "beer-hall_2026-07-02T034708Z_members-page-single-source-governor-permission-sync.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-02T034708Z_members-page-single-source-governor-permission-sync.md"
+    },
+    {
+      "date": "2026-07-01",
+      "slug": "expense-parsing-fix-aora-program-scope",
+      "filename": "beer-hall_2026-07-01T040709Z_expense-parsing-fix-aora-program-scope.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-07-01T040709Z_expense-parsing-fix-aora-program-scope.md"
+    },
+    {
+      "date": "2026-06-30",
+      "slug": "sophia-expense-reporting-plan-live",
+      "filename": "beer-hall_2026-06-30T035358Z_sophia-expense-reporting-plan-live.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-30T035358Z_sophia-expense-reporting-plan-live.md"
+    },
+    {
+      "date": "2026-06-29",
+      "slug": "repackaging-settlement-governor-sync",
+      "filename": "beer-hall_2026-06-29T040807Z_repackaging-settlement-governor-sync.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-29T040807Z_repackaging-settlement-governor-sync.md"
+    },
+    {
+      "date": "2026-06-28",
+      "slug": "edgar-registration-oscar-sales-qr-flag",
+      "filename": "beer-hall_2026-06-28T040310Z_edgar-registration-oscar-sales-qr-flag.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-28T040310Z_edgar-registration-oscar-sales-qr-flag.md"
+    },
+    {
+      "date": "2026-06-27",
+      "slug": "zach-brief-brazil-vote-sales",
+      "filename": "beer-hall_2026-06-27T033904Z_zach-brief-brazil-vote-sales.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-27T033904Z_zach-brief-brazil-vote-sales.md"
+    },
+    {
+      "date": "2026-06-26",
+      "slug": "cnpj-status-summit-execution-qr-fixes",
+      "filename": "beer-hall_2026-06-26T035741Z_cnpj-status-summit-execution-qr-fixes.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-26T035741Z_cnpj-status-summit-execution-qr-fixes.md"
+    },
+    {
+      "date": "2026-06-25",
+      "slug": "contracts-catalog-live-event-logistics",
+      "filename": "beer-hall_2026-06-25T034654Z_contracts-catalog-live-event-logistics.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-25T034654Z_contracts-catalog-live-event-logistics.md"
+    },
+    {
+      "date": "2026-06-24",
+      "slug": "proposal-cli-live-qr-self-serve-prospera-plan",
+      "filename": "beer-hall_2026-06-24T034837Z_proposal-cli-live-qr-self-serve-prospera-plan.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-24T034837Z_proposal-cli-live-qr-self-serve-prospera-plan.md"
+    },
+    {
+      "date": "2026-06-23",
+      "slug": "qr-pipeline-green-pr4-deployed",
+      "filename": "beer-hall_2026-06-23T034600Z_qr-pipeline-green-pr4-deployed.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-23T034600Z_qr-pipeline-green-pr4-deployed.md"
+    },
+    {
+      "date": "2026-06-22",
+      "slug": "smart-contracts-rsa-verification",
+      "filename": "beer-hall_2026-06-22T042740Z_smart-contracts-rsa-verification.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-22T042740Z_smart-contracts-rsa-verification.md"
+    },
+    {
+      "date": "2026-06-21",
+      "slug": "soha-postmortem-and-batch-execution",
+      "filename": "beer-hall_2026-06-21T042534Z_soha-postmortem-and-batch-execution.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-21T042534Z_soha-postmortem-and-batch-execution.md"
+    },
+    {
+      "date": "2026-06-20",
+      "slug": "smart-contracts-catalog-and-fda-blog",
+      "filename": "beer-hall_2026-06-20T035437Z_smart-contracts-catalog-and-fda-blog.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-20T035437Z_smart-contracts-catalog-and-fda-blog.md"
+    },
+    {
+      "date": "2026-06-19",
+      "slug": "sentinel-role-live-and-roadmap-track-map",
+      "filename": "beer-hall_2026-06-19T043014Z_sentinel-role-live-and-roadmap-track-map.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-19T043014Z_sentinel-role-live-and-roadmap-track-map.md"
+    },
+    {
+      "date": "2026-06-18",
+      "slug": "sophia-auto-advance-and-gacc-updates",
+      "filename": "beer-hall_2026-06-18T041229Z_sophia-auto-advance-and-gacc-updates.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-18T041229Z_sophia-auto-advance-and-gacc-updates.md"
+    },
+    {
+      "date": "2026-06-17",
+      "slug": "buy-back-reserve-live-and-sophia-stabilization",
+      "filename": "beer-hall_2026-06-17T041959Z_buy-back-reserve-live-and-sophia-stabilization.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-17T041959Z_buy-back-reserve-live-and-sophia-stabilization.md"
+    },
+    {
+      "date": "2026-06-16",
+      "slug": "self-replication-sop-and-v2",
+      "filename": "beer-hall_2026-06-16T042618Z_self-replication-sop-and-v2.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-16T042618Z_self-replication-sop-and-v2.md"
+    },
+    {
+      "date": "2026-06-15",
+      "slug": "kopi-bar-onboarding-legal-v7",
+      "filename": "beer-hall_2026-06-15T042930Z_kopi-bar-onboarding-legal-v7.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-15T042930Z_kopi-bar-onboarding-legal-v7.md"
+    },
+    {
+      "date": "2026-06-14",
+      "slug": "narrative-update-sophia-context-plan",
+      "filename": "beer-hall_2026-06-14T041819Z_narrative-update-sophia-context-plan.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-14T041819Z_narrative-update-sophia-context-plan.md"
+    },
+    {
+      "date": "2026-06-13",
+      "slug": "tech-fest-recap-sophia-hotfix",
+      "filename": "beer-hall_2026-06-13T035924Z_tech-fest-recap-sophia-hotfix.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-13T035924Z_tech-fest-recap-sophia-hotfix.md"
+    },
+    {
+      "date": "2026-06-12",
+      "slug": "friends-rainforest-live-sophia-phase-0",
+      "filename": "beer-hall_2026-06-12T041228Z_friends-rainforest-live-sophia-phase-0.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-12T041228Z_friends-rainforest-live-sophia-phase-0.md"
+    },
+    {
+      "date": "2026-06-11",
+      "slug": "subscription-verification-aora-plan",
+      "filename": "beer-hall_2026-06-11T041108Z_subscription-verification-aora-plan.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-11T041108Z_subscription-verification-aora-plan.md"
+    },
+    {
+      "date": "2026-06-10",
+      "slug": "subscription-roadmap-oracle-identity-updates",
+      "filename": "beer-hall_2026-06-10T035900Z_subscription-roadmap-oracle-identity-updates.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-10T035900Z_subscription-roadmap-oracle-identity-updates.md"
+    },
+    {
+      "date": "2026-06-09",
+      "slug": "dao-client-migration-sentinel-roster",
+      "filename": "beer-hall_2026-06-09T034402Z_dao-client-migration-sentinel-roster.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-09T034402Z_dao-client-migration-sentinel-roster.md"
+    },
+    {
+      "date": "2026-06-08",
+      "slug": "oracle-dao-linking-live-sentinel-roster",
+      "filename": "beer-hall_2026-06-08T041325Z_oracle-dao-linking-live-sentinel-roster.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-08T041325Z_oracle-dao-linking-live-sentinel-roster.md"
+    },
+    {
+      "date": "2026-06-07",
+      "slug": "blog-updates-sentinel-role-live",
+      "filename": "beer-hall_2026-06-07T040932Z_blog-updates-sentinel-role-live.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-07T040932Z_blog-updates-sentinel-role-live.md"
+    },
+    {
+      "date": "2026-06-06",
+      "slug": "oracle-permalinks-outreach-automation",
+      "filename": "beer-hall_2026-06-06T034159Z_oracle-permalinks-outreach-automation.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-06T034159Z_oracle-permalinks-outreach-automation.md"
+    },
+    {
+      "date": "2026-06-05",
+      "slug": "security-dashboard-live-aora-modules",
+      "filename": "beer-hall_2026-06-05T040057Z_security-dashboard-live-aora-modules.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-05T040057Z_security-dashboard-live-aora-modules.md"
+    },
+    {
+      "date": "2026-06-04",
+      "slug": "lineage-self-serve-live",
+      "filename": "beer-hall_2026-06-04T041556Z_lineage-self-serve-live.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-04T041556Z_lineage-self-serve-live.md"
+    },
+    {
+      "date": "2026-06-03",
+      "slug": "bec-launch-and-ledger-fixes",
+      "filename": "beer-hall_2026-06-03T042129Z_bec-launch-and-ledger-fixes.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-03T042129Z_bec-launch-and-ledger-fixes.md"
+    },
+    {
+      "date": "2026-06-02",
+      "slug": "grounding-renderer-and-onboarding-tools",
+      "filename": "beer-hall_2026-06-02T041231Z_grounding-renderer-and-onboarding-tools.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-02T041231Z_grounding-renderer-and-onboarding-tools.md"
+    },
+    {
+      "date": "2026-06-01",
+      "slug": "truesight-grounding-launch-oracle-draw",
+      "filename": "beer-hall_2026-06-01T041755Z_truesight-grounding-launch-oracle-draw.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-06-01T041755Z_truesight-grounding-launch-oracle-draw.md"
+    },
+    {
+      "date": "2026-05-31",
+      "slug": "sophia-self-deploy-and-advisory-cutover",
+      "filename": "beer-hall_2026-05-31T040458Z_sophia-self-deploy-and-advisory-cutover.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-31T040458Z_sophia-self-deploy-and-advisory-cutover.md"
+    },
+    {
+      "date": "2026-05-30",
+      "slug": "gas-restructure-vault-and-whitepaper",
+      "filename": "beer-hall_2026-05-30T033805Z_gas-restructure-vault-and-whitepaper.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-30T033805Z_gas-restructure-vault-and-whitepaper.md"
+    },
+    {
+      "date": "2026-05-29",
+      "slug": "ai-dao-narrative-and-autopilot-roadmaps",
+      "filename": "beer-hall_2026-05-29T035249Z_ai-dao-narrative-and-autopilot-roadmaps.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-29T035249Z_ai-dao-narrative-and-autopilot-roadmaps.md"
+    },
+    {
+      "date": "2026-05-28",
+      "slug": "dapp-prod-split-and-autopilot-gates",
+      "filename": "beer-hall_2026-05-28T035227Z_dapp-prod-split-and-autopilot-gates.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-28T035227Z_dapp-prod-split-and-autopilot-gates.md"
+    },
+    {
+      "date": "2026-05-27",
+      "slug": "edgar-core-ramp-and-autopilot",
+      "filename": "beer-hall_2026-05-27T040316Z_edgar-core-ramp-and-autopilot.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-27T040316Z_edgar-core-ramp-and-autopilot.md"
+    },
+    {
+      "date": "2026-05-26",
+      "slug": "dao-protocol-live-and-backtester-launch",
+      "filename": "beer-hall_2026-05-26T034726Z_dao-protocol-live-and-backtester-launch.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-26T034726Z_dao-protocol-live-and-backtester-launch.md"
+    },
+    {
+      "date": "2026-05-25",
+      "slug": "newsletter-opt-in-and-dual-tech",
+      "filename": "beer-hall_2026-05-25T040227Z_newsletter-opt-in-and-dual-tech.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-25T040227Z_newsletter-opt-in-and-dual-tech.md"
+    },
+    {
+      "date": "2026-05-24",
+      "slug": "treasury-aum-dashboard-live",
+      "filename": "beer-hall_2026-05-24T035235Z_treasury-aum-dashboard-live.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-24T035235Z_treasury-aum-dashboard-live.md"
+    },
+    {
+      "date": "2026-05-23",
+      "slug": "butterfly-effect-scaffold-v9-credentialing",
+      "filename": "beer-hall_2026-05-23T033035Z_butterfly-effect-scaffold-v9-credentialing.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-23T033035Z_butterfly-effect-scaffold-v9-credentialing.md"
+    },
+    {
+      "date": "2026-05-22",
+      "slug": "oracle-fix-partner-ops-tooling",
+      "filename": "beer-hall_2026-05-22T035436Z_oracle-fix-partner-ops-tooling.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-22T035436Z_oracle-fix-partner-ops-tooling.md"
+    },
+    {
+      "date": "2026-05-21",
+      "slug": "treasury-aum-pages-qr-lineage-live",
+      "filename": "beer-hall_2026-05-21T035840Z_treasury-aum-pages-qr-lineage-live.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-21T035840Z_treasury-aum-pages-qr-lineage-live.md"
+    },
+    {
+      "date": "2026-05-20",
+      "slug": "incident-recovery-partner-ops-qmdj-updates",
+      "filename": "beer-hall_2026-05-20T034723Z_incident-recovery-partner-ops-qmdj-updates.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-20T034723Z_incident-recovery-partner-ops-qmdj-updates.md"
+    },
+    {
+      "date": "2026-05-19",
+      "slug": "phase-4-1-live-llm-discovery-surface",
+      "filename": "beer-hall_2026-05-19T034716Z_phase-4-1-live-llm-discovery-surface.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-19T034716Z_phase-4-1-live-llm-discovery-surface.md"
+    },
+    {
+      "date": "2026-05-18",
+      "slug": "programs-markdown-inventory-sellthrough",
+      "filename": "beer-hall_2026-05-18T035653Z_programs-markdown-inventory-sellthrough.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-18T035653Z_programs-markdown-inventory-sellthrough.md"
+    },
+    {
+      "date": "2026-05-17",
+      "slug": "programs-pages-live-partner-check-in-ux",
+      "filename": "beer-hall_2026-05-17T034043Z_programs-pages-live-partner-check-in-ux.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-17T034043Z_programs-pages-live-partner-check-in-ux.md"
+    },
+    {
+      "date": "2026-05-16",
+      "slug": "field-signals-6-the-alchemist-credentialing-v1",
+      "filename": "beer-hall_2026-05-16T032711Z_field-signals-6-the-alchemist-credentialing-v1.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-16T032711Z_field-signals-6-the-alchemist-credentialing-v1.md"
+    },
+    {
+      "date": "2026-05-15",
+      "slug": "field-signals-4-5-autopilot-self-healing",
+      "filename": "beer-hall_2026-05-15T034220Z_field-signals-4-5-autopilot-self-healing.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-15T034220Z_field-signals-4-5-autopilot-self-healing.md"
+    },
+    {
+      "date": "2026-05-13",
+      "slug": "partner-check-in-v03-field-signals-3-live",
+      "filename": "beer-hall_2026-05-13T033754Z_partner-check-in-v03-field-signals-3-live.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-13T033754Z_partner-check-in-v03-field-signals-3-live.md"
+    },
+    {
+      "date": "2026-05-11",
+      "slug": "fundraisers-page-live-qmdj-advisor-currency-tools",
+      "filename": "beer-hall_2026-05-11T170750Z_fundraisers-page-live-qmdj-advisor-currency-tools.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-11T170750Z_fundraisers-page-live-qmdj-advisor-currency-tools.md"
+    },
+    {
+      "date": "2026-05-10",
+      "slug": "batch-qr-oracle-persist-autopilot-auth",
+      "filename": "beer-hall_2026-05-10T024057Z_batch-qr-oracle-persist-autopilot-auth.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-10T024057Z_batch-qr-oracle-persist-autopilot-auth.md"
+    },
+    {
+      "date": "2026-05-09",
+      "slug": "batch-qr-inventory-oracle-persistence-prospect-auto-promote",
+      "filename": "beer-hall_2026-05-09T023633Z_batch-qr-inventory-oracle-persistence-prospect-auto-promote.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-09T023633Z_batch-qr-inventory-oracle-persistence-prospect-auto-promote.md"
+    },
+    {
+      "date": "2026-05-08",
+      "slug": "asset-receipt-page-autopilot-self-deploy-cacao-samples",
+      "filename": "beer-hall_2026-05-08T024249Z_asset-receipt-page-autopilot-self-deploy-cacao-samples.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-08T024249Z_asset-receipt-page-autopilot-self-deploy-cacao-samples.md"
+    },
+    {
+      "date": "2026-05-07",
+      "slug": "agentic-auth-asset-receipt-cacao-transfer",
+      "filename": "beer-hall_2026-05-07T023654Z_agentic-auth-asset-receipt-cacao-transfer.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-07T023654Z_agentic-auth-asset-receipt-cacao-transfer.md"
+    },
+    {
+      "date": "2026-05-06",
+      "slug": "autopilot-batch-approvals-warmup-body-expand",
+      "filename": "beer-hall_2026-05-06T023441Z_autopilot-batch-approvals-warmup-body-expand.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-06T023441Z_autopilot-batch-approvals-warmup-body-expand.md"
+    },
+    {
+      "date": "2026-05-05",
+      "slug": "mycelial-economy-objection-handling-prospects-tab",
+      "filename": "beer-hall_2026-05-05T023402Z_mycelial-economy-objection-handling-prospects-tab.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-05T023402Z_mycelial-economy-objection-handling-prospects-tab.md"
+    },
+    {
+      "date": "2026-05-04",
+      "slug": "autopilot-warmup-review-santos-onboarded",
+      "filename": "beer-hall_2026-05-04T023629Z_autopilot-warmup-review-santos-onboarded.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-04T023629Z_autopilot-warmup-review-santos-onboarded.md"
+    },
+    {
+      "date": "2026-05-03",
+      "slug": "places-cache-reply-drafts-cost-optimizations",
+      "filename": "beer-hall_2026-05-03T023806Z_places-cache-reply-drafts-cost-optimizations.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-03T023806Z_places-cache-reply-drafts-cost-optimizations.md"
+    },
+    {
+      "date": "2026-05-02",
+      "slug": "bucks-spices-way-home-shop-reply-wholesale-live",
+      "filename": "beer-hall_2026-05-02T022854Z_bucks-spices-way-home-shop-reply-wholesale-live.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-02T022854Z_bucks-spices-way-home-shop-reply-wholesale-live.md"
+    },
+    {
+      "date": "2026-05-01",
+      "slug": "santos-onboarded-sunmint-pledge-two-processing-partners",
+      "filename": "beer-hall_2026-05-01T024644Z_santos-onboarded-sunmint-pledge-two-processing-partners.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-05-01T024644Z_santos-onboarded-sunmint-pledge-two-processing-partners.md"
+    },
+    {
+      "date": "2026-04-30",
+      "slug": "kirsten-37-bars-sold-store-add-scanner",
+      "filename": "beer-hall_2026-04-30T024023Z_kirsten-37-bars-sold-store-add-scanner.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-04-30T024023Z_kirsten-37-bars-sold-store-add-scanner.md"
+    },
+    {
+      "date": "2026-04-29",
+      "slug": "way-home-shop-live-circle-detector-permissions-phase-two",
+      "filename": "beer-hall_2026-04-29T023918Z_way-home-shop-live-circle-detector-permissions-phase-two.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-04-29T023918Z_way-home-shop-live-circle-detector-permissions-phase-two.md"
+    },
+    {
+      "date": "2026-04-28",
+      "slug": "wholesale-page-velocity-snapshot-two-bahia-newsletter",
+      "filename": "beer-hall_2026-04-28T023934Z_wholesale-page-velocity-snapshot-two-bahia-newsletter.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-04-28T023934Z_wholesale-page-velocity-snapshot-two-bahia-newsletter.md"
+    },
+    {
+      "date": "2026-04-27",
+      "slug": "store-history-timelines-way-home-shop-onboarded",
+      "filename": "beer-hall_2026-04-27T023204Z_store-history-timelines-way-home-shop-onboarded.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-04-27T023204Z_store-history-timelines-way-home-shop-onboarded.md"
+    },
+    {
+      "date": "2026-04-26",
+      "slug": "governor-chat-live-retail-field-reports-member-cache",
+      "filename": "beer-hall_2026-04-26T023006Z_governor-chat-live-retail-field-reports-member-cache.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-04-26T023006Z_governor-chat-live-retail-field-reports-member-cache.md"
+    },
+    {
+      "date": "2026-04-25",
+      "slug": "governor-chat-blog-blitz-retail-field-reports",
+      "filename": "beer-hall_2026-04-25T020706Z_governor-chat-blog-blitz-retail-field-reports.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-04-25T020706Z_governor-chat-blog-blitz-retail-field-reports.md"
+    },
+    {
+      "date": "2026-04-24",
+      "slug": "retail-sales-surge-email-pipeline-oracle-claude",
+      "filename": "beer-hall_2026-04-24T022534Z_retail-sales-surge-email-pipeline-oracle-claude.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-04-24T022534Z_retail-sales-surge-email-pipeline-oracle-claude.md"
+    },
+    {
+      "date": "2026-04-23",
+      "slug": "dao-client-read-layer-members-cache-store-restocks",
+      "filename": "beer-hall_2026-04-23T022449Z_dao-client-read-layer-members-cache-store-restocks.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-04-23T022449Z_dao-client-read-layer-members-cache-store-restocks.md"
+    },
+    {
+      "date": "2026-04-22",
+      "slug": "dao-client-treasury-cache-retailer-playbook-live",
+      "filename": "beer-hall_2026-04-22T021304Z_dao-client-treasury-cache-retailer-playbook-live.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-04-22T021304Z_dao-client-treasury-cache-retailer-playbook-live.md"
+    },
+    {
+      "date": "2026-04-21",
+      "slug": "whitepaper-oracle-claude-email-marketing-live",
+      "filename": "beer-hall_2026-04-21T061005Z_whitepaper-oracle-claude-email-marketing-live.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-04-21T061005Z_whitepaper-oracle-claude-email-marketing-live.md"
+    },
+    {
+      "date": "2026-04-19",
+      "slug": "retire-whatsapp-oracle-and-reminders-live",
+      "filename": "beer-hall_2026-04-19T213956Z_retire-whatsapp-oracle-and-reminders-live.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-04-19T213956Z_retire-whatsapp-oracle-and-reminders-live.md"
+    },
+    {
+      "date": "2026-04-18",
+      "slug": "qr-email-migration-admin-truesight-advisory-goals",
+      "filename": "beer-hall_2026-04-18T223617Z_qr-email-migration-admin-truesight-advisory-goals.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-04-18T223617Z_qr-email-migration-admin-truesight-advisory-goals.md"
+    },
+    {
+      "date": "2026-04-17",
+      "slug": "partner-inventory-81pct-skus-kirsten-sales",
+      "filename": "beer-hall_2026-04-17T232946Z_partner-inventory-81pct-skus-kirsten-sales.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-04-17T232946Z_partner-inventory-81pct-skus-kirsten-sales.md"
+    },
+    {
+      "date": "2026-04-16",
+      "slug": "digest-2026-04-16",
+      "filename": "beer-hall_2026-04-16T224657Z_digest-2026-04-16.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-04-16T224657Z_digest-2026-04-16.md"
+    }
+  ]
 }
