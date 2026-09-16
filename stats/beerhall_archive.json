@@ -1,9 +1,15 @@
 {
-  "generated_at_utc": "2026-09-15T21:43:20Z",
+  "generated_at_utc": "2026-09-16T05:10:26Z",
   "source": "https://api.github.com/repos/TrueSightDAO/ecosystem_change_logs/contents/beer_hall/entries?ref=main",
   "interpretation_hint": "Every Beer Hall digest ever published, sorted newest-first. Each entry: date, slug, filename, raw_url. Use the slug as a quick topic hint; fetch raw_url for the full markdown body. For headline numbers + the 10 most-recent entries, fetch https://truesight.me/stats/current.json instead.",
-  "total_entries": 117,
+  "total_entries": 118,
   "entries": [
+    {
+      "date": "2026-09-16",
+      "slug": "reservation-settlement-and-cacau-na-veia",
+      "filename": "beer-hall_2026-09-16T035312Z_reservation-settlement-and-cacau-na-veia.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-16T035312Z_reservation-settlement-and-cacau-na-veia.md"
+    },
     {
       "date": "2026-09-15",
       "slug": "youtube-fix-repo-access-denylist-complete",
