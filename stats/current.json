@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-16T21:39:52Z",
+  "generated_at_utc": "2026-09-17T05:17:14Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-09-16T19:15:03Z",
+    "generated_at": "2026-09-17T03:27:45Z",
     "total_contributors": 494,
     "total_tdg_controlled_sum": 2419605.29,
     "governors_count": 10,
@@ -97,9 +97,9 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-09-16T21:32:20.105Z",
+    "generated_at": "2026-09-17T04:48:36.056Z",
     "schema_version": 5,
-    "trigger": "process_sales",
+    "trigger": "cron",
     "currency_totals": {
       "1 Gallon Zip Loc Bags": {
         "total_quantity": 34.0,
@@ -880,11 +880,11 @@
         }
       },
       "USD": {
-        "total_quantity": 12394.34,
-        "total_value_usd": 12394.34,
+        "total_quantity": 12394.29,
+        "total_value_usd": 12394.29,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 5024.61,
+          "Main Ledger": 5024.56,
           "AGL15": 4240.75,
           "AGL6": 1337.59,
           "AGL14": 764.5,
@@ -895,11 +895,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 55.17,
-        "total_value_usd": 55.17,
+        "total_quantity": 55.21,
+        "total_value_usd": 55.21,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 55.17
+          "Main Ledger": 55.21
         }
       },
       "USDT": {
@@ -932,7 +932,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-09-16T21:39:52Z",
+    "generated_at_utc": "2026-09-17T05:17:14Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
