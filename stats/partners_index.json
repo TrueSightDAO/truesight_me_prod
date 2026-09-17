@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-17T05:17:16Z",
+  "generated_at_utc": "2026-09-17T12:01:00Z",
   "source": "https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/partners-inventory.json",
   "interpretation_hint": "Active Agroverse partner storage points. Each entry: partner slug, active SKU count, total inventory units across SKUs, and the top-3 products by stock. Use this for 'which partners are currently carrying inventory?' / 'who has the most stock?' / 'where can someone buy product X?'. The full per-item detail (price, GTIN, image, farm of origin, shipment ID) is at the source URL above. Partner location / region is NOT carried here — for region grouping you'd need the Agroverse Partners sheet, which requires authenticated access.",
   "total_active_partners": 23,
@@ -103,27 +103,6 @@
       ]
     },
     {
-      "slug": "kikis-cocoa",
-      "active_sku_count": 2,
-      "total_inventory_units": 11,
-      "top_products": [
-        {
-          "product_id": "organic-81-dark-chocolate-bar-50g-fazenda-sao-jorge-bahia-2024",
-          "product_name": "81% Organic Dark Chocolate Bar (50g) — Fazenda São Jorge, Bahia Brazil, 2024",
-          "inventory": 9,
-          "shipment": "AGL4",
-          "farm": "Fazenda São Jorge"
-        },
-        {
-          "product_id": "8-ounce-organic-cacao-nibs",
-          "product_name": "Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs",
-          "inventory": 2,
-          "shipment": "AGL4",
-          "farm": "Oscar"
-        }
-      ]
-    },
-    {
       "slug": "miss-tomato",
       "active_sku_count": 1,
       "total_inventory_units": 10,
@@ -160,6 +139,27 @@
           "product_id": "oscar-bahia-ceremonial-cacao-200g",
           "product_name": "Ceremonial Cacao – Oscar",
           "inventory": 9,
+          "shipment": "AGL4",
+          "farm": "Oscar"
+        }
+      ]
+    },
+    {
+      "slug": "kikis-cocoa",
+      "active_sku_count": 2,
+      "total_inventory_units": 8,
+      "top_products": [
+        {
+          "product_id": "organic-81-dark-chocolate-bar-50g-fazenda-sao-jorge-bahia-2024",
+          "product_name": "81% Organic Dark Chocolate Bar (50g) — Fazenda São Jorge, Bahia Brazil, 2024",
+          "inventory": 6,
+          "shipment": "AGL4",
+          "farm": "Fazenda São Jorge"
+        },
+        {
+          "product_id": "8-ounce-organic-cacao-nibs",
+          "product_name": "Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs",
+          "inventory": 2,
           "shipment": "AGL4",
           "farm": "Oscar"
         }
