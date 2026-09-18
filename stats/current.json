@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-18T16:41:16Z",
+  "generated_at_utc": "2026-09-18T21:12:22Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-09-18T14:00:28Z",
+    "generated_at": "2026-09-18T20:10:58Z",
     "total_contributors": 494,
     "total_tdg_controlled_sum": 2419605.29,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-09-18T15:48:43.184Z",
+    "generated_at": "2026-09-18T20:48:45.605Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -254,11 +254,11 @@
         }
       },
       "Brazilian Reis": {
-        "total_quantity": 1093.61,
-        "total_value_usd": 254.05,
+        "total_quantity": 843.61,
+        "total_value_usd": 195.97,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 856.71,
+          "Main Ledger": 606.71,
           "AGL8": 236.9
         }
       },
@@ -880,11 +880,11 @@
         }
       },
       "USD": {
-        "total_quantity": 12394.24,
-        "total_value_usd": 12394.24,
+        "total_quantity": 12238.7,
+        "total_value_usd": 12238.7,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 5024.51,
+          "Main Ledger": 4868.97,
           "AGL15": 4240.75,
           "AGL6": 1337.59,
           "AGL14": 764.5,
@@ -932,7 +932,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-09-18T16:41:16Z",
+    "generated_at_utc": "2026-09-18T21:12:22Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
