@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-19T04:58:32Z",
+  "generated_at_utc": "2026-09-19T11:28:03Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-09-19T03:27:10Z",
+    "generated_at": "2026-09-19T08:24:45Z",
     "total_contributors": 494,
     "total_tdg_controlled_sum": 2419605.29,
     "governors_count": 10,
@@ -54,14 +54,6 @@
         "profile_url": "https://truesight.me/credentials/#aga-marecka"
       },
       {
-        "display_name": "Shena Davenport",
-        "slug": "shena-davenport",
-        "voting_power_pct": 0.37,
-        "tdg_controlled": 9060.0,
-        "contribution_count": 19,
-        "profile_url": "https://truesight.me/credentials/#shena-davenport"
-      },
-      {
         "display_name": "Elizabeth Wong",
         "slug": null,
         "voting_power_pct": 0.12,
@@ -92,12 +84,20 @@
         "tdg_controlled": 1558.0,
         "contribution_count": 17,
         "profile_url": "https://truesight.me/credentials/#andrea-catalina-falcon-rios-de-pabst"
+      },
+      {
+        "display_name": "HackerDojo",
+        "slug": "hackerdojo",
+        "voting_power_pct": 0.06,
+        "tdg_controlled": 1436.0,
+        "contribution_count": 3,
+        "profile_url": "https://truesight.me/credentials/#hackerdojo"
       }
     ],
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-09-19T04:48:45.650Z",
+    "generated_at": "2026-09-19T10:48:52.846Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -922,17 +922,17 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-09-18T11:20:07.000Z",
+      "generated_at": "2026-09-19T11:04:18.000Z",
       "store_count": 0,
       "line_items": 14
     },
     "partners": {
-      "generated_at": "2026-09-18T11:20:07.000Z",
+      "generated_at": "2026-09-19T11:04:18.000Z",
       "partner_count": 23
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-09-19T04:58:32Z",
+    "generated_at_utc": "2026-09-19T11:28:03Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
