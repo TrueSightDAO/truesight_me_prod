@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-24T17:30:01Z",
+  "generated_at_utc": "2026-09-24T21:44:56Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,9 +8,9 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-09-24T14:39:59Z",
+    "generated_at": "2026-09-24T19:38:34Z",
     "total_contributors": 497,
-    "total_tdg_controlled_sum": 2492602.1,
+    "total_tdg_controlled_sum": 2492589.1,
     "governors_count": 10,
     "governors": [
       {
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-09-24T16:48:44.373Z",
+    "generated_at": "2026-09-24T20:49:16.571Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -471,11 +471,11 @@
         }
       },
       "Cacao Tree To Be Planted": {
-        "total_quantity": 357.0,
-        "total_value_usd": -535.5,
+        "total_quantity": 354.0,
+        "total_value_usd": -531.0,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 357.0
+          "Main Ledger": 354.0
         }
       },
       "Cacao tree seedling (per seedling, Amazon reforest Altamira, R$40/10, Paulo Hernandez, 20260409)": {
@@ -880,11 +880,11 @@
         }
       },
       "USD": {
-        "total_quantity": 12238.42,
-        "total_value_usd": 12238.42,
+        "total_quantity": 12243.42,
+        "total_value_usd": 12243.42,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 4868.69,
+          "Main Ledger": 4873.69,
           "AGL15": 4240.75,
           "AGL6": 1337.59,
           "AGL14": 764.5,
@@ -932,7 +932,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-09-24T17:30:01Z",
+    "generated_at_utc": "2026-09-24T21:44:56Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
