@@ -181,6 +181,13 @@
       (function () {
         var MANIFEST_BASE = 'https://raw.githubusercontent.com/TrueSightDAO/lineage-assets/main/qrs/';
         var CERT_BASE = 'https://raw.githubusercontent.com/TrueSightDAO/lineage-assets/main/certs/';
+        // SunMint tree registry - read at runtime (like probeCertificate) to
+        // detect a tree-linked QR (a cacao bag whose seedling tree is
+        // registered, not just asset_type 'tree') and deep-link into the
+        // impact map. CORS-open (access-control-allow-origin: *). Runtime read
+        // = survives the manifest re-seed, which drops hand-added top-level
+        // fields (merge_preserve_events).
+        var SUNMINT_TREES_URL = 'https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/trees/index.geojson';
         var LISTING_URL = '/physical-assets/serialized/';
         var SHOP_BASE = 'https://www.agroverse.shop';
 
@@ -394,6 +401,25 @@
           '</div>';
         }
 
+        // Resolve the SunMint tree linked to this QR, via the trees registry.
+        // Returns { treeId } on a match (treeId may be '' if the record omits
+        // it) or null when unlinked / offline. Never rejects - a lookup miss
+        // just means no deep-link, exactly like an absent certificate.
+        function fetchLinkedTreeId(qrId) {
+          if (!qrId) return Promise.resolve(null);
+          return fetch(SUNMINT_TREES_URL)
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (idx) {
+              var feats = (idx && idx.features) || [];
+              for (var i = 0; i < feats.length; i++) {
+                var p = (feats[i] && feats[i].properties) || {};
+                if (p.qr_code === qrId) return { treeId: p.tree_id || '' };
+              }
+              return null;
+            })
+            .catch(function () { return null; });
+        }
+
         function render(manifest) {
           var root = document.getElementById('qr-root');
           // Status can have spaces ("ON CONSIGNMENT") so swap them for underscores
@@ -472,8 +498,20 @@
           // live SunMint impact map — sunmint.html does its own lookup
           // against the trees registry by qr_code, so no coordinates are
           // needed here, just the QR id.
-          if (manifest.asset_type === 'tree') {
-            var sunmintUrl = 'https://beta.truesight.me/sunmint.html?qr=' + encodeURIComponent(manifest.qr_id);
+          // Widened 2026-09-24 (thread 35189) from tree assets only to ANY
+          // asset whose QR is linked to a planted tree (e.g. a cacao bag).
+          // Emit ?tree=<id> when the tree id is known, else fall back to ?qr=
+          // for a tree asset the registry couldn't resolve. Root-relative so
+          // the link stays on the serving domain (beta or prod) rather than a
+          // hardcoded beta host.
+          var linkedTree = manifest.__linkedTree;
+          var isTreeAsset = manifest.asset_type === 'tree';
+          if (isTreeAsset || linkedTree) {
+            var treeId = (linkedTree && linkedTree.treeId) || '';
+            var param = treeId
+              ? 'tree=' + encodeURIComponent(treeId)
+              : 'qr=' + encodeURIComponent(manifest.qr_id);
+            var sunmintUrl = '/sunmint.html?' + param;
             relatedHtml +=
               '<a class="qr-related-link" href="' + escapeHtml(sunmintUrl) + '" target="_blank" rel="noopener">' +
                 '<span class="label">🌱 SunMint impact map</span>' +
@@ -513,7 +551,17 @@
             if (!r.ok) throw new Error('HTTP ' + r.status);
             return r.json();
           })
-          .then(render)
+          .then(function (manifest) {
+            // Resolve the linked tree first (non-tree assets only - a tree
+            // asset already shows the link), then render once with it known.
+            var lookup = manifest.asset_type !== 'tree'
+              ? fetchLinkedTreeId(qrId)
+              : Promise.resolve(null);
+            return lookup.then(function (linked) {
+              manifest.__linkedTree = linked || null;
+              render(manifest);
+            });
+          })
           .catch(function (err) {
             renderEmpty(qrId, 'Could not load manifest (' + err.message + ').');
           });
