@@ -6,7 +6,7 @@
   "partner_url": "",
   "partner_contact_label": "Jedielcio Oliveira (CEPOTX)",
   "tagline": "Rural family-school students planting native Amazonian trees on their family properties — one verified tree, one credential.",
-  "description_md": "A partnership between **CEPOTX** (Cooperativa Central de Produção Orgânica da Transamazônica e Xingu) and the **Casa Familiar Rural de Anapu \"Dorothy Stang\"** — a rural family school (*pedagogia da alternância*) in Anapu, Pará, Brazil — supported by the **SunMint** tree-planting program of TrueTech Inc / TrueSight DAO.\n\nStudents plant native Amazonian trees on their own family properties. For each **verified tree** — GPS coordinates, supported species, planting date, and a planting photo submitted as a file so its GPS/EXIF metadata is preserved — the supporter pays **R$ 5.00 directly to the student via PIX**. Cacao-based agroforestry, with native shade and timber trees, is expressly supported.\n\nThis is a **\"Credential + trees\"** partner (route B of the DAO's Lineage credentialing platform): each attested student receives a verifiable credential, and a serialized tree-planting pledge is bound to that student — the tree's QR code and the student's credential page point at each other, and the public Impact Map carries passive proof of each planted tree.",
+  "description_md": "A partnership between **CEPOTX** (Cooperativa Central de Produção Orgânica da Transamazônica e Xingu) and the **Casa Familiar Rural de Anapu \"Dorothy Stang\"** — a rural family school (*pedagogia da alternância*) in Anapu, Pará, Brazil — supported by the **SunMint** tree-planting program of TrueTech Inc / TrueSight DAO.\n\nStudents plant native Amazonian trees on their own family properties. For each **verified tree** — GPS coordinates, supported species, planting date, and a planting photo submitted as a file so its GPS/EXIF metadata is preserved — the supporter pays **R$ 5.00 directly to the student via PIX**. Cacao-based agroforestry, with native shade and timber trees, is expressly supported. Students are also planting **açaí**, a native Amazonian fruit palm.\n\nThis is a **\"Credential + trees\"** partner (route B of the DAO's Lineage credentialing platform): each attested student receives a verifiable credential, and a serialized tree-planting pledge is bound to that student — the tree's QR code and the student's credential page point at each other, and the public Impact Map carries passive proof of each planted tree.",
   "hero_image_url": "https://raw.githubusercontent.com/TrueSightDAO/.github/main/assets/crf-anapu-hero.jpg",
   "co_brand": {
     "partner_logo_url": "https://raw.githubusercontent.com/TrueSightDAO/.github/main/assets/cepotx-logo.png",
@@ -20,7 +20,7 @@
   "credential_visibility_default": "private",
   "issuer_lineage_root": "CRF Anapu",
   "status": "onboarding",
-  "last_reviewed": "2026-09-11",
+  "last_reviewed": "2026-09-24",
   "program_modes": [
     "cohort_credentialing",
     "sunmint_cohort"
