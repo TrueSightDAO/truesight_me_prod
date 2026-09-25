@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-25T17:30:23Z",
+  "generated_at_utc": "2026-09-25T21:47:43Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-09-25T14:53:53Z",
+    "generated_at": "2026-09-25T19:44:28Z",
     "total_contributors": 497,
     "total_tdg_controlled_sum": 2492589.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-09-25T16:49:01.243Z",
+    "generated_at": "2026-09-25T20:48:48.218Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -471,11 +471,11 @@
         }
       },
       "Cacao Tree To Be Planted": {
-        "total_quantity": 350.0,
-        "total_value_usd": -525.0,
+        "total_quantity": 346.0,
+        "total_value_usd": -519.0,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 350.0
+          "Main Ledger": 346.0
         }
       },
       "Cacao tree seedling (per seedling, Amazon reforest Altamira, R$40/10, Paulo Hernandez, 20260409)": {
@@ -932,7 +932,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-09-25T17:30:23Z",
+    "generated_at_utc": "2026-09-25T21:47:43Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
