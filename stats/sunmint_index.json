@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-26T16:43:36Z",
+  "generated_at_utc": "2026-09-26T21:29:56Z",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "schema": "sunmint_index/1",
   "north_star": {
@@ -173,10 +173,10 @@
   "media": {
     "farm_count": 18,
     "totals": {
-      "items": 1065,
-      "videos": 689,
-      "photos": 376,
-      "published_youtube": 519,
+      "items": 1074,
+      "videos": 695,
+      "photos": 379,
+      "published_youtube": 525,
       "transcribed": 134
     },
     "per_farm": [
@@ -198,10 +198,10 @@
         "farm_name": "Fazenda Sao Jorge (Matheus & Mailan)",
         "region": "Itajuibe, Bahia, Brazil",
         "manifest_url": "https://raw.githubusercontent.com/TrueSightDAO/farm_media_manifests/main/fazenda-sao-jorge-bahia.json",
-        "items": 103,
-        "videos": 67,
-        "photos": 36,
-        "published_youtube": 67,
+        "items": 112,
+        "videos": 73,
+        "photos": 39,
+        "published_youtube": 73,
         "transcribed": 0,
         "updated": "2026-09-06",
         "s3_archive_prefix": null
