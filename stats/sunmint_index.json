@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-26T05:24:05Z",
+  "generated_at_utc": "2026-09-26T11:43:43Z",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "schema": "sunmint_index/1",
   "north_star": {
@@ -10,8 +10,8 @@
   "trees": {
     "total": 152,
     "by_status": {
-      "LINKED": 9,
-      "NEW": 143
+      "LINKED": 15,
+      "NEW": 137
     },
     "by_species": {
       "Cacau - Hybrid": 114,
