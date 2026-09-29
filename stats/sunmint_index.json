@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-28T23:28:03Z",
+  "generated_at_utc": "2026-09-29T06:08:08Z",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "schema": "sunmint_index/1",
   "north_star": {
@@ -8,19 +8,19 @@
     "progress_pct": 2.7343
   },
   "trees": {
-    "total": 154,
+    "total": 148,
     "by_status": {
       "LINKED": 15,
-      "NEW": 139
+      "NEW": 133
     },
     "by_species": {
       "Cacau - Hybrid": 114,
       "Cacao - Criolla": 12,
-      "Cacao - Forestero": 12,
       "Cumaru": 10,
-      "Sumaúma": 4,
+      "Cacao - Forestero": 9,
       "Bougainvillea": 1,
-      "Cacau": 1
+      "Cacau": 1,
+      "Sumaúma": 1
     },
     "source": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/trees/index.geojson"
   },
