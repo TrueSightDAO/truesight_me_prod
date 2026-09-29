@@ -359,6 +359,16 @@
               '<p><a href="' + esc(href) + '" target="_blank" rel="noopener">' +
               'View in My Trees \u2192</a></p>';
           })() +
+          (function () {
+            // PR8 (Gary 2026-09-29): tree-planting events also link to the
+            // SunMint PROGRAM page, deep-linked to this specific tree.
+            var shref = U.buildSunmintTreeLink(ev);
+            if (!shref) return '';
+            return '<div class="section-title">Program</div>' +
+              '<div class="txid">SunMint Tree Planting</div>' +
+              '<p><a href="' + esc(shref) + '" target="_blank" rel="noopener">' +
+              'View this tree on SunMint \u2192</a></p>';
+          })() +
           '<div class="section-title">Signature</div>' +
           '<div class="txid">' + esc(ev.signature || '(none)') + '</div>' +
           '<div class="section-title">Re-verify offline (openssl)</div>' +

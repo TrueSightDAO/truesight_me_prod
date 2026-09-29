@@ -354,6 +354,65 @@ test('explorer page cites ONLY the canonical url (no message-id URL row)', () =>
 });
 
 
+test('isTreePlantingEvent: true only for a real planting event, not link/reject', () => {
+  assert.strictEqual(U.isTreePlantingEvent('[TREE PLANTING EVENT]'), true);
+  assert.strictEqual(U.isTreePlantingEvent('tree_planting'), true);
+  assert.strictEqual(U.isTreePlantingEvent('[TREE PLANTING LINK EVENT]'), false);
+  assert.strictEqual(U.isTreePlantingEvent('[TREE PLANTING REJECT EVENT]'), false);
+  assert.strictEqual(U.isTreePlantingEvent('sales_event'), false);
+  assert.strictEqual(U.isTreePlantingEvent(null), false);
+});
+
+test('sunmintTreeQuery: planting event -> {tree: telegram_message_id} (verified join key)', () => {
+  assert.deepStrictEqual(
+    U.sunmintTreeQuery({ event_type: '[TREE PLANTING EVENT]', telegram_message_id: 'Edgar_20260821175134_006' }),
+    { key: 'tree', id: 'Edgar_20260821175134_006' });
+});
+
+test('sunmintTreeQuery: falls back to qr when no message id; null when neither', () => {
+  assert.deepStrictEqual(
+    U.sunmintTreeQuery({ event_type: '[TREE PLANTING EVENT]', linked_tree_id: 'FOUNDERHAUS_BOUGAINVILLEA_20260821_1' }),
+    { key: 'qr', id: 'FOUNDERHAUS_BOUGAINVILLEA_20260821_1' });
+  assert.strictEqual(U.sunmintTreeQuery({ event_type: '[TREE PLANTING EVENT]' }), null);
+});
+
+test('sunmintTreeQuery: non-planting events get NO sunmint link', () => {
+  assert.strictEqual(U.sunmintTreeQuery({ event_type: '[SALES EVENT]', telegram_message_id: 'Edgar_1' }), null);
+  assert.strictEqual(U.sunmintTreeQuery({ event_type: '[TREE PLANTING LINK EVENT]', telegram_message_id: 'Edgar_1' }), null);
+  assert.strictEqual(U.sunmintTreeQuery({ event_type: '[TREE PLANTING REJECT EVENT]', telegram_message_id: 'Edgar_1' }), null);
+  assert.strictEqual(U.sunmintTreeQuery(null), null);
+});
+
+test('buildSunmintTreeLink deep-links ?tree= for a planting event', () => {
+  assert.strictEqual(
+    U.buildSunmintTreeLink({ event_type: '[TREE PLANTING EVENT]', telegram_message_id: 'Edgar_20260821175134_006' }),
+    'https://truesight.me/sunmint.html?tree=Edgar_20260821175134_006');
+  assert.strictEqual(
+    U.buildSunmintTreeLink({ event_type: '[TREE PLANTING EVENT]', linked_tree_id: 'A/B+=' }),
+    'https://truesight.me/sunmint.html?qr=A%2FB%2B%3D');
+});
+
+test('buildSunmintTreeLink: empty for non-planting / unresolved events (block skipped)', () => {
+  assert.strictEqual(U.buildSunmintTreeLink({ event_type: '[SALES EVENT]', telegram_message_id: 'Edgar_1' }), '');
+  assert.strictEqual(U.buildSunmintTreeLink({ event_type: '[TREE PLANTING EVENT]' }), '');
+  assert.strictEqual(U.buildSunmintTreeLink(null), '');
+});
+
+test('the real Gary-cited planting event round-trips to a ?tree= SunMint link', () => {
+  // Verified live 2026-09-29: tree_planting event telegram_message_id
+  // Edgar_20260821175134_006 == sunmint/trees/index.geojson feature tree_id.
+  const ev = { event_type: '[TREE PLANTING EVENT]', telegram_message_id: 'Edgar_20260821175134_006',
+               linked_tree_id: 'FOUNDERHAUS_BOUGAINVILLEA_20260821_1' };
+  assert.strictEqual(U.buildSunmintTreeLink(ev),
+    'https://truesight.me/sunmint.html?tree=Edgar_20260821175134_006');
+});
+
+test('explorer page wires the Program cross-link via buildSunmintTreeLink', () => {
+  const html = require('fs').readFileSync(require('path').join(__dirname, '..', 'ledger', 'explorer', 'index.html'), 'utf8');
+  assert.ok(html.indexOf('U.buildSunmintTreeLink(ev)') !== -1, 'card must call buildSunmintTreeLink');
+  assert.ok(html.indexOf('View this tree on SunMint') !== -1, 'card must show the SunMint link label');
+});
+
 (async () => {
   for (const [name, fn] of tests) {
     try { await fn(); passed++; console.log('  \u2713 ' + name); }

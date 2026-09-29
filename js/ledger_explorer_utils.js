@@ -45,6 +45,15 @@
   var MY_TREES_URL = 'https://cfr.truesight.me/my-trees/';
   var LEDGER_EXPLORER_URL = 'https://truesight.me/ledger/explorer/';
 
+  // PR8 cross-link: the SunMint PROGRAM page for tree-planting events. Its
+  // impact map deep-links a specific tree via ?tree=<tree_id> (or ?qr=<qr_code>),
+  // which flies to and opens that tree's marker. The join key is VERIFIED:
+  // sunmint/trees/index.geojson feature `tree_id` == the ledger TREE PLANTING
+  // event's `telegram_message_id` (e.g. Edgar_20260821175134_006) -- the same
+  // key PR4 already relies on. We prefer that over linked_tree_id (a legacy
+  // planting label that resolves in the registry only as a qr_code).
+  var SUNMINT_PROGRAM_URL = 'https://truesight.me/sunmint.html';
+
   // sha256(request_transaction_id) -> 64 lowercase hex (the canonical mirror
   // filename). See sync_sunmint_signatures.py::_txid_key.
   var TXID_HASH_RE = /^[0-9a-f]{64}$/i;
@@ -380,6 +389,41 @@
     return LEDGER_EXPLORER_URL + '?q=' + encodeURIComponent(s);
   }
 
+  // --- PR8: cross-link to the SunMint program (tree-planting events only) ---
+
+  /** True only for an actual planting event -- not link/reject variants. */
+  function isTreePlantingEvent(label) {
+    var s = String(label == null ? '' : label).toLowerCase();
+    return s.indexOf('tree planting event') >= 0 || s === 'tree_planting';
+  }
+
+  /**
+   * The SunMint impact-map query for a tree-planting event, or null.
+   * Prefers the VERIFIED join key (telegram_message_id -> ?tree=), falling back
+   * to linked_tree_id -> ?qr=. Returns { key, id } with key in {'tree','qr'}.
+   */
+  function sunmintTreeQuery(ev) {
+    if (!ev || typeof ev !== 'object') return null;
+    if (!isTreePlantingEvent(ev.event_type) && !isTreePlantingEvent(ev.event_type_folder)) {
+      return null;
+    }
+    var tid = String(ev.telegram_message_id == null ? '' : ev.telegram_message_id).trim();
+    if (tid) return { key: 'tree', id: tid };
+    var qr = String(ev.linked_tree_id == null ? '' : ev.linked_tree_id).trim();
+    if (qr) return { key: 'qr', id: qr };
+    return null;
+  }
+
+  /**
+   * Deep-link to the specific tree on the SunMint program page ('' when this is
+   * not a resolved tree-planting event, so the caller can skip the block).
+   */
+  function buildSunmintTreeLink(ev) {
+    var ref = sunmintTreeQuery(ev);
+    if (!ref) return '';
+    return SUNMINT_PROGRAM_URL + '?' + ref.key + '=' + encodeURIComponent(ref.id);
+  }
+
   var utils = {
     LEDGER_RAW_BASE: LEDGER_RAW_BASE,
     LEDGER_INDEX_URL: LEDGER_INDEX_URL,
@@ -389,6 +433,10 @@
     treeRefForEvent: treeRefForEvent,
     buildMyTreesLink: buildMyTreesLink,
     buildLedgerExplorerLink: buildLedgerExplorerLink,
+    SUNMINT_PROGRAM_URL: SUNMINT_PROGRAM_URL,
+    isTreePlantingEvent: isTreePlantingEvent,
+    sunmintTreeQuery: sunmintTreeQuery,
+    buildSunmintTreeLink: buildSunmintTreeLink,
     normalizeQuery: normalizeQuery,
     isTxidHash: isTxidHash,
     isEdgarMessageId: isEdgarMessageId,
