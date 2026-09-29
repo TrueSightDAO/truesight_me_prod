@@ -46,6 +46,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Prevent the off-canvas mobile nav drawer (translated off the right edge)
+   from creating a horizontal scrollbar. `overflow-x: clip` clips horizontal
+   overflow WITHOUT creating a scroll container, so the sticky .site-header
+   keeps working (overflow-x: hidden would break sticky). */
+html,
+body {
+  overflow-x: clip;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -286,7 +295,7 @@ a {
   .nav-menu {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: min(300px, 85vw);
     height: 100vh;
     background: rgba(255, 253, 248, 0.98);
@@ -298,20 +307,21 @@ a {
     padding: 5rem var(--space-lg) var(--space-lg);
     gap: 0;
     box-shadow: -4px 0 20px rgba(43, 29, 20, 0.15);
-    transition: right var(--transition-base);
+    transform: translateX(100%);
+    transition: transform var(--transition-base);
     overflow-y: auto;
     z-index: 1000;
     /* Hidden by default - only show when aria-hidden="false" */
   }
 
   .nav-menu[aria-hidden="false"] {
-    right: 0;
+    transform: translateX(0);
   }
 
   /* Ensure nav-menu is hidden if aria-hidden is true or not set */
   .nav-menu[aria-hidden="true"],
   .nav-menu:not([aria-hidden]) {
-    right: -100%;
+    transform: translateX(100%);
   }
 
   .nav-menu li {

@@ -51,6 +51,7 @@
     '          <li><a href="https://truesight.me/tokenomics" target="_blank" rel="noreferrer noopener">Tokenomics</a></li>' +
     '          <li><a href="https://truesight.me/dapp" target="_blank" rel="noreferrer noopener">Web App</a></li>' +
     '          <li><a href="https://truesight.me/ledger" target="_blank" rel="noreferrer noopener">Contributions Record</a></li>' +
+'          <li><a href="/ledger/explorer/">Ledger Explorer</a></li>' +
     '          <li><a href="https://truesight.me/roadmap" target="_blank" rel="noreferrer noopener">Roadmap</a></li>' +
     '          <li><a href="/security-dashboard/">Security Dashboard</a></li>' +
     '        </ul>' +
@@ -68,4 +69,75 @@
     temp.innerHTML = navHTML;
     document.body.insertBefore(temp.firstChild, document.body.firstChild);
   }
+})();
+
+// --- Mobile nav behavior: hamburger toggle + dropdown accordions ---
+// Centralized here (2026-09) so EVERY page that mounts the header via nav.js
+// gets working mobile menus. Historically each page carried its own inline copy
+// of this handler -- dozens of drifted variants, and ~17 pages shipped the header
+// with NO handler at all (dead hamburger). This delegated, capture-phase listener
+// makes nav.js the single source of truth: it handles the toggle clicks *before*
+// any page-level handler and stops there, so pages that still carry their own copy
+// neither double-fire nor need editing.
+(function () {
+  if (window.__tsNavMenuWired) { return; }
+  window.__tsNavMenuWired = true;
+
+  function q(sel) { return document.querySelector(sel); }
+
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    if (!t || !t.closest) { return; }
+
+    var navMenu = q('.nav-menu');
+    var siteHeader = q('.site-header');
+
+    // Hamburger toggle. Non-idempotent, so it must OWN the event: a page-level
+    // duplicate handler would otherwise toggle the state straight back.
+    var menuToggle = t.closest('.menu-toggle');
+    if (menuToggle && navMenu && siteHeader) {
+      var isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isExpanded));
+      navMenu.setAttribute('aria-hidden', String(isExpanded));
+      siteHeader.classList.toggle('menu-open', !isExpanded);
+      e.stopImmediatePropagation();
+      return;
+    }
+
+    // Dropdown accordions -- mobile only (desktop uses hover). Also non-idempotent.
+    var dropToggle = t.closest('.nav-menu .dropdown-toggle');
+    if (dropToggle && navMenu && window.innerWidth <= 768) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      var dExp = dropToggle.getAttribute('aria-expanded') === 'true';
+      var dMenu = dropToggle.nextElementSibling;
+      dropToggle.setAttribute('aria-expanded', String(!dExp));
+      if (dMenu) { dMenu.setAttribute('aria-expanded', String(!dExp)); }
+      return;
+    }
+
+    // Tapping a nav link closes the drawer. Idempotent -- a page copy running
+    // too is harmless, so we deliberately do NOT stop the event here.
+    var navLink = t.closest('.nav-menu a');
+    if (navLink && navMenu && siteHeader) {
+      var mt = q('.menu-toggle');
+      if (mt) { mt.setAttribute('aria-expanded', 'false'); }
+      navMenu.setAttribute('aria-hidden', 'true');
+      siteHeader.classList.remove('menu-open');
+      navMenu.querySelectorAll('.dropdown-toggle').forEach(function (dt) {
+        dt.setAttribute('aria-expanded', 'false');
+        var dm = dt.nextElementSibling;
+        if (dm) { dm.setAttribute('aria-expanded', 'false'); }
+      });
+      return;
+    }
+
+    // Backdrop: click on the header itself while the drawer is open.
+    if (siteHeader && t === siteHeader && siteHeader.classList.contains('menu-open')) {
+      var mt2 = q('.menu-toggle');
+      if (mt2) { mt2.setAttribute('aria-expanded', 'false'); }
+      if (navMenu) { navMenu.setAttribute('aria-hidden', 'true'); }
+      siteHeader.classList.remove('menu-open');
+    }
+  }, true);
 })();
