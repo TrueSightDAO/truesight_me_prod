@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-03T16:40:35Z",
+  "generated_at_utc": "2026-10-03T21:43:16Z",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "schema": "sunmint_index/1",
   "north_star": {
@@ -171,10 +171,10 @@
     "source": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/farms/index.json"
   },
   "media": {
-    "farm_count": 18,
+    "farm_count": 19,
     "totals": {
-      "items": 1074,
-      "videos": 695,
+      "items": 1084,
+      "videos": 705,
       "photos": 379,
       "published_youtube": 525,
       "transcribed": 134
@@ -399,6 +399,19 @@
         "published_youtube": 14,
         "transcribed": 0,
         "updated": "2026-09-11",
+        "s3_archive_prefix": null
+      },
+      {
+        "farm_id": "founderhaus",
+        "farm_name": null,
+        "region": null,
+        "manifest_url": "https://raw.githubusercontent.com/TrueSightDAO/farm_media_manifests/main/founderhaus.json",
+        "items": 10,
+        "videos": 10,
+        "photos": 0,
+        "published_youtube": 0,
+        "transcribed": 0,
+        "updated": "2026-10-01",
         "s3_archive_prefix": null
       },
       {
