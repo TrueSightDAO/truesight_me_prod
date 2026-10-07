@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-07T06:23:35Z",
+  "generated_at_utc": "2026-10-07T13:50:06Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-07T03:27:13Z",
+    "generated_at": "2026-10-07T11:29:44Z",
     "total_contributors": 498,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
@@ -97,9 +97,9 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-07T03:48:45.288Z",
+    "generated_at": "2026-10-07T13:39:10.954Z",
     "schema_version": 5,
-    "trigger": "cron",
+    "trigger": "expense_processing",
     "currency_totals": {
       "1 Gallon Zip Loc Bags": {
         "total_quantity": 34.0,
@@ -292,6 +292,14 @@
         "item_count": 1,
         "ledger_breakdown": {
           "AGL14": 40.0
+        }
+      },
+      "Cacao Almonds KG from Oscar's farm - AGL16 (2026)": {
+        "total_quantity": 108.0,
+        "total_value_usd": 1212.97,
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 108.0
         }
       },
       "Cacao Almonds KG from Vivi's farm - AGL13": {
@@ -800,11 +808,11 @@
         }
       },
       "Plastic Bag 12cm X 25cm - 500 grams capacity": {
-        "total_quantity": 100.0,
-        "total_value_usd": 5.79,
+        "total_quantity": 92.0,
+        "total_value_usd": 5.33,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 100.0
+          "Main Ledger": 92.0
         }
       },
       "Plastic Bag 40cm X 60cm - 10 kilograms capacity": {
@@ -930,17 +938,17 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-10-06T13:22:36.000Z",
+      "generated_at": "2026-10-07T13:29:34.000Z",
       "store_count": 0,
       "line_items": 14
     },
     "partners": {
-      "generated_at": "2026-10-06T13:22:36.000Z",
+      "generated_at": "2026-10-07T13:29:34.000Z",
       "partner_count": 23
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-07T06:23:35Z",
+    "generated_at_utc": "2026-10-07T13:50:06Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
