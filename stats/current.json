@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-06T22:46:51Z",
+  "generated_at_utc": "2026-10-07T06:23:35Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-06T22:03:20Z",
+    "generated_at": "2026-10-07T03:27:13Z",
     "total_contributors": 498,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-06T21:48:50.156Z",
+    "generated_at": "2026-10-07T03:48:45.288Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -888,11 +888,11 @@
         }
       },
       "USD": {
-        "total_quantity": 12392.18,
-        "total_value_usd": 12392.18,
+        "total_quantity": 12343.12,
+        "total_value_usd": 12343.12,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 5022.45,
+          "Main Ledger": 4973.39,
           "AGL15": 4240.75,
           "AGL6": 1337.59,
           "AGL14": 764.5,
@@ -903,11 +903,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 56.2,
-        "total_value_usd": 56.2,
+        "total_quantity": 56.26,
+        "total_value_usd": 56.26,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 56.2
+          "Main Ledger": 56.26
         }
       },
       "USDT": {
@@ -940,7 +940,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-06T22:46:51Z",
+    "generated_at_utc": "2026-10-07T06:23:35Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
