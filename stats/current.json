@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-07T13:50:06Z",
+  "generated_at_utc": "2026-10-07T23:17:08Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-07T11:29:44Z",
+    "generated_at": "2026-10-07T18:10:26Z",
     "total_contributors": 498,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
@@ -97,9 +97,9 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-07T13:39:10.954Z",
+    "generated_at": "2026-10-07T20:48:45.014Z",
     "schema_version": 5,
-    "trigger": "expense_processing",
+    "trigger": "cron",
     "currency_totals": {
       "1 Gallon Zip Loc Bags": {
         "total_quantity": 34.0,
@@ -296,10 +296,10 @@
       },
       "Cacao Almonds KG from Oscar's farm - AGL16 (2026)": {
         "total_quantity": 108.0,
-        "total_value_usd": 1212.97,
+        "total_value_usd": 1311.12,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 108.0
+          "AGL16": 108.0
         }
       },
       "Cacao Almonds KG from Vivi's farm - AGL13": {
@@ -816,11 +816,11 @@
         }
       },
       "Plastic Bag 40cm X 60cm - 10 kilograms capacity": {
-        "total_quantity": 100.0,
-        "total_value_usd": 10.47,
+        "total_quantity": 94.0,
+        "total_value_usd": 9.84,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 100.0
+          "Main Ledger": 94.0
         }
       },
       "Plastic Pallet (per pallet, FBN Tambores Ilheus, R$240/3 receipt 20260912)": {
@@ -948,7 +948,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-07T13:50:06Z",
+    "generated_at_utc": "2026-10-07T23:17:08Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
