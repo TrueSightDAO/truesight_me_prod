@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-08T23:32:06Z",
+  "generated_at_utc": "2026-10-09T06:38:10Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-08T18:12:42Z",
+    "generated_at": "2026-10-09T03:27:56Z",
     "total_contributors": 498,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-08T22:48:44.243Z",
+    "generated_at": "2026-10-09T05:48:44.709Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -294,30 +294,6 @@
           "AGL16": 108.0
         }
       },
-      "Cacao Almonds KG from Vivi's farm - AGL13": {
-        "total_quantity": 15.0,
-        "total_value_usd": 118.05,
-        "item_count": 1,
-        "ledger_breakdown": {
-          "AGL13": 15.0
-        }
-      },
-      "Cacao Husk (KG) - Ilheus, Brazil": {
-        "total_quantity": 20.0,
-        "total_value_usd": 355.71,
-        "item_count": 1,
-        "ledger_breakdown": {
-          "Main Ledger": 20.0
-        }
-      },
-      "Cacao Husk Bag (weight unknown)": {
-        "total_quantity": 3.0,
-        "total_value_usd": 0.0,
-        "item_count": 1,
-        "ledger_breakdown": {
-          "Main Ledger": 3.0
-        }
-      },
       "Cacao Mass Bar (40grams) CP340993869BR - AGL8": {
         "total_quantity": 3.25,
         "total_value_usd": 6.16,
@@ -439,11 +415,11 @@
         }
       },
       "Cacao Tea - 20250219006 | Cacao Tea | Kilogram | Paulo 2024 | Santos 018-2025 016-2025 || Ilheus - AGL8": {
-        "total_quantity": 14.68,
+        "total_quantity": 2.18,
         "total_value_usd": 0.0,
         "item_count": 1,
         "ledger_breakdown": {
-          "AGL8": 14.68
+          "AGL8": 2.18
         }
       },
       "Cacao Tea 1g | Cacao Almonds KG - Organic (Fazenda São Jorge) | Gary Teh 20260710 | San Francisco": {
@@ -888,11 +864,11 @@
         }
       },
       "USD": {
-        "total_quantity": 12343.06,
-        "total_value_usd": 12343.06,
+        "total_quantity": 12343.0,
+        "total_value_usd": 12343.0,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 4973.33,
+          "Main Ledger": 4973.27,
           "AGL15": 4240.75,
           "AGL6": 1337.59,
           "AGL14": 764.5,
@@ -903,11 +879,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 56.32,
-        "total_value_usd": 56.32,
+        "total_quantity": 56.38,
+        "total_value_usd": 56.38,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 56.32
+          "Main Ledger": 56.38
         }
       },
       "USDT": {
@@ -940,7 +916,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-08T23:32:06Z",
+    "generated_at_utc": "2026-10-09T06:38:10Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
@@ -1379,8 +1355,14 @@
     "interpretation_hint": "SunMint = the DAO's on-the-ground restoration evidence layer (trees, plots, farms) plus its media archive (MAP). Use this to answer 'how many trees have you planted?', 'how many plots / hectares?', 'which farms and where?', and 'what farm footage / videos / transcriptions exist?'. Progress toward the 10,000-hectare mission is plots.total_hectares vs 10000."
   },
   "recent_beerhall_digests": {
-    "total_entries": 123,
+    "total_entries": 124,
     "recent": [
+      {
+        "date": "2026-10-09",
+        "slug": "cooperative-first-sourcing-ilheus-wind-down",
+        "filename": "beer-hall_2026-10-09T050607Z_cooperative-first-sourcing-ilheus-wind-down.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-09T050607Z_cooperative-first-sourcing-ilheus-wind-down.md"
+      },
       {
         "date": "2026-10-08",
         "slug": "agl-shipments-complete-hawb-issued-oscar-loaded",
@@ -1434,12 +1416,6 @@
         "slug": "media-gallery-complete-and-reserved-qr-status",
         "filename": "beer-hall_2026-09-13T034519Z_media-gallery-complete-and-reserved-qr-status.md",
         "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-13T034519Z_media-gallery-complete-and-reserved-qr-status.md"
-      },
-      {
-        "date": "2026-09-12",
-        "slug": "crf-anapu-gallery-and-black-king-update",
-        "filename": "beer-hall_2026-09-12T033932Z_crf-anapu-gallery-and-black-king-update.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-12T033932Z_crf-anapu-gallery-and-black-king-update.md"
       }
     ],
     "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
