@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-10T12:59:47Z",
+  "generated_at_utc": "2026-10-10T21:58:09Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-10T12:18:59Z",
+    "generated_at": "2026-10-10T20:55:26Z",
     "total_contributors": 498,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-10T12:48:39.519Z",
+    "generated_at": "2026-10-10T21:48:47.205Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -262,12 +262,11 @@
         }
       },
       "Brazilian Reis": {
-        "total_quantity": 285.03,
-        "total_value_usd": 66.21,
+        "total_quantity": 236.9,
+        "total_value_usd": 55.03,
         "item_count": 1,
         "ledger_breakdown": {
-          "AGL8": 236.9,
-          "Main Ledger": 48.13
+          "AGL8": 236.9
         }
       },
       "CRYBY Coffee Bean Roaster, 14.5L/3.83 with 3 year warranty starting 20251027": {
@@ -420,6 +419,14 @@
         "item_count": 1,
         "ledger_breakdown": {
           "AGL13": 21.0
+        }
+      },
+      "Cacao Tea (Kilograms) Santos 20261007 - AGL14": {
+        "total_quantity": 7.0,
+        "total_value_usd": 93.92,
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 7.0
         }
       },
       "Cacao Tea - 20250219006 | Cacao Tea | Kilogram | Paulo 2024 | Santos 018-2025 016-2025 || Ilheus - AGL8": {
@@ -847,6 +854,14 @@
           "Main Ledger": 25.0
         }
       },
+      "Showcase display cabinet (per cabinet, Matheus Ilheus warehouse, R$250 receipt 20261010)": {
+        "total_quantity": 1.0,
+        "total_value_usd": 58.08,
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
+      },
       "Stand-Up Pouch Kraft w/Zip 10x15cm (per unit) - Brazil": {
         "total_quantity": 100.0,
         "total_value_usd": 13.01,
@@ -932,7 +947,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-10T12:59:47Z",
+    "generated_at_utc": "2026-10-10T21:58:09Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
