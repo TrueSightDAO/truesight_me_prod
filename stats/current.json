@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-09T22:51:37Z",
+  "generated_at_utc": "2026-10-10T06:20:01Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-09T22:02:52Z",
+    "generated_at": "2026-10-10T03:25:01Z",
     "total_contributors": 498,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-09T22:48:46.096Z",
+    "generated_at": "2026-10-10T05:48:47.905Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -224,6 +224,14 @@
       "Amazon LFSEMINI camping stove windscreen 16 plates + drawstring bag (per unit, order 111-8445495-0894600)": {
         "total_quantity": 1.0,
         "total_value_usd": 9.17,
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
+      },
+      "Axial Exhaust Fan 100mm Turbo 220V - Mercado Livre MLBU4320471013 - Ilheus Warehouse": {
+        "total_quantity": 1.0,
+        "total_value_usd": 18.22,
         "item_count": 1,
         "ledger_breakdown": {
           "Main Ledger": 1.0
@@ -727,6 +735,14 @@
           "Main Ledger": 169.0
         }
       },
+      "Kala Professional Insect Killer 16W - Mercado Livre MLB20684318 - Ilheus Warehouse": {
+        "total_quantity": 1.0,
+        "total_value_usd": 44.11,
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 1.0
+        }
+      },
       "Keys to Ilheus warehouse (outer door and inner door)": {
         "total_quantity": 3.0,
         "total_value_usd": 9.45,
@@ -864,11 +880,11 @@
         }
       },
       "USD": {
-        "total_quantity": 12343.0,
-        "total_value_usd": 12343.0,
+        "total_quantity": 12288.18,
+        "total_value_usd": 12288.18,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 4973.27,
+          "Main Ledger": 4918.45,
           "AGL15": 4240.75,
           "AGL6": 1337.59,
           "AGL14": 764.5,
@@ -879,11 +895,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 56.38,
-        "total_value_usd": 56.38,
+        "total_quantity": 56.44,
+        "total_value_usd": 56.44,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 56.38
+          "Main Ledger": 56.44
         }
       },
       "USDT": {
@@ -916,7 +932,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-09T22:51:37Z",
+    "generated_at_utc": "2026-10-10T06:20:01Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
