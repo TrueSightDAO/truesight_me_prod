@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-12T06:27:30Z",
+  "generated_at_utc": "2026-10-12T16:01:52Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-12T00:52:02Z",
+    "generated_at": "2026-10-12T14:59:56Z",
     "total_contributors": 498,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-12T05:48:41.535Z",
+    "generated_at": "2026-10-12T15:48:50.946Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -947,7 +947,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-12T06:27:30Z",
+    "generated_at_utc": "2026-10-12T16:01:52Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
@@ -956,16 +956,17 @@
       "progress_pct": 2.7343
     },
     "trees": {
-      "total": 155,
+      "total": 229,
       "by_status": {
         "LINKED": 15,
-        "NEW": 140
+        "NEW": 214
       },
       "by_species": {
         "Cacau - Hybrid": 114,
-        "Cacao - Criolla": 18,
+        "Cacao - Forestero": 77,
+        "Cacao - Criolla": 22,
         "Cumaru": 10,
-        "Cacao - Forestero": 10,
+        "Cacau enxertado": 3,
         "Bougainvillea": 1,
         "Cacau": 1,
         "Sumaúma": 1
