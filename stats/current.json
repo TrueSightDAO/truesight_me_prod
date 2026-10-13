@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-13T00:56:42Z",
+  "generated_at_utc": "2026-10-13T14:31:53Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-12T21:20:00Z",
+    "generated_at": "2026-10-13T12:09:39Z",
     "total_contributors": 499,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-13T00:48:41.339Z",
+    "generated_at": "2026-10-13T13:48:50.419Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -895,11 +895,11 @@
         }
       },
       "USD": {
-        "total_quantity": 12288.08,
-        "total_value_usd": 12288.08,
+        "total_quantity": 12288.03,
+        "total_value_usd": 12288.03,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 4918.35,
+          "Main Ledger": 4918.3,
           "AGL15": 4240.75,
           "AGL6": 1337.59,
           "AGL14": 764.5,
@@ -910,11 +910,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 56.54,
-        "total_value_usd": 56.54,
+        "total_quantity": 56.59,
+        "total_value_usd": 56.59,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 56.54
+          "Main Ledger": 56.59
         }
       },
       "USDT": {
@@ -937,17 +937,17 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-10-11T12:55:26.000Z",
+      "generated_at": "2026-10-13T14:16:45.000Z",
       "store_count": 0,
       "line_items": 14
     },
     "partners": {
-      "generated_at": "2026-10-11T12:55:26.000Z",
+      "generated_at": "2026-10-13T14:16:45.000Z",
       "partner_count": 23
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-13T00:56:42Z",
+    "generated_at_utc": "2026-10-13T14:31:53Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
@@ -1387,8 +1387,14 @@
     "interpretation_hint": "SunMint = the DAO's on-the-ground restoration evidence layer (trees, plots, farms) plus its media archive (MAP). Use this to answer 'how many trees have you planted?', 'how many plots / hectares?', 'which farms and where?', and 'what farm footage / videos / transcriptions exist?'. Progress toward the 10,000-hectare mission is plots.total_hectares vs 10000."
   },
   "recent_beerhall_digests": {
-    "total_entries": 125,
+    "total_entries": 126,
     "recent": [
+      {
+        "date": "2026-10-13",
+        "slug": "black-king-landed-cost-wire-sent",
+        "filename": "beer-hall_2026-10-13T055606Z_black-king-landed-cost-wire-sent.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-13T055606Z_black-king-landed-cost-wire-sent.md"
+      },
       {
         "date": "2026-10-11",
         "slug": "usda-released-gateway-fix-warehouse-codified",
@@ -1442,12 +1448,6 @@
         "slug": "youtube-fix-repo-access-denylist-complete",
         "filename": "beer-hall_2026-09-15T035424Z_youtube-fix-repo-access-denylist-complete.md",
         "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-15T035424Z_youtube-fix-repo-access-denylist-complete.md"
-      },
-      {
-        "date": "2026-09-14",
-        "slug": "sunmint-ux-reservation-logic-and-logistics",
-        "filename": "beer-hall_2026-09-14T035447Z_sunmint-ux-reservation-logic-and-logistics.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-14T035447Z_sunmint-ux-reservation-logic-and-logistics.md"
       }
     ],
     "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
