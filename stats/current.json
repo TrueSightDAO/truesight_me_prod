@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-12T16:01:52Z",
+  "generated_at_utc": "2026-10-13T00:56:42Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,8 +8,8 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-12T14:59:56Z",
-    "total_contributors": 498,
+    "generated_at": "2026-10-12T21:20:00Z",
+    "total_contributors": 499,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
     "governors": [
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-12T15:48:50.946Z",
+    "generated_at": "2026-10-13T00:48:41.339Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -277,14 +277,6 @@
           "Main Ledger": 1.0
         }
       },
-      "Cacao Almonds (KG)": {
-        "total_quantity": 273.59,
-        "total_value_usd": 0.0,
-        "item_count": 1,
-        "ledger_breakdown": {
-          "AGL8": 273.59
-        }
-      },
       "Cacao Almonds KG - Organic": {
         "total_quantity": 0.65,
         "total_value_usd": 65.93,
@@ -299,6 +291,14 @@
         "item_count": 1,
         "ledger_breakdown": {
           "AGL16": 108.0
+        }
+      },
+      "Cacao Almonds KG from Paulo's farm - AGL8": {
+        "total_quantity": 273.59,
+        "total_value_usd": 4982.53,
+        "item_count": 1,
+        "ledger_breakdown": {
+          "AGL8": 273.59
         }
       },
       "Cacao Mass Bar (40grams) CP340993869BR - AGL8": {
@@ -947,7 +947,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-12T16:01:52Z",
+    "generated_at_utc": "2026-10-13T00:56:42Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
