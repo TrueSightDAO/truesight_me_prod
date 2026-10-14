@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-14T05:18:58Z",
+  "generated_at_utc": "2026-10-14T12:18:30Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-14T03:27:53Z",
+    "generated_at": "2026-10-14T09:10:58Z",
     "total_contributors": 499,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
@@ -97,9 +97,9 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-14T00:31:10.140Z",
+    "generated_at": "2026-10-14T10:48:43.720Z",
     "schema_version": 5,
-    "trigger": "currency_conversion",
+    "trigger": "cron",
     "currency_totals": {
       "1 Gallon Zip Loc Bags": {
         "total_quantity": 34.0,
@@ -888,11 +888,11 @@
         }
       },
       "USD": {
-        "total_quantity": 12169.01,
-        "total_value_usd": 12169.01,
+        "total_quantity": 12168.96,
+        "total_value_usd": 12168.96,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 4799.28,
+          "Main Ledger": 4799.23,
           "AGL15": 4240.75,
           "AGL6": 1337.59,
           "AGL14": 764.5,
@@ -903,11 +903,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 56.59,
-        "total_value_usd": 56.59,
+        "total_quantity": 56.65,
+        "total_value_usd": 56.65,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 56.59
+          "Main Ledger": 56.65
         }
       },
       "USDT": {
@@ -940,7 +940,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-14T05:18:58Z",
+    "generated_at_utc": "2026-10-14T12:18:30Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
@@ -949,15 +949,15 @@
       "progress_pct": 2.7343
     },
     "trees": {
-      "total": 229,
+      "total": 226,
       "by_status": {
         "LINKED": 15,
-        "NEW": 214
+        "NEW": 211
       },
       "by_species": {
         "Cacau - Hybrid": 114,
-        "Cacao - Forestero": 77,
-        "Cacao - Criolla": 22,
+        "Cacao - Forestero": 76,
+        "Cacao - Criolla": 20,
         "Cumaru": 10,
         "Cacau enxertado": 3,
         "Bougainvillea": 1,
