@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-15T21:42:56Z",
+  "generated_at_utc": "2026-10-16T04:56:17Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-15T20:10:01Z",
+    "generated_at": "2026-10-16T03:27:07Z",
     "total_contributors": 500,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
@@ -97,9 +97,9 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-15T20:09:04.131Z",
+    "generated_at": "2026-10-15T21:48:39.626Z",
     "schema_version": 5,
-    "trigger": "movement",
+    "trigger": "cron",
     "currency_totals": {
       "1 Gallon Zip Loc Bags": {
         "total_quantity": 34.0,
@@ -206,11 +206,11 @@
         }
       },
       "AGL13 equity holdings": {
-        "total_quantity": 1953.3,
-        "total_value_usd": 1953.3,
+        "total_quantity": 2165.07,
+        "total_value_usd": 2165.07,
         "item_count": 1,
         "ledger_breakdown": {
-          "AGL15": 1953.3
+          "AGL15": 2165.07
         }
       },
       "AGL8 equity holdings": {
@@ -952,19 +952,18 @@
         }
       },
       "USD": {
-        "total_quantity": 9365.93,
-        "total_value_usd": 9365.93,
+        "total_quantity": 7272.58,
+        "total_value_usd": 7272.58,
         "item_count": 1,
         "ledger_breakdown": {
           "Main Ledger": 2566.15,
           "AGL15": 2142.4,
-          "AGL13": 1953.3,
           "AGL6": 1337.59,
           "AGL14": 764.5,
           "AGL10": 347.83,
-          "AGL8": 145.05,
           "BEC": 93.12,
-          "SEF1": 16.0
+          "SEF1": 16.0,
+          "AGL8": 5.0
         }
       },
       "USD - provisions for voting rights cash out": {
@@ -1005,7 +1004,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-15T21:42:56Z",
+    "generated_at_utc": "2026-10-16T04:56:17Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
@@ -1014,15 +1013,15 @@
       "progress_pct": 2.7343
     },
     "trees": {
-      "total": 226,
+      "total": 245,
       "by_status": {
         "LINKED": 15,
-        "NEW": 211
+        "NEW": 230
       },
       "by_species": {
         "Cacau - Hybrid": 114,
-        "Cacao - Forestero": 76,
-        "Cacao - Criolla": 20,
+        "Cacao - Forestero": 93,
+        "Cacao - Criolla": 22,
         "Cumaru": 10,
         "Cacau enxertado": 3,
         "Bougainvillea": 1,
@@ -1445,8 +1444,14 @@
     "interpretation_hint": "SunMint = the DAO's on-the-ground restoration evidence layer (trees, plots, farms) plus its media archive (MAP). Use this to answer 'how many trees have you planted?', 'how many plots / hectares?', 'which farms and where?', and 'what farm footage / videos / transcriptions exist?'. Progress toward the 10,000-hectare mission is plots.total_hectares vs 10000."
   },
   "recent_beerhall_digests": {
-    "total_entries": 126,
+    "total_entries": 127,
     "recent": [
+      {
+        "date": "2026-10-16",
+        "slug": "cfr-payout-live-settlement-sop-merged",
+        "filename": "beer-hall_2026-10-16T033651Z_cfr-payout-live-settlement-sop-merged.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-16T033651Z_cfr-payout-live-settlement-sop-merged.md"
+      },
       {
         "date": "2026-10-13",
         "slug": "black-king-landed-cost-wire-sent",
@@ -1500,12 +1505,6 @@
         "slug": "reservation-settlement-and-cacau-na-veia",
         "filename": "beer-hall_2026-09-16T035312Z_reservation-settlement-and-cacau-na-veia.md",
         "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-16T035312Z_reservation-settlement-and-cacau-na-veia.md"
-      },
-      {
-        "date": "2026-09-15",
-        "slug": "youtube-fix-repo-access-denylist-complete",
-        "filename": "beer-hall_2026-09-15T035424Z_youtube-fix-repo-access-denylist-complete.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-15T035424Z_youtube-fix-repo-access-denylist-complete.md"
       }
     ],
     "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",

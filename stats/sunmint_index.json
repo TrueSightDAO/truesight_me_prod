@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-15T21:42:56Z",
+  "generated_at_utc": "2026-10-16T04:56:17Z",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "schema": "sunmint_index/1",
   "north_star": {
@@ -8,15 +8,15 @@
     "progress_pct": 2.7343
   },
   "trees": {
-    "total": 226,
+    "total": 245,
     "by_status": {
       "LINKED": 15,
-      "NEW": 211
+      "NEW": 230
     },
     "by_species": {
       "Cacau - Hybrid": 114,
-      "Cacao - Forestero": 76,
-      "Cacao - Criolla": 20,
+      "Cacao - Forestero": 93,
+      "Cacao - Criolla": 22,
       "Cumaru": 10,
       "Cacau enxertado": 3,
       "Bougainvillea": 1,
