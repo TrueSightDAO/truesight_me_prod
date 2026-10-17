@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-17T04:56:16Z",
+  "generated_at_utc": "2026-10-17T11:07:58Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-17T03:28:09Z",
+    "generated_at": "2026-10-17T08:09:50Z",
     "total_contributors": 500,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-17T00:21:54.642Z",
+    "generated_at": "2026-10-17T10:48:32.282Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -454,7 +454,7 @@
           "AGL13": 21.0
         }
       },
-      "Cacao Tea (Kilograms) Santos 20261007 - AGL14": {
+      "Cacao Tea (Kilograms) Santos 20261007 AP623350200BR - FounderHaus Brazil": {
         "total_quantity": 7.0,
         "total_value_usd": 93.92,
         "item_count": 1,
@@ -503,11 +503,11 @@
         }
       },
       "Cacao Tree Planted - Unassigned": {
-        "total_quantity": 21.0,
+        "total_quantity": 107.0,
         "total_value_usd": 0.0,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 21.0
+          "Main Ledger": 107.0
         }
       },
       "Cacao Tree To Be Planted": {
@@ -944,12 +944,12 @@
         }
       },
       "USD": {
-        "total_quantity": 7675.88,
-        "total_value_usd": 7675.88,
+        "total_quantity": 7648.13,
+        "total_value_usd": 7648.13,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 2566.09,
-          "AGL15": 2545.75,
+          "Main Ledger": 2566.04,
+          "AGL15": 2518.05,
           "AGL6": 1337.59,
           "AGL14": 764.5,
           "AGL10": 347.83,
@@ -959,11 +959,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 56.75,
-        "total_value_usd": 56.75,
+        "total_quantity": 56.8,
+        "total_value_usd": 56.8,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 56.75
+          "Main Ledger": 56.8
         }
       },
       "USDT": {
@@ -986,17 +986,17 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-10-16T11:29:09.000Z",
+      "generated_at": "2026-10-17T10:48:49.000Z",
       "store_count": 0,
       "line_items": 14
     },
     "partners": {
-      "generated_at": "2026-10-16T11:29:09.000Z",
+      "generated_at": "2026-10-17T10:48:49.000Z",
       "partner_count": 23
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-17T04:56:16Z",
+    "generated_at_utc": "2026-10-17T11:07:58Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
