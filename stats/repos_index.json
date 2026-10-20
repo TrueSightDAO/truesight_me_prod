@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-20T05:12:33Z",
+  "generated_at_utc": "2026-10-20T05:10:29Z",
   "source": "https://api.github.com/orgs/TrueSightDAO/repos?per_page=100&type=public",
   "org": "TrueSightDAO",
   "curated_catalog_url": "https://raw.githubusercontent.com/TrueSightDAO/agentic_ai_context/main/PROJECT_INDEX.md",
@@ -14,8 +14,8 @@
       "primary_language": "HTML",
       "topics": [],
       "default_branch": "main",
-      "pushed_at": "2026-10-20T05:10:31Z",
-      "updated_at": "2026-10-20T05:10:35Z",
+      "pushed_at": "2026-10-20T05:09:42Z",
+      "updated_at": "2026-10-20T05:09:46Z",
       "readme_url": "https://raw.githubusercontent.com/TrueSightDAO/truesight_me_beta/main/README.md",
       "tree_url": "https://github.com/TrueSightDAO/truesight_me_beta/tree/main",
       "deploy_target": "https://truesight.me"
