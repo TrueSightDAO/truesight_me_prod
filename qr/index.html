@@ -54,6 +54,14 @@
         border: 1px solid var(--border, #e5e5e5); border-radius: 6px;
         background: #fff; padding: 6px; box-sizing: border-box;
       }
+      .qr-image-placeholder {
+        width: 180px; height: 180px; box-sizing: border-box;
+        display: flex; align-items: center; justify-content: center;
+        text-align: center; padding: 10px;
+        font-size: 0.74rem; line-height: 1.35; color: #8a6d3b;
+        border: 1px dashed #d9c48a; border-radius: 6px;
+        background: #fffdf5;
+      }
       .qr-image-caption {
         font-size: 0.72rem; color: var(--muted, #666);
         margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em;
@@ -442,15 +450,17 @@
           }
           html += '  </div>';
           if (manifest.qr_image_url) {
-            // Hide the entire QR-image block if the PNG 404s (e.g. older mint
-            // that predates the lineage-assets pngs/ migration, or QR row
-            // without a physical batch print). The text-only header is still
-            // useful — no need to show a broken-image placeholder.
+            // Report a missing label PNG instead of silently hiding the block.
+            // A 404 here used to collapse the whole image block, so a QR whose
+            // label image was never committed rendered a page that looked
+            // complete but carried no scannable code -- invisible both to
+            // operators and to whoever was holding the bag.
             html += '  <div class="qr-image-block" id="qr-image-block">';
-            html += '    <a href="' + escapeHtml(manifest.qr_image_url) + '" target="_blank" rel="noopener">';
+            html += '    <a id="qr-image-link" href="' + escapeHtml(manifest.qr_image_url) + '" target="_blank" rel="noopener">';
             html += '      <img src="' + escapeHtml(manifest.qr_image_url) + '" alt="QR image for ' + escapeHtml(manifest.qr_id) +
-                    '" onerror="document.getElementById(\'qr-image-block\').style.display=\'none\'" />';
+                    '" onerror="this.style.display=\'none\';this.parentNode.style.display=\'none\';var n=document.getElementById(\'qr-image-missing\');if(n){n.style.display=\'flex\';}console.warn(\'[qr] label image missing for\', \'' + escapeHtml(manifest.qr_id) + '\');" />';
             html += '    </a>';
+            html += '    <div class="qr-image-placeholder" id="qr-image-missing" style="display:none">QR label image<br/>not yet published</div>';
             html += '    <div class="qr-image-caption">scan to verify</div>';
             html += '  </div>';
           }
