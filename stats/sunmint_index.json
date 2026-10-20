@@ -1,11 +1,11 @@
 {
-  "generated_at_utc": "2026-10-20T05:10:28Z",
+  "generated_at_utc": "2026-10-20T12:04:04Z",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "schema": "sunmint_index/1",
   "north_star": {
     "mission": "Restore 10,000 hectares of Amazon rainforest.",
-    "progress_hectares": 273.43,
-    "progress_pct": 2.7343
+    "progress_hectares": 424.21,
+    "progress_pct": 4.2421
   },
   "trees": {
     "total": 245,
@@ -26,12 +26,12 @@
     "source": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/trees/index.geojson"
   },
   "plots": {
-    "total": 22,
+    "total": 23,
     "by_status": {
       "planted": 1,
-      "proposed": 21
+      "proposed": 22
     },
-    "total_hectares": 273.43,
+    "total_hectares": 424.21,
     "by_region": {
       "Altamira, Para": 7,
       "Medio Xingu, Para": 3,
@@ -43,13 +43,14 @@
       "Itacare, Bahia": 1,
       "Urucuca, Bahia, Brazil": 1,
       "Urucuca, Bahia": 1,
-      "unknown": 1
+      "unknown": 1,
+      "Anapu, Pará": 1
     },
     "source": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/plots/index.geojson"
   },
   "farms": {
-    "total": 15,
-    "total_hectares": 273.43,
+    "total": 16,
+    "total_hectares": 424.21,
     "by_region": {
       "Altamira, Para": 4,
       "Pacaja, Para": 2,
@@ -60,7 +61,8 @@
       "Urucuca, Bahia": 1,
       "Itajuibe, Bahia": 1,
       "Urucuca, Bahia, Brazil": 1,
-      "Medio Xingu, Para": 1
+      "Medio Xingu, Para": 1,
+      "Anapu, Pará": 1
     },
     "list": [
       {
@@ -160,6 +162,13 @@
         "region": "Altamira, Para",
         "plot_count": 1,
         "total_hectares": 3.0
+      },
+      {
+        "farm_id": "sitio-catarinense-para",
+        "name": "Sitio Catarinense Para",
+        "region": "Anapu, Pará",
+        "plot_count": 1,
+        "total_hectares": 150.78
       },
       {
         "farm_id": "sitio-torres-pacaja-para",

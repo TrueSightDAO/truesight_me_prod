@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-20T05:10:30Z",
+  "generated_at_utc": "2026-10-20T12:04:08Z",
   "source": "https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/partners-inventory.json",
   "interpretation_hint": "Active Agroverse partner storage points. Each entry: partner slug, active SKU count, total inventory units across SKUs, and the top-3 products by stock. Use this for 'which partners are currently carrying inventory?' / 'who has the most stock?' / 'where can someone buy product X?'. The full per-item detail (price, GTIN, image, farm of origin, shipment ID) is at the source URL above. Partner location / region is NOT carried here — for region grouping you'd need the Agroverse Partners sheet, which requires authenticated access.",
   "total_active_partners": 23,
@@ -68,27 +68,6 @@
       ]
     },
     {
-      "slug": "love-wisdom-power",
-      "active_sku_count": 2,
-      "total_inventory_units": 16,
-      "top_products": [
-        {
-          "product_id": "ceremonial-cacao-fazenda-santa-ana-2023-200g",
-          "product_name": "Ceremonial Cacao – Fazenda Santa Ana, Bahia Brazil, 2023 (200g)",
-          "inventory": 15,
-          "shipment": "AGL2",
-          "farm": "Fazenda Santa Ana"
-        },
-        {
-          "product_id": "oscar-bahia-ceremonial-cacao-200g",
-          "product_name": "Ceremonial Cacao – Oscar",
-          "inventory": 1,
-          "shipment": "AGL4",
-          "farm": "Oscar"
-        }
-      ]
-    },
-    {
       "slug": "go-ask-alice",
       "active_sku_count": 2,
       "total_inventory_units": 14,
@@ -106,6 +85,27 @@
           "inventory": 5,
           "shipment": "AGL10",
           "farm": "Capela Velha Fazenda"
+        }
+      ]
+    },
+    {
+      "slug": "love-wisdom-power",
+      "active_sku_count": 2,
+      "total_inventory_units": 10,
+      "top_products": [
+        {
+          "product_id": "ceremonial-cacao-fazenda-santa-ana-2023-200g",
+          "product_name": "Ceremonial Cacao – Fazenda Santa Ana, Bahia Brazil, 2023 (200g)",
+          "inventory": 9,
+          "shipment": "AGL2",
+          "farm": "Fazenda Santa Ana"
+        },
+        {
+          "product_id": "oscar-bahia-ceremonial-cacao-200g",
+          "product_name": "Ceremonial Cacao – Oscar",
+          "inventory": 1,
+          "shipment": "AGL4",
+          "farm": "Oscar"
         }
       ]
     },

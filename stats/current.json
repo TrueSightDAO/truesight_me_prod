@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-20T05:10:28Z",
+  "generated_at_utc": "2026-10-20T12:04:04Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-20T03:29:06Z",
+    "generated_at": "2026-10-20T06:53:26Z",
     "total_contributors": 500,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-20T04:48:39.847Z",
+    "generated_at": "2026-10-20T11:48:38.739Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -512,11 +512,11 @@
         }
       },
       "Cacao Tree To Be Planted": {
-        "total_quantity": 347.0,
-        "total_value_usd": -520.5,
+        "total_quantity": 353.0,
+        "total_value_usd": -529.5,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 347.0
+          "Main Ledger": 353.0
         }
       },
       "Canopy 4ft X 6ft with 2 years warranty": {
@@ -649,11 +649,11 @@
         }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 | Cacao Mass | 200 grams | Santa Ana 2023 | Kirsten 20251227 | San Francisco - AGL2": {
-        "total_quantity": 15.0,
-        "total_value_usd": 36.07,
+        "total_quantity": 9.0,
+        "total_value_usd": 21.64,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 15.0
+          "Main Ledger": 9.0
         }
       },
       "Chocolate Mold - 4 X 6 slots": {
@@ -945,11 +945,11 @@
         }
       },
       "USD": {
-        "total_quantity": 7648.02,
-        "total_value_usd": 7648.02,
+        "total_quantity": 7750.02,
+        "total_value_usd": 7750.02,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 2565.94,
+          "Main Ledger": 2667.94,
           "AGL15": 2518.05,
           "AGL6": 1337.59,
           "AGL14": 764.5,
@@ -987,23 +987,23 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-10-19T13:23:02.000Z",
+      "generated_at": "2026-10-20T11:43:06.000Z",
       "store_count": 0,
       "line_items": 14
     },
     "partners": {
-      "generated_at": "2026-10-19T13:23:02.000Z",
+      "generated_at": "2026-10-20T11:43:06.000Z",
       "partner_count": 23
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-20T05:10:28Z",
+    "generated_at_utc": "2026-10-20T12:04:04Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
       "mission": "Restore 10,000 hectares of Amazon rainforest.",
-      "progress_hectares": 273.43,
-      "progress_pct": 2.7343
+      "progress_hectares": 424.21,
+      "progress_pct": 4.2421
     },
     "trees": {
       "total": 245,
@@ -1024,12 +1024,12 @@
       "source": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/trees/index.geojson"
     },
     "plots": {
-      "total": 22,
+      "total": 23,
       "by_status": {
         "planted": 1,
-        "proposed": 21
+        "proposed": 22
       },
-      "total_hectares": 273.43,
+      "total_hectares": 424.21,
       "by_region": {
         "Altamira, Para": 7,
         "Medio Xingu, Para": 3,
@@ -1041,13 +1041,14 @@
         "Itacare, Bahia": 1,
         "Urucuca, Bahia, Brazil": 1,
         "Urucuca, Bahia": 1,
-        "unknown": 1
+        "unknown": 1,
+        "Anapu, Pará": 1
       },
       "source": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/plots/index.geojson"
     },
     "farms": {
-      "total": 15,
-      "total_hectares": 273.43,
+      "total": 16,
+      "total_hectares": 424.21,
       "by_region": {
         "Altamira, Para": 4,
         "Pacaja, Para": 2,
@@ -1058,7 +1059,8 @@
         "Urucuca, Bahia": 1,
         "Itajuibe, Bahia": 1,
         "Urucuca, Bahia, Brazil": 1,
-        "Medio Xingu, Para": 1
+        "Medio Xingu, Para": 1,
+        "Anapu, Pará": 1
       },
       "list": [
         {
@@ -1158,6 +1160,13 @@
           "region": "Altamira, Para",
           "plot_count": 1,
           "total_hectares": 3.0
+        },
+        {
+          "farm_id": "sitio-catarinense-para",
+          "name": "Sitio Catarinense Para",
+          "region": "Anapu, Pará",
+          "plot_count": 1,
+          "total_hectares": 150.78
         },
         {
           "farm_id": "sitio-torres-pacaja-para",
