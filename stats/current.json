@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-20T21:49:41Z",
+  "generated_at_utc": "2026-10-21T05:14:43Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-20T18:13:46Z",
+    "generated_at": "2026-10-21T02:33:35Z",
     "total_contributors": 500,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-20T21:49:16.699Z",
+    "generated_at": "2026-10-21T04:48:44.741Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -198,11 +198,11 @@
         }
       },
       "81% Dark Chocolate Bar 50g | Cacao Almonds KG - Organic (Fazenda São Jorge) | Gary Teh 20260710 | San Francisco": {
-        "total_quantity": 16.0,
-        "total_value_usd": 89.99,
+        "total_quantity": 14.0,
+        "total_value_usd": 78.74,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 16.0
+          "Main Ledger": 14.0
         }
       },
       "AGL13 equity holdings": {
@@ -944,11 +944,11 @@
         }
       },
       "USD": {
-        "total_quantity": 7745.02,
-        "total_value_usd": 7745.02,
+        "total_quantity": 7744.97,
+        "total_value_usd": 7744.97,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 2667.94,
+          "Main Ledger": 2667.89,
           "AGL15": 2518.05,
           "AGL6": 1337.59,
           "AGL14": 764.5,
@@ -959,11 +959,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 56.9,
-        "total_value_usd": 56.9,
+        "total_quantity": 56.95,
+        "total_value_usd": 56.95,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 56.9
+          "Main Ledger": 56.95
         }
       },
       "USDT": {
@@ -986,7 +986,7 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-10-20T11:43:06.000Z",
+      "generated_at": "2026-10-21T04:28:47.060Z",
       "store_count": 0,
       "line_items": 14
     },
@@ -996,7 +996,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-20T21:49:41Z",
+    "generated_at_utc": "2026-10-21T05:14:43Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
