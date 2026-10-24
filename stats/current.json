@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-23T21:37:12Z",
+  "generated_at_utc": "2026-10-24T04:58:36Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-23T19:40:26Z",
+    "generated_at": "2026-10-24T03:27:51Z",
     "total_contributors": 500,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-23T03:48:38.543Z",
+    "generated_at": "2026-10-24T03:48:37.707Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -206,19 +206,19 @@
         }
       },
       "AGL13 equity holdings": {
-        "total_quantity": 2165.07,
-        "total_value_usd": 2165.07,
+        "total_quantity": 2214.61,
+        "total_value_usd": 2214.61,
         "item_count": 1,
         "ledger_breakdown": {
-          "AGL15": 2165.07
+          "AGL15": 2214.61
         }
       },
       "AGL8 equity holdings": {
-        "total_quantity": 145.05,
-        "total_value_usd": 145.05,
+        "total_quantity": 163.06,
+        "total_value_usd": 163.06,
         "item_count": 1,
         "ledger_breakdown": {
-          "AGL15": 145.05
+          "AGL15": 163.06
         }
       },
       "ATOLOMOTOR Coffee Bean Roaster": {
@@ -944,12 +944,12 @@
         }
       },
       "USD": {
-        "total_quantity": 7744.88,
-        "total_value_usd": 7744.88,
+        "total_quantity": 7620.64,
+        "total_value_usd": 7620.64,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 2667.79,
-          "AGL15": 2518.05,
+          "Main Ledger": 2611.11,
+          "AGL15": 2450.5,
           "AGL6": 1337.59,
           "AGL14": 764.5,
           "AGL10": 347.83,
@@ -959,11 +959,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 57.05,
-        "total_value_usd": 57.05,
+        "total_quantity": 57.1,
+        "total_value_usd": 57.1,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 57.05
+          "Main Ledger": 57.1
         }
       },
       "USDT": {
@@ -996,7 +996,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-23T21:37:12Z",
+    "generated_at_utc": "2026-10-24T04:58:36Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
