@@ -1,13 +1,13 @@
 {
-  "generated_at_utc": "2026-10-25T05:13:23Z",
+  "generated_at_utc": "2026-10-25T11:57:07Z",
   "source": "https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/partners-inventory.json",
   "interpretation_hint": "Active Agroverse partner storage points. Each entry: partner slug, active SKU count, total inventory units across SKUs, and the top-3 products by stock. Use this for 'which partners are currently carrying inventory?' / 'who has the most stock?' / 'where can someone buy product X?'. The full per-item detail (price, GTIN, image, farm of origin, shipment ID) is at the source URL above. Partner location / region is NOT carried here — for region grouping you'd need the Agroverse Partners sheet, which requires authenticated access.",
   "total_active_partners": 23,
   "partners": [
     {
       "slug": "kikis-cocoa",
-      "active_sku_count": 3,
-      "total_inventory_units": 304,
+      "active_sku_count": 4,
+      "total_inventory_units": 344,
       "top_products": [
         {
           "product_id": "ceremonial-cacao-paulo-s-la-do-sitio-farm-200g",
@@ -24,11 +24,11 @@
           "farm": "Oscar"
         },
         {
-          "product_id": "organic-81-dark-chocolate-bar-50g-fazenda-sao-jorge-bahia-2024",
-          "product_name": "81% Organic Dark Chocolate Bar (50g) — Fazenda São Jorge, Bahia Brazil, 2024",
-          "inventory": 4,
-          "shipment": "AGL4",
-          "farm": "Fazenda São Jorge"
+          "product_id": "organic-81-dark-chocolate-bar-50g-vivi-jesus-do-deus-bahia-2025",
+          "product_name": "81% Organic Dark Chocolate Bar (50g) — Vivi's Farm, Bahia Brazil, 2025",
+          "inventory": 40,
+          "shipment": "AGL13",
+          "farm": "Vivi's Farm"
         }
       ]
     },
