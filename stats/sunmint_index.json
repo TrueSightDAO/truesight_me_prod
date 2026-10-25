@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-25T11:57:03Z",
+  "generated_at_utc": "2026-10-25T16:46:39Z",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "schema": "sunmint_index/1",
   "north_star": {
@@ -181,10 +181,10 @@
     "source": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/farms/index.json"
   },
   "media": {
-    "farm_count": 19,
+    "farm_count": 20,
     "totals": {
-      "items": 1084,
-      "videos": 705,
+      "items": 1124,
+      "videos": 745,
       "photos": 379,
       "published_youtube": 525,
       "transcribed": 134
@@ -344,6 +344,19 @@
         "published_youtube": 13,
         "transcribed": 0,
         "updated": "2026-08-31",
+        "s3_archive_prefix": null
+      },
+      {
+        "farm_id": "facility-black-king-warehouse",
+        "farm_name": null,
+        "region": null,
+        "manifest_url": "https://raw.githubusercontent.com/TrueSightDAO/farm_media_manifests/main/facility-black-king-warehouse.json",
+        "items": 40,
+        "videos": 40,
+        "photos": 0,
+        "published_youtube": 0,
+        "transcribed": 0,
+        "updated": "2026-10-25",
         "s3_archive_prefix": null
       },
       {
