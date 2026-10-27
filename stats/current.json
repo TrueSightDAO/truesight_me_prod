@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-27T12:37:30Z",
+  "generated_at_utc": "2026-10-27T22:34:09Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-27T09:28:53Z",
+    "generated_at": "2026-10-27T20:23:44Z",
     "total_contributors": 500,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-27T11:48:39.532Z",
+    "generated_at": "2026-10-27T19:48:36.028Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -527,11 +527,11 @@
         }
       },
       "Cacao Tree To Be Planted": {
-        "total_quantity": 352.0,
-        "total_value_usd": -528.0,
+        "total_quantity": 367.0,
+        "total_value_usd": -550.5,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 352.0
+          "Main Ledger": 367.0
         }
       },
       "Canopy 4ft X 6ft with 2 years warranty": {
@@ -592,11 +592,11 @@
         }
       },
       "Ceremonial Cacao Kraft Pouch - 20250219006 + Cacao Mass Bar CP340993869BR San Francisco - AGL8": {
-        "total_quantity": 4.0,
-        "total_value_usd": 36.7,
+        "total_quantity": 3.0,
+        "total_value_usd": 27.53,
         "item_count": 1,
         "ledger_breakdown": {
-          "AGL8": 4.0
+          "AGL8": 3.0
         }
       },
       "Ceremonial Cacao Kraft Pouch - 20250219006 | Cacao Mass | 200 grams | Oscar 2024 | CP340993988BR San Francisco | Kirsten 20251124 | San Francisco - AGL4": {
@@ -656,11 +656,11 @@
         }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 | Cacao Mass | 200 grams | Oscar 2024 | CP340993988BR San Francisco | Kirsten 20251211 | San Francisco - AGL4": {
-        "total_quantity": 25.0,
-        "total_value_usd": 209.38,
+        "total_quantity": 11.0,
+        "total_value_usd": 92.13,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 25.0
+          "Main Ledger": 11.0
         }
       },
       "Ceremonial Cacao Kraft Pouch - Alibaba:269035810001023771 | Cacao Mass | 200 grams | Santa Ana 2023 | Kirsten 20251227 | San Francisco - AGL2": {
@@ -960,18 +960,18 @@
         }
       },
       "USD": {
-        "total_quantity": 7757.01,
-        "total_value_usd": 7757.01,
+        "total_quantity": 8029.01,
+        "total_value_usd": 8029.01,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 2747.48,
+          "Main Ledger": 3002.48,
           "AGL15": 2450.5,
           "AGL6": 1337.59,
           "AGL14": 764.5,
           "AGL10": 347.83,
           "BEC": 93.12,
-          "SEF1": 16.0,
-          "AGL8": 0.0
+          "AGL8": 17.0,
+          "SEF1": 16.0
         }
       },
       "USD - provisions for voting rights cash out": {
@@ -1012,7 +1012,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-27T12:37:30Z",
+    "generated_at_utc": "2026-10-27T22:34:09Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
