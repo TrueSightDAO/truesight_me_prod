@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-27T05:31:31Z",
+  "generated_at_utc": "2026-10-27T12:37:30Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-10-27T03:27:55Z",
+    "generated_at": "2026-10-27T09:28:53Z",
     "total_contributors": 500,
     "total_tdg_controlled_sum": 2493633.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-10-27T01:48:39.327Z",
+    "generated_at": "2026-10-27T11:48:39.532Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -227,6 +227,14 @@
         "item_count": 1,
         "ledger_breakdown": {
           "Main Ledger": 1.0
+        }
+      },
+      "Agroverse 81% Cacao Chocolate Bar 50g | Oscar Cacao Nibs | Kirsten 20261027 | San Francisco - MAIN": {
+        "total_quantity": 40.0,
+        "total_value_usd": 108.36,
+        "item_count": 1,
+        "ledger_breakdown": {
+          "Main Ledger": 40.0
         }
       },
       "Agroverse 81% Cacao Chocolate Bar 50g | Vivi Cacao Nibs | Kirsten 20261025 | San Francisco - AGL13": {
@@ -415,11 +423,11 @@
         }
       },
       "Cacao Nibs (KG) - Ilheus, Brazil 2024 + 047-3175-3223 - San Francisco": {
-        "total_quantity": 80.0,
-        "total_value_usd": 3335.2,
+        "total_quantity": 78.0,
+        "total_value_usd": 3251.82,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 80.0
+          "Main Ledger": 78.0
         }
       },
       "Cacao Nibs (Kilograms) Santos 20260213 - AGL13 + 047-3175-3223 - San Francisco": {
@@ -792,11 +800,11 @@
         }
       },
       "Joyberg kraft cash envelope 6.5x3.2in (per piece, Amazon 111-2611520-6121033)": {
-        "total_quantity": 129.0,
-        "total_value_usd": 9.09,
+        "total_quantity": 89.0,
+        "total_value_usd": 6.27,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 129.0
+          "Main Ledger": 89.0
         }
       },
       "Kala Professional Insect Killer 16W - Mercado Livre MLB20684318 - Ilheus Warehouse": {
@@ -936,11 +944,11 @@
         }
       },
       "Sticker Mule 4x2in custom rectangle label (per piece, order R384751187)": {
-        "total_quantity": 74.0,
-        "total_value_usd": 41.0,
+        "total_quantity": 34.0,
+        "total_value_usd": 18.84,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 74.0
+          "Main Ledger": 34.0
         }
       },
       "SunMint Tree Planting Pledge - QR Code": {
@@ -952,11 +960,11 @@
         }
       },
       "USD": {
-        "total_quantity": 7595.56,
-        "total_value_usd": 7595.56,
+        "total_quantity": 7757.01,
+        "total_value_usd": 7757.01,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 2586.03,
+          "Main Ledger": 2747.48,
           "AGL15": 2450.5,
           "AGL6": 1337.59,
           "AGL14": 764.5,
@@ -967,11 +975,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 57.19,
-        "total_value_usd": 57.19,
+        "total_quantity": 57.24,
+        "total_value_usd": 57.24,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 57.19
+          "Main Ledger": 57.24
         }
       },
       "USDT": {
@@ -994,17 +1002,17 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-10-26T13:09:41.000Z",
+      "generated_at": "2026-10-27T12:17:21.000Z",
       "store_count": 0,
       "line_items": 15
     },
     "partners": {
-      "generated_at": "2026-10-26T13:09:41.000Z",
+      "generated_at": "2026-10-27T12:17:21.000Z",
       "partner_count": 23
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-10-27T05:31:31Z",
+    "generated_at_utc": "2026-10-27T12:37:30Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
