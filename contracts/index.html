@@ -20,20 +20,20 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Smart Contracts | TrueSight DAO</title>
-<meta name="description" content="Complete catalog of all 30 RSA-signed smart contracts on the TrueSight DAO protocol. Each contract is a signed event submitted to Edgar." />
+<meta name="description" content="Complete catalog of all 33 RSA-signed smart contracts on the TrueSight DAO protocol. Each contract is a signed event submitted to Edgar." />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.truesight.me/contracts/" />
+<meta property="og:url" content="https://truesight.me/contracts/" />
 <meta property="og:title" content="Smart Contracts | TrueSight DAO" />
-<meta property="og:description" content="Complete catalog of all 30 RSA-signed smart contracts on the TrueSight DAO protocol." />
-<meta property="og:image" content="https://www.truesight.me/assets/truesight-logo.png" />
+<meta property="og:description" content="Complete catalog of all 33 RSA-signed smart contracts on the TrueSight DAO protocol." />
+<meta property="og:image" content="https://truesight.me/assets/truesight-logo.png" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content="https://www.truesight.me/contracts/" />
+<meta name="twitter:url" content="https://truesight.me/contracts/" />
 <meta name="twitter:title" content="Smart Contracts | TrueSight DAO" />
-<meta name="twitter:description" content="Complete catalog of all 30 RSA-signed smart contracts on the TrueSight DAO protocol." />
+<meta name="twitter:description" content="Complete catalog of all 33 RSA-signed smart contracts on the TrueSight DAO protocol." />
 
 <link rel="icon" href="https://static.wixstatic.com/ficons/0e2cde_dd65db118f8f499eb06c159d7262167d%7Emv2.ico" type="image/x-icon" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -564,7 +564,7 @@
   <!-- Stats -->
   <div class="contracts-stats">
     <div class="stat">
-      <span class="num">30</span>
+      <span class="num">33</span>
       <span class="label">Smart Contracts</span>
     </div>
     <div class="stat">
@@ -622,7 +622,7 @@
         <!-- Layer 2: Smart Contracts -->
         <text x="60" y="138" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#5f6f52">LAYER 2</text>
         <text x="60" y="158" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#2b1d14">Smart Contracts</text>
-        <text x="60" y="174" font-family="Inter, sans-serif" font-size="11" fill="#6f5a44">30 RSA-signed event types — [SALES EVENT], [INVENTORY MOVEMENT], [CONTRIBUTION EVENT], etc.</text>
+        <text x="60" y="174" font-family="Inter, sans-serif" font-size="11" fill="#6f5a44">33 RSA-signed event types — [SALES EVENT], [INVENTORY MOVEMENT], [CONTRIBUTION EVENT], etc.</text>
 
         <!-- Layer 3: Edgar (Execution Layer) -->
         <text x="60" y="228" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" fill="#c08457">LAYER 3</text>
@@ -688,7 +688,7 @@
     <div class="category-header">
       <span class="icon">🔑</span>
       <h2>Identity &amp; Registration</h2>
-      <span class="count">6 contracts</span>
+      <span class="count">7 contracts</span>
     </div>
 
     <div class="contract-card">
@@ -951,7 +951,7 @@ Request Transaction ID: sF6gx9D+U3mk6SKBJ0a5r7DZB/PAcESxCu4wPzb4c+nJHEzWJnVMXUyd
     </div>
 
     <div class="contract-card">
-      <h3>Program Registration Event <span class="event-name">[PROGRAM REGISTRATION EVENT]</span></h3>
+      <h3>Program Registration Event <span class="event-name">[PROGRAM REGISTRATION REQUEST]</span></h3>
       <p class="purpose">Register a new program or initiative within the DAO ecosystem (e.g. credentialing cohort, community challenge, reforestation drive). Programs are the primary organizational unit for DAO activities — they group related contributions, track budgets, and measure impact. Only governors can create programs to ensure alignment with the DAO's strategic roadmap.</p>
       <div class="meta">
         <span class="tag">Governor</span>
@@ -975,7 +975,7 @@ Request Transaction ID: sF6gx9D+U3mk6SKBJ0a5r7DZB/PAcESxCu4wPzb4c+nJHEzWJnVMXUyd
       </details>
       <details class="payload">
         <summary>📋 Sample Payload</summary>
-        <pre><code>[PROGRAM REGISTRATION EVENT]
+        <pre><code>[PROGRAM REGISTRATION REQUEST]
 - Program Name: Sunmint Phase 3
 - Program Type: Reforestation
 - Start Date: 2026-07-01
@@ -1002,7 +1002,7 @@ Request Transaction ID: YDVXvKFuBnzy+fF5leSskdf2KDD6T0XnzjzY1SV0VCvBOcHuN6skghPG
     </div>
 
     <div class="contract-card">
-      <h3>QR Code Registration <span class="event-name">[QR CODE REGISTRATION]</span></h3>
+      <h3>QR Code Registration <span class="event-name">[BATCH QR CODE REQUEST]</span></h3>
       <p class="purpose">Register a new batch of QR codes for cacao bags. Each QR code uniquely identifies a bag in the supply chain from farm to consumer. This contract creates the digital twin for each physical bag — without a registered QR code, a bag cannot be moved, sold, or tracked. Used at the start of the supply chain when empty bags are printed with QR labels or when new stock arrives from farms.</p>
       <div class="meta">
         <span class="tag">Governor / Inventory Manager</span>
@@ -1026,7 +1026,7 @@ Request Transaction ID: YDVXvKFuBnzy+fF5leSskdf2KDD6T0XnzjzY1SV0VCvBOcHuN6skghPG
       </details>
       <details class="payload">
         <summary>📋 Sample Payload</summary>
-        <pre><code>[QR CODE REGISTRATION]
+        <pre><code>[BATCH QR CODE REQUEST]
 - QR Code(s): QR-CACAO-2026-001, QR-CACAO-2026-002
 - Batch ID: BATCH-2026-06
 - Product Type: Cacao Beans (Organic)
@@ -1168,7 +1168,7 @@ Request Transaction ID: u796wVLEOXWzV3HquqIGgdiZb7IlTi62cHIB/zmhIqz1avzrxISb4JO2
     </div>
 
     <div class="contract-card">
-      <h3>Asset Receipt <span class="event-name">[ASSET RECEIPT]</span></h3>
+      <h3>Asset Receipt <span class="event-name">[ASSET RECEIPT EVENT]</span></h3>
       <p class="purpose">Confirm receipt of physical assets (cacao bags, materials) into inventory. Creates the initial inventory record. This contract is used when new stock arrives from farms, suppliers, or partner cooperatives. It establishes the first link in the chain of custody by recording who received the assets, from what source, and in what quantity. Without an Asset Receipt, no subsequent inventory movement or sale can occur.</p>
       <div class="meta">
         <span class="tag">Inventory Manager</span>
@@ -1192,7 +1192,7 @@ Request Transaction ID: u796wVLEOXWzV3HquqIGgdiZb7IlTi62cHIB/zmhIqz1avzrxISb4JO2
       </details>
       <details class="payload">
         <summary>📋 Sample Payload</summary>
-        <pre><code>[ASSET RECEIPT]
+        <pre><code>[ASSET RECEIPT EVENT]
 - Asset Type: Cacao Beans (Organic)
 - Quantity: 50
 - Received By: Maria Santos
@@ -1209,7 +1209,7 @@ Request Transaction ID: wreVZ2oKppSVrwI7s2zzdEMGRAbf7b01qiYpdEa11Q86Nt+Hq69JK0dw
     </div>
 
     <div class="contract-card">
-      <h3>Currency Conversion <span class="event-name">[CURRENCY CONVERSION]</span></h3>
+      <h3>Currency Conversion <span class="event-name">[CURRENCY CONVERSION EVENT]</span></h3>
       <p class="purpose">Record a currency conversion event (e.g. USD to BRL) for financial tracking across the supply chain. The DAO operates across multiple currencies — USD for international sales, BRL for Brazilian operations, and TDG for internal tokenomics. This contract records when funds are converted between currencies, capturing the exchange rate and timestamp for accurate financial reporting and audit trails.</p>
       <div class="meta">
         <span class="tag">Treasury Manager</span>
@@ -1233,7 +1233,7 @@ Request Transaction ID: wreVZ2oKppSVrwI7s2zzdEMGRAbf7b01qiYpdEa11Q86Nt+Hq69JK0dw
       </details>
       <details class="payload">
         <summary>📋 Sample Payload</summary>
-        <pre><code>[CURRENCY CONVERSION]
+        <pre><code>[CURRENCY CONVERSION EVENT]
 - From Currency: USD
 - To Currency: BRL
 - Amount: 1000.00
@@ -1281,7 +1281,7 @@ Request Transaction ID: Z4bwigNtBgGY0xAd1qDyXmtHg4MsTCcTALve+76RbTWcuXfSZOe/r1mv
     <div class="category-header">
       <span class="icon">💰</span>
       <h2>Contribution &amp; Finance</h2>
-      <span class="count">8 contracts</span>
+      <span class="count">9 contracts</span>
     </div>
 
     <div class="contract-card">
@@ -1326,31 +1326,84 @@ Request Transaction ID: Z4bwigNtBgGY0xAd1qDyXmtHg4MsTCcTALve+76RbTWcuXfSZOe/r1mv
 
     <div class="contract-card">
       <h3>Capital Injection Event <span class="event-name">[CAPITAL INJECTION EVENT]</span></h3>
-      <p class="purpose">Record a capital injection into the DAO treasury. Tracks funding sources and amounts. Used when external investors, grants, or DAO members contribute capital to the treasury. Each injection is recorded with its source, amount, currency, and purpose — enabling the DAO to track where its funding comes from and what it's earmarked for. This contract is essential for treasury transparency and investor reporting.</p>
+      <p class="purpose">Record a capital injection into the DAO treasury. Used when external investors, grants, or DAO members contribute capital to the treasury. The handler parses the ledger, ledger URL, USD amount, description and the destination file location, then files a row in the <code>Capital Injection</code> tab of the Main Ledger — enabling the DAO to track where its funding comes from. For moving value between ledgers in any currency, use MANAGED LEDGER TRANSACTION EVENT instead.</p>
       <div class="meta">
         <span class="tag">Treasury Manager / Governor</span>
-        <span>Required: Amount, Source, Currency, Purpose</span>
+        <span>Required: Ledger, Amount (USD)</span>
       </div>
       <div class="authority">
         <span class="auth-label">Authority: </span><span class="auth-value">Treasury Manager or Governor</span>
         <div class="auth-note">Only wallets with Treasury Manager or Governor role can sign. Unauthorized signers are rejected by Edgar with a 403 Forbidden response.</div>
       </div>
       <div class="sheets">
-        <span class="sheet-label">Sheet: </span><span class="sheet-value"><a href="https://docs.google.com/spreadsheets/d/1qL2W1_d1oY1Z5z5X5X5X5X5X5X5X5X5X5X5X5X5X/edit#gid=0" target="_blank" rel="noreferrer">Capital Injections</a> tab</span>
+        <span class="sheet-label">Sheet: </span><span class="sheet-value"><a href="https://docs.google.com/spreadsheets/d/1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU/edit" target="_blank" rel="noreferrer">Capital Injection</a> tab (Main Ledger)</span>
       </div>
       <details class="source-code">
         <summary>Source Code</summary>
         <ul>
           <li><a href="https://github.com/TrueSightDAO/dao_protocol/blob/main/truesight_dao_client/server/dispatch.py" target="_blank" rel="noreferrer">Dispatch Module (dao_protocol/server/dispatch.py)</a></li>
           <li><a href="https://github.com/TrueSightDAO/dao_protocol/blob/main/truesight_dao_client/modules/report_capital_injection.py" target="_blank" rel="noreferrer">Module: report_capital_injection.py</a></li>
-          <li><a href="https://github.com/TrueSightDAO/tokenomics/blob/main/google_app_scripts/tdg_finance/capital_injection_handler.gs" target="_blank" rel="noreferrer">GAS Handler: capital_injection_handler.gs</a></li>
+          <li><a href="https://github.com/TrueSightDAO/tokenomics/blob/main/google_app_scripts/1orWgdGckts55owiYOysR_y4sde52T_eUmrtDGAEkb4YV5DlUfJ0JZC5J/capital_injection_processing.js" target="_blank" rel="noreferrer">GAS Handler: capital_injection_processing.js</a></li>
           <li><a href="https://github.com/TrueSightDAO/sentiment_importer/blob/main/app/controllers/dao_controller.rb" target="_blank" rel="noreferrer">Edgar Controller: dao_controller.rb</a></li>
         </ul>
       </details>
     </div>
 
     <div class="contract-card">
-      <h3>DAO Expenses Event <span class="event-name">[DAO EXPENSES EVENT]</span></h3>
+      <h3>Managed Ledger Transaction Event <span class="event-name">[MANAGED LEDGER TRANSACTION EVENT]</span></h3>
+      <p class="purpose">Move assets between ledgers, or record a capital injection as a two-legged double entry. Generalises CAPITAL INJECTION EVENT: instead of naming a single amount, you declare a source ledger, a destination ledger, and one or more asset lines, and the handler derives and commits the balanced ledger rows on both sides. Kept deliberately separate from the capital injection handler.</p>
+      <div class="meta">
+        <span class="tag">Governor</span>
+        <span>Required: Source Ledger URL, Destination Ledger URL, Effective Date, Description, Assets Entity, Equity Entity, Asset lines</span>
+      </div>
+      <div class="authority">
+        <span class="auth-label">Authority: </span><span class="auth-value">Governor</span>
+        <div class="auth-note">This event writes balance rows into live ledger <code>Transactions</code> tabs. The Assets Entity must be the human custodian on every Assets leg (INTER_LEDGER_HOLDINGS.md §3.4), and must never be the same name as the Equity Entity — the handler throws on both conditions.</div>
+      </div>
+      <details class="fields">
+        <summary>Transaction types</summary>
+        <div class="variant">
+          <h4>Injection <span class="var-name">(committable)</span></h4>
+          <p>Assets move onto the destination ledger, with the mirroring equity leg against the declared Equity Entity. Negative row on source, positive row on destination.</p>
+        </div>
+        <div class="variant">
+          <h4>Movement <span class="var-name">(committable)</span></h4>
+          <p>Assets relocate from source ledger to destination ledger with no change in ownership economics.</p>
+        </div>
+        <div class="variant">
+          <h4>Retirement <span class="var-name">(derived, write gated)</span></h4>
+          <p>Derived and tested, but the live ledger write is deliberately gated. A retirement submission is recorded but does not move balances.</p>
+        </div>
+      </details>
+      <details class="fields">
+        <summary>Field rules</summary>
+        <div class="variant">
+          <h4>Amounts are unsigned</h4>
+          <p>Each asset line is a currency key plus a quantity. A negative quantity is rejected — direction is implied by which leg the row sits on, not by sign.</p>
+        </div>
+        <div class="variant">
+          <h4>Unknown currency fails loudly</h4>
+          <p>Every currency key must exist in the <code>Currencies</code> tab. An unknown key throws rather than being valued at $0 — a missing rates row must never silently mis-price a transfer.</p>
+        </div>
+        <div class="variant">
+          <h4>Valuation</h4>
+          <p>Total USD value is derived from the <code>Currencies</code> price table at commit time; it is not supplied by the submitter.</p>
+        </div>
+      </details>
+      <div class="sheets">
+        <span class="sheet-label">Sheet: </span><span class="sheet-value"><a href="https://docs.google.com/spreadsheets/d/1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU/edit" target="_blank" rel="noreferrer">Managed Ledger Transactions</a> tab (Main Ledger) · balance rows land in each ledger's <code>Transactions</code> tab</span>
+      </div>
+      <details class="source-code">
+        <summary>Source Code</summary>
+        <ul>
+          <li><a href="https://github.com/TrueSightDAO/tokenomics/blob/main/google_app_scripts/1orWgdGckts55owiYOysR_y4sde52T_eUmrtDGAEkb4YV5DlUfJ0JZC5J/managed_ledger_transaction_processing.js" target="_blank" rel="noreferrer">GAS Handler: managed_ledger_transaction_processing.js</a></li>
+          <li><a href="https://github.com/TrueSightDAO/tokenomics/blob/main/google_app_scripts/1orWgdGckts55owiYOysR_y4sde52T_eUmrtDGAEkb4YV5DlUfJ0JZC5J/capital_injection_processing.js" target="_blank" rel="noreferrer">Sibling: capital_injection_processing.js</a></li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="contract-card">
+      <h3>DAO Expenses Event <span class="event-name">[DAO Inventory Expense Event]</span></h3>
       <p class="purpose">Record an expense paid from the DAO treasury. Tracks operational costs and reimbursements. Every outflow from the treasury is recorded via this contract — including operational costs (hosting, tools, subscriptions), contributor reimbursements, program expenses, and marketing spend. Expenses are categorized for budgeting and financial analysis. This contract, together with Capital Injection and Sales Events, provides a complete picture of the DAO's financial position.</p>
       <div class="meta">
         <span class="tag">Treasury Manager</span>
@@ -1375,7 +1428,7 @@ Request Transaction ID: Z4bwigNtBgGY0xAd1qDyXmtHg4MsTCcTALve+76RbTWcuXfSZOe/r1mv
     </div>
 
     <div class="contract-card">
-      <h3>Mint Donation Event <span class="event-name">[MINT DONATION EVENT]</span></h3>
+      <h3>Mint Donation Event <span class="event-name">[DONATION MINT EVENT]</span></h3>
       <p class="purpose">Mint a donation receipt as an on-chain record. Used for charitable contributions and tax receipting. When donors contribute to the DAO's charitable programs (e.g. Sunmint reforestation, community development), this contract creates a permanent, timestamped record of the donation. The receipt includes the donor's name, amount, currency, and project — providing verifiable documentation for tax purposes and impact reporting.</p>
       <div class="meta">
         <span class="tag">Treasury Manager</span>
@@ -1425,7 +1478,7 @@ Request Transaction ID: Z4bwigNtBgGY0xAd1qDyXmtHg4MsTCcTALve+76RbTWcuXfSZOe/r1mv
     </div>
 
     <div class="contract-card">
-      <h3>Notarize Event <span class="event-name">[NOTARIZE EVENT]</span></h3>
+      <h3>Notarize Event <span class="event-name">[NOTARIZATION EVENT]</span></h3>
       <p class="purpose">Notarize a document or record by hashing it and storing the hash on-chain. Provides timestamped proof of existence. This contract serves as the DAO's notary public — any contributor can submit a SHA-256 hash of a document, and Edgar records it with a timestamp on the TrueChain audit trail. This proves the document existed at a specific point in time without revealing its contents. Used for: intellectual property protection, agreement timestamps, and verifiable record-keeping.</p>
       <div class="meta">
         <span class="tag">Any Contributor</span>
@@ -1509,7 +1562,7 @@ Request Transaction ID: Z4bwigNtBgGY0xAd1qDyXmtHg4MsTCcTALve+76RbTWcuXfSZOe/r1mv
     </div>
 
     <div class="contract-card">
-      <h3>Create Proposal Event <span class="event-name">[CREATE PROPOSAL EVENT]</span></h3>
+      <h3>Create Proposal Event <span class="event-name">[PROPOSAL CREATION]</span></h3>
       <p class="purpose">Submit a new governance proposal to the DAO. Proposals can cover treasury allocation, policy changes, or new initiatives. This is the primary mechanism for decentralized decision-making. A governor submits a proposal with a title, description, and voting period. The proposal is then reviewed by other governors and put to a vote. Proposals that pass are executed by Edgar — triggering the appropriate state transitions. This contract is the foundation of the DAO's governance system.</p>
       <div class="meta">
         <span class="tag">Governor</span>
@@ -1693,7 +1746,7 @@ Request Transaction ID: Z4bwigNtBgGY0xAd1qDyXmtHg4MsTCcTALve+76RbTWcuXfSZOe/r1mv
     </div>
 
     <div class="contract-card">
-      <h3>Register Farm Event <span class="event-name">[REGISTER FARM EVENT]</span></h3>
+      <h3>Register Farm Event <span class="event-name">[FARM REGISTRATION EVENT]</span></h3>
       <p class="purpose">Register a farm in the DAO's supply chain. Tracks farm location, farmer details, and certification status. This contract records farms that supply cacao to the DAO. Each farm entry includes the farm name, farmer details, GPS location, and certification status (organic, fair trade, etc.). This creates transparency in the supply chain — consumers can trace their cacao back to the farm of origin. Used by the Agroverse program to connect farmers directly to the market.</p>
       <div class="meta">
         <span class="tag">Supply Chain Manager</span>
@@ -1782,7 +1835,7 @@ Request Transaction ID: v2gZ0x6uulSrH5JVnzEZH7YhckF2jHShl0ihuin7U7v19RpEiM+9a6Ai
     </div>
 
     <div class="contract-card">
-      <h3>Update QR Code Event <span class="event-name">[UPDATE QR CODE EVENT]</span></h3>
+      <h3>Update QR Code Event <span class="event-name">[QR CODE UPDATE EVENT]</span></h3>
       <p class="purpose">Update the status or metadata of an existing QR code. Used for corrections and lifecycle management. When a QR code's metadata needs to change — correcting a misprint, updating product type, changing status from LOST to IN INVENTORY, or marking a bag as DAMAGED — this contract records the update. It provides an audit trail of all changes to QR code records, ensuring the inventory ledger remains accurate even when corrections are needed.</p>
       <div class="meta">
         <span class="tag">Inventory Manager</span>
