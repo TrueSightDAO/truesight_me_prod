@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-01T06:46:57Z",
+  "generated_at_utc": "2026-11-01T18:03:42Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,9 +8,9 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-11-01T03:30:10Z",
-    "total_contributors": 500,
-    "total_tdg_controlled_sum": 2493633.1,
+    "generated_at": "2026-11-01T17:29:28Z",
+    "total_contributors": 499,
+    "total_tdg_controlled_sum": 2492833.1,
     "governors_count": 10,
     "governors": [
       {
@@ -44,6 +44,14 @@
         "tdg_controlled": 10279.0,
         "contribution_count": 47,
         "profile_url": "https://truesight.me/credentials/#ken-nim"
+      },
+      {
+        "display_name": "Shena Davenport",
+        "slug": "shena-davenport",
+        "voting_power_pct": 0.39,
+        "tdg_controlled": 9837.0,
+        "contribution_count": 19,
+        "profile_url": "https://truesight.me/credentials/#shena-davenport"
       },
       {
         "display_name": "Elizabeth Wong",
@@ -84,20 +92,12 @@
         "tdg_controlled": 2322.0,
         "contribution_count": 19,
         "profile_url": "https://truesight.me/credentials/#paloma"
-      },
-      {
-        "display_name": "Philip Lee - husband of june",
-        "slug": null,
-        "voting_power_pct": 0.03,
-        "tdg_controlled": 800.0,
-        "contribution_count": 0,
-        "profile_url": "https://truesight.me/credentials/#None"
       }
     ],
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-11-01T05:48:38.344Z",
+    "generated_at": "2026-11-01T17:48:40.085Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -994,17 +994,17 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-10-31T12:38:12.000Z",
+      "generated_at": "2026-11-01T13:29:59.000Z",
       "store_count": 0,
       "line_items": 15
     },
     "partners": {
-      "generated_at": "2026-10-31T12:38:12.000Z",
+      "generated_at": "2026-11-01T13:29:59.000Z",
       "partner_count": 22
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-11-01T06:46:57Z",
+    "generated_at_utc": "2026-11-01T18:03:42Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
@@ -1466,7 +1466,74 @@
     "interpretation_hint": "SunMint = the DAO's on-the-ground restoration evidence layer (trees, plots, farms) plus its media archive (MAP). Use this to answer 'how many trees have you planted?', 'how many plots / hectares?', 'which farms and where?', and 'what farm footage / videos / transcriptions exist?'. Progress toward the 10,000-hectare mission is plots.total_hectares vs 10000."
   },
   "recent_beerhall_digests": {
-    "error": "beerhall listing unavailable"
+    "total_entries": 130,
+    "recent": [
+      {
+        "date": "2026-10-20",
+        "slug": "sea-china-follow-up-discord-identity-fix",
+        "filename": "beer-hall_2026-10-20T035402Z_sea-china-follow-up-discord-identity-fix.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-20T035402Z_sea-china-follow-up-discord-identity-fix.md"
+      },
+      {
+        "date": "2026-10-19",
+        "slug": "warehouse-logistics-attribution-corrected",
+        "filename": "beer-hall_2026-10-19T034403Z_warehouse-logistics-attribution-corrected.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-19T034403Z_warehouse-logistics-attribution-corrected.md"
+      },
+      {
+        "date": "2026-10-18",
+        "slug": "treasury-cache-fix-sa-access-matrix",
+        "filename": "beer-hall_2026-10-18T033301Z_treasury-cache-fix-sa-access-matrix.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-18T033301Z_treasury-cache-fix-sa-access-matrix.md"
+      },
+      {
+        "date": "2026-10-16",
+        "slug": "cfr-payout-live-settlement-sop-merged",
+        "filename": "beer-hall_2026-10-16T033651Z_cfr-payout-live-settlement-sop-merged.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-16T033651Z_cfr-payout-live-settlement-sop-merged.md"
+      },
+      {
+        "date": "2026-10-13",
+        "slug": "black-king-landed-cost-wire-sent",
+        "filename": "beer-hall_2026-10-13T055606Z_black-king-landed-cost-wire-sent.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-13T055606Z_black-king-landed-cost-wire-sent.md"
+      },
+      {
+        "date": "2026-10-11",
+        "slug": "usda-released-gateway-fix-warehouse-codified",
+        "filename": "beer-hall_2026-10-11T043733Z_usda-released-gateway-fix-warehouse-codified.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-11T043733Z_usda-released-gateway-fix-warehouse-codified.md"
+      },
+      {
+        "date": "2026-10-09",
+        "slug": "cooperative-first-sourcing-ilheus-wind-down",
+        "filename": "beer-hall_2026-10-09T050607Z_cooperative-first-sourcing-ilheus-wind-down.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-09T050607Z_cooperative-first-sourcing-ilheus-wind-down.md"
+      },
+      {
+        "date": "2026-10-08",
+        "slug": "agl-shipments-complete-hawb-issued-oscar-loaded",
+        "filename": "beer-hall_2026-10-08T050257Z_agl-shipments-complete-hawb-issued-oscar-loaded.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-08T050257Z_agl-shipments-complete-hawb-issued-oscar-loaded.md"
+      },
+      {
+        "date": "2026-09-29",
+        "slug": "ledger-explorer-shipped-payout-filter-prod-gate",
+        "filename": "beer-hall_2026-09-29T044723Z_ledger-explorer-shipped-payout-filter-prod-gate.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-29T044723Z_ledger-explorer-shipped-payout-filter-prod-gate.md"
+      },
+      {
+        "date": "2026-09-20",
+        "slug": "sunmint-explorer-and-santos-ops",
+        "filename": "beer-hall_2026-09-20T035637Z_sunmint-explorer-and-santos-ops.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-20T035637Z_sunmint-explorer-and-santos-ops.md"
+      }
+    ],
+    "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
+    "directory_url": "https://github.com/TrueSightDAO/ecosystem_change_logs/tree/main/beer_hall/entries",
+    "raw_url_pattern": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/<filename>",
+    "human_index_url": "https://truesight.me/beerhall/updates.html",
+    "interpretation_hint": "Each entry is a community digest summarizing recent shipped work. The slug encodes the headline themes; the date is when the digest was published. Fetch raw_url for the full markdown body. For digests older than the 10 most-recent shown here, fetch full_archive_url for the complete historical index."
   },
   "canonical_sources": {
     "treasury_cache": "https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_offchain_treasury.json",
