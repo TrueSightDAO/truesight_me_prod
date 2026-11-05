@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-04T19:59:17Z",
+  "generated_at_utc": "2026-11-05T07:19:13Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,8 +8,8 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-11-04T19:09:18Z",
-    "total_contributors": 499,
+    "generated_at": "2026-11-05T03:30:55Z",
+    "total_contributors": 500,
     "total_tdg_controlled_sum": 2492833.1,
     "governors_count": 10,
     "governors": [
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-11-04T19:48:42.883Z",
+    "generated_at": "2026-11-05T06:48:42.073Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -952,11 +952,11 @@
         }
       },
       "USD": {
-        "total_quantity": 7917.91,
-        "total_value_usd": 7917.91,
+        "total_quantity": 7917.85,
+        "total_value_usd": 7917.85,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 2840.38,
+          "Main Ledger": 2840.31,
           "AGL15": 2450.5,
           "AGL6": 1337.59,
           "AGL14": 764.5,
@@ -967,11 +967,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 57.84,
-        "total_value_usd": 57.84,
+        "total_quantity": 57.91,
+        "total_value_usd": 57.91,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 57.84
+          "Main Ledger": 57.91
         }
       },
       "USDT": {
@@ -1004,7 +1004,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-11-04T19:59:17Z",
+    "generated_at_utc": "2026-11-05T07:19:13Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
@@ -1466,8 +1466,14 @@
     "interpretation_hint": "SunMint = the DAO's on-the-ground restoration evidence layer (trees, plots, farms) plus its media archive (MAP). Use this to answer 'how many trees have you planted?', 'how many plots / hectares?', 'which farms and where?', and 'what farm footage / videos / transcriptions exist?'. Progress toward the 10,000-hectare mission is plots.total_hectares vs 10000."
   },
   "recent_beerhall_digests": {
-    "total_entries": 131,
+    "total_entries": 132,
     "recent": [
+      {
+        "date": "2026-11-05",
+        "slug": "sophia-chat-client-shipped-firewall-guide",
+        "filename": "beer-hall_2026-11-05T053944Z_sophia-chat-client-shipped-firewall-guide.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-11-05T053944Z_sophia-chat-client-shipped-firewall-guide.md"
+      },
       {
         "date": "2026-11-03",
         "slug": "mlte-pipeline-shipped-sales-webhook-fixed",
@@ -1521,12 +1527,6 @@
         "slug": "agl-shipments-complete-hawb-issued-oscar-loaded",
         "filename": "beer-hall_2026-10-08T050257Z_agl-shipments-complete-hawb-issued-oscar-loaded.md",
         "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-08T050257Z_agl-shipments-complete-hawb-issued-oscar-loaded.md"
-      },
-      {
-        "date": "2026-09-29",
-        "slug": "ledger-explorer-shipped-payout-filter-prod-gate",
-        "filename": "beer-hall_2026-09-29T044723Z_ledger-explorer-shipped-payout-filter-prod-gate.md",
-        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-09-29T044723Z_ledger-explorer-shipped-payout-filter-prod-gate.md"
       }
     ],
     "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
