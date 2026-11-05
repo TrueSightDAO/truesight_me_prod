@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-05T07:19:13Z",
+  "generated_at_utc": "2026-11-05T20:14:32Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-11-05T03:30:55Z",
+    "generated_at": "2026-11-05T17:50:21Z",
     "total_contributors": 500,
     "total_tdg_controlled_sum": 2492833.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-11-05T06:48:42.073Z",
+    "generated_at": "2026-11-05T19:48:46.638Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -952,12 +952,12 @@
         }
       },
       "USD": {
-        "total_quantity": 7917.85,
-        "total_value_usd": 7917.85,
+        "total_quantity": 6986.37,
+        "total_value_usd": 6986.37,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 2840.31,
           "AGL15": 2450.5,
+          "Main Ledger": 1908.83,
           "AGL6": 1337.59,
           "AGL14": 764.5,
           "AGL10": 347.83,
@@ -994,17 +994,17 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-11-04T14:37:36.000Z",
+      "generated_at": "2026-11-05T14:43:06.000Z",
       "store_count": 0,
       "line_items": 15
     },
     "partners": {
-      "generated_at": "2026-11-04T14:37:36.000Z",
+      "generated_at": "2026-11-05T14:43:06.000Z",
       "partner_count": 22
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-11-05T07:19:13Z",
+    "generated_at_utc": "2026-11-05T20:14:32Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
