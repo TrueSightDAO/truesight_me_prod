@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-10T07:41:49Z",
+  "generated_at_utc": "2026-11-10T19:58:32Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-11-10T03:58:10Z",
+    "generated_at": "2026-11-10T19:15:28Z",
     "total_contributors": 500,
     "total_tdg_controlled_sum": 2492833.1,
     "governors_count": 10,
@@ -86,18 +86,18 @@
         "profile_url": "https://truesight.me/credentials/#paloma"
       },
       {
-        "display_name": "Bilal",
-        "slug": "bilal",
+        "display_name": "Lucas Root",
+        "slug": "lucas-root",
         "voting_power_pct": 0.02,
-        "tdg_controlled": 408.0,
-        "contribution_count": 1,
-        "profile_url": "https://truesight.me/credentials/#bilal"
+        "tdg_controlled": 425.0,
+        "contribution_count": 4,
+        "profile_url": "https://truesight.me/credentials/#lucas-root"
       }
     ],
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-11-10T06:48:35.902Z",
+    "generated_at": "2026-11-10T19:49:09.566Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -994,17 +994,17 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-11-09T16:26:48.000Z",
+      "generated_at": "2026-11-10T14:57:19.000Z",
       "store_count": 0,
       "line_items": 16
     },
     "partners": {
-      "generated_at": "2026-11-09T16:26:48.000Z",
+      "generated_at": "2026-11-10T14:57:19.000Z",
       "partner_count": 22
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-11-10T07:41:49Z",
+    "generated_at_utc": "2026-11-10T19:58:32Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
