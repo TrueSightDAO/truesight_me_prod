@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-12T07:40:08Z",
+  "generated_at_utc": "2026-11-12T20:23:29Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-11-12T04:58:01Z",
+    "generated_at": "2026-11-12T14:18:46Z",
     "total_contributors": 500,
     "total_tdg_controlled_sum": 2492833.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-11-12T06:48:42.208Z",
+    "generated_at": "2026-11-12T19:48:42.197Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -294,12 +294,12 @@
         }
       },
       "Brazilian Reis": {
-        "total_quantity": 456.9,
-        "total_value_usd": 106.14,
+        "total_quantity": 1541.9,
+        "total_value_usd": 358.18,
         "item_count": 1,
         "ledger_breakdown": {
-          "AGL8": 236.9,
-          "Main Ledger": 220.0
+          "Main Ledger": 1305.0,
+          "AGL8": 236.9
         }
       },
       "CRYBY Coffee Bean Roaster, 14.5L/3.83 with 3 year warranty starting 20251027": {
@@ -519,11 +519,11 @@
         }
       },
       "Cacao Tree Planted - Unassigned": {
-        "total_quantity": 107.0,
+        "total_quantity": 324.0,
         "total_value_usd": 0.0,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 107.0
+          "Main Ledger": 324.0
         }
       },
       "Cacao Tree To Be Planted": {
@@ -952,12 +952,12 @@
         }
       },
       "USD": {
-        "total_quantity": 7202.58,
-        "total_value_usd": 7202.58,
+        "total_quantity": 6824.53,
+        "total_value_usd": 6824.53,
         "item_count": 1,
         "ledger_breakdown": {
           "AGL15": 2450.5,
-          "Main Ledger": 2125.05,
+          "Main Ledger": 1747.0,
           "AGL6": 1337.59,
           "AGL14": 764.5,
           "AGL10": 347.83,
@@ -994,17 +994,17 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-11-11T14:28:13.000Z",
+      "generated_at": "2026-11-12T15:19:59.000Z",
       "store_count": 0,
       "line_items": 16
     },
     "partners": {
-      "generated_at": "2026-11-11T14:28:13.000Z",
+      "generated_at": "2026-11-12T15:19:59.000Z",
       "partner_count": 22
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-11-12T07:40:08Z",
+    "generated_at_utc": "2026-11-12T20:23:29Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
@@ -1013,20 +1013,21 @@
       "progress_pct": 4.2421
     },
     "trees": {
-      "total": 245,
+      "total": 462,
       "by_status": {
         "LINKED": 16,
-        "NEW": 229
+        "NEW": 446
       },
       "by_species": {
+        "Cacao - Forestero": 281,
         "Cacau - Hybrid": 114,
-        "Cacao - Forestero": 93,
-        "Cacao - Criolla": 22,
+        "Cacao - Criolla": 49,
         "Cumaru": 10,
-        "Cacau enxertado": 3,
+        "Cacau enxertado": 4,
         "Bougainvillea": 1,
         "Cacau": 1,
-        "Sumaúma": 1
+        "Sumaúma": 1,
+        "Café": 1
       },
       "source": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/trees/index.geojson"
     },
@@ -1466,7 +1467,74 @@
     "interpretation_hint": "SunMint = the DAO's on-the-ground restoration evidence layer (trees, plots, farms) plus its media archive (MAP). Use this to answer 'how many trees have you planted?', 'how many plots / hectares?', 'which farms and where?', and 'what farm footage / videos / transcriptions exist?'. Progress toward the 10,000-hectare mission is plots.total_hectares vs 10000."
   },
   "recent_beerhall_digests": {
-    "error": "beerhall listing unavailable"
+    "total_entries": 134,
+    "recent": [
+      {
+        "date": "2026-11-09",
+        "slug": "past-harvests-merchant-feed-tree-digest",
+        "filename": "beer-hall_2026-11-09T050754Z_past-harvests-merchant-feed-tree-digest.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-11-09T050754Z_past-harvests-merchant-feed-tree-digest.md"
+      },
+      {
+        "date": "2026-11-07",
+        "slug": "500g-cacao-mass-bar-live",
+        "filename": "beer-hall_2026-11-07T050354Z_500g-cacao-mass-bar-live.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-11-07T050354Z_500g-cacao-mass-bar-live.md"
+      },
+      {
+        "date": "2026-11-05",
+        "slug": "sophia-chat-client-shipped-firewall-guide",
+        "filename": "beer-hall_2026-11-05T053944Z_sophia-chat-client-shipped-firewall-guide.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-11-05T053944Z_sophia-chat-client-shipped-firewall-guide.md"
+      },
+      {
+        "date": "2026-11-03",
+        "slug": "mlte-pipeline-shipped-sales-webhook-fixed",
+        "filename": "beer-hall_2026-11-03T054614Z_mlte-pipeline-shipped-sales-webhook-fixed.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-11-03T054614Z_mlte-pipeline-shipped-sales-webhook-fixed.md"
+      },
+      {
+        "date": "2026-10-20",
+        "slug": "sea-china-follow-up-discord-identity-fix",
+        "filename": "beer-hall_2026-10-20T035402Z_sea-china-follow-up-discord-identity-fix.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-20T035402Z_sea-china-follow-up-discord-identity-fix.md"
+      },
+      {
+        "date": "2026-10-19",
+        "slug": "warehouse-logistics-attribution-corrected",
+        "filename": "beer-hall_2026-10-19T034403Z_warehouse-logistics-attribution-corrected.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-19T034403Z_warehouse-logistics-attribution-corrected.md"
+      },
+      {
+        "date": "2026-10-18",
+        "slug": "treasury-cache-fix-sa-access-matrix",
+        "filename": "beer-hall_2026-10-18T033301Z_treasury-cache-fix-sa-access-matrix.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-18T033301Z_treasury-cache-fix-sa-access-matrix.md"
+      },
+      {
+        "date": "2026-10-16",
+        "slug": "cfr-payout-live-settlement-sop-merged",
+        "filename": "beer-hall_2026-10-16T033651Z_cfr-payout-live-settlement-sop-merged.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-16T033651Z_cfr-payout-live-settlement-sop-merged.md"
+      },
+      {
+        "date": "2026-10-13",
+        "slug": "black-king-landed-cost-wire-sent",
+        "filename": "beer-hall_2026-10-13T055606Z_black-king-landed-cost-wire-sent.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-13T055606Z_black-king-landed-cost-wire-sent.md"
+      },
+      {
+        "date": "2026-10-11",
+        "slug": "usda-released-gateway-fix-warehouse-codified",
+        "filename": "beer-hall_2026-10-11T043733Z_usda-released-gateway-fix-warehouse-codified.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-11T043733Z_usda-released-gateway-fix-warehouse-codified.md"
+      }
+    ],
+    "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
+    "directory_url": "https://github.com/TrueSightDAO/ecosystem_change_logs/tree/main/beer_hall/entries",
+    "raw_url_pattern": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/<filename>",
+    "human_index_url": "https://truesight.me/beerhall/updates.html",
+    "interpretation_hint": "Each entry is a community digest summarizing recent shipped work. The slug encodes the headline themes; the date is when the digest was published. Fetch raw_url for the full markdown body. For digests older than the 10 most-recent shown here, fetch full_archive_url for the complete historical index."
   },
   "canonical_sources": {
     "treasury_cache": "https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_offchain_treasury.json",
