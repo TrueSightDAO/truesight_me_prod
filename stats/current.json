@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-16T22:28:28Z",
+  "generated_at_utc": "2026-11-17T08:25:27Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-11-16T12:19:24Z",
+    "generated_at": "2026-11-17T05:48:49Z",
     "total_contributors": 499,
     "total_tdg_controlled_sum": 2489833.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-11-16T21:48:40.643Z",
+    "generated_at": "2026-11-17T07:48:41.073Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -327,12 +327,12 @@
         }
       },
       "Brazilian Reis": {
-        "total_quantity": 1541.9,
-        "total_value_usd": 358.18,
+        "total_quantity": 456.9,
+        "total_value_usd": 106.14,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 1305.0,
-          "AGL8": 236.9
+          "AGL8": 236.9,
+          "Main Ledger": 220.0
         }
       },
       "CRYBY Coffee Bean Roaster, 14.5L/3.83 with 3 year warranty starting 20251027": {
@@ -993,12 +993,12 @@
         }
       },
       "USD": {
-        "total_quantity": 6884.34,
-        "total_value_usd": 6884.34,
+        "total_quantity": 6884.25,
+        "total_value_usd": 6884.25,
         "item_count": 1,
         "ledger_breakdown": {
           "AGL15": 2450.5,
-          "Main Ledger": 1806.81,
+          "Main Ledger": 1806.72,
           "AGL6": 1337.59,
           "AGL14": 764.5,
           "AGL10": 347.83,
@@ -1008,11 +1008,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 58.78,
-        "total_value_usd": 58.78,
+        "total_quantity": 58.87,
+        "total_value_usd": 58.87,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 58.78
+          "Main Ledger": 58.87
         }
       },
       "USDT": {
@@ -1045,7 +1045,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-11-16T22:28:28Z",
+    "generated_at_utc": "2026-11-17T08:25:27Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
