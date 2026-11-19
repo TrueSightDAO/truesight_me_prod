@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-19T07:51:49Z",
+  "generated_at_utc": "2026-11-19T20:56:14Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-11-19T05:07:28Z",
+    "generated_at": "2026-11-19T14:58:32Z",
     "total_contributors": 499,
     "total_tdg_controlled_sum": 2489833.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-11-19T07:48:37.575Z",
+    "generated_at": "2026-11-19T20:49:40.293Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -1035,17 +1035,17 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-11-18T15:44:00.000Z",
+      "generated_at": "2026-11-19T15:48:42.000Z",
       "store_count": 0,
       "line_items": 16
     },
     "partners": {
-      "generated_at": "2026-11-18T15:44:00.000Z",
+      "generated_at": "2026-11-19T15:48:42.000Z",
       "partner_count": 22
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-11-19T07:51:49Z",
+    "generated_at_utc": "2026-11-19T20:56:14Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
