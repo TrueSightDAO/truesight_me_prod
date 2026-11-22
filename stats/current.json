@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-21T19:44:12Z",
+  "generated_at_utc": "2026-11-22T07:23:28Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-11-21T13:57:07Z",
+    "generated_at": "2026-11-22T03:33:23Z",
     "total_contributors": 499,
     "total_tdg_controlled_sum": 2489833.1,
     "governors_count": 10,
@@ -97,7 +97,7 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-11-21T18:48:40.436Z",
+    "generated_at": "2026-11-22T06:48:35.610Z",
     "schema_version": 5,
     "trigger": "cron",
     "currency_totals": {
@@ -1001,12 +1001,12 @@
         }
       },
       "USD": {
-        "total_quantity": 6765.22,
-        "total_value_usd": 6765.22,
+        "total_quantity": 6765.16,
+        "total_value_usd": 6765.16,
         "item_count": 1,
         "ledger_breakdown": {
           "AGL15": 2450.5,
-          "Main Ledger": 1687.69,
+          "Main Ledger": 1687.62,
           "AGL6": 1337.59,
           "AGL14": 764.5,
           "AGL10": 347.83,
@@ -1016,11 +1016,11 @@
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 59.2,
-        "total_value_usd": 59.2,
+        "total_quantity": 59.27,
+        "total_value_usd": 59.27,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 59.2
+          "Main Ledger": 59.27
         }
       },
       "USDT": {
@@ -1053,7 +1053,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-11-21T19:44:12Z",
+    "generated_at_utc": "2026-11-22T07:23:28Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
