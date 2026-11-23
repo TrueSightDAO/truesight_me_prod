@@ -1,9 +1,15 @@
 {
-  "generated_at_utc": "2026-11-22T19:56:30Z",
+  "generated_at_utc": "2026-11-23T08:07:37Z",
   "source": "https://api.github.com/repos/TrueSightDAO/ecosystem_change_logs/contents/beer_hall/entries?ref=main",
   "interpretation_hint": "Every Beer Hall digest ever published, sorted newest-first. Each entry: date, slug, filename, raw_url. Use the slug as a quick topic hint; fetch raw_url for the full markdown body. For headline numbers + the 10 most-recent entries, fetch https://truesight.me/stats/current.json instead.",
-  "total_entries": 134,
+  "total_entries": 135,
   "entries": [
+    {
+      "date": "2026-11-23",
+      "slug": "awb-provenance-tdg-scorer-fix-china-entry",
+      "filename": "beer-hall_2026-11-23T061830Z_awb-provenance-tdg-scorer-fix-china-entry.md",
+      "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-11-23T061830Z_awb-provenance-tdg-scorer-fix-china-entry.md"
+    },
     {
       "date": "2026-11-09",
       "slug": "past-harvests-merchant-feed-tree-digest",
