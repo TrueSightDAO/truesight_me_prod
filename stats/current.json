@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-26T08:50:53Z",
+  "generated_at_utc": "2026-11-26T21:53:16Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-11-26T03:56:38Z",
+    "generated_at": "2026-11-26T16:00:31Z",
     "total_contributors": 500,
     "total_tdg_controlled_sum": 2489833.1,
     "governors_count": 10,
@@ -97,9 +97,9 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-11-26T08:48:36.283Z",
+    "generated_at": "2026-11-26T21:46:17.890Z",
     "schema_version": 5,
-    "trigger": "cron",
+    "trigger": "sales_update_agl",
     "currency_totals": {
       "1 Gallon Zip Loc Bags": {
         "total_quantity": 34.0,
@@ -150,11 +150,11 @@
         }
       },
       "8 Ounce Package Kraft Pouch - Ilheus, Brazil 2024": {
-        "total_quantity": 5.0,
-        "total_value_usd": 33.2,
+        "total_quantity": 23.0,
+        "total_value_usd": 152.72,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 5.0
+          "Main Ledger": 23.0
         }
       },
       "8 Ounce Package Kraft Pouch - Ilheus, Brazil 2024 + 047-3175-3223 - San Francisco": {
@@ -560,11 +560,11 @@
         }
       },
       "Cacao Tree To Be Planted": {
-        "total_quantity": 372.0,
-        "total_value_usd": -558.0,
+        "total_quantity": 373.0,
+        "total_value_usd": -559.5,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 372.0
+          "Main Ledger": 373.0
         }
       },
       "Canopy 4ft X 6ft with 2 years warranty": {
@@ -745,11 +745,11 @@
         }
       },
       "Coopercabruca Cacao Butter (KG) + 047-3175-3223 - San Francisco": {
-        "total_quantity": 4.5,
-        "total_value_usd": 156.57,
+        "total_quantity": 4.6,
+        "total_value_usd": 160.05,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 4.5
+          "Main Ledger": 4.6
         }
       },
       "Digital Kitchen Scale, 10kg Capacity": {
@@ -1001,12 +1001,12 @@
         }
       },
       "USD": {
-        "total_quantity": 6764.88,
-        "total_value_usd": 6764.88,
+        "total_quantity": 6789.88,
+        "total_value_usd": 6789.88,
         "item_count": 1,
         "ledger_breakdown": {
           "AGL15": 2450.5,
-          "Main Ledger": 1687.35,
+          "Main Ledger": 1712.35,
           "AGL6": 1337.59,
           "AGL14": 764.5,
           "AGL10": 347.83,
@@ -1043,17 +1043,17 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-11-25T17:17:31.000Z",
+      "generated_at": "2026-11-26T16:58:25.000Z",
       "store_count": 0,
       "line_items": 16
     },
     "partners": {
-      "generated_at": "2026-11-25T17:17:31.000Z",
+      "generated_at": "2026-11-26T16:58:25.000Z",
       "partner_count": 22
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-11-26T08:50:53Z",
+    "generated_at_utc": "2026-11-26T21:53:16Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
