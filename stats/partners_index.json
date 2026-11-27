@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-27T08:59:57Z",
+  "generated_at_utc": "2026-11-27T21:35:58Z",
   "source": "https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/partners-inventory.json",
   "interpretation_hint": "Active Agroverse partner storage points. Each entry: partner slug, active SKU count, total inventory units across SKUs, and the top-3 products by stock. Use this for 'which partners are currently carrying inventory?' / 'who has the most stock?' / 'where can someone buy product X?'. The full per-item detail (price, GTIN, image, farm of origin, shipment ID) is at the source URL above. Partner location / region is NOT carried here — for region grouping you'd need the Agroverse Partners sheet, which requires authenticated access.",
   "total_active_partners": 22,
@@ -7,28 +7,28 @@
     {
       "slug": "kikis-cocoa",
       "active_sku_count": 6,
-      "total_inventory_units": 419,
+      "total_inventory_units": 325,
       "top_products": [
         {
           "product_id": "ceremonial-cacao-paulo-s-la-do-sitio-farm-200g",
           "product_name": "Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)",
-          "inventory": 169,
+          "inventory": 170,
           "shipment": "AGL8",
           "farm": "Paulo"
         },
         {
           "product_id": "8-ounce-organic-cacao-nibs",
           "product_name": "Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs",
-          "inventory": 131,
+          "inventory": 112,
           "shipment": "AGL4",
           "farm": "Oscar"
         },
         {
-          "product_id": "organic-81-dark-chocolate-bar-50g-oscar-bahia-2024",
-          "product_name": "81% Organic Dark Chocolate Bar (50g) — Oscar's Farm, Bahia Brazil, 2024",
-          "inventory": 40,
+          "product_id": "cacao-mass-bar-500g-ilheus-2024",
+          "product_name": "Cacao Mass Bar – Oscar's Farm, Bahia Brazil, 2024 (500g)",
+          "inventory": 37,
           "shipment": "AGL4",
-          "farm": "Oscar's Farm, Bahia"
+          "farm": "Oscar"
         }
       ]
     },
@@ -159,27 +159,6 @@
       ]
     },
     {
-      "slug": "black-king-ilheus",
-      "active_sku_count": 2,
-      "total_inventory_units": 6,
-      "top_products": [
-        {
-          "product_id": "8-ounce-organic-cacao-nibs",
-          "product_name": "Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs",
-          "inventory": 5,
-          "shipment": "AGL4",
-          "farm": "Oscar"
-        },
-        {
-          "product_id": "ceremonial-cacao-paulo-s-la-do-sitio-farm-200g",
-          "product_name": "Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)",
-          "inventory": 1,
-          "shipment": "AGL8",
-          "farm": "Paulo"
-        }
-      ]
-    },
-    {
       "slug": "the-whole-body-repair-clinic",
       "active_sku_count": 1,
       "total_inventory_units": 6,
@@ -188,6 +167,20 @@
           "product_id": "oscar-bahia-ceremonial-cacao-200g",
           "product_name": "Ceremonial Cacao – Oscar",
           "inventory": 6,
+          "shipment": "AGL4",
+          "farm": "Oscar"
+        }
+      ]
+    },
+    {
+      "slug": "black-king-ilheus",
+      "active_sku_count": 1,
+      "total_inventory_units": 5,
+      "top_products": [
+        {
+          "product_id": "8-ounce-organic-cacao-nibs",
+          "product_name": "Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs",
+          "inventory": 5,
           "shipment": "AGL4",
           "farm": "Oscar"
         }
