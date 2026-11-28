@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-27T21:35:58Z",
+  "generated_at_utc": "2026-11-28T08:22:30Z",
   "regenerated_by": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/.github/workflows/stats-refresh.yml",
   "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
   "llms_orientation": "https://truesight.me/llms.txt",
@@ -8,7 +8,7 @@
     "mission": "Restore 10,000 hectares of Amazon rainforest."
   },
   "members": {
-    "generated_at": "2026-11-27T15:54:43Z",
+    "generated_at": "2026-11-28T07:32:06Z",
     "total_contributors": 500,
     "total_tdg_controlled_sum": 2489833.1,
     "governors_count": 10,
@@ -97,9 +97,9 @@
     "directory_url": "https://truesight.me/members.html"
   },
   "treasury": {
-    "generated_at": "2026-11-27T21:29:29.821Z",
+    "generated_at": "2026-11-28T07:48:36.081Z",
     "schema_version": 5,
-    "trigger": "manual",
+    "trigger": "cron",
     "currency_totals": {
       "1 Gallon Zip Loc Bags": {
         "total_quantity": 34.0,
@@ -247,19 +247,19 @@
         }
       },
       "Agroverse 81% Cacao Chocolate Bar 50g | Oscar Cacao Nibs | Kirsten 20261027 | San Francisco - MAIN": {
-        "total_quantity": 36.0,
-        "total_value_usd": 97.52,
+        "total_quantity": 34.0,
+        "total_value_usd": 92.11,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 36.0
+          "Main Ledger": 34.0
         }
       },
       "Agroverse 81% Cacao Chocolate Bar 50g | Vivi Cacao Nibs | Kirsten 20261025 | San Francisco - AGL13": {
-        "total_quantity": 39.0,
-        "total_value_usd": 77.49,
+        "total_quantity": 35.0,
+        "total_value_usd": 69.55,
         "item_count": 1,
         "ledger_breakdown": {
-          "AGL13": 39.0
+          "AGL13": 35.0
         }
       },
       "Agroverse 81% Cacao Chocolate Block (Kilograms) #1 | Oscar Cacao Nibs | Kirsten 20261114 | San Francisco - MAIN": {
@@ -560,11 +560,11 @@
         }
       },
       "Cacao Tree To Be Planted": {
-        "total_quantity": 380.0,
-        "total_value_usd": -570.0,
+        "total_quantity": 382.0,
+        "total_value_usd": -573.0,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 380.0
+          "Main Ledger": 382.0
         }
       },
       "Canopy 4ft X 6ft with 2 years warranty": {
@@ -993,27 +993,27 @@
         }
       },
       "USD": {
-        "total_quantity": 6903.41,
-        "total_value_usd": 6903.41,
+        "total_quantity": 6966.96,
+        "total_value_usd": 6966.96,
         "item_count": 1,
         "ledger_breakdown": {
           "AGL15": 2450.5,
-          "Main Ledger": 1800.88,
+          "Main Ledger": 1820.83,
           "AGL6": 1352.59,
           "AGL14": 764.5,
           "AGL10": 347.83,
           "BEC": 93.12,
           "AGL8": 68.0,
-          "SEF1": 16.0,
-          "AGL13": 10.0
+          "AGL13": 53.6,
+          "SEF1": 16.0
         }
       },
       "USD - provisions for voting rights cash out": {
-        "total_quantity": 59.62,
-        "total_value_usd": 59.62,
+        "total_quantity": 59.66,
+        "total_value_usd": 59.66,
         "item_count": 1,
         "ledger_breakdown": {
-          "Main Ledger": 59.62
+          "Main Ledger": 59.66
         }
       },
       "USDT": {
@@ -1036,7 +1036,7 @@
   },
   "inventory": {
     "stores": {
-      "generated_at": "2026-11-27T18:28:45.775Z",
+      "generated_at": "2026-11-28T02:29:49.555Z",
       "store_count": 0,
       "line_items": 16
     },
@@ -1046,7 +1046,7 @@
     }
   },
   "sunmint": {
-    "generated_at_utc": "2026-11-27T21:35:58Z",
+    "generated_at_utc": "2026-11-28T08:22:30Z",
     "source_script": "https://github.com/TrueSightDAO/truesight_me_beta/blob/main/scripts/build_stats_current.py",
     "schema": "sunmint_index/1",
     "north_star": {
@@ -1522,7 +1522,74 @@
     "interpretation_hint": "SunMint = the DAO's on-the-ground restoration evidence layer (trees, plots, farms) plus its media archive (MAP). Use this to answer 'how many trees have you planted?', 'how many plots / hectares?', 'which farms and where?', and 'what farm footage / videos / transcriptions exist?'. Progress toward the 10,000-hectare mission is plots.total_hectares vs 10000."
   },
   "recent_beerhall_digests": {
-    "error": "beerhall listing unavailable"
+    "total_entries": 136,
+    "recent": [
+      {
+        "date": "2026-11-25",
+        "slug": "rusmin-directive-aff-speaker-profile-mission-target",
+        "filename": "beer-hall_2026-11-25T072917Z_rusmin-directive-aff-speaker-profile-mission-target.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-11-25T072917Z_rusmin-directive-aff-speaker-profile-mission-target.md"
+      },
+      {
+        "date": "2026-11-23",
+        "slug": "awb-provenance-tdg-scorer-fix-china-entry",
+        "filename": "beer-hall_2026-11-23T061830Z_awb-provenance-tdg-scorer-fix-china-entry.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-11-23T061830Z_awb-provenance-tdg-scorer-fix-china-entry.md"
+      },
+      {
+        "date": "2026-11-09",
+        "slug": "past-harvests-merchant-feed-tree-digest",
+        "filename": "beer-hall_2026-11-09T050754Z_past-harvests-merchant-feed-tree-digest.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-11-09T050754Z_past-harvests-merchant-feed-tree-digest.md"
+      },
+      {
+        "date": "2026-11-07",
+        "slug": "500g-cacao-mass-bar-live",
+        "filename": "beer-hall_2026-11-07T050354Z_500g-cacao-mass-bar-live.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-11-07T050354Z_500g-cacao-mass-bar-live.md"
+      },
+      {
+        "date": "2026-11-05",
+        "slug": "sophia-chat-client-shipped-firewall-guide",
+        "filename": "beer-hall_2026-11-05T053944Z_sophia-chat-client-shipped-firewall-guide.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-11-05T053944Z_sophia-chat-client-shipped-firewall-guide.md"
+      },
+      {
+        "date": "2026-11-03",
+        "slug": "mlte-pipeline-shipped-sales-webhook-fixed",
+        "filename": "beer-hall_2026-11-03T054614Z_mlte-pipeline-shipped-sales-webhook-fixed.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-11-03T054614Z_mlte-pipeline-shipped-sales-webhook-fixed.md"
+      },
+      {
+        "date": "2026-10-20",
+        "slug": "sea-china-follow-up-discord-identity-fix",
+        "filename": "beer-hall_2026-10-20T035402Z_sea-china-follow-up-discord-identity-fix.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-20T035402Z_sea-china-follow-up-discord-identity-fix.md"
+      },
+      {
+        "date": "2026-10-19",
+        "slug": "warehouse-logistics-attribution-corrected",
+        "filename": "beer-hall_2026-10-19T034403Z_warehouse-logistics-attribution-corrected.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-19T034403Z_warehouse-logistics-attribution-corrected.md"
+      },
+      {
+        "date": "2026-10-18",
+        "slug": "treasury-cache-fix-sa-access-matrix",
+        "filename": "beer-hall_2026-10-18T033301Z_treasury-cache-fix-sa-access-matrix.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-18T033301Z_treasury-cache-fix-sa-access-matrix.md"
+      },
+      {
+        "date": "2026-10-16",
+        "slug": "cfr-payout-live-settlement-sop-merged",
+        "filename": "beer-hall_2026-10-16T033651Z_cfr-payout-live-settlement-sop-merged.md",
+        "raw_url": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/beer-hall_2026-10-16T033651Z_cfr-payout-live-settlement-sop-merged.md"
+      }
+    ],
+    "full_archive_url": "https://truesight.me/stats/beerhall_archive.json",
+    "directory_url": "https://github.com/TrueSightDAO/ecosystem_change_logs/tree/main/beer_hall/entries",
+    "raw_url_pattern": "https://raw.githubusercontent.com/TrueSightDAO/ecosystem_change_logs/main/beer_hall/entries/<filename>",
+    "human_index_url": "https://truesight.me/beerhall/updates.html",
+    "interpretation_hint": "Each entry is a community digest summarizing recent shipped work. The slug encodes the headline themes; the date is when the digest was published. Fetch raw_url for the full markdown body. For digests older than the 10 most-recent shown here, fetch full_archive_url for the complete historical index."
   },
   "canonical_sources": {
     "treasury_cache": "https://raw.githubusercontent.com/TrueSightDAO/treasury-cache/main/dao_offchain_treasury.json",
